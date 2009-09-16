@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="NoName.NetShop.BackFlat.MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>鼎鼎商城管理系统</title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="head"></div>
+        <div id="content">
+            <div class="left">
+                <dl class="item-collection">
+                    <dt><a class="pointer">品牌管理</a></dt>
+                    <dd><a href="/Brand/Add.aspx">添加品牌</a></dd>
+                    <dd><a href="/Brand/List.aspx">品牌列表</a></dd>
+                </dl>
+                <dl class="item-collection">
+                    <dt><a class="pointer">分类管理</a></dt>
+                    <dd><a href="/Brand/Add.aspx">添加分类</a></dd>
+                    <dd><a href="/Brand/List.aspx">分类列表</a></dd>
+                </dl>
+            </div>
+            <div class="right">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderBody" runat="server">
+                
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

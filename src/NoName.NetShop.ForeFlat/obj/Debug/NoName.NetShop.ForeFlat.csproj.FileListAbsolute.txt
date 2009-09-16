@@ -1,0 +1,9 @@
+D:\Projects\netshop\src\NoName.NetShop\NoName.NetShop.ForeFlat\bin\NoName.NetShop.ForeFlat.dll
+D:\Projects\netshop\src\NoName.NetShop\NoName.NetShop.ForeFlat\bin\NoName.NetShop.ForeFlat.pdb
+D:\Projects\netshop\src\NoName.NetShop\NoName.NetShop.ForeFlat\bin\log4net.dll
+D:\Projects\netshop\src\NoName.NetShop\NoName.NetShop.ForeFlat\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\netshop\src\NoName.NetShop\NoName.NetShop.ForeFlat\obj\Debug\NoName.NetShop.ForeFlat.dll
+D:\Projects\netshop\src\NoName.NetShop\NoName.NetShop.ForeFlat\obj\Debug\NoName.NetShop.ForeFlat.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ForeFlat\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ForeFlat\obj\Debug\NoName.NetShop.ForeFlat.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ForeFlat\obj\Debug\NoName.NetShop.ForeFlat.pdb

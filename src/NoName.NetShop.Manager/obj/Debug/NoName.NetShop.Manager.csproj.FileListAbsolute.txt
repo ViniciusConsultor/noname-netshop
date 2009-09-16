@@ -1,0 +1,5 @@
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\bin\Debug\NoName.NetShop.Manager.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\bin\Debug\NoName.NetShop.Manager.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\obj\Debug\NoName.NetShop.Manager.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\obj\Debug\NoName.NetShop.Manager.pdb

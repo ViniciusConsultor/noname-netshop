@@ -1,0 +1,5 @@
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\bin\Debug\NoName.NetShop.News.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\bin\Debug\NoName.NetShop.News.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\obj\Debug\NoName.NetShop.News.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\obj\Debug\NoName.NetShop.News.pdb

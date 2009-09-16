@@ -1,0 +1,10 @@
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Auction\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Auction\bin\Debug\NoName.NetShop.Auction.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Auction\bin\Debug\NoName.NetShop.Auction.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Auction\obj\Debug\NoName.NetShop.Auction.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Auction\obj\Debug\NoName.NetShop.Auction.pdb
+E:\works\NetShop\src\NoName.NetShop.Auction\bin\Debug\NoName.NetShop.Auction.dll
+E:\works\NetShop\src\NoName.NetShop.Auction\bin\Debug\NoName.NetShop.Auction.pdb
+E:\works\NetShop\src\NoName.NetShop.Auction\obj\Debug\ResolveAssemblyReference.cache
+E:\works\NetShop\src\NoName.NetShop.Auction\obj\Debug\NoName.NetShop.Auction.dll
+E:\works\NetShop\src\NoName.NetShop.Auction\obj\Debug\NoName.NetShop.Auction.pdb

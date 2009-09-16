@@ -1,0 +1,15 @@
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Product\bin\Debug\NoName.NetShop.Product.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Product\bin\Debug\NoName.NetShop.Product.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Product\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Product\obj\Debug\NoName.NetShop.Product.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Product\obj\Debug\NoName.NetShop.Product.pdb
+E:\works\NetShop\src\NoName.NetShop.Product\obj\Debug\ResolveAssemblyReference.cache
+E:\works\NetShop\src\NoName.NetShop.Product\obj\Debug\NoName.NetShop.Product.dll
+E:\works\NetShop\src\NoName.NetShop.Product\obj\Debug\NoName.NetShop.Product.pdb
+E:\works\NetShop\src\NoName.NetShop.Product\bin\Debug\NoName.NetShop.Product.dll
+E:\works\NetShop\src\NoName.NetShop.Product\bin\Debug\NoName.NetShop.Product.pdb
+E:\works\NetShop\src\NoName.NetShop.Product\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\works\NetShop\src\NoName.NetShop.Product\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\works\NetShop\src\NoName.NetShop.Product\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+E:\works\NetShop\src\NoName.NetShop.Product\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+E:\works\NetShop\src\NoName.NetShop.Product\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml

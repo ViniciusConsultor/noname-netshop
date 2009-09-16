@@ -1,0 +1,16 @@
+D:\Projects\netshop\src\NoName.NetShop\NoName.Utility\bin\Debug\NoName.Utility.dll
+D:\Projects\netshop\src\NoName.NetShop\NoName.Utility\bin\Debug\NoName.Utility.pdb
+D:\Projects\netshop\src\NoName.NetShop\NoName.Utility\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Projects\netshop\src\NoName.NetShop\NoName.Utility\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\netshop\src\NoName.NetShop\NoName.Utility\obj\Debug\NoName.Utility.dll
+D:\Projects\netshop\src\NoName.NetShop\NoName.Utility\obj\Debug\NoName.Utility.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.Utility\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.Utility\obj\Debug\NoName.Utility.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.Utility\bin\Debug\NoName.Utility.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.Utility\bin\Debug\NoName.Utility.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.Utility\obj\Debug\NoName.Utility.pdb
+E:\works\NetShop\src\NoName.Utility\bin\Debug\NoName.Utility.dll
+E:\works\NetShop\src\NoName.Utility\bin\Debug\NoName.Utility.pdb
+E:\works\NetShop\src\NoName.Utility\obj\Debug\ResolveAssemblyReference.cache
+E:\works\NetShop\src\NoName.Utility\obj\Debug\NoName.Utility.dll
+E:\works\NetShop\src\NoName.Utility\obj\Debug\NoName.Utility.pdb
