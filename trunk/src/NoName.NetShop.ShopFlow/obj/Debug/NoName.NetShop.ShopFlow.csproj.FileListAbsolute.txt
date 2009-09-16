@@ -1,0 +1,5 @@
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ShopFlow\bin\Debug\NoName.NetShop.ShopFlow.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ShopFlow\bin\Debug\NoName.NetShop.ShopFlow.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ShopFlow\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ShopFlow\obj\Debug\NoName.NetShop.ShopFlow.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ShopFlow\obj\Debug\NoName.NetShop.ShopFlow.pdb

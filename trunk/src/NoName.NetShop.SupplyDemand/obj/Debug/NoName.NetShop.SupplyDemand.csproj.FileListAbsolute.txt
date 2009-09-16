@@ -1,0 +1,5 @@
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.SupplyDemand\bin\Debug\NoName.NetShop.SupplyDemand.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.SupplyDemand\bin\Debug\NoName.NetShop.SupplyDemand.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.SupplyDemand\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.SupplyDemand\obj\Debug\NoName.NetShop.SupplyDemand.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.SupplyDemand\obj\Debug\NoName.NetShop.SupplyDemand.pdb

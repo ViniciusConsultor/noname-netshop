@@ -1,0 +1,19 @@
+﻿body{font-size:12px;font-family::Tahoma;margin:0;}
+
+.left{float:left;}
+.right{float:right;}
+
+.pointer{cursor:pointer;}
+
+a{text-decoration:none;}
+a:hover{text-decoration:underline;color:Red;}
+
+#head{height:80px;background:#eee;}
+#content{width:1000px;border:1px solid #eee;}
+
+#content .left{width:200px;text-align:left; border:1px solid #eee;}
+#content .right{width:798px;text-align:left;}
+
+dl.item-collection{margin:5px 0 0 10px;}
+dl.item-collection dt{}
+dl.item-collection dd{margin-left:1em;}

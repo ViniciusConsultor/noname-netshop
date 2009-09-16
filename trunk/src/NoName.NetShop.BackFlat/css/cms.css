@@ -1,0 +1,15 @@
+﻿body{font-size:12px;font-family:Tahoma;margin:0;}
+.panel{border:1px solid #ccc;width:100%;margin:0 0 10px 0;}
+.panel .title{background:#ccc;height:30px;line-height:30px;padding-left:1em;}
+.panel .content{padding:1em;background:#f8f8f5;}
+.button{height:24px;border:1px solid #ccc;border-left:3px solid #ccc;font-family:Tahoma;background:#fff;padding:0.1em 0.2em 0 0.2em;}
+.textbox{height:16px;border:1px solid #ccc;border-left:3px solid #ccc;font-family:Tahoma;background:#fff;}
+
+.listGrid{width:100%;}
+.listGrid th{height:3em;border:1px solid #fff;background-image:url(images/th-bg.gif) repeat-x;background:#364a6b;color:#fff;}/*1768b9*/
+.listGrid td{padding:.3em;text-align:left;border:1px solid #fff;}
+
+
+.tagGrid{width:500px;}
+.tagGrid th{height:3em;border:1px solid #fff;background-image:url(images/th-bg.gif) repeat-x;background:#778e9c;color:#fff;}/*1768b9 97a4ac*/
+.tagGrid td{padding:.2em;border:1px solid #fff;}

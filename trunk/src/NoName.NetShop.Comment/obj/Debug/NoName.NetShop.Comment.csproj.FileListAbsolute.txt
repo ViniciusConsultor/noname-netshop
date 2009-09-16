@@ -1,0 +1,5 @@
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Comment\bin\Debug\NoName.NetShop.Comment.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Comment\bin\Debug\NoName.NetShop.Comment.pdb
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Comment\obj\Debug\ResolveAssemblyReference.cache
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Comment\obj\Debug\NoName.NetShop.Comment.dll
+G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Comment\obj\Debug\NoName.NetShop.Comment.pdb
