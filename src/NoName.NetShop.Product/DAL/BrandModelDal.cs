@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using NoName.NetShop.Product.Model;
+using NoName.NetShop.Common;
 
 
 
@@ -16,6 +17,9 @@ namespace NoName.NetShop.Product.DAL
 	/// </summary>
 	public class BrandModelDal
 	{
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
+
 		public BrandModelDal()
 		{}
 
@@ -27,8 +31,7 @@ namespace NoName.NetShop.Product.DAL
 		public int GetMaxId()
 		{
 			string strsql = "select max(BrandId)+1 from pdBrand";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
+			object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
 			if (obj != null && obj != DBNull.Value)
 			{
 				return int.Parse(obj.ToString());
@@ -41,11 +44,10 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public bool Exists(int BrandId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdBrand_Exists");
-			db.AddInParameter(dbCommand, "BrandId", DbType.Int32,BrandId);
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdBrand_Exists");
+			dbr.AddInParameter(dbCommand, "BrandId", DbType.Int32,BrandId);
 			int result;
-			object obj = db.ExecuteScalar(dbCommand);
+			object obj = dbr.ExecuteScalar(dbCommand);
 			int.TryParse(obj.ToString(),out result);
 			if(result==1)
 			{
@@ -62,15 +64,14 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Add(BrandModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdBrand_ADD");
-			db.AddInParameter(dbCommand, "BrandId", DbType.Int32, model.BrandId);
-			db.AddInParameter(dbCommand, "BrandName", DbType.AnsiString, model.BrandName);
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
-			db.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
-			db.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
-			db.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-			db.ExecuteNonQuery(dbCommand);
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdBrand_ADD");
+			dbw.AddInParameter(dbCommand, "BrandId", DbType.Int32, model.BrandId);
+			dbw.AddInParameter(dbCommand, "BrandName", DbType.AnsiString, model.BrandName);
+			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
+			dbw.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
+			dbw.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
+			dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -78,15 +79,14 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Update(BrandModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdBrand_Update");
-			db.AddInParameter(dbCommand, "BrandId", DbType.Int32, model.BrandId);
-			db.AddInParameter(dbCommand, "BrandName", DbType.AnsiString, model.BrandName);
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
-			db.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
-			db.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
-			db.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-			db.ExecuteNonQuery(dbCommand);
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdBrand_Update");
+			dbw.AddInParameter(dbCommand, "BrandId", DbType.Int32, model.BrandId);
+			dbw.AddInParameter(dbCommand, "BrandName", DbType.AnsiString, model.BrandName);
+			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
+			dbw.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
+			dbw.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
+			dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -94,11 +94,10 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Delete(int BrandId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdBrand_Delete");
-			db.AddInParameter(dbCommand, "BrandId", DbType.Int32,BrandId);
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdBrand_Delete");
+			dbw.AddInParameter(dbCommand, "BrandId", DbType.Int32,BrandId);
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -106,12 +105,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public BrandModel GetModel(int BrandId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdBrand_GetModel");
-			db.AddInParameter(dbCommand, "BrandId", DbType.Int32,BrandId);
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdBrand_GetModel");
+			dbr.AddInParameter(dbCommand, "BrandId", DbType.Int32,BrandId);
 
 			BrandModel model=null;
-			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
 				{
@@ -126,15 +124,14 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public DataSet GetList(string strWhere)
 		{
-			StringBuilder strSql=new StringBuilder();
+            StringBuilder strSql = new StringBuilder();
 			strSql.Append("select BrandId,BrandName,CateId,CatePath,BrandLogo,Brief ");
 			strSql.Append(" FROM pdBrand ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
+			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
 		
@@ -143,16 +140,15 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdBrand");
-			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-			db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-			db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-			db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-			return db.ExecuteDataSet(dbCommand);
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_GetRecordByPage");
+			dbr.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdBrand");
+			dbr.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
+			dbr.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
+			dbr.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
+			dbr.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
+			return dbr.ExecuteDataSet(dbCommand);
 		}
 
 		/// <summary>
@@ -168,8 +164,7 @@ namespace NoName.NetShop.Product.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<BrandModel> list = new List<BrandModel>();
-			Database db = DatabaseFactory.CreateDatabase();
-			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
+			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
 				{

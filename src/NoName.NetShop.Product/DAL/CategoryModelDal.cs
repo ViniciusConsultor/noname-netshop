@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using NoName.NetShop.Product.Model;
+using NoName.NetShop.Common;
 
 
 namespace NoName.NetShop.Product.DAL
@@ -14,7 +15,10 @@ namespace NoName.NetShop.Product.DAL
 	/// 数据访问类CategoryModelDal。
 	/// </summary>
 	public class CategoryModelDal
-	{
+    {
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
+
 		public CategoryModelDal()
 		{}
 		#region  成员方法
@@ -25,8 +29,8 @@ namespace NoName.NetShop.Product.DAL
 		public int GetMaxId()
 		{
 			string strsql = "select max(CateId)+1 from pdCategory";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
+			
+			object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
 			if (obj != null && obj != DBNull.Value)
 			{
 				return int.Parse(obj.ToString());
@@ -39,11 +43,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public bool Exists(int CateId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategory_Exists");
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32,CateId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdCategory_Exists");
+			dbr.AddInParameter(dbCommand, "CateId", DbType.Int32,CateId);
 			int result;
-			object obj = db.ExecuteScalar(dbCommand);
+			object obj = dbr.ExecuteScalar(dbCommand);
 			int.TryParse(obj.ToString(),out result);
 			if(result==1)
 			{
@@ -60,16 +64,16 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Add(CategoryModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategory_ADD");
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
-			db.AddInParameter(dbCommand, "CateName", DbType.AnsiString, model.CateName);
-			db.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
-			db.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
-			db.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategory_ADD");
+			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
+			dbw.AddInParameter(dbCommand, "CateName", DbType.AnsiString, model.CateName);
+			dbw.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
+			dbw.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
+			dbw.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -77,16 +81,16 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Update(CategoryModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategory_Update");
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
-			db.AddInParameter(dbCommand, "CateName", DbType.AnsiString, model.CateName);
-			db.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
-			db.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
-			db.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategory_Update");
+			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
+			dbw.AddInParameter(dbCommand, "CateName", DbType.AnsiString, model.CateName);
+			dbw.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
+			dbw.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
+			dbw.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -94,11 +98,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Delete(int CateId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategory_Delete");
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32,CateId);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategory_Delete");
+			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32,CateId);
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -106,12 +110,12 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public CategoryModel GetModel(int CateId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategory_GetModel");
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32,CateId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdCategory_GetModel");
+			dbr.AddInParameter(dbCommand, "CateId", DbType.Int32,CateId);
 
 			CategoryModel model=null;
-			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
 				{
@@ -133,8 +137,8 @@ namespace NoName.NetShop.Product.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
+			
+			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
 		
@@ -143,16 +147,16 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdCategory");
-			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-			db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-			db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-			db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-			return db.ExecuteDataSet(dbCommand);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_GetRecordByPage");
+			dbr.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdCategory");
+			dbr.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
+			dbr.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
+			dbr.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
+			dbr.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
+			return dbr.ExecuteDataSet(dbCommand);
 		}
 
 
@@ -169,8 +173,8 @@ namespace NoName.NetShop.Product.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<CategoryModel> list = new List<CategoryModel>();
-			Database db = DatabaseFactory.CreateDatabase();
-			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
+			
+			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
 				{

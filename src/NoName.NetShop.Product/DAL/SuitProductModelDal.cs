@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using NoName.NetShop.Product.Model;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Product.DAL
 {
@@ -13,7 +14,10 @@ namespace NoName.NetShop.Product.DAL
 	/// 数据访问类SuitProductModelDal。
 	/// </summary>
 	public class SuitProductModelDal
-	{
+    {
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
+
 		public SuitProductModelDal()
 		{}
 		#region  成员方法
@@ -24,8 +28,8 @@ namespace NoName.NetShop.Product.DAL
 		public int GetMaxId()
 		{
 			string strsql = "select max(SuitProductId)+1 from pdSuitProduct";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
+			
+			object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
 			if (obj != null && obj != DBNull.Value)
 			{
 				return int.Parse(obj.ToString());
@@ -38,11 +42,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public bool Exists(int SuitProductId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdSuitProduct_Exists");
-			db.AddInParameter(dbCommand, "SuitProductId", DbType.Int32,SuitProductId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdSuitProduct_Exists");
+			dbr.AddInParameter(dbCommand, "SuitProductId", DbType.Int32,SuitProductId);
 			int result;
-			object obj = db.ExecuteScalar(dbCommand);
+			object obj = dbr.ExecuteScalar(dbCommand);
 			int.TryParse(obj.ToString(),out result);
 			if(result==1)
 			{
@@ -59,15 +63,15 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Add(SuitProductModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdSuitProduct_ADD");
-			db.AddInParameter(dbCommand, "SuitProductId", DbType.Int32, model.SuitProductId);
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
-			db.AddInParameter(dbCommand, "SuitName", DbType.AnsiString, model.SuitName);
-			db.AddInParameter(dbCommand, "MerchantPrice", DbType.Decimal, model.MerchantPrice);
-			db.AddInParameter(dbCommand, "TradePrice", DbType.Decimal, model.TradePrice);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdSuitProduct_ADD");
+			dbw.AddInParameter(dbCommand, "SuitProductId", DbType.Int32, model.SuitProductId);
+			dbw.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
+			dbw.AddInParameter(dbCommand, "SuitName", DbType.AnsiString, model.SuitName);
+			dbw.AddInParameter(dbCommand, "MerchantPrice", DbType.Decimal, model.MerchantPrice);
+			dbw.AddInParameter(dbCommand, "TradePrice", DbType.Decimal, model.TradePrice);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -75,15 +79,15 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Update(SuitProductModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdSuitProduct_Update");
-			db.AddInParameter(dbCommand, "SuitProductId", DbType.Int32, model.SuitProductId);
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
-			db.AddInParameter(dbCommand, "SuitName", DbType.AnsiString, model.SuitName);
-			db.AddInParameter(dbCommand, "MerchantPrice", DbType.Decimal, model.MerchantPrice);
-			db.AddInParameter(dbCommand, "TradePrice", DbType.Decimal, model.TradePrice);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdSuitProduct_Update");
+			dbw.AddInParameter(dbCommand, "SuitProductId", DbType.Int32, model.SuitProductId);
+			dbw.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
+			dbw.AddInParameter(dbCommand, "SuitName", DbType.AnsiString, model.SuitName);
+			dbw.AddInParameter(dbCommand, "MerchantPrice", DbType.Decimal, model.MerchantPrice);
+			dbw.AddInParameter(dbCommand, "TradePrice", DbType.Decimal, model.TradePrice);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -91,11 +95,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Delete(int SuitProductId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdSuitProduct_Delete");
-			db.AddInParameter(dbCommand, "SuitProductId", DbType.Int32,SuitProductId);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdSuitProduct_Delete");
+			dbw.AddInParameter(dbCommand, "SuitProductId", DbType.Int32,SuitProductId);
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -103,12 +107,12 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public SuitProductModel GetModel(int SuitProductId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdSuitProduct_GetModel");
-			db.AddInParameter(dbCommand, "SuitProductId", DbType.Int32,SuitProductId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdSuitProduct_GetModel");
+			dbr.AddInParameter(dbCommand, "SuitProductId", DbType.Int32,SuitProductId);
 
 			SuitProductModel model=null;
-			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
 				{
@@ -130,8 +134,8 @@ namespace NoName.NetShop.Product.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
+			
+			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
 		
@@ -140,16 +144,16 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdSuitProduct");
-			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-			db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-			db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-			db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-			return db.ExecuteDataSet(dbCommand);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_GetRecordByPage");
+			dbr.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdSuitProduct");
+			dbr.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
+			dbr.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
+			dbr.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
+			dbr.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
+			return dbr.ExecuteDataSet(dbCommand);
 		}
 
 		/// <summary>
@@ -165,8 +169,8 @@ namespace NoName.NetShop.Product.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<SuitProductModel> list = new List<SuitProductModel>();
-			Database db = DatabaseFactory.CreateDatabase();
-			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
+			
+			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
 				{
