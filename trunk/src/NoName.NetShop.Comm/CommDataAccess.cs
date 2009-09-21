@@ -6,16 +6,16 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 
 namespace NoName.NetShop.Common
 {
-    public class CommDataAccess
+    public static class CommDataAccess
     {
         /// <summary>
         /// 数据库读连接
         /// </summary>
-        protected static Database DbReader = DatabaseFactory.CreateDatabase("NetShopDbReaderConn");
+        public static Database DbReader = DatabaseFactory.CreateDatabase("NetShopDbReaderConn");
         /// <summary>
         /// 数据库写链接
         /// </summary>
-        protected static Database DbWriter = DatabaseFactory.CreateDatabase("NetShopDbWriterConn");
+        public static Database DbWriter = DatabaseFactory.CreateDatabase("NetShopDbWriterConn");
 
     }
 }
