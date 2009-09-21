@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using NoName.NetShop.Product.Model;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Product.DAL
 {
@@ -13,7 +14,10 @@ namespace NoName.NetShop.Product.DAL
 	/// 数据访问类CategoryParaModelDal。
 	/// </summary>
 	public class CategoryParaModelDal
-	{
+    {
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
+
 		public CategoryParaModelDal()
 		{}
 
@@ -25,8 +29,8 @@ namespace NoName.NetShop.Product.DAL
 		public int GetMaxId()
 		{
 			string strsql = "select max(ParaId)+1 from pdCategoryPara";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
+			
+			object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
 			if (obj != null && obj != DBNull.Value)
 			{
 				return int.Parse(obj.ToString());
@@ -39,11 +43,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public bool Exists(int ParaId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategoryPara_Exists");
-			db.AddInParameter(dbCommand, "ParaId", DbType.Int32,ParaId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdCategoryPara_Exists");
+			dbr.AddInParameter(dbCommand, "ParaId", DbType.Int32,ParaId);
 			int result;
-			object obj = db.ExecuteScalar(dbCommand);
+			object obj = dbr.ExecuteScalar(dbCommand);
 			int.TryParse(obj.ToString(),out result);
 			if(result==1)
 			{
@@ -60,17 +64,17 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Add(CategoryParaModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategoryPara_ADD");
-			db.AddInParameter(dbCommand, "ParaId", DbType.Int32, model.ParaId);
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
-			db.AddInParameter(dbCommand, "ParaName", DbType.AnsiString, model.ParaName);
-			db.AddInParameter(dbCommand, "ParaType", DbType.Byte, model.ParaType);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.AddInParameter(dbCommand, "ParaGroupId", DbType.Int32, model.ParaGroupId);
-			db.AddInParameter(dbCommand, "ParaValues", DbType.AnsiString, model.ParaValues);
-			db.AddInParameter(dbCommand, "DefaultValue", DbType.AnsiString, model.DefaultValue);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategoryPara_ADD");
+			dbw.AddInParameter(dbCommand, "ParaId", DbType.Int32, model.ParaId);
+			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
+			dbw.AddInParameter(dbCommand, "ParaName", DbType.AnsiString, model.ParaName);
+			dbw.AddInParameter(dbCommand, "ParaType", DbType.Byte, model.ParaType);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.AddInParameter(dbCommand, "ParaGroupId", DbType.Int32, model.ParaGroupId);
+			dbw.AddInParameter(dbCommand, "ParaValues", DbType.AnsiString, model.ParaValues);
+			dbw.AddInParameter(dbCommand, "DefaultValue", DbType.AnsiString, model.DefaultValue);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -78,17 +82,17 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Update(CategoryParaModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategoryPara_Update");
-			db.AddInParameter(dbCommand, "ParaId", DbType.Int32, model.ParaId);
-			db.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
-			db.AddInParameter(dbCommand, "ParaName", DbType.AnsiString, model.ParaName);
-			db.AddInParameter(dbCommand, "ParaType", DbType.Byte, model.ParaType);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.AddInParameter(dbCommand, "ParaGroupId", DbType.Int32, model.ParaGroupId);
-			db.AddInParameter(dbCommand, "ParaValues", DbType.AnsiString, model.ParaValues);
-			db.AddInParameter(dbCommand, "DefaultValue", DbType.AnsiString, model.DefaultValue);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategoryPara_Update");
+			dbw.AddInParameter(dbCommand, "ParaId", DbType.Int32, model.ParaId);
+			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
+			dbw.AddInParameter(dbCommand, "ParaName", DbType.AnsiString, model.ParaName);
+			dbw.AddInParameter(dbCommand, "ParaType", DbType.Byte, model.ParaType);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.AddInParameter(dbCommand, "ParaGroupId", DbType.Int32, model.ParaGroupId);
+			dbw.AddInParameter(dbCommand, "ParaValues", DbType.AnsiString, model.ParaValues);
+			dbw.AddInParameter(dbCommand, "DefaultValue", DbType.AnsiString, model.DefaultValue);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -96,11 +100,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Delete(int ParaId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategoryPara_Delete");
-			db.AddInParameter(dbCommand, "ParaId", DbType.Int32,ParaId);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategoryPara_Delete");
+			dbw.AddInParameter(dbCommand, "ParaId", DbType.Int32,ParaId);
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -108,12 +112,12 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public CategoryParaModel GetModel(int ParaId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdCategoryPara_GetModel");
-			db.AddInParameter(dbCommand, "ParaId", DbType.Int32,ParaId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdCategoryPara_GetModel");
+			dbr.AddInParameter(dbCommand, "ParaId", DbType.Int32,ParaId);
 
 			CategoryParaModel model=null;
-			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
 				{
@@ -135,8 +139,8 @@ namespace NoName.NetShop.Product.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
+			
+			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
 		
@@ -145,16 +149,16 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdCategoryPara");
-			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-			db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-			db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-			db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-			return db.ExecuteDataSet(dbCommand);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_GetRecordByPage");
+			dbr.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdCategoryPara");
+			dbr.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
+			dbr.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
+			dbr.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
+			dbr.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
+			return dbr.ExecuteDataSet(dbCommand);
 		}
 
 		/// <summary>
@@ -170,8 +174,8 @@ namespace NoName.NetShop.Product.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<CategoryParaModel> list = new List<CategoryParaModel>();
-			Database db = DatabaseFactory.CreateDatabase();
-			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
+			
+			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
 				{

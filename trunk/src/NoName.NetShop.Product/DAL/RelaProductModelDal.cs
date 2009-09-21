@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using NoName.NetShop.Product.Model;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Product.DAL
 {
@@ -14,6 +15,10 @@ namespace NoName.NetShop.Product.DAL
 	/// </summary>
 	public class RelaProductModelDal
 	{
+
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
+
 		public RelaProductModelDal()
 		{}
 		#region  成员方法
@@ -24,8 +29,8 @@ namespace NoName.NetShop.Product.DAL
 		public int GetMaxId()
 		{
 			string strsql = "select max(ProductId)+1 from pdRelaProduct";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
+			
+			object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
 			if (obj != null && obj != DBNull.Value)
 			{
 				return int.Parse(obj.ToString());
@@ -38,12 +43,12 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public bool Exists(int ProductId,int RelaProductId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdRelaProduct_Exists");
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32,ProductId);
-			db.AddInParameter(dbCommand, "RelaProductId", DbType.Int32,RelaProductId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdRelaProduct_Exists");
+			dbr.AddInParameter(dbCommand, "ProductId", DbType.Int32,ProductId);
+			dbr.AddInParameter(dbCommand, "RelaProductId", DbType.Int32,RelaProductId);
 			int result;
-			object obj = db.ExecuteScalar(dbCommand);
+			object obj = dbr.ExecuteScalar(dbCommand);
 			int.TryParse(obj.ToString(),out result);
 			if(result==1)
 			{
@@ -60,11 +65,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Add(RelaProductModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdRelaProduct_ADD");
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
-			db.AddInParameter(dbCommand, "RelaProductId", DbType.Int32, model.RelaProductId);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdRelaProduct_ADD");
+			dbw.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
+			dbw.AddInParameter(dbCommand, "RelaProductId", DbType.Int32, model.RelaProductId);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -72,11 +77,11 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Update(RelaProductModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdRelaProduct_Update");
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
-			db.AddInParameter(dbCommand, "RelaProductId", DbType.Int32, model.RelaProductId);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdRelaProduct_Update");
+			dbw.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
+			dbw.AddInParameter(dbCommand, "RelaProductId", DbType.Int32, model.RelaProductId);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -84,12 +89,12 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Delete(int ProductId,int RelaProductId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdRelaProduct_Delete");
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32,ProductId);
-			db.AddInParameter(dbCommand, "RelaProductId", DbType.Int32,RelaProductId);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdRelaProduct_Delete");
+			dbw.AddInParameter(dbCommand, "ProductId", DbType.Int32,ProductId);
+			dbw.AddInParameter(dbCommand, "RelaProductId", DbType.Int32,RelaProductId);
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -97,13 +102,13 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public RelaProductModel GetModel(int ProductId,int RelaProductId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_pdRelaProduct_GetModel");
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32,ProductId);
-			db.AddInParameter(dbCommand, "RelaProductId", DbType.Int32,RelaProductId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdRelaProduct_GetModel");
+			dbr.AddInParameter(dbCommand, "ProductId", DbType.Int32,ProductId);
+			dbr.AddInParameter(dbCommand, "RelaProductId", DbType.Int32,RelaProductId);
 
 			RelaProductModel model=null;
-			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
 				{
@@ -125,8 +130,8 @@ namespace NoName.NetShop.Product.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
+			
+			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
 		
@@ -135,16 +140,16 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdRelaProduct");
-			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-			db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-			db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-			db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-			return db.ExecuteDataSet(dbCommand);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_GetRecordByPage");
+			dbr.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "pdRelaProduct");
+			dbr.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
+			dbr.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
+			dbr.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
+			dbr.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
+			dbr.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
+			return dbr.ExecuteDataSet(dbCommand);
 		}
 
 		/// <summary>
@@ -160,8 +165,8 @@ namespace NoName.NetShop.Product.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<RelaProductModel> list = new List<RelaProductModel>();
-			Database db = DatabaseFactory.CreateDatabase();
-			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
+			
+			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
 				{
