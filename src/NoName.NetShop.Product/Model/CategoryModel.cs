@@ -12,10 +12,10 @@ namespace NoName.NetShop.Product.Model
 		private int _cateid;
 		private string _catename;
 		private string _catepath;
-		private int? _status;
+		private int _status;
 		private string _pricerange;
 		private bool _ishide;
-		private int? _catelevel;
+		private int _catelevel;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -43,7 +43,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Status
+		public int Status
 		{
 			set{ _status=value;}
 			get{return _status;}
@@ -67,7 +67,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? CateLevel
+		public int CateLevel
 		{
 			set{ _catelevel=value;}
 			get{return _catelevel;}
@@ -75,5 +75,11 @@ namespace NoName.NetShop.Product.Model
 		#endregion Model
 
 	}
+
+    public enum CategoryStatus
+    {
+        正式 = 1,
+        非正式 = 0,
+    }
 }
 
