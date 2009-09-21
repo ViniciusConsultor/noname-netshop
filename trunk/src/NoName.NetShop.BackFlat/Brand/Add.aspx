@@ -14,25 +14,19 @@
 	    <tr>
 	        <td>分类：</td>
 	        <td>
-		        <asp:TextBox id="txtCateId" runat="server" Width="200px"></asp:TextBox>
-	        </td>
-	    </tr>
-	    <tr>
-	        <td>分类路径：</td>
-	        <td>
-		        <asp:TextBox id="txtCatePath" runat="server" Width="200px"></asp:TextBox>
+		        <asp:DropDownList runat="server" ID="drpCategory"></asp:DropDownList>
 	        </td>
 	    </tr>
 	    <tr>
 	        <td>品牌LOGO：</td>
 	        <td>
-		        <asp:TextBox id="txtBrandLogo" runat="server" Width="200px"></asp:TextBox>
+                <asp:FileUpload ID="fulBrandLogo" runat="server" />
 	        </td>
 	    </tr>
 	    <tr>
 	        <td>品牌描述：</td>
 	        <td>
-		        <asp:TextBox id="txtBrief" runat="server" Width="200px"></asp:TextBox>
+		        <asp:TextBox id="txtBrief" runat="server" TextMode="MultiLine" Width="200px"></asp:TextBox>
 	        </td>
 	    </tr>
 	    <tr>

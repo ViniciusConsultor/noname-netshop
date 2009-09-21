@@ -19,9 +19,22 @@ namespace NoName.NetShop.BackFlat.Brand
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                BindDropDownList();
+            }            
         }
 
+
+        private void BindDropDownList()
+        {
+            CategoryModelBll CategoryBll = new CategoryModelBll();
+
+            drpCategory.DataSource = CategoryBll.GetList("CateLevel = 1");
+            drpCategory.DataTextField = "catename";
+            drpCategory.DataValueField = "cateid";
+            drpCategory.DataBind();
+        }
         		
         protected void Page_LoadComplete(object sender, EventArgs e)
 		{
@@ -35,15 +48,7 @@ namespace NoName.NetShop.BackFlat.Brand
 	        {
 		        strErr+="BrandName不能为空！\\n";	
 	        }
-	        if(!PageValidate.IsNumber(txtCateId.Text))
-	        {
-		        strErr+="CateId不是数字！\\n";	
-	        }
-	        if(this.txtCatePath.Text =="")
-	        {
-		        strErr+="CatePath不能为空！\\n";	
-	        }
-	        if(this.txtBrandLogo.Text =="")
+	        if(this.fulBrandLogo.FileName =="")
 	        {
 		        strErr+="BrandLogo不能为空！\\n";	
 	        }
@@ -58,16 +63,16 @@ namespace NoName.NetShop.BackFlat.Brand
 		        return;
 	        }
 	        string BrandName=this.txtBrandName.Text;
-	        int CateId=int.Parse(this.txtCateId.Text);
-	        string CatePath=this.txtCatePath.Text;
-	        string BrandLogo=this.txtBrandLogo.Text;
+	        int CateId=int.Parse(this.drpCategory.SelectedValue);
+            //string CatePath=this.txtCatePath.Text;
+            //string BrandLogo=this.txtBrandLogo.Text;
 	        string Brief=this.txtBrief.Text;
 
 	        BrandModel model=new BrandModel();
 	        model.BrandName=BrandName;
 	        model.CateId=CateId;
-	        model.CatePath=CatePath;
-	        model.BrandLogo=BrandLogo;
+            //model.CatePath=CatePath;
+            //model.BrandLogo=BrandLogo;
 	        model.Brief=Brief;
 
 	        BrandModelBll bll=new BrandModelBll();
