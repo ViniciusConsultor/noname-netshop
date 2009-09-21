@@ -5,8 +5,7 @@
 </asp:Content>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderBody" runat="server">
-    
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderBody" runat="server">    
     <table>
 	    <tr>
 	        <td height="25" width="30%" align="right">分类名称：</td>
@@ -18,7 +17,6 @@
 	        <td height="25" width="30%" align="right">状态：</td>
 	        <td height="25" width="*" align="left">
 	            <asp:DropDownList runat="server" ID="drpStatus" ></asp:DropDownList>
-		        <asp:TextBox id="txtStatus" runat="server" Width="200px"></asp:TextBox>
 	        </td>
 	    </tr>
 	    <tr>
@@ -36,8 +34,9 @@
 	    <tr>
 	        <td height="25" width="30%" align="right">从属父类：</td>
 	        <td height="25" width="*" align="left">
-                <asp:TreeView runat="server" ID="trvCategory">
-                </asp:TreeView>
+                <asp:ListBox ID="lbxCategory1" runat="server" AutoPostBack="true" onselectedindexchanged="lbxCategory1_SelectedIndexChanged"></asp:ListBox>
+                <asp:ListBox ID="lbxCategory2" runat="server" Visible="false"></asp:ListBox>
+                <asp:ListBox ID="lbxCategory3" runat="server" Visible="false"></asp:ListBox>
 	        </td>
 	    </tr>
 	    <tr>
