@@ -31,17 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SinaEC\SinaEC.BlogShop\trunk\src\SinaEC.BlogShop.AdminUI\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <HintPath>..\NoName.NetShop.BackFlat\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SinaEC\SinaEC.BlogShop\trunk\src\SinaEC.BlogShop.AdminUI\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>..\NoName.NetShop.BackFlat\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SinaEC\SinaEC.BlogShop\trunk\src\SinaEC.BlogShop.AdminUI\bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <HintPath>..\NoName.NetShop.BackFlat\bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -94,6 +94,12 @@
     <Compile Include="Model\SalesProductModel.cs" />
     <Compile Include="Model\SuitProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoName.NetShop.Comm\NoName.NetShop.Common.csproj">
+      <Project>{29A4BE47-9ADF-443F-913D-6CCEAD2DD752}</Project>
+      <Name>NoName.NetShop.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
