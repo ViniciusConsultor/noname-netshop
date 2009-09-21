@@ -11,10 +11,11 @@ namespace NoName.NetShop.Common
         /// <summary>
         /// 数据库读连接
         /// </summary>
-        protected static Database DbReader = DatabaseFactory.CreateDatabase("PostcardDbReaderConn");
+        protected static Database DbReader = DatabaseFactory.CreateDatabase("NetShopDbReaderConn");
         /// <summary>
         /// 数据库写链接
         /// </summary>
-        protected static Database DbWriter = DatabaseFactory.CreateDatabase("PostcardDbWriterConn");
+        protected static Database DbWriter = DatabaseFactory.CreateDatabase("NetShopDbWriterConn");
+
     }
 }
