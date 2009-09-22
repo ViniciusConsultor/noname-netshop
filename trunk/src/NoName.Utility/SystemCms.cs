@@ -17,7 +17,8 @@ namespace NoName.Utility
         /// <returns></returns>
         public static void AdminSesion()
         {
-            if (HttpContext.Current.Session["administrator"] == null && new cooks().GetCookie("administrator") == null)
+            //if (HttpContext.Current.Session["administrator"] == null && new cooks().GetCookie("administrator") == null)
+            if (HttpContext.Current.Session["administrator"] == null)
             {
                 HttpContext.Current.Response.Redirect("~/administrator/login.aspx");
             }
