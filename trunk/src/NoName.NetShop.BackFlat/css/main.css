@@ -1,12 +1,40 @@
-﻿body{font-size:12px;font-family:Tahoma;margin:0;}
+﻿*{margin:0;padding:0}
+body{background:#FFF;color:#333;font-size:12px;font-family:"宋体"}
+select,input{font-size:12px;vertical-align:middle}
+img{border:0}
+a{color:#333;text-decoration:none}
+a:hover{color:#f00;text-decoration:underline}
+select {
+	font-size: 12px;
+	color: #000000; background-color: #E0E2F1;
+}
+textarea,input,object{font-size: 12px;}
+td{ BORDER-RIGHT: 1px; BORDER-TOP: 0px; FONT-SIZE: 12px; COLOR: #000000; text-align:left}
+img{BORDER:0px;}
+form{padding:3px; margin:0px;}
+ul{
+	margin:3px 3px 3px 3px;
+	list-style-type:none;
+	padding-left:5px;
+}
+li{
+	display:block;
+	float:none;	
+	margin:0px 5px 0px 0px !important;
+	font-weight:normal;
+	font-size:15px;
+	white-space:nowrap;
+	font-size:12px;
+	cursor:hand;
+}
+
+
 
 .left{float:left;}
 .right{float:right;}
 
 .pointer{cursor:pointer;}
 
-a{text-decoration:none;}
-a:hover{text-decoration:underline;color:Red;}
 
 #head{height:80px;background:#eee;}
 #content{width:1000px;border:1px solid #eee;}
@@ -17,3 +45,27 @@ a:hover{text-decoration:underline;color:Red;}
 dl.item-collection{margin:5px 0 0 10px;}
 dl.item-collection dt{}
 dl.item-collection dd{margin-left:1em;}
+
+
+.b{background-color:#F7F7F7;}
+.bw{background-color:#FFFFFF;}
+.bg{background-color:#EEEEEE;}
+
+.head { color: #ffffff;background: #739ACE; font-weight:bolder;padding-left:10px;}
+.head td{color: #ffffff;}
+.head a{color: #ffffff;}
+.head_2 {background: #CED4E8;}
+.head_2 td{color: #000000;}
+.left_padding{line-height:19px; background:#F7F7F7;}
+.left_padding A:active{font-weight:bold;color:#0000FF}
+.hr  {border-top: 1px solid #6365CE; border-bottom: 0; border-left: 0; border-right: 0; }
+.bold {font-weight:bold;}
+.smalltxt {font-family: Tahoma, Verdana; font-size: 12px;color: #000000;}
+.i_table{border: 1px solid #b3bfdd;background:#DEE3EF;}
+.gray{color:#999999}
+.red{color:#FF0000}
+.blue{color:#0000FF}
+.normal{font-size:12px;font-weight:normal;}
+
+.title {font-weight:bold;font-size:large; color:Black; }
+.border{ border-style:double; border-width:3px; border-color:Blue}
