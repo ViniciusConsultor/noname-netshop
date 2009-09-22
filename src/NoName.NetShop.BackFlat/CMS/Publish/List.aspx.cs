@@ -44,7 +44,7 @@ namespace NoName.NetShop.BackFlat.CMS.Publish
                 {
                     DataRow row = dt.NewRow();
                     row["name"] = t.Substring(t.LastIndexOf("\\")+1);
-                    row["path"] = "/cms" + Regex.Split(t, "CMS")[1].Replace("\\","/"); ;
+                    row["path"] = "/cms" + Regex.Split(t, "cms")[1].Replace("\\","/"); 
                     dt.Rows.Add(row);
                 }
             }
