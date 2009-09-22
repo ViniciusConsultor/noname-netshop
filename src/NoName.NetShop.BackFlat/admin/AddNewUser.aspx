@@ -5,14 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>添加管理员</title>
-<style>
-select {
-	FONT-SIZE: 12px;
-	COLOR: #000000; background-color: #FFFFFF;
-}
-.STYLE15 {color: #0066CC}
-     td{ text-align:left;}
-</style>
+<link href="/css/css.css" type="text/css" rel="stylesheet" />
+<link href="/css/style.css" type="text/css" rel="stylesheet" />
 
 </head>
 <body>
