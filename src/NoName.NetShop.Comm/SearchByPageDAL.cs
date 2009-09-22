@@ -95,12 +95,28 @@ namespace NoName.NetShop.Common
         /// <returns></returns>
         public static int GetNewSerialNum(string appname)
         {
-            string spName = "UP_UT_Serial_GetNewSerialNum";
+            string spName = "UP_unSerialNum_GetNewSerial";
             DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(spName);
-            CommDataAccess.DbReader.AddInParameter(comm, "@appname", DbType.String, appname);
-            CommDataAccess.DbReader.AddOutParameter(comm, "@serialNum", DbType.Int32, 4);
+            CommDataAccess.DbReader.AddInParameter(comm, "@appid", DbType.String, appname);
+            CommDataAccess.DbReader.AddOutParameter(comm, "@serial", DbType.Int32, 4);
             CommDataAccess.DbReader.ExecuteNonQuery(comm);
-            return Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@serialNum"));
+            return Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@serial"));
         }
-    }
-}
+        
+        /// <summary>
+        /// 获得一个新的序列号，用于为各个应用能够提供一个独立的序列号，格式为：yyyyMMddAAXXXXXXXX
+        /// </summary>
+        /// <param name="appname"></param>
+        /// <returns></returns>
+        public static int GetNewSerialStr(string appname)
+        {
+            string spName = "UP_unSerialStr_GetNewSerial";
+            DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(spName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@appid", DbType.String, appname);
+            CommDataAccess.DbReader.AddOutParameter(comm, "@serial", DbType.String, 20);
+            CommDataAccess.DbReader.ExecuteNonQuery(comm);
+            return Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@serial"));
+        }    
+        
+        }
+} 
