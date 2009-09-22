@@ -1,0 +1,160 @@
+
+/*商城公告*/
+.partA{}
+.partA ul{line-height:20px}
+.partA li{padding-left:1em;background:url(http://i1.sinaimg.cn/dy/deco/2007/1211/yocc/unfcn_mj_01.gif) no-repeat 5px 50%}
+.partA li a:link,.partA li a:visited{color:#1E51A4}
+.partA li a:hover{color:#f00;text-decoration:underline}
+.notice{width:190px;height:255px;float:left}
+.notice_top{width:190px;height:21px;background:url(../images/notice_top.jpg) no-repeat top;color:#C90707;font-weight:bold;font-size:14px;text-align:center;padding-top:10px}
+.notice_top a:link,.notice_top a:visited{color:#C90707}
+.notice_top a:hover{color:#C90707;text-decoration:underline}
+.notice_content_1{width:182px;border-left:1px solid #DEDEDE;border-right:1px solid #DEDEDE;padding:10px 0px 10px 6px;overflow:hidden}
+.notice_content_2{width:183px;height:88px;border:1px solid #DEDEDE;padding:9px 0px 5px 5px}
+.notice_content_2 .txt_1{width:65px;height:19px;float:left;padding:5px 0px 0px 25px;background:url(../images/notice_pic1.gif) no-repeat left}
+.notice_content_2 .txt_2{width:55px;height:19px;float:left;padding:5px 0px 0px 25px;background:url(../images/notice_pic2.gif) no-repeat left}
+.notice_content_2 .txt_3{width:65px;height:19px;float:left;padding:5px 0px 0px 25px;background:url(../images/notice_pic3.gif) no-repeat left}
+.notice_content_2 .txt_4{width:55px;height:19px;float:left;padding:5px 0px 0px 25px;background:url(../images/notice_pic4.gif) no-repeat left}
+.notice_content_2 a:link,.notice_content_2 a:visited{color:#1E51A4}
+.notice_content_2 a:hover{color:#F00;text-decoration:underline}
+.n2008y10{ padding-left:10px}
+
+.top_right{width:220px;height:256px;float:right; overflow:hidden}
+.top_right_title{width:220px;height:31px; overflow:hidden}
+.top_right_title div{text-align:center;width:110px;height:31px;float:left}
+.top_right_title .tab_on{background:url(../images/change_pic_1.gif) no-repeat;font:bold 14px/32px "宋体";color:#FFF;}
+.top_right_title .tab_on a:link,.top_right_title .tab_on a:visited{color:#FFF}
+.top_right_title .tab_on a:hover{color:#FFF;text-decoration:underline}
+
+.top_right_title .tab_off{background:url(../images/change_pic_2.jpg) no-repeat right 5px;font: 12px/40px "宋体";color:#000}
+
+.top_right_content{width:208px;height:220px;border-left:1px solid #DEDEDE;border-right:1px solid #DEDEDE;border-bottom:1px solid #DEDEDE;padding:4px 5px 0px 5px; overflow:hidden}
+.top_right_content .picbox{width:101px;height:112px;float:left}
+.top_right_content .picbox img{border:1px solid #DEDEDE;padding:3px}
+.top_right_content .picbox a:hover img{border:1px solid #96b6e7}
+.top_right_content .txt{width:92px;height:107px;float:right;color:#A91919;line-height:20px;padding-top:5px}
+.top_right_content .txt dl{padding-top:5px}
+.top_right_content .txt dt{font-weight:bold;color:#1E51A4}
+.top_right_content .txt dt a:link,.top_right_content .txt dt a:visited{color:#1E51A4}
+.top_right_content .txt dt a:hover{color:#f00;text-decoration:underline}
+.top_right_content .txt .color_1{color:#666}
+.top_right_content .txt .color_1 a:link,.top_right_content .txt .color_1 a:visited{color:#666}
+.top_right_content .txt .color_1 a:hover{color:#f00;text-decoration:underline}
+.top_right_content .dash{width:210px;height:1px;background:url(../images/dash.gif) repeat-x;margin-top:18px;_margin-top:10px;margin-bottom:8px}
+.top_right_content .more{float:right}
+.top_right_content .more a{color:#1E51A4}
+
+/*目录*/
+.catalog_bar{height:34px;position:relative;width:950px; overflow:hidden}
+.catalog_bar div{float:left;width:127px;padding:0 0 0 43px;text-align:left;height:34px;position:absolute; cursor:pointer}
+.catalog_bar_on{font:bold 14px/36px "宋体"; color:#fff; background:url(../images/catalog_bar_on.gif) no-repeat left bottom; z-index:20!important}
+.catalog_bar_off{font:bold 14px/40px "宋体";color:#666;background:url(../images/catalog_bar_off.gif) no-repeat left bottom}
+
+.catalog_barbg{ display:block; height:23px;margin-top:11px; float:right;width:500px;background:url(../images/catalog_barbg.gif) repeat-x  }
+.catalog_barR{ display:block; height:34px; float:right;width:9px;background:url(../images/catalog_barbgR.gif) no-repeat right bottom}
+
+.catalog_bar #catalog_bar_0{left:0px;top:0px;z-index:15}
+.catalog_bar #catalog_bar_1{left:160px;top:0px;z-index:14}
+.catalog_bar #catalog_bar_2{left:320px;top:0px;z-index:13}
+
+
+
+.catalog_barbg{background:url(../images/catalog_barbg.gif) repeat-x;float:right;widht:700px}
+.catalog_content{width:938px;height:320px;background:#FEF3F3;border-left:1px solid #FEC4C5;border-right:1px solid #FEC4C5;;padding:5px 5px 0px 5px}
+.catalog_in{width:935px;height:320px;background:#FFF;padding:0px 1px 0px 1px}
+.catalog_in .items{width:209px;padding:12px 0px 8px 5px;border:1px dashed #fff;}
+.catalog_in .items_over{width:209px;border:1px dashed #C1BBA9;background:#FEFDF7;padding:12px 0px 8px 5px}
+.bigtitle{height:12px;padding:4px 6px;background:#F3F2F1;color:#1E51A4;font-weight:bold}
+.bigtitle a:link,.bigtitle a:visited{color:#1E51A4}
+.bigtitle a:hover{color:#1E51A4;text-decoration:underline}
+.smalltitle{width:195px;line-height:18px;color:#555555;padding:8px 0px 0px 16px}
+.smalltitle a:link,.smalltitle a:visited{color:#555555}
+.smalltitle a:hover{color:#555555;text-decoration:underline}
+.catalog_bottom{width:950px;height:10px;background:url(../images/catalog_bottom.gif) no-repeat}
+.middleline{width:1px;height:273px;background:url(../images/middleline.gif) no-repeat;float:left;margin:10px 12px 0px 10px}
+
+
+.txt_L{width:150px;height:30px;float:left;padding-left:57px;margin-top:1px}
+.txt_R{float:right;color:#000;padding:10px 15px 0px 0px}
+.txt_R a:link,.txt_R a:visited{color:#000}
+.txt_R a:hover{color:#F00;text-decoration:underline}
+.pd_L{margin-left:2px;display:inline}
+.pd_L_2{margin-left:1px;display:inline}
+.pd_B{margin-bottom:10px}
+.ex{font-weight:normal;color:#999999;text-decoration:line-through}
+.pictable{width:136px;height:229px;float:left;padding:10px 9px 0px 0px;font-weight:bold;line-height:18px}
+.part{height:293px}
+.part_content{height:259px}
+.part_content_R{width:737px;height:259px;float:right}
+
+/*price*/
+.part_price_top{height:34px;background:url(../images/price_top.gif) no-repeat}
+.part_price_top .t1{color:#B56B6C}
+.part_price_top h2{font-size:14px;color:#497EC7}
+.part_price_top .t2{color:#AC0D0A;font-weight:bold;font-size:14px}
+.part_price_top .t2 a:link,.part_price_top .t2 a:visited{color:#AC0D0A}
+.part_price_top .t2 a:hover{color:#AC0D0A;text-decoration:underline}
+.content_P{width:726px;height:245px;background:url(../images/price_pic_M.gif) repeat-x top;border-right:1px solid #FEC6C7;border-top:1px solid #FEC6C7;color:#B10103;padding-left:10px}
+.content_P h3{color:#B10103;font-size:12px;padding-left:12px}
+.content_P a:link,.content_P a:visited{color:#B10103}
+.content_P a img{border:1px solid #CDCECE;padding:2px;display:block}
+.content_P a:hover p{text-decoration:underline;color:##B10103}
+.content_P a:hover img{border:1px dashed #A0977B}
+.content_P p{padding-left:10px}
+.content_P ul{padding:10px 0px 0px 0px;color:#000;line-height:23px}
+.content_P ul a:link,.content_P ul a:visited{color:#B30000}
+.content_P ul a:hover{color:#B30000;text-decoration:underline}
+.content_P li .licolor{color:#1E51A4}
+.content_P li .licolor a:link,.content_P li .licolor a:visited{color:#1E51A4}
+.content_P li .licolor a:hover{color:#B20000;text-decoration:underline}
+.bottom_P{width:737px;height:13px;background:url(../images/price_pic_b.gif) no-repeat}
+
+/*man*/
+.part_man_top{height:34px;background:url(../images/man_top.gif) no-repeat}
+.part_man_top .t1{color:#95B4DE}
+.part_man_top h2{font-size:14px;color:#497EC7}
+.part_man_top .t2{color:#497EC7;font-weight:bold;font-size:14px}
+.part_man_top .t2 a:link,.part_man_top .t2 a:visited{color:#497EC7}
+.part_man_top .t2 a:hover{color:#497EC7;text-decoration:underline}
+
+.content_M{width:726px;height:245px;background:url(../images/man_pic_M.jpg) repeat-x top;border-right:1px solid #BDDBFD;border-top:1px solid #BDDBFD;color:#1E51A4;padding-left:10px}
+.content_M h3{color:#1E51A4;font-size:12px;padding-left:12px}
+.content_M a:link,.content_M a:visited{color:#1E51A4}
+.content_M a img{border:1px solid #CDCECE;padding:2px;display:block}
+.content_M a:hover p{text-decoration:underline;color:#1E51A4}
+.content_M a:hover img{border:1px dashed #A0977B}
+.content_M p{padding-left:10px}
+.bottom_M{width:736px;height:13px;background:url(../images/man_pic_b.gif) no-repeat}
+
+/*woman*/
+.part_woman_top{height:34px;background:url(../images/woman_top.gif) no-repeat}
+.part_woman_top .t1{color:#F196B1}
+.part_woman_top h2{color:#EE487A;font-size:14px}
+.part_woman_top .t2{color:#EE487A;font-weight:bold;font-size:14px}
+.part_woman_top .t2 a:link,.part_woman_top .t2 a:visited{color:#EE487A}
+.part_woman_top .t2 a:hover{color:#EE487A;text-decoration:underline}
+.content_W{width:726px;height:245px;background:url(../images/woman_pic_M.jpg) repeat-x top;border-right:1px solid #FFCFDE;border-top:1px solid #FFCFDE;color:#AD0135;padding-left:10px}
+.content_W h3{color:#AD0135;font-size:12px;padding-left:12px}
+.content_W a:link,.content_W a:visited{color:#AD0135}
+.content_W a img{border:1px solid #CDCECE;padding:2px;display:block}
+.content_W a:hover p{text-decoration:underline;color:#AD0135}
+.content_W a:hover img{border:1px dashed #A0977B}
+.content_W p{padding-left:10px}
+.bottom_W{width:736px;height:12px;background:url(../images/woman_pic_b.gif) no-repeat}
+
+/*gift*/
+.part_gift_top{height:34px;background:url(../images/gift_top.gif) no-repeat}
+.part_gift_top .t1{color:#89B670}
+.part_gift_top h2{color:#2C7C00;font-size:14px}
+.part_gift_top .t2{color:#2C7C00;font-weight:bold;font-size:14px}
+.part_gift_top .t2 a:link,.part_gift_top .t2 a:visited{color:#2C7C00}
+.part_gift_top .t2 a:hover{color:#2C7C00;text-decoration:underline}
+.content_G{width:726px;height:245px;background:url(../images/gift_pic_M.jpg) repeat-x top;border-right:1px solid #DCE39F;border-top:1px solid #DCE39F;color:#406A05;padding-left:10px}
+.content_G h3{color:#406A05;font-size:12px;padding-left:12px}
+.content_G a img{border:1px solid #CDCECE;padding:2px;display:block}
+.content_G a:link,.content_G a:visited{color:#406A05}
+.content_G a:hover img{border:1px dashed #A0977B}
+.content_G a:hover p{text-decoration:underline;color:#406A05}
+.content_G p{padding-left:10px}
+.bottom_G{width:736px;height:12px;background:url(../images/gift_pic_b.gif) no-repeat}
+

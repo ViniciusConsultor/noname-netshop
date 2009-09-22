@@ -1,8 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CategorySelect.ascx.cs" Inherits="NoName.NetShop.BackFlat.Controls.CategorySelect" %>
 <script type="text/javascript">
-    var categoryInfo = [{ "name": "category1", "title": "请选择", "required": "true" },
-    { "name": "category2", "title": "请选择", "required": "true" },
-    { "name": "category3", "title": "请选择", "required": "false"}];
     var topregion = { "name": "category1", "topid": "0-all" }
 
 
@@ -71,7 +68,7 @@
                 else {
                     nextRegion.show();
                 }
-                if (categoryInfo[nextIndex].text != "") {
+                if (categoryInfo[nextIndex].title != "") {
                     // 显示提示信息
                     nextRegion.append("<option value=''>" + categoryInfo[nextIndex].title + "</option>");
                 }
