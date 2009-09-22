@@ -8,6 +8,11 @@
     <title></title>
 
     <script src="/js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var categoryInfo = [{ "name": "category1", "title": "«Î—°‘Ò", "required": "true" },
+    { "name": "category2", "title": "«Î—°‘Ò", "required": "true" },
+    { "name": "category3", "title": "«Î—°‘Ò", "required": "false"}];
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
