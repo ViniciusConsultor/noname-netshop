@@ -7,11 +7,9 @@
 <title>鼎鼎商城管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <style>
-select {
-	FONT-SIZE: 12px;
-	COLOR: #000000; background-color: #FFFFFF;
-}
-.STYLE15 {color: #0066CC}
+<link href="/css/css.css" type="text/css" rel="stylesheet" />
+<link href="/css/style.css" type="text/css" rel="stylesheet" />
+
 </style>
 </head>
 <body topmargin=5 leftmargin=5>
