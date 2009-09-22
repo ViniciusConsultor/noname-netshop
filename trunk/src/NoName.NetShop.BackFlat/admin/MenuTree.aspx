@@ -8,13 +8,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>功能菜单维护</title>
-<style>
-select {
-	FONT-SIZE: 12px;
-	COLOR: #000000; background-color: #FFFFFF;
-}
-.STYLE15 {color: #0066CC}
-</style>
+<link href="/css/css.css" type="text/css" rel="stylesheet" />
+<link href="/css/style.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body  topmargin=5 leftmargin=5>
     <form id="form1" runat="server">

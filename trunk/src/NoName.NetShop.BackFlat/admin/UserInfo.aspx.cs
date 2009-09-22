@@ -224,10 +224,7 @@ namespace NoName.NetShop.BackFlat.Admin
             this.lblSetStatusResult.Text = result;
         }
 
-        protected void lbtnChangeBrands_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("BrandsOfUser.aspx?UserName=" + UserName);
-        }
+
 
     }
 }

@@ -5,16 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>用户信息维护</title>
-<style type="text/css">
-     td{ text-align:left;}
-</style>
+<link href="/css/css.css" type="text/css" rel="stylesheet" />
+<link href="/css/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
      <div style="margin:10px 10px 10px 10px">
    <div>
     <span class="maintitle">管理员信息维护</span>
-        <asp:LinkButton ID="lbtnChangeBrands" runat="server" OnClick="lbtnChangeBrands_Click">修改用户管理的品牌</asp:LinkButton>
         </div>
     </div>
     <div class="splitbar" ></div>
