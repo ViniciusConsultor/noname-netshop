@@ -7,12 +7,13 @@ using System.Data;
 using System.Data.Common;
 using NoName.NetShop.CMS.Model;
 using NoName.Utility;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.CMS.Data
 {
     public class DataAccess
     {
-        private static Database db = DatabaseFactory.CreateDatabase("NetShop");
+        private static Database db = CommDataAccess.DbReader;
 
         public static DataSet GetPageByID(int PageID)
         {
