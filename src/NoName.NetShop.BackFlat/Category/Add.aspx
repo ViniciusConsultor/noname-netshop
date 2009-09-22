@@ -1,11 +1,16 @@
-<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"  Codebehind="Add.aspx.cs" Inherits="NoName.NetShop.BackFlat.Category.Add" Title="增加页" %>
+<%@ Page Language="C#" AutoEventWireup="true"  Codebehind="Add.aspx.cs" Inherits="NoName.NetShop.BackFlat.Category.Add" %>
+<%@ Register src="../Controls/CategorySelect.ascx" tagname="CategorySelect" tagprefix="uc1" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderHead" runat="server">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-</asp:Content>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title></title>
 
-
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderBody" runat="server">    
+    <script src="/js/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
     <table>
 	    <tr>
 	        <td height="25" width="30%" align="right">分类名称：</td>
@@ -33,10 +38,8 @@
 	    </tr>
 	    <tr>
 	        <td height="25" width="30%" align="right">从属父类：</td>
-	        <td height="25" width="*" align="left">
-                <asp:ListBox ID="lbxCategory1" runat="server" AutoPostBack="true" onselectedindexchanged="lbxCategory1_SelectedIndexChanged"></asp:ListBox>
-                <asp:ListBox ID="lbxCategory2" runat="server" Visible="false"></asp:ListBox>
-                <asp:ListBox ID="lbxCategory3" runat="server" Visible="false"></asp:ListBox>
+	        <td height="25" width="*" align="left">	            
+	            <uc1:CategorySelect ID="CategorySelect1" runat="server" />	            
 	        </td>
 	    </tr>
 	    <tr>
@@ -44,6 +47,7 @@
 		        <asp:Button ID="btnAdd" runat="server" Text="提交" OnClick="btnAdd_Click" ></asp:Button>
 	        </td>
 	    </tr>
-</table>
-
-</asp:Content>
+    </table>
+    </form>
+</body>
+</html>

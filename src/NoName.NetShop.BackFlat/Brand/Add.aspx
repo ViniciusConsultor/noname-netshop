@@ -1,9 +1,13 @@
-<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" Codebehind="Add.aspx.cs" Inherits="NoName.NetShop.BackFlat.Brand.Add" Title="增加页" %>
+<%@ Page Language="C#" AutoEventWireup="true" Codebehind="Add.aspx.cs" Inherits="NoName.NetShop.BackFlat.Brand.Add" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderHead" runat="server">
-</asp:Content>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderBody" runat="server">    
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
     <table cellSpacing="0" cellPadding="0" border="0">
 	    <tr>
 	        <td>品牌名称：</td>
@@ -37,4 +41,6 @@
 	        </td>
 	    </tr>
     </table>
-</asp:Content>
+    </form>
+</body>
+</html>

@@ -12,6 +12,8 @@ using System.Text;
 using NoName.Utility;
 using NoName.NetShop.Product.BLL;
 using NoName.NetShop.Product.Model;
+using NoName.NetShop.Common;
+using System.IO;
 
 namespace NoName.NetShop.BackFlat.Brand
 {
@@ -64,21 +66,31 @@ namespace NoName.NetShop.BackFlat.Brand
 	        }
 	        string BrandName=this.txtBrandName.Text;
 	        int CateId=int.Parse(this.drpCategory.SelectedValue);
-            //string CatePath=this.txtCatePath.Text;
-            //string BrandLogo=this.txtBrandLogo.Text;
+            CategoryModel cate = new CategoryModelBll().GetModel(CateId);
+            string CatePath = cate.CatePath;
 	        string Brief=this.txtBrief.Text;
 
 	        BrandModel model=new BrandModel();
+            model.BrandId = CommDataHelper.GetNewSerialNum("pd");
 	        model.BrandName=BrandName;
 	        model.CateId=CateId;
-            //model.CatePath=CatePath;
-            //model.BrandLogo=BrandLogo;
+            model.CatePath = CatePath;
+            model.BrandLogo = UploadBrandLogo(model.BrandId, fulBrandLogo);
 	        model.Brief=Brief;
 
 	        BrandModelBll bll=new BrandModelBll();
 	        bll.Add(model);
-
 		}
+
+        private string UploadBrandLogo(int BrandID,FileUpload fu)
+        {
+            string path = Server.MapPath(ConfigurationManager.AppSettings["brandLogoPath"]);
+            string FileName = String.Format("logo-{0}{1}", BrandID, Path.GetExtension(fu.FileName));
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+
+            fu.SaveAs(path + FileName);
+            return FileName;
+        }
 
     }
 }
