@@ -9,8 +9,8 @@ namespace NoName.NetShop.Product.Config
     public class ProductMultiImageElement :ConfigurationElement
     {
         private static readonly ConfigurationProperty _Key = new ConfigurationProperty("key", typeof(string), String.Empty, ConfigurationPropertyOptions.IsKey);
-        private static readonly ConfigurationProperty _Width = new ConfigurationProperty("width", typeof(int), String.Empty, ConfigurationPropertyOptions.IsRequired);
-        private static readonly ConfigurationProperty _Height = new ConfigurationProperty("height", typeof(int), String.Empty, ConfigurationPropertyOptions.IsRequired);
+        private static readonly ConfigurationProperty _Width = new ConfigurationProperty("width", typeof(int), -1, ConfigurationPropertyOptions.IsRequired);
+        private static readonly ConfigurationProperty _Height = new ConfigurationProperty("height", typeof(int), -1, ConfigurationPropertyOptions.IsRequired);
         private static readonly ConfigurationProperty _Suffix = new ConfigurationProperty("suffix", typeof(string), String.Empty, ConfigurationPropertyOptions.IsRequired);
 
 

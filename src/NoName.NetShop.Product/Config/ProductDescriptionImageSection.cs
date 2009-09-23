@@ -9,7 +9,7 @@ namespace NoName.NetShop.Product.Config
     public class ProductDescriptionImageSection : ConfigurationSection
     {
         private static readonly ConfigurationProperty _AllowedFormat = new ConfigurationProperty("allowedFormat", typeof(string), String.Empty, ConfigurationPropertyOptions.IsRequired);
-        private static readonly ConfigurationProperty _MaxSize = new ConfigurationProperty("maxSize", typeof(int), String.Empty, ConfigurationPropertyOptions.IsRequired);
+        private static readonly ConfigurationProperty _MaxSize = new ConfigurationProperty("maxSize", typeof(int), 1000, ConfigurationPropertyOptions.IsRequired);
         private static readonly ConfigurationProperty _Rule = new ConfigurationProperty("rule", typeof(string), String.Empty, ConfigurationPropertyOptions.IsRequired);
         private static readonly ConfigurationProperty _PathRoot = new ConfigurationProperty("pathRoot", typeof(string), String.Empty, ConfigurationPropertyOptions.IsRequired);
         private static readonly ConfigurationProperty _UrlRoot = new ConfigurationProperty("urlRoot", typeof(string), String.Empty, ConfigurationPropertyOptions.IsRequired);
