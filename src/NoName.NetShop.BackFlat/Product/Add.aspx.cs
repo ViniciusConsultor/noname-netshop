@@ -71,6 +71,7 @@ namespace NoName.NetShop.BackFlat.Product
                 MessageBox.Show(this, strErr);
                 return;
             }
+
         }
     }
 }
