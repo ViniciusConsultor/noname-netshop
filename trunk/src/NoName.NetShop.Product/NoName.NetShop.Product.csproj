@@ -44,9 +44,11 @@
       <HintPath>..\NoName.NetShop.BackFlat\bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -69,6 +71,13 @@
     <Compile Include="BLL\SalesInfoModelBll.cs" />
     <Compile Include="BLL\SalesProductModelBll.cs" />
     <Compile Include="BLL\SuitProductModelBll.cs" />
+    <Compile Include="Config\ProductDescriptionImageSection.cs" />
+    <Compile Include="Config\ProductMainImageElement.cs" />
+    <Compile Include="Config\ProductMainImageElementCollection.cs" />
+    <Compile Include="Config\ProductMainImageSection.cs" />
+    <Compile Include="Config\ProductMultiImageElement.cs" />
+    <Compile Include="Config\ProductMultiImageElementCollection.cs" />
+    <Compile Include="Config\ProductMultiImageSection.cs" />
     <Compile Include="DAL\BrandModelDal.cs" />
     <Compile Include="DAL\CategoryModelDal.cs" />
     <Compile Include="DAL\CategoryParaModelDal.cs" />
@@ -81,6 +90,9 @@
     <Compile Include="DAL\SalesInfoModelDal.cs" />
     <Compile Include="DAL\SalesProductModelDal.cs" />
     <Compile Include="DAL\SuitProductModelDal.cs" />
+    <Compile Include="Facade\ProductDescriptionImageRule.cs" />
+    <Compile Include="Facade\ProductMainImageRule.cs" />
+    <Compile Include="Facade\ProductMultiImageRule.cs" />
     <Compile Include="Model\BrandModel.cs" />
     <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="Model\CategoryParaModel.cs" />
