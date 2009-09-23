@@ -22,7 +22,7 @@
         <h3>商品添加</h3>
         <table>
             <tr>
-                <td>产品名称：</td>
+                <td>产品名称<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtProductName" runat="server" Width="400"></asp:TextBox></td>
             </tr>
             <tr>
@@ -30,39 +30,39 @@
                 <td><asp:TextBox id="txtProductCode" runat="server" Width="400"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>所属分类：</td>
+                <td>所属分类<span class="red">*</span>：</td>
                 <td><uc1:CategorySelect ID="CategorySelect1" runat="server" /></td>
             </tr>
             <tr>
-                <td>市场价：</td>
+                <td>市场价<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtTradePrice" runat="server" Width="200"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>销售价：</td>
+                <td>销售价<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtMerchantPrice" runat="server" Width="200"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>促销价：</td>
+                <td>促销价<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtReducePrice" runat="server" Width="200"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>库存：</td>
+                <td>库存<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtStock" runat="server" Width="200"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>状态：</td>
+                <td>状态<span class="red">*</span>：</td>
                 <td><asp:DropDownList runat="server" ID="drpStatus"></asp:DropDownList></td>
             </tr>
             <tr>
-                <td>关键字：</td>
+                <td>关键字<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtKeywords" runat="server" Width="400"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>简介：</td>
+                <td>简介<span class="red">*</span>：</td>
                 <td><FCKeditorV2:FCKeditor ID="fckBrief" runat="server" /></td>
             </tr>
             <tr>
-                <td>商品图片：</td>
+                <td>商品图片<span class="red">*</span>：</td>
                 <td><asp:FileUpload runat="server" ID="fulImage" /></td>
             </tr>
             <tr>
