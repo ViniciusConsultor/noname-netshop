@@ -67,6 +67,7 @@
     <Compile Include="DataCache.cs" />
     <Compile Include="HtmlHelper.cs" />
     <Compile Include="HttpUtil.cs" />
+    <Compile Include="ImageHelper.cs" />
     <Compile Include="INIFile.cs" />
     <Compile Include="input.cs" />
     <Compile Include="MessageBox.cs" />
