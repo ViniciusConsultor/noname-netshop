@@ -192,5 +192,11 @@ namespace NoName.NetShop.Product.Model
 		#endregion Model
 
 	}
+
+    public enum ProductStatus
+    {
+        产品状态1 = 1,
+        产品状态2 = 2,
+    }
 }
 
