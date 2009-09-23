@@ -3,6 +3,7 @@ using System.Data;
 using System.Collections.Generic;
 using NoName.NetShop.Product.DAL;
 using NoName.NetShop.Product.Model;
+using NoName.NetShop.Common;
 
 
 namespace NoName.NetShop.Product.BLL
@@ -146,6 +147,27 @@ namespace NoName.NetShop.Product.BLL
         public DataSet GetList(int PageSize, int PageIndex, string strWhere)
         {
             return dal.GetList(PageSize, PageIndex, strWhere);
+        }
+
+        public DataSet GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        {
+            SearchPageInfo info = new SearchPageInfo();
+
+            info.FieldNames = "*";
+            info.OrderType = "";
+            info.PageIndex = PageIndex;
+            info.PageSize = PageSize;
+            info.PriKeyName = "brandid";
+            info.StrJoin = "";
+            info.StrWhere = "";
+            info.TableName = "pdbrand";
+            info.TotalFieldStr = "";
+
+            DataSet ds = CommDataHelper.GetDataFromSingleTableByPage(info);
+
+            RecordCount = info.TotalItem;
+
+            return ds;
         }
 
 		#endregion  成员方法

@@ -43,7 +43,6 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public bool Exists(int CateId)
 		{
-			
 			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdCategory_Exists");
 			dbr.AddInParameter(dbCommand, "CateId", DbType.Int32,CateId);
 			int result;
@@ -64,24 +63,23 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public void Add(CategoryModel model)
 		{
-			
 			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategory_ADD");
 			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
 			dbw.AddInParameter(dbCommand, "CateName", DbType.AnsiString, model.CateName);
-			dbw.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
-			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Int32, model.Status);
+            dbw.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
+            dbw.AddInParameter(dbCommand, "CateLevel", DbType.Int32, model.CateLevel);
+            dbw.AddInParameter(dbCommand, "Parentid", DbType.Int32, model.ParentID);
 			dbw.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
-			dbw.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
-			dbw.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
-			dbw.ExecuteNonQuery(dbCommand);
-		}
+			dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
 
+			dbw.ExecuteNonQuery(dbCommand);
+		} 
 		/// <summary>
 		///  更新一条数据
 		/// </summary>
 		public void Update(CategoryModel model)
 		{
-			
 			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategory_Update");
 			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
 			dbw.AddInParameter(dbCommand, "CateName", DbType.AnsiString, model.CateName);
@@ -202,7 +200,7 @@ namespace NoName.NetShop.Product.DAL
 			ojb = dataReader["Status"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.Status=(int)ojb;
+				model.Status=int.Parse(ojb.ToString());
 			}
 			model.PriceRange=dataReader["PriceRange"].ToString();
 			ojb = dataReader["IsHide"];
@@ -213,7 +211,7 @@ namespace NoName.NetShop.Product.DAL
 			ojb = dataReader["CateLevel"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.CateLevel=(int)ojb;
+                model.CateLevel = int.Parse(ojb.ToString());
 			}
 			return model;
 		}

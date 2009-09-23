@@ -16,6 +16,9 @@ namespace NoName.NetShop.Product.Model
 		private string _pricerange;
 		private bool _ishide;
 		private int _catelevel;
+        private int _parentid;
+        private string _remark;
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -72,14 +75,26 @@ namespace NoName.NetShop.Product.Model
 			set{ _catelevel=value;}
 			get{return _catelevel;}
 		}
+
+        public int ParentID
+        {
+            get { return _parentid; }
+            set { _parentid = value; }
+        }
+        public string Remark
+        {
+            get { return _remark; }
+            set { _remark = value; }
+        }
+
 		#endregion Model
 
 	}
 
     public enum CategoryStatus
     {
-        正式 = 1,
-        非正式 = 0,
+        状态1 = 1,
+        状态2 = 0,
     }
 }
 
