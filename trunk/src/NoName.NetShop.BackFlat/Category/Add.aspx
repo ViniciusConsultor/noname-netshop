@@ -18,31 +18,31 @@
     <form id="form1" runat="server">
     <table>
 	    <tr>
-	        <td height="25" width="30%" align="right">分类名称：</td>
+	        <td height="25" width="30%" align="right">分类名称<span class="red">*</span>：</td>
 	        <td height="25" width="*" align="left">
 		        <asp:TextBox id="txtCateName" runat="server" Width="200px"></asp:TextBox>
 	        </td>
 	    </tr>
 	    <tr>
-	        <td height="25" width="30%" align="right">状态：</td>
+	        <td height="25" width="30%" align="right">状态<span class="red">*</span>：</td>
 	        <td height="25" width="*" align="left">
 	            <asp:DropDownList runat="server" ID="drpStatus" ></asp:DropDownList>
 	        </td>
 	    </tr>
 	    <tr>
-	        <td height="25" width="30%" align="right">价格区间：</td>
+	        <td height="25" width="30%" align="right">价格区间<span class="red">*</span>：</td>
 	        <td height="25" width="*" align="left">
 		        <asp:TextBox id="txtPriceRange" runat="server" Width="200px"></asp:TextBox>
 	        </td>
 	    </tr>
 	    <tr>
-	        <td height="25" width="30%" align="right">是否隐藏：</td>
+	        <td height="25" width="30%" align="right">是否隐藏<span class="red">*</span>：</td>
 	        <td height="25" width="*" align="left">
 		        <asp:CheckBox ID="chkIsHide" Text="IsHide" runat="server" Checked="False" />
 	        </td>
 	    </tr>
 	    <tr>
-	        <td height="25" width="30%" align="right">从属父类：</td>
+	        <td height="25" width="30%" align="right">从属父类<span class="red">*</span>：</td>
 	        <td height="25" width="*" align="left">	            
 	            <uc1:CategorySelect ID="CategorySelect1" runat="server" />	            
 	        </td>
