@@ -13,8 +13,8 @@
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
         var categoryInfo = [{ "name": "category1", "title": "", "required": "true" },
-    { "name": "category2", "title": "", "required": "true" },
-    { "name": "category3", "title": "", "required": "false"}];
+                            { "name": "category2", "title": "", "required": "true" },
+                            { "name": "category3", "title": "", "required": "false"}];
     </script>
 </head>
 <body>
