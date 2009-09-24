@@ -200,7 +200,7 @@ namespace NoName.NetShop.Product.BLL
             info.PageSize = PageSize;
             info.PriKeyName = "productid";
             info.StrJoin = "";
-            info.StrWhere = "";
+            info.StrWhere = " 1=1 "+Condition;
             info.TableName = "pdproduct";
             info.TotalFieldStr = "";
 
