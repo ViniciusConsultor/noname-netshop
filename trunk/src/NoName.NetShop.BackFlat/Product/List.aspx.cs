@@ -8,6 +8,7 @@ using NoName.Utility;
 using NoName.NetShop.Product.BLL;
 using System.Data;
 using NoName.NetShop.Product.Model;
+using System.Web.UI.HtmlControls;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -102,6 +103,70 @@ namespace NoName.NetShop.BackFlat.Product
         protected void ButtonSearch_Click(object sender, EventArgs e)
         {
             //构建搜索条件
+            
+            if (CheckBox1.Checked)
+            {
+                int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value);
+                if (SelectedParentCategoryID != 0)
+                {
+                    SearchCondition += " and cateid = "+SelectedParentCategoryID;
+                }
+                else
+                {
+                    MessageBox.Show(this,"请选择分类");
+                    return;
+                }
+            }
+            if (CheckBox2.Checked)
+            {
+                if (!String.IsNullOrEmpty(TextBox1.Text) && PageValidate.IsNumber(TextBox1.Text))
+                {
+                    SearchCondition += " and productid=" + TextBox1.Text;
+                }
+                else
+                {
+                    MessageBox.Show(this,"请输入正确的产品ID");
+                    return;
+                }
+            }
+            if (CheckBox3.Checked)
+            {
+                int Status = Convert.ToInt32(drpStatus.SelectedValue);
+                SearchCondition += " and status='" + Status+"'";
+
+            }
+            if (CheckBox4.Checked)
+            {
+                if (!String.IsNullOrEmpty(TextBox2.Text))
+                {
+                    SearchCondition += " and productname like '%" + TextBox2.Text + "%'";
+                }
+                else
+                {
+                    MessageBox.Show(this,"请输入产品名称");
+                    return;
+                }
+            }
+            if (CheckBox5.Checked)
+            {
+                if (!String.IsNullOrEmpty(TextBox3.Text) && !String.IsNullOrEmpty(TextBox4.Text) && PageValidate.IsDate(TextBox3.Text) && PageValidate.IsDate(TextBox4.Text))
+                {
+                    DateTime start = Convert.ToDateTime(TextBox3.Text);
+                    DateTime end = Convert.ToDateTime(TextBox4.Text);
+                    SearchCondition += String.Format(" and InsertTime >= '{0}' and InsertTime <= '{1}'", start, end);
+                }
+                else
+                {
+                    MessageBox.Show(this,"请输入正确的日期");
+                    return;
+                }
+            }
+
+            if (!String.IsNullOrEmpty(SearchCondition))
+            {
+                BindData(1);
+                Response.Write(SearchCondition);
+            }
         }
     }
 }
