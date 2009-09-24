@@ -127,6 +127,20 @@ namespace NoName.Utility
 
 		#region 其他
 
+        public static bool IsDate(string input)
+        {
+            try
+            {
+                DateTime.Parse(input);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
 		/// <summary>
 		/// 检查字符串最大长度，返回指定长度的串
 		/// </summary>
