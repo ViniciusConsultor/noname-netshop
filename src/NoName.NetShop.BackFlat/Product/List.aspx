@@ -18,11 +18,20 @@
             var theBox = tempControl;
             xState = theBox.checked;
 
-            elem = theBox.form.elements;
+            elem = document.getElementById('<%= GridView1.ClientID %>').elements;
             for (i = 0; i < elem.length; i++)
                 if (elem[i].type == "checkbox" && elem[i].id != theBox.id)
                 if (elem[i].checked != xState) elem[i].click();
-        }
+            }
+
+            $(function() {
+                $('#select-all').change(function() {
+                    var checked = $(this).attr('checked');
+                    $('#<%= GridView1.ClientID %>').find('input[type=checkbox]').each(function() {
+                        $(this).attr('checked', checked);
+                    });
+                });
+            });
 
         function confirmDelete() {
             return confirm('确认删除？');
@@ -58,6 +67,7 @@
                     </td>
                     <td>
                         <asp:CheckBox ID="CheckBox5" runat="server" Text="按日期" />
+                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
                     </td>
                 </tr>
@@ -67,7 +77,7 @@
             </table>
             <hr />
             <div>
-    	        <input type="checkbox" class="check" onclick="SelectAll(this)" />
+    	        <input type="checkbox" class="check" id="select-all" />
     	        <span class="txt">全选</span>
     	        <span class="txt"><asp:LinkButton runat="server" Text="删除" ID="Button_DeleteAll" OnClientClick="confirmDelete();" onclick="Button_DeleteAll_Click"></asp:LinkButton></span>
     	    </div>
