@@ -8,11 +8,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/ui.core.js" type="text/javascript"></script>
+    <script src="/js/ui.datepicker.js" type="text/javascript"></script>
+    <script src="/js/validate.js" type="text/javascript"></script>
+    
     <script type="text/javascript">
         var categoryInfo = [{ "name": "category1", "title": "请选择", "required": "true" },
-                            { "name": "category2", "title": "请选择", "required": "true" },
-                            { "name": "category3", "title": "请选择", "required": "false"}];
+        { "name": "category2", "title": "请选择", "required": "true" },
+        { "name": "category3", "title": "请选择", "required": "false"}];
                             
         function SelectAll(tempControl) {
             var theBox = tempControl;
@@ -22,16 +28,57 @@
             for (i = 0; i < elem.length; i++)
                 if (elem[i].type == "checkbox" && elem[i].id != theBox.id)
                 if (elem[i].checked != xState) elem[i].click();
-            }
+        }
 
-            $(function() {
-                $('#select-all').change(function() {
-                    var checked = $(this).attr('checked');
-                    $('#<%= GridView1.ClientID %>').find('input[type=checkbox]').each(function() {
-                        $(this).attr('checked', checked);
-                    });
+        $(function() {
+            $('#select-all').change(function() {
+                var checked = $(this).attr('checked');
+                $('#<%= GridView1.ClientID %>').find('input[type=checkbox]').each(function() {
+                    $(this).attr('checked', checked);
                 });
             });
+            $('#<%=TextBox3.ClientID %>').datepicker();
+            $('#<%=TextBox4.ClientID %>').datepicker();
+        });
+
+        function validate() {
+            debugger;
+            var result = false;
+            var errorMessage = '';
+            if ($('#<%= CheckBox1.ClientID %>').attr('checked')) {
+                if ($('#CategorySelect1_selectedCategory').val() != 0) {
+                    result = true;
+                }
+                else {
+                    errorMessage = '请选择分类\n';
+                }
+            }
+            if ($('#<%= CheckBox2.ClientID %>').attr('checked')) {
+                if ($('#<%=TextBox1.ClientID %>').val() != '' && $('#<%=TextBox1.ClientID %>').val().isNumber())
+                    result = true;
+                else
+                    errorMessage = '请输入产品ID\n';
+            }
+            if ($('#<%= CheckBox3.ClientID %>').attr('checked')) {
+                if ($('#<%=TextBox2.ClientID %>').val() != '')
+                    result = true;
+                else
+                    errorMessage = '请输入产品名称\n';
+            
+            }
+
+            if ($('#<%= CheckBox5.ClientID %>').attr('checked')) {
+                if ($('#<%=TextBox3.ClientID %>').val() != '' || $('#<%=TextBox4.ClientID %>').val() != '')
+                    result = true;
+                else
+                    errorMessage = '请至少输入起始或者结束日期\n';                
+            }
+
+            if (errorMessage != '') alert(errorMessage);
+//            if (!result) alert('请至少选择一个搜索条件');
+            
+            return result;
+        }
 
         function confirmDelete() {
             return confirm('确认删除？');
@@ -72,7 +119,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><asp:Button runat="server" ID="ButtonSearch" OnClick="ButtonSearch_Click" Text="搜索" /></td>
+                    <td colspan="2"><asp:Button runat="server" ID="ButtonSearch" OnClientClick="return validate()" OnClick="ButtonSearch_Click" Text="搜索" /></td>
                 </tr>
             </table>
             <hr />

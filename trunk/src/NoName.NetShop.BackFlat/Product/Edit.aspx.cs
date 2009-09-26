@@ -4,14 +4,134 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NoName.NetShop.Product.BLL;
+using NoName.NetShop.Product.Model;
+using NoName.NetShop.Product.Facade;
+using NoName.Utility;
+using System.Web.UI.HtmlControls;
 
 namespace NoName.NetShop.BackFlat.Product
 {
     public partial class Edit : System.Web.UI.Page
     {
+        private int ProductID
+        {
+            get { if (ViewState["ProductID"] != null) return Convert.ToInt32(ViewState["ProductID"]); else return 0; }
+            set { ViewState["ProductID"] = value; }
+        }
+        private ProductModelBll bll = new ProductModelBll();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(Request.QueryString["productid"])) ProductID = Convert.ToInt32(Request.QueryString["productid"]);
+            if (!IsPostBack)
+            {
+                BindData();
+            }
+        }
 
+        private void BindData()
+        {
+            ProductModel product = ProductMainImageRule.GetMainImageUr(bll.GetModel(ProductID));
+
+            if (product != null)
+            {
+                txtProductName.Text = product.ProductName;
+                txtProductCode.Text = product.ProductCode;
+                CategorySelect1.InitialCategory = product.CateId;
+                txtTradePrice.Text = product.TradePrice.ToString();
+                txtMerchantPrice.Text = product.MerchantPrice.ToString();
+                txtReducePrice.Text = product.ReducePrice.ToString();
+                txtStock.Text = product.Stock.ToString();
+                drpStatus.SelectedValue = product.Status.ToString();
+                txtKeywords.Text = product.Keywords;
+                fckBrief.Value = product.Brief;
+                imgProduct.ImageUrl = product.SmallImage;
+            } 
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            SaveData();
+        }
+
+        private void SaveData()
+        {
+            int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value);
+
+            string strErr = "";
+            if (this.txtProductName.Text == "")
+            {
+                strErr += "ProductName不能为空！\\n";
+            }
+            if (SelectedParentCategoryID == 0)
+            {
+                strErr += "CatePath不能为空！\\n";
+            }
+            if (!PageValidate.IsDecimal(txtTradePrice.Text))
+            {
+                strErr += "TradePrice不是数字！\\n";
+            }
+            if (!PageValidate.IsDecimal(txtMerchantPrice.Text))
+            {
+                strErr += "MerchantPrice不是数字！\\n";
+            }
+            if (!PageValidate.IsDecimal(txtReducePrice.Text))
+            {
+                strErr += "ReducePrice不是数字！\\n";
+            }
+            if (!PageValidate.IsNumber(txtStock.Text))
+            {
+                strErr += "Stock不是数字！\\n";
+            }
+            if (this.fulImage.FileName == "")
+            {
+                strErr += "SmallImage不能为空！\\n";
+            }
+            if (this.txtKeywords.Text == "")
+            {
+                strErr += "Keywords不能为空！\\n";
+            }
+            if (this.fckBrief.Value == "")
+            {
+                strErr += "Brief不能为空！\\n";
+            }
+            if (!PageValidate.IsNumber(drpStatus.SelectedValue))
+            {
+                strErr += "Status不是数字！\\n";
+            }
+
+            if (strErr != "")
+            {
+                MessageBox.Show(this, strErr);
+                return;
+            }
+
+            ProductModel product = bll.GetModel(ProductID);
+
+            product.ProductName = txtProductName.Text;
+            product.ProductCode = txtProductCode.Text;
+            product.CateId = SelectedParentCategoryID;
+            product.TradePrice = Convert.ToDecimal(txtTradePrice.Text);
+            product.MerchantPrice = Convert.ToDecimal(txtMerchantPrice.Text);
+            product.ReducePrice = Convert.ToDecimal(txtReducePrice.Text);
+            product.Stock = Convert.ToInt32(txtStock.Text);
+            product.Status = Convert.ToInt32(drpStatus.SelectedValue);
+            product.Keywords = txtKeywords.Text;
+            product.Brief = fckBrief.Value;
+
+            if (fulImage.FileName != String.Empty)
+            {
+                string[] MainImages;
+                ProductMainImageRule.SaveProductMainImage(ProductID, fulImage.PostedFile, out MainImages);
+                product.SmallImage = MainImages[0];
+                product.MediumImage = MainImages[1];
+                product.LargeImage = MainImages[2];
+            }
+
+            bll.Update(product);
+
+            MessageBox.Show(this,"更改成功");
         }
     }
 }

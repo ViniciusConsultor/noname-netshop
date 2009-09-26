@@ -165,7 +165,6 @@ namespace NoName.NetShop.BackFlat.Product
             if (!String.IsNullOrEmpty(SearchCondition))
             {
                 BindData(1);
-                Response.Write(SearchCondition);
             }
         }
     }
