@@ -9,7 +9,7 @@ namespace NoName.NetShop.BackFlat.Controls
 {
     public partial class CategorySelect : System.Web.UI.UserControl
     {
-        private int InitialCategory 
+        public int InitialCategory 
         {
             get { if (ViewState["InitialCategory"] != null) return Convert.ToInt32(ViewState["InitialCategory"]); else return 0; }
             set { ViewState["InitialCategory"] = value; }
