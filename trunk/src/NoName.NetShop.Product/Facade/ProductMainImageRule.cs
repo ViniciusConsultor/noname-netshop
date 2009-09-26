@@ -43,7 +43,7 @@ namespace NoName.NetShop.Product.Facade
             {
                 foreach (string FileName in FileNames)
                 {
-                    //缩小图片为设置尺寸
+                    //缩小图片为设置尺寸注意图片尺寸与名称对应
                     OriginalFile.SaveAs(config.PathRoot + FileName);
                 }
 
