@@ -71,7 +71,8 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "CateLevel", DbType.Int32, model.CateLevel);
             dbw.AddInParameter(dbCommand, "Parentid", DbType.Int32, model.ParentID);
 			dbw.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
-			dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
+            dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
+            dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
 
 			dbw.ExecuteNonQuery(dbCommand);
 		} 
@@ -87,7 +88,8 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
 			dbw.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
 			dbw.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
-			dbw.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
+            dbw.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
+            dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -182,6 +184,16 @@ namespace NoName.NetShop.Product.DAL
 			return list;
 		}
 
+        public int SwitchOrder(int InitialCategoryID, int ReplacedCategoryID)
+        {
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdCategory_ChangeOrder");
+
+            dbr.AddInParameter(dbCommand, "@initialcateid", DbType.Int32, InitialCategoryID);
+            dbr.AddInParameter(dbCommand, "@replacedcateid", DbType.Int32, ReplacedCategoryID);
+
+            return dbr.ExecuteNonQuery(dbCommand); 
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据
@@ -213,6 +225,11 @@ namespace NoName.NetShop.Product.DAL
 			{
                 model.CateLevel = int.Parse(ojb.ToString());
 			}
+            ojb = dataReader["showorder"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.ShowOrder = int.Parse(ojb.ToString());
+            }
 			return model;
 		}
 

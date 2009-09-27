@@ -70,7 +70,8 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
 			dbw.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
 			dbw.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
-			dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+            dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+            dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -85,7 +86,8 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "CateId", DbType.Int32, model.CateId);
 			dbw.AddInParameter(dbCommand, "CatePath", DbType.AnsiString, model.CatePath);
 			dbw.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
-			dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+            dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+            dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -174,6 +176,16 @@ namespace NoName.NetShop.Product.DAL
 			return list;
 		}
 
+        public int SwitchOrder(int InitialBrandID,int ReplacedBrandID)
+        {            
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_pdBrand_ChangeOrder");
+
+            dbr.AddInParameter(dbCommand, "@initialbrandid", DbType.Int32, InitialBrandID);
+            dbr.AddInParameter(dbCommand, "@replacedbrandid", DbType.Int32, ReplacedBrandID);
+
+            return dbw.ExecuteNonQuery(dbCommand); 
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据
@@ -196,6 +208,7 @@ namespace NoName.NetShop.Product.DAL
 			model.CatePath=dataReader["CatePath"].ToString();
 			model.BrandLogo=dataReader["BrandLogo"].ToString();
 			model.Brief=dataReader["Brief"].ToString();
+            model.ShowOrder = int.Parse(dataReader["showorder"].ToString());
 			return model;
 		}
 
