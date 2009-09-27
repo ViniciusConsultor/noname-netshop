@@ -17,7 +17,8 @@ namespace NoName.NetShop.Product.Model
 		private int _cateid;
 		private string _catepath;
 		private string _brandlogo;
-		private string _brief;
+        private string _brief;
+        private int _showorder;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -65,7 +66,17 @@ namespace NoName.NetShop.Product.Model
 		{
 			set{ _brief=value;}
 			get{return _brief;}
-		}
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int ShowOrder
+        {
+            get { return _showorder; }
+            set { _showorder = value; }
+        }
+
 		#endregion Model
 
 	}
