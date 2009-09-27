@@ -154,7 +154,7 @@ namespace NoName.NetShop.Product.BLL
             SearchPageInfo info = new SearchPageInfo();
 
             info.FieldNames = "*";
-            info.OrderType = "";
+            info.OrderType = "order by showorder";
             info.PageIndex = PageIndex;
             info.PageSize = PageSize;
             info.PriKeyName = "brandid";
