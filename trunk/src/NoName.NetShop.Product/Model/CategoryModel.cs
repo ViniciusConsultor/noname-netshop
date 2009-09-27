@@ -18,6 +18,7 @@ namespace NoName.NetShop.Product.Model
 		private int _catelevel;
         private int _parentid;
         private string _remark;
+        private int _showorder;
 
 		/// <summary>
 		/// 
@@ -85,6 +86,11 @@ namespace NoName.NetShop.Product.Model
         {
             get { return _remark; }
             set { _remark = value; }
+        }
+        public int ShowOrder
+        {
+            get { return _showorder; }
+            set { _showorder = value; }
         }
 
 		#endregion Model
