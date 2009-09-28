@@ -159,6 +159,11 @@ namespace NoName.NetShop.Product.BLL
             return dal.GetList(PageSize, PageIndex, strWhere);
         }
 
+        public int SwitchOrder(int InitialCategoryID, int ReplacedCategoryID)
+        {
+            return dal.SwitchOrder(InitialCategoryID, ReplacedCategoryID);
+        }
+
 		#endregion  成员方法
 	}
 }
