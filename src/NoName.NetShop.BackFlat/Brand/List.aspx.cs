@@ -43,8 +43,53 @@ namespace NoName.NetShop.BackFlat.Brand
                 bll.Delete(BrandID);
                 MessageBox.Show(this, "删除成功");
             }
+            if (e.CommandName == "moveup")
+            {
+                int OriginBrandID = Convert.ToInt32(e.CommandArgument);
+                int SwitchBrandID = GetSwitchUpBrandID(OriginBrandID);
+                bll.SwitchOrder(OriginBrandID, SwitchBrandID);
+            }
+            if (e.CommandName == "movedown")
+            {
+                int OriginBrandID = Convert.ToInt32(e.CommandArgument);
+                int SwitchBrandID = GetSwitchDownBrandID(OriginBrandID);
+                bll.SwitchOrder(OriginBrandID, SwitchBrandID);
+            }
 
             BindData(AspNetPager.CurrentPageIndex);
+        }
+
+        private int GetSwitchDownBrandID(int OriginBrandID)
+        {
+            for (int i=0;i<GridView1.Rows.Count;i++)
+            {
+                GridViewRow r=GridView1.Rows[i];
+                if (OriginBrandID == int.Parse(r.Cells[0].Text))
+                {
+                    if (i == GridView1.Rows.Count - 1)
+                    {
+                        return int.Parse(GridView1.Rows[GridView1.Rows.Count - 1].Cells[0].Text);
+                    }
+                    return int.Parse(GridView1.Rows[i + 1].Cells[0].Text);
+                }
+            }
+            return 0;
+        }
+        private int GetSwitchUpBrandID(int OriginBrandID)
+        {
+            for (int i = 0; i < GridView1.Rows.Count; i++)
+            {
+                GridViewRow r = GridView1.Rows[i];
+                if (OriginBrandID == int.Parse(r.Cells[0].Text))
+                {
+                    if (i == 0)
+                    {
+                        return int.Parse(GridView1.Rows[GridView1.Rows.Count - 1].Cells[0].Text);
+                    }
+                    return int.Parse(GridView1.Rows[i - 1].Cells[0].Text);
+                }
+            }
+            return 0;
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

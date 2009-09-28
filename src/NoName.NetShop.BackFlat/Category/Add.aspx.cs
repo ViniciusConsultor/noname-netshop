@@ -84,6 +84,7 @@ namespace NoName.NetShop.BackFlat.Category
             model.Status = Status;
             model.PriceRange = PriceRange;
             model.IsHide = IsHide;
+            model.ShowOrder = model.CateId;
             int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value);
 
             if (SelectedParentCategoryID != 0)

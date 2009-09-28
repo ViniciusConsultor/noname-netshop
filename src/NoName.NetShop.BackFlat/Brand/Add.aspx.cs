@@ -77,6 +77,7 @@ namespace NoName.NetShop.BackFlat.Brand
             model.CatePath = CatePath;
             model.BrandLogo = UploadBrandLogo(model.BrandId, fulBrandLogo);
 	        model.Brief=Brief;
+            model.ShowOrder = model.BrandId;
 
 	        BrandModelBll bll=new BrandModelBll();
 	        bll.Add(model);
