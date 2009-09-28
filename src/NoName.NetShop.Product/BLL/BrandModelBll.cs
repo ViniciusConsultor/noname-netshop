@@ -170,6 +170,11 @@ namespace NoName.NetShop.Product.BLL
             return ds;
         }
 
+        public int SwitchOrder(int InitialBrandID, int ReplacedBrandID)
+        {
+            return dal.SwitchOrder(InitialBrandID, ReplacedBrandID);
+        }
+
 		#endregion  成员方法
 	}
 }
