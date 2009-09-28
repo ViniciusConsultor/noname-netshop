@@ -22,6 +22,12 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="品牌简介" DataField="Brief" />
+                <asp:TemplateField HeaderText="显示顺序">
+                    <ItemTemplate>
+                        <asp:LinkButton runat="server" ID="LinkButtonMoveDown" CommandArgument='<%# Eval("BrandId") %>' CommandName="movedown" Text="下移"></asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="LinkButtonMoveUp" CommandArgument='<%# Eval("BrandId") %>' CommandName="moveup" Text="上移"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:HyperLink runat="server" NavigateUrl='<%# "edit.aspx?brandid="+Eval("BrandId") %>' Text="编辑"></asp:HyperLink>
