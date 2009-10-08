@@ -145,6 +145,13 @@ namespace NoName.NetShop.Product.BLL
             return dal.GetList(PageSize, PageIndex, strWhere);
         }
 
+
+        public DataSet GetList(int ProductID)
+        {
+            return dal.GetList(" productid = "+ProductID);
+        }
+
+
 		#endregion  成员方法
 	}
 }
