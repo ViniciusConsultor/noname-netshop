@@ -138,6 +138,7 @@ namespace NoName.NetShop.Product.DAL
 			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
+
 		
 		/// <summary>
 		/// 分页获取数据列表
