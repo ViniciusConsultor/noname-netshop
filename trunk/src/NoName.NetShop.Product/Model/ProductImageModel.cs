@@ -10,7 +10,7 @@ namespace NoName.NetShop.Product.Model
 		{}
 		#region Model
 		private int _imageid;
-		private int? _productid;
+		private int _productid;
 		private string _smallimage;
 		private string _largeimage;
 		private string _originimage;
@@ -26,7 +26,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? ProductId
+		public int ProductId
 		{
 			set{ _productid=value;}
 			get{return _productid;}

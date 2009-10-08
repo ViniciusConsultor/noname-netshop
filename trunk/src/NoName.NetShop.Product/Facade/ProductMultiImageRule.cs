@@ -15,13 +15,12 @@ namespace NoName.NetShop.Product.Facade
     {
         private static ProductMultiImageSection config = (ProductMultiImageSection)ConfigurationManager.GetSection("productImage/productMultiImage");
 
-
         public static string[] GetMultiImageName(int ProductID, string FileSuffix)
         {
             ArrayList MultiImageFileNames = new ArrayList();
             string guid = Guid.NewGuid().ToString();
 
-            foreach (ProductMainImageElement ImageType in config.ImageTypes)
+            foreach (ProductMultiImageElement ImageType in config.ImageTypes)
             {
                 MultiImageFileNames.Add(string.Format(config.Rule, ProductID, ImageType.Suffix,guid, FileSuffix));
             }
@@ -49,8 +48,18 @@ namespace NoName.NetShop.Product.Facade
             return ProcessResult;
         }
 
+        public static bool DeleteMultiImage(string  FileName)
+        {
+            try
+            {
+                File.Delete(config.PathRoot + FileName);
+            }
+            catch(Exception e)
+            {}
+            return true;
+        }
 
-        public ProductImageModel GetMultiImageUrl(ProductImageModel MultiImage)
+        public static ProductImageModel GetMultiImageUrl(ProductImageModel MultiImage)
         {
             MultiImage.SmallImage = config.UrlRoot + MultiImage.SmallImage;
             MultiImage.LargeImage = config.UrlRoot + MultiImage.LargeImage;
@@ -58,6 +67,5 @@ namespace NoName.NetShop.Product.Facade
 
             return MultiImage;
         }
-
     }
 }
