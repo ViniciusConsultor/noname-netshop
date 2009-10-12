@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SinaEC.Jiaju.BackFlat.Security.Login" %>
 <html>
 <head runat="server">
-    <title>新浪企业技术部房产频道支持管理系统</title>
+    <title>用户登录—鼎鼎商城</title>
 <style type="text/css">
 BODY,TD
 {
