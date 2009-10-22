@@ -68,6 +68,97 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MemberCenter.master.cs">
+      <DependentUpon>MemberCenter.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberCenter.master.designer.cs">
+      <DependentUpon>MemberCenter.master</DependentUpon>
+    </Compile>
+    <Compile Include="member\Complaint.aspx.cs">
+      <DependentUpon>Complaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\Complaint.aspx.designer.cs">
+      <DependentUpon>Complaint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\MemberDescriptions.aspx.cs">
+      <DependentUpon>MemberDescriptions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\MemberDescriptions.aspx.designer.cs">
+      <DependentUpon>MemberDescriptions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\ModifyPwd.aspx.cs">
+      <DependentUpon>ModifyPwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\ModifyPwd.aspx.designer.cs">
+      <DependentUpon>ModifyPwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\MyCoupon.aspx.cs">
+      <DependentUpon>MyCoupon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\MyCoupon.aspx.designer.cs">
+      <DependentUpon>MyCoupon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\MyLevel.aspx.cs">
+      <DependentUpon>MyLevel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\MyLevel.aspx.designer.cs">
+      <DependentUpon>MyLevel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\MyMessages.aspx.cs">
+      <DependentUpon>MyMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\MyMessages.aspx.designer.cs">
+      <DependentUpon>MyMessages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\MyOrders.aspx.cs">
+      <DependentUpon>MyOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\MyOrders.aspx.designer.cs">
+      <DependentUpon>MyOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\MyScore.aspx.cs">
+      <DependentUpon>MyScore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\MyScore.aspx.designer.cs">
+      <DependentUpon>MyScore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="member\MyUpgrade.aspx.cs">
+      <DependentUpon>MyUpgrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="member\MyUpgrade.aspx.designer.cs">
+      <DependentUpon>MyUpgrade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +168,50 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="css\" />
-    <Folder Include="images\" />
-    <Folder Include="js\" />
+    <Content Include="css\common.css" />
+    <Content Include="css\member.css" />
+    <Content Include="images\cake.gif" />
+    <Content Include="images\directionsIcons.gif" />
+    <Content Include="images\header.jpg" />
+    <Content Include="images\headerBg.jpg" />
+    <Content Include="images\logo.gif" />
+    <Content Include="images\rank.gif" />
+    <Content Include="images\sprite.gif" />
+    <Content Include="images\sprite_buttons.gif" />
+    <Content Include="images\tel.gif" />
+    <Content Include="images\vLine.gif" />
+    <Content Include="js\arrow-list.gif" />
+    <Content Include="js\DingdingJsLib.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\mini-Rainy.js" />
+    <Content Include="js\rainy.css" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Thumbs.db" />
+    <Content Include="css\shopping.css" />
+    <Content Include="images\cart_navigation2.jpg" />
+    <Content Include="images\cart_navigation3.jpg" />
+    <Content Include="images\cart_navigation4.jpg" />
+    <Content Include="images\loginTitle.gif" />
+    <Content Include="images\memberLevel1.gif" />
+    <Content Include="images\regTitle.gif" />
+    <Content Include="images\success.gif" />
+    <Content Include="images\vLine2.gif" />
+    <Content Include="Login.aspx" />
+    <Content Include="MemberCenter.master" />
+    <Content Include="member\Complaint.aspx" />
+    <Content Include="member\MemberDescriptions.aspx" />
+    <Content Include="member\ModifyPwd.aspx" />
+    <Content Include="member\MyCoupon.aspx" />
+    <Content Include="member\MyLevel.aspx" />
+    <Content Include="member\MyMessages.aspx" />
+    <Content Include="member\MyOrders.aspx" />
+    <Content Include="member\MyProfile.aspx" />
+    <Content Include="member\MyScore.aspx" />
+    <Content Include="member\MyUpgrade.aspx" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Upload\Description\" />
     <Folder Include="Upload\ProductMain\" />
     <Folder Include="Upload\ProductMulti\" />

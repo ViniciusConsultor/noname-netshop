@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MemberCenter.master.cs" Inherits="NoName.NetShop.ForeFlat.MemberCenter" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
+    <!--Position Begin-->
+    <div class="currentPosition">
+    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">我的鼎鼎</a> &gt;&gt; <a href="#">我的鼎券</a>
+    </div>
+    <!--Position End-->
+    
+    <!--MainBody Begin-->
+    <div class="member_mainbody newline clearfix">
+		<div class="leftColumn">
+        	<div class="box2">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>我的鼎鼎</span></li>
+                    <li class="right"></li>
+                </ul>
+                <div class="content">
+                	<div class="groupTitle">我的个人信息</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">个人资料</a>
+                        </li>
+                        <li>
+                            <a href="#">修改密码</a>
+                        </li>
+                        <li>
+                            <a href="#">我的级别</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">我的商城交易</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">订单中心</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">我的魔力世界</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">我的拍卖</a>
+                        </li>
+                        <li>
+                            <a href="#">我的二手</a>
+                        </li>
+                        <li>
+                            <a href="#">我的典藏</a>
+                        </li>
+                        <li>
+                            <a href="#">我的团购</a>
+                        </li>
+                        <li>
+                            <a href="#">我的租赁</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">我的鼎券积分</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">我的积分</a>
+                        </li>
+                        <li>
+                            <a href="#">我的兑奖</a>
+                        </li>
+                        <li>
+                            <a href="#" class="bold">我的鼎券</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">我的鼎鼎服务</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">我的站内信</a>
+                        </li>
+                        <li>
+                            <a href="#">我的咨询</a>
+                        </li>
+                        <li>
+                            <a href="#">我的维修</a>
+                        </li>
+                        <li>
+                            <a href="#">我的投诉</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="bottom">
+                   <li class="left"></li>
+                   <li class="right"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rightColumn">
+        	<div class="rightColumnContainer">
+        <asp:ContentPlaceHolder ID="rightContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+
+            </div>
+        </div>
+    </div>
+    <!--MainBody End-->
+</asp:Content>
