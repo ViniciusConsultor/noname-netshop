@@ -1,0 +1,35 @@
+﻿.member_mainbody{ clear:both}
+.member_mainbody .leftColumn{ float:left; width:170px; _margin-right:-3px;}
+.member_mainbody .rightColumn{ float:none; margin-left:174px; _margin-left:171px;}
+.member_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+.member_mainbody .leftColumn .box2 .content ul{ padding:0 0 5px 10px;}
+.member_mainbody .rightColumn .box1 .content{ min-height:586px; _height:586px; text-align:center}
+.member_mainbody .rightColumn .noPadding .content{ min-height:596px; _height:596px; text-align:center}
+.member_mainbody .rightColumn .box1 .content ul.form{ padding:30px 60px; margin:0 auto;}
+
+
+
+
+
+.register_mainbody{ clear:both; padding:50px 160px;}
+.register_mainbody .regTitle{ height:53px; clear:both; background:url(../images/regTitle.gif) no-repeat left center; margin-bottom:20px;}
+.register_mainbody ul.form li .verifyCode{display:block; clear:both; padding-left:85px; padding-top:10px; text-align:left}
+.register_mainbody ul.form li .verifyCode img{border:none; width:130px; height:53px; display:block; float:left}
+.register_mainbody ul.form li .verifyCode a{ color:#006699; text-decoration:underline; display:block; float:left; padding:38px 0 0 10px;}
+
+
+
+
+
+.login_mainbody{ clear:both; padding:50px 70px;}
+.login_mainbody .loginTitle{ height:53px; clear:both; background:url(../images/loginTitle.gif) no-repeat left top; padding-bottom:20px;}
+.login_mainbody .loginBox{ background:#ebebeb; border:1px solid #CCC; width:320px; padding:40px 50px 20px 35px; float:left}
+.login_mainbody .loginBox ul.form li.submit{ padding-top:15px; padding-left:25px;}
+.login_mainbody .loginBox ul.form li.links{ padding:5px 0 0 25px;*padding:5px 0 0 0; *margin-left:25px; min-height:20px; _height:20px; clear:both}
+.login_mainbody .loginBox ul.form li.links span{ padding:0 10px;}
+.login_mainbody .loginBox ul.form li.links span a{ color:#069; text-decoration:underline}
+.login_mainbody .infoBox{ padding-left:85px; float:left; width:300px;}
+.login_mainbody .infoBox ul{ padding:0; margin:0; text-align:left;}
+.login_mainbody .infoBox ul li{ list-style-type:none; padding:8px 0;}
+.login_mainbody .infoBox ul li span{ display:block; line-height:200%}
+.login_mainbody .infoBox ul li span.title{ background:url(../images/sprite.gif) no-repeat -8px -1794px; font-size:14px; font-weight:bold; padding-left:16px; background-position: -8px -1796px\9; _background-position: -8px -1795px;}

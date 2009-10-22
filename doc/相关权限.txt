@@ -1,0 +1,16 @@
+ftp信息
+ip:123.196.122.17
+用户名：yangwei
+密码：yangwei
+
+远程登录相关信息：
+ip:123.196.122.17
+用户名：haowenjie
+密码：zcl_jinhonglan_2009
+
+站点位置：H:\yangwei\
+
+数据库信息：
+test.uncc.cn,2565
+yangwei
+yangwei 
