@@ -1,0 +1,46 @@
+﻿@charset "utf-8";
+
+/*Shopping_home Begin*/
+.shoppingHome_mainbody{ clear:both}
+.shoppingHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.shoppingHome_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.shoppingHome_mainbody .midColumn{ float:none; margin:0 224px; _margin:0 221px;}
+.shoppingHome_mainbody .midColumn .midColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_home End*/
+
+/*Shopping_Class Begin*/
+.shoppingClass_mainbody{ clear:both}
+.shoppingClass_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.shoppingClass_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.shoppingClass_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_Class End*/
+
+/*Shopping_ProductDetail Begin*/
+.productDetail_mainbody{ clear:both}
+.productDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.productDetail_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.productDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_ProductDetail End*/
+
+/*Shopping Cart Begin*/
+.shoppingCart_mainbody{ clear:both}
+.shoppingCart_mainbody .shoppingNavigation2{ clear:both; height:50px; background:url(../images/cart_navigation2.jpg) center top no-repeat; }
+.shoppingCart_mainbody .submitButtons{ width:235px}
+/*Shopping Cart Begin*/
+
+/*Shopping FillForm Begin*/
+.shoppingFillForm_mainbody{ clear:both}
+.shoppingFillForm_mainbody .shoppingNavigation3{ clear:both; height:50px; background:url(../images/cart_navigation3.jpg) center top no-repeat; }
+.shoppingFillForm_mainbody .submitButtons{ width:120px}
+.shoppingFillForm_mainbody .box1 .content{ padding:10px 120px;}
+.shoppingFillForm_mainbody .box6 .content{ padding:30px 40px 15px 40px;}
+.shoppingFillForm_mainbody ul.form_h li{ width:110px; padding:0 25px;}
+.shoppingFillForm_mainbody ul.form li .message{ padding-bottom:15px; zoom:1}
+.shoppingFillForm_mainbody ul.form li .message:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+/*Shopping FillForm Begin*/
+
+/*Shopping Complete Begin*/
+.shoppingComplete_mainbody{ clear:both}
+.shoppingComplete_mainbody .box1 .content{ padding:40px 100px;}
+.shoppingComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(../images/cart_navigation4.jpg) center top no-repeat; }
+/*Shopping Complete Begin*/

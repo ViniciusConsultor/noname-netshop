@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+/*Shopping_home Begin*/
+.shoppingHome_mainbody{ clear:both}
+.shoppingHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.shoppingHome_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.shoppingHome_mainbody .midColumn{ float:none; margin:0 224px; _margin:0 221px;}
+.shoppingHome_mainbody .midColumn .midColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_home End*/
+
+/*Shopping_Class Begin*/
+.shoppingClass_mainbody{ clear:both}
+.shoppingClass_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.shoppingClass_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.shoppingClass_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_Class End*/
+
+/*Shopping_ProductDetail Begin*/
+.productDetail_mainbody{ clear:both}
+.productDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.productDetail_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.productDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_ProductDetail End*/
