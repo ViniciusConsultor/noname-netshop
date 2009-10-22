@@ -7,3 +7,14 @@ D:\Projects\netshop\src\NoName.NetShop\NoName.NetShop.ForeFlat\obj\Debug\NoName.
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ForeFlat\obj\Debug\ResolveAssemblyReference.cache
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ForeFlat\obj\Debug\NoName.NetShop.ForeFlat.dll
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.ForeFlat\obj\Debug\NoName.NetShop.ForeFlat.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.ForeFlat.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.ForeFlat.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\log4net.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Auction.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\Microsoft.Practices.ObjectBuilder.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Auction.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\obj\Debug\NoName.NetShop.ForeFlat.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\obj\Debug\NoName.NetShop.ForeFlat.pdb
