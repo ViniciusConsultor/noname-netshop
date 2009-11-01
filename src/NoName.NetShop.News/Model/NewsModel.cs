@@ -1,5 +1,5 @@
 using System;
-namespace NoName.NetShop.Model
+namespace NoName.NetShop.News.Model
 {
 	/// <summary>
 	/// 实体类NewsModel 。(属性说明自动提取数据库字段的描述信息)
@@ -10,8 +10,8 @@ namespace NoName.NetShop.Model
 		{}
 		#region Model
 		private int _newsid;
-		private int? _newstype;
-		private int? _status;
+		private int _newstype;
+		private int _status;
 		private string _title;
 		private string _subtitle;
 		private string _brief;
@@ -22,8 +22,8 @@ namespace NoName.NetShop.Model
 		private string _videourl;
 		private string _imageurl;
 		private string _productid;
-		private DateTime? _inserttime;
-		private DateTime? _modifytime;
+		private DateTime _inserttime;
+		private DateTime _modifytime;
 		private string _tags;
 		/// <summary>
 		/// 
@@ -36,7 +36,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? NewsType
+		public int NewsType
 		{
 			set{ _newstype=value;}
 			get{return _newstype;}
@@ -44,7 +44,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Status
+		public int Status
 		{
 			set{ _status=value;}
 			get{return _status;}
@@ -132,7 +132,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? InsertTime
+		public DateTime InsertTime
 		{
 			set{ _inserttime=value;}
 			get{return _inserttime;}
@@ -140,7 +140,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? ModifyTime
+		public DateTime ModifyTime
 		{
 			set{ _modifytime=value;}
 			get{return _modifytime;}

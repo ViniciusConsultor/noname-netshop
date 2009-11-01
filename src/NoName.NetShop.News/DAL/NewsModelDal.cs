@@ -5,16 +5,17 @@ using System.Collections.Generic;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
-using Maticsoft.DBUtility;//请先添加引用
-namespace NoName.NetShop.DAL
+using NoName.NetShop.News.Model;//请先添加引用
+
+namespace NoName.NetShop.News.DAL
 {
 	/// <summary>
 	/// 数据访问类NewsModelDal。
 	/// </summary>
 	public class NewsModelDal
 	{
-		public NewsModelDal()
-		{}
+        public NewsModelDal()
+        { }
 		#region  成员方法
 
 		/// <summary>
@@ -56,7 +57,7 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.Model.NewsModel model)
+		public void Add(NewsModel model)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_neNews_ADD");
@@ -82,7 +83,7 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		///  更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.Model.NewsModel model)
+		public void Update(NewsModel model)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_neNews_Update");
@@ -120,13 +121,13 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.Model.NewsModel GetModel(int NewsId)
+		public NewsModel GetModel(int NewsId)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_neNews_GetModel");
 			db.AddInParameter(dbCommand, "NewsId", DbType.Int32,NewsId);
 
-			NoName.NetShop.Model.NewsModel model=null;
+			NewsModel model=null;
 			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -152,29 +153,28 @@ namespace NoName.NetShop.DAL
 			Database db = DatabaseFactory.CreateDatabase();
 			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
+        
+        /// <summary>
+        /// 分页获取数据列表
+        /// </summary>
+        public DataSet GetList(int PageSize,int PageIndex,string strWhere)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
+            db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "neNews");
+            db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
+            db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
+            db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
+            db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
+            db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
+            db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
+            return db.ExecuteDataSet(dbCommand);
+        }
 
-		/*
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "neNews");
-			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-			db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-			db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-			db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-			return db.ExecuteDataSet(dbCommand);
-		}*/
-
-		/// <summary>
+        /// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.Model.NewsModel> GetListArray(string strWhere)
+		public List<NewsModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select NewsId,NewsType,Status,Title,SubTitle,Brief,Content,SmallImageUrl,Author,From,VideoUrl,ImageUrl,ProductId,InsertTime,ModifyTime,Tags ");
@@ -183,7 +183,7 @@ namespace NoName.NetShop.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.Model.NewsModel> list = new List<NoName.NetShop.Model.NewsModel>();
+			List<NewsModel> list = new List<NewsModel>();
 			Database db = DatabaseFactory.CreateDatabase();
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -199,9 +199,9 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.Model.NewsModel ReaderBind(IDataReader dataReader)
+		public NewsModel ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.Model.NewsModel model=new NoName.NetShop.Model.NewsModel();
+			NewsModel model=new NewsModel();
 			object ojb; 
 			ojb = dataReader["NewsId"];
 			if(ojb != null && ojb != DBNull.Value)
