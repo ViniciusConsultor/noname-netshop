@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NoName.NetShop.ForeFlat.member
+namespace NoName.NetShop.ForeFlat
 {
-    public partial class MyMessages : AuthBasePage
+    public partial class ResetPassword : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
