@@ -1,6 +1,6 @@
 using System;
 using NoName.NetShop.Member.Model;
-namespace NoName.NetShop.UserManager.Model
+namespace NoName.NetShop.Member.Model
 {
 	/// <summary>
 	/// 实体类Member 。(属性说明自动提取数据库字段的描述信息)

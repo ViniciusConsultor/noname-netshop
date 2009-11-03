@@ -7,7 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using NoName.NetShop.Member.Model;
 
-namespace NoName.NetShop.UserManager.DAL
+namespace NoName.NetShop.Member.DAL
 {
 	/// <summary>
 	/// 数据访问类Member。
@@ -25,25 +25,16 @@ namespace NoName.NetShop.UserManager.DAL
         public bool Exists(string userEmail)
         {
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
-            DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_Exists");
-            db.AddInParameter(dbCommand, "userEmail", DbType.Int32, userEmail);
-            int result;
-            object obj = db.ExecuteScalar(dbCommand);
-            int.TryParse(obj.ToString(), out result);
-            if (result == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            DbCommand dbCommand = db.GetSqlStringCommand("SELECT count(1) FROM umMember WHERE useremail=@UserEmail");
+            db.AddInParameter(dbCommand, "userEmail", DbType.String, userEmail);
+            int result = (int)db.ExecuteScalar(dbCommand);
+            return (result > 0);
         }
 
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.UserManager.Model.MemberModel model)
+		public void Add(NoName.NetShop.Member.Model.MemberModel model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_ADD");
@@ -53,18 +44,16 @@ namespace NoName.NetShop.UserManager.DAL
 			db.AddInParameter(dbCommand, "NickName", DbType.AnsiString, model.NickName);
 			db.AddInParameter(dbCommand, "AllScore", DbType.Int32, model.AllScore);
 			db.AddInParameter(dbCommand, "CurScore", DbType.Int32, model.CurScore);
-			db.AddInParameter(dbCommand, "LastLogin", DbType.DateTime, model.LastLogin);
-			db.AddInParameter(dbCommand, "LoginIP", DbType.AnsiString, model.LoginIP);
-			db.AddInParameter(dbCommand, "RegisterTime", DbType.DateTime, model.RegisterTime);
 			db.AddInParameter(dbCommand, "UserType", DbType.Byte, model.UserType);
 			db.AddInParameter(dbCommand, "status", DbType.Byte, model.Status);
 			db.ExecuteNonQuery(dbCommand);
+
 		}
 
 		/// <summary>
 		///  更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.UserManager.Model.MemberModel model)
+		public void Update(NoName.NetShop.Member.Model.MemberModel model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_Update");
@@ -97,13 +86,13 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.MemberModel GetModel(int userId)
+		public NoName.NetShop.Member.Model.MemberModel GetModel(int userId)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_GetModel");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32,userId);
 
-			NoName.NetShop.UserManager.Model.MemberModel model=null;
+			NoName.NetShop.Member.Model.MemberModel model=null;
 			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -114,6 +103,25 @@ namespace NoName.NetShop.UserManager.DAL
 			return model;
 		}
 
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public NoName.NetShop.Member.Model.MemberModel GetModel(string userEmail)
+        {
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_GetModelByUserEmail");
+            db.AddInParameter(dbCommand, "userEmail", DbType.String, userEmail);
+
+            NoName.NetShop.Member.Model.MemberModel model = null;
+            using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+            {
+                if (dataReader.Read())
+                {
+                    model = ReaderBind(dataReader);
+                }
+            }
+            return model;
+        }
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
@@ -134,7 +142,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.MemberModel> GetListArray(string strWhere)
+		public List<NoName.NetShop.Member.Model.MemberModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select userId,UserEmail,Password,NickName,AllScore,CurScore,LastLogin,LoginIP,RegisterTime,ModifyTime,UserType,status ");
@@ -143,7 +151,7 @@ namespace NoName.NetShop.UserManager.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.UserManager.Model.MemberModel> list = new List<NoName.NetShop.UserManager.Model.MemberModel>();
+			List<NoName.NetShop.Member.Model.MemberModel> list = new List<NoName.NetShop.Member.Model.MemberModel>();
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -159,9 +167,9 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.MemberModel ReaderBind(IDataReader dataReader)
+		public NoName.NetShop.Member.Model.MemberModel ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.UserManager.Model.MemberModel model=new NoName.NetShop.UserManager.Model.MemberModel();
+			NoName.NetShop.Member.Model.MemberModel model=new NoName.NetShop.Member.Model.MemberModel();
 			object ojb; 
 			ojb = dataReader["userId"];
 			if(ojb != null && ojb != DBNull.Value)
@@ -196,12 +204,12 @@ namespace NoName.NetShop.UserManager.DAL
 			ojb = dataReader["UserType"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.UserType=(MemberType)ojb;
+				model.UserType=(MemberType)(Convert.ToInt32(ojb));
 			}
 			ojb = dataReader["status"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.Status=(MemberStatus)ojb;
+				model.Status=(MemberStatus)(Convert.ToInt32(ojb));
 			}
 			return model;
 		}
@@ -215,6 +223,29 @@ namespace NoName.NetShop.UserManager.DAL
             db.AddInParameter(dbCommand, "userId", DbType.Int32, userId);
             db.AddInParameter(dbCommand, "status", DbType.Int32, (int)status);
             db.ExecuteNonQuery(dbCommand);
+        }
+
+        internal bool Validate(string username, string md5pass)
+        {
+            string sql = "select count(*) from umMember where useremail=@useremail and password=@password";
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "useremail", DbType.String, username);
+            db.AddInParameter(dbCommand, "password", DbType.String, md5pass);
+            int result = (int)db.ExecuteScalar(dbCommand);
+            return (result == 1);
+        }
+
+        internal bool ChangePassword(string userEmail, string oldpass, string newpass)
+        {
+            string sql = "update umMember set useremail=@newpass from umMember where useremail=@useremail and password=@oldpass";
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "useremail", DbType.String, userEmail);
+            db.AddInParameter(dbCommand, "oldpass", DbType.String, oldpass);
+            db.AddInParameter(dbCommand, "newpass", DbType.String, newpass);
+            int result = db.ExecuteNonQuery(dbCommand);
+            return (result == 1);
         }
     }
 }

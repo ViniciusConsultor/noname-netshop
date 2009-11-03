@@ -2,16 +2,15 @@ using System;
 using System.Data;
 using System.Collections.Generic;
 
-using NoName.NetShop.UserManager.Model;
 using NoName.NetShop.Member.Model;
-namespace NoName.NetShop.UserManager.BLL
+namespace NoName.NetShop.Member.BLL
 {
 	/// <summary>
 	/// 业务逻辑类Member 的摘要说明。
 	/// </summary>
 	public class Member
 	{
-		private readonly NoName.NetShop.UserManager.DAL.Member dal=new NoName.NetShop.UserManager.DAL.Member();
+		private readonly NoName.NetShop.Member.DAL.Member dal=new NoName.NetShop.Member.DAL.Member();
 		public Member()
 		{}
 		#region  成员方法
@@ -19,7 +18,7 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.UserManager.Model.MemberModel model)
+		public void Add(NoName.NetShop.Member.Model.MemberModel model)
 		{
 			dal.Add(model);
 		}
@@ -27,7 +26,7 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.UserManager.Model.MemberModel model)
+		public void Update(NoName.NetShop.Member.Model.MemberModel model)
 		{
 			dal.Update(model);
 		}
@@ -42,20 +41,30 @@ namespace NoName.NetShop.UserManager.BLL
 		/// </summary>
 		public void Delete(int userId)
 		{
-			
 			dal.Delete(userId);
 		}
+
+        public bool Exists(string userEmail)
+        {
+            return dal.Exists(userEmail);
+        }
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.MemberModel GetModel(int userId)
+		public NoName.NetShop.Member.Model.MemberModel GetModel(int userId)
 		{
 			
 			return dal.GetModel(userId);
 		}
 
- 
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public NoName.NetShop.Member.Model.MemberModel GetModel(string userEmail)
+        {
+            return dal.GetModel(userEmail);
+        } 
 
 		/// <summary>
 		/// 获得数据列表
@@ -68,7 +77,7 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.MemberModel> GetModelList(string strWhere)
+		public List<NoName.NetShop.Member.Model.MemberModel> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -76,16 +85,16 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.MemberModel> DataTableToList(DataTable dt)
+		public List<NoName.NetShop.Member.Model.MemberModel> DataTableToList(DataTable dt)
 		{
-			List<NoName.NetShop.UserManager.Model.MemberModel> modelList = new List<NoName.NetShop.UserManager.Model.MemberModel>();
+			List<NoName.NetShop.Member.Model.MemberModel> modelList = new List<NoName.NetShop.Member.Model.MemberModel>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				NoName.NetShop.UserManager.Model.MemberModel model;
+				NoName.NetShop.Member.Model.MemberModel model;
 				for (int n = 0; n < rowsCount; n++)
 				{
-					model = new NoName.NetShop.UserManager.Model.MemberModel();
+					model = new NoName.NetShop.Member.Model.MemberModel();
 					if(dt.Rows[n]["userId"].ToString()!="")
 					{
 						model.userId=int.Parse(dt.Rows[n]["userId"].ToString());
@@ -132,15 +141,19 @@ namespace NoName.NetShop.UserManager.BLL
 			return GetList("");
 		}
 
-		/// <summary>
-		/// 获得数据列表
-		/// </summary>
-		//public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		//{
-			//return dal.GetList(PageSize,PageIndex,strWhere);
-		//}
-
 		#endregion  成员方法
-	}
+
+
+
+        public bool ValidateUser(string username, string md5pass)
+        {
+            return dal.Validate(username, md5pass);
+        }
+
+        public bool ChangePassword(string userEmail, string oldpass, string newpass)
+        {
+            return dal.ChangePassword(userEmail, oldpass, newpass);
+        }
+    }
 }
 

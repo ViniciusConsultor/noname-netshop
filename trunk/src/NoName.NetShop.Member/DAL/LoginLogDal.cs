@@ -6,7 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 
-namespace NoName.NetShop.UserManager.DAL
+namespace NoName.NetShop.Member.DAL
 {
 	/// <summary>
 	/// 数据访问类LoginLog。
@@ -21,7 +21,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.UserManager.Model.LoginLog model)
+		public void Add(NoName.NetShop.Member.Model.LoginLog model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umLoginLog_ADD");
@@ -35,13 +35,13 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.LoginLog GetModel(int UserId)
+		public NoName.NetShop.Member.Model.LoginLog GetModel(int UserId)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umLoginLog_GetModel");
 			db.AddInParameter(dbCommand, "UserId", DbType.Int32,UserId);
 
-			NoName.NetShop.UserManager.Model.LoginLog model=null;
+			NoName.NetShop.Member.Model.LoginLog model=null;
 			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -71,7 +71,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.LoginLog> GetListArray(string strWhere)
+		public List<NoName.NetShop.Member.Model.LoginLog> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select UserId,LoginTime,IP ");
@@ -80,7 +80,7 @@ namespace NoName.NetShop.UserManager.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.UserManager.Model.LoginLog> list = new List<NoName.NetShop.UserManager.Model.LoginLog>();
+			List<NoName.NetShop.Member.Model.LoginLog> list = new List<NoName.NetShop.Member.Model.LoginLog>();
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -96,9 +96,9 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.LoginLog ReaderBind(IDataReader dataReader)
+		public NoName.NetShop.Member.Model.LoginLog ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.UserManager.Model.LoginLog model=new NoName.NetShop.UserManager.Model.LoginLog();
+			NoName.NetShop.Member.Model.LoginLog model=new NoName.NetShop.Member.Model.LoginLog();
 			object ojb; 
 			ojb = dataReader["UserId"];
 			if(ojb != null && ojb != DBNull.Value)

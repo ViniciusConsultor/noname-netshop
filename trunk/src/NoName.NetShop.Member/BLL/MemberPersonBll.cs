@@ -2,15 +2,15 @@ using System;
 using System.Data;
 using System.Collections.Generic;
 
-using NoName.NetShop.UserManager.Model;
-namespace NoName.NetShop.UserManager.BLL
+using NoName.NetShop.Member.Model;
+namespace NoName.NetShop.Member.BLL
 {
 	/// <summary>
 	/// 业务逻辑类MemberPerson 的摘要说明。
 	/// </summary>
 	public class MemberPerson
 	{
-		private readonly NoName.NetShop.UserManager.DAL.MemberPerson dal=new NoName.NetShop.UserManager.DAL.MemberPerson();
+		private readonly NoName.NetShop.Member.DAL.MemberPerson dal=new NoName.NetShop.Member.DAL.MemberPerson();
 		public MemberPerson()
 		{}
 		#region  成员方法
@@ -34,7 +34,7 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.UserManager.Model.MemberPerson model)
+		public void Add(NoName.NetShop.Member.Model.MemberPerson model)
 		{
 			dal.Add(model);
 		}
@@ -42,7 +42,7 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.UserManager.Model.MemberPerson model)
+		public void Update(NoName.NetShop.Member.Model.MemberPerson model)
 		{
 			dal.Update(model);
 		}
@@ -59,7 +59,7 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.MemberPerson GetModel(int userid)
+		public NoName.NetShop.Member.Model.MemberPerson GetModel(int userid)
 		{
 			
 			return dal.GetModel(userid);
@@ -77,7 +77,7 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.MemberPerson> GetModelList(string strWhere)
+		public List<NoName.NetShop.Member.Model.MemberPerson> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -85,16 +85,16 @@ namespace NoName.NetShop.UserManager.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.MemberPerson> DataTableToList(DataTable dt)
+		public List<NoName.NetShop.Member.Model.MemberPerson> DataTableToList(DataTable dt)
 		{
-			List<NoName.NetShop.UserManager.Model.MemberPerson> modelList = new List<NoName.NetShop.UserManager.Model.MemberPerson>();
+			List<NoName.NetShop.Member.Model.MemberPerson> modelList = new List<NoName.NetShop.Member.Model.MemberPerson>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				NoName.NetShop.UserManager.Model.MemberPerson model;
+				NoName.NetShop.Member.Model.MemberPerson model;
 				for (int n = 0; n < rowsCount; n++)
 				{
-					model = new NoName.NetShop.UserManager.Model.MemberPerson();
+					model = new NoName.NetShop.Member.Model.MemberPerson();
 					if(dt.Rows[n]["userid"].ToString()!="")
 					{
 						model.userid=int.Parse(dt.Rows[n]["userid"].ToString());

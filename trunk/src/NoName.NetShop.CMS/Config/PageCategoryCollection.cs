@@ -17,7 +17,7 @@ namespace NoName.NetShop.CMS.Config
         {
             return ((PageCategoryElement)element).Key;
         }
-
+         
         public new int Count
         {
             get { return base.Count; }

@@ -6,7 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 
-namespace NoName.NetShop.UserManager.DAL
+namespace NoName.NetShop.Member.DAL
 {
 	/// <summary>
 	/// 数据访问类MemberFamly。
@@ -56,7 +56,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.UserManager.Model.MemberFamly model)
+		public void Add(NoName.NetShop.Member.Model.MemberFamly model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberFamly_ADD");
@@ -76,7 +76,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		///  更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.UserManager.Model.MemberFamly model)
+		public void Update(NoName.NetShop.Member.Model.MemberFamly model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberFamly_Update");
@@ -108,13 +108,13 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.MemberFamly GetModel(int userId)
+		public NoName.NetShop.Member.Model.MemberFamly GetModel(int userId)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberFamly_GetModel");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32,userId);
 
-			NoName.NetShop.UserManager.Model.MemberFamly model=null;
+			NoName.NetShop.Member.Model.MemberFamly model=null;
 			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -145,7 +145,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.MemberFamly> GetListArray(string strWhere)
+		public List<NoName.NetShop.Member.Model.MemberFamly> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select userId,truename,idcard,Address,province,city,county,Mobile,TelePhone,Email ");
@@ -154,7 +154,7 @@ namespace NoName.NetShop.UserManager.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.UserManager.Model.MemberFamly> list = new List<NoName.NetShop.UserManager.Model.MemberFamly>();
+			List<NoName.NetShop.Member.Model.MemberFamly> list = new List<NoName.NetShop.Member.Model.MemberFamly>();
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -170,9 +170,9 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.MemberFamly ReaderBind(IDataReader dataReader)
+		public NoName.NetShop.Member.Model.MemberFamly ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.UserManager.Model.MemberFamly model=new NoName.NetShop.UserManager.Model.MemberFamly();
+			NoName.NetShop.Member.Model.MemberFamly model=new NoName.NetShop.Member.Model.MemberFamly();
 			object ojb; 
 			ojb = dataReader["userId"];
 			if(ojb != null && ojb != DBNull.Value)
