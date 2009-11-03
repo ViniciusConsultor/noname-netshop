@@ -6,7 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 
-namespace NoName.NetShop.UserManager.DAL
+namespace NoName.NetShop.Member.DAL
 {
 	/// <summary>
 	/// 数据访问类MemberCompany。
@@ -42,7 +42,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.UserManager.Model.MemberCompany model)
+		public void Add(NoName.NetShop.Member.Model.MemberCompany model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberCompany_ADD");
@@ -63,7 +63,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		///  更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.UserManager.Model.MemberCompany model)
+		public void Update(NoName.NetShop.Member.Model.MemberCompany model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberCompany_Update");
@@ -96,13 +96,13 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.MemberCompany GetModel(int userid)
+		public NoName.NetShop.Member.Model.MemberCompany GetModel(int userid)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberCompany_GetModel");
 			db.AddInParameter(dbCommand, "userid", DbType.Int32,userid);
 
-			NoName.NetShop.UserManager.Model.MemberCompany model=null;
+			NoName.NetShop.Member.Model.MemberCompany model=null;
 			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -133,7 +133,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.MemberCompany> GetListArray(string strWhere)
+		public List<NoName.NetShop.Member.Model.MemberCompany> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select userid,truename,idcard,companyname,province,city,county,Mobile,TelePhone,Fax,Email ");
@@ -142,7 +142,7 @@ namespace NoName.NetShop.UserManager.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.UserManager.Model.MemberCompany> list = new List<NoName.NetShop.UserManager.Model.MemberCompany>();
+			List<NoName.NetShop.Member.Model.MemberCompany> list = new List<NoName.NetShop.Member.Model.MemberCompany>();
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -158,9 +158,9 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.MemberCompany ReaderBind(IDataReader dataReader)
+		public NoName.NetShop.Member.Model.MemberCompany ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.UserManager.Model.MemberCompany model=new NoName.NetShop.UserManager.Model.MemberCompany();
+			NoName.NetShop.Member.Model.MemberCompany model=new NoName.NetShop.Member.Model.MemberCompany();
 			object ojb; 
 			ojb = dataReader["userid"];
 			if(ojb != null && ojb != DBNull.Value)

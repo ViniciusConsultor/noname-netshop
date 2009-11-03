@@ -6,7 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 
-namespace NoName.NetShop.UserManager.DAL
+namespace NoName.NetShop.Member.DAL
 {
 	/// <summary>
 	/// 数据访问类Favorite。
@@ -21,7 +21,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.UserManager.Model.Favorite model)
+		public void Add(NoName.NetShop.Member.Model.Favorite model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umFavorite_ADD");
@@ -38,7 +38,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		///  更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.UserManager.Model.Favorite model)
+		public void Update(NoName.NetShop.Member.Model.Favorite model)
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umFavorite_Update");
@@ -66,12 +66,12 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.Favorite GetModel()
+		public NoName.NetShop.Member.Model.Favorite GetModel()
 		{
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umFavorite_GetModel");
 
-			NoName.NetShop.UserManager.Model.Favorite model=null;
+			NoName.NetShop.Member.Model.Favorite model=null;
 			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -102,7 +102,7 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.UserManager.Model.Favorite> GetListArray(string strWhere)
+		public List<NoName.NetShop.Member.Model.Favorite> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select UserId,FavoriteId,FavoriteUrl,FavoriteName,InsertTime,ContentId,ContentType ");
@@ -111,7 +111,7 @@ namespace NoName.NetShop.UserManager.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.UserManager.Model.Favorite> list = new List<NoName.NetShop.UserManager.Model.Favorite>();
+			List<NoName.NetShop.Member.Model.Favorite> list = new List<NoName.NetShop.Member.Model.Favorite>();
 			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -127,9 +127,9 @@ namespace NoName.NetShop.UserManager.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.UserManager.Model.Favorite ReaderBind(IDataReader dataReader)
+		public NoName.NetShop.Member.Model.Favorite ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.UserManager.Model.Favorite model=new NoName.NetShop.UserManager.Model.Favorite();
+			NoName.NetShop.Member.Model.Favorite model=new NoName.NetShop.Member.Model.Favorite();
 			object ojb; 
 			ojb = dataReader["UserId"];
 			if(ojb != null && ojb != DBNull.Value)

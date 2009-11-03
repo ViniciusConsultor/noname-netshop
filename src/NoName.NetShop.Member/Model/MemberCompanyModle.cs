@@ -1,5 +1,5 @@
 using System;
-namespace NoName.NetShop.UserManager.Model
+namespace NoName.NetShop.Member.Model
 {
 	/// <summary>
 	/// 实体类MemberCompany 。(属性说明自动提取数据库字段的描述信息)
