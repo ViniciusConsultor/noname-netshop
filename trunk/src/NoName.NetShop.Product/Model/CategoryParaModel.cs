@@ -8,13 +8,14 @@ namespace NoName.NetShop.Product.Model
 	{
 		public CategoryParaModel()
 		{}
+
 		#region Model
 		private int _paraid;
-		private int? _cateid;
+		private int _cateid;
 		private string _paraname;
-		private int? _paratype;
-		private int? _status;
-		private int? _paragroupid;
+		private int _paratype;
+		private int _status;
+		private int _paragroupid;
 		private string _paravalues;
 		private string _defaultvalue;
 		/// <summary>
@@ -28,7 +29,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? CateId
+		public int CateId
 		{
 			set{ _cateid=value;}
 			get{return _cateid;}
@@ -44,7 +45,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? ParaType
+		public int ParaType
 		{
 			set{ _paratype=value;}
 			get{return _paratype;}
@@ -52,7 +53,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Status
+		public int Status
 		{
 			set{ _status=value;}
 			get{return _status;}
@@ -60,7 +61,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? ParaGroupId
+		public int ParaGroupId
 		{
 			set{ _paragroupid=value;}
 			get{return _paragroupid;}
