@@ -32,6 +32,7 @@ li{
 
 .left{float:left;}
 .right{float:right;}
+.clear{clear:both;}
 
 .pointer{cursor:pointer;}
 
