@@ -3,3 +3,17 @@ G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\bin\Debug\NoName.NetShop.N
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\obj\Debug\ResolveAssemblyReference.cache
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\obj\Debug\NoName.NetShop.News.dll
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.News\obj\Debug\NoName.NetShop.News.pdb
+E:\works\NetShop\src\NoName.NetShop.News\obj\Debug\ResolveAssemblyReference.cache
+E:\works\NetShop\src\NoName.NetShop.News\obj\Debug\NoName.NetShop.News.dll
+E:\works\NetShop\src\NoName.NetShop.News\obj\Debug\NoName.NetShop.News.pdb
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\NoName.NetShop.News.dll
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\NoName.NetShop.News.pdb
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\Microsoft.Practices.Unity.dll
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\Microsoft.Practices.ObjectBuilder2.dll
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\Microsoft.Practices.Unity.xml
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\Microsoft.Practices.ObjectBuilder2.xml
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\NoName.NetShop.Common.dll
+E:\works\NetShop\src\NoName.NetShop.News\bin\Debug\NoName.NetShop.Common.pdb
