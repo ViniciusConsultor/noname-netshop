@@ -15,9 +15,24 @@ namespace NoName.NetShop.BackFlat.News.Category
 {
     public partial class Edit : System.Web.UI.Page
     {
+        private int CategoryID 
+        {
+            get { if (ViewState["CategoryID"] != null) return Convert.ToInt32(ViewState["CategoryID"]); else return -1; }
+            set { ViewState["CategoryID"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write(Request.QueryString["cateid"]);
+            if (!IsPostBack)
+            {
+                CategoryID = Convert.ToInt32(Request.QueryString["cateid"]);
+
+            }
+        }
+
+        private void BindData()
+        {
+ 
         }
     }
 }

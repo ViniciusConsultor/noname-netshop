@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="NoName.NetShop.BackFlat.News.Category.List" %>
 
-<%@ Register src="../../Controls/NewsCategoryTree.ascx" tagname="NewsCategoryTree" tagprefix="uc1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -17,11 +16,44 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="left">                
-                <uc1:NewsCategoryTree ID="NewsCategoryTree1" runat="server" />                
+            <div class="left"
+                <asp:TreeView ID="TreeView1" runat="server" ShowLines="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" SelectedNodeStyle-Font-Underline="True">
+                    <SelectedNodeStyle Font-Underline="True" Font-Bold="True" ForeColor="#990033"/>
+                    <NodeStyle Font-Underline="True" ForeColor="#003399" />
+                </asp:TreeView>           
             </div>
             <div class="left iframe">
-                <iframe id="NewsCategoryContent" name="NewsCategoryContent" scrolling="no" frameborder="0"></iframe>
+                <table>
+                    <tr>
+                        <td>名称：</td>
+                        <td><asp:TextBox ID="TextBox_CategoryName" runat="server"></asp:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td>状态：</td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="DropDownList_Status">
+                                <asp:ListItem Text="状态1" Value="1" />
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>是否隐藏：</td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="DropDownList_IsHide">
+                                <asp:ListItem Text="隐藏" Value="1" />
+                                <asp:ListItem Text="显示" Value="0" />
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>父分类：</td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="DropDownList_ParentCategory" />
+                        </td>
+                    </tr>
+                </table>
+                <asp:Button ID="Button_Submit" runat="server" Text="更改" onclick="Button_Submit_Click" />
+                <asp:Button ID="Button_Delete" runat="server" Text="删除" onclick="Button_Delete_Click" />
             </div>
             <div class="clear"></div>
         </div>
