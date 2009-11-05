@@ -41,5 +41,36 @@ namespace NoName.NetShop.News.BLL
         {
             return dal.GetModel(CateID);
         }
+
+        public string GetNamePath(int CategoryID)
+        {
+            string CatePath = GetPath(CategoryID);
+
+            if (CatePath.Contains("/"))
+            {
+                string NamePath = String.Empty;
+                foreach (string ID in CatePath.Split('/'))
+                {
+                    NamePath += "/"+GetModel(Convert.ToInt32(ID)).CateName;
+                }
+                return NamePath.Substring(1);
+            }
+            else
+            {
+                return GetModel(CategoryID).CateName;
+            }
+        }
+
+        public DataTable GetPathList(int CategoryID)
+        {
+            return dal.GetPathList(CategoryID);
+        }
+
+
+        public string GetPath(int CategoryID)
+        {
+            return dal.GetPath(CategoryID);
+        }
     }
 }
+

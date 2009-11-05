@@ -81,7 +81,35 @@ namespace NoName.NetShop.News.DAL
 
             dbr.AddInParameter(command, "@cateid", DbType.Int32, CateID);
 
-            return ReaderBind(dbr.ExecuteReader(command));
+            NewsCategoryModel model = null;
+
+            using (IDataReader dataReader = dbr.ExecuteReader(command))
+            {
+                if (dataReader.Read())
+                {
+                    model = ReaderBind(dataReader);
+                }
+            }
+
+            return model;
+        }
+
+        public string GetPath(int CategoryID)
+        {
+            DbCommand command = dbr.GetStoredProcCommand("UP_neCategory_GetPath");
+
+            dbr.AddInParameter(command, "@cateid", DbType.Int32, CategoryID);
+
+            return Convert.ToString(dbr.ExecuteScalar(command));
+        }
+
+        public DataTable GetPathList(int CategoryID)
+        {
+            string Path = GetPath(CategoryID);
+
+            string sql = "select * from necategory where cateid in ({0}) order by catelevel";
+            sql = String.Format(sql,Path.Replace("/",","));
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
         private NewsCategoryModel ReaderBind(IDataReader dataReader)
@@ -98,6 +126,8 @@ namespace NoName.NetShop.News.DAL
 
             return model;
         }
+
+
 
 
     }
