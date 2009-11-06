@@ -1,0 +1,107 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using NoName.NetShop.Publish.Configuration;
+using System.Xml;
+using System.Data;
+using NoName.Utility;
+
+namespace NoName.NetShop.Publish.List.DataAccess
+{
+    public class ListNodeCreator
+    {        
+        private ListPageParameter Parameter;
+        private ListConfigurationSection Config;
+        private ListDataAccess dal;
+        private XmlDocument xdoc;
+
+        public ListNodeCreator(ListPageParameter parameter, ListConfigurationSection config, ListDataAccess DAL, XmlDocument document) 
+        {
+            Parameter = parameter;
+            Config = config;
+            dal = DAL;
+            xdoc = document;
+        }
+
+        public XmlNode GetCategoryPathList()
+        {
+            XmlNode CategoryPathListNode = xdoc.CreateElement("categorypath");
+
+            DataTable dt = dal.GetCategoryPathList(Parameter.CategoryID);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode CategoryNode = XmlUtility.AddNewNode(CategoryPathListNode, "category", null);
+
+                XmlUtility.AddNewNode(CategoryNode, "categoryid", Convert.ToString(row["cateid"]));
+                XmlUtility.AddNewNode(CategoryNode, "categoryname", Convert.ToString(row["catename"])); 
+            }
+
+            return CategoryPathListNode;
+        }
+
+        public XmlNode GetCategoryList()
+        {
+            XmlNode CategoryListNode = xdoc.CreateElement("categorylist");
+
+            DataTable RootCategories = dal.GetRootCategoryList();
+
+            foreach (DataRow row in RootCategories.Rows)
+            {
+                XmlNode FatherNode = XmlUtility.AddNewNode(CategoryListNode,"fathercategory",null);
+
+                XmlUtility.SetAtrributeValue(FatherNode, "categoryid", Convert.ToString(row["cateid"]));
+                XmlUtility.SetAtrributeValue(FatherNode, "categoryname", Convert.ToString(row["catename"]));
+
+                int CategoryID = Convert.ToInt32(row["cateid"]);
+
+                DataTable SonCategories = dal.GetCategorySonList(CategoryID);
+
+                if (SonCategories.Rows.Count > 0) foreach (DataRow srow in SonCategories.Rows)
+                {
+                        XmlNode SonNode = XmlUtility.AddNewNode(FatherNode, "soncategory", null);
+
+                        XmlUtility.SetAtrributeValue(SonNode, "categoryid", Convert.ToString(srow["cateid"]));
+                        XmlUtility.SetAtrributeValue(SonNode, "categoryname", Convert.ToString(srow["catename"])); 
+                }
+
+            }
+
+            return CategoryListNode;
+        }
+        
+
+        public XmlNode GetProductList()
+        {
+            XmlNode ProductListNode = xdoc.CreateElement("productlist");
+
+            int RecordCount = 0, PageCount=0;
+
+            DataTable dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex, out RecordCount, out PageCount);
+
+            //商品列表节点
+            XmlNode ProductsNode = XmlUtility.AddNewNode(ProductListNode, "products", null);
+
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode ProductNode = XmlUtility.AddNewNode(ProductsNode, "product", null);
+
+                XmlUtility.AddNewNode(ProductNode, "productid", Convert.ToString(row["productid"]));
+                XmlUtility.AddNewNode(ProductNode, "productname", Convert.ToString(row["productname"]));
+                XmlUtility.AddNewNode(ProductNode, "smallimage", "http://dingding.uncc.cn/upload/productmain/" + Convert.ToString(row["smallimage"]));
+                XmlUtility.AddNewNode(ProductNode, "mediumimage", "http://dingding.uncc.cn/upload/productmain/" + Convert.ToString(row["mediumimage"]));
+                XmlUtility.AddNewNode(ProductNode, "tradeprice", Convert.ToString(row["tradeprice"]));
+                XmlUtility.AddNewNode(ProductNode, "merchantprice", Convert.ToString(row["merchantprice"]));
+            }
+
+            //分页信息节点
+            XmlNode PageInfoNode = XmlUtility.AddNewNode(ProductListNode, "pageinfo", null);
+
+            XmlUtility.SetAtrributeValue(PageInfoNode, "recordcount", RecordCount.ToString());
+            XmlUtility.SetAtrributeValue(PageInfoNode, "pagecount", PageCount.ToString());
+
+            return ProductListNode; 
+        }
+    }
+}
