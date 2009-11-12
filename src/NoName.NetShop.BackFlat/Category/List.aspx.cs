@@ -4,7 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using NoName.NetShop.Product.BLL;
+using NoName.Utility;
+using System.Web.UI.HtmlControls;
 
 namespace NoName.NetShop.BackFlat.Category
 {
@@ -12,125 +15,124 @@ namespace NoName.NetShop.BackFlat.Category
     {
         private CategoryModelBll bll = new CategoryModelBll();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BindList1Data();
+                BindCategoryList();
             }
         }
 
-        private void BindList1Data()
+        private void BindCategoryList()
         {
-            ListBox1.DataSource = bll.GetList("parentid=0 order by showorder");
-            ListBox1.DataTextField = "catename";
-            ListBox1.DataValueField = "cateid";
-            ListBox1.DataBind();
-            if (ListBox1.Items.Count > 0)
+            TreeView1.Nodes.Clear();
+            PopulateNodes(TreeView1.Nodes, 0);
+            TreeView1.ExpandAll();
+        }
+
+        private void PopulateNodes(TreeNodeCollection nodes, int ParentID)
+        {
+            DataTable dt = bll.GetList("parentid=" + ParentID + " order by showorder").Tables[0] ;
+            
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                ListBox1.Items[0].Selected = true;
-            }
+                TreeNode tn = new TreeNode();
+                tn.Text = dt.Rows[i]["catename"].ToString();
+                tn.Value = dt.Rows[i]["cateid"].ToString();
+                tn.ImageToolTip = dt.Rows[i]["catename"].ToString();
+                tn.ToolTip = dt.Rows[i]["catename"].ToString();
+                tn.SelectAction = TreeNodeSelectAction.Select;
+                nodes.Add(tn);
 
-            if (Convert.ToInt32(ListBox1.SelectedValue) != 0)
+                PopulateNodes(tn.ChildNodes, Convert.ToInt32(dt.Rows[i]["cateid"]));
+            }
+        }
+
+        protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
+        {
+        }
+
+        protected void Button_MoveUp_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
             {
-                BindList2Data(Convert.ToInt32(ListBox1.SelectedValue));
+                TreeNode TheNode = TreeView1.SelectedNode;
+                TreeNodeCollection TheNodeBrothers = TheNode.Parent == null ? TreeView1.Nodes : TheNode.Parent.ChildNodes;
+
+                int Position = TheNodeBrothers.IndexOf(TheNode);
+
+                int OriginCateID = Convert.ToInt32(TheNode.Value);
+                int SwitchCateID = Position == 0 ? Convert.ToInt32(TheNodeBrothers[TheNodeBrothers.Count - 1].Value) : Convert.ToInt32(TheNodeBrothers[Position - 1].Value);
+
+                bll.SwitchOrder(OriginCateID, SwitchCateID);
+                BindCategoryList();
             }
-        }
-        private void BindList2Data(int ParentID)
-        {
-            ListBox2.DataSource = bll.GetList("parentid=" + ParentID + " order by showorder");
-            ListBox2.DataTextField = "catename";
-            ListBox2.DataValueField = "cateid";
-            ListBox2.DataBind();
-            if (ListBox2.Items.Count > 0)
+            else
             {
-                ListBox2.Items[0].Selected = true;
-                ListBox2.Visible = true;
+                MessageBox.Show(this, "请选择分类");
             }
+        }
 
-            if (Convert.ToInt32(ListBox2.SelectedValue) != 0)
+        protected void Button_MoveDown_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
             {
-                BindList3Data(Convert.ToInt32(ListBox2.SelectedValue));
-            }
+                TreeNode TheNode = TreeView1.SelectedNode;
+                TreeNodeCollection TheNodeBrothers = TheNode.Parent == null ? TreeView1.Nodes : TheNode.Parent.ChildNodes;
 
-        }
-        private void BindList3Data(int ParentID)
-        {
-            ListBox3.DataSource = bll.GetList("parentid=" + ParentID + " order by showorder");
-            ListBox3.DataTextField = "catename";
-            ListBox3.DataValueField = "cateid";
-            ListBox3.DataBind();
-            if (ListBox3.Items.Count > 0)
+                int Position = TheNodeBrothers.IndexOf(TheNode);
+
+                int OriginCateID = Convert.ToInt32(TheNode.Value);
+                int SwitchCateID = (Position == TheNodeBrothers.Count - 1) ? 0 : Convert.ToInt32(TheNodeBrothers[Position + 1].Value);
+
+                bll.SwitchOrder(OriginCateID, SwitchCateID);
+                BindCategoryList();
+            }
+            else
             {
-                ListBox3.Items[0].Selected = true;
-                ListBox3.Visible = true;
+                MessageBox.Show(this,"请选择分类");
             }
-
         }
 
-        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void Button_New_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(ListBox1.SelectedValue) != 0)
+            if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
             {
-                BindList2Data(Convert.ToInt32(ListBox1.SelectedValue)); 
+                string js = "<script type=\"text/javascript\">document.getElementById('IFrame_Edit').src='Add.aspx?parentid=" + TreeView1.SelectedValue + "';</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), null, js); 
             }
-        }
-
-        protected void ListBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(ListBox2.SelectedValue) != 0)
+            else
             {
-                BindList3Data(Convert.ToInt32(ListBox2.SelectedValue));
+                string js = "<script type=\"text/javascript\">document.getElementById('IFrame_Edit').src='Add.aspx?parentid=0';</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), null, js); 
             }
         }
 
-        protected void Button1MoveUp_Click(object sender, EventArgs e)
+        protected void Button_Edit_Click(object sender, EventArgs e)
         {
-            int OriginCateID = Convert.ToInt32(ListBox1.SelectedItem.Value);
-            int SwitchCateID = Convert.ToInt32(ListBox1.Items[ListBox1.Items.IndexOf(ListBox1.SelectedItem) - 1].Value);
-            bll.SwitchOrder(OriginCateID,SwitchCateID);
-            BindList1Data();
+            if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
+            {
+                string js = "<script type=\"text/javascript\">document.getElementById('IFrame_Edit').src='Edit.aspx?CategoryID=" + TreeView1.SelectedValue + "';</script>";
+                ClientScript.RegisterStartupScript(this.GetType(),null,js);
+            }
+            else
+            {
+                MessageBox.Show(this, "请选择分类");
+            }
         }
 
-        protected void Button1MoveDown_Click(object sender, EventArgs e)
+        protected void Button_Delete_Click(object sender, EventArgs e)
         {
-            int OriginCateID = Convert.ToInt32(ListBox1.SelectedItem.Value);
-            int SwitchCateID = Convert.ToInt32(ListBox1.Items[ListBox1.Items.IndexOf(ListBox1.SelectedItem) + 1].Value);
-            bll.SwitchOrder(OriginCateID, SwitchCateID);
-            BindList1Data();
-        }
-
-        protected void Button2MoveUp_Click(object sender, EventArgs e)
-        {
-            int OriginCateID = Convert.ToInt32(ListBox2.SelectedItem.Value);
-            int SwitchCateID = Convert.ToInt32(ListBox2.Items[ListBox2.Items.IndexOf(ListBox2.SelectedItem) - 1].Value);
-            bll.SwitchOrder(OriginCateID, SwitchCateID);
-            BindList2Data(Convert.ToInt32(ListBox1.SelectedValue));
-        }
-
-        protected void Button2MoveDown_Click(object sender, EventArgs e)
-        {
-            int OriginCateID = Convert.ToInt32(ListBox2.SelectedItem.Value);
-            int SwitchCateID = Convert.ToInt32(ListBox2.Items[ListBox2.Items.IndexOf(ListBox2.SelectedItem) + 1].Value);
-            bll.SwitchOrder(OriginCateID, SwitchCateID);
-            BindList2Data(Convert.ToInt32(ListBox1.SelectedValue));
-        }
-
-        protected void Button3MoveUp_Click(object sender, EventArgs e)
-        {
-            int OriginCateID = Convert.ToInt32(ListBox3.SelectedItem.Value);
-            int SwitchCateID = Convert.ToInt32(ListBox3.Items[ListBox3.Items.IndexOf(ListBox3.SelectedItem) - 1].Value);
-            bll.SwitchOrder(OriginCateID, SwitchCateID);
-            BindList3Data(Convert.ToInt32(ListBox2.SelectedValue));
-        }
-
-        protected void Button3MoveDown_Click(object sender, EventArgs e)
-        {
-            int OriginCateID = Convert.ToInt32(ListBox3.SelectedItem.Value);
-            int SwitchCateID = Convert.ToInt32(ListBox3.Items[ListBox3.Items.IndexOf(ListBox3.SelectedItem) + 1].Value);
-            bll.SwitchOrder(OriginCateID, SwitchCateID);
-            BindList3Data(Convert.ToInt32(ListBox2.SelectedValue));
+            if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
+            {
+                //判断该分类下是否有商品，如果有，不允许删除
+                bll.Delete(Convert.ToInt32(TreeView1.SelectedValue));
+                //如果有子类，删除子类
+            }
+            else
+            {
+                MessageBox.Show(this, "请选择分类");
+            } 
         }
     }
 }

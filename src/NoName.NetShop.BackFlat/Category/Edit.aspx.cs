@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.Product.BLL;
 using NoName.NetShop.Product.Model;
+using System.Data;
 
 namespace NoName.NetShop.BackFlat.Category
 {
@@ -36,6 +37,25 @@ namespace NoName.NetShop.BackFlat.Category
             txtPriceRange.Text = model.PriceRange;
             chkIsHide.Checked = model.IsHide;
             //CategorySelect1.InitialCategory = model.CateId;
+
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("code");
+            dt.Columns.Add("status");
+
+            foreach (int code in Enum.GetValues(typeof(CategoryStatus)))
+            {
+                DataRow row = dt.NewRow();
+                row["code"] = code;
+                row["status"] = Enum.GetName(typeof(CategoryStatus), code);
+                dt.Rows.Add(row);
+            }
+
+            drpStatus.DataSource = dt;
+            drpStatus.DataTextField = "status";
+            drpStatus.DataValueField = "code";
+            drpStatus.DataBind();
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
