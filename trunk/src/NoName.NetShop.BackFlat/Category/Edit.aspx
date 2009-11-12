@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <link href="../../css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,13 +32,7 @@
 	        <tr>
 	            <td height="25" width="30%" align="right">是否隐藏<span class="red">*</span>：</td>
 	            <td height="25" width="*" align="left">
-		            <asp:CheckBox ID="chkIsHide" Text="IsHide" runat="server" Checked="False" />
-	            </td>
-	        </tr>
-	        <tr>
-	            <td height="25" width="30%" align="right">从属父类<span class="red">*</span>：</td>
-	            <td height="25" width="*" align="left">	            
-	                <uc1:CategorySelect ID="CategorySelect1" runat="server" />	            
+		            <asp:CheckBox ID="chkIsHide" Text="" runat="server" Checked="False" />
 	            </td>
 	        </tr>
 	        <tr>

@@ -6,13 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
     <title></title>
-
-    <script src="/js/jquery.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        var categoryInfo = [{ "name": "category1", "title": "«Î—°‘Ò", "required": "true" },
-    { "name": "category2", "title": "«Î—°‘Ò", "required": "true" },
-    { "name": "category3", "title": "«Î—°‘Ò", "required": "false"}];
-    </script>
+    <link href="../../css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -39,12 +33,6 @@
 	        <td height="25" width="30%" align="right"> «∑Ò“˛≤ÿ<span class="red">*</span>£∫</td>
 	        <td height="25" width="*" align="left">
 		        <asp:CheckBox ID="chkIsHide" Text="IsHide" runat="server" Checked="False" />
-	        </td>
-	    </tr>
-	    <tr>
-	        <td height="25" width="30%" align="right">¥” Ù∏∏¿‡<span class="red">*</span>£∫</td>
-	        <td height="25" width="*" align="left">	            
-	            <uc1:CategorySelect ID="CategorySelect1" runat="server" />	            
 	        </td>
 	    </tr>
 	    <tr>

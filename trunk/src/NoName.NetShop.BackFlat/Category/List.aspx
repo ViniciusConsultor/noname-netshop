@@ -5,24 +5,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <link href="../../css/main.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .left{width:200px;}
+        .iframe{width:700px;margin-left:10px;}
+        .iframe iframe{width:700px;}
+        .control a{display:block;padding:2px 5px;height:18px;line-height:18px;border:1px solid #eee;float:left;margin:2px;}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="float:left;">
-        <asp:ListBox ID="ListBox1" AutoPostBack="true" runat="server" Height="240px" Width="260px" onselectedindexchanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
-        <asp:Button runat="server" ID="Button1MoveUp" Text="上移" onclick="Button1MoveUp_Click" />
-        <asp:Button runat="server" ID="Button1MoveDown" Text="下移" onclick="Button1MoveDown_Click" />
-    </div>
-    <div style="float:left;">
-        <asp:ListBox ID="ListBox2" AutoPostBack="true" Visible="false" runat="server"  Height="240px" Width="260px" onselectedindexchanged="ListBox2_SelectedIndexChanged"></asp:ListBox>
-        <asp:Button runat="server" ID="Button2MoveUp" Text="上移" onclick="Button2MoveUp_Click" />
-        <asp:Button runat="server" ID="Button2MoveDown" Text="下移" onclick="Button2MoveDown_Click" />
-    </div>
-    <div style="float:left;">
-        <asp:ListBox ID="ListBox3" Visible="false" runat="server" Height="240px" Width="260px"></asp:ListBox>
-        <asp:Button runat="server" ID="Button3MoveUp" Text="上移" onclick="Button3MoveUp_Click" />
-        <asp:Button runat="server" ID="Button3MoveDown" Text="下移" onclick="Button3MoveDown_Click" />
-    </div>
+        <div>
+            <div class="left">
+                <div class="left control">
+                    <asp:LinkButton runat="server" OnClick="Button_MoveUp_Click" ID="Button_MoveUp" Text="上移" />
+                    <asp:LinkButton runat="server" OnClick="Button_MoveDown_Click" ID="Button_MoveDown" Text="下移" />
+                    <asp:LinkButton runat="server" OnClick="Button_New_Click" ID="Button_New" Text="新建子类" />
+                    <asp:LinkButton runat="server" OnClick="Button_Edit_Click" ID="Button_Edit" Text="编辑" />
+                    <asp:LinkButton runat="server" OnClick="Button_Delete_Click" ID="Button_Delete" Text="删除" />
+                </div>
+                <asp:TreeView ID="TreeView1" runat="server" ShowLines="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" SelectedNodeStyle-Font-Underline="True">
+                    <SelectedNodeStyle Font-Underline="True" Font-Bold="True" ForeColor="#990033"/>
+                    <NodeStyle Font-Underline="True" ForeColor="#003399" />
+                </asp:TreeView>        
+            </div>
+            <div class="left iframe">
+                <iframe id="IFrame_Edit" frameborder="0" src="about:blank" scrolling="no"></iframe>
+            </div>    
+        </div>
     </form>
 </body>
 </html>

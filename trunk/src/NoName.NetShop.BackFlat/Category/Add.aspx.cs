@@ -19,11 +19,17 @@ namespace NoName.NetShop.BackFlat.Category
     public partial class Add : System.Web.UI.Page
     {
         private CategoryModelBll bll = new CategoryModelBll();
+        public int ParentID
+        {
+            get { if (ViewState["ParentID"] != null) return Convert.ToInt32(ViewState["ParentID"]); else return 0; }
+            set { ViewState["ParentID"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                ParentID = Convert.ToInt32(Request.QueryString["parentid"]);
                 BindData();
             }
         }
@@ -85,13 +91,12 @@ namespace NoName.NetShop.BackFlat.Category
             model.PriceRange = PriceRange;
             model.IsHide = IsHide;
             model.ShowOrder = model.CateId;
-            int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value);
 
-            if (SelectedParentCategoryID != 0)
+            if (ParentID != 0)
             {
-                CategoryModel ParentCategory = bll.GetModel(SelectedParentCategoryID);
+                CategoryModel ParentCategory = bll.GetModel(ParentID);
 
-                model.ParentID = SelectedParentCategoryID;
+                model.ParentID = ParentID;
                 model.CateLevel = ParentCategory.CateLevel + 1;
             }
             else
