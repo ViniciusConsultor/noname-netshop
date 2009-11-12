@@ -11,12 +11,13 @@
         .left{width:200px;}
         .iframe{width:700px;margin-left:10px;}
         .iframe iframe{width:700px;}
+        
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="left"
+            <div class="left">
                 <asp:TreeView ID="TreeView1" runat="server" ShowLines="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" SelectedNodeStyle-Font-Underline="True">
                     <SelectedNodeStyle Font-Underline="True" Font-Bold="True" ForeColor="#990033"/>
                     <NodeStyle Font-Underline="True" ForeColor="#003399" />
