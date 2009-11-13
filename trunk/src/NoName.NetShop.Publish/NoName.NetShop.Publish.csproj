@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{352B33B7-FF04-4D6D-8C39-7CD9BA973671}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NoName.NetShop.Publish</RootNamespace>
+    <AssemblyName>NoName.NetShop.Publish</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\NoName.NetShop.BackFlat\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\NoName.NetShop.BackFlat\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\NoName.NetShop.BackFlat\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\NoName.NetShop.BackFlat\bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\ListConfigurationSection.cs" />
+    <Compile Include="Configuration\NewsConfigurationElement.cs" />
+    <Compile Include="Configuration\NewsConfigurationElementCollection.cs" />
+    <Compile Include="Configuration\NewsConfigurationSection.cs" />
+    <Compile Include="Configuration\ProductConfigurationSection.cs" />
+    <Compile Include="List\DataAccess\ListDataAccess.cs" />
+    <Compile Include="List\DataAccess\ListNodeCreator.cs" />
+    <Compile Include="List\ListPublishHandler.cs" />
+    <Compile Include="List\PageCreator\ListPageCreator.cs" />
+    <Compile Include="News\DataAccess\NewsDataAccess.cs" />
+    <Compile Include="News\DataAccess\NewsNodeCreator.cs" />
+    <Compile Include="News\NewsPublishHandler.cs" />
+    <Compile Include="News\PageCreators\PageCreator.cs" />
+    <Compile Include="News\PageCreators\PageCreatorFactory.cs" />
+    <Compile Include="News\PageCreators\PageCreatorNewsDetail.cs" />
+    <Compile Include="News\PageCreators\PageCreatorNewsList.cs" />
+    <Compile Include="Product\DataAccess\ProductDataAccess.cs" />
+    <Compile Include="Product\DataAccess\ProductNodeCreator.cs" />
+    <Compile Include="Product\PageCreator\ProductPageCreator.cs" />
+    <Compile Include="Product\ProductPublishHandler.cs" />
+    <Compile Include="PublishException.cs" />
+    <Compile Include="PublishHanlder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoName.NetShop.Comm\NoName.NetShop.Common.csproj">
+      <Project>{29A4BE47-9ADF-443F-913D-6CCEAD2DD752}</Project>
+      <Name>NoName.NetShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoName.Utility\NoName.Utility.csproj">
+      <Project>{E0634851-F221-461E-9C14-F71011119CC6}</Project>
+      <Name>NoName.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
