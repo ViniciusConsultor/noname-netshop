@@ -67,16 +67,20 @@ namespace NoName.NetShop.News.DAL
 			db.AddInParameter(dbCommand, "Title", DbType.AnsiString, model.Title);
 			db.AddInParameter(dbCommand, "SubTitle", DbType.AnsiString, model.SubTitle);
 			db.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-			db.AddInParameter(dbCommand, "Content", DbType.String, model.Content);
+			db.AddInParameter(dbCommand, "newsContent", DbType.String, model.Content);
 			db.AddInParameter(dbCommand, "SmallImageUrl", DbType.AnsiString, model.SmallImageUrl);
 			db.AddInParameter(dbCommand, "Author", DbType.AnsiString, model.Author);
-			db.AddInParameter(dbCommand, "From", DbType.AnsiString, model.From);
+			db.AddInParameter(dbCommand, "newsfrom", DbType.AnsiString, model.From);
 			db.AddInParameter(dbCommand, "VideoUrl", DbType.AnsiString, model.VideoUrl);
 			db.AddInParameter(dbCommand, "ImageUrl", DbType.AnsiString, model.ImageUrl);
 			db.AddInParameter(dbCommand, "ProductId", DbType.AnsiString, model.ProductId);
 			db.AddInParameter(dbCommand, "InsertTime", DbType.DateTime, model.InsertTime);
 			db.AddInParameter(dbCommand, "ModifyTime", DbType.DateTime, model.ModifyTime);
-			db.AddInParameter(dbCommand, "Tags", DbType.AnsiString, model.Tags);
+            db.AddInParameter(dbCommand, "Tags", DbType.AnsiString, model.Tags);
+            db.AddInParameter(dbCommand, "cateid", DbType.Int32, model.CategoryID);
+
+
+
 			db.ExecuteNonQuery(dbCommand);
 		}
 
@@ -93,16 +97,17 @@ namespace NoName.NetShop.News.DAL
 			db.AddInParameter(dbCommand, "Title", DbType.AnsiString, model.Title);
 			db.AddInParameter(dbCommand, "SubTitle", DbType.AnsiString, model.SubTitle);
 			db.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-			db.AddInParameter(dbCommand, "Content", DbType.String, model.Content);
+			db.AddInParameter(dbCommand, "newsContent", DbType.String, model.Content);
 			db.AddInParameter(dbCommand, "SmallImageUrl", DbType.AnsiString, model.SmallImageUrl);
 			db.AddInParameter(dbCommand, "Author", DbType.AnsiString, model.Author);
-			db.AddInParameter(dbCommand, "From", DbType.AnsiString, model.From);
+			db.AddInParameter(dbCommand, "newsFrom", DbType.AnsiString, model.From);
 			db.AddInParameter(dbCommand, "VideoUrl", DbType.AnsiString, model.VideoUrl);
 			db.AddInParameter(dbCommand, "ImageUrl", DbType.AnsiString, model.ImageUrl);
 			db.AddInParameter(dbCommand, "ProductId", DbType.AnsiString, model.ProductId);
 			db.AddInParameter(dbCommand, "InsertTime", DbType.DateTime, model.InsertTime);
 			db.AddInParameter(dbCommand, "ModifyTime", DbType.DateTime, model.ModifyTime);
-			db.AddInParameter(dbCommand, "Tags", DbType.AnsiString, model.Tags);
+            db.AddInParameter(dbCommand, "Tags", DbType.AnsiString, model.Tags);
+            db.AddInParameter(dbCommand, "cateid", DbType.Int32, model.CategoryID);
 			db.ExecuteNonQuery(dbCommand);
 		}
 
@@ -144,7 +149,7 @@ namespace NoName.NetShop.News.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select NewsId,NewsType,Status,Title,SubTitle,Brief,Content,SmallImageUrl,Author,From,VideoUrl,ImageUrl,ProductId,InsertTime,ModifyTime,Tags ");
+			strSql.Append("select NewsId,NewsType,Status,Title,SubTitle,Brief,Content,SmallImageUrl,Author,From,VideoUrl,ImageUrl,ProductId,InsertTime,ModifyTime,Tags,cateid ");
 			strSql.Append(" FROM neNews ");
 			if(strWhere.Trim()!="")
 			{
@@ -177,7 +182,7 @@ namespace NoName.NetShop.News.DAL
 		public List<NewsModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select NewsId,NewsType,Status,Title,SubTitle,Brief,Content,SmallImageUrl,Author,From,VideoUrl,ImageUrl,ProductId,InsertTime,ModifyTime,Tags ");
+			strSql.Append("select NewsId,NewsType,Status,Title,SubTitle,Brief,Content,SmallImageUrl,Author,From,VideoUrl,ImageUrl,ProductId,InsertTime,ModifyTime,Tags,cateid ");
 			strSql.Append(" FROM neNews ");
 			if(strWhere.Trim()!="")
 			{
@@ -206,25 +211,24 @@ namespace NoName.NetShop.News.DAL
 			ojb = dataReader["NewsId"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.NewsId=(int)ojb;
+				model.NewsId=Convert.ToInt32(ojb);
 			}
 			ojb = dataReader["NewsType"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.NewsType=(int)ojb;
+				model.NewsType=Convert.ToInt32(ojb);
 			}
 			ojb = dataReader["Status"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.Status=(int)ojb;
+                model.Status = Convert.ToInt32(ojb);
 			}
 			model.Title=dataReader["Title"].ToString();
 			model.SubTitle=dataReader["SubTitle"].ToString();
 			model.Brief=dataReader["Brief"].ToString();
-			model.Content=dataReader["Content"].ToString();
 			model.SmallImageUrl=dataReader["SmallImageUrl"].ToString();
 			model.Author=dataReader["Author"].ToString();
-			model.From=dataReader["From"].ToString();
+			model.From=dataReader["newsFrom"].ToString();
 			model.VideoUrl=dataReader["VideoUrl"].ToString();
 			model.ImageUrl=dataReader["ImageUrl"].ToString();
 			model.ProductId=dataReader["ProductId"].ToString();
@@ -239,6 +243,8 @@ namespace NoName.NetShop.News.DAL
 				model.ModifyTime=(DateTime)ojb;
 			}
 			model.Tags=dataReader["Tags"].ToString();
+            model.CategoryID = Convert.ToInt32(dataReader["cateid"]);
+            model.Content = Convert.ToString(dataReader["newscontent"]);
 			return model;
 		}
 
