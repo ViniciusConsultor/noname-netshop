@@ -13,7 +13,7 @@ using System.Xml.Linq;
 using NoName.Utility;
 using NoName.NetShop.News.BLL;
 
-namespace NoName.NetShop.BackFlat.News.News
+namespace NoName.NetShop.BackFlat.News.Detail
 {
     public partial class List : System.Web.UI.Page
     {
