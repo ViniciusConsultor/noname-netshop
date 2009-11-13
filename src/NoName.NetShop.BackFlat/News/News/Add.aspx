@@ -54,23 +54,23 @@
         <table>
             <tr>
                 <td>标题：<span class="red">*</span></td>
-                <td><asp:TextBox runat="server" ID="TextBox_Title" /><span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_Title" Width="400" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>副标题：</td>
-                <td><asp:TextBox runat="server" ID="TextBox_SubTitle" /><span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_SubTitle" Width="400" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>作者：<span class="red">*</span></td>
-                <td><asp:TextBox runat="server" ID="TextBox_Author" /><span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_Author" Width="400" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>来源：</td>
-                <td><asp:TextBox runat="server" ID="TextBox_NewsFrom" /><span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_NewsFrom" Width="400" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>关联产品ID：</td>
-                <td><asp:TextBox runat="server" ID="TextBox_ProductID" /><span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_ProductID" Width="400" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>分类：</td>
@@ -78,16 +78,16 @@
             </tr>
             <tr>
                 <td>标签：<span class="red">*</span></td>
-                <td><asp:TextBox runat="server" ID="TextBox_Tags" /><span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_Tags" Width="400" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>摘要：</td>
-                <td><asp:TextBox runat="server" ID="TextBox_Brief" TextMode="MultiLine" /><span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_Brief" Width="400" Height="160" TextMode="MultiLine" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>内容：<span class="red">*</span></td>
                 <td>
-                    <FCKeditorV2:FCKeditor ID="TextBox_Content" runat="server" />
+                    <FCKeditorV2:FCKeditor ID="TextBox_Content" runat="server" width="500" height="400" />
                     <span type="inform" class="red"></span>
                 </td>
             </tr>
