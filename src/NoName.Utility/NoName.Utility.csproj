@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Validator.cs" />
     <Compile Include="XmlControl.cs" />
+    <Compile Include="XmlUtility.cs" />
     <Compile Include="XsltUtil.cs" />
     <Compile Include="ZIP.cs" />
   </ItemGroup>
