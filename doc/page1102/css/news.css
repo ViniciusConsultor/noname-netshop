@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/*News Home Begin*/
+.newsHome_mainbody{ clear:both}
+.newsHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.newsHome_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.newsHome_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.newsHome_mainbody .headline{ float:left; width:500px;}
+.newsHome_mainbody .headline img.thumbnail{ width:200px; height:150px; padding:1px; border:1px solid #CCC; float:left; margin-right:10px;}
+.newsHome_mainbody .headline ul.articleList_1{ float:left}
+.newsHome_mainbody .highEnd{ width:250px; float:left}
+.newsHome_mainbody .banner img{ width:754px; height:80px;}
+
+.newsHome_mainbody .normalBlock{ width:375px; float:left}
+
+/*News End End*/
+
+
+/*Vews Child Class Common Begin*/
+.newsChildClassCommon_mainbody{ clear:both}
+.newsChildClassCommon_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.newsChildClassCommon_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.newsChildClassCommon_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Vews Child Class Common End*/
+
+
+
+ul.newsNavigator{ margin:0; padding:0}
+ul.newsNavigator li{ list-style-type:none; float:left; width:100%}
+ul.newsNavigator li a{ height:25px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
+ul.newsNavigator li a:hover{ background-position:0 -1898px;}
+ul.newsNavigator li a span{ height:25px; display:block; clear:both; background:url(../images/newsNavigator.gif) no-repeat}
+
+ul.newsNavigator li a.m1 span{ background-position:15px 7px;}
+ul.newsNavigator li a.m2 span{ background-position:15px -18px;}
+ul.newsNavigator li a.m3 span{ background-position:15px -43px;}
+ul.newsNavigator li a.m4 span{ background-position:15px -68px;}
+ul.newsNavigator li a.m5 span{ background-position:15px -93px;}
+ul.newsNavigator li a.m6 span{ background-position:15px -118px;}
+ul.newsNavigator li a.m7 span{ background-position:15px -143px;}
+ul.newsNavigator li a.m8 span{ background-position:15px -168px;}
+ul.newsNavigator li a.m9 span{ background-position:15px -193px;}
+
+
+ul.videoNews{ padding:0; margin:0;}
+ul.videoNews li{ list-style-type:none; float:left; width:124px; padding:20px 29px;}
+ul.videoNews li a{ display:block; position:relative}
+ul.videoNews li a img{ width:120px; height:90px; padding:1px; border:1px solid #CCC; display:block}
+ul.videoNews li a span{ padding-top:5px; text-align:center; height:14px; display:block; clear:both; overflow:hidden}
+ul.videoNews li a .playButton{ width:58px; height:31px; background:url(../images/playButton.gif) no-repeat; filter:alpha(opacity=50); opacity:0.5; position:absolute; left:34px; top:33px;}
+
+ul.newsList{ padding:0 10px; margin:0; zoom:1}
+ul.newsList:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+ul.newsList li{ list-style-type:none; width:100%; float:left; padding:10px 0; border-bottom:1px dotted #CCC}
+ul.newsList li img{ width:120px; height:90px; float:left; _margin-right:-3px; width:120px; height:90px; display:block; padding:1px; border:1px solid #CCC}
+ul.newsList li .text{ float:none;}
+ul.newsList li.widthThumb .text{ float:none; margin-left:140px; _margin-left:137px;}
+ul.newsList li.widthThumb .text .textContainer{ overflow:hidden; _height:0; _overflow:visible}
+ul.newsList li .text .textContainer h1{ margin:0; padding:5px 0; font-size:12px; font-weight:bold;}
+ul.newsList li .text .textContainer h1 a{ color:#069}
+ul.newsList li .text .textContainer h1 a:hover{ color:#F90}
+ul.newsList li .text .textContainer p{ line-height:200%; margin:0; padding:0; text-indent:24px;}
+ul.newsList li .text .textContainer .more{ float:right; padding:5px;}
+ul.newsList li .text .textContainer .more a{ color:#069; font-family:"宋体"}
+ul.newsList li .text .textContainer .more a:hover{ color:#F90;"}
