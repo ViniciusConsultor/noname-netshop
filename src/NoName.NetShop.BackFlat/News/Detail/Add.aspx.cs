@@ -15,7 +15,7 @@ using NoName.NetShop.News.Model;
 using NoName.Utility;
 using NoName.NetShop.Common;
 
-namespace NoName.NetShop.BackFlat.News.News
+namespace NoName.NetShop.BackFlat.News.Detail
 {
     public partial class Add : System.Web.UI.Page
     {

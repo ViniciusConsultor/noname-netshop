@@ -14,7 +14,7 @@ using NoName.NetShop.News.BLL;
 using NoName.NetShop.News.Model;
 using NoName.Utility;
 
-namespace NoName.NetShop.BackFlat.News.News
+namespace NoName.NetShop.BackFlat.News.Detail
 {
     public partial class Edit : System.Web.UI.Page
     {
