@@ -3,6 +3,7 @@ using System.Data;
 using System.Collections.Generic;
 using NoName.NetShop.News.DAL;
 using NoName.NetShop.News.Model;
+using NoName.NetShop.Common;
 namespace NoName.NetShop.News.BLL
 {
 	/// <summary>
@@ -139,6 +140,29 @@ namespace NoName.NetShop.News.BLL
         {
             return dal.GetList(PageSize, PageIndex, strWhere);
         }
+
+
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        {
+            SearchPageInfo info = new SearchPageInfo();
+
+            info.FieldNames = "*";
+            info.OrderType = "";
+            info.PageIndex = PageIndex;
+            info.PageSize = PageSize;
+            info.PriKeyName = "newsid";
+            info.StrJoin = "";
+            info.StrWhere = " 1=1 " + Condition;
+            info.TableName = "nenews";
+            info.TotalFieldStr = "";
+
+            DataTable dt = CommDataHelper.GetDataFromSingleTableByPage(info).Tables[0];
+
+            RecordCount = info.TotalItem;
+
+            return dt;
+        }
+
 
 		#endregion  成员方法
 	}

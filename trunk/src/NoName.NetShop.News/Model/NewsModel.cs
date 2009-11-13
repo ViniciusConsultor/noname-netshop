@@ -25,6 +25,7 @@ namespace NoName.NetShop.News.Model
 		private DateTime _inserttime;
 		private DateTime _modifytime;
 		private string _tags;
+        private int _categoryid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -153,6 +154,13 @@ namespace NoName.NetShop.News.Model
 			set{ _tags=value;}
 			get{return _tags;}
 		}
+
+
+        public int CategoryID
+        {
+            get { return _categoryid; }
+            set { _categoryid = value; }
+        }
 		#endregion Model
 
 	}
