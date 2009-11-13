@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>填写信息</title>
+<link type="text/css" rel="stylesheet" href="css/common.css" />
+<link type="text/css" rel="stylesheet" href="css/shopping.css" />
+<script type="text/javascript" src="JavaScript/DingdingJsLib.js"></script>
+<script type="text/javascript" src="JavaScript/addressData.js"></script>
+<link href="Rainy/Rainy.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="Rainy/jquery.js"></script>
+<script type="text/javascript" src="Rainy/mini-Rainy.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+    <!--Header Begin-->
+    <div class="header">
+        <div class="top clearfix">
+            <div class="logo"></div>
+            <ul class="toplink bullet_1">
+                <li class="slogan">您好，欢迎您来到鼎鼎商城！</li>
+                <li><a href="#">请登录</a></li>
+                <li><a href="#">免费注册</a></li>
+                <li><a href="#">帮助中心</a></li>
+            </ul>
+            <ul class="navigator">
+                <li><a class="home" href="#"></a></li>
+                <li><a class="shopping" href="#"></a></li>
+                <li><a class="solution" href="#"></a></li>
+                <li><a class="brands" href="#"></a></li>
+                <li><a class="information" href="#"></a></li>
+                <li><a class="magic" href="#"></a></li>
+            </ul>
+        </div>
+        <div class="panel">
+            <div class="edge left"></div>
+            <div class="edge right"></div>
+            <div class="middle clearfix">
+                <ul class="searchbar clearfix">
+                    <li class="label">分类搜索：</li>
+                    <li class="selectBox">
+                        <div class="border">
+                        <script type="text/javascript">
+                        var mybox=new RainySelectBox();
+                        mybox.boxName="categoriesBox";
+                        mybox.fire="click";
+                        mybox.name="categories";
+                        mybox.id="categories";
+                        mybox.width=120;
+                        mybox.listMaxHeight=300;
+                        mybox.selectedClass="currentOption";
+                        mybox.listClass="list";
+                        mybox.addOption("所有分类","0","Selected");
+                        mybox.addOption("影音器材","1");
+                        mybox.addOption("项目三","3");
+                        mybox.addOption("项目一","1");
+                        mybox.addOption("项目二","2");
+                        mybox.addOption("项目三","3");
+                        mybox.addOption("Rainy","1");
+                        mybox.addOption("项目一","1");
+                        mybox.addOption("项目二","2");
+                        mybox.addOption("项目三","3");
+                        mybox.addOption("项目一","1");
+                        mybox.addOption("项目二","2");
+                        mybox.addOption("项目三","3");
+                        mybox.show();
+                        </script>
+                        </div>
+                    </li>
+                    <li class="textField"><div class="border"><input type="text" name="keyword" /></div></li>
+                    <li class="submit"><a href="javascript:void(0)"></a></li>
+                </ul>
+                <div class="hotKeyWords">
+                    <span class="label">热门搜索：</span>
+                    <span class="words">
+                        <a href="#">音响</a>
+                        <a href="#">视频</a>
+                        <a href="#">投影</a>
+                        <a href="#">apple</a>
+                        <a href="#">IBM</a>
+                        <a href="#">视频</a>
+                        <a href="#">投影</a>
+                        <a href="#">音响</a>
+                        <a href="#">视频</a>
+                        <a href="#">投影</a>
+                        <a href="#">投影</a>
+                    </span>
+                </div>
+                <ul class="userLink">
+                    <li class="left"></li>
+                    <li><a href="#">我的账户</a></li>
+                    <li><a href="#">购物车</a></li>
+                    <li><a href="#">团购</a></li>
+                    <li><a href="#">站内信</a></li>
+                    <li><a href="#">礼品兑换</a></li>
+                    <li class="right"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--Header End-->
+    
+    <!--Position Begin-->
+    <div class="currentPosition">
+    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">填写信息</a>
+    </div>
+    <!--Position End-->
+    
+    <!--MainBody Begin-->
+    <div class="shoppingFillForm_mainbody clearfix newline">
+    	<div class="box1">
+            <ul class="title">
+                <li class="left"></li>
+                <li><span>填写信息</span></li>
+                <li class="right"></li>
+            </ul>
+            <div class="content centerText">
+            	<div class="shoppingNavigation3"></div>
+				<div class="box6">
+                    <div class="title">请填写收货人信息</div>
+                    <div class="content">
+                    	<ul class="form">
+                        	<li>
+                            	<span class="field">姓名</span>
+                                <input type="text" class="textField1" />
+                                <span class="tip">请填写您的真实姓名</span>
+                            </li>
+                            <li>
+                            	<span class="field">电话</span>
+                                <input type="text" class="textField1" />
+                                <span class="tip">格式：区号 - 电话号码 - 分机号</span>
+                            </li>
+                            <li>
+                            	<span class="field">手机</span>
+                                <input type="text" class="textField1" />
+                            </li>
+                            <li>
+                            	<span class="field">邮政编码</span>
+                                <input type="text" class="textField1" />
+                            </li>
+                            <li>
+                            	<span class="field">所在地区</span>
+                                <div class="component">
+									<script type="text/javascript">
+                                        var provinceBox=new RainySelectBox();
+                                        provinceBox.boxName="province";
+                                        provinceBox.fire="click";
+                                        provinceBox.name="province";
+                                        provinceBox.id="province";
+                                        provinceBox.width=109;
+                                        provinceBox.listMaxHeight=300;
+                                        provinceBox.selectedClass="commonSelectBox_currentOption";
+                                        provinceBox.listClass="commonSelectBox_list";
+                                        provinceBox.addOption("数据加载中","0");
+										provinceBox.listener="showCityData";
+                                        provinceBox.show();
+                                    </script>
+                                </div>
+                                <div class="component">
+									<script type="text/javascript">
+                                        var cityBox=new RainySelectBox();
+                                        cityBox.boxName="city";
+                                        cityBox.fire="click";
+                                        cityBox.name="city";
+                                        cityBox.id="city";
+                                        cityBox.width=109;
+                                        cityBox.listMaxHeight=300;
+                                        cityBox.selectedClass="commonSelectBox_currentOption";
+                                        cityBox.listClass="commonSelectBox_list";
+                                        cityBox.addOption("数据加载中","0","");
+                                        cityBox.show();
+										loadInitData();
+                                    </script>
+                                </div>
+                                <span class="tip">请选择所在地区</span>
+                            </li>
+                            <li>
+                            	<span class="field">详细地址</span>
+                                <input type="text" class="textField2" />
+                                <span class="tip">送货详细地址</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box6 newline">
+                    <div class="title">选择支付方式</div>
+                    <div class="content">
+                    	<ul class="form_h">
+                        	<li>
+                                <input type="radio" class="radio" name="payment" /><label>在线支付</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="radio" name="payment" /><label>银行转账</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="radio" name="payment" /><label>邮局汇款</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="radio" name="payment" /><label>货到付款</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box6 newline">
+                    <div class="title">选择配送方式</div>
+                    <div class="content">
+                    	<ul class="form_h">
+                        	<li>
+                                <input type="radio" class="radio" name="shipping" /><label>EMS</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="radio" name="shipping" /><label>快递</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="radio" name="shipping" /><label>邮寄</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="radio" name="shipping" /><label>上门安装</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box6 newline">
+                    <div class="title">发票</div>
+                    <div class="content">
+                    	<ul class="form_h">
+                        	<li>
+                                <input name="invoice"
+                                 type="radio"
+                                 class="radio"
+                                 checked="checked"
+                                 onclick="document.getElementById('invoiceTitle').disabled='disabled';document.getElementById('invoiceTitle').value='无'" 
+                                />
+                                <label>不需要</label>
+                            </li>
+                            <li class="autoWidth">
+                                <input name="invoice"
+                                 type="radio"
+                                 class="radio"
+                                 onclick="document.getElementById('invoiceTitle').disabled='';document.getElementById('invoiceTitle').value=document.getElementById('invoiceTitle').value=='无'?'':document.getElementById('invoiceTitle').value"
+                                />
+                                <label>需要</label>
+                                <span class="field">发票抬头</span><input id="invoiceTitle" disabled="disabled" class="textField4" type="text" value="无" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box6 newline">
+                    <div class="title">特殊说明</div>
+                    <div class="content">
+                    	<ul class="form">
+                        	<li>
+                            	<div class="message">
+                                    <span class="field">输入内容</span>
+                                    <textarea class="textarea3"></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="centerText">
+                    <div class="submitButtons">
+                        <a class="button_blue3" href="#">
+                            <span class="left"></span>
+                            <span class="text">提　交</span>
+                            <span class="right"></span>
+                        </a>
+                        <a class="button_blue3" href="#">
+                            <span class="left"></span>
+                            <span class="text">返　回</span>
+                            <span class="right"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <ul class="bottom">
+               <li class="left"></li>
+               <li class="right"></li>
+            </ul>
+        </div>
+    </div>
+    <!--MainBody End-->
+    
+    <!--Footer Begin-->
+    <div class="box5 newline">
+                    <ul class="top">
+                        <li class="left"></li>
+                        <li class="right"></li>
+                    </ul>
+                    <div class="content">
+                        <ul class="directions clearfix">
+                            <li>
+                                <span class="icon beginner"></span>
+                                <span class="text">
+                                    新手上路
+                                    <a href="#">网上订单</a>
+                                    <a href="#">电话订购</a>
+                                    <a href="#">在线订购</a>
+                                    <a href="#">缺货说明</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="icon deliver"></span>
+                                <span class="text">
+                                    配送范围
+                                    <a href="#">资费标准</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="icon pay"></span>
+                                <span class="text">
+                                    如何付款
+                                    <a href="#">付款方式</a>
+                                    <a href="#">汇款单招领</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="icon service"></span>
+                                <span class="text">
+                                    售后服务
+                                    <a href="#">退换货原则</a>
+                                    <a href="#">退换货处理</a>
+                                </span>
+                            </li>
+                            <li class="last">
+                                <span class="icon help"></span>
+                                <span class="text">
+                                    需要帮助
+                                    <a href="#">网忘记了密码</a>
+                                    <a href="#">常见问题</a>
+                                    <a href="#">联系客服</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="bottom">
+                       <li class="left"></li>
+                       <li class="right"></li>
+                    </ul>
+    </div>
+    <div class="copyright">
+        <a href="#">关于我们</a> | <a href="#">联系我们</a> | <a href="#">招贤纳士</a> | <a href="#">本站帮助</a> | <a href="#">合作伴伙</a><br />
+        <span>Copyright   ©   2004-2009  鼎城视讯  版权所有   京ICP证1234567号<br />北京市公安局海淀分局备案编号：DD009768699</span>
+    </div>
+    <!--Footer End-->
+    
+</div>
+</body>
+</html>

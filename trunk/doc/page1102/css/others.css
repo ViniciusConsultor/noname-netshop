@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+.voteCanvas{ width:850px; background:#F8F5CF url(../images/vote_leftTop.gif) left top no-repeat; margin:0 auto}
+.voteCanvas .bgForRightBottom{ width:850px; min-height:400px; _height:400px; background:url(../images/vote_rightBottom.gif) right bottom no-repeat}
+
+.voteCanvas .bgForRightBottom .voteMainbody{ padding:80px 100px;}
+.voteCanvas .bgForRightBottom .voteMainbody h1{ font-size:12px; text-align:left; clear:both; display:block; padding:1px 0 5px 20px; padding:3px 0 3px 20px\9; _padding:2px 0 4px 20px\9; border-bottom:1px dotted #999; background:url(../images/icon_vote.gif) 0 0 no-repeat;}
+.voteCanvas .bgForRightBottom .voteMainbody ul{ padding:30px 30px; margin:0; zoom:1}
+.voteCanvas .bgForRightBottom .voteMainbody ul:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.voteCanvas .bgForRightBottom .voteMainbody ul li{ list-style:none; float:left; width:100%; padding:10px 0; zoom:1; text-align:left}
+.voteCanvas .bgForRightBottom .voteMainbody ul li:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.voteCanvas .bgForRightBottom .voteMainbody ul li span{ float:left; display:block; padding:0 10px; width:100px; overflow:hidden;}
+.voteCanvas .bgForRightBottom .voteMainbody ul li span.option{ text-align:left}
+.voteCanvas .bgForRightBottom .voteMainbody ul li span.result{ text-align:right}
+.voteCanvas .bgForRightBottom .voteMainbody ul li span.button{ text-align:center; clear:both; float:none; padding:20px 0 0 0; width:auto}
+.voteCanvas .bgForRightBottom .voteMainbody ul li span.button a{ margin:0 auto}
+.voteCanvas .bgForRightBottom .voteMainbody ul li .votebarParent{ float:left;}
+
+.votebarParent{ width:330px; padding-top:1px;}
+.votebar{ height:11px; border:1px solid; font-size:0; line-height:0; overflow:hidden}
+.votebar1{ border-color:#C18F5A; background:#E7AB6D}
+.votebar2{ border-color:#478F45; background:#5DBC5B}
+.votebar3{ border-color:#B0248D; background:#D843B3}
+.votebar4{ border-color:#BF2146; background:#FB7B99}
+.votebar .light{ height:10px; clear:both; border-top:1px solid #FFF; border-left:1px solid #FFF; filter:alpha(opacity=50); opacity:0.5}
+
+
+
+/*Dingding News begin*/
+.dingdingNews_mainbody{ clear:both; margin:35px; position:relative}
+.dingdingNews_mainbody .leftColumn{ float:left; width:285px; _margin-right:-3px;}
+.dingdingNews_mainbody .rightColumn{ float:none; margin-left:288px; _margin-left:285px;}
+.dingdingNews_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.dingdingNews_mainbody .box{ border:1px solid #CCC; clear:both; padding:20px; height:460px; overflow:auto}
+.dingdingNews_mainbody .coil{ width:36px; height:26px; position:absolute; background:url(../images/coil.gif) no-repeat}
+.dingdingNews_mainbody .coil_1{ left:269px; top:40px;}
+.dingdingNews_mainbody .coil_2{ left:269px; top:80px;}
+.dingdingNews_mainbody .coil_3{ left:269px; bottom:40px;}
+.dingdingNews_mainbody .coil_4{ left:269px; bottom:80px;}
+
+.dingdingNews_mainbody .showPagination{ padding:10px 5px;; float:right}
+.dingdingNews_mainbody .showPagination span{ padding:0 5px;}
+
+.dingdingNews_mainbody h1{ border-bottom:1px dotted #CCC; padding:6px 6px 6px 20px; background:url(../images/sprite.gif) -8px -1830px no-repeat; text-align:left; font-size:12px; margin:0; font-weight:bold; clear:both; display:block}
+.dingdingNews_mainbody .articleContent{ line-height:200%; padding:10px}
+.dingdingNews_mainbody .articleContent p{ text-indent:24px;}
+.dingdingNews_mainbody .shadow{ position:absolute; bottom:-13px; right:6px; width:461px; height:14px; background:url(../images/dingdingNewsShadow.gif) no-repeat}
+/*Dingding News end*/
