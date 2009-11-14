@@ -95,14 +95,14 @@
                 <td>上传图片：</td>
                 <td>
                     <asp:FileUpload ID="FileUpload_Image" runat="server" />
-                    <asp:Button ID="Button_ImageUpload" runat="server" Text="上传" OnClick="Button_ImageUpload_Click" />
+                    <%--<asp:Button ID="Button_ImageUpload" runat="server" Text="上传" OnClick="Button_ImageUpload_Click" />--%>
                 </td>
             </tr>
             <tr>
                 <td>上传视频：</td>
                 <td>
                     <asp:FileUpload ID="FileUpload_Video" runat="server" />
-                    <asp:Button ID="Button_VideoUpload" runat="server" Text="上传" OnClick="Button_VideoUpload_Click" />
+                    <%--<asp:Button ID="Button_VideoUpload" runat="server" Text="上传" OnClick="Button_VideoUpload_Click" />--%>
                 </td>
             </tr>
         </table>
