@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+/*News Home Begin*/
+.newsHome_mainbody{ clear:both}
+.newsHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.newsHome_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.newsHome_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.newsHome_mainbody .headline{ float:left; width:500px;}
+.newsHome_mainbody .headline img.thumbnail{ width:200px; height:150px; padding:1px; border:1px solid #CCC; float:left; margin-right:10px;}
+.newsHome_mainbody .headline ul.articleList_1{ float:left}
+.newsHome_mainbody .highEnd{ width:250px; float:left}
+.newsHome_mainbody .banner img{ width:754px; height:80px;}
+
+.newsHome_mainbody .normalBlock{ width:375px; float:left}
+
+/*News End End*/
+
+
+/*News Child Class Common Begin*/
+.newsChildClassCommon_mainbody{ clear:both}
+.newsChildClassCommon_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.newsChildClassCommon_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.newsChildClassCommon_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*News Child Class Common End*/
+
+/*News Video Begin*/
+.newsVideo_mainbody{ clear:both}
+.newsVideo_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.newsVideo_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.newsVideo_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.newsVideo_mainbody .recommendationVideo{ clear:both;}
+.newsVideo_mainbody .recommendationVideo .thumbnail{ float:left; position:relative}
+.newsVideo_mainbody .recommendationVideo .thumbnail a{ font-size:0; line-height:0; overflow:hidden}
+.newsVideo_mainbody .recommendationVideo .thumbnail img{ width:240px; height:180px; padding:1px; border:1px solid #CCC;}
+.newsVideo_mainbody .recommendationVideo .thumbnail .playButton{ width:58px; height:31px; background:url(../images/playButton.gif) no-repeat; filter:alpha(opacity=50); opacity:0.5; position:absolute; left:95px; top:75px;}
+.newsVideo_mainbody .recommendationVideo .text{ float:none; margin-left:260px; height:180px; overflow:hidden}
+.newsVideo_mainbody .recommendationVideo .text a{ color:#069; font-weight:bold; line-height:250%}
+.newsVideo_mainbody .recommendationVideo .text a:hover{ color:#F90;}
+.newsVideo_mainbody .recommendationVideo .text p{ padding:0; margin:0; text-indent:24px;}
+/*News Video End*/
+
+/*NewsArticleDetail Begin*/
+.newsArticleDetail_mainbody{ clear:both}
+.newsArticleDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.newsArticleDetail_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content h1{ font-size:14px; font-weight:bold; clear:both; text-align:center; margin:0; padding:15px;}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content h2{ font-size:12px; font-weight:normal; clear:both; text-align:center; padding:5px; border-bottom:1px dotted #B5D0EC; margin:0}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content h2 span{ padding:0 10px;}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content .articleContent{ clear:both; padding-top:10px}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content .articleContent p{ padding:10px 5px; text-indent:24px; text-align:left}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content .leaveComment{ clear:both; padding:20px 40px; zoom:1}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content .leaveComment:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content .leaveComment .title{ clear:both; text-align:left; font-weight:bold; color:#333; padding:5px;}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content .leaveComment textarea{ width:555px; height:70px; border:1px solid #B5CFEC; background:#F7FAFD; float:left; display:block; font-size:12px;}
+.newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content .leaveComment a.button_blue{ float:left; margin:27px 0 0 20px;}
+/*NewsArticleDetail End*/
+
+
+
+ul.newsNavigator{ margin:0; padding:0}
+ul.newsNavigator li{ list-style-type:none; float:left; width:100%}
+ul.newsNavigator li a{ height:25px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
+ul.newsNavigator li a:hover{ background-position:0 -1898px;}
+ul.newsNavigator li a span{ height:25px; display:block; clear:both; background:url(../images/newsNavigator.gif) no-repeat}
+
+ul.newsNavigator li a.m1 span{ background-position:15px 7px;}
+ul.newsNavigator li a.m2 span{ background-position:15px -18px;}
+ul.newsNavigator li a.m3 span{ background-position:15px -43px;}
+ul.newsNavigator li a.m4 span{ background-position:15px -68px;}
+ul.newsNavigator li a.m5 span{ background-position:15px -93px;}
+ul.newsNavigator li a.m6 span{ background-position:15px -118px;}
+ul.newsNavigator li a.m7 span{ background-position:15px -143px;}
+ul.newsNavigator li a.m8 span{ background-position:15px -168px;}
+ul.newsNavigator li a.m9 span{ background-position:15px -193px;}
+
+/*this is for news home page*/
+ul.videoNews{ padding:0; margin:0;}
+ul.videoNews li{ list-style-type:none; float:left; width:124px; padding:20px 29px;}
+ul.videoNews li a{ display:block; position:relative; float:left}
+ul.videoNews li a img{ width:120px; height:90px; padding:1px; border:1px solid #CCC; display:block}
+ul.videoNews li a span{ padding-top:5px; text-align:center; height:14px; display:block; clear:both; overflow:hidden}
+ul.videoNews li a .playButton{ width:58px; height:31px; background:url(../images/playButton.gif) no-repeat; filter:alpha(opacity=50); opacity:0.5; position:absolute; left:34px; top:33px;}
+
+ul.newsList{ padding:0 10px; margin:0; zoom:1}
+ul.newsList:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+ul.newsList li{ list-style-type:none; width:100%; float:left; padding:10px 0; border-bottom:1px dotted #CCC}
+ul.newsList li a.thumbnail{ position:relative; display:block; float:left}
+ul.newsList li a.thumbnail .playButton{ width:58px; height:31px; background:url(../images/playButton.gif) no-repeat; filter:alpha(opacity=50); opacity:0.5; position:absolute; left:34px; top:33px;}
+ul.newsList li img{ width:120px; height:90px; float:left; _margin-right:-3px; width:120px; height:90px; display:block; padding:1px; border:1px solid #CCC}
+ul.newsList li .text{ float:none;}
+ul.newsList li.widthThumb .text{ float:none; margin-left:140px; _margin-left:137px;}
+ul.newsList li.widthThumb .text .textContainer{ overflow:hidden; _height:0; _overflow:visible}
+ul.newsList li .text .textContainer h1{ margin:0; padding:5px 0; font-size:12px; font-weight:bold;}
+ul.newsList li .text .textContainer h1 a{ color:#069}
+ul.newsList li .text .textContainer h1 a:hover{ color:#F90}
+ul.newsList li .text .textContainer p{ line-height:200%; margin:0; padding:0; text-indent:24px;}
+ul.newsList li .text .textContainer .more{ float:right; padding:5px;}
+ul.newsList li .text .textContainer .more a{ color:#069; font-family:"宋体"}
+ul.newsList li .text .textContainer .more a:hover{ color:#F90;}
+
+
+
+
+.vote{ padding:20px; border-bottom:1px dotted #CCC; margin-bottom:10px;}
+.vote h1{ font-size:12px!important; text-align:left!important; clear:both; display:block; padding:1px 0 5px 20px!important; padding:3px 0 3px 20px\9!important; _padding:2px 0 4px 20px!important; border-bottom:1px dotted #999; background:url(../images/icon_vote.gif) 0 0 no-repeat; margin:0}
+.vote ul{ padding:30px 30px 10px 30px; margin:0; zoom:1}
+.vote ul:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.vote ul li{ list-style:none; float:left; width:100%; padding:10px 0; zoom:1; text-align:left}
+.vote ul li:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.vote ul li span{ float:left; display:block; padding:0 10px; width:100px; overflow:hidden;}
+.vote ul li span.option{ text-align:left}
+.vote ul li span.result{ text-align:right}
+.vote ul li span.button{ text-align:center; clear:both; float:none; padding:20px 0 0 0; width:auto}
+.vote ul li span.button a{ margin:0 auto}
+.vote ul li input.checkbox{ display:block; float:left; margin:1px; padding:0; height:14px; width:14px}
+.vote ul li .votebarParent{ float:left;}
+
+
+.votebarParent{ width:330px; padding-top:1px;}
+.votebar{ height:11px; border:1px solid; font-size:0; line-height:0; overflow:hidden; border-color:#B5D0EC; background:#B5D0EC}
+.votebar .light{ height:10px; clear:both; border-top:1px solid #FFF; border-left:1px solid #FFF; filter:alpha(opacity=50); opacity:0.5}
+
