@@ -25,14 +25,14 @@ namespace NoName.NetShop.Publish.News.PageCreators
         protected override XmlDocument GetPageData()
         {
             XmlDocument xdoc = new XmlDocument();
-            xdoc.LoadXml("<?xml version=\"1.0\" encoding=\"utf-8\" ?><newsdetail/>");
+            xdoc.LoadXml("<?xml version=\"1.0\" encoding=\"utf-8\" ?><newspage/>");
 
-            //DataNodeCreateHelper helper = new DataNodeCreateHelper(Parameter, Config, dal, xdoc);
+            NewsNodeCreator helper = new NewsNodeCreator(Parameter, Config, dal, xdoc);
 
-            //XmlNode rootNode = xdoc.SelectSingleNode("/shopproductpage");
+            XmlNode rootNode = xdoc.SelectSingleNode("/newspage");
 
-            //rootNode.AppendChild(helper.GetHeaderContent());
-            //rootNode.AppendChild(helper.GetFooterContent());
+            rootNode.AppendChild(helper.GetNewsCategory());
+            rootNode.AppendChild(helper.GetNewsDetail());
             //rootNode.AppendChild(helper.GetShopInfo());
             //rootNode.AppendChild(helper.GetShopImageInfo());
             //rootNode.AppendChild(helper.GetProductInfo());
@@ -41,7 +41,7 @@ namespace NoName.NetShop.Publish.News.PageCreators
             ////rootNode.AppendChild(helper.GetRecommendProducts());
             //rootNode.AppendChild(helper.GetProductShipFee());
 
-            ////xdoc.Save(@"d:\shop-" + Parameter.ShopID + ".xml");
+            //xdoc.Save(@"d:\dingding-news-" + Parameter.NewsID + ".xml");
             return xdoc;
         }
 
