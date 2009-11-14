@@ -71,5 +71,11 @@ namespace NoName.NetShop.Publish.News.DataAccess
             sql = String.Format(sql,NewsID);
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
+
+        public DataTable GetCategoryList(int ParentID)
+        {
+            string sql = String.Format("select * from neCategory where parentid={0}",ParentID);
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
     }
 }
