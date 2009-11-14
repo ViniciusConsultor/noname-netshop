@@ -105,6 +105,7 @@ namespace NoName.NetShop.BackFlat.Category
                 model.CateLevel = 1;
             }
             bll.Add(model);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script type=\"text/javascript\">window.parent.location=window.parent.location+'?_=" + DateTime.Now.Ticks + "'</script>");
 
 		}
 

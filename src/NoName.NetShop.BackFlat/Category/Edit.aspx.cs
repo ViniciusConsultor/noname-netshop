@@ -68,6 +68,8 @@ namespace NoName.NetShop.BackFlat.Category
             model.IsHide = chkIsHide.Checked;
 
             bll.Update(model);
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script type=\"text/javascript\">window.parent.location=window.parent.location+'?_=" + DateTime.Now.Ticks + "'</script>");
         }
 
         private void SaveData()
