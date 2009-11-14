@@ -191,7 +191,7 @@
                                 </ul>
                                 <div class="content noPaddingContentBox">
                                     <ul class="newsNavigator">
-                                        <xsl:apply-templates select="/newslistpage/cateogrylist/category"/>
+                                        <xsl:apply-templates select="/newslistpage/categorylist/category"/>
                                     </ul>
                                 </div>
                             </div>
