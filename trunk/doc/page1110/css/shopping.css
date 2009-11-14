@@ -1,0 +1,82 @@
+﻿@charset "utf-8";
+
+/*Shopping_home Begin*/
+.shoppingHome_mainbody{ clear:both}
+.shoppingHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.shoppingHome_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.shoppingHome_mainbody .midColumn{ float:none; margin:0 224px; _margin:0 221px;}
+.shoppingHome_mainbody .midColumn .midColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_home End*/
+
+/*Shopping_Class Begin*/
+.shoppingClass_mainbody{ clear:both}
+.shoppingClass_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.shoppingClass_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.shoppingClass_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_Class End*/
+
+/*Shopping_ProductDetail Begin*/
+.productDetail_mainbody{ clear:both}
+.productDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.productDetail_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.productDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Shopping_ProductDetail End*/
+
+/*Shopping_ProductDetail Begin*/
+.comments_mainbody{ clear:both}
+/*Shopping_ProductDetail End*/
+
+/*Shopping_GiftDetail Begin*/
+.giftDetail_mainbody{ clear:both}
+.giftDetail_mainbody .properties ul li .description{ float:none; margin-left:90px; line-height:200%; padding:0; height:130px; overflow:hidden}
+.giftDetail_mainbody .properties ul li .forDescription{ padding-top:6px;}
+.giftDetail_mainbody .productGeneralProperties .properties ul li.buttons{ text-align:center}
+.giftDetail_mainbody .productGeneralProperties .properties ul li.buttons a{ margin:0 auto; float:none}
+/*Shopping_GiftDetail End*/
+
+/*Shopping Cart Begin*/
+.shoppingCart_mainbody{ clear:both}
+.shoppingCart_mainbody .shoppingNavigation2{ clear:both; height:50px; background:url(../images/cart_navigation2.jpg) center top no-repeat; }
+.shoppingCart_mainbody .submitButtons{ width:235px}
+/*Shopping Cart Begin*/
+
+/*Shopping FillForm Begin*/
+.shoppingFillForm_mainbody{ clear:both}
+.shoppingFillForm_mainbody .shoppingNavigation3{ clear:both; height:50px; background:url(../images/cart_navigation3.jpg) center top no-repeat; }
+.shoppingFillForm_mainbody .submitButtons{ width:120px}
+.shoppingFillForm_mainbody .box1 .content{ padding:10px 120px;}
+.shoppingFillForm_mainbody .box6 .content{ padding:30px 40px 15px 40px;}
+.shoppingFillForm_mainbody ul.form_h li{ width:110px; padding:0 25px;}
+.shoppingFillForm_mainbody ul.form li .message{ padding-bottom:15px; zoom:1}
+.shoppingFillForm_mainbody ul.form li .message:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+/*Shopping FillForm Begin*/
+
+/*Shopping Gift FillForm Begin*/
+.shoppingGiftFillForm_mainbody{ clear:both}
+.shoppingGiftFillForm_mainbody .submitButtons{ width:120px}
+.shoppingGiftFillForm_mainbody .box1 .content{ padding:50px 120px 30px 120px;}
+.shoppingGiftFillForm_mainbody .box6 .content{ padding:30px 40px 15px 40px;}
+.shoppingGiftFillForm_mainbody ul.form_h li{ width:110px; padding:0 25px;}
+.shoppingGiftFillForm_mainbody ul.form li .message{ padding-bottom:15px; zoom:1}
+.shoppingGiftFillForm_mainbody ul.form li .message:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+/*Shopping Gift FillForm Begin*/
+
+/*Shopping Complete Begin*/
+.shoppingComplete_mainbody{ clear:both}
+.shoppingComplete_mainbody .box1 .content{ padding:40px 100px;}
+.shoppingComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(../images/cart_navigation4.jpg) center top no-repeat; }
+/*Shopping Complete Begin*/
+
+/*Shopping_Recommendation Begin*/
+.Recommendation_mainbody{ clear:both}
+.Recommendation_mainbody .list_horizontal ul li{padding:15px 19px;}
+/*Shopping_Recommendation End*/
+
+/*Shopping_GiftList Begin*/
+.giftList_mainbody{ clear:both}
+.giftList_mainbody .list_horizontal ul li{padding:15px 19px;}
+/*Shopping_GiftList End*/
+
+/*Shopping_Comparison Begin*/
+.Comparison_mainbody{ clear:both}
+/*Shopping_Comparison End*/
