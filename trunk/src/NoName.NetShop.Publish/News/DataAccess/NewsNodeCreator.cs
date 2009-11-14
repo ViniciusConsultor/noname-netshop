@@ -24,6 +24,23 @@ namespace NoName.NetShop.Publish.News.DataAccess
             xdoc = document;
         }
 
+        public XmlNode GetNewsCategory()
+        {
+            XmlNode CategoryListNode = xdoc.CreateElement("cateogrylist");
+
+            DataTable dt = dal.GetCategoryList(0);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode CagegoryNode = XmlUtility.AddNewNode(CategoryListNode, "category", null);
+
+                XmlUtility.AddNewNode(CagegoryNode, "categoryid", Convert.ToString(row["cateid"]));
+                XmlUtility.AddNewNode(CagegoryNode, "categoryname", Convert.ToString(row["catename"]));
+            }
+
+            return CategoryListNode;
+        }
+
         public XmlNode GetNewsList()
         {
             XmlNode NewsListNode = xdoc.CreateElement("newslist");
@@ -39,6 +56,7 @@ namespace NoName.NetShop.Publish.News.DataAccess
                 XmlUtility.AddNewNode(NewsNode, "newsid", Convert.ToString(row["newsid"]));
                 XmlUtility.AddNewNode(NewsNode, "title", Convert.ToString(row["title"]));
                 XmlUtility.AddNewNode(NewsNode, "brief", Convert.ToString(row["brief"]));
+                XmlUtility.AddNewNode(NewsNode, "imageurl", Convert.ToString(row["imageurl"]));
             }
 
             XmlNode PageNode = XmlUtility.AddNewNode(NewsListNode, "pageinfo", null);

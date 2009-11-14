@@ -31,6 +31,7 @@ namespace NoName.NetShop.Publish.News.PageCreators
 
             XmlNode rootNode = xdoc.SelectSingleNode("/newslistpage");
 
+            rootNode.AppendChild(helper.GetNewsCategory());
             rootNode.AppendChild(helper.GetNewsList());
             //rootNode.AppendChild(helper.GetFooterContent());
             //rootNode.AppendChild(helper.GetShopInfo());
