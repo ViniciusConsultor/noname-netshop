@@ -28,7 +28,9 @@ namespace NoName.NetShop.BackFlat.News.Detail
 
 
 
-        protected void Button_ImageUpload_Click(object sender, EventArgs e) { }
+        protected void Button_ImageUpload_Click(object sender, EventArgs e) 
+        {
+        }
         protected void Button_VideoUpload_Click(object sender, EventArgs e){}
 
         protected void Button_Submit_Click(object sender, EventArgs e) 
@@ -80,6 +82,16 @@ namespace NoName.NetShop.BackFlat.News.Detail
             model.ImageUrl = "";
             model.SmallImageUrl = "";
             model.VideoUrl = "";
+            if (!String.IsNullOrEmpty(FileUpload_Image.FileName))
+            {
+                string ImageUrl = String.Empty, ImageShotUrl = String.Empty, Message = String.Empty;
+
+                if (CommonImageUpload.Upload(FileUpload_Image, out ImageUrl, out ImageShotUrl, out Message))
+                {
+                    model.ImageUrl = ImageShotUrl;
+                }
+            }
+            
 
             bll.Add(model);
             MessageBox.Show(this,"添加成功！");
