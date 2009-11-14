@@ -26,7 +26,7 @@ namespace NoName.NetShop.Publish.News.DataAccess
 
         public XmlNode GetNewsCategory()
         {
-            XmlNode CategoryListNode = xdoc.CreateElement("cateogrylist");
+            XmlNode CategoryListNode = xdoc.CreateElement("categorylist");
 
             DataTable dt = dal.GetCategoryList(0);
 

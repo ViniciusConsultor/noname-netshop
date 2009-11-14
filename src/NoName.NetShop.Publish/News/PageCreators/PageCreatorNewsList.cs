@@ -42,7 +42,7 @@ namespace NoName.NetShop.Publish.News.PageCreators
             ////rootNode.AppendChild(helper.GetRecommendProducts());
             //rootNode.AppendChild(helper.GetProductShipFee());
 
-            xdoc.Save(@"d:\dingding-" + Parameter.CategoryID + ".xml");
+            //xdoc.Save(@"d:\dingding-" + Parameter.CategoryID + ".xml");
             return xdoc;
         }
 
