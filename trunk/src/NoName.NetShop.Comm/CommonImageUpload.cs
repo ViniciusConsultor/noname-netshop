@@ -13,12 +13,13 @@ namespace NoName.NetShop.Common
     {
         private static CommonImageUploadSection Config = (CommonImageUploadSection)ConfigurationManager.GetSection("commonImage");
 
-        public static bool Upload(FileUpload control,out string ImageUrl,out string Message)
+        public static bool Upload(FileUpload control,out string ImageUrl,out string ImageShortUrl,out string Message)
         {
             string RootPath = Config.RootPath;
             bool Result = false;
 
             ImageUrl = String.Empty;
+            ImageShortUrl = String.Empty;
             Message = String.Empty;
 
             if (!String.IsNullOrEmpty(control.FileName))
@@ -30,8 +31,10 @@ namespace NoName.NetShop.Common
 
                 if (control.PostedFile.ContentLength <= Config.MaxSize && Config.AllowedFormat.Contains(FileExtension.Substring(1)))
                 {
+                    if (!Directory.Exists(RootPath + RelativePath)) Directory.CreateDirectory(RootPath + RelativePath);
                     control.SaveAs(RootPath + RelativePath + FileName);
                     ImageUrl = (Config.RootUrl + RelativePath + FileName).Replace("\\","/");
+                    ImageShortUrl = ImageUrl.Replace(Config.UrlPrefix,String.Empty);
                     Result = true;
                 }
                 else

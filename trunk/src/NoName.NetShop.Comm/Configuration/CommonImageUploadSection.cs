@@ -31,5 +31,12 @@ namespace NoName.NetShop.Common.Configuration
         {
             get { return (string)base["urlRoot"]; }
         }
+
+        [ConfigurationProperty("urlPrefix", IsRequired = true)]
+        public string UrlPrefix
+        {
+            get { return (string)base["urlPrefix"]; }
+        }
+        
     }
 }
