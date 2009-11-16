@@ -1,0 +1,69 @@
+﻿<PUBLIC:COMPONENT id="bhvMaxlength" urn="maf:Maxlength">
+<PUBLIC:PROPERTY name="maxLength" />
+<PUBLIC:ATTACH event="onkeypress" handler="doKeypress" />
+<PUBLIC:ATTACH event="onkeydown" handler="doKeydown" />
+<PUBLIC:ATTACH event="onbeforepaste" handler="doBeforePaste" />
+<PUBLIC:ATTACH event="onpaste" handler="doPaste" />
+<PUBLIC:ATTACH event="oncontentready" handler="init" />
+
+<SCRIPT language="JScript">
+function doKeypress()
+{
+        if(!isNaN(maxLength))
+        {
+                maxLength = parseInt(maxLength)
+                var oTR = element.document.selection.createRange()
+                if(oTR.text.length >= 1)
+                        event.returnValue = true
+                else if(value.length > maxLength-1)
+                        event.returnValue = false
+        }
+}
+
+function doKeydown()
+{
+        setTimeout(function()
+        {
+                maxLength = parseInt(maxLength)
+                if(!isNaN(maxLength))
+                {
+                        if(element.value.length > maxLength-1)
+                        {
+                                var oTR = window.document.selection.createRange()
+                                oTR.moveStart("character", -1*(element.value.length-maxLength))
+                                oTR.text = ""
+                        }
+                }
+        },1)
+}
+
+function doBeforePaste()
+{
+        if(!isNaN(maxLength))
+                event.returnValue = false
+}
+
+function doPaste()
+{
+        if(!isNaN(maxLength))
+        {
+                event.returnValue = false
+                maxLength = parseInt(maxLength)
+                var oTR = element.document.selection.createRange()
+                var iInsertLength = maxLength - value.length + oTR.text.length
+                var sData = window.clipboardData.getData("Text").substr(0, iInsertLength)
+                oTR.text = sData;
+        }
+}
+
+function init()
+{
+        maxLength = parseInt(maxLength)
+        if(!isNaN(maxLength))
+        {
+                element.value = element.value.substr(0, maxLength)
+        }
+}
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
