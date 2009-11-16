@@ -8,63 +8,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoName.NetShop.ForeFlat.member {
+namespace SinaEC.Shopping.WebUI.UC {
     
     
-    public partial class MyOrders {
+    public partial class UserAddress {
         
         /// <summary>
-        /// lbtnSearAll 控件。
+        /// panAddrList 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSearAll;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl panAddrList;
         
         /// <summary>
-        /// lbtnSearRecent 控件。
+        /// rpAddrList 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSearRecent;
+        protected global::System.Web.UI.WebControls.Repeater rpAddrList;
         
         /// <summary>
-        /// lbtnSearCancel 控件。
+        /// panNewAddr 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSearCancel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl panNewAddr;
         
         /// <summary>
-        /// rpOrders 控件。
+        /// ucRegion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpOrders;
-        
-        /// <summary>
-        /// panNoResult 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panNoResult;
-        
-        /// <summary>
-        /// pageNav 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::NoName.Utility.AspNetPager pageNav;
+        protected global::SinaEC.Shopping.WebUI.UC.RegionSelect ucRegion;
     }
 }

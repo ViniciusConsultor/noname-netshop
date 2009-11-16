@@ -8,63 +8,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoName.NetShop.ForeFlat.member {
+namespace NoName.NetShop.ForeFlat.sp {
     
     
-    public partial class MyOrders {
+    public partial class FillInfo {
         
         /// <summary>
-        /// lbtnSearAll 控件。
+        /// ucAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSearAll;
+        protected global::SinaEC.Shopping.WebUI.UC.UserAddress ucAddress;
         
         /// <summary>
-        /// lbtnSearRecent 控件。
+        /// rbtlPayMethod 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSearRecent;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtlPayMethod;
         
         /// <summary>
-        /// lbtnSearCancel 控件。
+        /// rbtlShipMethod 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSearCancel;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtlShipMethod;
         
         /// <summary>
-        /// rpOrders 控件。
+        /// txtUserNotes 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpOrders;
+        protected global::System.Web.UI.WebControls.TextBox txtUserNotes;
         
         /// <summary>
-        /// panNoResult 控件。
+        /// lbtnDoCreate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panNoResult;
-        
-        /// <summary>
-        /// pageNav 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::NoName.Utility.AspNetPager pageNav;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnDoCreate;
     }
 }

@@ -33,7 +33,7 @@
                     <div class="groupTitle">我的商城交易</div>
                     <ul class="articleList_1 bullet_2">
                         <li>
-                            <a href="#">订单中心</a>
+                            <a href="myorders.aspx">订单中心</a>
                         </li>
                     </ul>
                     <div class="groupTitle">我的魔力世界</div>

@@ -198,7 +198,16 @@ ul.directions li span.text a{ display:block; clear:both; font-weight:normal; pad
 .copyright span{ color:#444}
 
 
-a.button_blue{ background:url(../images/sprite_buttons.gif) -3px -3px no-repeat; text-align:center; width:73px; height:17px; padding:4px 0 1px 0; padding:5px 0 0 0\9; border:none; font-size:12px; line-height:14px; display:block; cursor:pointer; color:#333!important; text-decoration:none!important}
+a.button_blue{ border-style: none;
+	border-color: inherit;
+	border-width: medium;
+	background: url('../images/sprite_buttons.gif') no-repeat -3px;
+	text-align:center; 	width:73px; 	font-size:12px; 	line-height:14px; 	display:block; 	cursor:pointer; 	color:#333!important; 	text-decoration:none!important;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 4px;
+	padding-bottom: 1px;
+}
 a.button_blue:hover{ background-position:-3px -26px; color:#333!important; text-decoration:none!important}
 
 a.button_blue2{ background:url(../images/sprite_buttons.gif) -3px -55px no-repeat; text-align:center; width:73px; height:16px; padding:3px 0 2px 0; padding:5px 0 0 0\9; _padding:4px 0 1px 0; border:none; font-size:12px; font-weight:bold; color:#FFF; line-height:14px; display:block; cursor:pointer}
