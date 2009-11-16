@@ -23,7 +23,8 @@ namespace NoName.NetShop.Member.DAL
 		public int GetMaxId()
 		{
 			string strsql = "select max(userId)+1 from umMemberFamly";
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+
 			object obj = db.ExecuteScalar(CommandType.Text, strsql);
 			if (obj != null && obj != DBNull.Value)
 			{
@@ -37,7 +38,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public bool Exists(int userId)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberFamly_Exists");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32,userId);
 			int result;
@@ -58,7 +59,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Add(NoName.NetShop.Member.Model.MemberFamly model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberFamly_ADD");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32, model.userId);
 			db.AddInParameter(dbCommand, "truename", DbType.AnsiString, model.truename);
@@ -78,7 +79,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Update(NoName.NetShop.Member.Model.MemberFamly model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberFamly_Update");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32, model.userId);
 			db.AddInParameter(dbCommand, "truename", DbType.AnsiString, model.truename);
@@ -98,7 +99,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Delete(int userId)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberFamly_Delete");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32,userId);
 
@@ -110,7 +111,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public NoName.NetShop.Member.Model.MemberFamly GetModel(int userId)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberFamly_GetModel");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32,userId);
 
@@ -137,7 +138,7 @@ namespace NoName.NetShop.Member.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
@@ -155,7 +156,7 @@ namespace NoName.NetShop.Member.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<NoName.NetShop.Member.Model.MemberFamly> list = new List<NoName.NetShop.Member.Model.MemberFamly>();
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())

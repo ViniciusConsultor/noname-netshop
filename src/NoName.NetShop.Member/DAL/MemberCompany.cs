@@ -23,7 +23,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public bool Exists(int userid)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberCompany_Exists");
 			db.AddInParameter(dbCommand, "userid", DbType.Int32,userid);
 			int result;
@@ -44,7 +44,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Add(NoName.NetShop.Member.Model.MemberCompany model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberCompany_ADD");
 			db.AddInParameter(dbCommand, "userid", DbType.Int32, model.userid);
 			db.AddInParameter(dbCommand, "truename", DbType.AnsiString, model.truename);
@@ -65,7 +65,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Update(NoName.NetShop.Member.Model.MemberCompany model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberCompany_Update");
 			db.AddInParameter(dbCommand, "userid", DbType.Int32, model.userid);
 			db.AddInParameter(dbCommand, "truename", DbType.AnsiString, model.truename);
@@ -86,7 +86,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Delete(int userid)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberCompany_Delete");
 			db.AddInParameter(dbCommand, "userid", DbType.Int32,userid);
 
@@ -98,7 +98,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public NoName.NetShop.Member.Model.MemberCompany GetModel(int userid)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMemberCompany_GetModel");
 			db.AddInParameter(dbCommand, "userid", DbType.Int32,userid);
 
@@ -125,7 +125,7 @@ namespace NoName.NetShop.Member.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
@@ -143,7 +143,7 @@ namespace NoName.NetShop.Member.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<NoName.NetShop.Member.Model.MemberCompany> list = new List<NoName.NetShop.Member.Model.MemberCompany>();
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())

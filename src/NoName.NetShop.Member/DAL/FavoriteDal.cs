@@ -23,7 +23,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Add(NoName.NetShop.Member.Model.Favorite model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umFavorite_ADD");
 			db.AddInParameter(dbCommand, "UserId", DbType.Int32, model.UserId);
 			db.AddInParameter(dbCommand, "FavoriteId", DbType.Int32, model.FavoriteId);
@@ -40,7 +40,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Update(NoName.NetShop.Member.Model.Favorite model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umFavorite_Update");
 			db.AddInParameter(dbCommand, "UserId", DbType.Int32, model.UserId);
 			db.AddInParameter(dbCommand, "FavoriteId", DbType.Int32, model.FavoriteId);
@@ -57,7 +57,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Delete()
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umFavorite_Delete");
 
 			db.ExecuteNonQuery(dbCommand);
@@ -68,7 +68,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public NoName.NetShop.Member.Model.Favorite GetModel()
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umFavorite_GetModel");
 
 			NoName.NetShop.Member.Model.Favorite model=null;
@@ -94,7 +94,7 @@ namespace NoName.NetShop.Member.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
@@ -112,7 +112,7 @@ namespace NoName.NetShop.Member.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<NoName.NetShop.Member.Model.Favorite> list = new List<NoName.NetShop.Member.Model.Favorite>();
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())

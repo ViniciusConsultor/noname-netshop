@@ -33,19 +33,27 @@
   <ItemGroup>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\EntLib41Src\bin\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+      <HintPath>..\..\..\..\EntLib41Src\新建文件夹\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\netshop\src\NoName.NetShop\NoName.NetShop.Comm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <HintPath>..\..\..\..\EntLib41Src\新建文件夹\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\netshop\src\NoName.NetShop\NoName.NetShop.Comm\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>..\..\..\..\EntLib41Src\新建文件夹\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\netshop\src\NoName.NetShop\NoName.NetShop.Comm\bin\Debug\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+      <HintPath>..\..\..\..\EntLib41Src\新建文件夹\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\EntLib41Src\新建文件夹\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\workspace\SinaEC.WebUI\MallDemo\trunk\SinaEC.Shopping.WebUI\bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -62,14 +70,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\AddressBll.cs" />
-    <Compile Include="BLL\FavoriteBll.cs" />
-    <Compile Include="BLL\LoginLogBll.cs" />
-    <Compile Include="BLL\MemberBll.cs" />
-    <Compile Include="BLL\MemberCompanyBll.cs" />
-    <Compile Include="BLL\MemberFamlyBll.cs" />
-    <Compile Include="BLL\MemberPersonBll.cs" />
-    <Compile Include="BLL\MemberSchoolBll.cs" />
+    <Compile Include="AddressBll.cs" />
+    <Compile Include="FavoriteBll.cs" />
+    <Compile Include="LoginLogBll.cs" />
+    <Compile Include="MemberBll.cs" />
+    <Compile Include="MemberCompanyBll.cs" />
+    <Compile Include="MemberFamlyBll.cs" />
+    <Compile Include="MemberPersonBll.cs" />
+    <Compile Include="MemberSchoolBll.cs" />
     <Compile Include="DAL\AddressDal.cs" />
     <Compile Include="DAL\FavoriteDal.cs" />
     <Compile Include="DAL\LoginLogDal.cs" />
@@ -78,17 +86,18 @@
     <Compile Include="DAL\MemberFamlyDal.cs" />
     <Compile Include="DAL\MemberPersonDal.cs" />
     <Compile Include="DAL\MemberSchoolDal.cs" />
-    <Compile Include="Model\AddressModel.cs" />
-    <Compile Include="Model\FavoriteModle.cs" />
-    <Compile Include="Model\LoginLogModle.cs" />
-    <Compile Include="Model\MemberModel.cs" />
-    <Compile Include="Model\MemberCompanyModle.cs" />
-    <Compile Include="Model\MemberFamlyModel.cs" />
-    <Compile Include="Model\MemberPersonModel.cs" />
-    <Compile Include="Model\MemberSchoolModel.cs" />
-    <Compile Include="Model\MemberStatus.cs" />
-    <Compile Include="Model\MemberType.cs" />
+    <Compile Include="AddressModel.cs" />
+    <Compile Include="FavoriteModle.cs" />
+    <Compile Include="LoginLogModle.cs" />
+    <Compile Include="MemberModel.cs" />
+    <Compile Include="MemberCompanyModle.cs" />
+    <Compile Include="MemberFamlyModel.cs" />
+    <Compile Include="MemberPersonModel.cs" />
+    <Compile Include="MemberSchoolModel.cs" />
+    <Compile Include="MemberStatus.cs" />
+    <Compile Include="MemberType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionInfo.cs" />
     <Compile Include="ShopIdentity.cs" />
     <Compile Include="ShopPrincipal.cs" />
   </ItemGroup>
@@ -101,6 +110,9 @@
       <Project>{E0634851-F221-461E-9C14-F71011119CC6}</Project>
       <Name>NoName.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

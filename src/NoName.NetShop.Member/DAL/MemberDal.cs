@@ -24,7 +24,7 @@ namespace NoName.NetShop.Member.DAL
         /// </summary>
         public bool Exists(string userEmail)
         {
-            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand("SELECT count(1) FROM umMember WHERE useremail=@UserEmail");
             db.AddInParameter(dbCommand, "userEmail", DbType.String, userEmail);
             int result = (int)db.ExecuteScalar(dbCommand);
@@ -36,7 +36,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Add(NoName.NetShop.Member.Model.MemberModel model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_ADD");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32, model.userId);
 			db.AddInParameter(dbCommand, "UserEmail", DbType.AnsiString, model.UserEmail);
@@ -55,7 +55,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Update(NoName.NetShop.Member.Model.MemberModel model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_Update");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32, model.userId);
 			db.AddInParameter(dbCommand, "UserEmail", DbType.AnsiString, model.UserEmail);
@@ -76,7 +76,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Delete(int userId)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_Delete");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32,userId);
 
@@ -88,7 +88,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public NoName.NetShop.Member.Model.MemberModel GetModel(int userId)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_GetModel");
 			db.AddInParameter(dbCommand, "userId", DbType.Int32,userId);
 
@@ -108,7 +108,7 @@ namespace NoName.NetShop.Member.DAL
         /// </summary>
         public NoName.NetShop.Member.Model.MemberModel GetModel(string userEmail)
         {
-            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_GetModelByUserEmail");
             db.AddInParameter(dbCommand, "userEmail", DbType.String, userEmail);
 
@@ -134,7 +134,7 @@ namespace NoName.NetShop.Member.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
@@ -152,7 +152,7 @@ namespace NoName.NetShop.Member.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<NoName.NetShop.Member.Model.MemberModel> list = new List<NoName.NetShop.Member.Model.MemberModel>();
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
@@ -218,7 +218,7 @@ namespace NoName.NetShop.Member.DAL
 
         internal void SetStatus(int userId, MemberStatus status)
         {
-            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_SetStatus");
             db.AddInParameter(dbCommand, "userId", DbType.Int32, userId);
             db.AddInParameter(dbCommand, "status", DbType.Int32, (int)status);
@@ -228,7 +228,7 @@ namespace NoName.NetShop.Member.DAL
         internal bool Validate(string username, string md5pass)
         {
             string sql = "select count(*) from umMember where useremail=@useremail and password=@password";
-            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "useremail", DbType.String, username);
             db.AddInParameter(dbCommand, "password", DbType.String, md5pass);
@@ -239,7 +239,7 @@ namespace NoName.NetShop.Member.DAL
         internal bool ChangePassword(string userEmail, string oldpass, string newpass)
         {
             string sql = "update umMember set useremail=@newpass from umMember where useremail=@useremail and password=@oldpass";
-            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "useremail", DbType.String, userEmail);
             db.AddInParameter(dbCommand, "oldpass", DbType.String, oldpass);

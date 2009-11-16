@@ -23,7 +23,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Add(NoName.NetShop.Member.Model.LoginLog model)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umLoginLog_ADD");
 			db.AddInParameter(dbCommand, "UserId", DbType.Int32, model.UserId);
 			db.AddInParameter(dbCommand, "LoginTime", DbType.DateTime, model.LoginTime);
@@ -37,7 +37,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public NoName.NetShop.Member.Model.LoginLog GetModel(int UserId)
 		{
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umLoginLog_GetModel");
 			db.AddInParameter(dbCommand, "UserId", DbType.Int32,UserId);
 
@@ -64,7 +64,7 @@ namespace NoName.NetShop.Member.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
@@ -81,7 +81,7 @@ namespace NoName.NetShop.Member.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<NoName.NetShop.Member.Model.LoginLog> list = new List<NoName.NetShop.Member.Model.LoginLog>();
-			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
