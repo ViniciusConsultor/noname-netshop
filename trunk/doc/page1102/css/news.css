@@ -28,9 +28,9 @@
 
 ul.newsNavigator{ margin:0; padding:0}
 ul.newsNavigator li{ list-style-type:none; float:left; width:100%}
-ul.newsNavigator li a{ height:25px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
+ul.newsNavigator li a{ height:25px; display:block; clear:both; background:url(http://dingding.uncc.cn/images/sprite.gif) 0 -1868px repeat-x}
 ul.newsNavigator li a:hover{ background-position:0 -1898px;}
-ul.newsNavigator li a span{ height:25px; display:block; clear:both; background:url(../images/newsNavigator.gif) no-repeat}
+ul.newsNavigator li a span{ height:25px; display:block; clear:both; background:url(http://dingding.uncc.cn/images/newsNavigator.gif) no-repeat}
 
 ul.newsNavigator li a.m1 span{ background-position:15px 7px;}
 ul.newsNavigator li a.m2 span{ background-position:15px -18px;}
@@ -48,7 +48,7 @@ ul.videoNews li{ list-style-type:none; float:left; width:124px; padding:20px 29p
 ul.videoNews li a{ display:block; position:relative}
 ul.videoNews li a img{ width:120px; height:90px; padding:1px; border:1px solid #CCC; display:block}
 ul.videoNews li a span{ padding-top:5px; text-align:center; height:14px; display:block; clear:both; overflow:hidden}
-ul.videoNews li a .playButton{ width:58px; height:31px; background:url(../images/playButton.gif) no-repeat; filter:alpha(opacity=50); opacity:0.5; position:absolute; left:34px; top:33px;}
+ul.videoNews li a .playButton{ width:58px; height:31px; background:url(http://dingding.uncc.cn/images/playButton.gif) no-repeat; filter:alpha(opacity=50); opacity:0.5; position:absolute; left:34px; top:33px;}
 
 ul.newsList{ padding:0 10px; margin:0; zoom:1}
 ul.newsList:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
