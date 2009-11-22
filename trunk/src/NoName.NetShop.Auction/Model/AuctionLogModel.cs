@@ -1,5 +1,5 @@
 using System;
-namespace NoName.NetShop.Model
+namespace NoName.NetShop.Auction.Model
 {
 	/// <summary>
 	/// 实体类AuctionLogModel 。(属性说明自动提取数据库字段的描述信息)
@@ -10,14 +10,14 @@ namespace NoName.NetShop.Model
 		{}
 
 
-		private int? _AuctionID;
+		private int _AuctionID;
 		private string _UserName;
-		private DateTime? _AuctionTime;
-		private decimal? _AutionPrice;
+		private DateTime _AuctionTime;
+		private decimal _AutionPrice;
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? AuctionID
+		public int AuctionID
 		{
 			set{ _AuctionID=value;}
 			get{return _AuctionID;}
@@ -33,7 +33,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? AuctionTime
+		public DateTime AuctionTime
 		{
 			set{ _AuctionTime=value;}
 			get{return _AuctionTime;}
@@ -41,7 +41,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? AutionPrice
+		public decimal AutionPrice
 		{
 			set{ _AutionPrice=value;}
 			get{return _AutionPrice;}

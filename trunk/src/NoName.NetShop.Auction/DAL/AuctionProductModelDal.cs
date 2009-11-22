@@ -5,15 +5,16 @@ using System.Collections.Generic;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
+using NoName.NetShop.Auction.Model;
 
-namespace NoName.NetShop.DAL
+namespace NoName.NetShop.Auction.DAL
 {
 	/// <summary>
 	/// 数据访问类ActionProductModelDal。
 	/// </summary>
-	public class ActionProductModelDal
+	public class AuctionProductModelDal
 	{
-		public ActionProductModelDal()
+		public AuctionProductModelDal()
 		{}
 		#region  成员方法
 
@@ -56,13 +57,13 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.Model.ActionProductModel model)
+		public void Add(AuctionProductModel model)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_auActionProduct_ADD");
 			db.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionId);
 			db.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
-			db.AddInParameter(dbCommand, "SmallIamge", DbType.AnsiString, model.SmallIamge);
+			db.AddInParameter(dbCommand, "SmallIamge", DbType.AnsiString, model.SmallImage);
 			db.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
 			db.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
 			db.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
@@ -78,13 +79,13 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		///  更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.Model.ActionProductModel model)
+		public void Update(AuctionProductModel model)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_auActionProduct_Update");
 			db.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionId);
 			db.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
-			db.AddInParameter(dbCommand, "SmallIamge", DbType.AnsiString, model.SmallIamge);
+			db.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
 			db.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
 			db.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
 			db.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
@@ -112,13 +113,13 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.Model.ActionProductModel GetModel(int AuctionId)
+		public AuctionProductModel GetModel(int AuctionId)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_auActionProduct_GetModel");
 			db.AddInParameter(dbCommand, "AuctionId", DbType.Int32,AuctionId);
 
-			NoName.NetShop.Model.ActionProductModel model=null;
+			AuctionProductModel model=null;
 			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -135,7 +136,7 @@ namespace NoName.NetShop.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select AuctionId,ProductName,SmallIamge,MediumImage,OutLinkUrl,StartPrice,AddPrices,CurPrice,Brief,StartTime,EndTime,Status ");
+			strSql.Append("select AuctionId,ProductName,SmallImage,MediumImage,OutLinkUrl,StartPrice,AddPrices,CurPrice,Brief,StartTime,EndTime,Status ");
 			strSql.Append(" FROM auActionProduct ");
 			if(strWhere.Trim()!="")
 			{
@@ -166,16 +167,16 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.Model.ActionProductModel> GetListArray(string strWhere)
+		public List<AuctionProductModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select AuctionId,ProductName,SmallIamge,MediumImage,OutLinkUrl,StartPrice,AddPrices,CurPrice,Brief,StartTime,EndTime,Status ");
+			strSql.Append("select AuctionId,ProductName,SmallImage,MediumImage,OutLinkUrl,StartPrice,AddPrices,CurPrice,Brief,StartTime,EndTime,Status ");
 			strSql.Append(" FROM auActionProduct ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.Model.ActionProductModel> list = new List<NoName.NetShop.Model.ActionProductModel>();
+			List<AuctionProductModel> list = new List<AuctionProductModel>();
 			Database db = DatabaseFactory.CreateDatabase();
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -191,9 +192,9 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.Model.ActionProductModel ReaderBind(IDataReader dataReader)
+		public AuctionProductModel ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.Model.ActionProductModel model=new NoName.NetShop.Model.ActionProductModel();
+			AuctionProductModel model=new AuctionProductModel();
 			object ojb; 
 			ojb = dataReader["AuctionId"];
 			if(ojb != null && ojb != DBNull.Value)
@@ -201,7 +202,7 @@ namespace NoName.NetShop.DAL
 				model.AuctionId=(int)ojb;
 			}
 			model.ProductName=dataReader["ProductName"].ToString();
-			model.SmallIamge=dataReader["SmallIamge"].ToString();
+			model.SmallImage=dataReader["SmallImage"].ToString();
 			model.MediumImage=dataReader["MediumImage"].ToString();
 			model.OutLinkUrl=dataReader["OutLinkUrl"].ToString();
 			ojb = dataReader["StartPrice"];

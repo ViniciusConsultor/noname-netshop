@@ -1,15 +1,18 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
-using NoName.NetShop.Model;
-namespace NoName.NetShop.BLL
+using NoName.NetShop.Auction.DAL;
+using NoName.NetShop.Auction.Model;
+
+namespace NoName.NetShop.Auction.BLL
 {
 	/// <summary>
 	/// 业务逻辑类AuctionLogModelBll 的摘要说明。
 	/// </summary>
 	public class AuctionLogModelBll
 	{
-		private readonly NoName.NetShop.DAL.AuctionLogModelDal dal=new NoName.NetShop.DAL.AuctionLogModelDal();
+		private readonly AuctionLogModelDal dal=new AuctionLogModelDal();
+
 		public AuctionLogModelBll()
 		{}
 		#region  成员方法
@@ -17,7 +20,7 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.Model.AuctionLogModel model)
+		public void Add(AuctionLogModel model)
 		{
 			dal.Add(model);
 		}
@@ -25,7 +28,7 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.Model.AuctionLogModel model)
+		public void Update(AuctionLogModel model)
 		{
 			dal.Update(model);
 		}
@@ -42,7 +45,7 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.Model.AuctionLogModel GetModel()
+		public AuctionLogModel GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			return dal.GetModel();
@@ -51,26 +54,26 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中。
 		/// </summary>
-		public NoName.NetShop.Model.AuctionLogModel GetModelByCache()
-		{
-			//该表无主键信息，请自定义主键/条件字段
-			string CacheKey = "AuctionLogModelModel-" ;
-			object objModel = LTP.Common.DataCache.GetCache(CacheKey);
-			if (objModel == null)
-			{
-				try
-				{
-					objModel = dal.GetModel();
-					if (objModel != null)
-					{
-						int ModelCache = LTP.Common.ConfigHelper.GetConfigInt("ModelCache");
-						LTP.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-					}
-				}
-				catch{}
-			}
-			return (NoName.NetShop.Model.AuctionLogModel)objModel;
-		}
+        //public AuctionLogModel GetModelByCache()
+        //{
+        //    //该表无主键信息，请自定义主键/条件字段
+        //    string CacheKey = "AuctionLogModelModel-" ;
+        //    object objModel = LTP.Common.DataCache.GetCache(CacheKey);
+        //    if (objModel == null)
+        //    {
+        //        try
+        //        {
+        //            objModel = dal.GetModel();
+        //            if (objModel != null)
+        //            {
+        //                int ModelCache = LTP.Common.ConfigHelper.GetConfigInt("ModelCache");
+        //                LTP.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+        //            }
+        //        }
+        //        catch{}
+        //    }
+        //    return (AuctionLogModel)objModel;
+        //}
 
 		/// <summary>
 		/// 获得数据列表
@@ -82,17 +85,17 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<NoName.NetShop.Model.AuctionLogModel> GetModelList(string strWhere)
+		public List<AuctionLogModel> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
-			List<NoName.NetShop.Model.AuctionLogModel> modelList = new List<NoName.NetShop.Model.AuctionLogModel>();
+			List<AuctionLogModel> modelList = new List<AuctionLogModel>();
 			int rowsCount = ds.Tables[0].Rows.Count;
 			if (rowsCount > 0)
 			{
-				NoName.NetShop.Model.AuctionLogModel model;
+				AuctionLogModel model;
 				for (int n = 0; n < rowsCount; n++)
 				{
-					model = new NoName.NetShop.Model.AuctionLogModel();
+					model = new AuctionLogModel();
 					if(ds.Tables[0].Rows[n]["AuctionId"].ToString()!="")
 					{
 						model.AuctionID=int.Parse(ds.Tables[0].Rows[n]["AuctionId"].ToString());

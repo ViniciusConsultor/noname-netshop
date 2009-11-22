@@ -1,26 +1,27 @@
 using System;
-namespace NoName.NetShop.Model
+namespace NoName.NetShop.Auction.Model
 {
 	/// <summary>
 	/// 实体类ActionProductModel 。(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
-	public class ActionProductModel
+	public class AuctionProductModel
 	{
-		public ActionProductModel()
+        public AuctionProductModel()
 		{}
+
 		#region Model
 		private int _auctionid;
 		private string _productname;
 		private string _smalliamge;
 		private string _mediumimage;
 		private string _outlinkurl;
-		private decimal? _startprice;
-		private decimal? _addprices;
-		private decimal? _curprice;
+		private decimal _startprice;
+		private decimal _addprices;
+		private decimal _curprice;
 		private string _brief;
-		private DateTime? _starttime;
-		private DateTime? _endtime;
-		private int? _status;
+		private DateTime _starttime;
+		private DateTime _endtime;
+		private int _status;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -40,7 +41,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string SmallIamge
+		public string SmallImage
 		{
 			set{ _smalliamge=value;}
 			get{return _smalliamge;}
@@ -64,7 +65,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? StartPrice
+		public decimal StartPrice
 		{
 			set{ _startprice=value;}
 			get{return _startprice;}
@@ -72,7 +73,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? AddPrices
+		public decimal AddPrices
 		{
 			set{ _addprices=value;}
 			get{return _addprices;}
@@ -80,7 +81,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? CurPrice
+		public decimal CurPrice
 		{
 			set{ _curprice=value;}
 			get{return _curprice;}
@@ -96,7 +97,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? StartTime
+		public DateTime StartTime
 		{
 			set{ _starttime=value;}
 			get{return _starttime;}
@@ -104,7 +105,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? EndTime
+		public DateTime EndTime
 		{
 			set{ _endtime=value;}
 			get{return _endtime;}
@@ -112,7 +113,7 @@ namespace NoName.NetShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Status
+		public int Status
 		{
 			set{ _status=value;}
 			get{return _status;}
