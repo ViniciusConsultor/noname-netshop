@@ -9,6 +9,7 @@ using NoName.NetShop.Product.Model;
 using NoName.NetShop.Product.Facade;
 using NoName.Utility;
 using System.Web.UI.HtmlControls;
+using System.Data;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -32,6 +33,24 @@ namespace NoName.NetShop.BackFlat.Product
 
         private void BindData()
         {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("code");
+            dt.Columns.Add("status");
+
+            foreach (int code in Enum.GetValues(typeof(ProductStatus)))
+            {
+                DataRow row = dt.NewRow();
+                row["code"] = code;
+                row["status"] = Enum.GetName(typeof(ProductStatus), code);
+                dt.Rows.Add(row);
+            }
+
+            drpStatus.DataSource = dt;
+            drpStatus.DataTextField = "status";
+            drpStatus.DataValueField = "code";
+            drpStatus.DataBind();
+
             ProductModel product = ProductMainImageRule.GetMainImageUr(bll.GetModel(ProductID));
 
             if (product != null)
@@ -47,6 +66,7 @@ namespace NoName.NetShop.BackFlat.Product
                 txtKeywords.Text = product.Keywords;
                 fckBrief.Value = product.Brief;
                 imgProduct.ImageUrl = product.SmallImage;
+                ((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value = product.CateId.ToString();
             } 
         }
 
@@ -83,10 +103,6 @@ namespace NoName.NetShop.BackFlat.Product
             if (!PageValidate.IsNumber(txtStock.Text))
             {
                 strErr += "Stock不是数字！\\n";
-            }
-            if (this.fulImage.FileName == "")
-            {
-                strErr += "SmallImage不能为空！\\n";
             }
             if (this.txtKeywords.Text == "")
             {
