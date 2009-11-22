@@ -1,16 +1,19 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
-using NoName.NetShop.Model;
-namespace NoName.NetShop.BLL
+using NoName.NetShop.Auction.DAL;
+using NoName.NetShop.Auction.Model;
+using NoName.NetShop.Common;
+
+namespace NoName.NetShop.Auction.BLL
 {
 	/// <summary>
-	/// 业务逻辑类ActionProductModelBll 的摘要说明。
+	/// 业务逻辑类AuctionProductModelBll 的摘要说明。
 	/// </summary>
-	public class ActionProductModelBll
+	public class AuctionProductModelBll
 	{
-		private readonly NoName.NetShop.DAL.ActionProductModelDal dal=new NoName.NetShop.DAL.ActionProductModelDal();
-		public ActionProductModelBll()
+        private readonly AuctionProductModelDal dal = new AuctionProductModelDal();
+		public AuctionProductModelBll()
 		{}
 		#region  成员方法
 
@@ -33,7 +36,7 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.Model.ActionProductModel model)
+		public void Add(AuctionProductModel model)
 		{
 			dal.Add(model);
 		}
@@ -41,7 +44,7 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.Model.ActionProductModel model)
+		public void Update(AuctionProductModel model)
 		{
 			dal.Update(model);
 		}
@@ -58,7 +61,7 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.Model.ActionProductModel GetModel(int AuctionId)
+		public AuctionProductModel GetModel(int AuctionId)
 		{
 			
 			return dal.GetModel(AuctionId);
@@ -67,26 +70,26 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中。
 		/// </summary>
-		public NoName.NetShop.Model.ActionProductModel GetModelByCache(int AuctionId)
-		{
+        //public AuctionProductModel GetModelByCache(int AuctionId)
+        //{
 			
-			string CacheKey = "ActionProductModelModel-" + AuctionId;
-			object objModel = LTP.Common.DataCache.GetCache(CacheKey);
-			if (objModel == null)
-			{
-				try
-				{
-					objModel = dal.GetModel(AuctionId);
-					if (objModel != null)
-					{
-						int ModelCache = LTP.Common.ConfigHelper.GetConfigInt("ModelCache");
-						LTP.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-					}
-				}
-				catch{}
-			}
-			return (NoName.NetShop.Model.ActionProductModel)objModel;
-		}
+        //    string CacheKey = "AuctionProductModelModel-" + AuctionId;
+        //    object objModel = LTP.Common.DataCache.GetCache(CacheKey);
+        //    if (objModel == null)
+        //    {
+        //        try
+        //        {
+        //            objModel = dal.GetModel(AuctionId);
+        //            if (objModel != null)
+        //            {
+        //                int ModelCache = LTP.Common.ConfigHelper.GetConfigInt("ModelCache");
+        //                LTP.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+        //            }
+        //        }
+        //        catch{}
+        //    }
+        //    return (AuctionProductModel)objModel;
+        //}
 
 		/// <summary>
 		/// 获得数据列表
@@ -98,23 +101,23 @@ namespace NoName.NetShop.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<NoName.NetShop.Model.ActionProductModel> GetModelList(string strWhere)
+		public List<AuctionProductModel> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
-			List<NoName.NetShop.Model.ActionProductModel> modelList = new List<NoName.NetShop.Model.ActionProductModel>();
+			List<AuctionProductModel> modelList = new List<AuctionProductModel>();
 			int rowsCount = ds.Tables[0].Rows.Count;
 			if (rowsCount > 0)
 			{
-				NoName.NetShop.Model.ActionProductModel model;
+				AuctionProductModel model;
 				for (int n = 0; n < rowsCount; n++)
 				{
-					model = new NoName.NetShop.Model.ActionProductModel();
+					model = new AuctionProductModel();
 					if(ds.Tables[0].Rows[n]["AuctionId"].ToString()!="")
 					{
 						model.AuctionId=int.Parse(ds.Tables[0].Rows[n]["AuctionId"].ToString());
 					}
 					model.ProductName=ds.Tables[0].Rows[n]["ProductName"].ToString();
-					model.SmallIamge=ds.Tables[0].Rows[n]["SmallIamge"].ToString();
+					model.SmallImage=ds.Tables[0].Rows[n]["SmallImage"].ToString();
 					model.MediumImage=ds.Tables[0].Rows[n]["MediumImage"].ToString();
 					model.OutLinkUrl=ds.Tables[0].Rows[n]["OutLinkUrl"].ToString();
 					if(ds.Tables[0].Rows[n]["StartPrice"].ToString()!="")
@@ -163,6 +166,28 @@ namespace NoName.NetShop.BLL
 		//{
 			//return dal.GetList(PageSize,PageIndex,strWhere);
 		//}
+
+
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        {
+            SearchPageInfo info = new SearchPageInfo();
+
+            info.FieldNames = "*";
+            info.OrderType = "";
+            info.PageIndex = PageIndex;
+            info.PageSize = PageSize;
+            info.PriKeyName = "auctionid";
+            info.StrJoin = "";
+            info.StrWhere = " 1=1 " + Condition;
+            info.TableName = "auActionProduct";
+            info.TotalFieldStr = "";
+
+            DataTable dt = CommDataHelper.GetDataFromSingleTableByPage(info).Tables[0];
+
+            RecordCount = info.TotalItem;
+
+            return dt;
+        }
 
 		#endregion  成员方法
 	}

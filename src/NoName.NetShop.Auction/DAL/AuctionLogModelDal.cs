@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
+using NoName.NetShop.Auction.Model;
 
-namespace NoName.NetShop.DAL
+namespace NoName.NetShop.Auction.DAL
 {
 	/// <summary>
 	/// 数据访问类AuctionLogModelDal。
@@ -21,7 +22,7 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.Model.AuctionLogModel model)
+		public void Add(AuctionLogModel model)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_auAuctionLog_ADD");
@@ -35,7 +36,7 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		///  更新一条数据
 		/// </summary>
-		public void Update(NoName.NetShop.Model.AuctionLogModel model)
+		public void Update(AuctionLogModel model)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_auAuctionLog_Update");
@@ -60,12 +61,12 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.Model.AuctionLogModel GetModel()
+		public AuctionLogModel GetModel()
 		{
 			Database db = DatabaseFactory.CreateDatabase();
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_auAuctionLog_GetModel");
 
-			NoName.NetShop.Model.AuctionLogModel model=null;
+			AuctionLogModel model=null;
 			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -113,7 +114,7 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.Model.AuctionLogModel> GetListArray(string strWhere)
+		public List<AuctionLogModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select AuctionId,UserName,AuctionTime,AutionPrice ");
@@ -122,7 +123,7 @@ namespace NoName.NetShop.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.Model.AuctionLogModel> list = new List<NoName.NetShop.Model.AuctionLogModel>();
+			List<AuctionLogModel> list = new List<AuctionLogModel>();
 			Database db = DatabaseFactory.CreateDatabase();
 			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -138,9 +139,9 @@ namespace NoName.NetShop.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.Model.AuctionLogModel ReaderBind(IDataReader dataReader)
+		public AuctionLogModel ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.Model.AuctionLogModel model=new NoName.NetShop.Model.AuctionLogModel();
+			AuctionLogModel model=new AuctionLogModel();
 			object ojb; 
 			ojb = dataReader["AuctionId"];
 			if(ojb != null && ojb != DBNull.Value)
