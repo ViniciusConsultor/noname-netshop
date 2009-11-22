@@ -106,7 +106,8 @@
                 </td>
             </tr>
         </table>
-        <asp:Button ID="Button_Submit" runat="server" Text="添加" OnClientClick="return validate()"  OnClick="Button_Submit_Click" />
+        <asp:Button ID="Button_Submit" runat="server" Text="更新" OnClientClick="return validate()"  OnClick="Button_Submit_Click" />
+        
         <a href="List.aspx">返回</a>
     </div>
     </form>
