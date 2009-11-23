@@ -57,7 +57,7 @@ namespace NoName.NetShop.Secondhand.Facade
             return ProcessResult;
         }
 
-        public static SecondhandProductModel GetMainImageUr(SecondhandProductModel model)
+        public static SecondhandProductModel GetMainImageUrl(SecondhandProductModel model)
         {
             model.SmallImage = config.UrlRoot + model.SmallImage;
             model.MediumImage = config.UrlRoot + model.MediumImage;
