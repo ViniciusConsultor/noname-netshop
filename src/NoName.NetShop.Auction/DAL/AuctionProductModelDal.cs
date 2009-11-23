@@ -202,7 +202,7 @@ namespace NoName.NetShop.Auction.DAL
 				model.AuctionId=(int)ojb;
 			}
 			model.ProductName=dataReader["ProductName"].ToString();
-			model.SmallImage=dataReader["SmallImage"].ToString();
+			model.SmallImage=dataReader["SmallIamge"].ToString();
 			model.MediumImage=dataReader["MediumImage"].ToString();
 			model.OutLinkUrl=dataReader["OutLinkUrl"].ToString();
 			ojb = dataReader["StartPrice"];
@@ -234,7 +234,7 @@ namespace NoName.NetShop.Auction.DAL
 			ojb = dataReader["Status"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.Status=(int)ojb;
+				model.Status=Convert.ToInt32(ojb);
 			}
 			return model;
 		}
