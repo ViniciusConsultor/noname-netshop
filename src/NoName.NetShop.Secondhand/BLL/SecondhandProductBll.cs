@@ -50,7 +50,7 @@ namespace NoName.NetShop.Secondhand.BLL
             SearchPageInfo info = new SearchPageInfo();
 
             info.FieldNames = "*";
-            info.OrderType = "";
+            info.OrderType = " seproductid desc";
             info.PageIndex = PageIndex;
             info.PageSize = PageSize;
             info.PriKeyName = "seproductid";
