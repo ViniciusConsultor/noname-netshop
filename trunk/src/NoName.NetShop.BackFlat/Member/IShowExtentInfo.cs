@@ -8,6 +8,6 @@ namespace NoName.NetShop.BackFlat.Member
     interface IShowExtentInfo
     {
         void SwitchReadOnly(bool isReadOnly);
-        void ShowInfo(int userid);
+        void ShowInfo(string userid);
     }
 }

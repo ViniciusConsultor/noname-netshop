@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.Common;
 using NoName.NetShop.Member.Model;
+using NoName.NetShop.Member;
 
 namespace NoName.NetShop.BackFlat.Member
 {
@@ -20,7 +21,7 @@ namespace NoName.NetShop.BackFlat.Member
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "umMember";
-                    spage.FieldNames = "UserId,UserEmail,NickName,Status,LastLogin,UserType";
+                    spage.FieldNames = "UserId,UserEmail,UserName,Status,LastLogin,UserType";
                     spage.PriKeyName = "UserId";
                     spage.StrJoin = "";
                     spage.PageSize = 20;
@@ -51,22 +52,21 @@ namespace NoName.NetShop.BackFlat.Member
 
         protected void gvList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int userId = Convert.ToInt32(e.CommandArgument);
-            NoName.NetShop.UserManager.BLL.Member bll = new NoName.NetShop.UserManager.BLL.Member();
+            string userId =  e.CommandArgument.ToString();
             switch (e.CommandName)
             {
                 case "delete":
-                    bll.SetStatus(userId, MemberStatus.Deleted);
+                    MemberInfo.SetStatus(userId, MemberStatus.Deleted);
                     break;
                 case "show":
-                    Response.Redirect("MemberInfo.aspx?userid=" + userId, true);
+                    Response.Redirect("ShowMemberInfo.aspx?userid=" + userId, true);
                     Response.End();
                     break;
                 case "lock":
-                    bll.SetStatus(userId, MemberStatus.Locked);
+                    MemberInfo.SetStatus(userId, MemberStatus.Locked);
                     break;
                 case "active":
-                    bll.SetStatus(userId, MemberStatus.Formal);
+                    MemberInfo.SetStatus(userId, MemberStatus.Formal);
                     break;
             }
             BindList();
