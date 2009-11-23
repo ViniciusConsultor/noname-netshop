@@ -37,5 +37,28 @@ namespace NoName.NetShop.BackFlat.PawnShop
             AspNetPager.CurrentPageIndex = e.NewPageIndex;
             BindData(AspNetPager.CurrentPageIndex);
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.ToLower() == "d")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.Delete(ProductID);
+                BindData(AspNetPager.CurrentPageIndex);
+                MessageBox.Show(this, "删除成功！");
+            }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //如果是绑定数据行 
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
+                {
+                    ((LinkButton)e.Row.Cells[6].FindControl("Button_Delete")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[1].Text.Trim() + "\"吗?')");
+                }
+            }
+        }
     }
 }

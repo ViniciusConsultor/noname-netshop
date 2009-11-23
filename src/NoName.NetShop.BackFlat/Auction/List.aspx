@@ -10,7 +10,46 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView runat="server" ID="GridView1">
+            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
+                <Columns>
+                    <asp:BoundField HeaderText="拍品ID" DataField="AuctionId" />
+                    <asp:TemplateField HeaderText="名称">
+                        <ItemTemplate>
+                            <%# Eval("ProductName")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="起拍价">
+                        <ItemTemplate>
+                            <%# Convert.ToDecimal(Eval("StartPrice")).ToString("0.00") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="当前价">
+                        <ItemTemplate>
+                            <%# Convert.ToDecimal(Eval("CurPrice")).ToString("0.00") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="起拍时间">
+                        <ItemTemplate>
+                            <%# Convert.ToDateTime(Eval("StartTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="结束时间">
+                        <ItemTemplate>
+                            <%# Convert.ToDateTime(Eval("EndTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="状态">
+                        <ItemTemplate>
+                            <%# Eval("status")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <a href=''>通过审核</a>
+                            <asp:LinkButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("AuctionId") %>' CommandName="d" Text="删除" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
             </asp:GridView>
         </div>
         <div id="page">

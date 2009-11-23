@@ -10,8 +10,33 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView runat="server" ID="GridView1">
-            
+            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
+                <Columns>
+                    <asp:BoundField HeaderText="商品ID" DataField="SeProductID" />
+                    <asp:TemplateField  HeaderText="商品名称">
+                        <ItemTemplate>
+                            <%# Eval("SeProductName")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="价格">
+                        <ItemTemplate>
+                            <%# Convert.ToDecimal(Eval("Price")).ToString("0.00") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField HeaderText="数量" DataField="Stock" />                
+                    <asp:TemplateField  HeaderText="状态">
+                        <ItemTemplate>
+                            <%# Eval("status")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <a href=''>通过审核</a>
+                            <asp:LinkButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("SeProductID") %>' CommandName="d" Text="删除" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                
+                </Columns>        
             </asp:GridView>
         </div>
         <div>
