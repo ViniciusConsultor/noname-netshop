@@ -13,7 +13,7 @@ namespace NoName.NetShop.Secondhand.Facade
 {
     public class SecondhandProductImageRule
     {
-        private static SecondhandImageSection config = (SecondhandImageSection)ConfigurationManager.GetSection("productImage/secondhandImage");
+        private static SecondhandImageSection config = (SecondhandImageSection)ConfigurationManager.GetSection("productImage/secondhandProductImage");
 
 
 
