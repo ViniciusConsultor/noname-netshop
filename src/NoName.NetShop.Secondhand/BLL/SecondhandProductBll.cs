@@ -5,6 +5,7 @@ using System.Text;
 using NoName.NetShop.Secondhand.DAL;
 using NoName.NetShop.Secondhand.Model;
 using System.Data;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Secondhand.BLL
 {
@@ -42,6 +43,27 @@ namespace NoName.NetShop.Secondhand.BLL
         public bool Exists(int SecondhandProductID)
         {
             return dal.Exists(SecondhandProductID);
+        }
+
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        {
+            SearchPageInfo info = new SearchPageInfo();
+
+            info.FieldNames = "*";
+            info.OrderType = "";
+            info.PageIndex = PageIndex;
+            info.PageSize = PageSize;
+            info.PriKeyName = "seproductid";
+            info.StrJoin = "";
+            info.StrWhere = " 1=1 " + Condition;
+            info.TableName = "seSecondhandProduct";
+            info.TotalFieldStr = "";
+
+            DataTable dt = CommDataHelper.GetDataFromSingleTableByPage(info).Tables[0];
+
+            RecordCount = info.TotalItem;
+
+            return dt;
         }
     }
 }
