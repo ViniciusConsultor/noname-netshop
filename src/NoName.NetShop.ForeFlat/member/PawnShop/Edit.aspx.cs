@@ -32,7 +32,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
 
         private void BindData()
         {
-            PawnProductModel model = new PawnProductModel();
+            PawnProductModel model = bll.GetModel(PawnProductID);
 
             TextBox_ProductName.Text = model.PawnProductName;
             TextBox_Brief.Text = model.Brief;

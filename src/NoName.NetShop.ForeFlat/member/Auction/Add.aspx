@@ -1,23 +1,89 @@
-ï»¿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MemberCenter.master" CodeBehind="Add.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.Auction.Add" %>
-<%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
-
-
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MemberCenter.master" CodeBehind="Add.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.Auction.Add" %>
+<%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/ui.core.js" type="text/javascript"></script>
+    <script src="/js/ui.datepicker.js" type="text/javascript"></script>
+    <script src="/js/validate.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            //$('#<%=TextBox_StartTime.ClientID %>').datepicker({dateFormat:'yyyy-MM-dd hh:mm:ss'});
+        //$('#<%=TextBox_EndTime.ClientID %>').datepicker({ dateFormat: 'yyyy-MM-dd hh:mm:ss' });
+            
+        });
+
+        function validate() {
+            $('table td span[type=inform]').html('');
+            
+            var result = true;
+
+            if ($('#<%=TextBox_AuctionProductName.ClientID %>').val() == '') {
+                result = false;
+                inform($('#<%=TextBox_AuctionProductName.ClientID %>'), 'ÇëÊäÈë²úÆ·Ãû³Æ');
+            }
+            if ($('#<%=TextBox_StartPrice.ClientID %>').val() == '' || !$('#<% =TextBox_StartPrice.ClientID %>').val().isCurrency()) {
+                result = false;
+                inform($('#<%=TextBox_StartPrice.ClientID %>'), 'ÇëÊäÈëÕıÈ·µÄ¼Û¸ñ');
+            }
+            if ($('#<%=TextBox_AddPrice.ClientID %>').val() == '' || !$('#<% =TextBox_AddPrice.ClientID %>').val().isCurrency()) {
+                result = false;
+                inform($('#<%=TextBox_AddPrice.ClientID %>'), 'ÇëÊäÈëÕıÈ·µÄ¼Û¸ñ');
+            }
+            if ($('#<%=TextBox_StartTime.ClientID %>').val() == '') {
+                result = false;
+                inform($('#<%=TextBox_StartTime.ClientID %>'), 'ÇëÊäÈëÅÄÂô¿ªÊ¼Ê±¼ä');
+            }
+            if ($('#<%=TextBox_EndTime.ClientID %>').val() == '') {
+                result = false;
+                inform($('#<%=TextBox_EndTime.ClientID %>'), 'ÇëÊäÈëÅÄÂô½áÊøÊ±¼ä');
+            }
+            if ($('#<%=FileUpload_ProductImage.ClientID %>').val() == '') {
+                result = false;
+                inform($('#<%=FileUpload_ProductImage.ClientID %>'), 'ÇëÑ¡Ôñ²úÆ·Í¼Æ¬');
+            }
+            
+            return result;
+        }
+        function inform(o, message) {
+            o.parent().children('span[type=inform]').html(message);
+            o.focus();
+        }
+    </script>
 </asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
     <div>
-        <asp:GridView runat="server" ID="GridView1">
-        
-        </asp:GridView>
-    </div>
-    <div>
-        <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="12"
-            UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='é¦–é¡µ'
-            LastPageText='æœ«é¡µ' NextPageText='ä¸‹ä¸€é¡µ'
-            PrevPageText='ä¸Šä¸€é¡µ' ShowBoxThreshold="16" NumericButtonCount="8"
-            ShowPrevNext="True" SubmitButtonClass="buttom" 
-            NumericButtonTextFormatString=''>
-        </cc1:AspNetPager>
+        <table>
+            <tr>
+                <td>ÅÄÆ·Ãû³Æ<span class="red">*</span>£º</td>
+                <td><asp:TextBox runat="server" ID="TextBox_AuctionProductName" Width="400" /><span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
+                <td>ÆğÅÄ¼Û<span class="red">*</span>£º</td>
+                <td><asp:TextBox runat="server" ID="TextBox_StartPrice" /><span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
+                <td>Ã¿´Î¼Ó¼Û<span class="red">*</span>£º</td>
+                <td><asp:TextBox runat="server" ID="TextBox_AddPrice" /><span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
+                <td>¿ªÊ¼Ê±¼ä<span class="red">*</span>£º</td>
+                <td><asp:TextBox runat="server" ID="TextBox_StartTime" />(¸ñÊ½£ºyyyy-MM-dd hh:mm:ss)<span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
+                <td>½áÊøÊ±¼ä<span class="red">*</span>£º</td>
+                <td><asp:TextBox runat="server" ID="TextBox_EndTime" />(¸ñÊ½£ºyyyy-MM-dd hh:mm:ss)<span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
+                <td>¼ò½é£º</td>
+                <td><FCKeditorV2:FCKeditor ID="TextEditor_Brief" runat="server" width="500" height="400" /></td>
+            </tr>
+            <tr>
+                <td>²úÆ·Í¼Æ¬<span class="red">*</span>£º</td>
+                <td><asp:FileUpload runat="server" ID="FileUpload_ProductImage" /><span type="inform" class="red"></span></td>
+            </tr>
+        </table>
+        <asp:Button runat="server" ID="Button_Add" OnClientClick="return validate()" OnClick="Button_Add_Click" Text="Ìá½»" />
     </div>
 </asp:Content>
