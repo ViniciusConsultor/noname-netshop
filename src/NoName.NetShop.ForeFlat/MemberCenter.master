@@ -41,13 +41,13 @@
                     <div class="groupTitle">我的魔力世界</div>
                     <ul class="articleList_1 bullet_2">
                         <li>
-                            <a href="#">我的拍卖</a>
+                            <a href="/member/Auction/List.aspx">我的拍卖</a>
                         </li>
                         <li>
-                            <a href="#">我的二手</a>
+                            <a href="/member/Secondhand/List.aspx">我的二手</a>
                         </li>
                         <li>
-                            <a href="#">我的典藏</a>
+                            <a href="/member/PawnShop/List.aspx">我的典藏</a>
                         </li>
                         <li>
                             <a href="#">我的团购</a>
