@@ -21,22 +21,22 @@ namespace NoName.NetShop.PawnShop.DAL
         {
             DbCommand command = dbw.GetStoredProcCommand("UP_pwPawnProduct_Insert");
             
-            dbw.AddInParameter(command,"@pawnproductid",DbType.Int32,model);
-            dbw.AddInParameter(command,"@pawnproductname",DbType.String,model);
-            dbw.AddInParameter(command,"@userid",DbType.Int32,model);
-            dbw.AddInParameter(command,"@pawnprice",DbType.Decimal,model);
-            dbw.AddInParameter(command,"@cateid",DbType.Int32,model);
-            dbw.AddInParameter(command,"@catepath",DbType.String,model);
-            dbw.AddInParameter(command,"@stock",DbType.Int32,model);
-            dbw.AddInParameter(command,"@smallimage",DbType.String,model);
-            dbw.AddInParameter(command,"@mediumimage",DbType.String,model);
-            dbw.AddInParameter(command,"@largeimage",DbType.String,model);
-            dbw.AddInParameter(command,"@keywords",DbType.String,model);
-            dbw.AddInParameter(command,"@brief",DbType.String,model);
-            dbw.AddInParameter(command,"@inserttime",DbType.DateTime,model);
-            dbw.AddInParameter(command,"@changetime",DbType.DateTime,model);
-            dbw.AddInParameter(command,"@status",DbType.Int32,model);
-            dbw.AddInParameter(command,"@sortvalue",DbType.Int32,model);
+            dbw.AddInParameter(command,"@pawnproductid",DbType.Int32,model.PawnProductID);
+            dbw.AddInParameter(command,"@pawnproductname",DbType.String,model.PawnProductName);
+            dbw.AddInParameter(command,"@userid",DbType.Int32,model.UserID);
+            dbw.AddInParameter(command,"@pawnprice",DbType.Decimal,model.PawnPrice);
+            dbw.AddInParameter(command,"@cateid",DbType.Int32,model.CateID);
+            dbw.AddInParameter(command,"@catepath",DbType.String,model.CatePath);
+            dbw.AddInParameter(command,"@stock",DbType.Int32,model.Stock);
+            dbw.AddInParameter(command,"@smallimage",DbType.String,model.SmallImage);
+            dbw.AddInParameter(command,"@mediumimage",DbType.String,model.MediumImage);
+            dbw.AddInParameter(command,"@largeimage",DbType.String,model.LargeImage);
+            dbw.AddInParameter(command,"@keywords",DbType.String,model.Keywords);
+            dbw.AddInParameter(command,"@brief",DbType.String,model.Brief);
+            dbw.AddInParameter(command,"@inserttime",DbType.DateTime,model.InsertTime);
+            dbw.AddInParameter(command,"@changetime",DbType.DateTime,model.ChangeTime);
+            dbw.AddInParameter(command,"@status",DbType.Int32,model.Status);
+            dbw.AddInParameter(command,"@sortvalue",DbType.Int32,model.SortValue);
 
             dbw.ExecuteNonQuery(command);
         }
@@ -53,23 +53,25 @@ namespace NoName.NetShop.PawnShop.DAL
         public void Update(PawnProductModel model)
         {
             DbCommand command = dbw.GetStoredProcCommand("UP_pwPawnProduct_Update");
-            
-            dbw.AddInParameter(command,"@pawnproductid",DbType.Int32,model);
-            dbw.AddInParameter(command,"@pawnproductname",DbType.String,model);
-            dbw.AddInParameter(command,"@userid",DbType.Int32,model);
-            dbw.AddInParameter(command,"@pawnprice",DbType.Decimal,model);
-            dbw.AddInParameter(command,"@cateid",DbType.Int32,model);
-            dbw.AddInParameter(command,"@catepath",DbType.String,model);
-            dbw.AddInParameter(command,"@stock",DbType.Int32,model);
-            dbw.AddInParameter(command,"@smallimage",DbType.String,model);
-            dbw.AddInParameter(command,"@mediumimage",DbType.String,model);
-            dbw.AddInParameter(command,"@largeimage",DbType.String,model);
-            dbw.AddInParameter(command,"@keywords",DbType.String,model);
-            dbw.AddInParameter(command,"@brief",DbType.String,model);
-            dbw.AddInParameter(command,"@inserttime",DbType.DateTime,model);
-            dbw.AddInParameter(command,"@changetime",DbType.DateTime,model);
-            dbw.AddInParameter(command,"@status",DbType.Int32,model);
-            dbw.AddInParameter(command,"@sortvalue",DbType.Int32,model);
+
+            dbw.AddInParameter(command, "@pawnproductid", DbType.Int32, model.PawnProductID);
+            dbw.AddInParameter(command, "@pawnproductname", DbType.String, model.PawnProductName);
+            dbw.AddInParameter(command, "@userid", DbType.Int32, model.UserID);
+            dbw.AddInParameter(command, "@pawnprice", DbType.Decimal, model.PawnPrice);
+            dbw.AddInParameter(command, "@cateid", DbType.Int32, model.CateID);
+            dbw.AddInParameter(command, "@catepath", DbType.String, model.CatePath);
+            dbw.AddInParameter(command, "@stock", DbType.Int32, model.Stock);
+            dbw.AddInParameter(command, "@smallimage", DbType.String, model.SmallImage);
+            dbw.AddInParameter(command, "@mediumimage", DbType.String, model.MediumImage);
+            dbw.AddInParameter(command, "@largeimage", DbType.String, model.LargeImage);
+            dbw.AddInParameter(command, "@keywords", DbType.String, model.Keywords);
+            dbw.AddInParameter(command, "@brief", DbType.String, model.Brief);
+            dbw.AddInParameter(command, "@inserttime", DbType.DateTime, model.InsertTime);
+            dbw.AddInParameter(command, "@changetime", DbType.DateTime, model.ChangeTime);
+            dbw.AddInParameter(command, "@status", DbType.Int32, model.Status);
+            dbw.AddInParameter(command, "@sortvalue", DbType.Int32, model.SortValue);
+
+            dbw.ExecuteNonQuery(command);
         }
 
         public void ChangeStatus(int PawnProductID, int Status)
