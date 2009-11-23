@@ -30,8 +30,8 @@
     <RowStyle BackColor="White" ForeColor="#333333" />
     <Columns>
         <asp:BoundField DataField="UserId" HeaderText="用户ID" />
-        <asp:BoundField DataField="UserEmail" HeaderText="登录帐号" />
-        <asp:BoundField DataField="NickName"  HeaderText="昵称"/>
+        <asp:BoundField DataField="UserEmail" HeaderText="邮箱地址" />
+        <asp:BoundField DataField="UserName"  HeaderText="昵称"/>
         <asp:BoundField DataField="Status"  HeaderText="状态"/>
         <asp:BoundField DataField="UserType"  HeaderText="用户类型" />
         <asp:TemplateField HeaderText="操作">
