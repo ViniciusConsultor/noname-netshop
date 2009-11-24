@@ -247,6 +247,57 @@ namespace NoName.NetShop.Member.DAL
             int result = db.ExecuteNonQuery(dbCommand);
             return (result == 1);
         }
+
+        /// <summary>
+        /// 对象实体绑定数据
+        /// </summary>
+        public NoName.NetShop.Member.Model.MemberModel ReaderBind(IDataReader dataReader)
+        {
+            NoName.NetShop.Member.Model.MemberModel model = new NoName.NetShop.Member.Model.MemberModel();
+            object ojb;
+            ojb = dataReader["userId"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.userId = (int)ojb;
+            }
+            model.UserEmail = dataReader["UserEmail"].ToString();
+            model.Password = dataReader["Password"].ToString();
+            model.NickName = dataReader["NickName"].ToString();
+            ojb = dataReader["AllScore"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.AllScore = (int)ojb;
+            }
+            ojb = dataReader["CurScore"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.CurScore = (int)ojb;
+            }
+            ojb = dataReader["LastLogin"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.LastLogin = (DateTime)ojb;
+            }
+            model.LoginIP = dataReader["LoginIP"].ToString();
+            ojb = dataReader["RegisterTime"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.RegisterTime = (DateTime)ojb;
+            }
+
+            ojb = dataReader["UserType"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.UserType = (MemberType)(Convert.ToInt32(ojb));
+            }
+            ojb = dataReader["status"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.Status = (MemberStatus)(Convert.ToInt32(ojb));
+            }
+            return model;
+        }
+
     }
 }
 

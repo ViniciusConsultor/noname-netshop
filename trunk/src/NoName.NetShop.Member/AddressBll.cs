@@ -52,7 +52,7 @@ namespace NoName.NetShop.Member.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<NoName.NetShop.Member.Model.AddressModel> GetModelList(int userId)
+		public List<NoName.NetShop.Member.Model.AddressModel> GetModelList(string userId)
 		{
             return dal.GetListArray("userid=" + userId);
 		}

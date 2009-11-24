@@ -58,7 +58,7 @@ namespace NoName.NetShop.Member.DAL
 		{
 			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_umAddress_Update");
-            db.AddInParameter(dbCommand, "UserId", DbType.Int32, model.UserId);
+            db.AddInParameter(dbCommand, "UserId", DbType.String, model.UserId);
             db.AddInParameter(dbCommand, "AddressId", DbType.Int32, model.AddressId);
             db.AddInParameter(dbCommand, "regionPath", DbType.AnsiString, model.RegionPath);
             db.AddInParameter(dbCommand, "Country", DbType.AnsiString, model.Country);
@@ -138,11 +138,7 @@ namespace NoName.NetShop.Member.DAL
 		{
 			NoName.NetShop.Member.Model.AddressModel model=new NoName.NetShop.Member.Model.AddressModel();
             object ojb;
-            ojb = dataReader["UserId"];
-            if (ojb != null && ojb != DBNull.Value)
-            {
-                model.UserId = (int)ojb;
-            }
+            model.UserId = dataReader["userId"].ToString();
             ojb = dataReader["AddressId"];
             if (ojb != null && ojb != DBNull.Value)
             {

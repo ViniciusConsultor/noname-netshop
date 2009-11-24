@@ -14,16 +14,14 @@ namespace NoName.NetShop.Member
         private FormsAuthenticationTicket ticket;
         private HttpContext context = HttpContext.Current;
         private string userEmail;
-
-
-        private int userId;
-        private string nickName;
+        private string userId;
+        private string userName;
         private MemberStatus userStatus;
         private MemberType userType;
 
         public string UserEmail { get { return userEmail; } }
-        public int UserId { get { return userId; } }
-        public string NickName { get { return nickName; } }
+        public string UserId { get { return userId; } }
+        public string UserName { get { return userName; } }
         public MemberStatus UserStatus { get { return userStatus; } }
         public MemberType UserType { get { return userType; } }
 
@@ -32,9 +30,9 @@ namespace NoName.NetShop.Member
             this.ticket = ticket;
             string[] ud = ticket.UserData.Split(':');
 
-            userEmail = ticket.Name;
-            userId = int.Parse(ud[0]);
-            nickName = ud[1];
+            userId = ticket.Name;
+            userEmail = ud[0];
+            userName = ud[1];
             userStatus = (MemberStatus)(int.Parse(ud[2]));
             userType = (MemberType)(int.Parse(ud[3]));
         }

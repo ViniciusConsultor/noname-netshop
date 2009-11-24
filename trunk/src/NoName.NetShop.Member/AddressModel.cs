@@ -10,7 +10,7 @@ namespace NoName.NetShop.Member.Model
 		public AddressModel()
 		{}
 		#region Model
-		private int _userid;
+		private string _userid;
 		private int _addressid;
         private string _regionPath;
         private string _country;
@@ -38,7 +38,7 @@ namespace NoName.NetShop.Member.Model
         /// <summary>
 		/// 
 		/// </summary>
-		public int UserId
+		public string UserId
 		{
 			set{ _userid=value;}
 			get{return _userid;}

@@ -71,33 +71,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressBll.cs" />
-    <Compile Include="FavoriteBll.cs" />
-    <Compile Include="LoginLogBll.cs" />
-    <Compile Include="MemberBll.cs" />
-    <Compile Include="MemberCompanyBll.cs" />
-    <Compile Include="MemberFamlyBll.cs" />
-    <Compile Include="MemberPersonBll.cs" />
-    <Compile Include="MemberSchoolBll.cs" />
+    <Compile Include="CompanyMemberInfo.cs" />
+    <Compile Include="FamlyMemberInfo.cs" />
+    <Compile Include="MemberInfo.cs" />
     <Compile Include="DAL\AddressDal.cs" />
-    <Compile Include="DAL\FavoriteDal.cs" />
-    <Compile Include="DAL\LoginLogDal.cs" />
-    <Compile Include="DAL\MemberDal.cs" />
-    <Compile Include="DAL\MemberCompany.cs" />
-    <Compile Include="DAL\MemberFamlyDal.cs" />
-    <Compile Include="DAL\MemberPersonDal.cs" />
-    <Compile Include="DAL\MemberSchoolDal.cs" />
     <Compile Include="AddressModel.cs" />
-    <Compile Include="FavoriteModle.cs" />
-    <Compile Include="LoginLogModle.cs" />
-    <Compile Include="MemberModel.cs" />
-    <Compile Include="MemberCompanyModle.cs" />
-    <Compile Include="MemberFamlyModel.cs" />
-    <Compile Include="MemberPersonModel.cs" />
-    <Compile Include="MemberSchoolModel.cs" />
     <Compile Include="MemberStatus.cs" />
     <Compile Include="MemberType.cs" />
+    <Compile Include="PersonMemberInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionInfo.cs" />
+    <Compile Include="SchoolMemberInfo.cs" />
     <Compile Include="ShopIdentity.cs" />
     <Compile Include="ShopPrincipal.cs" />
   </ItemGroup>

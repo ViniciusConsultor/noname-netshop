@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NoName.NetShop.Member.Model
+namespace NoName.NetShop.Member
 {
     public enum MemberType
     {
