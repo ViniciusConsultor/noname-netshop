@@ -49,6 +49,11 @@ namespace NoName.NetShop.Auction.BLL
 			dal.Update(model);
 		}
 
+        public void UpdateStatus(int AuctionId, int Status)
+        {
+            dal.UpdateStatus(AuctionId, Status);
+        }
+
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>

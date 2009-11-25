@@ -7,7 +7,9 @@ namespace NoName.NetShop.Auction.Model
 	public class AuctionProductModel
 	{
         public AuctionProductModel()
-		{}
+		{
+            
+        }
 
 		#region Model
 		private int _auctionid;
@@ -121,5 +123,13 @@ namespace NoName.NetShop.Auction.Model
 		#endregion Model
 
 	}
+
+    public enum AuctionProductStatus
+    {
+        ÉÐÎ´ÉóºË = 1,
+        ÉóºËÍ¨¹ý = 2,
+        ÉóºËÎ´Í¨¹ý = 3,
+        ¶³½á = 4,
+    }
 }
 
