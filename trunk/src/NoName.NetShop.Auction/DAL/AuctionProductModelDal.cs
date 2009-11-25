@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using NoName.NetShop.Auction.Model;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Auction.DAL
 {
@@ -13,36 +14,24 @@ namespace NoName.NetShop.Auction.DAL
 	/// 数据访问类ActionProductModelDal。
 	/// </summary>
 	public class AuctionProductModelDal
-	{
+    {
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
+
 		public AuctionProductModelDal()
 		{}
 		#region  成员方法
 
-		/// <summary>
-		/// 得到最大ID
-		/// </summary>
-		public int GetMaxId()
-		{
-			string strsql = "select max(AuctionId)+1 from auActionProduct";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
-			if (obj != null && obj != DBNull.Value)
-			{
-				return int.Parse(obj.ToString());
-			}
-			return 1;
-		}
 
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
 		public bool Exists(int AuctionId)
-		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_auActionProduct_Exists");
-			db.AddInParameter(dbCommand, "AuctionId", DbType.Int32,AuctionId);
+		{			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_auActionProduct_Exists");
+			dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32,AuctionId);
 			int result;
-			object obj = db.ExecuteScalar(dbCommand);
+			object obj = dbw.ExecuteScalar(dbCommand);
 			int.TryParse(obj.ToString(),out result);
 			if(result==1)
 			{
@@ -58,22 +47,21 @@ namespace NoName.NetShop.Auction.DAL
 		///  增加一条数据
 		/// </summary>
 		public void Add(AuctionProductModel model)
-		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_auActionProduct_ADD");
-			db.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionId);
-			db.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
-			db.AddInParameter(dbCommand, "SmallIamge", DbType.AnsiString, model.SmallImage);
-			db.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
-			db.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
-			db.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
-			db.AddInParameter(dbCommand, "AddPrices", DbType.Decimal, model.AddPrices);
-			db.AddInParameter(dbCommand, "CurPrice", DbType.Decimal, model.CurPrice);
-			db.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-			db.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
-			db.AddInParameter(dbCommand, "EndTime", DbType.DateTime, model.EndTime);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.ExecuteNonQuery(dbCommand);
+		{			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_auActionProduct_ADD");
+			dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionId);
+			dbw.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
+			dbw.AddInParameter(dbCommand, "SmallIamge", DbType.AnsiString, model.SmallImage);
+			dbw.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
+			dbw.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
+			dbw.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
+			dbw.AddInParameter(dbCommand, "AddPrices", DbType.Decimal, model.AddPrices);
+			dbw.AddInParameter(dbCommand, "CurPrice", DbType.Decimal, model.CurPrice);
+			dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+			dbw.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
+			dbw.AddInParameter(dbCommand, "EndTime", DbType.DateTime, model.EndTime);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -81,46 +69,69 @@ namespace NoName.NetShop.Auction.DAL
 		/// </summary>
 		public void Update(AuctionProductModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_auActionProduct_Update");
-			db.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionId);
-			db.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
-			db.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
-			db.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
-			db.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
-			db.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
-			db.AddInParameter(dbCommand, "AddPrices", DbType.Decimal, model.AddPrices);
-			db.AddInParameter(dbCommand, "CurPrice", DbType.Decimal, model.CurPrice);
-			db.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-			db.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
-			db.AddInParameter(dbCommand, "EndTime", DbType.DateTime, model.EndTime);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_auActionProduct_Update");
+			dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionId);
+			dbw.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
+			dbw.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
+			dbw.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
+			dbw.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
+			dbw.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
+			dbw.AddInParameter(dbCommand, "AddPrices", DbType.Decimal, model.AddPrices);
+			dbw.AddInParameter(dbCommand, "CurPrice", DbType.Decimal, model.CurPrice);
+			dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+			dbw.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
+			dbw.AddInParameter(dbCommand, "EndTime", DbType.DateTime, model.EndTime);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
+
+        public void UpdateStatus(int AuctionId, int Status)
+        {
+            string sql = "update auActionProduct set status={0} where auctionid={1}";
+            sql = String.Format(sql,Status,AuctionId);
+            dbw.ExecuteNonQuery(CommandType.Text, sql);
+        }
 
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
 		public void Delete(int AuctionId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_auActionProduct_Delete");
-			db.AddInParameter(dbCommand, "AuctionId", DbType.Int32,AuctionId);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_auActionProduct_Delete");
+			dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32,AuctionId);
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
+
+
+        /// <summary>
+        /// 得到最大ID
+        /// </summary>
+        public int GetMaxId()
+        {
+            string strsql = "select max(AuctionId)+1 from auActionProduct";
+
+            object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
+            if (obj != null && obj != DBNull.Value)
+            {
+                return int.Parse(obj.ToString());
+            }
+            return 1;
+        }
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
 		public AuctionProductModel GetModel(int AuctionId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_auActionProduct_GetModel");
-			db.AddInParameter(dbCommand, "AuctionId", DbType.Int32,AuctionId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_auActionProduct_GetModel");
+			dbr.AddInParameter(dbCommand, "AuctionId", DbType.Int32,AuctionId);
 
 			AuctionProductModel model=null;
-			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
 				{
@@ -142,8 +153,8 @@ namespace NoName.NetShop.Auction.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
+			
+			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
 		/*
@@ -152,7 +163,7 @@ namespace NoName.NetShop.Auction.DAL
 		/// </summary>
 		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
+			
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
 			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "auActionProduct");
 			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
@@ -177,8 +188,8 @@ namespace NoName.NetShop.Auction.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<AuctionProductModel> list = new List<AuctionProductModel>();
-			Database db = DatabaseFactory.CreateDatabase();
-			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
+			
+			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
 				{
