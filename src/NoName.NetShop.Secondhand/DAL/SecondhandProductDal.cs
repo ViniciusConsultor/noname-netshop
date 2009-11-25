@@ -73,6 +73,13 @@ namespace NoName.NetShop.Secondhand.DAL
             dbw.ExecuteNonQuery(Command);
         }
 
+        public void UpdateStatus(int SecondhandProductID, int Status)
+        {
+            string sql = "update sesecondhandproduct set status={0} where seproductid={1}";
+            sql = String.Format(sql,Status,SecondhandProductID);
+            dbw.ExecuteNonQuery(CommandType.Text, sql);
+        }
+
 
         public SecondhandProductModel GetModel(int SecondhandProductID)
         {
