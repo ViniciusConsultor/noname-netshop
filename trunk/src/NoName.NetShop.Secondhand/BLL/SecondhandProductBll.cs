@@ -30,6 +30,11 @@ namespace NoName.NetShop.Secondhand.BLL
             dal.Update(model);
         }
 
+        public void UpdateStatus(int SecondhandProductID, int Status) 
+        {
+            dal.UpdateStatus(SecondhandProductID, Status);
+        }
+
         public SecondhandProductModel GetModel(int SecondhandProductID)
         {
             return dal.GetModel(SecondhandProductID);

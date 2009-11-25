@@ -161,4 +161,13 @@ namespace NoName.NetShop.Secondhand.Model
         #endregion Model
 
     }
+
+
+    public enum SecondhandProductStatus
+    {
+        尚未审核=1,
+        审核通过 = 2,
+        审核未通过 = 3,
+        冻结=4,
+    }
 }
