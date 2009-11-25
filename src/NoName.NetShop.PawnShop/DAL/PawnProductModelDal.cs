@@ -20,23 +20,24 @@ namespace NoName.NetShop.PawnShop.DAL
         public void Add(PawnProductModel model)
         {
             DbCommand command = dbw.GetStoredProcCommand("UP_pwPawnProduct_Insert");
-            
-            dbw.AddInParameter(command,"@pawnproductid",DbType.Int32,model.PawnProductID);
-            dbw.AddInParameter(command,"@pawnproductname",DbType.String,model.PawnProductName);
-            dbw.AddInParameter(command,"@userid",DbType.Int32,model.UserID);
-            dbw.AddInParameter(command,"@pawnprice",DbType.Decimal,model.PawnPrice);
-            dbw.AddInParameter(command,"@cateid",DbType.Int32,model.CateID);
-            dbw.AddInParameter(command,"@catepath",DbType.String,model.CatePath);
-            dbw.AddInParameter(command,"@stock",DbType.Int32,model.Stock);
-            dbw.AddInParameter(command,"@smallimage",DbType.String,model.SmallImage);
-            dbw.AddInParameter(command,"@mediumimage",DbType.String,model.MediumImage);
-            dbw.AddInParameter(command,"@largeimage",DbType.String,model.LargeImage);
-            dbw.AddInParameter(command,"@keywords",DbType.String,model.Keywords);
-            dbw.AddInParameter(command,"@brief",DbType.String,model.Brief);
-            dbw.AddInParameter(command,"@inserttime",DbType.DateTime,model.InsertTime);
-            dbw.AddInParameter(command,"@changetime",DbType.DateTime,model.ChangeTime);
-            dbw.AddInParameter(command,"@status",DbType.Int32,model.Status);
-            dbw.AddInParameter(command,"@sortvalue",DbType.Int32,model.SortValue);
+
+            dbw.AddInParameter(command, "@pawnproductid", DbType.Int32, model.PawnProductID);
+            dbw.AddInParameter(command, "@pawnproductname", DbType.String, model.PawnProductName);
+            dbw.AddInParameter(command, "@userid", DbType.Int32, model.UserID);
+            dbw.AddInParameter(command, "@pawnprice", DbType.Decimal, model.PawnPrice);
+            dbw.AddInParameter(command, "@sellingprice", DbType.Decimal, model.SellingPrice);
+            dbw.AddInParameter(command, "@cateid", DbType.Int32, model.CateID);
+            dbw.AddInParameter(command, "@catepath", DbType.String, model.CatePath);
+            dbw.AddInParameter(command, "@stock", DbType.Int32, model.Stock);
+            dbw.AddInParameter(command, "@smallimage", DbType.String, model.SmallImage);
+            dbw.AddInParameter(command, "@mediumimage", DbType.String, model.MediumImage);
+            dbw.AddInParameter(command, "@largeimage", DbType.String, model.LargeImage);
+            dbw.AddInParameter(command, "@keywords", DbType.String, model.Keywords);
+            dbw.AddInParameter(command, "@brief", DbType.String, model.Brief);
+            dbw.AddInParameter(command, "@inserttime", DbType.DateTime, model.InsertTime);
+            dbw.AddInParameter(command, "@changetime", DbType.DateTime, model.ChangeTime);
+            dbw.AddInParameter(command, "@status", DbType.Int32, model.Status);
+            dbw.AddInParameter(command, "@sortvalue", DbType.Int32, model.SortValue);
 
             dbw.ExecuteNonQuery(command);
         }
@@ -58,6 +59,7 @@ namespace NoName.NetShop.PawnShop.DAL
             dbw.AddInParameter(command, "@pawnproductname", DbType.String, model.PawnProductName);
             dbw.AddInParameter(command, "@userid", DbType.Int32, model.UserID);
             dbw.AddInParameter(command, "@pawnprice", DbType.Decimal, model.PawnPrice);
+            dbw.AddInParameter(command, "@sellingprice", DbType.Decimal, model.SellingPrice);
             dbw.AddInParameter(command, "@cateid", DbType.Int32, model.CateID);
             dbw.AddInParameter(command, "@catepath", DbType.String, model.CatePath);
             dbw.AddInParameter(command, "@stock", DbType.Int32, model.Stock);
@@ -114,6 +116,7 @@ namespace NoName.NetShop.PawnShop.DAL
             model.LargeImage = Convert.ToString(row["largeimage"]);
             model.MediumImage = Convert.ToString(row["mediumimage"]);
             model.PawnPrice = Convert.ToInt32(row["pawnprice"]);
+            model.SellingPrice = Convert.ToInt32(row["sellingprice"]);
             model.PawnProductID = Convert.ToInt32(row["pawnproductid"]);
             model.PawnProductName = Convert.ToString(row["pawnproductname"]);
             model.SmallImage = Convert.ToString(row["smallimage"]);
