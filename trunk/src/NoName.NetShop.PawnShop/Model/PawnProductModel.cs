@@ -10,6 +10,7 @@ namespace NoName.NetShop.PawnShop.Model
         private string _PawnProductName;
         private int _UserID;
         private decimal _PawnPrice;
+        private decimal _SellingPrice;
         private int _CateID;
         private string _CatePath;
         private int _Stock;
@@ -43,6 +44,11 @@ namespace NoName.NetShop.PawnShop.Model
         {
             get { return _PawnPrice; }
             set { _PawnPrice = value; }
+        }
+        public decimal SellingPrice
+        {
+            get { return _SellingPrice; }
+            set { _SellingPrice = value; }
         }
         public int CateID
         {
@@ -104,5 +110,12 @@ namespace NoName.NetShop.PawnShop.Model
             get { return _SortValue; }
             set { _SortValue = value; }
         }
+    }
+
+    public enum PawnProductStatus
+    {
+        尚未收当=1,
+        已收当=2,
+        冻结=3,
     }
 }
