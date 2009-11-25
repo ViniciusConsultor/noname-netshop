@@ -14,3 +14,8 @@ D:\Projects\netshopsvn\src\NoName.Utility\bin\Debug\NoName.Utility.pdb
 D:\Projects\netshopsvn\src\NoName.Utility\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\netshopsvn\src\NoName.Utility\obj\Debug\NoName.Utility.dll
 D:\Projects\netshopsvn\src\NoName.Utility\obj\Debug\NoName.Utility.pdb
+E:\works\project\NetShop\src\NoName.Utility\bin\Debug\NoName.Utility.dll
+E:\works\project\NetShop\src\NoName.Utility\bin\Debug\NoName.Utility.pdb
+E:\works\project\NetShop\src\NoName.Utility\obj\Debug\ResolveAssemblyReference.cache
+E:\works\project\NetShop\src\NoName.Utility\obj\Debug\NoName.Utility.dll
+E:\works\project\NetShop\src\NoName.Utility\obj\Debug\NoName.Utility.pdb
