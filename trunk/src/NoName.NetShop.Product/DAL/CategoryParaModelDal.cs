@@ -207,17 +207,17 @@ namespace NoName.NetShop.Product.DAL
 			ojb = dataReader["ParaType"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.ParaType=(int)ojb;
+				model.ParaType=Convert.ToInt32(ojb);
 			}
 			ojb = dataReader["Status"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.Status=(int)ojb;
+				model.Status=Convert.ToInt32(ojb);
 			}
 			ojb = dataReader["ParaGroupId"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.ParaGroupId=(int)ojb;
+				model.ParaGroupId=Convert.ToInt32(ojb);
 			}
 			model.ParaValues=dataReader["ParaValues"].ToString();
 			model.DefaultValue=dataReader["DefaultValue"].ToString();
