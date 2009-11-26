@@ -26,12 +26,23 @@
                     <asp:BoundField HeaderText="数量" DataField="Stock" />                
                     <asp:TemplateField  HeaderText="状态">
                         <ItemTemplate>
-                            <%# Eval("status")%>
+                            <%# Enum.GetName(typeof(NoName.NetShop.Secondhand.Model.SecondhandProductStatus), Eval("status"))%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <a href=''>通过审核</a>
+                            <asp:LinkButton runat="server" Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"p") %>' ID="Button_Pass" CommandArgument='<%# Eval("SeProductID") %>' CommandName="p" Text="通过" />
+                            <asp:LinkButton runat="server" Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"u") %>' ID="Button_DePass" CommandArgument='<%# Eval("SeProductID") %>' CommandName="u" Text="驳回" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"f") %>' ID="Button_Freeze" CommandArgument='<%# Eval("SeProductID") %>' CommandName="f" Text="冻结" />
+                            <asp:LinkButton runat="server" Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"m") %>' ID="Button_DeFreeze" CommandArgument='<%# Eval("SeProductID") %>' CommandName="m" Text="解冻" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <asp:LinkButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("SeProductID") %>' CommandName="d" Text="删除" />
                         </ItemTemplate>
                     </asp:TemplateField>
