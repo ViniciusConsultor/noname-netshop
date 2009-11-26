@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.Secondhand.BLL;
 using NoName.Utility;
+using NoName.NetShop.Secondhand.Model;
 
 namespace NoName.NetShop.BackFlat.SecondHand
 {
@@ -46,6 +47,30 @@ namespace NoName.NetShop.BackFlat.SecondHand
                 BindData(AspNetPager.CurrentPageIndex);
                 MessageBox.Show(this, "删除成功！");
             }
+            if (e.CommandName.ToLower() == "p")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID,(int)SecondhandProductStatus.审核通过);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "u")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)SecondhandProductStatus.审核未通过);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "f")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)SecondhandProductStatus.冻结);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "m")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)SecondhandProductStatus.审核未通过);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -57,6 +82,23 @@ namespace NoName.NetShop.BackFlat.SecondHand
                 {
                     ((LinkButton)e.Row.Cells[5].FindControl("Button_Delete")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[0].Text.Trim() + "\"吗?')");
                 }
+            }
+        }
+
+        public bool GetButtonStatus(int Status, string ButtonType)
+        {
+            switch (ButtonType)
+            {
+                case "p":
+                    return (Status == (int)SecondhandProductStatus.尚未审核 || Status == (int)SecondhandProductStatus.审核未通过);
+                case "u":
+                    return (Status == (int)SecondhandProductStatus.尚未审核 || Status == (int)SecondhandProductStatus.审核通过);
+                case "f":
+                    return Status != (int)SecondhandProductStatus.冻结;
+                case "m":
+                    return Status == (int)SecondhandProductStatus.冻结;
+                default:
+                    return false;
             }
         }
     }
