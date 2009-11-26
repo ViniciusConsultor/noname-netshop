@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.Product.BLL;
 using NoName.NetShop.Auction.BLL;
+using NoName.NetShop.Auction.Model;
 
 namespace NoName.NetShop.BackFlat.Auction
 {
@@ -47,6 +48,47 @@ namespace NoName.NetShop.BackFlat.Auction
                 bll.Delete(ProductID);
                 BindData(AspNetPager.CurrentPageIndex);
                 MessageBox.Show(this, "删除成功！");
+            }
+            if (e.CommandName.ToLower() == "p")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)AuctionProductStatus.审核通过);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "u")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)AuctionProductStatus.审核未通过);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "f")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)AuctionProductStatus.冻结);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "m")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)AuctionProductStatus.审核通过);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+        }
+
+        public bool GetButtonStatus(int Status, string ButtonType)
+        {
+            switch (ButtonType)
+            {
+                case "p":
+                    return (Status == (int)AuctionProductStatus.尚未审核 || Status == (int)AuctionProductStatus.审核未通过);
+                case "u":
+                    return (Status == (int)AuctionProductStatus.尚未审核 || Status == (int)AuctionProductStatus.审核通过);
+                case "f":
+                    return Status != (int)AuctionProductStatus.冻结;
+                case "m":
+                    return Status == (int)AuctionProductStatus.冻结;
+                default:
+                    return false;
             }
         }
 

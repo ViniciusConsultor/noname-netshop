@@ -40,15 +40,26 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
-                            <%# Eval("status")%>
+                            <%# Enum.GetName(typeof(NoName.NetShop.Auction.Model.AuctionProductStatus),Eval("status"))%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <a href=''>通过审核</a>
-                            <asp:LinkButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("AuctionId") %>' CommandName="d" Text="删除" />
+                            <asp:LinkButton Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"p")  %>' runat="server" ID="Button_Pass" CommandArgument='<%# Eval("AuctionId") %>' CommandName="p" Text="通过" />
+                            <asp:LinkButton Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"u") %>' runat="server" ID="Button_DePass" CommandArgument='<%# Eval("AuctionId") %>' CommandName="u" Text="驳回" />
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>                            
+                            <asp:LinkButton Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"f")  %>' runat="server" ID="Button_Freeze" CommandArgument='<%# Eval("AuctionId") %>' CommandName="f" Text="冻结" />
+                            <asp:LinkButton Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"m")  %>' runat="server" ID="Button_DeFreeze" CommandArgument='<%# Eval("AuctionId") %>' CommandName="m" Text="解冻" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("AuctionId") %>' CommandName="d" Text="删除" />
+                        </ItemTemplate>
+                    </asp:TemplateField>                        
                 </Columns>
             </asp:GridView>
         </div>
