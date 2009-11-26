@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.PawnShop.BLL;
 using NoName.Utility;
+using NoName.NetShop.PawnShop.Model;
 
 namespace NoName.NetShop.BackFlat.PawnShop
 {
@@ -47,6 +48,19 @@ namespace NoName.NetShop.BackFlat.PawnShop
                 BindData(AspNetPager.CurrentPageIndex);
                 MessageBox.Show(this, "删除成功！");
             }
+            if (e.CommandName.ToLower() == "f")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.ChangeStatus(ProductID,(int)PawnProductStatus.冻结);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "m")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.ChangeStatus(ProductID, (int)PawnProductStatus.尚未收当);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -58,6 +72,19 @@ namespace NoName.NetShop.BackFlat.PawnShop
                 {
                     ((LinkButton)e.Row.Cells[6].FindControl("Button_Delete")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[1].Text.Trim() + "\"吗?')");
                 }
+            }
+        }
+
+        public bool GetButtonStatus(int Status, string ButtonType)
+        {
+            switch (ButtonType)
+            {
+                case "f":
+                    return Status != (int)PawnProductStatus.冻结;
+                case "m":
+                    return Status == (int)PawnProductStatus.冻结;
+                default:
+                    return false;
             }
         }
     }
