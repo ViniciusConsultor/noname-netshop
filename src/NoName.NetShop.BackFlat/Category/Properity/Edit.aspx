@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Add.aspx.cs" Inherits="NoName.NetShop.BackFlat.Category.Properity.Add" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="NoName.NetShop.BackFlat.Category.Properity.Edit" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -31,7 +31,8 @@
                 </td>
             </tr>
         </table>
-        <asp:Button runat="server" ID="Button_Add" OnClick="Button_Add_Click" Text="提交" />
+        <asp:Button runat="server" ID="Button_Edit" OnClick="Button_Eidt_Click" Text="提交" />
+    
     </div>
     </form>
 </body>
