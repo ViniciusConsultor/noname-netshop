@@ -18,9 +18,14 @@
                             <%# Eval("pawnproductname") %>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="价格">
+                    <asp:TemplateField HeaderText="收当价格">
                         <ItemTemplate>
                             <%# Convert.ToDecimal(Eval("pawnprice")).ToString("0.00") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="销售价格">
+                        <ItemTemplate>
+                            <%# Convert.ToDecimal(Eval("sellingprice")).ToString("0.00") %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="数量" DataField="stock" />
@@ -31,12 +36,18 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
-                            <%# Eval("status") %>
+                            <%# Enum.GetName(typeof(NoName.NetShop.PawnShop.Model.PawnProductStatus), Eval("status")) %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <a href=''>通过审核</a>
+                            <a href='<%# "Edit.aspx?pid="+Eval("pawnproductid") %>'>收当</a>
+                            <asp:LinkButton Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"f") %>' runat="server" ID="Button_Freeze" CommandArgument='<%# Eval("pawnproductid") %>' CommandName="f" Text="冻结" />
+                            <asp:LinkButton Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"m") %>' runat="server" ID="Button_DeFreeze" CommandArgument='<%# Eval("pawnproductid") %>' CommandName="m" Text="解冻" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <asp:LinkButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("pawnproductid") %>' CommandName="d" Text="删除" />
                         </ItemTemplate>
                     </asp:TemplateField>
