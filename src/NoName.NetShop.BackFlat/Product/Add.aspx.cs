@@ -16,12 +16,19 @@ namespace NoName.NetShop.BackFlat.Product
 {
     public partial class Add : System.Web.UI.Page
     {
+        private int CategoryID
+        {
+            get { if (ViewState["CategoryID"] != null) return Convert.ToInt32(ViewState["CategoryID"]); else return -1; }
+            set { ViewState["CategoryID"] = value; }
+        }
         private ProductModelBll bll = new ProductModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (!String.IsNullOrEmpty(Request.QueryString["CategoryID"])) CategoryID = Convert.ToInt32(Request.QueryString["CategoryID"]);
+                else Response.End();
                 BindData();
             }
         }
@@ -45,20 +52,17 @@ namespace NoName.NetShop.BackFlat.Product
             drpStatus.DataTextField = "status";
             drpStatus.DataValueField = "code";
             drpStatus.DataBind();
+
+            Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(CategoryID);
+            txtCategoryID.Value = CategoryID.ToString();
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value);
-
             string strErr = "";
             if (this.txtProductName.Text == "")
             {
                 strErr += "ProductName不能为空！\\n";
-            }
-            if (SelectedParentCategoryID == 0)
-            {
-                strErr += "CatePath不能为空！\\n";
             }
             if (!PageValidate.IsDecimal(txtTradePrice.Text))
             {
@@ -111,7 +115,7 @@ namespace NoName.NetShop.BackFlat.Product
                 product.ProductCode = String.IsNullOrEmpty(txtProductCode.Text) ? ProductID.ToString() : txtProductCode.Text;
                 product.ProductName = txtProductName.Text;
 
-                CategoryModel cate = new CategoryModelBll().GetModel(SelectedParentCategoryID);
+                CategoryModel cate = new CategoryModelBll().GetModel(Convert.ToInt32(txtCategoryID.Value));
 
                 product.CateId = cate.CateId;
                 product.CatePath = cate.CatePath;
@@ -135,10 +139,11 @@ namespace NoName.NetShop.BackFlat.Product
                 product.Stock = Convert.ToInt32(txtStock.Text);
 
                 bll.Add(product);
+                MessageBox.Show(this,"添加成功！");
             }
             else
             {
-                //图片上传失败
+                MessageBox.Show(this, "图片上传失败，请检查！");
             }
 
         }

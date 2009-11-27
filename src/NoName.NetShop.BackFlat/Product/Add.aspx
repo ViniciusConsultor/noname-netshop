@@ -65,16 +65,20 @@
         <h3>商品添加</h3>
         <table>
             <tr>
+                <td>已选择分类：</td>
+                <td>
+                    <asp:Label runat="server" ID="Label_CategoryNamePath" />
+                    <asp:HiddenField runat="server" ID="txtCategoryID" />
+                    <a href="CategorySelect.aspx">重新选择</a>
+                </td>
+            </tr>
+            <tr>
                 <td>产品名称<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtProductName" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>产品编号：</td>
                 <td><asp:TextBox id="txtProductCode" runat="server" Width="400"></asp:TextBox></td>
-            </tr>
-            <tr>
-                <td>所属分类<span class="red">*</span>：</td>
-                <td><uc1:CategorySelect ID="CategorySelect1" runat="server" /></td>
             </tr>
             <tr>
                 <td>市场价<span class="red">*</span>：</td>
@@ -102,7 +106,7 @@
             </tr>
             <tr>
                 <td>简介<span class="red">*</span>：</td>
-                <td><FCKeditorV2:FCKeditor ID="fckBrief" runat="server" /></td>
+                <td><FCKeditorV2:FCKeditor ID="fckBrief" Width="600" Height="400" runat="server" /></td>
             </tr>
             <tr>
                 <td>商品图片<span class="red">*</span>：</td>
@@ -110,11 +114,11 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:Button ID="btnAdd" runat="server" Text="提交" OnClientClick="return validate()" OnClick="btnAdd_Click" ></asp:Button></td>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
-                <td></td>
+                <td><asp:Button ID="btnAdd" runat="server" Text="提交" OnClientClick="return validate()" OnClick="btnAdd_Click" ></asp:Button></td>
             </tr>
         </table>
     </form>
