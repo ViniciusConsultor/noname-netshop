@@ -20,13 +20,19 @@ namespace NoName.NetShop.BackFlat.Product
             get { if (ViewState["ProductID"] != null) return Convert.ToInt32(ViewState["ProductID"]); else return 0; }
             set { ViewState["ProductID"] = value; }
         }
+        private int CategoryID
+        {
+            get { if (ViewState["CategoryID"] != null) return Convert.ToInt32(ViewState["CategoryID"]); else return -1; }
+            set { ViewState["CategoryID"] = value; }
+        }
         private ProductModelBll bll = new ProductModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(Request.QueryString["productid"])) ProductID = Convert.ToInt32(Request.QueryString["productid"]);
             if (!IsPostBack)
             {
+                if (!String.IsNullOrEmpty(Request.QueryString["productid"])) ProductID = Convert.ToInt32(Request.QueryString["productid"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
                 BindData();
             }
         }
@@ -57,7 +63,6 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 txtProductName.Text = product.ProductName;
                 txtProductCode.Text = product.ProductCode;
-                CategorySelect1.InitialCategory = product.CateId;
                 txtTradePrice.Text = product.TradePrice.ToString();
                 txtMerchantPrice.Text = product.MerchantPrice.ToString();
                 txtReducePrice.Text = product.ReducePrice.ToString();
@@ -66,8 +71,17 @@ namespace NoName.NetShop.BackFlat.Product
                 txtKeywords.Text = product.Keywords;
                 fckBrief.Value = product.Brief;
                 imgProduct.ImageUrl = product.SmallImage;
-                ((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value = product.CateId.ToString();
-            } 
+                if (CategoryID != -1)
+                {
+                    Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(CategoryID);
+                    txtCategoryID.Value = CategoryID.ToString();
+                }
+                else
+                {
+                    txtCategoryID.Value = product.CateId.ToString();
+                    Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(product.CateId);
+                }
+            }
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
@@ -77,16 +91,10 @@ namespace NoName.NetShop.BackFlat.Product
 
         private void SaveData()
         {
-            int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value);
-
             string strErr = "";
             if (this.txtProductName.Text == "")
             {
                 strErr += "ProductName不能为空！\\n";
-            }
-            if (SelectedParentCategoryID == 0)
-            {
-                strErr += "CatePath不能为空！\\n";
             }
             if (!PageValidate.IsDecimal(txtTradePrice.Text))
             {
@@ -127,7 +135,7 @@ namespace NoName.NetShop.BackFlat.Product
 
             product.ProductName = txtProductName.Text;
             product.ProductCode = txtProductCode.Text;
-            product.CateId = SelectedParentCategoryID;
+            product.CateId = Convert.ToInt32(txtCategoryID.Value);
             product.TradePrice = Convert.ToDecimal(txtTradePrice.Text);
             product.MerchantPrice = Convert.ToDecimal(txtMerchantPrice.Text);
             product.ReducePrice = Convert.ToDecimal(txtReducePrice.Text);
