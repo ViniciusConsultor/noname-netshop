@@ -16,7 +16,7 @@ namespace SinaEC.Shopping.WebUI.UC
         {
         }
 
-         public void ShowAddressList(int userId)
+         public void ShowAddressList(string userId)
         {
             AddressBll bll = new AddressBll();
 
@@ -37,7 +37,7 @@ namespace SinaEC.Shopping.WebUI.UC
             }
         }
 
-         public AddressModel GetSelectedAddressInfo(int userId)
+         public AddressModel GetSelectedAddressInfo(string userId)
          {
              AddressBll bll = new AddressBll();
              AddressModel model = null;
@@ -53,7 +53,7 @@ namespace SinaEC.Shopping.WebUI.UC
              return model;
          }
 
-         public AddressModel AddAddressInfo(int userId)
+         public AddressModel AddAddressInfo(string userId)
          {
              AddressModel info = new AddressModel();
              info.AddressId = 0;
@@ -75,7 +75,7 @@ namespace SinaEC.Shopping.WebUI.UC
 
              if (String.IsNullOrEmpty(info.AddressDetail) || String.IsNullOrEmpty(info.RecieverName)
                  || String.IsNullOrEmpty(info.Country) || String.IsNullOrEmpty(info.Province) || String.IsNullOrEmpty(info.City)
-                 || String.IsNullOrEmpty(info.Postalcode) || info.UserId == 0 || String.IsNullOrEmpty(info.Email) ||
+                 || String.IsNullOrEmpty(info.Postalcode) || String.IsNullOrEmpty(info.UserId) || String.IsNullOrEmpty(info.Email) ||
                  (String.IsNullOrEmpty(info.Telephone) && String.IsNullOrEmpty(info.Mobile)))
              {
                  // throw new Exception("地址信息不全");

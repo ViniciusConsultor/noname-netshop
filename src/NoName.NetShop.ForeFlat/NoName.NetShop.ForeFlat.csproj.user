@@ -15,7 +15,7 @@
           <SQLDebugging>False</SQLDebugging>
           <PublishCopyOption>RunFiles</PublishCopyOption>
           <PublishTargetLocation>d:\temp\dingding\</PublishTargetLocation>
-          <PublishDeleteAllFiles>False</PublishDeleteAllFiles>
+          <PublishDeleteAllFiles>True</PublishDeleteAllFiles>
           <PublishCopyAppData>True</PublishCopyAppData>
           <ExternalProgram>
           </ExternalProgram>

@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="FinishOrder.aspx.cs" Inherits="NoName.NetShop.ForeFlat.sp.FinishOrder" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GiftFinish.aspx.cs" Inherits="NoName.NetShop.ForeFlat.sp.GiftFinish" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    
     <!--Position Begin-->
     <div class="currentPosition">
     	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">提交成功</a>
@@ -14,22 +13,20 @@
     	<div class="box1">
             <ul class="title">
                 <li class="left"></li>
-                <li><span>我的购物车</span></li>
+                <li><span>礼品兑换</span></li>
                 <li class="right"></li>
             </ul>
             <div class="content centerText">
-            	<div class="shoppingNavigation4"></div>
                 <div class="sheet1 showResult">
                 	<span class="successIcon"></span>
                     <ul>
                     	<li>
-                        	<span class="bold">恭喜您订单提交成功！</span>
+                        	<span class="bold">
+                        	<asp:Literal ID="litPrompt" runat="server"></asp:Literal></span>
                         </li>
                         <li>
                             <span>您的订单号是</span>
-                            <span class="important">
-                            <asp:Literal ID="litSavedOrderId" runat="server"></asp:Literal>
-                            </span>
+                            <span class="important"><asp:Literal ID="litSavedOrderId" runat="server"></asp:Literal></span>
                         </li>
                         <li>
                         	您现在可以去会员中心<a class="linkButton" href="../member/MyGiftOrders.aspx">【查看订单状态】</a>，可以<a class="linkButton" href="<%=CurrentShopCart.ContinueShopUrl %>">【继续购物】</a>。
@@ -125,7 +122,4 @@
         
     </div>
     <!--MainBody End-->
-    
-
 </asp:Content>
-

@@ -8,36 +8,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoName.NetShop.ForeFlat {
+namespace NoName.NetShop.ForeFlat.sp {
     
     
-    public partial class Login {
+    public partial class GiftShopping {
         
         /// <summary>
-        /// txtUserId 控件。
+        /// ucAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserId;
+        protected global::SinaEC.Shopping.WebUI.UC.UserAddress ucAddress;
         
         /// <summary>
-        /// txtPassword 控件。
+        /// rbtlShipMethod 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtlShipMethod;
         
         /// <summary>
-        /// btnLogin 控件。
+        /// lbtnDoCreate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnDoCreate;
     }
 }

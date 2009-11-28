@@ -10,7 +10,7 @@ using NoName.NetShop.ShopFlow;
 
 namespace NoName.NetShop.ForeFlat.member
 {
-    public partial class MyOrders : AuthBasePage
+    public partial class MyGiftOrders : AuthBasePage
     {
         private SearchPageInfo SearPageInfo
         {
@@ -20,8 +20,8 @@ namespace NoName.NetShop.ForeFlat.member
                 {
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
-                    spage.TableName = "sporder";
-                    spage.FieldNames = "orderid,paymethod,shipmethod,orderstatus,paystatus,paysum,createtime,paytime";
+                    spage.TableName = "spgiftOrder";
+                    spage.FieldNames = "OrderId,OrderStatus,ShipMethod,CreateTime,TotalScore";
                     spage.PriKeyName = "orderid";
                     spage.StrJoin = "";
                     spage.PageSize = 20;
@@ -30,7 +30,6 @@ namespace NoName.NetShop.ForeFlat.member
                     spage.StrWhere = "userid='" + CurrentUser.UserId+"'";
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
-
             }
         }
 
@@ -63,21 +62,20 @@ namespace NoName.NetShop.ForeFlat.member
             {
                 DataRowView row = e.Item.DataItem as DataRowView;
                 string orderId = row["orderId"].ToString();
-                int paymethod = Convert.ToInt32(row["paymethod"]);
+                int shipmethod = Convert.ToInt32(row["shipmethod"]);
                 int orderstatus = Convert.ToInt32(row["orderstatus"]);
-                int paystatus = Convert.ToInt32(row["paystatus"]);
                 DateTime createTime = Convert.ToDateTime(row["createtime"]);
 
                 Repeater rpPrdoucts = e.Item.FindControl("rpProducts") as Repeater;
-                Literal litPayMethod =e.Item.FindControl("litPayMethod") as Literal;
+                Literal litShipMethod =e.Item.FindControl("litShipMethod") as Literal;
                 Literal litCreateTime = e.Item.FindControl("litCreateTime") as Literal;
                 Literal litStatus = e.Item.FindControl("litStatus") as Literal;
 
-                rpPrdoucts.DataSource = OrderInfo.GetOrderItem(orderId);
+                rpPrdoucts.DataSource = OrderInfo.GetGiftOrderItem(orderId);
                 rpPrdoucts.DataBind();
 
                 litCreateTime.Text = createTime.ToString("yyyy-MM-dd HH:mm");
-                litPayMethod.Text = GetPayMethodName(paymethod);
+                litShipMethod.Text = GetShipMethodName(shipmethod);
                 litStatus.Text = GetOrderStatus(orderstatus);
 
             }
@@ -128,6 +126,29 @@ namespace NoName.NetShop.ForeFlat.member
            }
             return result;
         }
+
+        private string GetShipMethodName(int shipmethod)
+        {
+            string result = String.Empty;
+            switch (shipmethod)
+            {
+                case 1:
+                    result = "EMS";
+                    break;
+                case 2:
+                    result = "快递";
+                    break;
+                case 3:
+                    result = "邮寄";
+                    break;
+                case 4:
+                    result = "上门安装";
+                    break;
+
+           }
+            return result;
+        }
+
 
          protected void lbtnSearAll_Click(object sender, EventArgs e)
         {

@@ -184,12 +184,19 @@
     <Compile Include="member\MyUpgrade.aspx.designer.cs">
       <DependentUpon>MyUpgrade.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="member\MyGiftOrders.aspx.cs">
+      <DependentUpon>MyGiftOrders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="member\MyGiftOrders.aspx.designer.cs">
+      <DependentUpon>MyGiftOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegPerson.aspx.cs">
+      <DependentUpon>RegPerson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegPerson.aspx.designer.cs">
+      <DependentUpon>RegPerson.aspx</DependentUpon>
     </Compile>
     <Compile Include="ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
@@ -230,6 +237,20 @@
     <Compile Include="sp\FinishOrder.aspx.designer.cs">
       <DependentUpon>FinishOrder.aspx</DependentUpon>
     </Compile>
+    <Compile Include="sp\GiftFinish.aspx.cs">
+      <DependentUpon>GiftFinish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sp\GiftFinish.aspx.designer.cs">
+      <DependentUpon>GiftFinish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sp\GiftShopping.aspx.cs">
+      <DependentUpon>GiftShopping.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sp\GiftShopping.aspx.designer.cs">
+      <DependentUpon>GiftShopping.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sp\ShowCart.aspx.cs">
       <DependentUpon>ShowCart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -257,6 +278,27 @@
     </Compile>
     <Compile Include="ValiateCode.aspx.designer.cs">
       <DependentUpon>ValiateCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegCompany.aspx.cs">
+      <DependentUpon>RegCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegCompany.aspx.designer.cs">
+      <DependentUpon>RegCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegFamly.aspx.cs">
+      <DependentUpon>RegFamly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegFamly.aspx.designer.cs">
+      <DependentUpon>RegFamly.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegSchool.aspx.cs">
+      <DependentUpon>RegSchool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegSchool.aspx.designer.cs">
+      <DependentUpon>RegSchool.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -339,15 +381,21 @@
     <Content Include="member\MyProfile.aspx" />
     <Content Include="member\MyScore.aspx" />
     <Content Include="member\MyUpgrade.aspx" />
-    <Content Include="Register.aspx" />
+    <Content Include="member\MyGiftOrders.aspx" />
+    <Content Include="RegPerson.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="sp\AddToCart.aspx" />
     <Content Include="sp\FillInfo.aspx" />
     <Content Include="sp\FinishOrder.aspx" />
+    <Content Include="sp\GiftFinish.aspx" />
+    <Content Include="sp\GiftShopping.aspx" />
     <Content Include="sp\ShowCart.aspx" />
     <Content Include="uc\RegionSelect.ascx" />
     <Content Include="uc\UserAddress.ascx" />
     <Content Include="ValiateCode.aspx" />
+    <Content Include="RegCompany.aspx" />
+    <Content Include="RegFamly.aspx" />
+    <Content Include="RegSchool.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Upload\Description\" />

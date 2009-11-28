@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat
 {
@@ -25,18 +26,16 @@ namespace NoName.NetShop.ForeFlat
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUserName.Text.Trim();
+            string userId = txtUserId.Text.Trim();
             string password = txtPassword.Text;
-            string md5pass = FormsAuthentication.HashPasswordForStoringInConfigFile(password, "MD5");
 
-            NoName.NetShop.Member.BLL.Member mbll = new NoName.NetShop.Member.BLL.Member();
-            if (mbll.ValidateUser(username, md5pass))
+            if (MemberInfo.Login(userId, password, Request.UserHostAddress))
             {
-                NoName.NetShop.Member.Model.MemberModel mmodel = mbll.GetModel(username);
-                string userData = String.Format("{0}:{1}:{2}:{3}", mmodel.userId, mmodel.NickName, (int)mmodel.Status, (int)mmodel.UserType);
+                MemberInfo mmodel = MemberInfo.GetBaseInfo(userId);
+                string userData = String.Format("{0}:{1}:{2}:{3}", mmodel.UserEmail, mmodel.UserName, (int)mmodel.Status, (int)mmodel.UserType);
 
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
-                  username,
+                  userId,
                   DateTime.Now,
                   DateTime.Now.AddMinutes(30), true,
                   userData,
@@ -49,7 +48,7 @@ namespace NoName.NetShop.ForeFlat
                 Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
 
                 // Redirect back to original URL.
-                Response.Redirect(FormsAuthentication.GetRedirectUrl(username, true));
+                Response.Redirect(FormsAuthentication.GetRedirectUrl(userId, true));
 
             }
         }

@@ -4,12 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.Common;
 using NoName.NetShop.Member.Model;
 
 namespace NoName.NetShop.ForeFlat.sp
 {
-    public partial class FillInfo : ShopBasePage
+    public partial class GiftShopping : ShopBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -45,22 +44,11 @@ namespace NoName.NetShop.ForeFlat.sp
                 this.ClientAlert("收货人地址信息不完整，请重新填写");
                 return;
             }
-            if (String.IsNullOrEmpty(CurrentShopCart.OrderId) || !CurrentShopCart.Exists())
+            if (String.IsNullOrEmpty(CurrentShopCart.OrderId) && !CurrentShopCart.Exists())
             {
                 CurrentShopCart.Address = addr;
-                CurrentShopCart.UserNotes = txtUserNotes.Text.Trim();
-                CurrentShopCart.PayMethodId = int.Parse(rbtlPayMethod.SelectedValue);
                 CurrentShopCart.ShipMethodId = int.Parse(rbtlShipMethod.SelectedValue);
 
-                string isNeedInvoce = ReqParas["invoice"].Trim();
-                if (isNeedInvoce == "1")
-                {
-                    CurrentShopCart.Invoice = "invoiceTitle";
-                }
-                else
-                {
-                    CurrentShopCart.Invoice = String.Empty;
-                }
                 if (CurrentShopCart.PreSaveValidate())
                 {
                     CurrentShopCart.Save();

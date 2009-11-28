@@ -41,10 +41,31 @@ namespace NoName.NetShop.ForeFlat
                 case "changequantity":
                     result = ChangeQuantity(context);
                     break;
+
+                case "regexistemail": // 注册时检查邮件地址是不是已经存在
+                    result = RegExistUserEmail(context);
+                    break;
+                case "regexistuserid": // 注册是检查UserId是不是已经存在
+                    result = RegExistUserId(context);
+                    break;
             }
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(prefix + result);
+        }
+
+        private string RegExistUserId(HttpContext context)
+        {
+            NameValueCollection nv = GetParas(context);
+            string userId = nv["userId"];
+            return MemberInfo.UserIdExists(userId) ? "true" : "false";
+        }
+
+        private string RegExistUserEmail(HttpContext context)
+        {
+            NameValueCollection nv = GetParas(context);
+            string email = nv["email"];
+            return MemberInfo.UserEmailExists(email) ? "true" : "false";
         }
 
         private string ValidateSign(HttpContext context)
