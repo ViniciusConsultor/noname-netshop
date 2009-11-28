@@ -104,18 +104,18 @@ namespace NoName.NetShop.Common
         }
         
         /// <summary>
-        /// 获得一个新的序列号，用于为各个应用能够提供一个独立的序列号，格式为：yyyyMMddAAXXXXXXXX
+        /// 获得一个新的序列号，用于为各个应用能够提供一个独立的序列号，格式为：yyMMddAAXXXXXX
         /// </summary>
         /// <param name="appname"></param>
         /// <returns></returns>
-        public static int GetNewSerialStr(string appname)
+        public static string GetNewSerialStr(string appname)
         {
             string spName = "UP_unSerialStr_GetNewSerial";
             DbCommand comm = DBFacroty.DbReader.GetStoredProcCommand(spName);
             DBFacroty.DbReader.AddInParameter(comm, "@appid", DbType.String, appname);
             DBFacroty.DbReader.AddOutParameter(comm, "@serial", DbType.String, 20);
             DBFacroty.DbReader.ExecuteNonQuery(comm);
-            return Convert.ToInt32(DBFacroty.DbReader.GetParameterValue(comm, "@serial"));
+            return DBFacroty.DbReader.GetParameterValue(comm, "@serial").ToString();
         }    
         
         }
