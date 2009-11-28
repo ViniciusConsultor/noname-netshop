@@ -28,7 +28,7 @@ namespace NoName.NetShop.Member
 
         public override MemberInfo GetFullUserInfo(string userId)
         {
-            string sql = "up_umMember_GetSchool";
+            string sql = "up_umMember_GetCompany";
             Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "UserId", DbType.String, userId);

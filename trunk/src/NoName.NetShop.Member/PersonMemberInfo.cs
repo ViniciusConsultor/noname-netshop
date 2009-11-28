@@ -39,7 +39,7 @@ namespace NoName.NetShop.Member
         }
         public override void SaveExtInfo()
         {
-            string sql = "up_umMember_SaveFamly";
+            string sql = "up_umMember_SavePerson";
             Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "@userId", DbType.String, UserId);

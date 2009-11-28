@@ -25,6 +25,46 @@ namespace NoName.NetShop.Member
         public MemberType UserType{get;set;}
         public MemberStatus Status{get;set;}
 
+        /// <summary>
+        /// 记录用户的积分消费记录
+        /// </summary>
+        /// <param name="appType"></param>
+        /// <param name="score"></param>
+        /// <param name="appId"></param>
+        /// <param name="remark"></param>
+        public void LogScore(string appType, int score, string appId, string remark)
+        {
+            string sql = "um_member_logScore";
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            DbCommand dbCommand = db.GetStoredProcCommand(sql);
+            db.AddInParameter(dbCommand, "UserId", DbType.String,UserId);
+            db.AddInParameter(dbCommand, "@Score",DbType.Int32,score);
+            db.AddInParameter(dbCommand, "@appType",DbType.String,appId);
+            db.AddInParameter(dbCommand, "@appId",DbType.String,appId);
+            db.AddInParameter(dbCommand, "@remark",DbType.String,remark);
+            db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 记录用户的积分消费记录
+        /// </summary>
+        /// <param name="appType"></param>
+        /// <param name="score"></param>
+        /// <param name="appId"></param>
+        /// <param name="remark"></param>
+        public static void LogScore(string userId,ScoreType stype, int score, string appId, string remark)
+        {
+            string sql = "um_member_logScore";
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            DbCommand dbCommand = db.GetStoredProcCommand(sql);
+            db.AddInParameter(dbCommand, "UserId", DbType.String, userId);
+            db.AddInParameter(dbCommand, "@Score", DbType.Int32, score);
+            db.AddInParameter(dbCommand, "@scoreType", DbType.Int16, (int)stype);
+            db.AddInParameter(dbCommand, "@appId", DbType.String, appId);
+            db.AddInParameter(dbCommand, "@remark", DbType.String, remark);
+            db.ExecuteNonQuery(dbCommand);
+        }
+
         public static MemberInfo GetBaseInfo(string userId)
         {
             Database db = NoName.NetShop.Common.DBFacroty.DbReader;
@@ -50,16 +90,16 @@ namespace NoName.NetShop.Member
             switch (userType)
             {
                 case MemberType.Personal:
-                    mbll = new FamlyMemberInfo();
+                    mbll = new PersonMemberInfo();
                     break;
                 case MemberType.Famly:
                     mbll = new FamlyMemberInfo();
                     break;
                 case MemberType.Company:
-                    mbll = new FamlyMemberInfo();
+                    mbll = new CompanyMemberInfo();
                     break;
                 case MemberType.School:
-                    mbll = new FamlyMemberInfo();
+                    mbll = new SchoolMemberInfo();
                     break;
 
             }

@@ -34,7 +34,7 @@ namespace NoName.NetShop.Member.DAL
 		{
 			Database db = NoName.NetShop.Common.DBFacroty.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umAddress_ADD");
-			db.AddInParameter(dbCommand, "UserId", DbType.Int32, model.UserId);
+			db.AddInParameter(dbCommand, "UserId", DbType.String, model.UserId);
 			db.AddInParameter(dbCommand, "AddressId", DbType.Int32, model.AddressId);
 			db.AddInParameter(dbCommand, "regionPath", DbType.AnsiString, model.RegionPath);
 			db.AddInParameter(dbCommand, "Country", DbType.AnsiString, model.Country);
@@ -119,7 +119,7 @@ namespace NoName.NetShop.Member.DAL
                 strSql.Append(" where " + strWhere);
             }
             List<NoName.NetShop.Member.Model.AddressModel> list = new List<NoName.NetShop.Member.Model.AddressModel>();
-            Database db = DatabaseFactory.CreateDatabase();
+            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
             using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
             {
                 while (dataReader.Read())

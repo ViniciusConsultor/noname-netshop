@@ -54,7 +54,7 @@ namespace NoName.NetShop.Member.BLL
 		/// </summary>
 		public List<NoName.NetShop.Member.Model.AddressModel> GetModelList(string userId)
 		{
-            return dal.GetListArray("userid=" + userId);
+            return dal.GetListArray("userid='" + userId+"'");
 		}
 
  		#endregion  成员方法

@@ -18,3 +18,4 @@ D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\NoName.NetShop.Common
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\obj\Debug\NoName.NetShop.Member.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\obj\Debug\NoName.NetShop.Member.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\ICSharpCode.SharpZipLib.dll
