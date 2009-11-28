@@ -8,36 +8,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoName.NetShop.ForeFlat {
+namespace NoName.NetShop.ForeFlat.sp {
     
     
-    public partial class Login {
+    public partial class GiftFinish {
         
         /// <summary>
-        /// txtUserId 控件。
+        /// litPrompt 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserId;
+        protected global::System.Web.UI.WebControls.Literal litPrompt;
         
         /// <summary>
-        /// txtPassword 控件。
+        /// litSavedOrderId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
-        
-        /// <summary>
-        /// btnLogin 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Literal litSavedOrderId;
     }
 }

@@ -15,8 +15,8 @@
 		<div class="loginBox">
         	<ul class="form">
             	<li>
-                    <span class="field">用户名：</span>
-                    <asp:TextBox runat="server" ID="txtUserName" CssClass="textField1"></asp:TextBox>
+                    <span class="field">用户ID：</span>
+                    <asp:TextBox runat="server" ID="txtUserId" CssClass="textField1"></asp:TextBox>
                 </li>
                 <li>
                 	<span class="field">密　码：</span>
@@ -27,8 +27,12 @@
                         onclick="btnLogin_Click" />
                 </li>
                 <li class="links">
-                	<span>忘记密码? <a href="ResetPassword.aspx">点击这里</a></span>
-                    <span>还不是鼎鼎会员? <a href="Register.aspx">立即注册</a></span>
+                	<span>忘记密码? <a href="ResetPassword.aspx">点击这里</a>
+                    还不是鼎鼎会员? 立即注册成为（<a href="RegPerson.aspx">个人会员</a>、
+                    <a href="RegCompany.aspx">企业会员</a>、
+                    <a href="RegFamly.aspx">家庭会员</a>、
+                    <a href="RegSchool.aspx">学校会员</a>                    
+                    ）</span>
                 </li>
             </ul>
          

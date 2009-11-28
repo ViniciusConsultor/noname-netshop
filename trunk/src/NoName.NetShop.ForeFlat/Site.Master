@@ -28,7 +28,7 @@
                {
                    NoName.NetShop.Member.ShopIdentity curUser = Context.User.Identity as NoName.NetShop.Member.ShopIdentity;
                 %>
-                <li class="slogan"><%=curUser.NickName%>您好，欢迎您来到鼎鼎商城！</li>
+                <li class="slogan"><%=curUser.UserName%>您好，欢迎您来到鼎鼎商城！</li>
                 <li><a href="<%= ResolveClientUrl("~/login.aspx?op=2") %>">注销</a></li>
                 <%
                }
