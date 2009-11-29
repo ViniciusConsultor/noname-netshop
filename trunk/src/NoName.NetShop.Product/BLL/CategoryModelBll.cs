@@ -66,6 +66,12 @@ namespace NoName.NetShop.Product.BLL
 			return dal.GetModel(CateId);
 		}
 
+
+        public string GetCategoryNamePath(int CategoryID)
+        {
+            return dal.GetCategoryNamePath(CategoryID);
+        }
+
 		/// <summary>
 		/// 得到一个对象实体，从缓存中。
 		/// </summary>
