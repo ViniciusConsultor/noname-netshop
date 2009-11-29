@@ -125,6 +125,13 @@ namespace NoName.NetShop.Product.DAL
 			return model;
 		}
 
+        public string GetCategoryNamePath(int CategoryID)
+        {
+            string sql = "select dbo.[GetProductCategoryNamePath]({0}) as catepath";
+            sql = String.Format(sql,CategoryID);
+            return dbr.ExecuteScalar(CommandType.Text, sql).ToString();
+        }
+
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
