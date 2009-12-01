@@ -22,6 +22,8 @@ namespace NoName.NetShop.BackFlat.Product
             set { ViewState["CategoryID"] = value; }
         }
         private ProductModelBll bll = new ProductModelBll();
+        private CategoryParaModelBll pBll = new CategoryParaModelBll();
+        private ProductParaModelBll pvBll = new ProductParaModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +32,7 @@ namespace NoName.NetShop.BackFlat.Product
                 if (!String.IsNullOrEmpty(Request.QueryString["CategoryID"])) CategoryID = Convert.ToInt32(Request.QueryString["CategoryID"]);
                 else Response.End();
                 BindData();
+                BindParameterData();
             }
         }
 
@@ -55,6 +58,29 @@ namespace NoName.NetShop.BackFlat.Product
 
             Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(CategoryID);
             txtCategoryID.Value = CategoryID.ToString();
+        }
+
+        private void BindParameterData()
+        {
+            DataTable dt = pBll.GetList("cateid = "+CategoryID).Tables[0];
+
+            GridView_Parameter.DataSource = dt;
+            GridView_Parameter.DataBind();
+
+            for (int i = 0; i < GridView_Parameter.Rows.Count; i++)
+            {
+                RadioButtonList ValueList = ((RadioButtonList)GridView_Parameter.Rows[i].Cells[1].FindControl("RadioList_ParameterValue"));
+                string[] Values =dt.Rows[i]["paravalues"].ToString().Split(',');
+                for(int j = 0; j<Values.Length;j++ )
+                {
+                    ListItem item = new ListItem();
+
+                    item.Text=Values[j];
+                    item.Value=j.ToString();
+
+                    ValueList.Items.Add(item);
+                }
+            }
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -139,6 +165,25 @@ namespace NoName.NetShop.BackFlat.Product
                 product.Stock = Convert.ToInt32(txtStock.Text);
 
                 bll.Add(product);
+
+                //添加产品属性
+                foreach (GridViewRow row in GridView_Parameter.Rows)
+                {
+                    RadioButtonList ParameterValueList =((RadioButtonList)row.Cells[0].FindControl("RadioList_ParameterValue"));
+                    if (!String.IsNullOrEmpty(ParameterValueList.SelectedValue))
+                    {
+                        int ParameterID = Convert.ToInt32(((HiddenField)row.Cells[0].FindControl("Hidden_ParameterID")).Value);
+                        string ParameterValue = Convert.ToString(ParameterValueList.SelectedItem.Text);
+                        ProductParaModel para = new ProductParaModel();
+
+                        para.ParaId = ParameterID;
+                        para.ProductId = product.ProductId;
+                        para.ParaValue = ParameterValue;
+
+                        pvBll.Add(para);
+                    }
+                }
+
                 MessageBox.Show(this,"添加成功！");
             }
             else

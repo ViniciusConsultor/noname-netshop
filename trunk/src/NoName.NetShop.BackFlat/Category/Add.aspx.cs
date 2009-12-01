@@ -13,12 +13,14 @@ using NoName.Utility;
 using NoName.NetShop.Product.BLL;
 using NoName.NetShop.Product.Model;
 using NoName.NetShop.Common;
+using System.Collections.Generic;
 
 namespace NoName.NetShop.BackFlat.Category
 {
     public partial class Add : System.Web.UI.Page
     {
         private CategoryModelBll bll = new CategoryModelBll();
+        private CategoryParaModelBll pBll = new CategoryParaModelBll();
         public int ParentID
         {
             get { if (ViewState["ParentID"] != null) return Convert.ToInt32(ViewState["ParentID"]); else return 0; }
@@ -105,6 +107,20 @@ namespace NoName.NetShop.BackFlat.Category
                 model.CateLevel = 1;
             }
             bll.Add(model);
+
+            //判断父类是否存在属性，存在则继承父类属性
+            //if (pBll.ExistsCategoryParameter(model.ParentID))
+            //{
+            //    List<CategoryParaModel> ParentParaList = pBll.GetModelList(" cateid="+model.ParentID+" ");
+            //    foreach (CategoryParaModel pModel in ParentParaList)
+            //    {
+            //        pModel.ParaId = CommDataHelper.GetNewSerialNum("pd");
+            //        pModel.CateId = model.CateId;
+            //        pBll.Add(pModel);
+            //    }
+ 
+            //}
+
             Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script type=\"text/javascript\">window.parent.location=window.parent.location+'?_=" + DateTime.Now.Ticks + "'</script>");
 
 		}
