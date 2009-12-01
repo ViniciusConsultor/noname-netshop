@@ -201,6 +201,12 @@ namespace NoName.NetShop.Product.DAL
             return dbr.ExecuteNonQuery(dbCommand); 
         }
 
+        public int GetChildCount(int ParentID)
+        {
+            string sql = String.Format("select count(0) from pdcategory where parentid = {0}",ParentID);
+            return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text,sql));
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据

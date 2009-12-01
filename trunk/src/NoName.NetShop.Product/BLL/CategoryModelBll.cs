@@ -170,6 +170,16 @@ namespace NoName.NetShop.Product.BLL
             return dal.SwitchOrder(InitialCategoryID, ReplacedCategoryID);
         }
 
+        public int GetChildCount(int ParentID)
+        {
+            return dal.GetChildCount(ParentID);
+        }
+
+        public bool HasChildren(int ParentID)
+        {
+            return GetChildCount(ParentID) > 0; 
+        }
+
 		#endregion  成员方法
 	}
 }

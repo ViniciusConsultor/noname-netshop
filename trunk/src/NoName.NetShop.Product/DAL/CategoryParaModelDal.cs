@@ -43,7 +43,6 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public bool Exists(int ParaId)
 		{
-			
 			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdCategoryPara_Exists");
 			dbr.AddInParameter(dbCommand, "ParaId", DbType.Int32,ParaId);
 			int result;
@@ -58,6 +57,12 @@ namespace NoName.NetShop.Product.DAL
 				return false;
 			}
 		}
+
+        public int GetCategoryParameterCount(int CategoryID)
+        {
+            string sql = String.Format("select count(1) from pdcategorypara where cateid={0}",CategoryID);
+            return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text,sql));
+        }
 
 		/// <summary>
 		///  增加一条数据
