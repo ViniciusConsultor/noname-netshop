@@ -19,6 +19,7 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             set { ViewState["CategoryID"] = value; }
         }
         private CategoryParaModelBll bll = new CategoryParaModelBll();
+        private CategoryModelBll cBll = new CategoryModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,7 +60,25 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             model.Status = Convert.ToInt32(DropDownList_Status.SelectedValue) ;
 
             bll.Add(model);
+
+            //判断是否存在子类，若该分类有子类，则同时为所有子类添加
+            AddChildCategoryParameter(model);
+
+
             MessageBox.Show(this,"添加成功！");
+        }
+
+        private void AddChildCategoryParameter(CategoryParaModel model)
+        {
+            if (cBll.HasChildren(model.CateId))
+            {
+                foreach (CategoryModel cModel in cBll.GetModelList(" parentid = " + model.CateId))
+                {
+                    model.CateId = cModel.CateId;
+                    bll.Add(model);
+                    AddChildCategoryParameter(model);
+                }
+            }
         }
     }
 }
