@@ -32,6 +32,17 @@ namespace NoName.NetShop.Product.BLL
 			return dal.Exists(ParaId);
 		}
 
+
+        public int GetCategoryParameterCount(int CategoryID)
+        {
+            return dal.GetCategoryParameterCount(CategoryID);
+        }
+
+        public bool ExistsCategoryParameter(int CategoryID)
+        {
+            return GetCategoryParameterCount(CategoryID) > 0;
+        }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
