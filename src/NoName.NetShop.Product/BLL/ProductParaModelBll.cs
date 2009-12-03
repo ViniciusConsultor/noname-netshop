@@ -52,10 +52,14 @@ namespace NoName.NetShop.Product.BLL
 		/// 删除一条数据
 		/// </summary>
 		public void Delete(int ProductId,int ParaId)
-		{
-			
+		{			
 			dal.Delete(ProductId,ParaId);
 		}
+
+        public void Delete(int ProductID)
+        {
+            dal.Delete(ProductID);
+        }
 
 		/// <summary>
 		/// 得到一个对象实体
