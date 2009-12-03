@@ -98,6 +98,12 @@ namespace NoName.NetShop.Product.DAL
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
+        public void Delete(int ProductID)
+        {
+            string sql = "delete from pdproductpara where productid=" + ProductID;
+            dbw.ExecuteNonQuery(CommandType.Text, sql);
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
