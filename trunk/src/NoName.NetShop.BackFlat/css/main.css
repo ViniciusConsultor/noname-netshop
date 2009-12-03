@@ -4,10 +4,6 @@ select,input{font-size:12px;vertical-align:middle}
 img{border:0}
 a{color:#333;text-decoration:none}
 a:hover{color:#f00;text-decoration:underline}
-select {
-	font-size: 12px;
-	color: #000000; background-color: #E0E2F1;
-}
 textarea,input,object{font-size: 12px;}
 td{ BORDER-RIGHT: 1px; BORDER-TOP: 0px; FONT-SIZE: 12px; COLOR: #000000; text-align:left}
 img{BORDER:0px;}
