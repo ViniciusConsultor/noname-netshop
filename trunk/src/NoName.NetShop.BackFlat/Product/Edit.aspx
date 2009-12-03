@@ -17,7 +17,7 @@
                 <td>
                     <asp:Label runat="server" ID="Label_CategoryNamePath" />
                     <asp:HiddenField runat="server" ID="txtCategoryID" />
-                    <a href="CategorySelect.aspx">重新选择</a>
+                    <a runat="server" id="ReselectCategory" href="CategorySelect.aspx">重新选择</a>
                 </td>
             </tr>
             <tr>
