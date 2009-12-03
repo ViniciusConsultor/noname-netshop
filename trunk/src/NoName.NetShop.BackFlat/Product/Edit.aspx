@@ -64,6 +64,30 @@
                 </td>
             </tr>
             <tr>
+                <td>属性</td>
+                <td>
+                    <asp:GridView CssClass="parameter" runat="server" ID="GridView_Parameter" AutoGenerateColumns="false">
+                        <Columns>                        
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:HiddenField ID="Hidden_ParameterID" runat="server" Value='<%# Eval("paraid") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <b><%# Eval("paraname") %></b>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:RadioButtonList runat="server" ID="RadioList_ParameterValue" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+            </tr>
+            <tr>
                 <td></td>
                 <td><asp:Button ID="btnEdit" runat="server" Text="提交" OnClick="btnEdit_Click" ></asp:Button></td>
             </tr>
