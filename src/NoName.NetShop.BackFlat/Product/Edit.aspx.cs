@@ -86,6 +86,8 @@ namespace NoName.NetShop.BackFlat.Product
                 }
 
                 BindParameterData(product.CateId);
+
+                ReselectCategory.HRef = String.Format("CategorySelect.aspx?cid={0}&pid={1}",product.CateId,product.ProductId);
             }
         }
 
