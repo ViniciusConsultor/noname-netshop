@@ -94,6 +94,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             model.AddPrices = Convert.ToDecimal(TextBox_AddPrice.Text);
             model.Brief = TextEditor_Brief.Value;
             model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
+            if (model.Status == (int)AuctionProductStatus.审核未通过) model.Status = (int)AuctionProductStatus.尚未审核;
             model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
 
 
