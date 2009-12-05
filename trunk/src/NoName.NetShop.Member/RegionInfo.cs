@@ -46,8 +46,11 @@ namespace NoName.NetShop.Member
                     this._fatherId = Convert.ToInt32(reader["FatherId"]);
 
                     string[] regions = this.RegionNamePath.TrimEnd('/').Split('/');
+                    //string[] regionIds = this.RegionPath.TrimEnd('/').Split('/');
                     if (regions.Length >= 1)
+                    {
                         this._country = regions[0];
+                    }
                     if (regions.Length >= 2)
                         this._province = regions[1];
                     if (regions.Length >= 3)

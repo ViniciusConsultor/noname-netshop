@@ -34,7 +34,7 @@ namespace NoName.NetShop.Member.Model
                 return String.Format("{0}{1}{2} {3} ” ±‡£∫{4}  ’ªı»À£∫{5}", Province, City, County, AddressDetail, Postalcode, RecieverName);
             }
         }
-        
+
         /// <summary>
 		/// 
 		/// </summary>
