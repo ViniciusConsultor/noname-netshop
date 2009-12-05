@@ -42,13 +42,13 @@
 
         var regionId;
         if (curIndex == -1) {
-            regionId = topregion.topid.split('-')[0];
+            regionId = topregion.topid;
         }
         else {
             var curRegion = $("#region" + curIndex)
             if ($(curRegion).val() == null)
                 return;
-            regionId = $(curRegion).val().split('-')[0];
+            regionId = $(curRegion).val();
         }
 
         var nextIndex = curIndex + 1;
@@ -76,7 +76,7 @@
                 });
                 if (typeof (preset) == "undefined" || preset == null) return;
                 if (preset && preset.length >= nextIndex) {
-                    nextRegion.find("option[value='" + preset[nextIndex] + "']").attr("selected", "selected");
+                    nextRegion.find("option[value='" + preset[nextIndex+1] + "']").attr("selected", "selected");
                     if (nextRegion.val() != null) {
                         showNextRegion(nextIndex);
                     }
