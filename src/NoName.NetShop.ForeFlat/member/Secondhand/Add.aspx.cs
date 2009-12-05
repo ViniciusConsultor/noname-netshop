@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.Common;
-using NoName.NetShop.Secondhand.Facade;
-using NoName.NetShop.Secondhand.Model;
-using NoName.NetShop.Secondhand.BLL;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Facade;
+using NoName.NetShop.MagicWorld.Model;
 
 namespace NoName.NetShop.ForeFlat.member.Secondhand
 {
@@ -56,7 +56,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
 
             string[] ProductImages;
 
-            if (SecondhandProductImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+            if (SecondhandImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 SecondhandProductModel model = new SecondhandProductModel();
 

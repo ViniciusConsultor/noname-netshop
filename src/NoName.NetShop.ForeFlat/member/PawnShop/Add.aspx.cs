@@ -4,17 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.PawnShop.Model;
-using NoName.NetShop.PawnShop.BLL;
 using NoName.Utility;
 using NoName.NetShop.Common;
-using NoName.NetShop.PawnShop.Facade;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.MagicWorld.Facade;
 
 namespace NoName.NetShop.ForeFlat.member.PawnShop
 {
     public partial class Add : System.Web.UI.Page
     {
-        private PawnProductModelBll bll = new PawnProductModelBll();
+        private PawnProductBll bll = new PawnProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,7 +51,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
             int PawnProductID = CommDataHelper.GetNewSerialNum("pw");
 
             string[] ProductImages;
-            if (PawnProductImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+            if (PawnImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 PawnProductModel model = new PawnProductModel();
 
