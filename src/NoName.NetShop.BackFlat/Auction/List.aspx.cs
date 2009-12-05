@@ -6,14 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.Product.BLL;
-using NoName.NetShop.Auction.BLL;
-using NoName.NetShop.Auction.Model;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
 
 namespace NoName.NetShop.BackFlat.Auction
 {
     public partial class List : System.Web.UI.Page
     {
-        private AuctionProductModelBll bll = new AuctionProductModelBll();
+        private AuctionProductBll bll = new AuctionProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {

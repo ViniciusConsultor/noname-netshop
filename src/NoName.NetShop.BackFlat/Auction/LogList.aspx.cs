@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.Auction.BLL;
 using NoName.Utility;
+using NoName.NetShop.MagicWorld.BLL;
 
 namespace NoName.NetShop.BackFlat.Auction
 {
@@ -16,7 +16,7 @@ namespace NoName.NetShop.BackFlat.Auction
             get{ if (ViewState["AuctionID"] != null) return Convert.ToInt32(ViewState["AuctionID"]); else return -1; }
             set { ViewState["AuctionID"] = value; }
         }
-        private AuctionLogModelBll bll = new AuctionLogModelBll();
+        private AuctionLogBll bll = new AuctionLogBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.Secondhand.BLL;
 using NoName.Utility;
-using NoName.NetShop.Secondhand.Model;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
 
 namespace NoName.NetShop.BackFlat.SecondHand
 {

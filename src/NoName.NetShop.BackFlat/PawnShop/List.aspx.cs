@@ -4,15 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.PawnShop.BLL;
 using NoName.Utility;
-using NoName.NetShop.PawnShop.Model;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
 
 namespace NoName.NetShop.BackFlat.PawnShop
 {
     public partial class List : System.Web.UI.Page
     {
-        private PawnProductModelBll bll = new PawnProductModelBll();
+        private PawnProductBll bll = new PawnProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {

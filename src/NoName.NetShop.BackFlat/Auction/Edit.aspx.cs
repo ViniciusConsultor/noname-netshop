@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.Auction.Facade;
-using NoName.NetShop.Auction.BLL;
-using NoName.NetShop.Auction.Model;
 using NoName.Utility;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.MagicWorld.Facade;
 
 namespace NoName.NetShop.BackFlat.Auction
 {
@@ -18,7 +18,7 @@ namespace NoName.NetShop.BackFlat.Auction
             get { if(ViewState["AuctionID"]!=null) return Convert.ToInt32(ViewState["AuctionID"]); else return -1;}
             set { ViewState["AuctionID"] = value; }
         }
-        private AuctionProductModelBll bll = new AuctionProductModelBll();
+        private AuctionProductBll bll = new AuctionProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,7 +39,7 @@ namespace NoName.NetShop.BackFlat.Auction
             TextBox_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd hh:mm:ss") ;
             TextBox_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd hh:mm:ss");
             TextEditor_Brief.Value = model.Brief;
-            Image_MainImage.ImageUrl = AuctionProductImageRule.GetMainImageUrl(model.SmallImage);
+            Image_MainImage.ImageUrl = AuctionImageRule.GetMainImageUrl(model.SmallImage);
         }
 
 
@@ -51,7 +51,7 @@ namespace NoName.NetShop.BackFlat.Auction
             {
                 string[] ProductImages;
 
-                if (AuctionProductImageRule.SaveProductMainImage(model.AuctionId, FileUpload_ProductImage.PostedFile, out ProductImages))
+                if (AuctionImageRule.SaveProductMainImage(model.AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
                     model.MediumImage = ProductImages[0];
                     model.SmallImage = ProductImages[1];
@@ -65,11 +65,10 @@ namespace NoName.NetShop.BackFlat.Auction
 
             model.ProductName = TextBox_AuctionProductName.Text;
             model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
-            model.AddPrices = Convert.ToDecimal(TextBox_AddPrice.Text);
+            model.AddPrices = TextBox_AddPrice.Text;
             model.Brief = TextEditor_Brief.Value;
             model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
             model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
-
             
             bll.Update(model);
 

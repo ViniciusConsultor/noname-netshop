@@ -6,15 +6,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.Common;
-using NoName.NetShop.Auction.Facade;
-using NoName.NetShop.Auction.Model;
-using NoName.NetShop.Auction.BLL;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Facade;
+using NoName.NetShop.MagicWorld.Model;
 
 namespace NoName.NetShop.BackFlat.Auction
 {
     public partial class Add : System.Web.UI.Page
     {
-        private AuctionProductModelBll bll = new AuctionProductModelBll();
+        private AuctionProductBll bll = new AuctionProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,14 +56,14 @@ namespace NoName.NetShop.BackFlat.Auction
             int AuctionProductID = CommDataHelper.GetNewSerialNum("au");
 
             string[] ProductImages;
-            if (AuctionProductImageRule.SaveProductMainImage(AuctionProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+            if (AuctionImageRule.SaveProductMainImage(AuctionProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 AuctionProductModel model = new AuctionProductModel();
 
-                model.AuctionId = AuctionProductID;
+                model.AuctionID = AuctionProductID;
                 model.ProductName = TextBox_AuctionProductName.Text;
                 model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
-                model.AddPrices = Convert.ToDecimal(TextBox_AddPrice.Text);
+                model.AddPrices = TextBox_AddPrice.Text;
                 model.CurPrice = model.StartPrice;
 
                 model.Brief = TextEditor_Brief.Value;
