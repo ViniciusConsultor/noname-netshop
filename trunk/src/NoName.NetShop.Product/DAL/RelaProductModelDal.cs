@@ -16,8 +16,8 @@ namespace NoName.NetShop.Product.DAL
 	public class RelaProductModelDal
 	{
 
-        private Database dbw = CommDataAccess.DbWriter;
-        private Database dbr = CommDataAccess.DbReader;
+        private Database dbw = DBFacroty.DbWriter;
+        private Database dbr = DBFacroty.DbReader;
 
 		public RelaProductModelDal()
 		{}
