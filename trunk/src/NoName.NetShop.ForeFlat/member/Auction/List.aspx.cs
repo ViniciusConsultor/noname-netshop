@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.Auction.BLL;
 using NoName.Utility;
+using NoName.NetShop.MagicWorld.BLL;
 
 namespace NoName.NetShop.ForeFlat.member.Auction
 {
     public partial class List : System.Web.UI.Page
     {
-        private AuctionProductModelBll bll = new AuctionProductModelBll();
+        private AuctionProductBll bll = new AuctionProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {

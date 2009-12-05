@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.Auction.BLL;
-using NoName.NetShop.Auction.Model;
 using NoName.Utility;
-using NoName.NetShop.Auction.Facade;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.MagicWorld.Facade;
 
 namespace NoName.NetShop.ForeFlat.member.Auction
 {
@@ -18,7 +18,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             get { if (ViewState["AuctionID"] != null) return Convert.ToInt32(ViewState["AuctionID"]); else return -1; }
             set { ViewState["AuctionID"] = value; }
         }
-        private AuctionProductModelBll bll = new AuctionProductModelBll();
+        private AuctionProductBll bll = new AuctionProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -77,7 +77,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             if (FileUpload_ProductImage.FileName != String.Empty)
             {
                 string[] ProductImages;
-                if (AuctionProductImageRule.SaveProductMainImage(AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
+                if (AuctionImageRule.SaveProductMainImage(AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
                     model.MediumImage = ProductImages[0];
                     model.SmallImage = ProductImages[1];
@@ -91,7 +91,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
 
             model.ProductName = TextBox_AuctionProductName.Text;
             model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
-            model.AddPrices = Convert.ToDecimal(TextBox_AddPrice.Text);
+            model.AddPrices = TextBox_AddPrice.Text;
             model.Brief = TextEditor_Brief.Value;
             model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
             if (model.Status == (int)AuctionProductStatus.审核未通过) model.Status = (int)AuctionProductStatus.尚未审核;

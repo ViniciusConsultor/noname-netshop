@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.Secondhand.BLL;
-using NoName.NetShop.Secondhand.Facade;
-using NoName.NetShop.Secondhand.Model;
 using NoName.Utility;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.MagicWorld.Facade;
 
 namespace NoName.NetShop.ForeFlat.member.Secondhand
 {
@@ -38,7 +38,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             TextBox_Keyword.Text = model.Keywords;
             TextBox_Price.Text = model.Price.ToString();
             TextBox_ProductName.Text = model.SecondhandProductName;
-            Image_ProductImage.ImageUrl = SecondhandProductImageRule.GetMainImageUrl(model.MediumImage); 
+            Image_ProductImage.ImageUrl = SecondhandImageRule.GetMainImageUrl(model.MediumImage); 
         }
 
 
@@ -75,7 +75,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             {
                 string[] ProductImages;
 
-                if (SecondhandProductImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+                if (SecondhandImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
                     model.SmallImage = ProductImages[0];
                     model.MediumImage = ProductImages[1];
