@@ -27,7 +27,7 @@ namespace NoName.NetShop.BackFlat.Member
 
         public void ShowInfo(string userid)
         {
-            PersonMemberInfo model = MemberInfo.GetFullInfo(userid, MemberType.Famly) as PersonMemberInfo;
+            PersonMemberInfo model = MemberInfo.GetFullInfo(userid, MemberType.Personal) as PersonMemberInfo;
             this.txtIdCard.Text = model.IdCard;
             this.txtMobile.Text = model.Mobile;
             this.txtTelePhone.Text = model.Telephone;

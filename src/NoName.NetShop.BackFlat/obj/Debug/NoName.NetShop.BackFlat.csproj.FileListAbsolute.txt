@@ -65,7 +65,6 @@ D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\Newtonsoft.Json.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.CMS.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Common.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Member.dll
-D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Product.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.Security.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.Utility.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\Microsoft.Practices.ObjectBuilder2.dll
@@ -76,4 +75,14 @@ D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.Security.pdb
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Common.pdb
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Product.pdb
 D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.CMS.pdb
-D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\Microsoft.Practices.EnterpriseLibrary.Caching.xml
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Product.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Auction.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.News.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.PawnShop.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Secondhand.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.PawnShop.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.News.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Secondhand.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.BackFlat\bin\NoName.NetShop.Auction.pdb
