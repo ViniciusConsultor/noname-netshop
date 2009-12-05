@@ -4,9 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.PawnShop.Model;
-using NoName.NetShop.PawnShop.BLL;
-
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
 namespace NoName.NetShop.ForeFlat.Magic
 {
     public partial class PawnProduct : System.Web.UI.Page
@@ -16,7 +15,7 @@ namespace NoName.NetShop.ForeFlat.Magic
             get { if (ViewState["PawnProductID"] != null) return Convert.ToInt32(ViewState["PawnProductID"]); else return -1; }
             set { ViewState["PawnProductID"] = value; }
         }
-        private PawnProductModelBll bll = new PawnProductModelBll();
+        private PawnProductBll bll = new PawnProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {

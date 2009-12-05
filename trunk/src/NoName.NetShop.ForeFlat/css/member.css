@@ -14,7 +14,7 @@
 .register_mainbody{ clear:both; padding:50px 160px;}
 .register_mainbody .regTitle{ height:53px; clear:both; background:url(../images/regTitle.gif) no-repeat left center; margin-bottom:20px;}
 .register_mainbody ul.form li .verifyCode{display:block; clear:both; padding-left:85px; padding-top:10px; text-align:left}
-.register_mainbody ul.form li .verifyCode img{border:none;  display:block; float:left}
+.register_mainbody ul.form li .verifyCode img{border:none; width:130px; height:53px; display:block; float:left}
 .register_mainbody ul.form li .verifyCode a{ color:#006699; text-decoration:underline; display:block; float:left; padding:38px 0 0 10px;}
 
 
@@ -25,7 +25,7 @@
 .login_mainbody .loginTitle{ height:53px; clear:both; background:url(../images/loginTitle.gif) no-repeat left top; padding-bottom:20px;}
 .login_mainbody .loginBox{ background:#ebebeb; border:1px solid #CCC; width:320px; padding:40px 50px 20px 35px; float:left}
 .login_mainbody .loginBox ul.form li.submit{ padding-top:15px; padding-left:25px;}
-.login_mainbody .loginBox ul.form li.links{ padding:5px 0 0 25px;padding:5px 0 0 0; margin-left:25px; min-height:20px; _height:20px; clear:both}
+.login_mainbody .loginBox ul.form li.links{ padding:5px 0 0 25px;*padding:5px 0 0 0; *margin-left:25px; min-height:20px; _height:20px; clear:both}
 .login_mainbody .loginBox ul.form li.links span{ padding:0 10px;}
 .login_mainbody .loginBox ul.form li.links span a{ color:#069; text-decoration:underline}
 .login_mainbody .infoBox{ padding-left:85px; float:left; width:300px;}
