@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.PawnShop.BLL;
-using NoName.NetShop.PawnShop.Model;
-using NoName.NetShop.PawnShop.Facade;
 using NoName.Utility;
+using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.MagicWorld.Facade;
 
 namespace NoName.NetShop.BackFlat.PawnShop
 {
@@ -18,7 +18,7 @@ namespace NoName.NetShop.BackFlat.PawnShop
             get { if (ViewState["PawnProductID"] != null) return Convert.ToInt32(ViewState["PawnProductID"]); else return -1; }
             set { ViewState["PawnProductID"] = value; }
         }
-        private PawnProductModelBll bll = new PawnProductModelBll();
+        private PawnProductBll bll = new PawnProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,7 +39,7 @@ namespace NoName.NetShop.BackFlat.PawnShop
             TextBox_Brief.Text = model.Brief;
             TextBox_Count.Text = model.Stock.ToString();
             TextBox_Keyword.Text = model.Keywords;
-            Image_ProductImage.ImageUrl = PawnProductImageRule.GetMainImageUrl(model.MediumImage); 
+            Image_ProductImage.ImageUrl = PawnImageRule.GetMainImageUrl(model.MediumImage); 
         }
 
 
@@ -71,7 +71,7 @@ namespace NoName.NetShop.BackFlat.PawnShop
             if (FileUpload_ProductImage.FileName != "")
             {
                 string[] ProductImages;
-                if (PawnProductImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+                if (PawnImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
                     model.SmallImage = ProductImages[0];
                     model.MediumImage = ProductImages[1];
