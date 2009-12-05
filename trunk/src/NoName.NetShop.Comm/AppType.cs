@@ -11,5 +11,6 @@ namespace NoName.NetShop.Common
         public readonly static string News = "02";
         public readonly static string Order = "03";
         public readonly static string Address = "04";
+        public readonly static string Product = "05";
     }
 }
