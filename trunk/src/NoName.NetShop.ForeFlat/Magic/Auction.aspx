@@ -1,6 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Auction.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.Magic.Auction" %>
 <asp:Content ID="ContentHeader" ContentPlaceHolderID="head" runat="server">
-<link type="text/css" rel="stylesheet" href="/css/magic.css" />
+    <link type="text/css" rel="stylesheet" href="/css/magic.css" />
+    <script type="text/javascript">
+        $(function() { 
+        });        
+    </script>
 </asp:Content>
 
 <asp:Content ID="ContentBody" ContentPlaceHolderID="cpMain" runat="server">
@@ -120,21 +124,15 @@
                                         <th>时间</th>
                                         <th>用户名</th>
                                       </tr>
-                                      <tr>
-                                        <td><span class="important">￥6000</span></td>
-                                        <td>2009年09月06日</td>
-                                        <td><span>天空的白云</span></td>
-                                      </tr>
-                                      <tr>
-                                        <td><span class="important">￥6000</span></td>
-                                        <td>2009年09月06日</td>
-                                        <td><span>天空的白云</span></td>
-                                      </tr>
-                                      <tr>
-                                        <td><span class="important">￥6000</span></td>
-                                        <td>2009年09月06日</td>
-                                        <td><span>天空的白云</span></td>
-                                      </tr>
+                                      <asp:Repeater runat="server" ID="Repeater_BidList">
+                                        <ItemTemplate>
+                                          <tr>
+                                            <td><span class="important">￥<%# Eval("autionprice") %></span></td>
+                                            <td><%# Convert.ToDateTime(Eval("auctiontime")).ToString("yyyy-MM-dd HH:mm:ss") %></td>
+                                            <td><span><%# Eval("username") %></span></td>
+                                          </tr>
+                                        </ItemTemplate>
+                                      </asp:Repeater>
                                     </table>
                                 </div>
                             </div>
@@ -142,12 +140,12 @@
                         
                         <div class="box7">
                         	<div class="title">我要加价</div>
-                            <div class="content markup">
-                            	<a class="button_blue inlineBlock" href="#">10</a>
-                                <a class="button_blue inlineBlock" href="#">20</a>
-                                <a class="button_blue inlineBlock" href="#">30</a>
-                                <a class="button_blue inlineBlock" href="#">40</a>
-                                <a class="button_blue inlineBlock" href="#">50</a>
+                            <div class="content markup" id="add-prices">
+                                <asp:Repeater runat="server" ID="Repeater_AddPrices" OnItemCommand="Repeater_AddPrices_ItemCommand">
+                                    <ItemTemplate>
+                                        <asp:LinkButton runat="server" CssClass="button_blue inlineBlock"  ID="Button_Bid" CommandName="b" CommandArgument='<%# Eval("price") %>' Text='<%# Eval("price") %>' />
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                         </div>
                         

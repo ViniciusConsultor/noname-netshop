@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.Facade;
+using System.Data;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
@@ -18,6 +20,7 @@ namespace NoName.NetShop.ForeFlat.Magic
             set { ViewState["AuctionID"] = value; }
         }
         private AuctionProductBll bll = new AuctionProductBll();
+        private AuctionLogBll LogBll = new AuctionLogBll();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -27,12 +30,23 @@ namespace NoName.NetShop.ForeFlat.Magic
                 if (!String.IsNullOrEmpty(Request.QueryString["a"])) AuctionID = Convert.ToInt32(Request.QueryString["a"]);
                 if (AuctionID != -1) BindData();
                 else Response.End();
-            }            
+            }
         }
 
         private void BindData()
         {
             AuctionProductModel model = bll.GetModel(AuctionID);
+
+            DataTable dt = new DataTable(); dt.Columns.Add("price");
+            foreach (string s in model.AddPrices.Split(','))
+            {
+                DataRow row = dt.NewRow();
+                row["price"] = decimal.Parse(s);
+                dt.Rows.Add(row);
+            }
+            dt.DefaultView.Sort = "price asc";
+            Repeater_AddPrices.DataSource = dt;
+            Repeater_AddPrices.DataBind();
 
             Image_Large.ImageUrl = AuctionImageRule.GetMainImageUrl(model.MediumImage);
             Image_Medium.ImageUrl = AuctionImageRule.GetMainImageUrl(model.SmallImage);
@@ -40,11 +54,39 @@ namespace NoName.NetShop.ForeFlat.Magic
             Literal_ProductName.Text = model.ProductName;
             Literal_StartPrice.Text = model.StartPrice.ToString("0.00");
             Literal_CurrentPrice.Text = model.CurPrice.ToString("0.00"); ;
-            Literal_MinAddPrice.Text = model.AddPrices;
-            Literal_MaxAddPrice.Text = model.AddPrices;
+            Literal_MinAddPrice.Text = dt.Rows[0]["price"].ToString();
+            Literal_MaxAddPrice.Text = dt.Rows[dt.Rows.Count - 1]["price"].ToString();
             Literal_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd HH:mm:ss");
             Literal_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd HH:mm:ss");
             Literal_Description.Text = model.Brief;
+
+            Repeater_BidList.DataSource = LogBll.GetList("auctionid=" + AuctionID+" order by auctiontime desc");
+            Repeater_BidList.DataBind();
+        }
+
+        protected void Repeater_AddPrices_ItemCommand(object sender, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "b")
+            {
+                decimal BidPrice = Convert.ToInt32(e.CommandArgument);
+                AuctionProductModel model = bll.GetModel(AuctionID);
+
+                decimal CurrentPrice = model.CurPrice + BidPrice;
+
+                AuctionLogModel LogModel = new AuctionLogModel();
+                LogModel.LogID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
+                LogModel.AuctionID = AuctionID;
+                LogModel.AuctionTime = DateTime.Now;
+                LogModel.AutionPrice = CurrentPrice;
+                LogModel.UserName = GetUserName();
+
+                LogBll.Add(LogModel);
+
+                model.CurPrice = CurrentPrice;
+                bll.Update(model);
+
+                Response.Redirect(Request.RawUrl);
+            }
         }
 
 
@@ -52,5 +94,13 @@ namespace NoName.NetShop.ForeFlat.Magic
         {
  
         }
+
+        private string GetUserName()
+        {
+            return "zhangfeng";
+        }
+
+
     }
 }
+
