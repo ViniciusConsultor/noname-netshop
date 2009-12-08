@@ -43,8 +43,47 @@ namespace NoName.NetShop.BackFlat.Auction
         }
 
 
-        protected void Button_Eidt_Click(object sender, EventArgs e)
+        protected void Button_Edit_Click(object sender, EventArgs e)
         {
+            string strErr = "";
+
+            if (TextBox_AuctionProductName.Text == "")
+            {
+                strErr += "产品名称为空！\\n";
+            }
+            if (TextBox_StartPrice.Text == "" || !PageValidate.IsDecimal(TextBox_StartPrice.Text))
+            {
+                strErr += "起拍价为空或者不是数字！\\n";
+            }
+            if (TextBox_AddPrice.Text == "")
+            {
+                string test = TextBox_AddPrice.Text.Replace("，", ",");
+                if (!test.Contains(",") && !PageValidate.IsDecimal(test))
+                    strErr += "每次加价为空或者不是数字！\\n";
+                else
+                {
+                    foreach (string s in test.Split(','))
+                    {
+                        if (!PageValidate.IsDecimal(s))
+                            strErr += "每次加价为空或者不是数字！\\n";
+                    }
+                }
+            }
+            if (TextBox_StartTime.Text == "" || !PageValidate.IsDate(TextBox_StartTime.Text))
+            {
+                strErr += "开始时间为空或者格式错误！\\n";
+            }
+            if (TextBox_EndTime.Text == "" || !PageValidate.IsDate(TextBox_EndTime.Text))
+            {
+                strErr += "结束时间为空或者格式错误！\\n";
+            }
+
+            if (strErr != "")
+            {
+                MessageBox.Show(this, strErr);
+                return;
+            }
+
             AuctionProductModel model = bll.GetModel(AuctionID);
 
             if (FileUpload_ProductImage.FileName != String.Empty)
@@ -65,7 +104,7 @@ namespace NoName.NetShop.BackFlat.Auction
 
             model.ProductName = TextBox_AuctionProductName.Text;
             model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
-            model.AddPrices = TextBox_AddPrice.Text;
+            model.AddPrices = TextBox_AddPrice.Text.Replace("，", ",");
             model.Brief = TextEditor_Brief.Value;
             model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
             model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
