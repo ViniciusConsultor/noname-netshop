@@ -129,7 +129,7 @@ namespace NoName.NetShop.BackFlat.Product
                 return;
             }
 
-            int ProductID = CommDataHelper.GetNewSerialNum("pd");
+            int ProductID = CommDataHelper.GetNewSerialNum(AppType.Product);
 
             string[] MainImages;
 

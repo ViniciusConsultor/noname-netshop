@@ -51,6 +51,12 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
+                            <asp:LinkButton runat="server" ID="Button_MoveUp" CommandArgument='<%# Eval("imageid") %>' CommandName='u' Text="上移" />
+                            <asp:LinkButton runat="server" ID="Button_MoveDown" CommandArgument='<%# Eval("imageid") %>' CommandName='d' Text="下移" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <asp:LinkButton id="EditButton" runat="server" Text="编辑" CommandArgument='<%# Eval("imageid") %>' CommandName="e" />
                             <asp:LinkButton id="DeleteButton" runat="server" Text="删除" CommandArgument='<%# Eval("imageid") %>' CommandName="d" />
                         </ItemTemplate>
