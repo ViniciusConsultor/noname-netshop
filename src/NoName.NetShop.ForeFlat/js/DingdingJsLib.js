@@ -63,6 +63,17 @@ function TabTransfer(obj){
 	showSubCategory();
 }
 
+function transferTab2(obj){
+	obj.blur();
+    obj.className="on";
+	for(i=0;i<obj.parentNode.getElementsByTagName("a").length;i++){
+	    if(obj.parentNode.getElementsByTagName("a")[i]!==obj){
+		    obj.parentNode.getElementsByTagName("a")[i].className="";
+		}
+	}
+	getElementsByClassName(obj.parentNode.parentNode,"content")[0].innerHTML=document.getElementById(obj.getAttribute("rel")).innerHTML;
+}
+
 function selectAll(obj,container){
 	obj.blur();
 	var checkBoxes=container.getElementsByTagName("input");
@@ -88,3 +99,97 @@ function selectAll(obj,container){
 		obj.state="selectAll";
 	}
 }
+
+function viewTransfer(obj){
+	obj.blur();
+	var btns=obj.parentNode.getElementsByTagName("a");
+	for(i=0;i<btns.length;i++){
+		if(btns[i].className.split("_on")){btns[i].className=btns[i].className.split("_on")[0]}	
+	}
+	obj.className+="_on";
+	if (obj.className.indexOf("vertical")!==-1){
+		document.getElementById("productList").className="list_vertical";
+	}else{
+		document.getElementById("productList").className="list_horizontal";
+	}
+	document.getElementById("productList").innerHTML=document.getElementById("productList").innerHTML; //for IE6 bug
+}
+
+function zoomInThumb(e,obj){
+	var targetArea=getElementsByClassName(obj,"targetArea")[0];
+	var zoomArea=getElementsByClassName(obj,"zoomInArea")[0];
+	showZoomIn();
+	obj.onmouseout=hideZoomIn;
+	var scrollLeft=document.documentElement.scrollLeft?document.documentElement.scrollLeft:document.body.scrollLeft;
+	var scrollTop=document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop;
+	if((scrollLeft+e.clientX-getXY(obj).l)>(obj.clientWidth-2)){hideZoomIn()}
+	
+	var left=scrollLeft+e.clientX-getXY(obj).l-targetArea.clientWidth/2;
+	var top=scrollTop+e.clientY-getXY(obj).t-targetArea.clientHeight/2;
+	
+	if(left<0){
+		left=0;		
+	}else if(left>obj.clientWidth-targetArea.clientWidth-2){
+		left=obj.clientWidth-targetArea.clientWidth-2;
+	}
+	targetArea.style.left=left+"px";
+	
+	if(top<0){
+		top=0;		
+	}else if(top>obj.clientHeight-targetArea.clientHeight-2){
+		top=obj.clientHeight-targetArea.clientHeight-2;
+	}
+	targetArea.style.top=top+"px";
+	
+	zoomArea.scrollLeft=parseInt(targetArea.style.left)*3;
+	zoomArea.scrollTop=parseInt(targetArea.style.top)*3;
+		
+	function hideZoomIn(){
+		zoomArea.style.display="none";
+		targetArea.style.display="none";
+	}
+	
+	function showZoomIn(){
+		zoomArea.style.display="block";
+		targetArea.style.display="block";
+	}
+}
+
+var getXY = function(el){
+				var d = document,
+					bd = d.body,
+					r={t:0,l:0},
+					ua = navigator.userAgent.toLowerCase(),
+					isStrict = d.compatMode == "CSS1Compat",
+					isGecko = /gecko/.test(ua),
+					add = function(t,l){r.l+=l,r.t+=t},
+					p = el;
+				if(el&&el!=bd){
+					if(el.getBoundingClientRect){
+						var b = el.getBoundingClientRect();
+						add(b.top + Math.max(d.body.scrollTop,d.documentElement.scrollTop),
+							b.left+Math.max(d.body.scrollLeft,d.documentElement.scrollLeft));
+						isStrict?add(-d.documentElement.clientTop,-d.documentElement.clientLeft):add(-1,-1)
+					}else{
+						var dv = d.defaultView;
+						while(p){
+							add(p.offsetTop,p.offsetLeft);
+							var computStyle = dv.getComputedStyle( p, null );
+							if(isGecko){
+								var bl = parseInt(computStyle.getPropertyValue('border-left-width'),10)||0,
+									bt = parseInt(computStyle.getPropertyValue('border-top-width'),10)||0;
+								add(bt,bl);
+								if(p!=el&&computStyle.getPropertyValue('overflow')!='visible')
+									add(bt,bl);
+							}
+							p = p.offsetParent;
+						}
+						p = el.parentNode;
+						while (p && p != bd) {
+							add(-p.scrollTop,-p.scrollLeft); 
+							p = p.parentNode;
+						}
+					}
+				}
+				return r;
+			}
