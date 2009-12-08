@@ -10,7 +10,13 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView runat="server" ID="GridView1">
+            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField HeaderText="日志ID" DataField="logid" />
+                    <asp:BoundField HeaderText="用户" DataField="UserName" />
+                    <asp:BoundField HeaderText="出价时间" DataField="AuctionTime" />
+                    <asp:BoundField HeaderText="出价" DataField="AutionPrice" />
+                </Columns>
             </asp:GridView>
         </div>
         <div id="page">

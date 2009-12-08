@@ -30,7 +30,7 @@ namespace NoName.NetShop.BackFlat.Auction
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(" auctionid = "+AuctionID);
+            GridView1.DataSource = bll.GetList("auctionid=" + AuctionID + " order by auctiontime desc");
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;

@@ -32,7 +32,7 @@
                 result = false;
                 inform($('#<%=TextBox_StartPrice.ClientID %>'), '请输入正确的价格');
             }
-            if ($('#<%=TextBox_AddPrice.ClientID %>').val() == '' || !$('#<% =TextBox_AddPrice.ClientID %>').val().isCurrency()) {
+            if ($('#<%=TextBox_AddPrice.ClientID %>').val() == '') {
                 result = false;
                 inform($('#<%=TextBox_AddPrice.ClientID %>'), '请输入正确的价格');
             }

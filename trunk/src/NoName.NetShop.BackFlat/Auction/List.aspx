@@ -16,8 +16,10 @@
                     <asp:TemplateField HeaderText="名称">
                         <ItemTemplate>
                             <%# Eval("ProductName")%>
+                            <a href='<%# "LogList.aspx?auctionid="+Eval("AuctionId") %>'>查看竞价记录</a>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:BoundField HeaderText="用户名" DataField="UserName" />
                     <asp:TemplateField HeaderText="起拍价">
                         <ItemTemplate>
                             <%# Convert.ToDecimal(Eval("StartPrice")).ToString("0.00") %>
@@ -40,7 +42,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
-                            <%# Enum.GetName(typeof(NoName.NetShop.Auction.Model.AuctionProductStatus),Eval("status"))%>
+                            <%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.AuctionProductStatus),Eval("status"))%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
