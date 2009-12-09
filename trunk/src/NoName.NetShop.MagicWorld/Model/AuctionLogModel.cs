@@ -13,11 +13,19 @@ namespace NoName.NetShop.MagicWorld.Model
         public AuctionLogModel()
         { }
 
-
+        private int _LogID;
         private int _AuctionID;
         private string _UserName;
         private DateTime _AuctionTime;
         private decimal _AutionPrice;
+
+
+
+        public int LogID
+        {
+            get { return _LogID; }
+            set { _LogID = value; }
+        }
         /// <summary>
         /// 
         /// </summary>

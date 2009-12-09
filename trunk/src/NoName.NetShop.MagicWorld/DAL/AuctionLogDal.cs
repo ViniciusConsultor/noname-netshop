@@ -29,6 +29,7 @@ namespace NoName.NetShop.MagicWorld.DAL
 		public void Add(AuctionLogModel model)
 		{
             DbCommand dbCommand = dbw.GetStoredProcCommand("UP_mwAuctionLog_ADD");
+            dbw.AddInParameter(dbCommand, "logid", DbType.Int32, model.LogID);
             dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionID);
             dbw.AddInParameter(dbCommand, "UserName", DbType.AnsiString, model.UserName);
             dbw.AddInParameter(dbCommand, "AuctionTime", DbType.DateTime, model.AuctionTime);
@@ -42,6 +43,7 @@ namespace NoName.NetShop.MagicWorld.DAL
 		public void Update(AuctionLogModel model)
 		{
             DbCommand dbCommand = dbw.GetStoredProcCommand("UP_mwAuctionLog_Update");
+            dbw.AddInParameter(dbCommand, "logid", DbType.Int32, model.LogID);
             dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionID);
             dbw.AddInParameter(dbCommand, "UserName", DbType.AnsiString, model.UserName);
             dbw.AddInParameter(dbCommand, "AuctionTime", DbType.DateTime, model.AuctionTime);
@@ -83,7 +85,7 @@ namespace NoName.NetShop.MagicWorld.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select AuctionId,UserName,AuctionTime,AutionPrice ");
+			strSql.Append("select logid,AuctionId,UserName,AuctionTime,AutionPrice ");
 			strSql.Append(" FROM mwAuctionLog ");
 			if(strWhere.Trim()!="")
 			{
@@ -99,7 +101,7 @@ namespace NoName.NetShop.MagicWorld.DAL
 		public List<AuctionLogModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select AuctionId,UserName,AuctionTime,AutionPrice ");
+			strSql.Append("select logid,AuctionId,UserName,AuctionTime,AutionPrice ");
 			strSql.Append(" FROM mwAuctionLog ");
 			if(strWhere.Trim()!="")
 			{
@@ -123,7 +125,12 @@ namespace NoName.NetShop.MagicWorld.DAL
 		public AuctionLogModel ReaderBind(IDataReader dataReader)
 		{
 			AuctionLogModel model=new AuctionLogModel();
-			object ojb; 
+            object ojb;
+            ojb = dataReader["logid"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.LogID = (int)ojb;
+            }
 			ojb = dataReader["AuctionId"];
 			if(ojb != null && ojb != DBNull.Value)
 			{

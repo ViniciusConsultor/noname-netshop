@@ -159,7 +159,7 @@ namespace NoName.NetShop.MagicWorld.BLL
             info.PriKeyName = "auctionid";
             info.StrJoin = "";
             info.StrWhere = " 1=1 " + Condition;
-            info.TableName = "mwActionProduct";
+            info.TableName = "mwAuctionProduct";
             info.TotalFieldStr = "";
 
             DataTable dt = CommDataHelper.GetDataFromSingleTableByPage(info).Tables[0];

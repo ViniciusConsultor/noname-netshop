@@ -21,6 +21,7 @@ namespace NoName.NetShop.MagicWorld.Model
         private int _Status;
         private int _CateID;
         private string _CatePath;
+        private string _UserName;
 
         public int AuctionID
         {
@@ -91,6 +92,11 @@ namespace NoName.NetShop.MagicWorld.Model
         {
             get { return _CatePath; }
             set { _CatePath = value; }
+        }
+        public string UserName
+        {
+            get { return _UserName; }
+            set { _UserName = value; }
         }
     }
     public enum AuctionProductStatus

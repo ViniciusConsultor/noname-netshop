@@ -31,7 +31,7 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
             dbw.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
             dbw.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
-            dbw.AddInParameter(dbCommand, "AddPrices", DbType.Decimal, model.AddPrices);
+            dbw.AddInParameter(dbCommand, "AddPrices", DbType.String, model.AddPrices);
             dbw.AddInParameter(dbCommand, "CurPrice", DbType.Decimal, model.CurPrice);
             dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
             dbw.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
@@ -39,6 +39,7 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
             dbw.AddInParameter(dbCommand, "@CateID", DbType.Int32, model.CateID);
             dbw.AddInParameter(dbCommand, "@CatePath", DbType.String, model.CatePath);
+            dbw.AddInParameter(dbCommand, "@UserName", DbType.String, model.UserName);
 
             dbw.ExecuteNonQuery(dbCommand);
         }
@@ -67,7 +68,7 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
             dbw.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
             dbw.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
-            dbw.AddInParameter(dbCommand, "AddPrices", DbType.Decimal, model.AddPrices);
+            dbw.AddInParameter(dbCommand, "AddPrices", DbType.String, model.AddPrices);
             dbw.AddInParameter(dbCommand, "CurPrice", DbType.Decimal, model.CurPrice);
             dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
             dbw.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
@@ -75,6 +76,7 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
             dbw.AddInParameter(dbCommand, "CateID", DbType.Int32, model.CateID);
             dbw.AddInParameter(dbCommand, "CatePath", DbType.String, model.CatePath);
+            dbw.AddInParameter(dbCommand, "@UserName", DbType.String, model.UserName);
             dbw.ExecuteNonQuery(dbCommand);
         }
 
@@ -193,7 +195,7 @@ namespace NoName.NetShop.MagicWorld.DAL
 				model.AuctionID=(int)ojb;
 			}
 			model.ProductName=dataReader["ProductName"].ToString();
-			model.SmallImage=dataReader["SmallIamge"].ToString();
+			model.SmallImage=dataReader["SmallImage"].ToString();
 			model.MediumImage=dataReader["MediumImage"].ToString();
 			model.OutLinkUrl=dataReader["OutLinkUrl"].ToString();
 			ojb = dataReader["StartPrice"];
