@@ -36,10 +36,12 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             TextBox_AuctionProductName.Text = model.ProductName;
             TextBox_StartPrice.Text = model.StartPrice.ToString();
             TextBox_AddPrice.Text = model.AddPrices.ToString();
-            TextBox_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-            TextBox_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd HH:mm:ss");
+            TextBox_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd hh:mm:ss");
+            TextBox_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd hh:mm:ss");
             TextEditor_Brief.Value = model.Brief;
+            Image_ProductImage.ImageUrl = AuctionImageRule.GetMainImageUrl(model.SmallImage);
         }
+
 
         protected void Button_Edit_Click(object sender, EventArgs e)
         {
@@ -53,9 +55,19 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             {
                 strErr += "起拍价为空或者不是数字！\\n";
             }
-            if (TextBox_AddPrice.Text == "" || !PageValidate.IsDecimal(TextBox_AddPrice.Text))
+            if (TextBox_AddPrice.Text == "")
             {
-                strErr += "每次加价为空或者不是数字！\\n";
+                string test = TextBox_AddPrice.Text.Replace("，", ",");
+                if (!test.Contains(",") && !PageValidate.IsDecimal(test))
+                    strErr += "每次加价为空或者不是数字！\\n";
+                else
+                {
+                    foreach (string s in test.Split(','))
+                    {
+                        if (!PageValidate.IsDecimal(s))
+                            strErr += "每次加价为空或者不是数字！\\n";
+                    }
+                }
             }
             if (TextBox_StartTime.Text == "" || !PageValidate.IsDate(TextBox_StartTime.Text))
             {
@@ -71,35 +83,35 @@ namespace NoName.NetShop.ForeFlat.member.Auction
                 MessageBox.Show(this, strErr);
                 return;
             }
-            
+
             AuctionProductModel model = bll.GetModel(AuctionID);
 
             if (FileUpload_ProductImage.FileName != String.Empty)
             {
                 string[] ProductImages;
-                if (AuctionImageRule.SaveProductMainImage(AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
+
+                if (AuctionImageRule.SaveProductMainImage(model.AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
                     model.MediumImage = ProductImages[0];
                     model.SmallImage = ProductImages[1];
                 }
                 else
                 {
-                    MessageBox.Show(this,"图片上传失败！");
+                    MessageBox.Show(this, "图片上传失败");
                     return;
                 }
             }
 
             model.ProductName = TextBox_AuctionProductName.Text;
             model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
-            model.AddPrices = TextBox_AddPrice.Text;
+            model.AddPrices = TextBox_AddPrice.Text.Replace("，", ",");
             model.Brief = TextEditor_Brief.Value;
             model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
-            if (model.Status == (int)AuctionProductStatus.审核未通过) model.Status = (int)AuctionProductStatus.尚未审核;
             model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
 
-
             bll.Update(model);
-            MessageBox.Show(this, "更新成功");
+
+            MessageBox.Show(this, "修改成功");
         }
     }
 }

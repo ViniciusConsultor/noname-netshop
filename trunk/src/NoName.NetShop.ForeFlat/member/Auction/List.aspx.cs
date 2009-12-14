@@ -24,7 +24,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(AspNetPager.PageSize, PageIndex, String.Empty, out RecordCount);
+            GridView1.DataSource = bll.GetList(AspNetPager.PageSize, PageIndex, " and username = '" + GetUserName() + "'", out RecordCount);
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
@@ -59,6 +59,11 @@ namespace NoName.NetShop.ForeFlat.member.Auction
                     ((LinkButton)e.Row.Cells[6].FindControl("Button_Delete")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[1].Text.Trim() + "\"吗?')");
                 }
             }
+        }
+
+        private string GetUserName()
+        {
+            return "zhangfeng";
         }
     }
 }

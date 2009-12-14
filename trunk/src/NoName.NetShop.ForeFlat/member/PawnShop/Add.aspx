@@ -38,6 +38,14 @@
     <b>添加当品</b>
     <table>
         <tr>
+            <td>您已选择分类：</td>
+            <td>
+                <asp:Label runat="server" ID="Label_Category" />
+                <asp:HiddenField runat="server" ID="Hidden_CategoryID" />
+                <a href="../CateSelect.aspx" >重新选择</a>
+            </td>
+        </tr>
+        <tr>
             <td>产品名称<span class="red">*</span>：</td>
             <td><asp:TextBox runat="server" Width="400" ID="TextBox_ProductName" /><span type="inform" class="red"></span></td>
         </tr>

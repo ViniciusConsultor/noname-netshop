@@ -18,7 +18,17 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                BindData();
+            }
+        }
 
+        protected void BindData()
+        {
+            MagicCategoryModel cate = new MagicCategoryBll().GetModel(Convert.ToInt32(Request.QueryString["categoryid"]));
+            Label_Category.Text = cate.CategoryName;
+            Hidden_CategoryID.Value = cate.CategoryID.ToString();
         }
 
         protected void Button_Add_Click(object sender, EventArgs e)
@@ -48,19 +58,20 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
                 return;
             }
 
-            int PawnProductID = CommDataHelper.GetNewSerialNum("pw");
+            int PawnProductID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
 
             string[] ProductImages;
             if (PawnImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 PawnProductModel model = new PawnProductModel();
+                MagicCategoryModel cate = new MagicCategoryBll().GetModel(Convert.ToInt32(Hidden_CategoryID.Value));
 
                 model.PawnProductID = PawnProductID;
                 model.PawnProductName = TextBox_ProductName.Text;
                 model.UserID = GetUserID();
                 model.Brief = TextBox_Brief.Text;
-                model.CateID = 0;
-                model.CatePath = "";
+                model.CateID = cate.CategoryID;
+                model.CatePath = cate.CategoryPath;
                 model.Keywords = TextBox_Keyword.Text;
                 model.SmallImage = ProductImages[0];
                 model.MediumImage = ProductImages[1];
@@ -73,7 +84,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
                 model.InsertTime = DateTime.Now;
 
                 bll.Add(model);
-                MessageBox.Show(this, "添加成功！");
+                Response.Redirect("../SubmitSucc.aspx");
             }
             else
             {

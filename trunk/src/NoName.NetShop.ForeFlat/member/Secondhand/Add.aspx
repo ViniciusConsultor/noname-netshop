@@ -1,8 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Add.aspx.cs" MasterPageFile="~/MemberCenter.master" Inherits="NoName.NetShop.ForeFlat.member.Secondhand.Add" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Add.aspx.cs" ValidateRequest="false" MasterPageFile="~/MemberCenter.master" Inherits="NoName.NetShop.ForeFlat.member.Secondhand.Add" %>
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
     <script type="text/javascript" src="../../js/validate.js"></script>
+    <script type="text/javascript" src="/controls/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
+        $(function() {
+            CKEDITOR.replace('<%=TextBox_Brief.ClientID %>', {
+                toolbar: 'Basic',
+                width: '400px',
+                height: '200px'
+            });
+        });
         function validate() {
             $('table td span[type=inform]').html('');
 
@@ -42,6 +50,13 @@
 <div style="text-align:left;">
     <b>添加二手商品</b>
     <table>
+        <tr>
+            <td>
+                <asp:Label runat="server" ID="Label_Category" />
+                <asp:HiddenField runat="server" ID="Hidden_CategoryID" />
+                <a href="../CateSelect.aspx" >重新选择</a>
+            </td>
+        </tr>
         <tr>
             <td>名称：</td>
             <td><asp:TextBox runat="server" ID="TextBox_ProductName" Width="400" /><span type="inform" class="red"></span></td>

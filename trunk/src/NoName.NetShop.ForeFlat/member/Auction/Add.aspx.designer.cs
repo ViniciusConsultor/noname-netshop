@@ -9,19 +9,28 @@
 //------------------------------------------------------------------------------
 
 namespace NoName.NetShop.ForeFlat.member.Auction {
-
-
-    public partial class Add
-    {
+    
+    
+    public partial class Add {
+        
         /// <summary>
-        /// form1 控件。
+        /// Label_Category 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        protected global::System.Web.UI.WebControls.Label Label_Category;
+        
+        /// <summary>
+        /// Hidden_CategoryID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hidden_CategoryID;
+        
         /// <summary>
         /// TextBox_AuctionProductName 控件。
         /// </summary>
@@ -30,7 +39,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_AuctionProductName;
-
+        
         /// <summary>
         /// TextBox_StartPrice 控件。
         /// </summary>
@@ -39,7 +48,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_StartPrice;
-
+        
         /// <summary>
         /// TextBox_AddPrice 控件。
         /// </summary>
@@ -48,7 +57,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_AddPrice;
-
+        
         /// <summary>
         /// TextBox_StartTime 控件。
         /// </summary>
@@ -57,7 +66,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_StartTime;
-
+        
         /// <summary>
         /// TextBox_EndTime 控件。
         /// </summary>
@@ -66,16 +75,16 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_EndTime;
-
+        
         /// <summary>
-        /// TextEditor_Brief 控件。
+        /// TextBox_Brief 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor TextEditor_Brief;
-
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Brief;
+        
         /// <summary>
         /// FileUpload_ProductImage 控件。
         /// </summary>
@@ -84,7 +93,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload_ProductImage;
-
+        
         /// <summary>
         /// Button_Add 控件。
         /// </summary>
