@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="BLL\AuctionLogBll.cs" />
     <Compile Include="BLL\AuctionProductBll.cs" />
+    <Compile Include="BLL\MagicCategoryBll.cs" />
     <Compile Include="BLL\PawnProductBll.cs" />
     <Compile Include="BLL\SecondhandProductBll.cs" />
     <Compile Include="Config\AuctionImageElement.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Config\SecondhandImageSection.cs" />
     <Compile Include="DAL\AuctionLogDal.cs" />
     <Compile Include="DAL\AuctionProductDal.cs" />
+    <Compile Include="DAL\MagicCategoryDal.cs" />
     <Compile Include="DAL\PawnProductDal.cs" />
     <Compile Include="DAL\SecondhandProductDal.cs" />
     <Compile Include="Facade\AuctionImageRule.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Facade\SecondhandImageRule.cs" />
     <Compile Include="Model\AuctionLogModel.cs" />
     <Compile Include="Model\AuctionProductModel.cs" />
+    <Compile Include="Model\MagicCategoryModel.cs" />
     <Compile Include="Model\PawnProductModel.cs" />
     <Compile Include="Model\SecondhandProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
