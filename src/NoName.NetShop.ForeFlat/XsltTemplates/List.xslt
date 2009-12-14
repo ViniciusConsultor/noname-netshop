@@ -248,43 +248,12 @@
                         <div class="rightColumn">
                             <div class="rightColumnContainer">
                                 <div class="box7">
-                                    <div class="title">投影 - 商品筛选</div>
+                                    <div class="title">
+                                        <xsl:value-of select="$CategoryID"/> - 商品筛选
+                                    </div>
                                     <div class="content">
                                         <ul class="productFilter">
-                                            <li>
-                                                <span>品牌：</span>
-                                                <a href="#">全部</a>
-                                                <a class="on" href="#">东芝</a>
-                                                <a href="#">日立</a>
-                                                <a href="#">西门子</a>
-                                                <a href="#">联想</a>
-                                                <a href="#">海尔</a>
-                                                <a href="#">富士康</a>
-                                                <a href="#">索尼</a>
-                                            </li>
-                                            <li>
-                                                <span>价格：</span>
-                                                <a class="on" href="#">全部</a>
-                                                <a href="#">1-500</a>
-                                                <a href="#">501-1000</a>
-                                                <a href="#">1001-1500</a>
-                                                <a href="#">1501-2000</a>
-                                                <a href="#">2001-2500</a>
-                                                <a href="#">2501-3000</a>
-                                            </li>
-                                            <li>
-                                                <span>自动化程度：</span>
-                                                <a class="on" href="#">全部</a>
-                                                <a href="#">全自动</a>
-                                                <a href="#">半自动</a>
-                                                <a href="#">其它</a>
-                                            </li>
-                                            <li>
-                                                <span>驱动方式：</span>
-                                                <a class="on" href="#">全部</a>
-                                                <a href="#">波轮式</a>
-                                                <a href="#">滚动式</a>
-                                            </li>
+                                            <xsl:apply-templates select="/listpage/properitylist/prop"/>
                                         </ul>
                                     </div>
                                 </div>
@@ -435,6 +404,20 @@
                 </xsl:choose>
             </xsl:for-each>
         </div>
+    </xsl:template>
+
+    <xsl:template match="/listpage/properitylist/prop">
+        <li>
+            <span>
+                <xsl:value-of select="propname"/>：
+            </span>
+            <a href="#" propid="{propid}" propvid="-1">全部</a>
+            <xsl:for-each select="values/value">
+                <a href="#" propvid="{valueid}">
+                    <xsl:value-of select="value"/>
+                </a>
+            </xsl:for-each>
+        </li>   
     </xsl:template>
 
     <xsl:template match="/listpage/categorylist">
