@@ -9,6 +9,7 @@ using System.Data;
 using System.IO;
 using NoName.NetShop.Publish.List.PageCreator;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace NoName.NetShop.Publish.List
 {
@@ -56,7 +57,17 @@ namespace NoName.NetShop.Publish.List
                     if (FatherClassificationPath != String.Empty)
                         RelativePath = FatherClassificationPath.Replace("/", "\\") + "\\";
 
-                    string PageName = String.Format("list_{0}{1}.html", PageParameter.CategoryID, PageParameter.PageIndex <= 1 ? "" : "_" + PageParameter.PageIndex.ToString());
+                    string ProperityString = "p";
+                    foreach (string key in PageParameter.Properities.Keys)
+                    {
+                        ProperityString += key + "-" + PageParameter.Properities[key] + ",";
+                    }
+                    ProperityString += ProperityString.Substring(0, ProperityString.Length - 1) + "e";
+
+                    string PageName = String.Format("list_{0}{1}{2}{3}.html",
+                        PageParameter.CategoryID, PageParameter.PageIndex <= 1 ? "" : "_" + PageParameter.PageIndex.ToString(),
+                        PageParameter.OrderValue == 0 ? "" : "-o"+PageParameter.OrderValue.ToString()/*order*/,
+                        PageParameter.Properities == null ? "" : "-"+ProperityString/*properity*/);
 
                     return config.RootPath + RelativePath + PageName;
                 }
@@ -111,17 +122,29 @@ namespace NoName.NetShop.Publish.List
         {
             ListPageParameter parm = null;
 
-            string pattern = @"list(_|-)+(?<cfid>\d+)((_|-)+(?<pageIndex>\d+))?";
+            string pattern = @"list(_|-)+(?<cfid>\d+)((_|-)+(?<pageIndex>\d+))?((_|-)+o(?<order>\d+))?((_|-)+p(?<properity>.+)e)";
 
             Match match = Regex.Match(Url, pattern);
 
             if (match.Success)
             {
                 parm = new ListPageParameter();
+                parm.Properities = null;
+                parm.OrderValue = 0;
                 parm.CategoryID = int.Parse(match.Groups["cfid"].Value);
 
                 if (match.Groups["pageIndex"].Success)
                     parm.PageIndex = int.Parse(match.Groups["pageIndex"].Value);
+                if (match.Groups["order"].Success)
+                    parm.OrderValue = int.Parse(match.Groups["order"].Value);
+                if (match.Groups["properity"].Success)
+                {
+                    parm.Properities = new Hashtable();
+                    foreach (string pv in match.Groups["properity"].Value.Split(','))
+                    {
+                        parm.Properities.Add(pv.Split('-')[0],pv.Split('-')[1]);
+                    }
+                }
             }
 
             if (parm.PageIndex == 0) parm.PageIndex = 1;
@@ -134,6 +157,9 @@ namespace NoName.NetShop.Publish.List
     {
         private int _CategoryID;
         private int _PageIndex;
+        private int _OrderValue;
+        private Hashtable _Properities;
+        
 
         public int CategoryID
         {
@@ -144,6 +170,16 @@ namespace NoName.NetShop.Publish.List
         {
             get { return _PageIndex; }
             set { _PageIndex = value; }
+        }
+        public int OrderValue
+        {
+            get { return _OrderValue; }
+            set { _OrderValue = value; }
+        }
+        public Hashtable Properities
+        {
+            get { return _Properities; }
+            set { _Properities = value; }
         }
     }
 }

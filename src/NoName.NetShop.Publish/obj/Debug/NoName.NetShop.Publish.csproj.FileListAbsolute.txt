@@ -75,3 +75,5 @@ E:\works\project\NetShop\src\NoName.NetShop.Publish\bin\Debug\Microsoft.Practice
 E:\works\project\NetShop\src\NoName.NetShop.Publish\bin\Debug\Microsoft.Practices.Unity.xml
 E:\works\project\NetShop\src\NoName.NetShop.Publish\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
 E:\works\project\NetShop\src\NoName.NetShop.Publish\bin\Debug\Microsoft.Practices.ObjectBuilder2.xml
+E:\works\project\NetShop\src\NoName.NetShop.Publish\bin\Debug\NoName.NetShop.Product.dll
+E:\works\project\NetShop\src\NoName.NetShop.Publish\bin\Debug\NoName.NetShop.Product.pdb
