@@ -17,6 +17,11 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             get { if (ViewState["CategoryParaID"] != null) return Convert.ToInt32(ViewState["CategoryParaID"]); else return -1; }
             set { ViewState["CategoryParaID"] = value; }
         }
+        private int CategoryID
+        {
+            get { if (ViewState["CategoryID"] != null) return Convert.ToInt32(ViewState["CategoryID"]); else return -1; }
+            set { ViewState["CategoryID"] = value; }
+        }
         private CategoryParaModelBll bll = new CategoryParaModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -24,13 +29,14 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             if (!IsPostBack)
             {
                 if (!String.IsNullOrEmpty(Request.QueryString["pid"])) CategoryParaID = Convert.ToInt32(Request.QueryString["pid"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["cid"])) CategoryID = Convert.ToInt32(Request.QueryString["cid"]);
                 BindData();
             }
         }
 
         private void BindData() 
         {
-            CategoryParaModel model = bll.GetModel(CategoryParaID);
+            CategoryParaModel model = bll.GetModel(CategoryParaID,CategoryID);
 
             TextBox_ParaName.Text=model.ParaName;
             TextBox_ParaValue.Text=model.ParaValues;
@@ -55,7 +61,7 @@ namespace NoName.NetShop.BackFlat.Category.Properity
                 return;
             }
 
-            CategoryParaModel model = bll.GetModel(CategoryParaID);
+            CategoryParaModel model = bll.GetModel(CategoryParaID,CategoryID);
 
             model.ParaName = TextBox_ParaName.Text;
             model.ParaValues = TextBox_ParaValue.Text.Replace("，", ",");
