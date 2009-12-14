@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NoName.NetShop.MagicWorld.BLL;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
@@ -14,6 +15,7 @@ namespace NoName.NetShop.ForeFlat.Magic
             get { if (ViewState["CategoryID"] != null) return Convert.ToInt32(ViewState["CategoryID"]); else return -1; }
             set { ViewState["CategoryID"] = value; }
         }
+        private AuctionProductBll bll = new AuctionProductBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
