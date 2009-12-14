@@ -71,10 +71,10 @@ namespace NoName.NetShop.Product.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public CategoryParaModel GetModel(int ParaId)
+		public CategoryParaModel GetModel(int ParaId,int CateID)
 		{
 			
-			return dal.GetModel(ParaId);
+			return dal.GetModel(ParaId,CateID);
 		}
 
 		/// <summary>
