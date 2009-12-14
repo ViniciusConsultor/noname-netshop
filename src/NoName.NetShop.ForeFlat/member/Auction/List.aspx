@@ -13,7 +13,7 @@
                 <asp:BoundField HeaderText="拍品ID" DataField="AuctionId" />
                 <asp:TemplateField HeaderText="名称">
                     <ItemTemplate>
-                        <%# Eval("ProductName")%>
+                        <a href='<%# "/Magic/Auction.aspx?a="+Eval("AuctionId") %>'><%# Eval("ProductName")%></a>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="起拍价">

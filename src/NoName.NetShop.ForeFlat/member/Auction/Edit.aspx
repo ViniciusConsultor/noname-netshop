@@ -22,7 +22,7 @@
                 result = false;
                 inform($('#<%=TextBox_AuctionProductName.ClientID %>'), '请输入产品名称');
             }
-            if ($('#<%=TextBox_StartPrice.ClientID %>').val() == '' || !$('#<% =TextBox_StartPrice.ClientID %>').val().isCurrency()) {
+            if ($('#<%=TextBox_StartPrice.ClientID %>').val() == '') {
                 result = false;
                 inform($('#<%=TextBox_StartPrice.ClientID %>'), '请输入正确的价格');
             }

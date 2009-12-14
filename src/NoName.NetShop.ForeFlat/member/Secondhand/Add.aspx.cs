@@ -18,7 +18,17 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                BindData();
+            }
+        }
 
+        protected void BindData()
+        {
+            MagicCategoryModel cate = new MagicCategoryBll().GetModel(Convert.ToInt32(Request.QueryString["categoryid"]));
+            Label_Category.Text = cate.CategoryName;
+            Hidden_CategoryID.Value = cate.CategoryID.ToString();
         }
 
         protected void Button_Add_Click(object sender, EventArgs e)
@@ -52,13 +62,14 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
                 return;
             }
 
-            int SecondhandProductID = CommDataHelper.GetNewSerialNum("se");
+            int SecondhandProductID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
 
             string[] ProductImages;
 
             if (SecondhandImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 SecondhandProductModel model = new SecondhandProductModel();
+                MagicCategoryModel cate = new MagicCategoryBll().GetModel(Convert.ToInt32(Hidden_CategoryID.Value));
 
                 model.SecondhandProductID = SecondhandProductID;
                 model.SecondhandProductName = TextBox_ProductName.Text;
@@ -66,8 +77,8 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
                 model.Keywords = TextBox_Keyword.Text;
 
                 model.Brief = TextBox_Brief.Text;
-                model.CateID = 0;
-                model.CatePath = "";
+                model.CateID = cate.CategoryID;
+                model.CatePath = cate.CategoryPath;
                 model.SmallImage = ProductImages[0];
                 model.MediumImage = ProductImages[1];
                 model.LargeImage = ProductImages[2];
@@ -80,7 +91,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
 
                 bll.Add(model);
 
-                MessageBox.Show(this, "添加成功！");
+                Response.Redirect("../SubmitSucc.aspx");
             }
             else
             {
