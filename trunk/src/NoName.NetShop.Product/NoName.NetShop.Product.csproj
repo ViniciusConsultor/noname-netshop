@@ -63,7 +63,6 @@
     <Compile Include="BLL\CategoryModelBll.cs" />
     <Compile Include="BLL\CategoryParaGroupModelBll.cs" />
     <Compile Include="BLL\CategoryParaModelBll.cs" />
-    <Compile Include="BLL\GiftBll.cs" />
     <Compile Include="BLL\PartProductModelBll.cs" />
     <Compile Include="BLL\ProductExtModelBll.cs" />
     <Compile Include="BLL\ProductImageModelBll.cs" />
@@ -84,7 +83,6 @@
     <Compile Include="DAL\CategoryModelDal.cs" />
     <Compile Include="DAL\CategoryParaGroupModelDal.cs" />
     <Compile Include="DAL\CategoryParaModelDal.cs" />
-    <Compile Include="DAL\GiftDal.cs" />
     <Compile Include="DAL\PartProductModelDal.cs" />
     <Compile Include="DAL\ProductExtModelDal.cs" />
     <Compile Include="DAL\ProductImageModelDal.cs" />

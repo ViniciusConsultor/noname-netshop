@@ -115,11 +115,12 @@ namespace NoName.NetShop.Product.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public CategoryParaModel GetModel(int ParaId)
+		public CategoryParaModel GetModel(int ParaID,int CateID)
 		{
 			
 			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_pdCategoryPara_GetModel");
-			dbr.AddInParameter(dbCommand, "ParaId", DbType.Int32,ParaId);
+            dbr.AddInParameter(dbCommand, "ParaId", DbType.Int32, ParaID);
+            dbr.AddInParameter(dbCommand, "cateid", DbType.Int32, CateID);
 
 			CategoryParaModel model=null;
 			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
