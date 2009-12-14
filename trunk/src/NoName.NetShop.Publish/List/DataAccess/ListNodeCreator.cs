@@ -68,8 +68,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
             }
 
             return CategoryListNode;
-        }
-        
+        }        
 
         public XmlNode GetProductList()
         {
@@ -102,6 +101,31 @@ namespace NoName.NetShop.Publish.List.DataAccess
             XmlUtility.SetAtrributeValue(PageInfoNode, "pagecount", PageCount.ToString());
 
             return ProductListNode; 
+        }
+
+        public XmlNode GetCategoryProperityList()
+        {
+            XmlNode ProperityListNode = xdoc.CreateElement("properitylist");
+            DataTable dt = dal.GetCategoryProperityList(Parameter.CategoryID);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode ProperityNode = XmlUtility.AddNewNode(ProperityListNode, "prop", null);
+
+                XmlUtility.AddNewNode(ProperityNode, "propid", row["paraid"].ToString());
+                XmlUtility.AddNewNode(ProperityNode, "propname", row["paraname"].ToString());
+                XmlNode ProperityValueNode = XmlUtility.AddNewNode(ProperityNode, "values", null);
+
+                string[] values = row["paravalues"].ToString().Split(',');
+                for (int i = 0; i < values.Length; i++)
+                {
+                    XmlNode ValueNode = XmlUtility.AddNewNode(ProperityValueNode, "value", null);
+
+                    XmlUtility.AddNewNode(ValueNode, "valueid", i.ToString());
+                    XmlUtility.AddNewNode(ValueNode, "value", values[i]);
+                }
+            }
+            return ProperityListNode;
         }
     }
 }

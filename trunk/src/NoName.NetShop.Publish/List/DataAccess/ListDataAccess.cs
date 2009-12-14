@@ -5,6 +5,9 @@ using NoName.NetShop.Publish.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using NoName.NetShop.Common;
+using System.Collections;
+using NoName.NetShop.Product.Model;
+using NoName.NetShop.Product.BLL;
 
 namespace NoName.NetShop.Publish.List.DataAccess
 {
@@ -28,6 +31,38 @@ namespace NoName.NetShop.Publish.List.DataAccess
             DataTable dt = db.ExecuteDataSet(CommandType.Text,sql).Tables[0];
             if(dt.Rows.Count>0) row = dt.Rows[0];
             return row;
+        }
+
+        public DataTable GetProductList(int CategoryID, int PageIndex,Hashtable Parameters, out int RecordCount, out int PageCount)
+        {
+            string where = String.Empty;int i=0;
+            foreach(string key in Parameters.Keys)
+            {
+                CategoryParaModel para = new CategoryParaModelBll().GetModel(Convert.ToInt32(key),CategoryID);
+                if (i == Parameters.Count - 1) where += String.Format(" (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
+                else where += String.Format(" (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') or ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
+                i++;
+            }
+            string CategoryPath = Convert.ToString(GetCategoryInfo(CategoryID)["catepath"]);
+            where += String.Format(" catepath like '{0}%'", CategoryPath);
+            
+            SearchPageInfo pageInfo = new SearchPageInfo();
+
+            pageInfo.TableName = "pdproductpara";
+            pageInfo.PriKeyName = "productid";
+            pageInfo.FieldNames = "pdproduct.productid,paraid,paravalue,productname,pdcategory.cateid,pdcategory.catepath,tradeprice,merchantprice,reduceprice,stock,smallimage,mediumimage,largeimage,keywords,brief,pageview,inserttime,changetime,pdproduct.status,score";
+            pageInfo.TotalFieldStr = "";
+            pageInfo.PageSize = Config.ListPageSize;
+            pageInfo.PageIndex = PageIndex;
+            pageInfo.OrderType = "";
+            pageInfo.StrWhere = where;
+            pageInfo.StrJoin = " inner join pdproduct on pdproduct.productid=pdproductpara.productid inner join pdcategory on pdproduct.cateid=pdcategory.cateid ";
+
+            DataTable dt = CommDataHelper.GetDataFromMultiTablesByPage(pageInfo).Tables[0];
+            RecordCount = pageInfo.TotalItem;
+            PageCount = pageInfo.TotalPage;
+
+            return dt;
         }
 
         public DataTable GetProductList(int CategoryID, int PageIndex,out int RecordCount,out int PageCount)
@@ -97,6 +132,12 @@ namespace NoName.NetShop.Publish.List.DataAccess
         {
             string sql = String.Format("select * from pdcategory where parentid={0}", CategoryID);
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
+        }
+
+        public DataTable GetCategoryProperityList(int CategoryID)
+        {
+            string sql = String.Format("select * from pdcategorypara where cateid="+CategoryID);
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
         
