@@ -90,6 +90,10 @@
       <Project>{29A4BE47-9ADF-443F-913D-6CCEAD2DD752}</Project>
       <Name>NoName.NetShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NoName.NetShop.Product\NoName.NetShop.Product.csproj">
+      <Project>{9D56D4A2-A88C-4354-AABB-02F33E688238}</Project>
+      <Name>NoName.NetShop.Product</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NoName.Utility\NoName.Utility.csproj">
       <Project>{E0634851-F221-461E-9C14-F71011119CC6}</Project>
       <Name>NoName.Utility</Name>

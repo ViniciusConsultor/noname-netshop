@@ -52,7 +52,7 @@ namespace NoName.NetShop.Member
         /// <param name="score"></param>
         /// <param name="appId"></param>
         /// <param name="remark"></param>
-        public static void LogScore(string userId,ScoreType stype, int score, string appId, string remark)
+        public static void LogScore(string userId, NoName.NetShop.Common.ScoreType stype, int score, string appId, string remark)
         {
             string sql = "um_member_logScore";
             Database db = NoName.NetShop.Common.DBFacroty.DbReader;
