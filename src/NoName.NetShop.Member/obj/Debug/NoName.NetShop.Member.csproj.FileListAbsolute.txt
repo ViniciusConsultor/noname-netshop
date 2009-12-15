@@ -12,10 +12,11 @@ D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\Microsoft.Practices.O
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\Microsoft.Practices.Unity.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\NoName.NetShop.Common.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\NoName.NetShop.Product.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\NoName.Utility.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\NoName.Utility.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\NoName.NetShop.Product.pdb
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\NoName.NetShop.Common.pdb
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\obj\Debug\NoName.NetShop.Member.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.Member\obj\Debug\NoName.NetShop.Member.pdb
-D:\Projects\netshopsvn\src\NoName.NetShop.Member\bin\Debug\ICSharpCode.SharpZipLib.dll
