@@ -24,7 +24,7 @@
          onclick="btnSearch_Click" />
         <input type="button" value="· 添加 ·" onclick="window.location='ShowGiftProduct.aspx'" />
         </div>
-            <asp:GridView runat="server" ID="gvList" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
+            <asp:GridView runat="server" ID="gvList" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
