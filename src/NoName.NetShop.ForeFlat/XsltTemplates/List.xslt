@@ -15,17 +15,27 @@
                 <link type="text/css" rel="stylesheet" href="css/common.css" />
                 <link type="text/css" rel="stylesheet" href="css/shopping.css" />
                 <link type="text/css" rel="stylesheet" href="css/Rainy.css" />
-                <script type="text/javascript" src="js/DingdingJsLib.js"><xsl:text> </xsl:text></script>
-                <script type="text/javascript" src="js/jquery.js"><xsl:text> </xsl:text></script>
-                <script type="text/javascript" src="js/mini-Rainy.js"><xsl:text> </xsl:text></script>
-
+                <script type="text/javascript" src="js/DingdingJsLib.js">
+                    <xsl:text> </xsl:text>
+                </script>
+                <script type="text/javascript" src="/js/jquery.js">
+                    <xsl:text> </xsl:text>
+                </script>
+                <script type="text/javascript" src="/js/mini-Rainy.js">
+                    <xsl:text> </xsl:text>
+                </script>
+                <script type="text/javascript" src="/js/list.js">
+                    <xsl:text> </xsl:text>
+                </script>
             </head>
             <body>
                 <div class="wrapper">
                     <!--Header Begin-->
                     <div class="header">
                         <div class="top clearfix">
-                            <div class="logo"><xsl:text> </xsl:text></div>
+                            <div class="logo">
+                                <xsl:text> </xsl:text>
+                            </div>
                             <ul class="toplink bullet_1">
                                 <li class="slogan">您好，欢迎您来到鼎鼎商城！</li>
                                 <li>
@@ -40,28 +50,44 @@
                             </ul>
                             <ul class="navigator">
                                 <li>
-                                    <a class="home" href="#"><xsl:text> </xsl:text></a>
+                                    <a class="home" href="#">
+                                        <xsl:text> </xsl:text>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="shopping" href="#"><xsl:text> </xsl:text></a>
+                                    <a class="shopping" href="#">
+                                        <xsl:text> </xsl:text>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="solution" href="#"><xsl:text> </xsl:text></a>
+                                    <a class="solution" href="#">
+                                        <xsl:text> </xsl:text>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="brands" href="#"><xsl:text> </xsl:text></a>
+                                    <a class="brands" href="#">
+                                        <xsl:text> </xsl:text>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="information" href="#"><xsl:text> </xsl:text></a>
+                                    <a class="information" href="#">
+                                        <xsl:text> </xsl:text>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="magic" href="#"><xsl:text> </xsl:text></a>
+                                    <a class="magic" href="#">
+                                        <xsl:text> </xsl:text>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                         <div class="panel">
-                            <div class="edge left"><xsl:text> </xsl:text></div>
-                            <div class="edge right"><xsl:text> </xsl:text></div>
+                            <div class="edge left">
+                                <xsl:text> </xsl:text>
+                            </div>
+                            <div class="edge right">
+                                <xsl:text> </xsl:text>
+                            </div>
                             <div class="middle clearfix">
                                 <ul class="searchbar clearfix">
                                     <li class="label">分类搜索：</li>
@@ -100,7 +126,9 @@
                                         </div>
                                     </li>
                                     <li class="submit">
-                                        <a href="javascript:void(0)"><xsl:text> </xsl:text></a>
+                                        <a href="javascript:void(0)">
+                                            <xsl:text> </xsl:text>
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="hotKeyWords">
@@ -120,7 +148,9 @@
                                     </span>
                                 </div>
                                 <ul class="userLink">
-                                    <li class="left"><xsl:text> </xsl:text></li>
+                                    <li class="left">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                     <li>
                                         <a href="#">我的账户</a>
                                     </li>
@@ -136,7 +166,9 @@
                                     <li>
                                         <a href="#">礼品兑换</a>
                                     </li>
-                                    <li class="right"><xsl:text> </xsl:text></li>
+                                    <li class="right">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -152,29 +184,41 @@
                         <div class="leftColumn">
                             <div class="box2 cateBox">
                                 <ul class="title">
-                                    <li class="left"><xsl:text> </xsl:text></li>
+                                    <li class="left">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                     <li>
                                         <span>商品分类</span>
                                     </li>
-                                    <li class="right"><xsl:text> </xsl:text></li>
+                                    <li class="right">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                 </ul>
                                 <div class="content">
                                     <xsl:apply-templates select="/listpage/categorylist"/>
                                 </div>
                                 <ul class="bottom">
-                                    <li class="left"><xsl:text> </xsl:text></li>
-                                    <li class="right"><xsl:text> </xsl:text></li>
+                                    <li class="left">
+                                        <xsl:text> </xsl:text>
+                                    </li>
+                                    <li class="right">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                 </ul>
                             </div>
-                            
+
                             <!--category brands begin-->
                             <div class="box2 newline">
                                 <ul class="title">
-                                    <li class="left"><xsl:text> </xsl:text></li>
+                                    <li class="left">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                     <li>
                                         <span>此商品分类下的品牌</span>
                                     </li>
-                                    <li class="right"><xsl:text> </xsl:text></li>
+                                    <li class="right">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                 </ul>
                                 <div class="content">
                                     <div class="category_non-popMenu clearfix">
@@ -190,8 +234,12 @@
                                     </div>
                                 </div>
                                 <ul class="bottom">
-                                    <li class="left"><xsl:text> </xsl:text></li>
-                                    <li class="right"><xsl:text> </xsl:text></li>
+                                    <li class="left">
+                                        <xsl:text> </xsl:text>
+                                    </li>
+                                    <li class="right">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                 </ul>
                             </div>
                             <!--category brands end-->
@@ -199,11 +247,15 @@
                             <!--category hot sales begin-->
                             <div class="box2 newline">
                                 <ul class="title">
-                                    <li class="left"><xsl:text> </xsl:text></li>
+                                    <li class="left">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                     <li>
                                         <span>此类下热销的商品</span>
                                     </li>
-                                    <li class="right"><xsl:text> </xsl:text></li>
+                                    <li class="right">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                 </ul>
                                 <div class="content noPaddingTop">
                                     <ul class="itemList1">
@@ -238,8 +290,12 @@
                                     </ul>
                                 </div>
                                 <ul class="bottom">
-                                    <li class="left"><xsl:text> </xsl:text></li>
-                                    <li class="right"><xsl:text> </xsl:text></li>
+                                    <li class="left">
+                                        <xsl:text> </xsl:text>
+                                    </li>
+                                    <li class="right">
+                                        <xsl:text> </xsl:text>
+                                    </li>
                                 </ul>
                             </div>
                             <!--category hot sales end-->
@@ -259,16 +315,26 @@
                                 </div>
                                 <div class="box8 newline">
                                     <ul class="title">
-                                        <li class="left"><xsl:text> </xsl:text></li>
+                                        <li class="left">
+                                            <xsl:text> </xsl:text>
+                                        </li>
                                         <li class="heading">
                                             <span class="text">影像商品 - 投影 - 商品列表</span>
-                                            <span class="arrow"><xsl:text> </xsl:text></span>
+                                            <span class="arrow">
+                                                <xsl:text> </xsl:text>
+                                            </span>
                                         </li>
-                                        <li class="right"><xsl:text> </xsl:text></li>
+                                        <li class="right">
+                                            <xsl:text> </xsl:text>
+                                        </li>
                                         <li class="view">
                                             <span>显示方式</span>
-                                            <a class="viewBtn horizontal_on" href="javascript:void(0)" onclick="viewTransfer(this)"><xsl:text> </xsl:text></a>
-                                            <a class="viewBtn vertical" href="javascript:void(0)" onclick="viewTransfer(this)"><xsl:text> </xsl:text></a>
+                                            <a class="viewBtn horizontal_on" href="javascript:void(0)" onclick="viewTransfer(this)">
+                                                <xsl:text> </xsl:text>
+                                            </a>
+                                            <a class="viewBtn vertical" href="javascript:void(0)" onclick="viewTransfer(this)">
+                                                <xsl:text> </xsl:text>
+                                            </a>
                                         </li>
                                         <li class="sort">
                                             <span>请选择排序方式</span>
@@ -284,9 +350,13 @@
                                                 <xsl:apply-templates select="/listpage/productlist/products/product"/>
                                             </ul>
                                             <div class="paginationContainer">
-                                                <div class="line"><xsl:text> </xsl:text></div>
+                                                <div class="line">
+                                                    <xsl:text> </xsl:text>
+                                                </div>
                                                 <div class="pagination">
-                                                    <a class="prev" href="#"><xsl:text> </xsl:text></a>
+                                                    <a class="prev" href="#">
+                                                        <xsl:text> </xsl:text>
+                                                    </a>
                                                     <div class="pageNum">
                                                         <a class="on" href="#">1</a>
                                                         <a href="#">2</a>
@@ -296,7 +366,9 @@
                                                         <a href="#">6</a>
                                                         <a href="#">7</a>
                                                     </div>
-                                                    <a class="next" href="#"><xsl:text> </xsl:text></a>
+                                                    <a class="next" href="#">
+                                                        <xsl:text> </xsl:text>
+                                                    </a>
                                                     <div class="jumpTo">
                                                         <span>跳转到</span>
                                                         <input type="text" value="1" />
@@ -307,8 +379,12 @@
                                         </div>
                                     </div>
                                     <ul class="bottom">
-                                        <li class="left"><xsl:text> </xsl:text></li>
-                                        <li class="right"><xsl:text> </xsl:text></li>
+                                        <li class="left">
+                                            <xsl:text> </xsl:text>
+                                        </li>
+                                        <li class="right">
+                                            <xsl:text> </xsl:text>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -319,13 +395,19 @@
                     <!--Footer Begin-->
                     <div class="box5 newline">
                         <ul class="top">
-                            <li class="left"><xsl:text> </xsl:text></li>
-                            <li class="right"><xsl:text> </xsl:text></li>
+                            <li class="left">
+                                <xsl:text> </xsl:text>
+                            </li>
+                            <li class="right">
+                                <xsl:text> </xsl:text>
+                            </li>
                         </ul>
                         <div class="content">
                             <ul class="directions clearfix">
                                 <li>
-                                    <span class="icon beginner"><xsl:text> </xsl:text></span>
+                                    <span class="icon beginner">
+                                        <xsl:text> </xsl:text>
+                                    </span>
                                     <span class="text">
                                         新手上路
                                         <a href="#">网上订单</a>
@@ -335,14 +417,18 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <span class="icon deliver"><xsl:text> </xsl:text></span>
+                                    <span class="icon deliver">
+                                        <xsl:text> </xsl:text>
+                                    </span>
                                     <span class="text">
                                         配送范围
                                         <a href="#">资费标准</a>
                                     </span>
                                 </li>
                                 <li>
-                                    <span class="icon pay"><xsl:text> </xsl:text></span>
+                                    <span class="icon pay">
+                                        <xsl:text> </xsl:text>
+                                    </span>
                                     <span class="text">
                                         如何付款
                                         <a href="#">付款方式</a>
@@ -350,7 +436,9 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <span class="icon service"><xsl:text> </xsl:text></span>
+                                    <span class="icon service">
+                                        <xsl:text> </xsl:text>
+                                    </span>
                                     <span class="text">
                                         售后服务
                                         <a href="#">退换货原则</a>
@@ -358,7 +446,9 @@
                                     </span>
                                 </li>
                                 <li class="last">
-                                    <span class="icon help"><xsl:text> </xsl:text></span>
+                                    <span class="icon help">
+                                        <xsl:text> </xsl:text>
+                                    </span>
                                     <span class="text">
                                         需要帮助
                                         <a href="#">网忘记了密码</a>
@@ -369,8 +459,12 @@
                             </ul>
                         </div>
                         <ul class="bottom">
-                            <li class="left"><xsl:text> </xsl:text></li>
-                            <li class="right"><xsl:text> </xsl:text></li>
+                            <li class="left">
+                                <xsl:text> </xsl:text>
+                            </li>
+                            <li class="right">
+                                <xsl:text> </xsl:text>
+                            </li>
                         </ul>
                     </div>
                     <div class="copyright">
@@ -388,13 +482,13 @@
 
     <xsl:template name="Position">
         <div class="currentPosition">
-            您现在的位置: 
+            您现在的位置:
             <xsl:for-each select="/listpage/categorypath/category">
                 <xsl:choose>
                     <xsl:when test="count(/listpage/categorypath/category) = position()">
                         <a href="#">
                             <xsl:value-of select="categoryname"/>
-                        </a>                        
+                        </a>
                     </xsl:when>
                     <xsl:otherwise>
                         <a href="#">
@@ -407,17 +501,17 @@
     </xsl:template>
 
     <xsl:template match="/listpage/properitylist/prop">
-        <li>
+        <li class="properity">
             <span>
                 <xsl:value-of select="propname"/>：
             </span>
-            <a href="#" propid="{propid}" propvid="-1">全部</a>
+            <a style="cursor:pointer" propid="{propid}" propvid="-1">全部</a>
             <xsl:for-each select="values/value">
-                <a href="#" propvid="{valueid}">
+                <a style="cursor:pointer" propvid="{valueid}">
                     <xsl:value-of select="value"/>
                 </a>
             </xsl:for-each>
-        </li>   
+        </li>
     </xsl:template>
 
     <xsl:template match="/listpage/categorylist">
@@ -430,11 +524,11 @@
                             <xsl:for-each select="soncategory">
                                 <a href="#">
                                     <xsl:value-of select="@categoryname"/>
-                                </a>                            
+                                </a>
                             </xsl:for-each>
-                        </div>                        
+                        </div>
                     </xsl:if>
-                </a>                
+                </a>
             </xsl:for-each>
         </div>
     </xsl:template>
@@ -443,8 +537,9 @@
         <li>
             <a href="#" title="{productname}">
                 <img src="{mediumimage}" />
-                <span class="price">鼎城报价：￥<xsl:value-of select="merchantprice"/>
-            </span>
+                <span class="price">
+                    鼎城报价：￥<xsl:value-of select="merchantprice"/>
+                </span>
                 <span class="name" title="{productname}">
                     <xsl:value-of select="productname"/>
                 </span>

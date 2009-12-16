@@ -16,10 +16,13 @@
                 <script type="text/javascript" src="js/DingdingJsLib.js">
                     <xsl:text> </xsl:text>
                 </script>
-                <script type="text/javascript" src="js/jquery.js">
+                <script type="text/javascript" src="/js/jquery.js">
                     <xsl:text> </xsl:text>
                 </script>
-                <script type="text/javascript" src="js/mini-Rainy.js">
+                <script type="text/javascript" src="/js/mini-Rainy.js">
+                    <xsl:text> </xsl:text>
+                </script>
+                <script type="text/javascript" src="/js/product.js">
                     <xsl:text> </xsl:text>
                 </script>
             </head>
