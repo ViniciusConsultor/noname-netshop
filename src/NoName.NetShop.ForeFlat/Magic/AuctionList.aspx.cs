@@ -30,6 +30,7 @@ namespace NoName.NetShop.ForeFlat.Magic
         private void BindData() 
         {
 
+
         }
     }
 }
