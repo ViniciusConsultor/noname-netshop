@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+/*Brands Home Begin*/
+.brandsHome_mainbody{ clear:both}
+.brandsHome_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.brandsHome_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.brandsHome_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.brandsHome_mainbody
+/*Brands Home End*/
+
+
+/*Brands More Begin*/
+.brandsMore_mainbody{ clear:both}
+.brandsMore_mainbody .list_horizontal ul li{padding:50px 19px;}
+.brandsMore_mainbody .list_horizontal ul li img{ width:180px; height:45px; padding:2px; border:1px solid #CCC; margin-bottom:20px;}
+/*Brands More End*/
+
+
+/*Brands Class Begin*/
+.brandsClass_mainbody{ clear:both}
+.brandsClass_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.brandsClass_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.brandsClass_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+.brandsClass_mainbody img.brandLogo{ display:block; clear:both; padding:2px; border:1px #CCC solid; margin:0 auto 10px auto; width:180; height:45px;}
+.brandsClass_mainbody span.brandDescription{ line-height:200%;}
+/*Brands Class End*/
+
+
+
+
+
+ul.logoList1{ margin:0; padding:15px 0 0 49px; zoom:1}
+ul.logoList1:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+ul.logoList1 li{ list-style-type:none; width:190px; display:block; float:left; padding:0 33px 15px 0}
+ul.logoList1 li img{ padding:2px; border:1px solid #CCC; width:180px; height:45px;}
+
+ul.logoList2{ margin:0; padding:0; zoom:1}
+ul.logoList2:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+ul.logoList2 li{ list-style-type:none; width:91px; display:block; float:left; padding:5px 4px}
+ul.logoList2 li img{ padding:2px; border:1px solid #CCC; width:85px; height:30px;}

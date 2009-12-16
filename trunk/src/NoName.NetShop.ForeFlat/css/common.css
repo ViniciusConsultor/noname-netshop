@@ -221,6 +221,8 @@ a.addToFavorite{ display:block; width:97px; height:34px; background:url(../image
 a.addToFavorite:hover{ background-position: -3px -297px;}
 a.exchangeGift{ display:block; width:97px; height:34px; background:url(../images/sprite_buttons.gif) -3px -427px;}
 a.exchangeGift:hover{ background-position: -3px -467px;}
+a.rent{ display:block; width:97px; height:34px; background:url(../images/sprite_buttons.gif) -3px -527px;}
+a.rent:hover{ background-position: -3px -567px;}
 
 
 .rankIndex{ width:13px; height:13px; display:block; background:url(../images/rank.gif); margin:0 auto}
@@ -260,6 +262,14 @@ ul.tip1 li.left{ background-position:-8px -1415px; height:35px; width:10px;}
 ul.tip1 li.right{ background-position:-32px -1415px; height:35px; width:10px; }
 ul.tip1 li.middle{ background-position:center -1365px;}
 ul.tip1 li.middle span{ display:block; height:21px; background:#CCC; font-weight:bold; text-align:center; padding:8px 5px 0 5px; float:left}
+
+ul.tip2{ padding:0; margin:0; zoom:1; display:inline-block; *display:inline}
+ul.tip2:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+ul.tip2 li{ list-style-type:none; background:url(../images/sprite.gif) no-repeat; height:35px; float:left}
+ul.tip2 li.left{ background-position:-8px -1415px; height:35px; width:10px;}
+ul.tip2 li.right{ background-position:-32px -1415px; height:35px; width:10px; }
+ul.tip2 li.middle{ background-position:center -1365px;}
+ul.tip2 li.middle span{ display:block; height:21px; background:#CCC; font-weight:bold; text-align:center; padding:8px 5px 0 5px; float:left}
 
 
 
@@ -427,6 +437,10 @@ ul.productFilter li a.on{ background:#4598d2; color:#FFF; cursor:default; displa
 .list_horizontal ul li a span.commentsNum{ color:#0087C8;}
 .list_horizontal ul li .actions{ clear:both; padding: 10px 0 0 32px;}
 .list_horizontal ul li .actions a{ margin-right:10px;}
+
+.list_horizontal ul li .actionsForInlineButton{ clear:both; padding:10px; text-align:center}
+.list_horizontal ul li .actionsForInlineButton a{ margin:0 5px; float:none!important;}
+
 .list_horizontal .paginationContainer{ clear:both; padding-top:10px; height:30px; position:relative}
 .list_horizontal .paginationContainer .line{ position:absolute; width:100%;top:-1px; height:1px; border-top:1px solid #B5D0EC }
 .list_horizontal .paginationContainer .pagination{ float:right; padding-top:5px;}
@@ -474,6 +488,7 @@ ul.form li input.textField0{ border:#CCC 1px solid; height:14px; padding:3px; ma
 ul.form li input.textField1{ border:#CCC 1px solid; height:14px; padding:3px; margin:0; float:left; font-size:12px; width:215px;}
 ul.form li input.textField2{ border:#CCC 1px solid; height:14px; padding:3px; margin:0; float:left; font-size:12px; width:415px;}
 ul.form li input.textField3{ border:#CCC 1px solid; height:14px; padding:3px; margin:0; float:left; font-size:12px; width:532px;}
+ul.form li.description{ padding-bottom:15px;}
 ul.form li textarea{ width:415px; border:#CCC 1px solid; height:100px; padding:3px; float:left; font-size:12px;}
 ul.form li textarea.textarea3{ width:532px; border:#CCC 1px solid; height:100px; padding:3px; float:left; font-size:12px;}
 ul.form li textarea.textarea4{ width:780px; border:#CCC 1px solid; height:100px; padding:3px; float:left; font-size:12px;}
@@ -482,6 +497,12 @@ ul.form li .component .rating{ padding-top:2px;}
 ul.form li input.radio{ display:block; float:left; width:14px; height:14px; margin:3px 0 0 0; padding:0}
 ul.form li label{ display:block; float:left; padding:3px 5px 0 5px; padding:5px 5px 0 5px\9; _padding:4px 5px 0 5px;}
 ul.form li .section{ padding:0 22px 0 0; float:left; clear:none!important}
+
+.fileSelector{ width:305px; height:22px; float:left; cursor:pointer; padding-right:10px}
+.fileSelector input.textField{ display:block; float:left; border:#CCC 1px solid; height:14px; padding:3px; margin:0; float:left; font-size:12px; width:215px;}
+.fileSelector a{ float:left; display:block; margin-left:5px; position:relative; cursor:pointer; overflow:hidden}
+.fileSelector a label{ cursor:pointer}
+.fileSelector input.realFile{ height:22px; width:80px; display:block; opacity:0; filter:alpha(opacity=0); position:absolute; top:0; right:0; cursor:pointer}
 
 ul.form_h{ margin:0; padding:0; zoom:1;}
 ul.fullColumn{ margin:0!important; padding:0!important;}
@@ -612,6 +633,16 @@ ul.itemList5 li .infoContainer ul.info{ overflow:hidden; _height:0; _overflow:vi
 ul.itemList5 li .infoContainer ul.info li{ width:100%; float:left; padding:5px 0; border:none}
 ul.itemList5 li .infoContainer ul.info li span{ display:block; float:left}
 ul.itemList5 li span.description{ width:auto; line-height:200%; clear:both; display:block; height:100px; overflow:hidden}
+
+ul.itemList6{ clear:both; padding:0; margin:0; zoom:1}
+ul.itemList6:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+ul.itemList6 li{ list-style-type:none; float:left; width:50%; padding:10px 0; border-bottom:1px dotted #B4CFEC}
+ul.itemList6 li img{ float:left; border:1px solid #CCC; padding:1px; display:block; width:70px; height:70px;_margin-right:-3px;}
+ul.itemList6 li .infoContainer{ float:none;margin-left:74px; _margin-left:71px; }
+ul.itemList6 li .infoContainer ul.info{ overflow:hidden; _height:0; _overflow:visible; padding:0; margin:0; padding-left:10px; padding-right:10px}
+ul.itemList6 li .infoContainer ul.info li{ width:100%; float:left; padding:5px 0; border:none}
+ul.itemList6 li .infoContainer ul.info li span{ display:block; float:left}
+ul.itemList6 li span.description{ width:auto; line-height:200%; clear:both; display:block; height:100px; overflow:hidden; padding-right:20px;}
 
 ul.questions{ clear:both; margin:0; padding:0}
 ul.questions li{ clear:both; padding:10px; list-style-type:none;}

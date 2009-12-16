@@ -1,0 +1,205 @@
+@charset "utf-8";
+
+/*Magic Home Begin*/
+.magicHome_mainbody{ clear:both}
+.magicHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.magicHome_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.magicHome_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.magicHome_mainbody .normalBlock{ width:375px; float:left}
+.magicHome_mainbody .normalBlock .content{ height:260px; overflow:hidden}
+
+
+/*Magic Home End*/
+
+/*Magic Auction Home Begin*/
+.magicAuction_mainbody{ clear:both}
+.magicAuction_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.magicAuction_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.magicAuction_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+.magicAuction_mainbody ul.itemList4 li{ border-bottom:none}
+
+.magicSubNav{ position:absolute; right:0; _right:12px; top:5px; width:620px; height:25px;}
+.magicSubNav .magicButtonTab{ float:right;}
+.magicSubNav .magicButtonTab a.button_blue{ float:right; margin-left:5px;}
+.magicSubNav .magicButtonTab a.button_blue2{ float:right; margin-left:5px; margin-top:1px;}
+.magicSubNav .auctionCategory{ float:left}
+.magicSubNav .auctionCategory label{ float:left; display:block; padding-top:4px; padding-right:8px;}
+.magicSubNav .auctionCategory .comboBox{ float:left; margin-top:1px}
+/*Magic Auction Home End*/
+
+/*Magic Auction Detail Begin*/
+.magicAuctionDetail_mainbody{ clear:both}
+.magicAuctionDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.magicAuctionDetail_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.magicAuctionDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+.magicAuctionDetail_mainbody .box1 .content{ padding:1px}
+.magicAuctionDetail_mainbody .box1 .content .box7 .content{ padding:10px;}
+.magicAuctionDetail_mainbody .box1 .content .box7 .markup{ text-align:center; padding:30px 0}
+.magicAuctionDetail_mainbody .box1 .content .box7 .markup a{ margin:0 10px;}
+
+.magicAuctionDetail_mainbody .box1 .content .box7 .content p.description{ margin:0; padding:0 20px;}
+
+.magicAuctionDetail_mainbody .leaveComment{ clear:both; zoom:1; padding:10px 15px;}
+.magicAuctionDetail_mainbody .leaveComment:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.magicAuctionDetail_mainbody .leaveComment .title{ clear:both; text-align:left; font-weight:bold; color:#333; padding:5px; background:none; border:none}
+.magicAuctionDetail_mainbody .leaveComment textarea{ width:555px; height:70px; border:1px solid #B5CFEC; background:#F7FAFD; float:left; display:block; font-size:12px;}
+.magicAuctionDetail_mainbody .leaveComment a.button_blue{ float:left; margin:27px 0 0 20px;}
+/*Magic Auction Detail End*/
+
+/*Magic Submit Auction Begin*/
+.magicSubmitAuction_mainbody{ clear:both;}
+.magicSubmitAuction_mainbody .sheet1{ padding:50px 100px;}
+/*Magic Submit Auction End*/
+
+/*Magic Submit Sales Info Begin*/
+.magicSubmitSalesInfo_mainbody{ clear:both;}
+.magicSubmitSalesInfo_mainbody .sheet1{ padding:50px 100px;}
+/*Magic Submit Sales Info End*/
+
+/*Magic Submit Wanted Info Begin*/
+.magicSubmitWantedInfo_mainbody{ clear:both;}
+.magicSubmitWantedInfo_mainbody .sheet1{ padding:50px 100px;}
+/*Magic Submit Wanted Info End*/
+
+/*Magic Submit Pawn Begin*/
+.magicSubmitPawn_mainbody{ clear:both;}
+.magicSubmitPawn_mainbody .sheet1{ padding:50px 100px;}
+/*Magic Submit Pawn End*/
+
+
+/*Magic Deal Home Begin*/
+.magicDealHome_mainbody{ clear:both}
+.magicDealHome_mainbody .block1{ width:320px; float:left; clear:none;}
+.magicDealHome_mainbody .block1 .content{ height:200px; overflow:hidden}
+.magicDealHome_mainbody .block2{ width:654px; float:left; clear:none;}
+.magicDealHome_mainbody .block2 .content{ height:200px; overflow:hidden}
+.magicDealHome_mainbody .block2 .content .subTitle{ clear:both; padding:5px 3px; font-weight:bold}
+.magicDealHome_mainbody .block2 .content .column1{ width:310px; float:left; border-right:1px dotted #B4CFEC}
+.magicDealHome_mainbody .block2 .content .column2{ width:310px; float:left; margin-left:10px;}
+.magicDealHome_mainbody .blockN{ width:486px; float:left; clear:none;}
+.magicDealHome_mainbody .blockN .content img{ float:left; width:190px; height:190px; margin-right:10px;}
+.magicDealHome_mainbody .blockN .content ul{ float:left; width:250px;}
+/*Magic Deal Home End*/
+
+/*Magic Deal Sale Detail Begin*/
+.magicDealSaleDetail_mainbody{ clear:both}
+.magicDealSaleDetail_mainbody .box1 .content{ padding:1px}
+.magicDealSaleDetail_mainbody .box1 .content .box7 .content{ padding:10px;}
+.magicDealSaleDetail_mainbody .box1 .content .box7 .markup{ text-align:center; padding:30px 0}
+.magicDealSaleDetail_mainbody .box1 .content .box7 .markup a{ margin:0 10px;}
+
+.magicDealSaleDetail_mainbody .box1 .content .box7 .content p.description{ margin:0; padding:0 20px;}
+.magicDealSaleDetail_mainbody .box1 .content .productGeneralProperties .properties ul{ position:relative}
+.magicDealSaleDetail_mainbody .box1 .content .productGeneralProperties .properties ul li h1{ padding-bottom:30px;}
+.magicDealSaleDetail_mainbody .box1 .content .productGeneralProperties .properties ul li { padding-bottom:20px;}
+.magicDealSaleDetail_mainbody .box1 .content .productGeneralProperties .properties ul li.userInfo{ display:block; list-style-type:none; position:absolute; top:80px; right:40px; width:207px;test}
+
+.magicDealSaleDetail_mainbody .leaveComment{ clear:both; zoom:1; padding:10px 15px;}
+.magicDealSaleDetail_mainbody .leaveComment:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.magicDealSaleDetail_mainbody .leaveComment .title{ clear:both; text-align:left; font-weight:bold; color:#333; padding:5px; background:none; border:none}
+.magicDealSaleDetail_mainbody .leaveComment textarea{ width:755px; height:70px; border:1px solid #B5CFEC; background:#F7FAFD; float:left; display:block; font-size:12px;}
+.magicDealSaleDetail_mainbody .leaveComment a.button_blue{ float:left; margin:27px 0 0 20px;}
+
+/*Magic Deal Sale Detail End*/
+
+/*Magic Deal Want Detail Begin*/
+.magicDealWantDetail_mainbody{ clear:both}
+.magicDealWantDetail_mainbody .box1 .content{ padding:1px}
+.magicDealWantDetail_mainbody .box1 .content .box7 .content{ padding:10px;}
+.magicDealWantDetail_mainbody .box1 .content .box7 .markup{ text-align:center; padding:30px 0}
+.magicDealWantDetail_mainbody .box1 .content .box7 .markup a{ margin:0 10px;}
+
+.magicDealWantDetail_mainbody .box1 .content .box7 .content p.description{ margin:0; padding:0 20px;}
+.magicDealWantDetail_mainbody .box1 .content .productGeneralProperties .properties ul{ position:relative}
+.magicDealWantDetail_mainbody .box1 .content .productGeneralProperties .properties ul li h1{ padding-bottom:30px;}
+.magicDealWantDetail_mainbody .box1 .content .productGeneralProperties .properties ul li { padding-bottom:20px;}
+.magicDealWantDetail_mainbody .box1 .content .productGeneralProperties .properties ul li.userInfo{ display:block; list-style-type:none; position:absolute; top:80px; right:40px; width:207px;test}
+
+.magicDealWantDetail_mainbody .leaveComment{ clear:both; zoom:1; padding:10px 15px;}
+.magicDealWantDetail_mainbody .leaveComment:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.magicDealWantDetail_mainbody .leaveComment .title{ clear:both; text-align:left; font-weight:bold; color:#333; padding:5px; background:none; border:none}
+.magicDealWantDetail_mainbody .leaveComment textarea{ width:755px; height:70px; border:1px solid #B5CFEC; background:#F7FAFD; float:left; display:block; font-size:12px;}
+.magicDealWantDetail_mainbody .leaveComment a.button_blue{ float:left; margin:27px 0 0 20px;}
+
+/*Magic Deal Want Detail End*/
+
+
+
+
+/*Magic Rent Home Begin*/
+.magicRentHome_mainbody{ clear:both}
+.magicRentHome_mainbody .block1{ width:255px; float:left; clear:none;}
+.magicRentHome_mainbody .block1 .content{ height:380px; overflow:hidden}
+
+.magicRentHome_mainbody .block2{ width:460px; float:left; clear:none;}
+.magicRentHome_mainbody .block2 .content{ height:380px; overflow:hidden}
+
+.magicRentHome_mainbody .block3{ width:255px; float:left; clear:none;}
+.magicRentHome_mainbody .block3 .content{ height:380px; overflow:hidden}
+
+.magicRentHome_mainbody .blockN{ width:486px; float:left; clear:none;}
+.magicRentHome_mainbody .blockN .content img{ float:left; width:190px; height:190px; margin-right:10px;}
+.magicRentHome_mainbody .blockN .content ul{ float:left; width:250px;}
+/*Magic Rent Home End*/
+
+
+/*Magic Rent Detail Begin*/
+.magicRentDetail_mainbody{ clear:both}
+.magicRentDetail_mainbody .box1 .content{ padding:1px}
+.magicRentDetail_mainbody .box1 .content .box7 .content{ padding:10px;}
+.magicRentDetail_mainbody .box1 .content .box7 .content p.description{ margin:0; padding:0 20px;}
+
+.magicRentDetail_mainbody .productGeneralProperties .properties ul li{ padding-bottom:20px;}
+
+.magicRentDetail_mainbody .leaveComment{ clear:both; zoom:1; padding:10px 15px;}
+.magicRentDetail_mainbody .leaveComment:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.magicRentDetail_mainbody .leaveComment .title{ clear:both; text-align:left; font-weight:bold; color:#333; padding:5px; background:none; border:none}
+.magicRentDetail_mainbody .leaveComment textarea{ width:825px; height:70px; border:1px solid #B5CFEC; background:#F7FAFD; float:left; display:block; font-size:12px;}
+.magicRentDetail_mainbody .leaveComment a.button_blue{ float:left; margin:27px 0 0 20px;}
+/*Magic Rent Detail End*/
+
+
+
+/*Magic RentList Begin*/
+.magicRentList_mainbody{ clear:both}
+.magicRentList_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.magicRentList_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.magicRentList_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Magic RentList End*/
+
+
+
+/*Magic Rent Submit Begin*/
+.magicRentSubmit_mainbody{ clear:both}
+.magicRentSubmit_mainbody .box1 .content{ padding:1px}
+.magicRentSubmit_mainbody .box1 .content .box7 .content{ padding:50px 200px 10px 200px}
+.magicRentSubmit_mainbody .productGeneralProperties .properties ul li{ padding-bottom:25px;}
+/*Magic Rent Submit End*/
+
+
+
+/*Magic Common Complete Begin*/
+.magicCommonComplete_mainbody{ clear:both}
+.magicCommonComplete_mainbody .box1 .content{ padding:40px 100px;}
+.magicCommonComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(../images/cart_navigation4.jpg) center top no-repeat; }
+.magicCommonComplete_mainbody .otherChannel{ text-align:center; clear:both; padding:20px 0;}
+.magicCommonComplete_mainbody .otherChannel a{ text-decoration:underline; padding:0 10px;}
+/*Magic Common Begin*/
+
+
+
+
+.normalBlock{ width:375px!important; float:left!important; clear:none!important}
+.tipContainer{ padding:50px 0 15px 0; text-align:center; clear:both}
+
+ul.magicNavigator{ margin:0; padding:0}
+ul.magicNavigator li{ list-style-type:none; float:left; width:100%}
+ul.magicNavigator li a{ height:25px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
+ul.magicNavigator li a:hover{ background-position:0 -1898px;}
+ul.magicNavigator li a span{ height:25px; display:block; clear:both; background:url(../images/magicNavigator.gif) no-repeat}
+
+ul.magicNavigator li a.m1 span{ background-position:15px 7px;}
+ul.magicNavigator li a.m2 span{ background-position:15px -18px;}
+ul.magicNavigator li a.m3 span{ background-position:15px -43px;}
+ul.magicNavigator li a.m4 span{ background-position:15px -68px;}
