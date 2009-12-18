@@ -29,7 +29,7 @@ namespace NoName.NetShop.Member
         public override MemberInfo GetFullUserInfo(string userId)
         {
             string sql = "up_umMember_GetCompany";
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "UserId", DbType.String, userId);
 
@@ -47,7 +47,7 @@ namespace NoName.NetShop.Member
         public override void SaveExtInfo()
         {
             string sql = "up_umMember_SaveCompany";
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "@userId", DbType.String, UserId);
             db.AddInParameter(dbCommand, "@idcard", DbType.String, IdCard);
