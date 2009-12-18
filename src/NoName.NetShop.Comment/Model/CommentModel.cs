@@ -8,7 +8,7 @@ namespace NoName.NetShop.Comment.Model
     public class CommentModel
     {
         private int _CommentID;
-        private int _AppType;
+        private string _AppType;
         private int _TargetID;
         private string _UserID;
         private string _Content;
@@ -19,7 +19,7 @@ namespace NoName.NetShop.Comment.Model
             get { return _CommentID; }
             set { _CommentID = value; }
         }
-        public int AppType
+        public string AppType
         {
             get { return _AppType; }
             set { _AppType = value; }
