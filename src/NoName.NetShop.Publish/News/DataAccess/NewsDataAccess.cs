@@ -6,6 +6,7 @@ using NoName.NetShop.Publish.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using NoName.NetShop.Common;
+using NoName.NetShop.Comment.BLL;
 
 namespace NoName.NetShop.Publish.News.DataAccess
 {
@@ -76,6 +77,12 @@ namespace NoName.NetShop.Publish.News.DataAccess
         {
             string sql = String.Format("select * from neCategory where parentid={0}",ParentID);
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
+        public DataTable GetNewsComments(int NewsID)
+        {
+            CommentBll bll = new CommentBll();
+            return bll.GetList(AppType.News, NewsID); 
         }
     }
 }

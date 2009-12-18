@@ -33,6 +33,7 @@ namespace NoName.NetShop.Publish.News.PageCreators
 
             rootNode.AppendChild(helper.GetNewsCategory());
             rootNode.AppendChild(helper.GetNewsDetail());
+            rootNode.AppendChild(helper.GetNewsCommentList());
             //rootNode.AppendChild(helper.GetShopInfo());
             //rootNode.AppendChild(helper.GetShopImageInfo());
             //rootNode.AppendChild(helper.GetProductInfo());
