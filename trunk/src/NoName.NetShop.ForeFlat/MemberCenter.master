@@ -26,7 +26,7 @@
                             <a href="#">个人资料</a>
                         </li>
                         <li>
-                            <a href="#">修改密码</a>
+                            <a href="/member/ModifyPwd.aspx">修改密码</a>
                         </li>
                         <li>
                             <a href="#">我的级别</a>
@@ -36,6 +36,9 @@
                     <ul class="articleList_1 bullet_2">
                         <li>
                             <a href="myorders.aspx">订单中心</a>
+                            </li>
+                            <li>
+                            <a href="mygiftorders.aspx">礼品兑换</a>
                         </li>
                     </ul>
                     <div class="groupTitle">我的魔力世界</div>
@@ -59,7 +62,7 @@
                     <div class="groupTitle">我的鼎券积分</div>
                     <ul class="articleList_1 bullet_2">
                         <li>
-                            <a href="#">我的积分</a>
+                            <a href="MyScore.aspx">我的积分</a>
                         </li>
                         <li>
                             <a href="#">我的兑奖</a>
