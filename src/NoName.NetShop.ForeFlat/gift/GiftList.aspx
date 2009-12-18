@@ -25,7 +25,7 @@
                     <ItemTemplate>
                         <li>
                             <a href="GiftDetail.aspx?productId=<%# Eval("ProductId") %>" title="<%# Eval("ProductName") %>">
-                                <img src="<%# Eval("SmallImage") %>" alt="<%# Eval("ProductName") %>" />
+                                <img src="http://dingding.uncc.cn/upload/productmain/<%# Eval("SmallImage") %>" alt="<%# Eval("ProductName") %>" />
                                 <span class="price">兑换积分：<%# Eval("Score") %></span>
                                 <span class="name" title="<%# Eval("ProductName") %>"><%# Eval("ProductName") %></span>
                             </a>
