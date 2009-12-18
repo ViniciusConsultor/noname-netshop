@@ -82,7 +82,7 @@
                                         <asp:Literal runat="server" ID="litStatus"></asp:Literal>
                                     </td>
                                     <td>
-                                        <a href="#">查看</a>
+                                        <a href="ShowOrder.aspx?orderid=<%# Eval("OrderId") %>">查看</a>
                                     </td>
                                 </tr>
                             </ItemTemplate>

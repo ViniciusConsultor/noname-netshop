@@ -77,56 +77,10 @@ namespace NoName.NetShop.ForeFlat.member
                 rpPrdoucts.DataBind();
 
                 litCreateTime.Text = createTime.ToString("yyyy-MM-dd HH:mm");
-                litPayMethod.Text = GetPayMethodName(paymethod);
-                litStatus.Text = GetOrderStatus(orderstatus);
+                litPayMethod.Text = Enum.GetName(typeof(PayMethType), paymethod);
+                litStatus.Text = Enum.GetName(typeof(OrderStatus), orderstatus); 
 
             }
-        }
-
-        private string GetOrderStatus(int orderstatus)
-        {
-            string result = String.Empty;
-            switch (orderstatus)
-            {
-                case 0:
-                    result = "等待商家确认";
-                    break;
-                case 1:
-                    result = "备货中";
-                    break;
-                case 2:
-                    result = "已发货";
-                    break;
-                case 3:
-                    result = "已完成";
-                    break;
-                case 9:
-                    result = "已关闭";
-                    break;
-            }
-            return result;
-        }
-
-        private string GetPayMethodName(int paymethod)
-        {
-            string result = String.Empty;
-            switch (paymethod)
-            {
-                case 1:
-                    result="在线支付";
-                    break;
-                case 2:
-                    result="银行转账";
-                    break;
-                case 3:
-                    result="邮局汇款";
-                    break;
-                case 4:
-                    result="货到付款";
-                    break;
-
-           }
-            return result;
         }
 
          protected void lbtnSearAll_Click(object sender, EventArgs e)
