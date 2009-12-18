@@ -9,18 +9,20 @@ using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.Facade;
 using System.Data;
 using NoName.NetShop.Common;
+using NoName.NetShop.Comment.BLL;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
     public partial class Auction : System.Web.UI.Page
     {
-        private int AuctionID
+        public int AuctionID
         {
             get { if (ViewState["AuctionID"] != null) return Convert.ToInt32(ViewState["AuctionID"]); else return -1; }
             set { ViewState["AuctionID"] = value; }
         }
         private AuctionProductBll bll = new AuctionProductBll();
         private AuctionLogBll LogBll = new AuctionLogBll();
+        private CommentBll CmtBll = new CommentBll();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -62,6 +64,9 @@ namespace NoName.NetShop.ForeFlat.Magic
 
             Repeater_BidList.DataSource = LogBll.GetList("auctionid=" + AuctionID+" order by auctiontime desc");
             Repeater_BidList.DataBind();
+
+            Repeater_Comment.DataSource = CmtBll.GetList(AppType.MagicWorld, AuctionID);
+            Repeater_Comment.DataBind();
         }
 
         protected void Repeater_AddPrices_ItemCommand(object sender, RepeaterCommandEventArgs e)
@@ -89,11 +94,6 @@ namespace NoName.NetShop.ForeFlat.Magic
             }
         }
 
-
-        protected void Button_Comment_Click(object sender, EventArgs e)
-        {
- 
-        }
 
         private string GetUserName()
         {

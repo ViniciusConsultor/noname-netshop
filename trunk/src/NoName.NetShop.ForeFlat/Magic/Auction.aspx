@@ -1,10 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Auction.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.Magic.Auction" %>
 <asp:Content ID="ContentHeader" ContentPlaceHolderID="head" runat="server">
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
-    <script type="text/javascript">
-        $(function() { 
-        });        
-    </script>
+    <script src="../js/magicworld.auction.js" type="text/javascript"></script>
 </asp:Content>
 
 <asp:Content ID="ContentBody" ContentPlaceHolderID="cpMain" runat="server">
@@ -207,9 +204,9 @@
                                         <asp:Repeater runat="server" ID="Repeater_Comment">
                                             <ItemTemplate>
                                               <tr>
-                                                <td><span>天空的白云</span></td>
-                                                <td><p>不错</p></td>
-                                                <td>2009年09月06日</td>
+                                                <td><span><%# Eval("userid") %></span></td>
+                                                <td><p><%# Eval("content") %></p></td>
+                                                <td><%# Convert.ToDateTime(Eval("createtime")).ToString("yyyy年MM月dd日") %></td>
                                               </tr>                                                
                                             </ItemTemplate>
                                         </asp:Repeater>
@@ -217,8 +214,8 @@
                                 </div>
                                 <div class="leaveComment">
                                     <div class="title">我来说几句</div>
-                                    <asp:TextBox runat="server" ID="TextBox_Comment" TextMode="MultiLine"></asp:TextBox>
-                                    <asp:LinkButton runat="server" ID="Button_Comment" OnClick="Button_Comment_Click" Text="发表" CssClass="button_blue" />
+                                    <textarea id="comment-content"></textarea>
+                                    <input auid='<%= AuctionID %>' type="button" id="comment-button" class"button_blue" value="发表" />
                                 </div>
                             </div>
                         </div>

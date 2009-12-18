@@ -7,17 +7,20 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.Facade;
+using NoName.NetShop.Comment.BLL;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
     public partial class Secondhand : System.Web.UI.Page
     {
-        private int SecondhandProductID
+        public int SecondhandProductID
         {
             get { if (ViewState["SecondhandProductID"] != null) return Convert.ToInt32(ViewState["SecondhandProductID"]); else return -1; }
             set { ViewState["SecondhandProductID"] = value; }
         }
         private SecondhandProductBll bll = new SecondhandProductBll();
+        private CommentBll CmtBll = new CommentBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,12 +47,9 @@ namespace NoName.NetShop.ForeFlat.Magic
             Literal_Condition.Text = "";
             Literal_Description.Text = model.Brief;
 
+            Repeater_Comment.DataSource = CmtBll.GetList(AppType.MagicWorld, SecondhandProductID);
+            Repeater_Comment.DataBind();
         }
 
-
-        protected void Button_Comment_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
