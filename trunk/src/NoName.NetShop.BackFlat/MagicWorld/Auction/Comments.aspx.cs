@@ -24,7 +24,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Auction
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, "p.productname", AppType.News, "inner join mwauctionproduct p on c.targetid=p.auctionid", out RecordCount);
+            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, "p.productname", AppType.MagicWorld, "inner join mwauctionproduct p on c.targetid=p.auctionid", out RecordCount);
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;

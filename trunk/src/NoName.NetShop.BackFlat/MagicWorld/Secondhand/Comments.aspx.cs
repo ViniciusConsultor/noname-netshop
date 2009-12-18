@@ -24,7 +24,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Secondhand
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize,"p.seproductname", AppType.News, "inner join mwsecondhandproduct p on c.targetid=p.seproductid", out RecordCount);
+            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize,"p.seproductname", AppType.MagicWorld, "inner join mwsecondhandproduct p on c.targetid=p.seproductid", out RecordCount);
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
