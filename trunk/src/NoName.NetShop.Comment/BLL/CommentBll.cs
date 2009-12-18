@@ -5,6 +5,7 @@ using System.Text;
 using NoName.NetShop.Comment.DAL;
 using NoName.NetShop.Comment.Model;
 using System.Data;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Comment.BLL
 {
@@ -27,7 +28,7 @@ namespace NoName.NetShop.Comment.BLL
             dal.Update(model);
         }
 
-        public DataTable GetList(int AppType, int TargetID)
+        public DataTable GetList(string AppType, int TargetID)
         {
             return dal.GetList(AppType, TargetID);
         }
@@ -35,6 +36,11 @@ namespace NoName.NetShop.Comment.BLL
         public CommentModel GetModel(int CommentID)
         {
             return dal.GetModel(CommentID);
+        }
+
+        public DataTable GetList(int PageSize, int PageIndex, string TableFields, string AppType, string JoinStr, out int RecordCount)
+        {
+            return dal.GetList(PageSize, PageIndex,TableFields, AppType,JoinStr, out RecordCount);
         }
     }
 }

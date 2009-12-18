@@ -20,7 +20,7 @@ namespace NoName.NetShop.Comment.DAL
             DbCommand Command = dbw.GetStoredProcCommand("UP_qaComment_Add");
 
             dbw.AddInParameter(Command, "@CommentID", DbType.Int32, model.CommentID);
-            dbw.AddInParameter(Command, "@AppType", DbType.Int32, model.AppType);
+            dbw.AddInParameter(Command, "@AppType", DbType.String, model.AppType);
             dbw.AddInParameter(Command, "@TargetID", DbType.Int32, model.TargetID);
             dbw.AddInParameter(Command, "@UserID", DbType.String, model.UserID);
             dbw.AddInParameter(Command, "@Content", DbType.String, model.Content);
@@ -43,7 +43,7 @@ namespace NoName.NetShop.Comment.DAL
             DbCommand Command = dbw.GetStoredProcCommand("UP_qaComment_Update");
 
             dbw.AddInParameter(Command, "@CommentID", DbType.Int32, model.CommentID);
-            dbw.AddInParameter(Command, "@AppType", DbType.Int32, model.AppType);
+            dbw.AddInParameter(Command, "@AppType", DbType.String, model.AppType);
             dbw.AddInParameter(Command, "@TargetID", DbType.Int32, model.TargetID);
             dbw.AddInParameter(Command, "@UserID", DbType.String, model.UserID);
             dbw.AddInParameter(Command, "@Content", DbType.String, model.Content);
@@ -52,11 +52,11 @@ namespace NoName.NetShop.Comment.DAL
             dbw.ExecuteNonQuery(Command);
         }
 
-        public DataTable GetList(int AppType, int TargetID)
+        public DataTable GetList(string AppType, int TargetID)
         {
-            DbCommand Command = dbr.GetStoredProcCommand("UP_qaComment_Update");
+            DbCommand Command = dbr.GetStoredProcCommand("UP_qaComment_GetList");
 
-            dbr.AddInParameter(Command, "@AppType", DbType.Int32, AppType);
+            dbr.AddInParameter(Command, "@AppType", DbType.String, AppType);
             dbr.AddInParameter(Command, "@TargetID", DbType.Int32, TargetID);
 
             return dbr.ExecuteDataSet(Command).Tables[0];
@@ -77,11 +77,30 @@ namespace NoName.NetShop.Comment.DAL
             return model;
         }
 
+        public DataTable GetList(int PageSize, int PageIndex,string TableFields, string AppType,string JoinStr, out int RecordCount)
+        {
+            int PageLowerBound = 0, PageUpperBount = 0;
+            PageLowerBound = (PageIndex - 1) * PageSize;
+            PageUpperBount = PageLowerBound + PageSize; 
+
+            string sqlCount = @"select count(0) from qacomment c
+	                            inner join nenews n on c.targetid=n.newsid
+	                            where  apptype='"+AppType+"'";
+
+            string sqlData = @"select * from 
+	                            (select row_number() OVER(ORDER BY createtime desc) as nid,c.*," + TableFields + @" from qacomment c " + JoinStr + @") as sp
+	                            where sp.apptype='" + AppType + "' and sp.nid<" + PageLowerBound + " and sp.nid <= " + PageUpperBount;
+
+
+            RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sqlCount));
+            return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
+        }
+
         private CommentModel GetModel(DataRow row)
         {
             CommentModel model = new CommentModel();
 
-            model.AppType = Convert.ToInt32(row["apptype"]);
+            model.AppType = Convert.ToString(row["apptype"]);
             model.CommentID = Convert.ToInt32(row["commentid"]);
             model.Content = Convert.ToString(row["content"]);
             model.CreateTime = Convert.ToDateTime(row["createtime"]);
@@ -90,5 +109,7 @@ namespace NoName.NetShop.Comment.DAL
 
             return model;
         }
+
+
     }
 }
