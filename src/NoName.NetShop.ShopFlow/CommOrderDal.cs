@@ -15,7 +15,7 @@ namespace NoName.NetShop.ShopFlow
         /// </summary>
         public CommOrderModel GetModel(string OrderId)
         {
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee from spOrder ");
             strSql.Append(" where OrderId=@OrderId ");
@@ -38,7 +38,7 @@ namespace NoName.NetShop.ShopFlow
         /// </summary>
         public CommOrderModel GetModel(string OrderId,string userId)
         {
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee from spOrder ");
             strSql.Append(" where OrderId=@OrderId and userId=@userId");
@@ -59,7 +59,7 @@ namespace NoName.NetShop.ShopFlow
 
         public bool ChangeOrderStatus(string orderId, OrderStatus ostatus)
         {
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             StringBuilder strSql = new StringBuilder();
 
             strSql.Append("update spOrder set changetime=getdate(),orderstatus=@ostatus from spOrder ");
@@ -73,7 +73,7 @@ namespace NoName.NetShop.ShopFlow
 
         public bool ChangePayStatus(string orderId,PayStatus pstatus)
         {
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             StringBuilder strSql = new StringBuilder();
 
             strSql.Append("update spOrder set changetime=getdate(),orderstatus=@ostatus from spOrder ");

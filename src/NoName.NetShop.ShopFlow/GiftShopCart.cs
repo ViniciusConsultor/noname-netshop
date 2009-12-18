@@ -92,7 +92,7 @@ namespace NoName.NetShop.ShopFlow
         internal override string SaveOrderInfo()
         {
             string sql = "orders_Save_gift";
-            DbCommand comm = DBFacroty.DbWriter.GetStoredProcCommand(sql);
+            DbCommand comm = DBFacotry.DbWriter.GetStoredProcCommand(sql);
 
             if (!String.IsNullOrEmpty(this.OrderId) && this.Exists())
             {
@@ -102,28 +102,28 @@ namespace NoName.NetShop.ShopFlow
             {
                 this.OrderId = CommDataHelper.GetNewSerialStr(AppType.Order);
 
-                DBFacroty.DbWriter.AddInParameter(comm, "userId", DbType.String, Address.UserId);
-                DBFacroty.DbWriter.AddInParameter(comm, "OrderID", DbType.String, this.OrderId);
+                DBFacotry.DbWriter.AddInParameter(comm, "userId", DbType.String, Address.UserId);
+                DBFacotry.DbWriter.AddInParameter(comm, "OrderID", DbType.String, this.OrderId);
 
-                DBFacroty.DbWriter.AddInParameter(comm, "ShipMethod", DbType.Int32,ShipMethodId );
-                DBFacroty.DbWriter.AddInParameter(comm, "TotalScore", DbType.Int32, TotalScore);
+                DBFacotry.DbWriter.AddInParameter(comm, "ShipMethod", DbType.Int32,ShipMethodId );
+                DBFacotry.DbWriter.AddInParameter(comm, "TotalScore", DbType.Int32, TotalScore);
 
-                DBFacroty.DbWriter.AddInParameter(comm, "UserNotes", DbType.String, UserNotes);
-                DBFacroty.DbWriter.AddInParameter(comm, "serverip", DbType.String, ServerIp);
-                DBFacroty.DbWriter.AddInParameter(comm, "ClientIp", DbType.String, ClientIp);
+                DBFacotry.DbWriter.AddInParameter(comm, "UserNotes", DbType.String, UserNotes);
+                DBFacotry.DbWriter.AddInParameter(comm, "serverip", DbType.String, ServerIp);
+                DBFacotry.DbWriter.AddInParameter(comm, "ClientIp", DbType.String, ClientIp);
 
-                DBFacroty.DbWriter.AddInParameter(comm, "OrderType", DbType.Int32, (int)OpType);
+                DBFacotry.DbWriter.AddInParameter(comm, "OrderType", DbType.Int32, (int)OpType);
 
-                DBFacroty.DbWriter.AddInParameter(comm, "RecieverName", DbType.String, Address.RecieverName);
-                DBFacroty.DbWriter.AddInParameter(comm, "RecieverEmail", DbType.String, Address.Email);
-                DBFacroty.DbWriter.AddInParameter(comm, "RecieverCountry", DbType.String, Address.Country);
-                DBFacroty.DbWriter.AddInParameter(comm, "RecieverProvince", DbType.String, Address.Province);
-                DBFacroty.DbWriter.AddInParameter(comm, "RecieverCity", DbType.String, Address.City);
-                DBFacroty.DbWriter.AddInParameter(comm, "RecieverCounty", DbType.String, Address.County);
-                DBFacroty.DbWriter.AddInParameter(comm, "RecieverPhone", DbType.String, (Address.Telephone + " " + Address.Mobile).Trim());
-                DBFacroty.DbWriter.AddInParameter(comm, "AddressDetial", DbType.String, Address.AddressDetail);
-                DBFacroty.DbWriter.AddInParameter(comm, "PostalCode", DbType.String, Address.Postalcode);
-                DBFacroty.DbWriter.ExecuteNonQuery(comm);
+                DBFacotry.DbWriter.AddInParameter(comm, "RecieverName", DbType.String, Address.RecieverName);
+                DBFacotry.DbWriter.AddInParameter(comm, "RecieverEmail", DbType.String, Address.Email);
+                DBFacotry.DbWriter.AddInParameter(comm, "RecieverCountry", DbType.String, Address.Country);
+                DBFacotry.DbWriter.AddInParameter(comm, "RecieverProvince", DbType.String, Address.Province);
+                DBFacotry.DbWriter.AddInParameter(comm, "RecieverCity", DbType.String, Address.City);
+                DBFacotry.DbWriter.AddInParameter(comm, "RecieverCounty", DbType.String, Address.County);
+                DBFacotry.DbWriter.AddInParameter(comm, "RecieverPhone", DbType.String, (Address.Telephone + " " + Address.Mobile).Trim());
+                DBFacotry.DbWriter.AddInParameter(comm, "AddressDetial", DbType.String, Address.AddressDetail);
+                DBFacotry.DbWriter.AddInParameter(comm, "PostalCode", DbType.String, Address.Postalcode);
+                DBFacotry.DbWriter.ExecuteNonQuery(comm);
 
                 MemberInfo.LogScore(Address.UserId, NoName.NetShop.Common.ScoreType.Gift, -this.TotalScore,this.OrderId, "积分礼品兑换订单生成");
                 return this.OrderId;
@@ -138,9 +138,9 @@ namespace NoName.NetShop.ShopFlow
             if (!String.IsNullOrEmpty(this.OrderId))
             {
                 string sql = "select count(*) from spGiftOrder where orderid=" + this.OrderId;
-                DbCommand comm = DBFacroty.DbReader.GetSqlStringCommand(sql);
-                DBFacroty.DbReader.AddInParameter(comm, "orderId", DbType.String, this.OrderId);
-                int retval = Convert.ToInt32(DBFacroty.DbReader.ExecuteScalar(comm));
+                DbCommand comm = DBFacotry.DbReader.GetSqlStringCommand(sql);
+                DBFacotry.DbReader.AddInParameter(comm, "orderId", DbType.String, this.OrderId);
+                int retval = Convert.ToInt32(DBFacotry.DbReader.ExecuteScalar(comm));
                 result = retval > 0;
             }
             return result;

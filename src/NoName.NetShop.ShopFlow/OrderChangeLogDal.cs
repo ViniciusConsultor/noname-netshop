@@ -39,7 +39,7 @@ namespace NoName.NetShop.ShopFlow
 			strSql.Append(" FROM spOrderChangeLog where orderId=@orderId");
 
 			List<OrderChangeLogModel> list = new List<OrderChangeLogModel>();
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             DbCommand comm = db.GetSqlStringCommand(strSql.ToString());
             db.AddInParameter(comm, "orderId", DbType.String, orderId);
 
