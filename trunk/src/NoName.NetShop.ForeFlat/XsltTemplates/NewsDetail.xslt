@@ -22,6 +22,9 @@
                 <script type="text/javascript" src="http://dingding.uncc.cn/js/mini-Rainy.js">
                     <xsl:text> </xsl:text>
                 </script>
+                <script type="text/javascript" src="/js/newsdetail.js">
+                    <xsl:text> </xsl:text>
+                </script>
             </head>
             <body>
                 <div class="wrapper">
@@ -345,35 +348,15 @@
                                                     <th>内容</th>
                                                     <th>发表时间</th>
                                                 </tr>
-                                                <tr>
-                                                    <td>天空的白云</td>
-                                                    <td>这个东西很好很强大？</td>
-                                                    <td>
-                                                        <span>2009-02-23</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>天空的白云</td>
-                                                    <td>这个东西很好很强大？</td>
-                                                    <td>
-                                                        <span>2009-02-23</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>天空的白云</td>
-                                                    <td>这个东西很好很强大？</td>
-                                                    <td>
-                                                        <span>2009-02-23</span>
-                                                    </td>
-                                                </tr>
+                                                <xsl:apply-templates select="/newspage/comments/comment"/>
                                             </table>
                                         </div>
                                         <div class="leaveComment">
                                             <div class="title">我来说几句</div>
-                                            <textarea>
+                                            <textarea id="comment-text">
                                                 <xsl:text> </xsl:text>
                                             </textarea>
-                                            <a href="#" class="button_blue">发表</a>
+                                            <a style="cursor:button" newsid="{$NewsID}" id="comment-button" class="button_blue">发表</a>
                                         </div>
 
                                     </div>
@@ -508,6 +491,22 @@
         <div class="articleContent">
             <xsl:value-of select="newscontent" disable-output-escaping="yes"/>
         </div>
+    </xsl:template>
+
+    <xsl:template match="/newspage/comments/comment">
+        <tr>
+            <td>
+                <xsl:value-of select="userid"/>
+            </td>
+            <td>
+                <xsl:value-of select="content"/>
+            </td>
+            <td>
+                <span>
+                    <xsl:value-of select="createtime"/>
+                </span>
+            </td>
+        </tr>
     </xsl:template>
 
 </xsl:stylesheet>
