@@ -7,9 +7,9 @@ namespace NoName.NetShop.ShopFlow
 {
     public enum PayStatus
     {
-        WaitForPay=0,
-        PaySucc=1,
-        Refunding=2,
-        Refunded=3
+        等待付款=0,
+        支付成功=1,
+        退款申请中=2,
+        退款完成=3
     }
 }
