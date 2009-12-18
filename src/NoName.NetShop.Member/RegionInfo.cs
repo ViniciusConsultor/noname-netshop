@@ -35,7 +35,7 @@ namespace NoName.NetShop.Member
         public RegionInfo(int regionId)
         {
             string sql = "SELECT RegionId,FatherId,RegionPath,RegionName,regionnamepath FROM unRegion where regionid="+regionId;
-            using (IDataReader reader = DBFacroty.DbReader.ExecuteReader(CommandType.Text, sql))
+            using (IDataReader reader = DBFacotry.DbReader.ExecuteReader(CommandType.Text, sql))
             {
                 if (reader.Read())
                 {
@@ -72,7 +72,7 @@ namespace NoName.NetShop.Member
             StringBuilder sb = new StringBuilder(200);
             StringWriter sw = new StringWriter(sb);
             JsonWriter jw = new JsonWriter(sw);
-            using (IDataReader reader = DBFacroty.DbReader.ExecuteReader(CommandType.Text, sql))
+            using (IDataReader reader = DBFacotry.DbReader.ExecuteReader(CommandType.Text, sql))
             {
                 jw.WriteStartArray();
                 while (reader.Read())
