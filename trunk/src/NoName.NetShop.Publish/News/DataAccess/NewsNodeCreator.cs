@@ -98,6 +98,22 @@ namespace NoName.NetShop.Publish.News.DataAccess
             return NewsDetailNode;
         }
 
+        public XmlNode GetNewsCommentList()
+        {
+            XmlNode CommentListNode = xdoc.CreateElement("comments");
+            DataTable dt = dal.GetNewsComments(Parameter.NewsID);
 
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode CommentNode = XmlUtility.AddNewNode(CommentListNode, "comment", null);
+
+                XmlUtility.AddNewNode(CommentNode, "commentid", row["commentid"].ToString());
+                XmlUtility.AddNewNode(CommentNode, "userid", row["userid"].ToString());
+                XmlUtility.AddNewNode(CommentNode, "createtime", Convert.ToDateTime(row["createtime"]).ToString("yyyy-MM-dd"));
+                XmlUtility.AddNewNode(CommentNode, "content", row["content"].ToString());
+            }
+
+            return CommentListNode;
+        }
     }
 }

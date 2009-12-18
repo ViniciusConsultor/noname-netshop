@@ -82,6 +82,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NoName.NetShop.Comment\NoName.NetShop.Comment.csproj">
+      <Project>{41C3EAC7-BED3-4F38-9A51-F09111882773}</Project>
+      <Name>NoName.NetShop.Comment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NoName.NetShop.Comm\NoName.NetShop.Common.csproj">
       <Project>{29A4BE47-9ADF-443F-913D-6CCEAD2DD752}</Project>
       <Name>NoName.NetShop.Common</Name>
