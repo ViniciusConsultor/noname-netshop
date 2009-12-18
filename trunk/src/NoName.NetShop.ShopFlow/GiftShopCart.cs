@@ -125,7 +125,7 @@ namespace NoName.NetShop.ShopFlow
                 DBFacroty.DbWriter.AddInParameter(comm, "PostalCode", DbType.String, Address.Postalcode);
                 DBFacroty.DbWriter.ExecuteNonQuery(comm);
 
-                MemberInfo.LogScore(Address.UserId, ScoreType.Gift, -this.TotalScore,this.OrderId, "积分礼品兑换订单生成");
+                MemberInfo.LogScore(Address.UserId, NoName.NetShop.Common.ScoreType.Gift, -this.TotalScore,this.OrderId, "积分礼品兑换订单生成");
                 return this.OrderId;
             }
 

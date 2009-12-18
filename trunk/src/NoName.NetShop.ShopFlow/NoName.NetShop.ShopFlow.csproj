@@ -73,6 +73,11 @@
   <ItemGroup>
     <Compile Include="BaseCart.cs" />
     <Compile Include="CartFactory.cs" />
+    <Compile Include="CommOrderBll.cs" />
+    <Compile Include="CommOrderDal.cs" />
+    <Compile Include="CommOrderItemDal.cs" />
+    <Compile Include="CommOrderItemModel.cs" />
+    <Compile Include="CommOrderModel.cs" />
     <Compile Include="CommOrderProduct.cs" />
     <Compile Include="CommShopCart.cs" />
     <Compile Include="Config\ShopStepCollection.cs" />
@@ -80,7 +85,15 @@
     <Compile Include="Config\ShopStepInfoCollection.cs" />
     <Compile Include="Config\ShopStepInfoElement.cs" />
     <Compile Include="Config\ShopStepSection.cs" />
+    <Compile Include="GiftOrderBll.cs" />
+    <Compile Include="GiftOrderDal.cs" />
+    <Compile Include="GiftOrderItemDal.cs" />
+    <Compile Include="GiftOrderItemModel.cs" />
+    <Compile Include="GiftOrderModel.cs" />
     <Compile Include="GiftOrderProduct.cs" />
+    <Compile Include="OrderChangeLogBll.cs" />
+    <Compile Include="OrderChangeLogDal.cs" />
+    <Compile Include="OrderChangeLogModel.cs" />
     <Compile Include="OrderInfo.cs" />
     <Compile Include="OrderProduct.cs" />
     <Compile Include="OrderProductFactory.cs" />
