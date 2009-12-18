@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GiftDetail.aspx.cs" Inherits="NoName.NetShop.ForeFlat.gift.GiftDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<link type="text/css" rel="stylesheet" href="../css/shopping.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
      
@@ -20,10 +21,10 @@
             <div class="content">
                 <div class="productGeneralProperties padding">
                     <div class="thumbnail" onmousemove="zoomInThumb(event,this);" onmouseover="zoomInThumb(event,this);">
-                        <img src="<%= model.MediumImage %>" />
+                        <img src="http://dingding.uncc.cn/upload/productmain/<%= model.MediumImage %>" />
                         <div class="targetArea"></div>
                         <div class="zoomInArea">
-                            <img src="<%= model.LargeImage %>" />
+                            <img src="http://dingding.uncc.cn/upload/productmain/<%= model.LargeImage %>" />
                         </div>
                     </div>
                     <div class="properties">
