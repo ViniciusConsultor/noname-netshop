@@ -6,7 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 
 namespace NoName.NetShop.Common
 {
-    public static class DBFacroty
+    public static class DBFacotry
     {
         /// <summary>
         /// 数据库读连接
