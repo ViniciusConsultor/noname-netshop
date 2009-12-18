@@ -20,7 +20,7 @@ namespace NoName.NetShop.ShopFlow
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select UserId,OrderId,OrderStatus,ShipMethod,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCountry,RecieverCity,RecieverProvince,RecieverCounty,AddressDetial,ChangeTime,CreateTime,OrderType,ServerIp,ClientIp,UserNotes,TotalScore from spGiftOrder ");
             strSql.Append(" where OrderId=@OrderId ");
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
             db.AddInParameter(dbCommand, "OrderId", DbType.AnsiString, OrderId);
             GiftOrderModel model = null;
@@ -42,7 +42,7 @@ namespace NoName.NetShop.ShopFlow
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select UserId,OrderId,OrderStatus,ShipMethod,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCountry,RecieverCity,RecieverProvince,RecieverCounty,AddressDetial,ChangeTime,CreateTime,OrderType,ServerIp,ClientIp,UserNotes,TotalScore from spGiftOrder ");
             strSql.Append(" where OrderId=@OrderId and userId=@userId ");
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
             db.AddInParameter(dbCommand, "OrderId", DbType.AnsiString, OrderId);
             db.AddInParameter(dbCommand, "userId", DbType.AnsiString, userId);
@@ -115,7 +115,7 @@ namespace NoName.NetShop.ShopFlow
 
         internal bool ChangeOrderStatus(string orderId, OrderStatus ostatus)
         {
-            Database db = NoName.NetShop.Common.DBFacroty.DbReader;
+            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
             StringBuilder strSql = new StringBuilder();
 
             strSql.Append("update spGiftOrder set changetime=getdate(),status=@ostatus from spGiftOrder ");
