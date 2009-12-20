@@ -81,11 +81,9 @@ namespace NoName.NetShop.Comment.DAL
         {
             int PageLowerBound = 0, PageUpperBount = 0;
             PageLowerBound = (PageIndex - 1) * PageSize;
-            PageUpperBount = PageLowerBound + PageSize; 
+            PageUpperBount = PageLowerBound + PageSize;
 
-            string sqlCount = @"select count(0) from qacomment c
-	                            inner join nenews n on c.targetid=n.newsid
-	                            where  apptype='"+AppType+"'";
+            string sqlCount = @"select count(0) from qacomment c " + JoinStr + " where  apptype='" + AppType + "'";
 
             string sqlData = @"select * from 
 	                            (select row_number() OVER(ORDER BY createtime desc) as nid,c.*," + TableFields + @" from qacomment c " + JoinStr + @") as sp
