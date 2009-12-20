@@ -39,7 +39,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
             TextBox_Brief.Text = model.Brief;
             TextBox_Count.Text = model.Stock.ToString();
             TextBox_Keyword.Text = model.Keywords;
-            Image_ProductImage.ImageUrl = PawnImageRule.GetMainImageUrl(model.MediumImage);
+            Image_ProductImage.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage);
         }
 
 
@@ -71,7 +71,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
             if (FileUpload_ProductImage.FileName != "")
             {
                 string[] ProductImages;
-                if (PawnImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+                if (MagicWorldImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
                     model.SmallImage = ProductImages[0];
                     model.MediumImage = ProductImages[1];
