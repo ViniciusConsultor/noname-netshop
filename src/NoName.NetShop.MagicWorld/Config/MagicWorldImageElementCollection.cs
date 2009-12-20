@@ -6,15 +6,15 @@ using System.Configuration;
 
 namespace NoName.NetShop.MagicWorld.Config
 {
-    public class PawnProductImageElementCollection : ConfigurationElementCollection
+    public class MagicWorldImageElementCollection : ConfigurationElementCollection
     {
         protected override ConfigurationElement CreateNewElement()
         {
-            return new PawnProductImageElement();
+            return new MagicWorldImageElement();
         }
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return ((PawnProductImageElement)element).Key;
+            return ((MagicWorldImageElement)element).Key;
         }
 
         public override ConfigurationElementCollectionType CollectionType
@@ -32,18 +32,18 @@ namespace NoName.NetShop.MagicWorld.Config
             }
         }
 
-        public PawnProductImageElement this[int index]
+        public MagicWorldImageElement this[int index]
         {
             get
             {
-                return (PawnProductImageElement)BaseGet(index);
+                return (MagicWorldImageElement)BaseGet(index);
             }
         }
-        public PawnProductImageElement this[string key]
+        public MagicWorldImageElement this[string key]
         {
             get
             {
-                return (PawnProductImageElement)BaseGet(key);
+                return (MagicWorldImageElement)BaseGet(key);
             }
         }
     }
