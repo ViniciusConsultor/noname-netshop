@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace NoName.NetShop.MagicWorld.Config
 {
-    public class PawnProductImageElement : ConfigurationElement
+    public class MagicWorldImageElement : ConfigurationElement
     {
         [ConfigurationProperty("key", IsRequired = true)]
         public string Key

@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace NoName.NetShop.MagicWorld.Config
 {
-    public class PawnProductImageSection : ConfigurationSection
+    public class MagicWorldImageSection : ConfigurationSection
     {
         [ConfigurationProperty("allowedFormat", IsRequired = true)]
         public string AllowedFormat
@@ -36,11 +36,11 @@ namespace NoName.NetShop.MagicWorld.Config
         }
 
         [ConfigurationProperty("", IsDefaultCollection = true)]
-        public PawnProductImageElementCollection ImageSets
+        public MagicWorldImageElementCollection ImageSets
         {
             get
             {
-                return (PawnProductImageElementCollection)base[""];
+                return (MagicWorldImageElementCollection)base[""];
             }
         }
     }

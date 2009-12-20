@@ -7,13 +7,12 @@ using System.Configuration;
 using System.Collections;
 using System.IO;
 using System.Web;
-using NoName.NetShop.MagicWorld.Model;
 
 namespace NoName.NetShop.MagicWorld.Facade
 {
-    public class AuctionImageRule
+    public class MagicWorldImageRule
     {
-        private static AuctionImageSection config = (AuctionImageSection)ConfigurationManager.GetSection("productImage/auctionImage");
+        private static MagicWorldImageSection config = (MagicWorldImageSection)ConfigurationManager.GetSection("productImage/magicWorldImage");
 
         /// <summary>
         /// Returns destination product main image names
@@ -26,7 +25,7 @@ namespace NoName.NetShop.MagicWorld.Facade
             ArrayList MainImageFileNames = new ArrayList();
             string guid = Guid.NewGuid().ToString().Replace("-", "");
 
-            foreach (AuctionImageElement ImageType in config.ImageSets)
+            foreach (MagicWorldImageElement ImageType in config.ImageSets)
             {
                 MainImageFileNames.Add(string.Format(config.Rule, ProductID, guid, ImageType.Suffix, FileSuffix));
             }
@@ -53,14 +52,6 @@ namespace NoName.NetShop.MagicWorld.Facade
             }
 
             return ProcessResult;
-        }
-
-        public static AuctionProductModel GetMainImageUr(AuctionProductModel model)
-        {
-            model.SmallImage = config.UrlRoot + model.SmallImage;
-            model.MediumImage = config.UrlRoot + model.MediumImage;
-
-            return model;
         }
 
         public static string GetMainImageUrl(string ImageRelativePath)
