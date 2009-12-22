@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CateSelect.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.CateSelect" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CateSelect.aspx.cs" MasterPageFile="~/MemberCenter.master" Inherits="NoName.NetShop.ForeFlat.member.CateSelect" %>
 <%@ Register src="../Controls/MagicWorldCategorySelect.ascx" tagname="MagicWorldCategorySelect" tagprefix="uc1" %>
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">

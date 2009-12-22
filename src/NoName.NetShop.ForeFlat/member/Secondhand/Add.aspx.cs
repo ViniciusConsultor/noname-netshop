@@ -66,7 +66,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
 
             string[] ProductImages;
 
-            if (SecondhandImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+            if (MagicWorldImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 SecondhandProductModel model = new SecondhandProductModel();
                 MagicCategoryModel cate = new MagicCategoryBll().GetModel(Convert.ToInt32(Hidden_CategoryID.Value));

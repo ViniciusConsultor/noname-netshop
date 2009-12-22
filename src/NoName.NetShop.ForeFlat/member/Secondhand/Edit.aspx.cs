@@ -38,7 +38,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             TextBox_Keyword.Text = model.Keywords;
             TextBox_Price.Text = model.Price.ToString();
             TextBox_ProductName.Text = model.SecondhandProductName;
-            Image_ProductImage.ImageUrl = SecondhandImageRule.GetMainImageUrl(model.MediumImage); 
+            Image_ProductImage.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage); 
         }
 
 
@@ -75,7 +75,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             {
                 string[] ProductImages;
 
-                if (SecondhandImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+                if (MagicWorldImageRule.SaveProductMainImage(SecondhandProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
                     model.SmallImage = ProductImages[0];
                     model.MediumImage = ProductImages[1];

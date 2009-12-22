@@ -39,7 +39,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             TextBox_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd hh:mm:ss");
             TextBox_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd hh:mm:ss");
             TextEditor_Brief.Value = model.Brief;
-            Image_ProductImage.ImageUrl = AuctionImageRule.GetMainImageUrl(model.SmallImage);
+            Image_ProductImage.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.SmallImage);
         }
 
 
@@ -90,7 +90,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             {
                 string[] ProductImages;
 
-                if (AuctionImageRule.SaveProductMainImage(model.AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
+                if (MagicWorldImageRule.SaveProductMainImage(model.AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
                     model.MediumImage = ProductImages[0];
                     model.SmallImage = ProductImages[1];
