@@ -37,8 +37,8 @@ namespace NoName.NetShop.ForeFlat.Magic
         {
             SecondhandProductModel model = bll.GetModel(SecondhandProductID);
 
-            Image_Small.ImageUrl = SecondhandImageRule.GetMainImageUrl(model.SmallImage);
-            Image_Large.ImageUrl = SecondhandImageRule.GetMainImageUrl(model.LargeImage);
+            Image_Small.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.SmallImage);
+            Image_Large.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.LargeImage);
 
             Literal_ProductName.Text = model.SecondhandProductName;
             Literal_Price.Text = model.Price.ToString("0.00");
