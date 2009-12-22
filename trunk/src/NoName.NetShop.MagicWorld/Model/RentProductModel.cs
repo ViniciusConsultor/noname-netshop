@@ -16,7 +16,8 @@ namespace NoName.NetShop.MagicWorld.Model
         private int _CategoryID;
         private string _CategoryPath;
         private decimal _RentPrice;
-        private int _MaxRentDays;
+        private decimal _CashPledge;
+        private int _MaxRentTime;
         private string _Brief;
         private int _Status;
         private DateTime _CreateTime;
@@ -67,10 +68,15 @@ namespace NoName.NetShop.MagicWorld.Model
             get { return _RentPrice; }
             set { _RentPrice=value; }
         }
-        public int MaxRentDays
+        public decimal CashPledge
         {
-            get { return _MaxRentDays; }
-            set { _MaxRentDays=value; }
+            get { return _CashPledge; }
+            set { _CashPledge = value; }
+        }
+        public int MaxRentTime
+        {
+            get { return _MaxRentTime; }
+            set { _MaxRentTime = value; }
         }
         public string Brief
         {
