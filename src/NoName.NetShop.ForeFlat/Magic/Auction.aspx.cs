@@ -50,8 +50,8 @@ namespace NoName.NetShop.ForeFlat.Magic
             Repeater_AddPrices.DataSource = dt;
             Repeater_AddPrices.DataBind();
 
-            Image_Large.ImageUrl = AuctionImageRule.GetMainImageUrl(model.MediumImage);
-            Image_Medium.ImageUrl = AuctionImageRule.GetMainImageUrl(model.SmallImage);
+            Image_Large.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage);
+            Image_Medium.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.SmallImage);
 
             Literal_ProductName.Text = model.ProductName;
             Literal_StartPrice.Text = model.StartPrice.ToString("0.00");
