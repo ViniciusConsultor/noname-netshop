@@ -18,7 +18,7 @@ namespace NoName.NetShop.MagicWorld.DAL
         public void Add(RentProductModel model)
         {
             DbCommand Command = dbw.GetStoredProcCommand("UP_mwRentProduct_Add");
-
+            
             dbw.AddInParameter(Command,"@rentid",DbType.Int32,model.RentID);
             dbw.AddInParameter(Command,"@rentname",DbType.String,model.RentName);
             dbw.AddInParameter(Command,"@smallimage",DbType.String,model.SmallImage);
@@ -28,7 +28,8 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(Command,"@categoryid",DbType.Int32,model.CategoryID);
             dbw.AddInParameter(Command,"@categorypath",DbType.String,model.CategoryPath);
             dbw.AddInParameter(Command,"@rentprice",DbType.Decimal,model.RentPrice);
-            dbw.AddInParameter(Command,"@maxrentdays",DbType.Int32,model.MaxRentDays);
+            dbw.AddInParameter(Command,"@cashpledge",DbType.Decimal,model.CashPledge);
+            dbw.AddInParameter(Command,"@maxrenttime",DbType.Int32,model.MaxRentTime);
             dbw.AddInParameter(Command,"@brief",DbType.String,model.Brief);
             dbw.AddInParameter(Command,"@status",DbType.Int16,model.Status);
             dbw.AddInParameter(Command,"@createtime",DbType.DateTime,model.CreateTime);
@@ -50,20 +51,21 @@ namespace NoName.NetShop.MagicWorld.DAL
         {
             DbCommand Command = dbw.GetStoredProcCommand("UP_mwRentProduct_Update");
 
-            dbw.AddInParameter(Command,"@rentid",DbType.Int32,model.RentID);
-            dbw.AddInParameter(Command,"@rentname",DbType.String,model.RentName);
-            dbw.AddInParameter(Command,"@smallimage",DbType.String,model.SmallImage);
-            dbw.AddInParameter(Command,"@mediumimage",DbType.String,model.MediumImage);
-            dbw.AddInParameter(Command,"@stock",DbType.Int32,model.Stock);
-            dbw.AddInParameter(Command,"@keywords",DbType.String,model.Keywords);
-            dbw.AddInParameter(Command,"@categoryid",DbType.Int32,model.CategoryID);
-            dbw.AddInParameter(Command,"@categorypath",DbType.String,model.CategoryPath);
-            dbw.AddInParameter(Command,"@rentprice",DbType.Decimal,model.RentPrice);
-            dbw.AddInParameter(Command,"@maxrentdays",DbType.Int32,model.MaxRentDays);
-            dbw.AddInParameter(Command,"@brief",DbType.String,model.Brief);
-            dbw.AddInParameter(Command,"@status",DbType.Int16,model.Status);
-            dbw.AddInParameter(Command,"@createtime",DbType.DateTime,model.CreateTime);
-            dbw.AddInParameter(Command,"@updatetime",DbType.DateTime,model.UpdateTime);
+            dbw.AddInParameter(Command, "@rentid", DbType.Int32, model.RentID);
+            dbw.AddInParameter(Command, "@rentname", DbType.String, model.RentName);
+            dbw.AddInParameter(Command, "@smallimage", DbType.String, model.SmallImage);
+            dbw.AddInParameter(Command, "@mediumimage", DbType.String, model.MediumImage);
+            dbw.AddInParameter(Command, "@stock", DbType.Int32, model.Stock);
+            dbw.AddInParameter(Command, "@keywords", DbType.String, model.Keywords);
+            dbw.AddInParameter(Command, "@categoryid", DbType.Int32, model.CategoryID);
+            dbw.AddInParameter(Command, "@categorypath", DbType.String, model.CategoryPath);
+            dbw.AddInParameter(Command, "@rentprice", DbType.Decimal, model.RentPrice);
+            dbw.AddInParameter(Command, "@cashpledge", DbType.Decimal, model.CashPledge);
+            dbw.AddInParameter(Command, "@maxrenttime", DbType.Int32, model.MaxRentTime);
+            dbw.AddInParameter(Command, "@brief", DbType.String, model.Brief);
+            dbw.AddInParameter(Command, "@status", DbType.Int16, model.Status);
+            dbw.AddInParameter(Command, "@createtime", DbType.DateTime, model.CreateTime);
+            dbw.AddInParameter(Command, "@updatetime", DbType.DateTime, model.UpdateTime);
 
             dbw.ExecuteNonQuery(Command);
         }
@@ -97,6 +99,7 @@ namespace NoName.NetShop.MagicWorld.DAL
                                 (select row_number() over (order by createtime desc) as id,* from [mwRentProduct])
                                 as sp
                                 where id > " + PageLowerBound + " and id<" + PageUpperBount + " " + Condition;
+
             RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text,sqlCount));
 
             return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
@@ -111,11 +114,12 @@ namespace NoName.NetShop.MagicWorld.DAL
             model.CategoryPath=Convert.ToString(row["categorypath"]);
             model.CreateTime=Convert.ToDateTime(row["createtime"]);
             model.Keywords=Convert.ToString(row["keywords"]);
-            model.MaxRentDays=Convert.ToInt32(row["maxrentdays"]);
+            model.MaxRentTime=Convert.ToInt32(row["maxrenttime"]);
             model.MediumImage=Convert.ToString(row["mediumimage"]);
             model.RentID=Convert.ToInt32(row["rentid"]);
             model.RentName=Convert.ToString(row["rentname"]);
             model.RentPrice=Convert.ToDecimal(row["rentprice"]);
+            model.CashPledge = Convert.ToDecimal(row["cashpledge"]);
             model.SmallImage=Convert.ToString(row["smallimage"]);
             model.Status=Convert.ToInt16(row["status"]);
             model.Stock=Convert.ToInt32(row["stock"]);

@@ -12,6 +12,7 @@ namespace NoName.NetShop.MagicWorld.Model
         private string _UserID;
         private decimal _PaySum;
         private string _ApplyInfo;
+        private int _RentMonths;
         private DateTime _ApplyTime;
         private DateTime _StartTime;
         private DateTime _EndTime;
@@ -42,6 +43,11 @@ namespace NoName.NetShop.MagicWorld.Model
         {
             get { return _ApplyInfo; }
             set { _ApplyInfo=value;}
+        }
+        public int RentMonths
+        {
+            get { return _RentMonths; }
+            set { _RentMonths = value; }
         }
         public DateTime ApplyTime
         {
