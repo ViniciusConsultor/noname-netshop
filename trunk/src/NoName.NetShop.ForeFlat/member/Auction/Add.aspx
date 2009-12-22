@@ -62,11 +62,11 @@
     <div>
         <table>
             <tr>
-            <td>
-                <asp:Label runat="server" ID="Label_Category" />
-                <asp:HiddenField runat="server" ID="Hidden_CategoryID" />
-                <a href="../CateSelect.aspx" >重新选择</a>
-            </td>
+                <td>
+                    <asp:Label runat="server" ID="Label_Category" />
+                    <asp:HiddenField runat="server" ID="Hidden_CategoryID" />
+                    <a href="../CateSelect.aspx" >重新选择</a>
+                </td>
             </tr>
             <tr>
                 <td>拍品名称<span class="red">*</span>：</td>

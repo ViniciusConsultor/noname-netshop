@@ -75,7 +75,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             int AuctionProductID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
 
             string[] ProductImages;
-            if (AuctionImageRule.SaveProductMainImage(AuctionProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+            if (MagicWorldImageRule.SaveProductMainImage(AuctionProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 AuctionProductModel model = new AuctionProductModel();
                 MagicCategoryModel cate = new MagicCategoryBll().GetModel(Convert.ToInt32(Hidden_CategoryID.Value));

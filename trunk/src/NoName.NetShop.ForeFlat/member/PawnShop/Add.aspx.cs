@@ -61,7 +61,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
             int PawnProductID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
 
             string[] ProductImages;
-            if (PawnImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
+            if (MagicWorldImageRule.SaveProductMainImage(PawnProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 PawnProductModel model = new PawnProductModel();
                 MagicCategoryModel cate = new MagicCategoryBll().GetModel(Convert.ToInt32(Hidden_CategoryID.Value));
