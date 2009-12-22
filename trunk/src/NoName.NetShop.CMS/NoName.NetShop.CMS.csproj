@@ -63,8 +63,13 @@
     <Compile Include="Config\PageCategoryCollection.cs" />
     <Compile Include="Config\PageCategoryElement.cs" />
     <Compile Include="Config\PageCategorySection.cs" />
-    <Compile Include="Data\DataAccess.cs" />
-    <Compile Include="Data\IDataAcquirer.cs" />
+    <Compile Include="Controler\PageControler.cs" />
+    <Compile Include="Controler\TagControler.cs" />
+    <Compile Include="Controler\TemplateControler.cs" />
+    <Compile Include="DataAccess\DataAccess.cs" />
+    <Compile Include="DataAccess\IDataAcquirer.cs" />
+    <Compile Include="DataAccess\PageDataAccess.cs" />
+    <Compile Include="DataAccess\TagDataAccess.cs" />
     <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\TagInfo.cs" />
     <Compile Include="Model\TagParameterInfo.cs" />
@@ -79,6 +84,9 @@
       <Project>{E0634851-F221-461E-9C14-F71011119CC6}</Project>
       <Name>NoName.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataAccess\TagDataProviders\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
