@@ -38,16 +38,16 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 
         private void BindData()
         {
+            RentProductModel rent = bll.GetModel(RentID);
+            if (CategoryID == -1) CategoryID =rent.CategoryID;
             MagicCategoryModel Cate = new MagicCategoryBll().GetModel(CategoryID);
 
             Label_Category.Text = Cate.CategoryName;
             Hidden_CategoryPath.Value = Cate.CategoryPath;
 
-            RentProductModel rent = bll.GetModel(RentID);
-
             TextBox_RentName.Text=rent.RentName;
             TextBox_RentPrice.Text = rent.RentPrice.ToString();
-            TextBox_MaxRentDays.Text = rent.MaxRentDays.ToString();
+            TextBox_MaxRentDays.Text = rent.MaxRentTime.ToString();
             TextBox_Stock.Text=rent.Stock.ToString();
             TextBox_Keywords.Text=rent.Keywords;
             TextBox_Brief.Text=rent.Brief;
@@ -90,7 +90,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 
             rent.RentName = TextBox_RentName.Text;
             rent.RentPrice = Convert.ToDecimal(TextBox_RentPrice.Text);
-            rent.MaxRentDays = Convert.ToInt32(TextBox_MaxRentDays.Text);
+            rent.MaxRentTime = Convert.ToInt32(TextBox_MaxRentDays.Text);
             rent.Stock = Convert.ToInt32(TextBox_Stock.Text);
             rent.Keywords = TextBox_Keywords.Text;
             rent.Brief = TextBox_Brief.Text;

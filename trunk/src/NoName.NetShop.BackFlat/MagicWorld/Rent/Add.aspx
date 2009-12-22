@@ -38,6 +38,10 @@
                 result = false;
                 inform($('#<%=TextBox_Keywords.ClientID %>'), '请输入关键词');
             }
+            if ($('#<%=TextBox_CashPledge.ClientID %>').val() == '' || !$('#<%=TextBox_CashPledge.ClientID %>').val().isCurrency()) {
+                result = false;
+                inform($('#<%=TextBox_CashPledge.ClientID %>'), '请输入正确的押金');
+            }
             if ($('#<%=TextBox_RentPrice.ClientID %>').val() == '' || !$('#<%=TextBox_RentPrice.ClientID %>').val().isCurrency()) {
                 result = false;
                 inform($('#<%=TextBox_RentPrice.ClientID %>'), '请输入正确的租金');
@@ -83,12 +87,16 @@
                 <td><asp:TextBox runat="server" ID="TextBox_Keywords" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
+                <td>押金<span class="red">*</span>：</td>
+                <td><asp:TextBox runat="server" ID="TextBox_CashPledge" />(元)<span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
                 <td>租金<span class="red">*</span>：</td>
-                <td><asp:TextBox runat="server" ID="TextBox_RentPrice" />(元/天)<span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_RentPrice" />(元/月)<span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>最长租赁时间<span class="red">*</span>：</td>
-                <td><asp:TextBox runat="server" ID="TextBox_MaxRentDays" />(天)<span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_MaxRentDays" />(月)<span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>简介<span class="red">*</span>：</td>

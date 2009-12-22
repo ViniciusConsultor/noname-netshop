@@ -45,7 +45,8 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
             if (String.IsNullOrEmpty(TextBox_Stock.Text) || !PageValidate.IsNumber(TextBox_Stock.Text)) ErrorMessage += "商品数量不正确\n";
             if (String.IsNullOrEmpty(TextBox_Keywords.Text)) ErrorMessage += "关键词不能为空\n";
             if (String.IsNullOrEmpty(TextBox_RentPrice.Text) || !PageValidate.IsDecimal(TextBox_RentPrice.Text)) ErrorMessage += "出租价格不正确\n";
-            if (String.IsNullOrEmpty(TextBox_MaxRentDays.Text) || !PageValidate.IsNumber(TextBox_MaxRentDays.Text)) ErrorMessage += "最大出租天数不正确\n";
+            if (String.IsNullOrEmpty(TextBox_CashPledge.Text) || !PageValidate.IsDecimal(TextBox_CashPledge.Text)) ErrorMessage += "出租押金不正确\n";            
+            if (String.IsNullOrEmpty(TextBox_MaxRentDays.Text) || !PageValidate.IsNumber(TextBox_MaxRentDays.Text)) ErrorMessage += "最大出租时间不正确\n";
             if (String.IsNullOrEmpty(TextBox_Brief.Text)) ErrorMessage += "商品简介不能为空\n";
             if (String.IsNullOrEmpty(FileUpload_MainImage.FileName)) ErrorMessage += "商品图片不能为空\n";
 
@@ -66,8 +67,9 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
                 model.RentName = TextBox_RentName.Text;
                 model.Stock = Convert.ToInt32(TextBox_Stock.Text);
                 model.Keywords = TextBox_Keywords.Text.Replace("，",",");
+                model.CashPledge = Convert.ToDecimal(TextBox_CashPledge.Text);
                 model.RentPrice = Convert.ToDecimal(TextBox_RentPrice.Text);
-                model.MaxRentDays = Convert.ToInt32(TextBox_MaxRentDays.Text);
+                model.MaxRentTime = Convert.ToInt32(TextBox_MaxRentDays.Text);
                 model.Brief = TextBox_Brief.Text;
                 model.SmallImage = ProductImages[0];
                 model.MediumImage = ProductImages[1];

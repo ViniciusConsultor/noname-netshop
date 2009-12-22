@@ -17,7 +17,7 @@
                 height: '300px'
             });
 
-            $('#<%= Button_Add.ClientID %>').click(function() {
+            $('#<%= Button_Edit.ClientID %>').click(function() {
                 return validate();
             });
         });

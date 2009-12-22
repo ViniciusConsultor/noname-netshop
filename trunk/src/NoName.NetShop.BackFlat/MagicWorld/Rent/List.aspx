@@ -10,7 +10,32 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand">
+            <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField HeaderText="商品ID" DataField="rentid" />
+                    <asp:BoundField HeaderText="商品名称" DataField="rentname" />
+                    <asp:TemplateField HeaderText="创建时间">
+                        <ItemTemplate>
+                            <%# Convert.ToDateTime(Eval("createtime")).ToString("yyyy-MM-dd HH:mm:ss") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="商品状态">
+                        <ItemTemplate>
+                            <%# Eval("status") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="申请记录">
+                        <ItemTemplate>
+                            <a href='<%# "LogList.aspx?rentid="+Eval("rentid") %>'>查看</a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <a href='<%# "Edit.aspx?rentid="+Eval("rentid") %>'>编辑</a>
+                            <asp:LinkButton runat="server" ID="Button_Delete" Text="删除" CommandArgument='<%# Eval("rentid") %>' CommandName="d" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
             </asp:GridView>
         </div>
         <div>
