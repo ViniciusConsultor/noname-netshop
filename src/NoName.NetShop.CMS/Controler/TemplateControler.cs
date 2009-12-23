@@ -33,7 +33,7 @@ namespace NoName.NetShop.CMS.Controler
             foreach (Match match in matches)
                 if (match.Success)
                 {
-                    string reg = "<SinaEC:CMSTag ID=\"(?<serverid>(\\w+))\" Description=\"(?<des>(\\w+))\" TagID=\"(?<tagid>(\\w+))\" ";
+                    string reg = "<dd:CMSTag ID=\"(?<serverid>(\\w+))\" Description=\"(?<des>(\\w+))\" TagID=\"(?<tagid>(\\w+))\" ";
                     Match m = Regex.Match(match.Groups[0].Value, reg, RegexOptions.IgnoreCase);
                     if (m.Groups["serverid"].Success && m.Groups["des"].Success && m.Groups["tagid"].Success)
                     {

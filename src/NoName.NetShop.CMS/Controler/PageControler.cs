@@ -7,6 +7,9 @@ using System.IO;
 using System.Web;
 using NoName.NetShop.CMS.Model;
 using NoName.NetShop.CMS.DataAccess;
+using NoName.Utility;
+using NoName.NetShop.CMS.Config;
+using System.Configuration;
 
 namespace NoName.NetShop.CMS.Controler
 {
@@ -63,6 +66,31 @@ namespace NoName.NetShop.CMS.Controler
         public static DataTable GetList(int PageIndex, int PageSize, PageCategory pageCate, out int RecordCount)
         {
             return PageDataAccess.GetList(PageIndex, PageSize, pageCate, out RecordCount);
+        }
+
+        public static void Publish(int PageID)
+        {
+            PageModel page = GetModel(PageID);
+
+            string url = HttpContext.Current.Server.MapPath(page.TempatePath) + "?pageid=" + page.PageID;
+
+            string html = HttpUtil.SendGetRequest(url, null, Encoding.UTF8, Encoding.UTF8);
+
+            PageCategoryElement Element = ((PageCategorySection)ConfigurationManager.GetSection("pageCategorySection")).PageCategories[Enum.GetName(typeof(PageCategory),page.Category)];
+            string FileName = Element.PhysicalPathRoot + (page.PhysicalPath.StartsWith("\\") ? page.PhysicalPath.Substring(1, page.PhysicalPath.Length) : page.PhysicalPath);
+
+            if (!FileName.EndsWith(".shtml") && !FileName.EndsWith(".html") && !FileName.EndsWith(".htm"))
+            {
+                if (!Directory.Exists(FileName)) Directory.CreateDirectory(FileName);
+                FileName = FileName.EndsWith("\\") ? FileName + "index.shtml" : FileName + "\\index.shtml";
+            }
+
+            if (!(new FileInfo(FileName).Directory).Exists) (new FileInfo(FileName).Directory).Create();
+            StreamWriter sw = new StreamWriter(FileName);
+
+            sw.Write(html);
+            sw.Flush();
+            sw.Close();
         }
 
     }
