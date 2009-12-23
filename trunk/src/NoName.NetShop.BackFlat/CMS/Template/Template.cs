@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using NoName.NetShop.CMS.Model;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.CMS.Template
 {
@@ -22,13 +24,13 @@ namespace NoName.NetShop.BackFlat.CMS.Template
             PageID = int.Parse(Request.QueryString["pageid"]);
             if (!IsPostBack)
             {
-                //Stream PageStream = new ResponseFilter(Response.Filter);
+                Stream PageStream = new ResponseFilter(Response.Filter);
 
-                //Response.Filter = PageStream;
+                Response.Filter = PageStream;
 
-                //PageInfo page = PageInfo.GetPageInfo(PageID);
+                PageModel page = PageControler.GetModel(PageID);
 
-                //this.Title = page.PageTitle;
+                this.Title = page.PageTitle;
             }
         }
     }
