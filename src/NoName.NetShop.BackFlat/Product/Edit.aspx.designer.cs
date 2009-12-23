@@ -122,13 +122,13 @@ namespace NoName.NetShop.BackFlat.Product {
         protected global::System.Web.UI.WebControls.TextBox txtKeywords;
         
         /// <summary>
-        /// fckBrief 控件。
+        /// TextBox_Brief 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor fckBrief;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Brief;
         
         /// <summary>
         /// imgProduct 控件。

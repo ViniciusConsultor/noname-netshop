@@ -114,7 +114,7 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 strErr += "Keywords不能为空！\\n";
             }
-            if (this.fckBrief.Value == "")
+            if (this.TextBox_Description.Text == "")
             {
                 strErr += "Brief不能为空！\\n";
             }
@@ -148,7 +148,7 @@ namespace NoName.NetShop.BackFlat.Product
                 product.InsertTime = DateTime.Now;
                 product.ChangeTime = DateTime.Now;
                 product.Keywords = txtKeywords.Text;
-                product.Brief = fckBrief.Value;
+                product.Brief = TextBox_Description.Text;
 
 
                 product.SmallImage = MainImages[0];

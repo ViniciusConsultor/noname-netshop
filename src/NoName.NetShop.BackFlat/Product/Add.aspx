@@ -113,7 +113,7 @@
             </tr>
             <tr>
                 <td>简介<span class="red">*</span>：</td>
-                <td><FCKeditorV2:FCKeditor ID="fckBrief" Width="600" Height="400" runat="server" /></td>
+                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Description" /></td>
             </tr>
             <tr>
                 <td>商品图片<span class="red">*</span>：</td>
