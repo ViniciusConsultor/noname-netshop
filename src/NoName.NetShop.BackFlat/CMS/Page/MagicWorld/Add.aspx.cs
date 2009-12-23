@@ -46,7 +46,7 @@ namespace NoName.NetShop.BackFlat.CMS.Page.MagicWorld
             page.PageName = TextBox_PageName.Text;
             page.PageTitle = TextBox_PageTitle.Text;
             page.Category = (int)PageCategory.MagicWorld;
-            page.PhysicalPath = Element.PhysicalPathRoot + String.Format(Element.NameRule, page.PageName);
+            page.PhysicalPath = String.Format(Element.NameRule, page.PageName);
             page.TempatePath = DropDownList_Template.SelectedValue;
             page.Author = "";
             page.LastModify = "";
