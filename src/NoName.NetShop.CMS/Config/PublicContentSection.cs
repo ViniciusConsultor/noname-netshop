@@ -6,14 +6,14 @@ using System.Configuration;
 
 namespace NoName.NetShop.CMS.Config
 {
-    public class PageCategorySection : ConfigurationSection
+    public class PublicContentSection : ConfigurationSection
     {
         [ConfigurationProperty("", IsDefaultCollection = true)]
-        public PageCategoryElementCollection PageCategories
+        public PublicContentElementCollection PublicPages
         {
             get
             {
-                return (PageCategoryElementCollection)base[""];
+                return (PublicContentElementCollection)base[""];
             }
         }
     }

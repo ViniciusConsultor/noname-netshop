@@ -8,6 +8,8 @@ using System.Web;
 using NoName.Utility;
 using NoName.NetShop.CMS.Model;
 using System.Web.UI;
+using NoName.NetShop.CMS.Controler;
+using NoName.NetShop.CMS.DataAccess;
 
 namespace NoName.NetShop.CMS
 {
@@ -45,17 +47,8 @@ namespace NoName.NetShop.CMS
                 //writer.Write("start get tag content at "+DateTime.Now +"<br/>");
 
                 int PageID = Convert.ToInt32(paras["pageid"]);
-                PageInfo cmsPage = PageInfo.GetPageInfo(PageID);
 
-                if (cmsPage != null)
-                {
-                    TagInfo cmsTag = new TagInfo(TagID, this.ID);
-
-                    if (cmsTag.TagID != -1)
-                    {
-                        writer.Write(cmsTag.GetContent(cmsPage));
-                    }
-                }
+                writer.Write(TagDataAccess.TagContentGet(PageID, this.TagID, this.ID));
 
                 //writer.Write("finish get tag content at " + DateTime.Now + "<br/>");
 

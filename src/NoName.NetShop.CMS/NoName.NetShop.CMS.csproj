@@ -59,20 +59,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CMSTag.cs" />
-    <Compile Include="Config\PageCategoryCollection.cs" />
-    <Compile Include="Config\PageCategoryElement.cs" />
-    <Compile Include="Config\PageCategorySection.cs" />
-    <Compile Include="Controler\PageControler.cs" />
-    <Compile Include="Controler\TagControler.cs" />
-    <Compile Include="Controler\TemplateControler.cs" />
-    <Compile Include="DataAccess\DataAccess.cs" />
-    <Compile Include="DataAccess\IDataAcquirer.cs" />
-    <Compile Include="DataAccess\PageDataAccess.cs" />
-    <Compile Include="DataAccess\TagDataAccess.cs" />
-    <Compile Include="Model\PageInfo.cs" />
-    <Compile Include="Model\TagInfo.cs" />
-    <Compile Include="Model\TagParameterInfo.cs" />
+    <Compile Include="CMSTag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Config\PageCategoryElementCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Config\PageCategoryElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Config\PageCategorySection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Config\PublicContentElement.cs" />
+    <Compile Include="Config\PublicContentElementCollection.cs" />
+    <Compile Include="Config\PublicContentSection.cs" />
+    <Compile Include="Controler\PageControler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controler\TagControler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controler\TemplateControler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\IDataAcquirer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\PageDataAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\TagDataAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\PageModel.cs" />
+    <Compile Include="Model\TagContentModel.cs" />
+    <Compile Include="Model\TagModel.cs" />
+    <Compile Include="Model\TagParameterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
