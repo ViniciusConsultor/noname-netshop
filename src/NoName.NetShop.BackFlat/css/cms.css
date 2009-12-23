@@ -5,9 +5,12 @@
 .button{height:24px;border:1px solid #ccc;border-left:3px solid #ccc;font-family:Tahoma;background:#fff;padding:0.1em 0.2em 0 0.2em;}
 .textbox{height:16px;border:1px solid #ccc;border-left:3px solid #ccc;font-family:Tahoma;background:#fff;}
 
-.listGrid{width:100%;}
-.listGrid th{height:3em;border:1px solid #fff;background-image:url(images/th-bg.gif) repeat-x;background:#364a6b;color:#fff;}/*1768b9*/
-.listGrid td{padding:.3em;text-align:left;border:1px solid #fff;}
+
+table.listGrid{width:700px;border:1px solid #eee;margin:10px 0;}
+table.listGrid th{padding:.5em;height:24px;line-height:24px;border:1px solid #eee;}
+table.listGrid td{padding:.3em;border:1px solid #eee;}
+table.listGrid td a{color:#1e51a4; text-decoration:underline;}
+table.listGrid td a:hover{color:#b10103; text-decoration:underline;}
 
 
 .tagGrid{width:500px;}
