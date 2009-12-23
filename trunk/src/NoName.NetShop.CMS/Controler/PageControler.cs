@@ -39,5 +39,27 @@ namespace NoName.NetShop.CMS.Controler
             return model;
         }
 
+
+        public static void Insert(PageModel page)
+        {
+            PageDataAccess.Insert(page);
+        }
+
+
+        public static void Update(PageModel page)
+        {
+            PageDataAccess.Update(page);
+        }
+
+        public static DataTable Get(int PageID)
+        {
+            return PageDataAccess.Get(PageID);
+        }
+
+        public DataTable GetList(int PageIndex, int PageSize, PageCategory pageCate, out int RecordCount)
+        {
+            return PageDataAccess.GetList(PageIndex, PageSize, pageCate, out RecordCount);
+        }
+
     }
 }

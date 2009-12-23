@@ -48,7 +48,7 @@ namespace NoName.NetShop.CMS
 
                 int PageID = Convert.ToInt32(paras["pageid"]);
 
-                writer.Write(TagDataAccess.TagContentGet(PageID, this.TagID, this.ID));
+                writer.Write(TagControler.TagContentGet(PageID, this.TagID, this.ID));
 
                 //writer.Write("finish get tag content at " + DateTime.Now + "<br/>");
 

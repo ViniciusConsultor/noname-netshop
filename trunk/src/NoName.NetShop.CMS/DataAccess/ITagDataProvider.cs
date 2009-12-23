@@ -7,7 +7,7 @@ using System.Collections.Specialized;
 
 namespace NoName.NetShop.CMS.Data
 {
-    public interface IDataAcquirer
+    public interface ITagDataProvider
     {
         XmlDocument GetData(NameValueCollection Parameter);
     }
