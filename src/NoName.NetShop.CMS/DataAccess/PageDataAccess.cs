@@ -56,7 +56,7 @@ namespace NoName.NetShop.CMS.DataAccess
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
-        public DataTable GetList(int PageIndex,int PageSize,PageCategory pageCate,out int RecordCount)
+        public static DataTable GetList(int PageIndex,int PageSize,PageCategory pageCate,out int RecordCount)
         {
             int PageLowerBound = 0, PageUpperBount = 0;
             PageLowerBound = (PageIndex - 1) * PageSize;
