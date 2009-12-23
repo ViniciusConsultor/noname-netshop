@@ -45,6 +45,10 @@ namespace NoName.NetShop.CMS.Controler
             PageDataAccess.Insert(page);
         }
 
+        public static void Delete(int PageID)
+        {
+            PageDataAccess.Delete(PageID);
+        }
 
         public static void Update(PageModel page)
         {
@@ -56,7 +60,7 @@ namespace NoName.NetShop.CMS.Controler
             return PageDataAccess.Get(PageID);
         }
 
-        public DataTable GetList(int PageIndex, int PageSize, PageCategory pageCate, out int RecordCount)
+        public static DataTable GetList(int PageIndex, int PageSize, PageCategory pageCate, out int RecordCount)
         {
             return PageDataAccess.GetList(PageIndex, PageSize, pageCate, out RecordCount);
         }

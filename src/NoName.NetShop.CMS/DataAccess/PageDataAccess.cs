@@ -14,7 +14,7 @@ namespace NoName.NetShop.CMS.DataAccess
         {
             DbCommand Command = db.GetStoredProcCommand("UP_cmsPage_Add");
 
-            db.AddInParameter(Command, "@pagename", DbType.Int32, page.PageName);
+            db.AddInParameter(Command, "@pagename", DbType.String, page.PageName);
             db.AddInParameter(Command, "@pagetitle", DbType.String, page.PageTitle);
             db.AddInParameter(Command, "@createtime", DbType.DateTime, page.CreateTime);
             db.AddInParameter(Command, "@updatetime", DbType.DateTime, page.UpdateTime);
@@ -35,7 +35,7 @@ namespace NoName.NetShop.CMS.DataAccess
             DbCommand Command = db.GetStoredProcCommand("UP_cmsTag_Update");
 
             db.AddInParameter(Command, "@pageid", DbType.Int32, page.PageID);
-            db.AddInParameter(Command, "@pagename", DbType.Int32, page.PageName);
+            db.AddInParameter(Command, "@pagename", DbType.String, page.PageName);
             db.AddInParameter(Command, "@pagetitle", DbType.String, page.PageTitle);
             db.AddInParameter(Command, "@createtime", DbType.DateTime, page.CreateTime);
             db.AddInParameter(Command, "@updatetime", DbType.DateTime, page.UpdateTime);
@@ -48,6 +48,12 @@ namespace NoName.NetShop.CMS.DataAccess
             db.AddInParameter(Command, "@templatepath", DbType.String, page.TempatePath);
 
             db.ExecuteNonQuery(Command);
+        }
+
+        public static void Delete(int PageID)
+        {
+            string sql = "delete from [cmspage] where pageid="+PageID;
+            db.ExecuteNonQuery(CommandType.Text, sql);
         }
 
         public static DataTable Get(int PageID)
@@ -67,7 +73,7 @@ namespace NoName.NetShop.CMS.DataAccess
                                 where sp.nid>{1} and sp.nid<={2}";
 
             RecordCount = Convert.ToInt32(db.ExecuteScalar(CommandType.Text,sqlCount));
-            return db.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
+            return db.ExecuteDataSet(CommandType.Text, String.Format(sqlData,(int)pageCate,PageLowerBound,PageUpperBount)).Tables[0];
         }
     }
 }
