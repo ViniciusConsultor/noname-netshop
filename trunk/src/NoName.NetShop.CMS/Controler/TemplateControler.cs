@@ -7,6 +7,7 @@ using System.IO;
 using System.Web;
 using System.Text.RegularExpressions;
 using NoName.NetShop.CMS.Model;
+using System.Configuration;
 
 namespace NoName.NetShop.CMS.Controler
 {
@@ -47,6 +48,40 @@ namespace NoName.NetShop.CMS.Controler
                 }
 
             return dt;
+        }
+
+        public static DataTable GetTemplateList(PageCategory pageCate)
+        {
+            /* 建立模板时的命名规则 */
+            // Template_HomePage_Index.aspx
+            // Template_{PageCategoryName}_{TemplateName}.aspx
+
+            string TemplateRootPath = ConfigurationManager.AppSettings["templateRootPath"];
+
+            Regex reg = new Regex(@"Template_(?<cate>\w+)_(?<page>\w+).aspx");
+
+            DataTable dt = new DataTable(); dt.Columns.Add("fullname");dt.Columns.Add("cate");dt.Columns.Add("name");
+
+            foreach (string f in Directory.GetFiles(TemplateRootPath))
+            {
+                Match match = reg.Match(f);
+
+                if (match.Success)
+                {
+                    DataRow row = dt.NewRow();
+
+                    row["fullname"] = "\\cms" + Regex.Split(f, "cms",RegexOptions.IgnoreCase)[1];
+                    row["cate"] = match.Groups["cate"].Value;
+                    row["name"] = f.Substring(f.LastIndexOf("\\")+1);
+
+                    dt.Rows.Add(row);
+                }
+            }
+
+            DataTable newTable = dt.Clone();
+            foreach(DataRow row in dt.Select("cate = '"+pageCate.ToString()+"'")) newTable.ImportRow(row);
+
+            return newTable;
         }
     }
 }

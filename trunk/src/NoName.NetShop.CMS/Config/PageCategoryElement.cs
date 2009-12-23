@@ -25,6 +25,11 @@ namespace NoName.NetShop.CMS.Config
         {
             get { return (string)base["rootUrl"]; }
         }
-
+        
+        [ConfigurationProperty("nameRule", IsRequired = true)]
+        public string NameRule
+        {
+            get { return (string)base["nameRule"]; }
+        }
     }
 }
