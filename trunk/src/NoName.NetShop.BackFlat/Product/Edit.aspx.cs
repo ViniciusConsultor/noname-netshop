@@ -72,7 +72,7 @@ namespace NoName.NetShop.BackFlat.Product
                 txtStock.Text = product.Stock.ToString();
                 drpStatus.SelectedValue = product.Status.ToString();
                 txtKeywords.Text = product.Keywords;
-                fckBrief.Value = product.Brief;
+                TextBox_Brief.Text = product.Brief;
                 imgProduct.ImageUrl = product.SmallImage;
                 if (CategoryID != -1)
                 {
@@ -160,7 +160,7 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 strErr += "Keywords不能为空！\\n";
             }
-            if (this.fckBrief.Value == "")
+            if (this.TextBox_Brief.Text == "")
             {
                 strErr += "Brief不能为空！\\n";
             }
@@ -186,7 +186,7 @@ namespace NoName.NetShop.BackFlat.Product
             product.Stock = Convert.ToInt32(txtStock.Text);
             product.Status = Convert.ToInt32(drpStatus.SelectedValue);
             product.Keywords = txtKeywords.Text;
-            product.Brief = fckBrief.Value;
+            product.Brief = TextBox_Brief.Text;
 
             if (fulImage.FileName != String.Empty)
             {

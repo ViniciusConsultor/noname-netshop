@@ -87,7 +87,7 @@
             <tr>
                 <td>内容：<span class="red">*</span></td>
                 <td>
-                    <FCKeditorV2:FCKeditor ID="TextBox_Content" runat="server" />
+                    <asp:TextBox runat="server" ID="TextBox_Content" TextMode="MultiLine" />
                     <span type="inform" class="red"></span>
                 </td>
             </tr>

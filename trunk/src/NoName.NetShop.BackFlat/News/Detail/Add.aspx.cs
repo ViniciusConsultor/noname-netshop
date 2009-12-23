@@ -71,7 +71,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
             model.CategoryID = SelectedParentCategoryID;
             model.Tags = TextBox_Tags.Text;
             model.Brief = TextBox_Brief.Text;
-            model.Content = TextBox_Content.Value;
+            model.Content = TextBox_Content.Text;
             model.InsertTime = DateTime.Now;
             model.ModifyTime = DateTime.Now;
             model.ProductId = String.IsNullOrEmpty(TextBox_ProductID.Text) ? "0" : TextBox_ProductID.Text;
