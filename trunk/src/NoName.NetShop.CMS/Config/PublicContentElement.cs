@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace NoName.NetShop.CMS.Config
 {
-    public class PageCategoryElement : ConfigurationElement
+    public class PublicContentElement : ConfigurationElement
     {
         [ConfigurationProperty("key", IsRequired = true)]
         public string Key
@@ -14,17 +14,18 @@ namespace NoName.NetShop.CMS.Config
             get { return (string)base["key"]; }
         }
 
-        [ConfigurationProperty("rootPath", IsRequired = true)]
-        public string PhysicalPathRoot
+        [ConfigurationProperty("name", IsRequired = true)]
+        public string Name
         {
-            get { return (string)base["rootPath"]; }
+            get { return (string)base["name"]; }
         }
 
-        [ConfigurationProperty("rootUrl", IsRequired = true)]
-        public string RootUrl
+        [ConfigurationProperty("path", IsRequired = true)]
+        public string FileName
         {
-            get { return (string)base["rootUrl"]; }
+            get { return (string)base["path"]; }
         }
+
 
     }
 }
