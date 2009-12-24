@@ -13,30 +13,32 @@ namespace NoName.NetShop.CMS.DataAccess
         public static void Insert(TagModel tag)
         {
             DbCommand Command = db.GetStoredProcCommand("UP_cmsTag_Add");
-            
-            db.AddInParameter(Command,"@tagname",DbType.String,tag.TagName);
-            db.AddInParameter(Command,"@xslttemplate",DbType.String,tag.XsltTemplate);
-            db.AddInParameter(Command,"@defaultparameter",DbType.String,tag.DefaultParameter);
-            db.AddInParameter(Command,"@dataprovider",DbType.String,tag.DataProvider);
-            db.AddInParameter(Command,"@editcontrol",DbType.String,tag.EditControl);
-            db.AddInParameter(Command,"@examplepicture",DbType.String,tag.ExamplePicture);
-            db.AddInParameter(Command,"@ispublic",DbType.Boolean,tag.IsPublic);
+
+            db.AddInParameter(Command, "@tagname", DbType.String, tag.TagName);
+            db.AddInParameter(Command, "@xslttemplate", DbType.String, tag.XsltTemplate);
+            db.AddInParameter(Command, "@defaultparameter", DbType.String, tag.DefaultParameter);
+            db.AddInParameter(Command, "@dataprovider", DbType.String, tag.DataProvider);
+            db.AddInParameter(Command, "@editcontrol", DbType.String, tag.EditControl);
+            db.AddInParameter(Command, "@examplepicture", DbType.String, tag.ExamplePicture);
+            db.AddInParameter(Command, "@ispublic", DbType.Boolean, tag.IsPublic);
+            db.AddInParameter(Command, "@tagtype", DbType.Int16, tag.TagType);
 
             db.ExecuteNonQuery(Command);
         }
-        
+
         public static void Update(TagModel tag)
         {
             DbCommand Command = db.GetStoredProcCommand("UP_cmsTag_Add");
-            
-            db.AddInParameter(Command,"@tagid",DbType.Int32,tag.TagID);
-            db.AddInParameter(Command,"@tagname",DbType.String,tag.TagName);
-            db.AddInParameter(Command,"@xslttemplate",DbType.String,tag.XsltTemplate);
-            db.AddInParameter(Command,"@defaultparameter",DbType.String,tag.DefaultParameter);
-            db.AddInParameter(Command,"@dataprovider",DbType.String,tag.DataProvider);
-            db.AddInParameter(Command,"@editcontrol",DbType.String,tag.EditControl);
-            db.AddInParameter(Command,"@examplepicture",DbType.String,tag.ExamplePicture);
-            db.AddInParameter(Command,"@ispublic",DbType.Boolean,tag.IsPublic);
+
+            db.AddInParameter(Command, "@tagid", DbType.Int32, tag.TagID);
+            db.AddInParameter(Command, "@tagname", DbType.String, tag.TagName);
+            db.AddInParameter(Command, "@xslttemplate", DbType.String, tag.XsltTemplate);
+            db.AddInParameter(Command, "@defaultparameter", DbType.String, tag.DefaultParameter);
+            db.AddInParameter(Command, "@dataprovider", DbType.String, tag.DataProvider);
+            db.AddInParameter(Command, "@editcontrol", DbType.String, tag.EditControl);
+            db.AddInParameter(Command, "@examplepicture", DbType.String, tag.ExamplePicture);
+            db.AddInParameter(Command, "@ispublic", DbType.Boolean, tag.IsPublic);
+            db.AddInParameter(Command, "@tagtype", DbType.Int16, tag.TagType);
 
             db.ExecuteNonQuery(Command);
         }
@@ -73,14 +75,14 @@ namespace NoName.NetShop.CMS.DataAccess
 
         public static string TagContentGet(int PageID,int TagID,string ServerID)
         {
-            string sql = "select content from [cmsTagContent] WHERE [pageid]={0} AND [tagid]={1} AND [serverid]={2}";
+            string sql = "select content from [cmsTagContent] WHERE [pageid]={0} AND [tagid]={1} AND [serverid]='{2}'";
             sql = String.Format(sql,PageID,TagID,ServerID);
             return Convert.ToString(db.ExecuteScalar(CommandType.Text,sql));
         }
         
         public static string TagParameterGet(int PageID,int TagID,string ServerID)
         {
-            string sql = "select content from [cmsTagParameter] WHERE [pageid]={0} AND [tagid]={1} AND [serverid]={2}";
+            string sql = "select content from [cmsTagParameter] WHERE [pageid]={0} AND [tagid]={1} AND [serverid]='{2}'";
             sql = String.Format(sql,PageID,TagID,ServerID);
             return Convert.ToString(db.ExecuteScalar(CommandType.Text,sql));
         }

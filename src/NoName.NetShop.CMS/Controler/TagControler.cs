@@ -34,6 +34,7 @@ namespace NoName.NetShop.CMS.Controler
                 model.EditControl = Convert.ToString(row["editcontrol"]);
                 model.ExamplePicture = Convert.ToString(row["examplepicture"]);
                 model.IsPublic = Convert.ToBoolean(row["ispublic"]);
+                model.TagType = Convert.ToInt32(row["tagtype"]);
             }
 
 

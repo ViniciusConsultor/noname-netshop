@@ -29,11 +29,13 @@ namespace NoName.NetShop.CMS.Controler
             columns.Add("Description", typeof(string));
             columns.Add("TagID", typeof(string));
             columns.Add("examplepicture", typeof(string));
+            columns.Add("ispublic", typeof(bool));
+            columns.Add("tagname", typeof(string));
 
             foreach (Match match in matches)
                 if (match.Success)
                 {
-                    string reg = "<dd:CMSTag ID=\"(?<serverid>(\\w+))\" Description=\"(?<des>(\\w+))\" TagID=\"(?<tagid>(\\w+))\" ";
+                    string reg = "<dd:CMSTag ID=\"(?<serverid>(\\w+))\" Description=\"(?<des>(\\w+))\" TagID=\"(?<tagid>(\\d+))\" ";
                     Match m = Regex.Match(match.Groups[0].Value, reg, RegexOptions.IgnoreCase);
                     if (m.Groups["serverid"].Success && m.Groups["des"].Success && m.Groups["tagid"].Success)
                     {
@@ -41,11 +43,18 @@ namespace NoName.NetShop.CMS.Controler
                         row["serverid"] = m.Groups["serverid"].Value;
                         row["Description"] = m.Groups["des"].Value;
                         row["TagID"] = m.Groups["tagid"].Value;
-                        row["examplepicture"] = TagControler.GetModel(Convert.ToInt32(m.Groups["tagid"].Value)).ExamplePicture;
+
+                        TagModel tag = TagControler.GetModel(Convert.ToInt32(m.Groups["tagid"].Value));
+
+                        row["examplepicture"] = tag.ExamplePicture;
+                        row["ispublic"] = tag.IsPublic;
+                        row["tagname"] = tag.TagName;
 
                         dt.Rows.Add(row);
                     }
                 }
+
+
 
             return dt;
         }
