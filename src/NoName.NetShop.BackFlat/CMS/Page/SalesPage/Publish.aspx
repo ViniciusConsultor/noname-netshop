@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Publish.aspx.cs" Inherits="NoName.NetShop.BackFlat.CMS.Page.SalesPage.Publish" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" ValidateRequest="false" CodeBehind="Publish.aspx.cs" Inherits="NoName.NetShop.BackFlat.CMS.Page.SalesPage.Publish" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,7 +13,7 @@
         var msgEditor = null;
         $(function() {
             setTimeout(function() {
-                $('.taglist input[type="checkbox"]').each(function() {
+            $('.listGrid input[type="checkbox"]').each(function() {
                     $(this).removeAttr('disabled').parent().removeAttr('disabled');
                 });
             }, 1000);
@@ -84,7 +84,7 @@
 <body>
     <form id="form1" runat="server">
         <h4 runat="server" id="Label_PageTitle"></h4>
-        [ <asp:HyperLink runat="server" ID="HyperLink1" Text="返回列表" NavigateUrl="~/Page/SalesPage/List.aspx" /> | 
+        [ <asp:HyperLink runat="server" ID="HyperLink1" Text="返回列表" NavigateUrl="List.aspx" /> | 
         <asp:HyperLink runat="server" ID="Link_Preview" Text="预览地址" Target="_blank" /> | 
         <asp:HyperLink runat="server" ID="Link_Formal" Text="正式地址" Target="_blank" /> ]
         <br/>
@@ -98,7 +98,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="标签名称">
                         <ItemTemplate>
-                            <a class="tag-name" style="cursor:pointer"><%# Eval("tagname")%></a>
+                            <a class="tag-name" style="cursor:pointer"><%# Eval("description")%></a>
                             <div style="display:none;"><img src='<%# Eval("examplepicture") %>' /></div>
                         </ItemTemplate>
                     </asp:TemplateField>
