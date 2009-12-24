@@ -15,6 +15,7 @@ namespace NoName.NetShop.CMS.Model
         private string _EditControl;
         private string _ExamplePicture;
         private bool _IsPublic;
+        private int _TagType;
 
 
         public int TagID
@@ -56,6 +57,11 @@ namespace NoName.NetShop.CMS.Model
         {
             get { return _IsPublic; }
             set { _IsPublic=value; }
+        }
+        public int TagType
+        {
+            get { return _TagType; }
+            set { _TagType = value; }
         }
 
     }
