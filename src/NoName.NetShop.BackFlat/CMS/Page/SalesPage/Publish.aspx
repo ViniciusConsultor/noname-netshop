@@ -6,9 +6,80 @@
 <head runat="server">
     <title></title>
     <link href="/css/cms.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jq.js"></script>
-    <script type="text/javascript" src="/js/jq.msgbox.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery.msgbox.js"></script>
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var msgEditor = null;
+        $(function() {
+            setTimeout(function() {
+                $('.taglist input[type="checkbox"]').each(function() {
+                    $(this).removeAttr('disabled').parent().removeAttr('disabled');
+                });
+            }, 1000);
+
+            $('a.tag-name').hover(function() {
+                var image = new Image();
+                image.src = $(this).next().children('img').attr('src');
+                var height = image.height;
+                var width = image.width;
+
+                var obj = $('<img class="tag-image-ge" src="' + image.src + '" />').css({
+                    'position': 'absolute',
+                    'width': (width / 2) + 'px',
+                    'height': (height / 2) + 'px',
+                    'border': '1px solid #ccc',
+                    'padding': '3px'
+                });
+
+                $(this).parent().append(obj);
+                obj.show(300);
+            }, function() {
+                $('.tag-image-ge').hide('fast').remove();
+            });
+        });
+
+        function showGeneratedCode(code, editor) {
+            $.messageBox({
+                title: '<b>生成代码</b>',
+                content: '<textarea id="generated_code_content">' + code + '</textarea>',
+                buttons: [{
+                    text: '复制到编辑区',
+                    css: '',
+                    style: 'border:1px solid #ccc;border-left:3px solid #ccc;background:#fff;',
+                    click: function() {
+                        editor.setData(CKEDITOR.instances.generated_code_content.getData(), messageBoxClose);
+                    }
+                }, {
+                    text: '复制到粘贴板',
+                    css: '',
+                    style: 'border:1px solid #ccc;border-left:3px solid #ccc;background:#fff;',
+                    click: function() {
+                        $.copyToClipboard(CKEDITOR.instances.generated_code_content.getData());
+                    }
+                }],
+                height: 'auto',
+                width: '500px',
+                top: '300px',
+                onClose: messageBoxClose
+                });
+
+                msgEditor = CKEDITOR.replace('generated_code_content', {
+                    startupMode: 'source',
+                    toolbar: [
+                    ['Source', 'Maximize']
+                ],
+                    toolbarStartupExpanded: false
+                });
+            }
+
+            function messageBoxClose() {
+                CKEDITOR.instances.generated_code_content.destroy();
+                $('#message-box-layer').hide('fast');
+                $('#message-box-layer').remove();
+                $('#message-box-background').remove();
+            }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -18,7 +89,7 @@
         <asp:HyperLink runat="server" ID="Link_Formal" Text="正式地址" Target="_blank" /> ]
         <br/>
         <div>
-            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" CssClass="taglist">
+            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" CssClass="listGrid">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>

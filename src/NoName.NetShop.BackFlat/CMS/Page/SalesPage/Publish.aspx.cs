@@ -56,9 +56,9 @@ namespace NoName.NetShop.BackFlat.CMS.Page.SalesPage
             {
                 if (((CheckBox)GridView1.Rows[i].FindControl("chkItem")).Checked == true)
                 {
-                    string ServerID = GridView1.Rows[i].Cells[1].Text;
-                    int TagID = int.Parse(GridView1.Rows[i].Cells[2].Text);
-                    string TagTitle = GridView1.Rows[i].Cells[3].Text;
+                    string ServerID = GridView1.Rows[i].Cells[2].Text;
+                    int TagID = int.Parse(GridView1.Rows[i].Cells[3].Text);
+                    string TagTitle = ((DataBoundLiteralControl)GridView1.Rows[i].Cells[1].Controls[0]).Text;
 
                     TagModel tag = TagControler.GetModel(TagID);
 
