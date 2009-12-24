@@ -1,0 +1,39 @@
+/*Group Purchase home Begin*/
+.magicGroupPurchaseHome_mainbody{ clear:both}
+.magicGroupPurchaseHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.magicGroupPurchaseHome_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.magicGroupPurchaseHome_mainbody .midColumn{ float:none; margin:0 224px; _margin:0 221px;}
+.magicGroupPurchaseHome_mainbody .midColumn .midColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*Group Purchase home End*/
+
+/*Group Purchase Detail Begin*/
+.magicGroupPurchaseDetail_mainbody{ clear:both}
+.magicGroupPurchaseDetail_mainbody .box1 .content{ padding:1px}
+.magicGroupPurchaseDetail_mainbody .box1 .content .box7 .content{ padding:10px;}
+.magicGroupPurchaseDetail_mainbody .box1 .content .box7 .content p.description{ margin:0; padding:0 20px;}
+
+.magicGroupPurchaseDetail_mainbody .productGeneralProperties .properties ul li{ padding-bottom:20px;}
+.magicGroupPurchaseDetail_mainbody .productGeneralProperties .properties ul li.buttons{ width:100px; overflow:hidden}
+
+.magicGroupPurchaseDetail_mainbody .leaveComment{ clear:both; zoom:1; padding:10px 15px;}
+.magicGroupPurchaseDetail_mainbody .leaveComment:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.magicGroupPurchaseDetail_mainbody .leaveComment .title{ clear:both; text-align:left; font-weight:bold; color:#333; padding:5px; background:none; border:none}
+.magicGroupPurchaseDetail_mainbody .leaveComment textarea{ width:825px; height:70px; border:1px solid #B5CFEC; background:#F7FAFD; float:left; display:block; font-size:12px;}
+.magicGroupPurchaseDetail_mainbody .leaveComment a.button_blue{ float:left; margin:27px 0 0 20px;}
+/*Group Purchase Detail End*/
+
+/*Group Purchase Submit Begin*/
+.groupPurchaseSubmit_mainbody{ clear:both}
+.groupPurchaseSubmit_mainbody .box1 .content{ padding:1px}
+.groupPurchaseSubmit_mainbody .box1 .content .box7 .content{ padding:10px}
+.groupPurchaseSubmit_mainbody .box1 .content .submit .content{ padding:50px 200px 10px 200px!important}
+.groupPurchaseSubmit_mainbody .productGeneralProperties .properties ul li{ padding-bottom:20px;}
+/*Group Purchase Submit End*/
+
+
+/*Group Purchase common begin*/
+.groupPurchaseSubNav{ position:absolute; right:0; _right:12px; top:5px; width:620px; height:25px;}
+.groupPurchaseSubNav .groupPurchaseButtonTab{ float:right;}
+.groupPurchaseSubNav .groupPurchaseButtonTab a.button_blue{ float:right; margin-left:5px;}
+.groupPurchaseSubNav .groupPurchaseButtonTab a.button_blue2{ float:right; margin-left:5px; margin-top:1px;}
+/*Group Purchase common end*/

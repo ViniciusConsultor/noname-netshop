@@ -271,7 +271,7 @@ ul.tip2 li.right{ background-position:-32px -1415px; height:35px; width:10px; }
 ul.tip2 li.middle{ background-position:center -1365px;}
 ul.tip2 li.middle span{ display:block; height:21px; background:#CCC; font-weight:bold; text-align:center; padding:8px 5px 0 5px; float:left}
 
-
+.tipContainer{ padding:50px 0 15px 0; text-align:center; clear:both}
 
 .box1{ clear:both; width:auto; text-align:left}
 .box1 ul.title{ height:26px; clear:both; background:url(../images/sprite.gif) 0 -382px repeat-x; margin:0; padding:0}
@@ -359,7 +359,13 @@ ul.tip2 li.middle span{ display:block; height:21px; background:#CCC; font-weight
 .box5 ul.bottom li.right{ list-style-type:none; float:right; width:10px; height:10px; background:url(../images/sprite.gif) -40px -441px;}
 
 .box6{ clear:both; border:1px solid #B5D0EC; padding:1px;}
-.box6 .title{ height:19px; padding:5px 0 0 10px; color:#333; font-weight:bold; text-align:left;background:transparent url(../images/sprite.gif) repeat-x scroll 0 -1264px;}
+.box6 .title{ height:19px; padding:5px 0 0 10px; color:#333; font-weight:bold; text-align:left;background:transparent url(../images/sprite.gif) repeat-x scroll 0 -1264px; position:relative}
+.box6 .title span{}
+.box6 .title .sort{ position:absolute; right:10px; top:-2px; font-weight:normal}
+.box6 .title .sort span{ display:block; float:left; padding:6px 5px 0 5px; padding:8px 5px 0 5px\9; _padding:7px 5px 0 5px;}
+.box6 .title .sort a{ display:block; float:left; padding:6px 5px 0 5px; padding:8px 5px 0 5px\9; _padding:7px 5px 0 5px;}
+.box6 .title .sort a.on{ background:#FFE861 url(../images/sprite.gif) 0 -1679px repeat-x; border:1px solid #FFCC01; padding:3px 5px 2px 5px; padding:5px 5px 0 5px\9; _padding:4px 5px 0 5px; margin-top:3px; cursor:default}
+.box6 .title .sort a.on:hover{ color:#333}
 .box6 .content{ padding:15px; clear:both; border:none; min-height:0px!important;_height:0!important; zoom:1;}
 .box6 .content:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
 
@@ -455,6 +461,8 @@ ul.productFilter li a.on{ background:#4598d2; color:#FFF; cursor:default; displa
 .list_vertical ul li a span{ display:block; float:none; padding:3px; line-height:24px;}
 .list_vertical ul li a span.name{ padding:0 3px; margin:0 auto; cursor:pointer}
 .list_vertical ul li a span.price{ color:#0087C8; font-weight:bold}
+.list_vertical ul li a:hover span.price{ color:#F60; font-weight:bold}
+.list_vertical ul li a span.marketPrice{ text-decoration:line-through; display:inline; padding-right:10px;}
 .list_vertical ul li a span.commentsNum{ color:#0087C8;}
 .list_vertical ul li .actions{ position:absolute; right:10px; bottom:10px; padding: 10px 0 0 32px;}
 .list_vertical ul li .actions a{ margin-right:10px;}
@@ -466,7 +474,8 @@ ul.productFilter li a.on{ background:#4598d2; color:#FFF; cursor:default; displa
 .bold{ font-weight:bold}
 .disabled{ color:#999}
 span.important{ color:#F00!important}
-.fixedTable table{ table-layout:fixed}
+.fixedTable table{ table-layout:fixed; display:inline\9}
+.autoTable table{ table-layout:auto!important;}
 .productPic{ border:none; width:140px; height:105px;}
 .inlineBlock{ display:inline-block!important; clear:none!important; float:none!important;}
 
@@ -537,6 +546,9 @@ div.table1 table tr th span{ display:block; clear:both; border:1px solid #FFF; h
 div.table1 table tr td{ border:1px solid #B5D0EC; padding:5px; line-height:200%; background:#FFF;}
 div.table1 table tr th.actions{ width:90px; text-align:center}
 div.table1 table tr.bottom td{ text-align:right; padding-right:20px;}
+div.table1 table tr.odd{ background:#FFF;}
+div.table1 table tr.even{ background:#e9f0fa}
+div.table1 table tr.even td{ background:#e9f0fa}
 div.table1 table a.linkButton{ color:#069; line-height:200%}
 div.table1 table tr td.field{ width:100px;}
 div.table1 table tr td.descriptionContent{ text-align:left}
@@ -551,11 +563,14 @@ div.table2 table tr th.actions{ width:90px;}
 div.table2 table tr th.checkBox{ width:70px;}
 div.table2 table tr td{ padding:2px 5px; line-height:200%;}
 div.table2 table tr td a.iconButton{ float:left; margin-left:5px;}
+div.table2 table tr td.action{ text-align:center;}
+div.table2 table tr td.action a.iconButton{ float:none; margin:0 auto;}
 div.table2 table tr.odd{ background:#FFF;}
 div.table2 table tr.even{ background:#e9f0fa}
 div.table2 table tr.bottom td{ background:#FFF; border-top:#B5D0EC 1px solid; padding:8px;}
 div.table2 table tr.bottom td a.button_blue{ float:left}
 div.table2 table tr.bottom td .pagination{ float:right}
+div.table2 table tr.bottom td .total{ float:right; display:block; line-height:14px;}
 div.table2 table a.linkButton{ color:#069; line-height:200%}
 
 div.table2 a{ color:#069; text-decoration:none}
@@ -643,6 +658,11 @@ ul.itemList6 li .infoContainer ul.info{ overflow:hidden; _height:0; _overflow:vi
 ul.itemList6 li .infoContainer ul.info li{ width:100%; float:left; padding:5px 0; border:none}
 ul.itemList6 li .infoContainer ul.info li span{ display:block; float:left}
 ul.itemList6 li span.description{ width:auto; line-height:200%; clear:both; display:block; height:100px; overflow:hidden; padding-right:20px;}
+
+ul.itemList7{ clear:both; padding:0; margin:0; zoom:1}
+ul.itemList7:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+ul.itemList7 li{ list-style-type:none; width:100%; float:left; padding:10px 0; border-bottom:1px dotted #B5D0EC; line-height:200%}
+ul.itemList7 li span{ display:block; clear:both}
 
 ul.questions{ clear:both; margin:0; padding:0}
 ul.questions li{ clear:both; padding:10px; list-style-type:none;}
@@ -765,6 +785,10 @@ ul.articleList_3 li span{ float:right; color:#999; display:block}
 .submitButtons:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
 .submitButtons a{ float:left; margin-right:10px;}
 
+.submitButton{ clear:both; padding:10px 0; margin:0 auto; zoom:1; text-align:center}
+.submitButtons:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.submitButton a{ margin:0 auto}
+
 
 /*header select box begin*/
 .headerbox_currentOption{ padding:5px; height:12px; background:#0099FF; color:#FFFFFF}
@@ -781,6 +805,13 @@ ul.articleList_3 li span{ float:right; color:#999; display:block}
 .commonSelectBox_list a{ padding:5px 8px; height:12px;}
 .commonSelectBox_list a:hover{ background:#003399; color:#FFFFFF}
 /*common select box end*/
+
+/*Common Complete Begin*/
+.commonComplete_mainbody{ clear:both}
+.commonComplete_mainbody .box1 .content{ padding:40px 100px;}
+.commonComplete_mainbody .otherChannel{ text-align:center; clear:both; padding:20px 0;}
+.commonComplete_mainbody .otherChannel a{ text-decoration:underline; padding:0 10px;}
+/*Common Complete End*/
 
 .noPaddingTop{ padding-top:0!important}
 .noPaddingBottom{ padding-bottom:0!important}
@@ -806,4 +837,4 @@ ul.articleList_3 li span{ float:right; color:#999; display:block}
 .newblock{ margin-left:4px;}
 
 .clearfix:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
-.clearfix{zoom:1;}
+.clearfix{zoom:1;}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
