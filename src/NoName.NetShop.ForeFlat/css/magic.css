@@ -28,6 +28,10 @@
 .magicSubNav .auctionCategory .comboBox{ float:left; margin-top:1px}
 /*Magic Auction Home End*/
 
+/*Magic Auction List Begin*/
+.magicAuctionList_mainbody{ clear:both}
+/*Magic Auction List End*/
+
 /*Magic Auction Detail Begin*/
 .magicAuctionDetail_mainbody{ clear:both}
 .magicAuctionDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
@@ -77,7 +81,7 @@
 .magicDealHome_mainbody .block2 .content .subTitle{ clear:both; padding:5px 3px; font-weight:bold}
 .magicDealHome_mainbody .block2 .content .column1{ width:310px; float:left; border-right:1px dotted #B4CFEC}
 .magicDealHome_mainbody .block2 .content .column2{ width:310px; float:left; margin-left:10px;}
-.magicDealHome_mainbody .blockN{ width:486px; float:left; clear:none;}
+.magicDealHome_mainbody .blockN{ width:487px; float:left; clear:none;}
 .magicDealHome_mainbody .blockN .content img{ float:left; width:190px; height:190px; margin-right:10px;}
 .magicDealHome_mainbody .blockN .content ul{ float:left; width:250px;}
 /*Magic Deal Home End*/
@@ -138,7 +142,7 @@
 .magicRentHome_mainbody .block3{ width:255px; float:left; clear:none;}
 .magicRentHome_mainbody .block3 .content{ height:380px; overflow:hidden}
 
-.magicRentHome_mainbody .blockN{ width:486px; float:left; clear:none;}
+.magicRentHome_mainbody .blockN{ width:487px; float:left; clear:none;}
 .magicRentHome_mainbody .blockN .content img{ float:left; width:190px; height:190px; margin-right:10px;}
 .magicRentHome_mainbody .blockN .content ul{ float:left; width:250px;}
 /*Magic Rent Home End*/
@@ -151,6 +155,7 @@
 .magicRentDetail_mainbody .box1 .content .box7 .content p.description{ margin:0; padding:0 20px;}
 
 .magicRentDetail_mainbody .productGeneralProperties .properties ul li{ padding-bottom:20px;}
+.magicRentDetail_mainbody .productGeneralProperties .properties ul li.buttons{ width:100px; overflow:hidden}
 
 .magicRentDetail_mainbody .leaveComment{ clear:both; zoom:1; padding:10px 15px;}
 .magicRentDetail_mainbody .leaveComment:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
@@ -158,6 +163,23 @@
 .magicRentDetail_mainbody .leaveComment textarea{ width:825px; height:70px; border:1px solid #B5CFEC; background:#F7FAFD; float:left; display:block; font-size:12px;}
 .magicRentDetail_mainbody .leaveComment a.button_blue{ float:left; margin:27px 0 0 20px;}
 /*Magic Rent Detail End*/
+
+/*Magic Pawn Shop Detail Begin*/
+.magicPawnShopDetail_mainbody{ clear:both}
+.magicPawnShopDetail_mainbody .box1 .content{ padding:1px}
+.magicPawnShopDetail_mainbody .box1 .content .box7 .content{ padding:10px;}
+.magicPawnShopDetail_mainbody .box1 .content .box7 .content p.description{ margin:0; padding:0 20px;}
+
+.magicPawnShopDetail_mainbody .productGeneralProperties .properties ul li{ padding-bottom:40px;}
+.magicPawnShopDetail_mainbody .productGeneralProperties .properties ul li.buttons{ width:100px; overflow:hidden}
+.magicPawnShopDetail_mainbody .productGeneralProperties .properties ul li span a{ color:#069; text-decoration:underline}
+
+.magicPawnShopDetail_mainbody .leaveComment{ clear:both; zoom:1; padding:10px 15px;}
+.magicPawnShopDetail_mainbody .leaveComment:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.magicPawnShopDetail_mainbody .leaveComment .title{ clear:both; text-align:left; font-weight:bold; color:#333; padding:5px; background:none; border:none}
+.magicPawnShopDetail_mainbody .leaveComment textarea{ width:825px; height:70px; border:1px solid #B5CFEC; background:#F7FAFD; float:left; display:block; font-size:12px;}
+.magicPawnShopDetail_mainbody .leaveComment a.button_blue{ float:left; margin:27px 0 0 20px;}
+/*Magic Pawn Shop Detail End*/
 
 
 
@@ -185,13 +207,20 @@
 .magicCommonComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(../images/cart_navigation4.jpg) center top no-repeat; }
 .magicCommonComplete_mainbody .otherChannel{ text-align:center; clear:both; padding:20px 0;}
 .magicCommonComplete_mainbody .otherChannel a{ text-decoration:underline; padding:0 10px;}
-/*Magic Common Begin*/
+/*Magic Common Complete End*/
+
+
+/*Magic Deal Daily Update*/
+.magicDealDailyUpdate_mainbody{ clear:both}
+.magicDealDailyUpdate_mainbody .column{ width:487px; float:left}
+.magicDealDailyUpdate_mainbody .paginationParent{ float:left}
+.magicDealDailyUpdate_mainbody .submitButton{ float:right; padding-top:10px}
+/*Magic Deal Daily Update*/
 
 
 
 
 .normalBlock{ width:375px!important; float:left!important; clear:none!important}
-.tipContainer{ padding:50px 0 15px 0; text-align:center; clear:both}
 
 ul.magicNavigator{ margin:0; padding:0}
 ul.magicNavigator li{ list-style-type:none; float:left; width:100%}
