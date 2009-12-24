@@ -10,6 +10,7 @@ using NoName.NetShop.CMS.DataAccess;
 using NoName.Utility;
 using NoName.NetShop.CMS.Config;
 using System.Configuration;
+using NoName.NetShop.CMS.Utility;
 
 namespace NoName.NetShop.CMS.Controler
 {
@@ -72,9 +73,9 @@ namespace NoName.NetShop.CMS.Controler
         {
             PageModel page = GetModel(PageID);
 
-            string url = HttpContext.Current.Server.MapPath(page.TempatePath) + "?pageid=" + page.PageID;
+            string url = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + page.TempatePath.Replace("\\","/") + "?pageid=" + page.PageID;
 
-            string html = HttpUtil.SendGetRequest(url, null, Encoding.UTF8, Encoding.UTF8);
+            string html = PublishUtil.SendGetRequest(url, null, Encoding.UTF8, Encoding.UTF8);
 
             PageCategoryElement Element = ((PageCategorySection)ConfigurationManager.GetSection("pageCategorySection")).PageCategories[Enum.GetName(typeof(PageCategory),page.Category)];
             string FileName = Element.PhysicalPathRoot + (page.PhysicalPath.StartsWith("\\") ? page.PhysicalPath.Substring(1, page.PhysicalPath.Length) : page.PhysicalPath);
@@ -91,6 +92,16 @@ namespace NoName.NetShop.CMS.Controler
             sw.Write(html);
             sw.Flush();
             sw.Close();
+        }
+
+
+        public static void GetPageUrl(int PageID, PageCategoryElement PageCategory, out string PreviewUrl, out string FormalUrl)
+        {
+            PageModel page = GetModel(PageID);
+
+
+            PreviewUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + page.TempatePath.Replace("\\","/") + "?pageid=" + page.PageID;
+            FormalUrl = PageCategory.RootUrl + page.PhysicalPath.Replace("\\", "/");
         }
 
     }
