@@ -44,7 +44,7 @@ namespace NoName.NetShop.BackFlat.CMS.Page.ChannelPage
             PageModel page = new PageModel();
 
             page.PageName = TextBox_PageName.Text;
-            page.PageTitle = TextBox_PageTitle.Text;
+            page.PageTitle = TextBox_PageTitle.Text+"_鼎鼎商城";
             page.Category = (int)PageCategory.ChannelPage;
             page.PhysicalPath = String.Format(Element.NameRule, page.PageName);
             page.TempatePath = DropDownList_Template.SelectedValue;
