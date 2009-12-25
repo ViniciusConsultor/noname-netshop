@@ -77,7 +77,7 @@ namespace NoName.NetShop.Comment.DAL
             return model;
         }
 
-        public DataTable GetList(int PageSize, int PageIndex,string TableFields, string AppType,string JoinStr, out int RecordCount)
+        public DataTable GetList(int PageIndex,int PageSize, string TableFields, string AppType,string JoinStr, out int RecordCount)
         {
             int PageLowerBound = 0, PageUpperBount = 0;
             PageLowerBound = (PageIndex - 1) * PageSize;
@@ -86,8 +86,8 @@ namespace NoName.NetShop.Comment.DAL
             string sqlCount = @"select count(0) from qacomment c " + JoinStr + " where  apptype='" + AppType + "'";
 
             string sqlData = @"select * from 
-	                            (select row_number() OVER(ORDER BY createtime desc) as nid,c.*," + TableFields + @" from qacomment c " + JoinStr + @") as sp
-	                            where sp.apptype='" + AppType + "' and sp.nid<" + PageLowerBound + " and sp.nid <= " + PageUpperBount;
+	                            (select row_number() OVER(ORDER BY c.createtime desc) as nid,c.*," + TableFields + @" from qacomment c " + JoinStr + @") as sp
+	                            where sp.apptype='" + AppType + "' and sp.nid>" + PageLowerBound + " and sp.nid <= " + PageUpperBount;
 
 
             RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sqlCount));
