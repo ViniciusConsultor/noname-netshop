@@ -100,6 +100,7 @@
     <Compile Include="Model\TagModel.cs" />
     <Compile Include="Model\TagParameterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\PublishUtil.cs" />
     <Compile Include="Utility\RegUtil.cs" />
     <Compile Include="Utility\XsltHelper.cs" />
   </ItemGroup>
