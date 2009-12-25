@@ -32,7 +32,7 @@ namespace NoName.NetShop.CMS.DataAccess
 
         public static void Update(PageModel page)
         {
-            DbCommand Command = db.GetStoredProcCommand("UP_cmsTag_Update");
+            DbCommand Command = db.GetStoredProcCommand("UP_cmsPage_Update");
 
             db.AddInParameter(Command, "@pageid", DbType.Int32, page.PageID);
             db.AddInParameter(Command, "@pagename", DbType.String, page.PageName);
