@@ -15,7 +15,3 @@ E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\NoName.NetShop.Com
 E:\works\project\NetShop\src\NoName.NetShop.Comment\obj\Debug\ResolveAssemblyReference.cache
 E:\works\project\NetShop\src\NoName.NetShop.Comment\obj\Debug\NoName.NetShop.Comment.dll
 E:\works\project\NetShop\src\NoName.NetShop.Comment\obj\Debug\NoName.NetShop.Comment.pdb
-E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
-E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.Unity.xml
-E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
-E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.ObjectBuilder2.xml

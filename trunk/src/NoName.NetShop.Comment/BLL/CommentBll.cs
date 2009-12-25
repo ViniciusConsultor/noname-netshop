@@ -38,9 +38,9 @@ namespace NoName.NetShop.Comment.BLL
             return dal.GetModel(CommentID);
         }
 
-        public DataTable GetList(int PageSize, int PageIndex, string TableFields, string AppType, string JoinStr, out int RecordCount)
+        public DataTable GetList(int PageIndex,int PageSize,  string TableFields, string AppType, string JoinStr, out int RecordCount)
         {
-            return dal.GetList(PageSize, PageIndex,TableFields, AppType,JoinStr, out RecordCount);
+            return dal.GetList(PageIndex, PageSize,TableFields, AppType,JoinStr, out RecordCount);
         }
     }
 }
