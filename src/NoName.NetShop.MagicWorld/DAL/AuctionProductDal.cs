@@ -25,6 +25,7 @@ namespace NoName.NetShop.MagicWorld.DAL
         public void Add(AuctionProductModel model)
         {
             DbCommand dbCommand = dbw.GetStoredProcCommand("UP_mwAuctionProduct_ADD");
+
             dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionID);
             dbw.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
             dbw.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
@@ -37,9 +38,17 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
             dbw.AddInParameter(dbCommand, "EndTime", DbType.DateTime, model.EndTime);
             dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-            dbw.AddInParameter(dbCommand, "@CateID", DbType.Int32, model.CateID);
-            dbw.AddInParameter(dbCommand, "@CatePath", DbType.String, model.CatePath);
-            dbw.AddInParameter(dbCommand, "@UserName", DbType.String, model.UserName);
+            dbw.AddInParameter(dbCommand, "@CateID", DbType.Int32, model.CategoryID);
+            dbw.AddInParameter(dbCommand, "@CatePath", DbType.String, model.CategoryPath);
+            dbw.AddInParameter(dbCommand, "@userid", DbType.String, model.UserID);
+            dbw.AddInParameter(dbCommand, "@truename", DbType.String, model.TrueName);
+            dbw.AddInParameter(dbCommand, "@phone", DbType.String, model.Phone);
+            dbw.AddInParameter(dbCommand, "@cellphone", DbType.String, model.CellPhone);
+            dbw.AddInParameter(dbCommand, "@postcode", DbType.String, model.PostCode);
+            dbw.AddInParameter(dbCommand, "@region", DbType.String, model.Region);
+            dbw.AddInParameter(dbCommand, "@address", DbType.String, model.Address);
+            dbw.AddInParameter(dbCommand, "@inserttime", DbType.String, model.InsertTime);
+            dbw.AddInParameter(dbCommand, "@updatetime", DbType.String, model.UpdateTime);
 
             dbw.ExecuteNonQuery(dbCommand);
         }
@@ -62,6 +71,7 @@ namespace NoName.NetShop.MagicWorld.DAL
         public void Update(AuctionProductModel model)
         {
             DbCommand dbCommand = dbw.GetStoredProcCommand("UP_mwAuctionProduct_Update");
+
             dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionID);
             dbw.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
             dbw.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
@@ -74,9 +84,18 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
             dbw.AddInParameter(dbCommand, "EndTime", DbType.DateTime, model.EndTime);
             dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-            dbw.AddInParameter(dbCommand, "CateID", DbType.Int32, model.CateID);
-            dbw.AddInParameter(dbCommand, "CatePath", DbType.String, model.CatePath);
-            dbw.AddInParameter(dbCommand, "@UserName", DbType.String, model.UserName);
+            dbw.AddInParameter(dbCommand, "@CateID", DbType.Int32, model.CategoryID);
+            dbw.AddInParameter(dbCommand, "@CatePath", DbType.String, model.CategoryPath);
+            dbw.AddInParameter(dbCommand, "@userid", DbType.String, model.UserID);
+            dbw.AddInParameter(dbCommand, "@truename", DbType.String, model.TrueName);
+            dbw.AddInParameter(dbCommand, "@phone", DbType.String, model.Phone);
+            dbw.AddInParameter(dbCommand, "@cellphone", DbType.String, model.CellPhone);
+            dbw.AddInParameter(dbCommand, "@postcode", DbType.String, model.PostCode);
+            dbw.AddInParameter(dbCommand, "@region", DbType.String, model.Region);
+            dbw.AddInParameter(dbCommand, "@address", DbType.String, model.Address);
+            dbw.AddInParameter(dbCommand, "@inserttime", DbType.String, model.InsertTime);
+            dbw.AddInParameter(dbCommand, "@updatetime", DbType.String, model.UpdateTime);
+
             dbw.ExecuteNonQuery(dbCommand);
         }
 
@@ -232,13 +251,23 @@ namespace NoName.NetShop.MagicWorld.DAL
             ojb = dataReader["cateid"];
             if (ojb != null && ojb != DBNull.Value)
             {
-                model.CateID = Convert.ToInt32(ojb);
+                model.CategoryID = Convert.ToInt32(ojb);
             }
             ojb = dataReader["catepath"];
             if (ojb != null && ojb != DBNull.Value)
             {
-                model.CatePath = Convert.ToString(ojb);
+                model.CategoryPath = Convert.ToString(ojb);
             }
+
+            model.UserID = Convert.ToString(dataReader["userid"]);
+            model.TrueName = Convert.ToString(dataReader["truename"]);
+            model.Phone = Convert.ToString(dataReader["phone"]);
+            model.CellPhone = Convert.ToString(dataReader["cellphone"]);
+            model.PostCode = Convert.ToString(dataReader["postcode"]);
+            model.Region = Convert.ToString(dataReader["region"]);
+            model.Address = Convert.ToString(dataReader["address"]);
+            model.InsertTime = Convert.ToDateTime(dataReader["inserttime"]);
+            model.UpdateTime = Convert.ToDateTime(dataReader["updatetime"]);
 			return model;
 		}
 
