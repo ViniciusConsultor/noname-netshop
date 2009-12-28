@@ -19,9 +19,17 @@ namespace NoName.NetShop.MagicWorld.Model
         private DateTime _StartTime;
         private DateTime _EndTime;
         private int _Status;
-        private int _CateID;
-        private string _CatePath;
-        private string _UserName;
+        private int _CategoryID;
+        private string _CategoryPath;
+        private string _UserID;
+        private string _TrueName;
+        private string _Phone;
+        private string _CellPhone;
+        private string _PostCode;
+        private string _Region;
+        private string _Address;
+        private DateTime _InsertTime;
+        private DateTime _UpdateTime;
 
         public int AuctionID
         {
@@ -83,20 +91,60 @@ namespace NoName.NetShop.MagicWorld.Model
             get { return _Status; }
             set { _Status = value; }
         }
-        public int CateID
+        public int CategoryID
         {
-            get { return _CateID; }
-            set { _CateID = value; }
+            get { return _CategoryID; }
+            set { _CategoryID = value; }
         }
-        public string CatePath
+        public string CategoryPath
         {
-            get { return _CatePath; }
-            set { _CatePath = value; }
+            get { return _CategoryPath; }
+            set { _CategoryPath = value; }
         }
-        public string UserName
+        public string UserID
         {
-            get { return _UserName; }
-            set { _UserName = value; }
+            get { return _UserID; }
+            set { _UserID = value; }
+        }
+        public string TrueName
+        {
+            get { return _TrueName; }
+            set { _TrueName = value; }
+        }
+        public string Phone
+        {
+            get { return _Phone; }
+            set { _Phone = value; }
+        }
+        public string CellPhone
+        {
+            get { return _CellPhone; }
+            set { _CellPhone = value; }
+        }
+        public string PostCode
+        {
+            get { return _PostCode; }
+            set { _PostCode = value; }
+        }
+        public string Region
+        {
+            get { return _Region; }
+            set { _Region = value; }
+        }
+        public string Address
+        {
+            get { return _Address; }
+            set { _Address = value; }
+        }
+        public DateTime InsertTime
+        {
+            get { return _InsertTime; }
+            set { _InsertTime = value; }
+        }
+        public DateTime UpdateTime
+        {
+            get { return _UpdateTime; }
+            set { _UpdateTime = value; }
         }
     }
     public enum AuctionProductStatus
