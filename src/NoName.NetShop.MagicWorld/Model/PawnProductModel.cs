@@ -9,7 +9,7 @@ namespace NoName.NetShop.MagicWorld.Model
     {
         private int _PawnProductID;
         private string _PawnProductName;
-        private int _UserID;
+        private string _UserID;
         private decimal _PawnPrice;
         private decimal _SellingPrice;
         private int _CateID;
@@ -17,13 +17,18 @@ namespace NoName.NetShop.MagicWorld.Model
         private int _Stock;
         private string _SmallImage;
         private string _MediumImage;
-        private string _LargeImage;
-        private string _Keywords;
         private string _Brief;
         private DateTime _InsertTime;
         private DateTime _ChangeTime;
         private int _Status;
         private int _SortValue;
+        private DateTime _DeadTime;
+        private string _TrueName;
+        private string _Phone;
+        private string _CellPhone;
+        private string _PostCode;
+        private string _Region;
+        private string _Address;
 
 
         public int PawnProductID
@@ -36,7 +41,7 @@ namespace NoName.NetShop.MagicWorld.Model
             get { return _PawnProductName; }
             set { _PawnProductName = value; }
         }
-        public int UserID
+        public string UserID
         {
             get { return _UserID; }
             set { _UserID = value; }
@@ -76,16 +81,6 @@ namespace NoName.NetShop.MagicWorld.Model
             get { return _MediumImage; }
             set { _MediumImage = value; }
         }
-        public string LargeImage
-        {
-            get { return _LargeImage; }
-            set { _LargeImage = value; }
-        }
-        public string Keywords
-        {
-            get { return _Keywords; }
-            set { _Keywords = value; }
-        }
         public string Brief
         {
             get { return _Brief; }
@@ -110,6 +105,41 @@ namespace NoName.NetShop.MagicWorld.Model
         {
             get { return _SortValue; }
             set { _SortValue = value; }
+        }
+        public DateTime DeadTime
+        {
+            get { return _DeadTime; }
+            set { _DeadTime = value; }
+        }
+        public string TrueName
+        {
+            get { return _TrueName; }
+            set { _TrueName = value; }
+        }
+        public string Phone
+        {
+            get { return _Phone; }
+            set { _Phone = value; }
+        }
+        public string CellPhone
+        {
+            get { return _CellPhone; }
+            set { _CellPhone = value; }
+        }
+        public string PostCode
+        {
+            get { return _PostCode; }
+            set { _PostCode = value; }
+        }
+        public string Region
+        {
+            get { return _Region; }
+            set { _Region = value; }
+        }
+        public string Address
+        {
+            get { return _Address; }
+            set { _Address = value; }
         }
     }
     public enum PawnProductStatus

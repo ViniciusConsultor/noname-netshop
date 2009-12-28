@@ -9,23 +9,29 @@ namespace NoName.NetShop.MagicWorld.Model
     {
         public SecondhandProductModel()
         { }
-        #region Model
+        
+
         private int _seproductid;
         private string _seproductname;
-        private int _userid;
         private decimal _price;
         private int _cateid;
         private string _catepath;
         private int _stock;
         private string _smallimage;
         private string _mediumimage;
-        private string _largeimage;
-        private string _keywords;
         private string _brief;
         private DateTime _inserttime;
         private DateTime _updatetime;
         private int _status;
         private int _sortvalue;
+        private string _userid;
+        private int _usagecondition;
+        private string _truename;
+        private string _phone;
+        private string _cellphone;
+        private string _postcode;
+        private string _region;
+        private string _address;
         /// <summary>
         /// 
         /// </summary>
@@ -41,14 +47,6 @@ namespace NoName.NetShop.MagicWorld.Model
         {
             set { _seproductname = value; }
             get { return _seproductname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int UserID
-        {
-            set { _userid = value; }
-            get { return _userid; }
         }
         /// <summary>
         /// 
@@ -101,22 +99,6 @@ namespace NoName.NetShop.MagicWorld.Model
         /// <summary>
         /// 
         /// </summary>
-        public string LargeImage
-        {
-            set { _largeimage = value; }
-            get { return _largeimage; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Keywords
-        {
-            set { _keywords = value; }
-            get { return _keywords; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
         public string Brief
         {
             set { _brief = value; }
@@ -154,7 +136,47 @@ namespace NoName.NetShop.MagicWorld.Model
             set { _sortvalue = value; }
             get { return _sortvalue; }
         }
-        #endregion Model
+
+        public string UserID
+        {
+            set { _userid = value; }
+            get { return _userid; }
+        }
+        public int UsageCondition
+        {
+            set { _usagecondition = value; }
+            get { return _usagecondition; }
+        }
+        public string TrueName
+        {
+            set { _truename = value; }
+            get { return _truename; }
+        }
+        public string Phone
+        {
+            set { _phone = value; }
+            get { return _phone; }
+        }
+        public string CellPhone
+        {
+            set { _cellphone = value; }
+            get { return _cellphone; }
+        }
+        public string PostCode
+        {
+            set { _postcode = value; }
+            get { return _postcode; }
+        }
+        public string Region
+        {
+            set { _region = value; }
+            get { return _region; }
+        }
+        public string Address
+        {
+            set { _address = value; }
+            get { return _address; }
+        }
     }
 
     public enum SecondhandProductStatus
