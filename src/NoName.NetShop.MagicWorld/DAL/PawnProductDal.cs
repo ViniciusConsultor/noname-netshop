@@ -21,10 +21,9 @@ namespace NoName.NetShop.MagicWorld.DAL
         public void Add(PawnProductModel model)
         {
             DbCommand command = dbw.GetStoredProcCommand("UP_mwPawnProduct_Insert");
-
+            
             dbw.AddInParameter(command, "@pawnproductid", DbType.Int32, model.PawnProductID);
             dbw.AddInParameter(command, "@pawnproductname", DbType.String, model.PawnProductName);
-            dbw.AddInParameter(command, "@userid", DbType.Int32, model.UserID);
             dbw.AddInParameter(command, "@pawnprice", DbType.Decimal, model.PawnPrice);
             dbw.AddInParameter(command, "@sellingprice", DbType.Decimal, model.SellingPrice);
             dbw.AddInParameter(command, "@cateid", DbType.Int32, model.CateID);
@@ -32,13 +31,19 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(command, "@stock", DbType.Int32, model.Stock);
             dbw.AddInParameter(command, "@smallimage", DbType.String, model.SmallImage);
             dbw.AddInParameter(command, "@mediumimage", DbType.String, model.MediumImage);
-            dbw.AddInParameter(command, "@largeimage", DbType.String, model.LargeImage);
-            dbw.AddInParameter(command, "@keywords", DbType.String, model.Keywords);
             dbw.AddInParameter(command, "@brief", DbType.String, model.Brief);
             dbw.AddInParameter(command, "@inserttime", DbType.DateTime, model.InsertTime);
             dbw.AddInParameter(command, "@changetime", DbType.DateTime, model.ChangeTime);
             dbw.AddInParameter(command, "@status", DbType.Int32, model.Status);
             dbw.AddInParameter(command, "@sortvalue", DbType.Int32, model.SortValue);
+            dbw.AddInParameter(command, "@userid", DbType.String, model.UserID);
+            dbw.AddInParameter(command, "@deadtime", DbType.DateTime, model.DeadTime);
+            dbw.AddInParameter(command, "@truename", DbType.String, model.TrueName);
+            dbw.AddInParameter(command, "@phone", DbType.String, model.Phone);
+            dbw.AddInParameter(command, "@cellphone", DbType.String, model.CellPhone);
+            dbw.AddInParameter(command, "@postcode", DbType.String, model.PostCode);
+            dbw.AddInParameter(command, "@region", DbType.String, model.Region);
+            dbw.AddInParameter(command, "@address", DbType.String, model.Address);
 
             dbw.ExecuteNonQuery(command);
         }
@@ -58,7 +63,6 @@ namespace NoName.NetShop.MagicWorld.DAL
 
             dbw.AddInParameter(command, "@pawnproductid", DbType.Int32, model.PawnProductID);
             dbw.AddInParameter(command, "@pawnproductname", DbType.String, model.PawnProductName);
-            dbw.AddInParameter(command, "@userid", DbType.Int32, model.UserID);
             dbw.AddInParameter(command, "@pawnprice", DbType.Decimal, model.PawnPrice);
             dbw.AddInParameter(command, "@sellingprice", DbType.Decimal, model.SellingPrice);
             dbw.AddInParameter(command, "@cateid", DbType.Int32, model.CateID);
@@ -66,13 +70,19 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(command, "@stock", DbType.Int32, model.Stock);
             dbw.AddInParameter(command, "@smallimage", DbType.String, model.SmallImage);
             dbw.AddInParameter(command, "@mediumimage", DbType.String, model.MediumImage);
-            dbw.AddInParameter(command, "@largeimage", DbType.String, model.LargeImage);
-            dbw.AddInParameter(command, "@keywords", DbType.String, model.Keywords);
             dbw.AddInParameter(command, "@brief", DbType.String, model.Brief);
             dbw.AddInParameter(command, "@inserttime", DbType.DateTime, model.InsertTime);
             dbw.AddInParameter(command, "@changetime", DbType.DateTime, model.ChangeTime);
             dbw.AddInParameter(command, "@status", DbType.Int32, model.Status);
             dbw.AddInParameter(command, "@sortvalue", DbType.Int32, model.SortValue);
+            dbw.AddInParameter(command, "@userid", DbType.String, model.UserID);
+            dbw.AddInParameter(command, "@deadtime", DbType.DateTime, model.DeadTime);
+            dbw.AddInParameter(command, "@truename", DbType.String, model.TrueName);
+            dbw.AddInParameter(command, "@phone", DbType.String, model.Phone);
+            dbw.AddInParameter(command, "@cellphone", DbType.String, model.CellPhone);
+            dbw.AddInParameter(command, "@postcode", DbType.String, model.PostCode);
+            dbw.AddInParameter(command, "@region", DbType.String, model.Region);
+            dbw.AddInParameter(command, "@address", DbType.String, model.Address);
 
             dbw.ExecuteNonQuery(command);
         }
@@ -103,25 +113,31 @@ namespace NoName.NetShop.MagicWorld.DAL
 
         private PawnProductModel BindModel(DataRow row)
         {
-            PawnProductModel model = new PawnProductModel();
-
-            model.Brief = Convert.ToString(row["brief"]);
-            model.CateID = Convert.ToInt32(row["cateid"]);
-            model.CatePath = Convert.ToString(row["catepath"]);
-            model.ChangeTime = Convert.ToDateTime(row["changetime"]);
-            model.InsertTime = Convert.ToDateTime(row["inserttime"]);
-            model.Keywords = Convert.ToString(row["keywords"]);
-            model.LargeImage = Convert.ToString(row["largeimage"]);
-            model.MediumImage = Convert.ToString(row["mediumimage"]);
-            model.PawnPrice = Convert.ToInt32(row["pawnprice"]);
-            model.SellingPrice = Convert.ToInt32(row["sellingprice"]);
-            model.PawnProductID = Convert.ToInt32(row["pawnproductid"]);
-            model.PawnProductName = Convert.ToString(row["pawnproductname"]);
-            model.SmallImage = Convert.ToString(row["smallimage"]);
-            model.SortValue = Convert.ToInt32(row["sortvalue"]);
-            model.Status = Convert.ToInt16(row["status"]);
-            model.Stock = Convert.ToInt32(row["stock"]);
-            model.UserID = Convert.ToInt32(row["userid"]);
+            PawnProductModel model = new PawnProductModel()
+            {
+                Address = Convert.ToString(row["address"]),
+                Brief = Convert.ToString(row["brief"]),
+                CateID = Convert.ToInt32(row["cateid"]),
+                CatePath = Convert.ToString(row["catepath"]),
+                CellPhone = Convert.ToString(row["cellphone"]),
+                ChangeTime = Convert.ToDateTime(row["changetime"]),
+                DeadTime = Convert.ToDateTime(row["deadtime"]),
+                InsertTime = Convert.ToDateTime(row["inserttime"]),
+                MediumImage = Convert.ToString(row["mediumimage"]),
+                PawnPrice = Convert.ToDecimal(row["pawnprice"]),
+                PawnProductID = Convert.ToInt32(row["pawnproductid"]),
+                PawnProductName = Convert.ToString(row["pawnproductname"]),
+                Phone = Convert.ToString(row["phone"]),
+                PostCode = Convert.ToString(row["postcode"]),
+                Region = Convert.ToString(row["region"]),
+                SellingPrice = Convert.ToInt32(row["sellingprice"]),
+                SmallImage = Convert.ToString(row["smallimage"]),
+                SortValue = Convert.ToInt32(row["sortvalue"]),
+                Status = Convert.ToInt16(row["status"]),
+                Stock = Convert.ToInt32(row["stock"]),
+                TrueName = Convert.ToString(row["truename"]),
+                UserID = Convert.ToString(row["userid"])
+            };
 
             return model;
         }
