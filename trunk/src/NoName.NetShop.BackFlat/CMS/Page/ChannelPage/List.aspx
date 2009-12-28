@@ -26,7 +26,7 @@
                     <asp:BoundField HeaderText="作者" DataField="author" />
                     <asp:TemplateField HeaderText="创建时间">
                         <ItemTemplate>
-                            <%# Convert.ToDateTime(Eval("createtime")).ToString("yyyy-MM-dd hh:mm:ss")%>
+                            <%# Convert.ToDateTime(Eval("createtime")).ToString("yyyy-MM-dd HH:mm:ss")%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
