@@ -35,7 +35,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
 
             TextBox_Brief.Text = model.Brief;
             TextBox_Count.Text = model.Stock.ToString();
-            TextBox_Keyword.Text = model.Keywords;
+            //TextBox_Keyword.Text = model.Keywords;
             TextBox_Price.Text = model.Price.ToString();
             TextBox_ProductName.Text = model.SecondhandProductName;
             Image_ProductImage.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage); 
@@ -79,7 +79,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
                 {
                     model.SmallImage = ProductImages[0];
                     model.MediumImage = ProductImages[1];
-                    model.LargeImage = ProductImages[2];
+                    //model.LargeImage = ProductImages[2];
                 }
                 else
                 {
@@ -89,7 +89,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             }
 
             model.SecondhandProductName = TextBox_ProductName.Text;
-            model.Keywords = TextBox_Keyword.Text;
+            //model.Keywords = TextBox_Keyword.Text;
 
             model.Brief = TextBox_Brief.Text;
             model.Price = Convert.ToDecimal(TextBox_Price.Text);

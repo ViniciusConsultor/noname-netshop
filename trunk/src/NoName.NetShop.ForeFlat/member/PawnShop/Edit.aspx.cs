@@ -37,7 +37,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
             TextBox_ProductName.Text = model.PawnProductName;
             TextBox_Brief.Text = model.Brief;
             TextBox_Count.Text = model.Stock.ToString();
-            TextBox_Keyword.Text = model.Keywords;
+            //TextBox_Keyword.Text = model.Keywords;
             Image_ProductImage.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage);
         }
 
@@ -73,7 +73,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
                 {
                     model.SmallImage = ProductImages[0];
                     model.MediumImage = ProductImages[1];
-                    model.LargeImage = ProductImages[2];
+                    //model.LargeImage = ProductImages[2];
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
 
             model.PawnProductName = TextBox_ProductName.Text;
             model.Brief = TextBox_Brief.Text;
-            model.Keywords = TextBox_Keyword.Text;
+            //model.Keywords = TextBox_Keyword.Text;
             model.Stock = Convert.ToInt32(TextBox_Count.Text);
             model.ChangeTime = DateTime.Now;
 
