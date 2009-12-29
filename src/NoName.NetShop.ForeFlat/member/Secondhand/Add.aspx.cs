@@ -73,15 +73,15 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
 
                 model.SecondhandProductID = SecondhandProductID;
                 model.SecondhandProductName = TextBox_ProductName.Text;
-                model.UserID = GetUserID();
-                model.Keywords = TextBox_Keyword.Text;
+                //model.UserID = GetUserID();
+                //model.Keywords = TextBox_Keyword.Text;
 
                 model.Brief = TextBox_Brief.Text;
                 model.CateID = cate.CategoryID;
                 model.CatePath = cate.CategoryPath;
                 model.SmallImage = ProductImages[0];
                 model.MediumImage = ProductImages[1];
-                model.LargeImage = ProductImages[2];
+                //model.LargeImage = ProductImages[2];
                 model.Price = Convert.ToDecimal(TextBox_Price.Text);
                 model.Status = 1;
                 model.Stock = Convert.ToInt32(TextBox_Count.Text);

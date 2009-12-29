@@ -68,14 +68,14 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
 
                 model.PawnProductID = PawnProductID;
                 model.PawnProductName = TextBox_ProductName.Text;
-                model.UserID = GetUserID();
+                //model.UserID = GetUserID();
                 model.Brief = TextBox_Brief.Text;
                 model.CateID = cate.CategoryID;
                 model.CatePath = cate.CategoryPath;
-                model.Keywords = TextBox_Keyword.Text;
+                //model.Keywords = TextBox_Keyword.Text;
                 model.SmallImage = ProductImages[0];
                 model.MediumImage = ProductImages[1];
-                model.LargeImage = ProductImages[2];
+                //model.LargeImage = ProductImages[2];
                 model.PawnPrice = 0;
                 model.SortValue = PawnProductID;
                 model.Status = 1;

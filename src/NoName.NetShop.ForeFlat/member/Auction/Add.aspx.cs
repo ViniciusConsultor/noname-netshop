@@ -86,14 +86,14 @@ namespace NoName.NetShop.ForeFlat.member.Auction
                 model.AddPrices = TextBox_AddPrice.Text.Replace("，", ",");
                 model.CurPrice = model.StartPrice;
 
-                model.CateID = cate.CategoryID;
-                model.CatePath = cate.CategoryPath;
+                //model.CateID = cate.CategoryID;
+                //model.CatePath = cate.CategoryPath;
 
                 model.Brief = TextBox_Brief.Text;
 
                 model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
                 model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
-                model.UserName = GetUserName();
+                //model.UserName = GetUserName();
 
                 model.MediumImage = ProductImages[0];
                 model.SmallImage = ProductImages[1];
