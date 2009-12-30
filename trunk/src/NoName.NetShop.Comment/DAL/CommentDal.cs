@@ -12,8 +12,8 @@ namespace NoName.NetShop.Comment.DAL
 {
     public class CommentDal
     {
-        private Database dbw = DBFacroty.DbWriter;
-        private Database dbr = DBFacroty.DbReader;
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
 
         public void Add(CommentModel model)
         {

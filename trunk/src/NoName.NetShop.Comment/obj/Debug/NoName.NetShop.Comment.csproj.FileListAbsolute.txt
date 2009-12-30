@@ -15,3 +15,22 @@ E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\NoName.NetShop.Com
 E:\works\project\NetShop\src\NoName.NetShop.Comment\obj\Debug\ResolveAssemblyReference.cache
 E:\works\project\NetShop\src\NoName.NetShop.Comment\obj\Debug\NoName.NetShop.Comment.dll
 E:\works\project\NetShop\src\NoName.NetShop.Comment\obj\Debug\NoName.NetShop.Comment.pdb
+<<<<<<< .mine
+E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.Unity.xml
+E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+E:\works\project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.ObjectBuilder2.xml
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\obj\Debug\ResolveAssemblyReference.cache
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\obj\Debug\NoName.NetShop.Comment.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\NoName.NetShop.Comment.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\NoName.NetShop.Comment.pdb
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\NoName.NetShop.Common.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.Unity.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\Microsoft.Practices.ObjectBuilder2.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\bin\Debug\NoName.NetShop.Common.pdb
+F:\works\Project\NetShop\src\NoName.NetShop.Comment\obj\Debug\NoName.NetShop.Comment.pdb
+=======
+>>>>>>> .r328
