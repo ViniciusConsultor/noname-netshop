@@ -5,13 +5,13 @@
     </tr>
     <tr>
         <td>
-            <asp:ListBox Visible="false" runat="server" ID="ListBox1"></asp:ListBox>
+            <asp:ListBox AutoPostBack="true" Visible="false" runat="server" ID="ListBox1"></asp:ListBox>
         </td>
         <td>
-            <asp:ListBox Visible="false" runat="server" ID="ListBox2"></asp:ListBox>
+            <asp:ListBox AutoPostBack="true" Visible="false" runat="server" ID="ListBox2"></asp:ListBox>
         </td>
         <td>
-            <asp:ListBox Visible="false" runat="server" ID="ListBox3"></asp:ListBox>
+            <asp:ListBox AutoPostBack="true" Visible="false" runat="server" ID="ListBox3"></asp:ListBox>
         </td>
     </tr>
 </table>
