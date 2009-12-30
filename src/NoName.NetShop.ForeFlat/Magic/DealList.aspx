@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="DealList.aspx.cs" Inherits="NoName.NetShop.ForeFlat.Magic.DealList" %>
+<%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 
 <asp:Content ID="ContentHeader" ContentPlaceHolderID="head" runat="server">
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
@@ -33,69 +34,25 @@
                 </ul>
                 <div class="content">
                     <ul class="articleList_3 bullet_2">
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
+                        <asp:Repeater runat="server" ID="Repeater_Sale">
+                            <ItemTemplate>
+                                <li>
+                                    <a href='<%# "Secondhand.aspx?s="+Eval("seproductid") %>'><%# Eval("seproductname") %></a>
+                                    <span><%# Convert.ToDateTime(Eval("inserttime")).ToString("MM-dd") %></span>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                     <div class="paginationParent">
                         <div class="pagination">
+                            <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager_Sales" runat="server" PageSize="12"
+                                UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页'
+                                LastPageText='末页' NextPageText='下一页' OnPageChanged="AspNetPager_Sales_PageChanged"
+                                PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
+                                ShowPrevNext="True" SubmitButtonClass="buttom" 
+                                NumericButtonTextFormatString=''>
+                            </cc1:AspNetPager>
+                            <!--
                             <a class="prev" href="#"></a>
                             <div class="pageNum">
                                 <a class="on" href="#">1</a>
@@ -110,6 +67,7 @@
                             <div class="jumpTo">
                                 <span>跳转到</span><input type="text" value="1" /><span>页</span>
                             </div>
+                            -->
                         </div>
                     </div>
                     <div class="submitButton">
@@ -135,69 +93,25 @@
                 </ul>
                 <div class="content">
                     <ul class="articleList_3 bullet_2">
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
-                        <li>
-                            <a href="#">低价出售纯进口留声机</a>
-                            <span>11-03</span>
-                        </li>
+                        <asp:Repeater runat="server" ID="Repeater_Demand">
+                            <ItemTemplate>
+                                <li>
+                                    <a href="#"><%# Eval("demandname") %></a>
+                                    <span><%# Convert.ToDateTime(Eval("createtime")).ToString("MM-dd") %></span>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                     <div class="paginationParent">
                         <div class="pagination">
+                            <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager_Demand" runat="server" PageSize="12"
+                                UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页'
+                                LastPageText='末页' NextPageText='下一页' OnPageChanged="AspNetPager_Demand_PageChanged"
+                                PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
+                                ShowPrevNext="True" SubmitButtonClass="buttom" 
+                                NumericButtonTextFormatString=''>
+                            </cc1:AspNetPager>
+                            <!--
                             <a class="prev" href="#"></a>
                             <div class="pageNum">
                                 <a class="on" href="#">1</a>
@@ -212,6 +126,7 @@
                             <div class="jumpTo">
                                 <span>跳转到</span><input type="text" value="1" /><span>页</span>
                             </div>
+                            -->
                         </div>
                     </div>
                     <div class="submitButton">
