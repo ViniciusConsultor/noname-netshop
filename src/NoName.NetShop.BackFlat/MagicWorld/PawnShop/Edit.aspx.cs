@@ -38,7 +38,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
             TextBox_SellingPrice.Text = model.SellingPrice.ToString();
             TextBox_Brief.Text = model.Brief;
             TextBox_Count.Text = model.Stock.ToString();
-            TextBox_Keyword.Text = model.Keywords;
+            //TextBox_Keyword.Text = model.Keywords;
             Image_ProductImage.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage);
         }
 
@@ -75,7 +75,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
                 {
                     model.SmallImage = ProductImages[0];
                     model.MediumImage = ProductImages[1];
-                    model.LargeImage = ProductImages[2];
+                    //model.LargeImage = ProductImages[2];
                 }
                 else
                 {
@@ -89,7 +89,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
             model.PawnPrice = Convert.ToDecimal(TextBox_PawnPrice.Text);
             model.SellingPrice = Convert.ToDecimal(TextBox_SellingPrice.Text);
             model.Brief = TextBox_Brief.Text;
-            model.Keywords = TextBox_Keyword.Text;
+            //model.Keywords = TextBox_Keyword.Text;
             model.Stock = Convert.ToInt32(TextBox_Count.Text);
             model.ChangeTime = DateTime.Now;
             model.Status = (int)PawnProductStatus.已收当;
