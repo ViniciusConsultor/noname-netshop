@@ -15,8 +15,8 @@ namespace NoName.NetShop.Product.DAL
 	/// </summary>
 	public class ProductModelDal
     {
-        private Database dbw = DBFacroty.DbWriter;
-        private Database dbr = DBFacroty.DbReader;
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
 
 		public ProductModelDal()
 		{}
