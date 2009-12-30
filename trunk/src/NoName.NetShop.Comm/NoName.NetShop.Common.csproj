@@ -78,7 +78,9 @@
     </Compile>
     <Compile Include="CommonImageUpload.cs" />
     <Compile Include="Configuration\CommonImageUploadSection.cs" />
-    <Compile Include="DBFactory.cs" />
+    <Compile Include="DBFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ScoreType.cs" />
     <Compile Include="ShopException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
