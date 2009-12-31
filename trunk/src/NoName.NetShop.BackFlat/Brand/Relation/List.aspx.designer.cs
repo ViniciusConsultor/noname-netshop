@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoName.NetShop.BackFlat.Brand
+namespace NoName.NetShop.BackFlat.Brand.Relation
 {
 
 
-    public partial class Relation
+    public partial class List
     {
 
         /// <summary>

@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NoName.NetShop.BackFlat.Brand
+namespace NoName.NetShop.BackFlat.Brand.Relation
 {
-    public partial class Relation : System.Web.UI.Page
+    public partial class List : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
