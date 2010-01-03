@@ -2,6 +2,7 @@
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="head">
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
+    <script type="text/javascript" src="/js/addressData.js"></script>
 </asp:Content>
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">
