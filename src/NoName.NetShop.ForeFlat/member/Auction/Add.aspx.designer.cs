@@ -14,6 +14,33 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
     public partial class Add {
         
         /// <summary>
+        /// TextBox_Category 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Category;
+        
+        /// <summary>
+        /// ucRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::SinaEC.Shopping.WebUI.UC.RegionSelect ucRegion;
+        
+        /// <summary>
+        /// Button_Add2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Add2;
+        
+        /// <summary>
         /// Label_Category 控件。
         /// </summary>
         /// <remarks>

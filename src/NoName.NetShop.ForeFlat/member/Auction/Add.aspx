@@ -1,6 +1,7 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MemberCenter.master" ValidateRequest="false" CodeBehind="Add.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.Auction.Add" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" ValidateRequest="false" CodeBehind="Add.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.Auction.Add" %>
+<%@ Register src="/uc/RegionSelect.ascx" tagname="RegionSelect" tagprefix="uc1" %>
 
-<asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
+<asp:Content runat="server" ID="Content2" ContentPlaceHolderID="head">
     <link type="text/css" rel="stylesheet" href="/css/common.css" />
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
     <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
@@ -12,16 +13,17 @@
     <script type="text/javascript" src="/js/ui.datepicker.js"></script>
     <script type="text/javascript" src="/js/validate.js"></script>
     <script type="text/javascript" src="/controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/js/addressData.js"></script>
     <script type="text/javascript">
 
         $(function() {
             //$('#<%=TextBox_StartTime.ClientID %>').datepicker({dateFormat:'yyyy-MM-dd hh:mm:ss'});
             //$('#<%=TextBox_EndTime.ClientID %>').datepicker({ dateFormat: 'yyyy-MM-dd hh:mm:ss' });
-            CKEDITOR.replace('<%=TextBox_Brief.ClientID %>', {
-                toolbar: 'Basic',
-                width:'400px',
-                height:'200px'
-            });
+            //CKEDITOR.replace('<%=TextBox_Brief.ClientID %>', {
+            //    toolbar: 'Basic',
+            //    width:'400px',
+            //    height:'200px'
+            //});
 
         });
 
@@ -64,8 +66,21 @@
     </script>
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
-
+<asp:Content runat="server" ID="Content1" ContentPlaceHolderID="cpMain">
+    <!--Position Begin-->
+    <div class="currentPosition">
+    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">魔力世界</a> &gt;&gt; <a href="#">视听拍卖</a> &gt;&gt; <a href="#">提交拍卖品</a>
+        <div class="magicSubNav">
+            <div class="magicButtonTab">
+                <a class="button_blue" href="#">视听租赁</a>
+                <a class="button_blue" href="#">二手交易</a>
+                <a class="button_blue" href="#">视听当铺</a>
+                <a class="button_blue2" href="#">视听拍卖</a>
+            </div>
+        </div>
+    </div>
+    <!--Position End-->
+    
     <!--MainBody Begin-->
     <div class="magicSubmitAuction_mainbody clearfix newline">
         <div class="box1">
@@ -86,6 +101,11 @@
                 <div class="section padding2">
                     <div class="sheet1">
                         <ul class="form">
+                            <li>
+                                <span class="field">所属分类</span>
+                                <asp:TextBox runat="server" ID="TextBox_Category" CssClass="textField1" Enabled="false" />
+                                <a href="../CateSelect.aspx?app=Auction">重新选择</a>
+                            </li>
                             <li>
                                 <span class="field">商品名称</span>
                                 <input type="text" class="textField1" />
@@ -147,38 +167,7 @@
                             </li>
                             <li>
                             	<span class="field">所在地区</span>
-                                <div class="component">
-									<script type="text/javascript">
-									    var provinceBox = new RainySelectBox();
-									    provinceBox.boxName = "province";
-									    provinceBox.fire = "click";
-									    provinceBox.name = "province";
-									    provinceBox.id = "province";
-									    provinceBox.width = 109;
-									    provinceBox.listMaxHeight = 300;
-									    provinceBox.selectedClass = "commonSelectBox_currentOption";
-									    provinceBox.listClass = "commonSelectBox_list";
-									    provinceBox.addOption("数据加载中", "0");
-									    provinceBox.listener = "showCityData";
-									    provinceBox.show();
-                                    </script>
-                                </div>
-                                <div class="component">
-									<script type="text/javascript">
-									    var cityBox = new RainySelectBox();
-									    cityBox.boxName = "city";
-									    cityBox.fire = "click";
-									    cityBox.name = "city";
-									    cityBox.id = "city";
-									    cityBox.width = 109;
-									    cityBox.listMaxHeight = 300;
-									    cityBox.selectedClass = "commonSelectBox_currentOption";
-									    cityBox.listClass = "commonSelectBox_list";
-									    cityBox.addOption("数据加载中", "0", "");
-									    cityBox.show();
-									    loadInitData();
-                                    </script>
-                                </div>
+                            	<uc1:RegionSelect ID="ucRegion" runat="server" />
                                 <span class="tip">请选择所在地区</span>
                             </li>
                             <li>
@@ -186,7 +175,8 @@
                                 <input type="text" class="textField2" />
                             </li>
                             <li class="submit">
-                                <a class="button_blue" href="#">提　交</a>
+                                <asp:Button runat="server" CssClass="button_blue" Text="提　交" ID="Button_Add2" OnClick="Button_Add_Click" />
+                                <!--<a class="button_blue" href="#">提　交</a>-->
                             </li>
                         </ul>
                     </div>
@@ -201,6 +191,8 @@
 
     </div>
     <!--MainBody End-->
+    
+    <!--
     <div>
         <table>
             <tr>
@@ -241,4 +233,5 @@
         </table>
         <asp:Button runat="server" ID="Button_Add" OnClientClick="return validate()" OnClick="Button_Add_Click" Text="提交" />
     </div>
+    -->
 </asp:Content>
