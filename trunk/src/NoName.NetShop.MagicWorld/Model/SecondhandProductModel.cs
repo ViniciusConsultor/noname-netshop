@@ -186,4 +186,13 @@ namespace NoName.NetShop.MagicWorld.Model
         审核未通过 = 3,
         冻结 = 4,
     }
+
+    public enum SecondhandProductUsageCondition
+    {
+        全新 = 1,
+        半年以内 = 2,
+        使用一年 = 3,
+        使用两年 = 4,
+        两年以上 = 5,
+    }
 }
