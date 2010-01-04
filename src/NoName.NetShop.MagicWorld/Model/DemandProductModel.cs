@@ -136,4 +136,10 @@ namespace NoName.NetShop.MagicWorld.Model
             set { _UpdateTime=value; }
         }
     }
+    public enum DemandProductStatus
+    {
+        尚未审核 = 1,
+        审核通过 = 2,
+        审核未通过 = 3,
+    }
 }
