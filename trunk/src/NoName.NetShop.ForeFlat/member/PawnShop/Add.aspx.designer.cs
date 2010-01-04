@@ -14,22 +14,13 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop {
     public partial class Add {
         
         /// <summary>
-        /// Label_Category 控件。
+        /// TextBox_Category 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Category;
-        
-        /// <summary>
-        /// Hidden_CategoryID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Hidden_CategoryID;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Category;
         
         /// <summary>
         /// TextBox_ProductName 控件。
@@ -41,22 +32,31 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop {
         protected global::System.Web.UI.WebControls.TextBox TextBox_ProductName;
         
         /// <summary>
-        /// TextBox_Count 控件。
+        /// FileUpload_ProductImage 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Count;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_ProductImage;
         
         /// <summary>
-        /// TextBox_Keyword 控件。
+        /// TextBox_EndTime 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Keyword;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_EndTime;
+        
+        /// <summary>
+        /// TextBox_Price 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Price;
         
         /// <summary>
         /// TextBox_Brief 控件。
@@ -68,13 +68,58 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Brief;
         
         /// <summary>
-        /// FileUpload_ProductImage 控件。
+        /// TextBox_TrueName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload_ProductImage;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_TrueName;
+        
+        /// <summary>
+        /// TextBox_Phone 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Phone;
+        
+        /// <summary>
+        /// TextBox_CellPhone 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_CellPhone;
+        
+        /// <summary>
+        /// TextBox_PostCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_PostCode;
+        
+        /// <summary>
+        /// ucRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::SinaEC.Shopping.WebUI.UC.RegionSelect ucRegion;
+        
+        /// <summary>
+        /// TextBox_Address 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Address;
         
         /// <summary>
         /// Button_Add 控件。
@@ -83,6 +128,6 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Add;
+        protected global::System.Web.UI.WebControls.LinkButton Button_Add;
     }
 }

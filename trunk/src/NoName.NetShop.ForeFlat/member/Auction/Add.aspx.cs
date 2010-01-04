@@ -9,6 +9,7 @@ using NoName.NetShop.Common;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.Facade;
+using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.member.Auction
 {
@@ -47,82 +48,73 @@ namespace NoName.NetShop.ForeFlat.member.Auction
 
         protected void Button_Add_Click(object sender, EventArgs e)
         {
-            Response.Write(Request.Form["province"]);
-            //string strErr = "";
+            string ErrorMessage = String.Empty;
 
-            //if (TextBox_AuctionProductName.Text == "")
-            //{
-            //    strErr += "产品名称为空！\\n";
-            //}
-            //if (TextBox_StartPrice.Text == "" || !PageValidate.IsDecimal(TextBox_StartPrice.Text))
-            //{
-            //    strErr += "起拍价为空或者不是数字！\\n";
-            //}
-            //if (TextBox_AddPrice.Text == "")
-            //{
-            //    string test = TextBox_AddPrice.Text.Replace("，", ",");
-            //    if (!test.Contains(",") && !PageValidate.IsDecimal(test))
-            //        strErr += "每次加价为空或者不是数字！\\n";
-            //    else
-            //    {
-            //        foreach (string s in test.Split(','))
-            //        {
-            //            if (!PageValidate.IsDecimal(s))
-            //                strErr += "每次加价为空或者不是数字！\\n";
-            //        }
-            //    }
-            //}
-            //if (TextBox_StartTime.Text == "" || !PageValidate.IsDate(TextBox_StartTime.Text))
-            //{
-            //    strErr += "开始时间为空或者格式错误！\\n";
-            //}
-            //if (TextBox_EndTime.Text == "" || !PageValidate.IsDate(TextBox_EndTime.Text))
-            //{
-            //    strErr += "结束时间为空或者格式错误！\\n";
-            //}
+            if (String.IsNullOrEmpty(TextBox_ProductName.Text)) { ErrorMessage += "产品名称不能为空\n"; }
+            if (String.IsNullOrEmpty(FileUpload_ProductImage.FileName)) { ErrorMessage += "产品图片不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_StartPrice.Text) || !PageValidate.IsDecimal(TextBox_StartPrice.Text)) { ErrorMessage += "起始价格不正确\n"; }
+            if (String.IsNullOrEmpty(TextBox_AddPrices.Text)) { ErrorMessage += "每次加价不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_StartTime.Text)/* validate */) { ErrorMessage += "开始时间不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_EndTime.Text)/* validate */) { ErrorMessage += "结束时间不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_Brief.Text)) { ErrorMessage += "简要介绍不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_TrueName.Text)) { ErrorMessage += "姓名不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_Phone.Text) && String.IsNullOrEmpty(TextBox_CellPhone.Text)) { ErrorMessage += "请输入您的电话号码或者手机号码\n"; }
+            else { /* validate */}
+            if (String.IsNullOrEmpty(TextBox_PostCode.Text) || !PageValidate.IsNumber(TextBox_PostCode.Text)) { ErrorMessage += "邮政编码不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "地址不能为空\n"; }
+            RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
+            {
+                ErrorMessage += "所在地选择不完整\n";
+            }
 
-            //if (strErr != "")
-            //{
-            //    MessageBox.Show(this, strErr);
-            //    return;
-            //}
+            if (String.IsNullOrEmpty(ErrorMessage))
+            {
+                MessageBox.Show(this, ErrorMessage);
+                return;
+            }
 
-            //int AuctionProductID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
+            int AuctionID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
 
-            //string[] ProductImages;
-            //if (MagicWorldImageRule.SaveProductMainImage(AuctionProductID, FileUpload_ProductImage.PostedFile, out ProductImages))
-            //{
-            //    AuctionProductModel model = new AuctionProductModel();
-            //    MagicCategoryModel cate = new MagicCategoryBll().GetModel(Convert.ToInt32(Hidden_CategoryID.Value));
+            string[] ProductImages;
+            if (MagicWorldImageRule.SaveProductMainImage(AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
+            {
+                AuctionProductModel model = new AuctionProductModel();
+                MagicCategoryModel cate = new MagicCategoryBll().GetModel(CategoryID);
 
-            //    model.AuctionID = AuctionProductID;
-            //    model.ProductName = TextBox_AuctionProductName.Text;
-            //    model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
-            //    model.AddPrices = TextBox_AddPrice.Text.Replace("，", ",");
-            //    model.CurPrice = model.StartPrice;
+                model.AuctionID = AuctionID;
+                model.ProductName = TextBox_ProductName.Text;
+                model.CategoryID = CategoryID;
+                model.CategoryPath = cate.CategoryPath;
+                model.SmallImage = ProductImages[0];
+                model.MediumImage = ProductImages[1];
+                model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
+                model.CurPrice = model.StartPrice;
+                model.AddPrices = TextBox_AddPrices.Text.Replace('，',',');
+                model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
+                model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
+                model.Brief = TextBox_Brief.Text;
+                model.InsertTime = DateTime.Now;
+                model.UpdateTime = DateTime.Now;
 
-            //    //model.CateID = cate.CategoryID;
-            //    //model.CatePath = cate.CategoryPath;
+                model.UserID = GetUserName();
+                model.TrueName = TextBox_TrueName.Text;
+                model.Phone = TextBox_Phone.Text;
+                model.CellPhone = TextBox_CellPhone.Text;
+                model.PostCode = TextBox_PostCode.Text;
+                model.Region = String.Format("{0} {1} {2}", regionInfo.Province, regionInfo.City, regionInfo.County);
+                model.Address = TextBox_Address.Text;
 
-            //    model.Brief = TextBox_Brief.Text;
+                model.Status = (int)AuctionProductStatus.尚未审核;
+                model.OutLinkUrl = "";
 
-            //    model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
-            //    model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
-            //    //model.UserName = GetUserName();
-
-            //    model.MediumImage = ProductImages[0];
-            //    model.SmallImage = ProductImages[1];
-
-            //    model.OutLinkUrl = "";
-            //    model.Status = 1;
-
-            //    bll.Add(model);
-            //    Response.Redirect("../SubmitSucc.aspx");
-            //}
-            //else
-            //{
-            //    MessageBox.Show(this, "图片上传失败");
-            //}
+                bll.Add(model);
+                Response.Redirect("../SubmitSucc.aspx");
+            }
+            else
+            {
+                MessageBox.Show(this, "图片上传失败");
+            }
         }
 
         private string GetUserName()

@@ -13,7 +13,6 @@
     <script type="text/javascript" src="/js/ui.datepicker.js"></script>
     <script type="text/javascript" src="/js/validate.js"></script>
     <script type="text/javascript">
-
         $(function() {
             InitRegions();
 
@@ -63,8 +62,8 @@
                     obj.prev().css({ 'color': 'red' });
                 }
                 obj = $('#<%= TextBox_PostCode.ClientID %>')
-                if (obj.val() == '') {
-                    errorMessage += '<li>请输入邮政编码</li>';
+                if (obj.val() == '' || !obj.val().isPostalCode()) {
+                    errorMessage += '<li>请输入正确的邮政编码</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
                 obj = $('#<%= TextBox_Address.ClientID %>')

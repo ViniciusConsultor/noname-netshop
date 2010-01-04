@@ -53,8 +53,6 @@ namespace NoName.NetShop.ForeFlat.member.Demand
 
         protected void Button_Add_Click(object sender, EventArgs e)
         {
-            Response.Write(Request.Form["productImage"]);
-
             string ErrorMessage = String.Empty;
             if (String.IsNullOrEmpty(TextBox_ProductName.Text)) { ErrorMessage += "产品名称不能为空\n"; }
             if (String.IsNullOrEmpty(FileUpload_ProductImage.FileName)) { ErrorMessage += "产品图片不能为空\n"; }
@@ -108,7 +106,7 @@ namespace NoName.NetShop.ForeFlat.member.Demand
                 model.UserID = GetUserID();
 
                 bll.Add(model);
-                MessageBox.Show(this, "添加成功！");
+                Response.Redirect("../SubmitSucc.aspx");
             }
             else
             {
