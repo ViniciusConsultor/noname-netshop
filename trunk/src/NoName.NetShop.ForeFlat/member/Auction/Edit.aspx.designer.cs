@@ -59,13 +59,13 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         protected global::System.Web.UI.WebControls.TextBox TextBox_EndTime;
         
         /// <summary>
-        /// TextEditor_Brief 控件。
+        /// TextBox_Brief 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor TextEditor_Brief;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Brief;
         
         /// <summary>
         /// Image_ProductImage 控件。
