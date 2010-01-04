@@ -12,7 +12,7 @@ using NoName.NetShop.Common;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
-    public partial class Rent : AuthBasePage
+    public partial class Rent : Page
     {
         public int RentID
         {
