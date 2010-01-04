@@ -38,7 +38,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             TextBox_AddPrice.Text = model.AddPrices.ToString();
             TextBox_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd hh:mm:ss");
             TextBox_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd hh:mm:ss");
-            TextEditor_Brief.Value = model.Brief;
+            TextBox_Brief.Text = model.Brief;
             Image_ProductImage.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.SmallImage);
         }
 
@@ -105,7 +105,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             model.ProductName = TextBox_AuctionProductName.Text;
             model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
             model.AddPrices = TextBox_AddPrice.Text.Replace("，", ",");
-            model.Brief = TextEditor_Brief.Value;
+            model.Brief = TextBox_Brief.Text;
             model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
             model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
 

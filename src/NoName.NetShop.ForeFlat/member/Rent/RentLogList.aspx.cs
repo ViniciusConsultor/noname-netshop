@@ -9,7 +9,7 @@ using NoName.Utility;
 
 namespace NoName.NetShop.ForeFlat.member.Rent
 {
-    public partial class RentLogList : AuthBasePage
+    public partial class RentLogList : Page
     {
         private RentLogBll bll = new RentLogBll();
         protected void Page_Load(object sender, EventArgs e)
