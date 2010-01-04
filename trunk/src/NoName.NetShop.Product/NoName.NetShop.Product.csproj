@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BrandCategoryRelationBll.cs" />
     <Compile Include="BLL\BrandModelBll.cs" />
     <Compile Include="BLL\CategoryModelBll.cs" />
     <Compile Include="BLL\CategoryParaGroupModelBll.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Config\ProductMultiImageElement.cs" />
     <Compile Include="Config\ProductMultiImageElementCollection.cs" />
     <Compile Include="Config\ProductMultiImageSection.cs" />
+    <Compile Include="DAL\BrandCategoryRelationDal.cs" />
     <Compile Include="DAL\BrandModelDal.cs" />
     <Compile Include="DAL\CategoryModelDal.cs" />
     <Compile Include="DAL\CategoryParaGroupModelDal.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Facade\ProductDescriptionImageRule.cs" />
     <Compile Include="Facade\ProductMainImageRule.cs" />
     <Compile Include="Facade\ProductMultiImageRule.cs" />
+    <Compile Include="Model\BrandCategoryRelationModel.cs" />
     <Compile Include="Model\BrandModel.cs" />
     <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="Model\CategoryParaGroupModel.cs" />
