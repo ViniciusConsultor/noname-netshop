@@ -43,7 +43,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <a href='<%# "Edit.aspx?pid="+Eval("AuctionId") %>'>编辑</a>
+                        <a href='<%# "Edit.aspx?productid="+Eval("AuctionId") %>'>编辑</a>
                         <asp:LinkButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("AuctionId") %>' CommandName="d" Text="删除" />
                     </ItemTemplate>
                 </asp:TemplateField>

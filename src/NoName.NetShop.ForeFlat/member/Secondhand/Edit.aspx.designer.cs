@@ -14,6 +14,15 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand {
     public partial class Edit {
         
         /// <summary>
+        /// TextBox_Category 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Category;
+        
+        /// <summary>
         /// TextBox_ProductName 控件。
         /// </summary>
         /// <remarks>
@@ -21,6 +30,15 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_ProductName;
+        
+        /// <summary>
+        /// FileUpload_ProductImage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_ProductImage;
         
         /// <summary>
         /// TextBox_Price 控件。
@@ -41,13 +59,13 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Count;
         
         /// <summary>
-        /// TextBox_Keyword 控件。
+        /// DropDown_Usage 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Keyword;
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Usage;
         
         /// <summary>
         /// TextBox_Brief 控件。
@@ -59,22 +77,58 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Brief;
         
         /// <summary>
-        /// Image_ProductImage 控件。
+        /// TextBox_TrueName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image_ProductImage;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_TrueName;
         
         /// <summary>
-        /// FileUpload_ProductImage 控件。
+        /// TextBox_Phone 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload_ProductImage;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Phone;
+        
+        /// <summary>
+        /// TextBox_CellPhone 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_CellPhone;
+        
+        /// <summary>
+        /// TextBox_PostCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_PostCode;
+        
+        /// <summary>
+        /// ucRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::SinaEC.Shopping.WebUI.UC.RegionSelect ucRegion;
+        
+        /// <summary>
+        /// TextBox_Address 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Address;
         
         /// <summary>
         /// Button_Edit 控件。
@@ -83,6 +137,6 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Edit;
+        protected global::System.Web.UI.WebControls.LinkButton Button_Edit;
     }
 }

@@ -1,71 +1,214 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" MasterPageFile="~/MemberCenter.master" Inherits="NoName.NetShop.ForeFlat.member.Secondhand.Edit" %>
+<%@ Register src="/uc/RegionSelect.ascx" tagname="RegionSelect" tagprefix="uc1" %>
 
-<asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
-    <script type="text/javascript" src="../../js/validate.js"></script>
+<asp:Content runat="server" ID="Content2" ContentPlaceHolderID="head">
+    <link type="text/css" rel="stylesheet" href="/css/magic.css" />
+    <script type="text/javascript" src="/js/validate.js"></script>
     <script type="text/javascript">
-        function validate() {
-            $('table td span[type=inform]').html('');
+        $(function() {
+            InitRegions();
 
-            var result = true;
+            $('#<%= Button_Edit.ClientID %>').click(function() {
+                $('#error-inform').hide('fast');
+                $('.field').css({ 'color': '#000' });
+                var errorMessage = ''; var obj = null;
 
-            if ($('#<%=TextBox_ProductName.ClientID %>').val() == '') {
-                result = false;
-                inform($('#<%=TextBox_ProductName.ClientID %>'), '请输入产品名称');
-            }
-            if ($('#<%=TextBox_Price.ClientID %>').val() == '' || !$('#<% =TextBox_Price.ClientID %>').val().isCurrency()) {
-                result = false;
-                inform($('#<%=TextBox_Price.ClientID %>'), '请输入正确的价格');
-            }
-            if ($('#<%=TextBox_Count.ClientID %>').val() == '' || !$('#<% =TextBox_Count.ClientID %>').val().isNumber()) {
-                result = false;
-                inform($('#<%=TextBox_Count.ClientID %>'), '请输入正确的数量');
-            }
-            if ($('#<%=TextBox_Keyword.ClientID %>').val() == '') {
-                result = false;
-                inform($('#<%=TextBox_Keyword.ClientID %>'), '请输入产品名称');
-            }
-            
-            return result;
-        }
-        function inform(o, message) {
-            o.parent().children('span[type=inform]').html(message);
-            o.focus();
-        }
+                obj = $('#<%= TextBox_ProductName.ClientID %>');
+                if (obj.val() == '') {
+                    errorMessage += '<li>请输入产品名称</li>';
+                    obj.prev().css({ 'color': 'red' });
+                }
+
+                obj = $('#<%= TextBox_Price.ClientID %>');
+                if (obj.val() == '' || !obj.val().isCurrency()) {
+                    errorMessage += '<li>请输入正确的产品价格</li>';
+                    obj.prev().css({ 'color': 'red' });
+                }
+
+                obj = $('#<%= TextBox_Count.ClientID %>');
+                if (obj.val() == '' || !obj.val().isInteger()) {
+                    errorMessage += '<li>请输入正确的产品数量</li>';
+                    obj.prev().css({ 'color': 'red' });
+                }
+
+                obj = $('#<%= TextBox_Brief.ClientID %>');
+                if (obj.val() == '') {
+                    errorMessage += '<li>请输入产品简要描述</li>';
+                    obj.prev().css({ 'color': 'red' });
+                }
+
+                obj = $('#<%= TextBox_TrueName.ClientID %>');
+                if (obj.val() == '') {
+                    errorMessage += '<li>请输入您的姓名</li>';
+                    obj.prev().css({ 'color': 'red' });
+                }
+
+                obj = $('#<%= TextBox_PostCode.ClientID %>');
+                if (obj.val() == '' || !obj.val().isPostalCode()) {
+                    errorMessage += '<li>请输入正确的邮政编码</li>';
+                    obj.prev().css({ 'color': 'red' });
+                }
+
+                obj = $('#<%= TextBox_Address.ClientID %>');
+                if (obj.val() == '') {
+                    errorMessage += '<li>请输入您的详细地址</li>';
+                    obj.prev().css({ 'color': 'red' });
+                }
+
+                /*phone*/
+                if ($('#<%= TextBox_Phone.ClientID %>').val() == '' && $('#<%= TextBox_CellPhone.ClientID %>').val() == '') {
+                    errorMessage += '<li>请输入您的电话号码或者手机号码</li>';
+                    $('#<%= TextBox_Phone.ClientID %>').prev().css({ 'color': 'red' });
+                    $('#<%= TextBox_CellPhone.ClientID %>').prev().css({ 'color': 'red' });
+                }
+                else {
+                    if ($('#<%= TextBox_Phone.ClientID %>').val() == '' || !$('#<%= TextBox_Phone.ClientID %>').val().isTelephone()) {
+                        errorMessage += '<li>请输入正确的电话号码</li>';
+                        $('#<%= TextBox_Phone.ClientID %>').prev().css({ 'color': 'red' });
+                    }
+                    if ($('#<%= TextBox_CellPhone.ClientID %>').val() == '' || !$('#<%= TextBox_CellPhone.ClientID %>').val().isMobile()) {
+                        errorMessage += '<li>请输入正确的手机号码</li>';
+                        $('#<%= TextBox_CellPhone.ClientID %>').prev().css({ 'color': 'red' });
+                    }
+                }
+
+                /*region*/
+                if ($('#region0').val() == '' || $('#region1').val() == '' || $('#region2').val() == '') {
+                    if ($('#region0').val() == '') {
+                        errorMessage += '<li>请选择省份</li>';
+                    }
+                    if ($('#region1').val() == '') {
+                        errorMessage += '<li>请选择城市</li>';
+                    }
+                    if ($('#region2').val() == '') {
+                        errorMessage += '<li>请选择区县</li>';
+                    }
+                    $('#region0').parent().prev().prev().css({ 'color': 'red' });
+                }
+
+                /*data format*/
+
+
+                if (errorMessage != '') {
+                    $('#error-inform').html(errorMessage).show('fast');
+                    return false;
+                }
+                else return true;
+            });
+
+
+        });
     </script>
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
-<div style="text-align:left;">
-    <b>修改二手商品</b>
-    <table>
-        <tr>
-            <td>名称：</td>
-            <td><asp:TextBox runat="server" ID="TextBox_ProductName" Width="400" /><span type="inform" class="red"></span></td>
-        </tr>
-        <tr>
-            <td>价格：</td>
-            <td><asp:TextBox runat="server" ID="TextBox_Price" /><span type="inform" class="red"></span></td>
-        </tr>
-        <tr>
-            <td>数量：</td>
-            <td><asp:TextBox runat="server" ID="TextBox_Count" /><span type="inform" class="red"></span></td>
-        </tr>
-        <tr>
-            <td>关键词：</td>
-            <td><asp:TextBox runat="server" ID="TextBox_Keyword" Width="400" /><span type="inform" class="red"></span></td>
-        </tr>
-        <tr>
-            <td>描述：</td>
-            <td><asp:TextBox runat="server" ID="TextBox_Brief" Width="500" Height="400" TextMode="MultiLine" /></td>
-        </tr>
-        <tr>
-            <td>图片：</td>
-            <td>
-                <asp:Image runat="server" ID="Image_ProductImage" Width="200" Height="200" />
-                <asp:FileUpload runat="server" ID="FileUpload_ProductImage" /><span type="inform" class="red"></span>
-            </td>
-        </tr>
-    </table>
-    <asp:Button runat="server" Text="提交" OnClientClick="return validate()" OnClick="Button_Edit_Click" ID="Button_Edit" />
-</div>
+<asp:Content runat="server" ID="Content1" ContentPlaceHolderID="cpMain">    
+    <!--Position Begin-->
+    <div class="currentPosition">
+    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">魔力世界</a> &gt;&gt; <a href="#">二手交易</a> &gt;&gt; <a href="#">出售商品</a>
+        <div class="magicSubNav">
+            <div class="magicButtonTab">
+                <a class="button_blue" href="#">视听租赁</a>
+                <a class="button_blue2" href="#">二手交易</a>
+                <a class="button_blue" href="#">视听当铺</a>
+                <a class="button_blue" href="#">视听拍卖</a>
+            </div>
+        </div>
+    </div>
+    <!--Position End-->
+    
+    <!--MainBody Begin-->
+    <div class="magicSubmitSalesInfo_mainbody clearfix newline">
+        <div class="box1">
+            <ul class="title">
+                <li class="left"></li>
+                <li><span>出售商品</span></li>
+                <li class="right"></li>
+            </ul>
+            <div class="content">
+                <div class="tipContainer">
+                    <ul class="tip2">
+                        <li class="left"></li>
+                        <li class="middle"><span>请认真填写出售的商品及个人信息信息</span></li>
+                        <li class="right"></li>
+                    </ul>
+                </div>
+                
+                <div class="section padding2">
+                    <div class="sheet1">
+                        <ul style="color:Red;display:none;" id="error-inform"></ul>
+                        <ul class="form">
+                            <li>
+                                <span class="field">所属类别</span>
+                                <asp:TextBox runat="server" ID="TextBox_Category" CssClass="textField1" Enabled="false" />
+                                <span class="tip"><a href="../CateSelect.aspx?app=Demand&pid=<%= SecondhandProductID %>">重新选择</a></span>
+                            </li>
+                            <li>
+                                <span class="field">商品名称</span>
+                                <asp:TextBox runat="server" ID="TextBox_ProductName" CssClass="textField1" />
+                                <span class="tip">要出售的商品名称</span>
+                            </li>
+                            <li id="productPictures">
+                                <span class="field">商品图片</span>
+                                <asp:FileUpload runat="server" id="FileUpload_ProductImage" />
+                            </li>
+                            <li>
+                                <span class="field">出手价格</span>
+                                <asp:TextBox runat="server" ID="TextBox_Price" CssClass="textField1" />
+                                <span class="tip">单位：元</span>
+                            </li>
+                            <li>
+                                <span class="field">数　　量</span>
+                                <asp:TextBox runat="server" ID="TextBox_Count" CssClass="textField1" />
+                            </li>
+                            <li>
+                                <span class="field">新旧程度</span>
+                                <asp:DropDownList runat="server" ID="DropDown_Usage" />
+                            </li>
+                            <li class="description">
+                                <span class="field">商品描述</span>
+                                <asp:TextBox runat="server" ID="TextBox_Brief" CssClass="textField1" TextMode="MultiLine" />
+                            </li>
+                            <li>
+                            	<span class="field">姓　　名</span>
+                                <asp:TextBox runat="server" ID="TextBox_TrueName" CssClass="textField1" />
+                                <span class="tip">请填写您的真实姓名</span>
+                            </li>
+                            <li>
+                            	<span class="field">电　　话</span>
+                                <asp:TextBox runat="server" ID="TextBox_Phone" CssClass="textField1" />
+                                <span class="tip">格式：区号 - 电话号码 - 分机号</span>
+                            </li>
+                            <li>
+                            	<span class="field">手　　机</span>
+                                <asp:TextBox runat="server" ID="TextBox_CellPhone" CssClass="textField1" />
+                            </li>
+                            <li>
+                            	<span class="field">邮政编码</span>
+                                <asp:TextBox runat="server" ID="TextBox_PostCode" CssClass="textField1" />
+                            </li>
+                            <li>
+                            	<span class="field">所在地区</span>
+                            	<uc1:RegionSelect ID="ucRegion" runat="server" />
+                                <span class="tip">请选择所在地区</span>
+                            </li>
+                            <li>
+                            	<span class="field">详细地址</span>
+                                <asp:TextBox runat="server" ID="TextBox_Address" CssClass="textField2" />
+                            </li>
+                            <li class="submit">
+                                <asp:LinkButton runat="server" ID="Button_Edit" OnClick="Button_Edit_Click" Text="提　交"  CssClass="button_blue"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            <ul class="bottom">
+               <li class="left"></li>
+               <li class="right"></li>
+            </ul>
+        </div>
+
+    </div>
+    <!--MainBody End-->
 </asp:Content>

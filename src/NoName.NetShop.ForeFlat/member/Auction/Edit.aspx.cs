@@ -8,15 +8,21 @@ using NoName.Utility;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.Facade;
+using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.member.Auction
 {
     public partial class Edit : System.Web.UI.Page
     {
-        private int AuctionID
+        public int AuctionID
         {
             get { if (ViewState["AuctionID"] != null) return Convert.ToInt32(ViewState["AuctionID"]); else return -1; }
             set { ViewState["AuctionID"] = value; }
+        }
+        private int CategoryID
+        {
+            get { if (ViewState["CategoryID"] != null) return Convert.ToInt32(ViewState["CategoryID"]); else return -1; }
+            set { ViewState["CategoryID"] = value; }
         }
         private AuctionProductBll bll = new AuctionProductBll();
 
@@ -24,7 +30,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
         {
             if (!IsPostBack)
             {
-                if (!String.IsNullOrEmpty(Request.QueryString["pid"])) AuctionID = Convert.ToInt32(Request.QueryString["pid"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["productid"])) AuctionID = Convert.ToInt32(Request.QueryString["productid"]);
                 BindData();
             }
         }
@@ -32,55 +38,51 @@ namespace NoName.NetShop.ForeFlat.member.Auction
         private void BindData()
         {
             AuctionProductModel model = bll.GetModel(AuctionID);
+            MagicCategoryBll cateBll = new MagicCategoryBll();
 
-            TextBox_AuctionProductName.Text = model.ProductName;
-            TextBox_StartPrice.Text = model.StartPrice.ToString();
-            TextBox_AddPrice.Text = model.AddPrices.ToString();
-            TextBox_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd hh:mm:ss");
-            TextBox_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd hh:mm:ss");
+            CategoryID = model.CategoryID;
+            if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
+
+            TextBox_Category.Text = new MagicCategoryBll().GetModel(CategoryID).CategoryName;
+            TextBox_ProductName.Text = model.ProductName;
+            TextBox_StartPrice.Text=model.StartPrice.ToString("0.00");
+            TextBox_AddPrices.Text = model.AddPrices;
+            TextBox_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd");
+            TextBox_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd");
             TextBox_Brief.Text = model.Brief;
-            Image_ProductImage.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.SmallImage);
+            TextBox_TrueName.Text = model.TrueName;
+            TextBox_Phone.Text = model.Phone;
+            TextBox_CellPhone.Text = model.CellPhone;
+            TextBox_PostCode.Text = model.PostCode;
+            TextBox_Address.Text = model.Address;
+            ucRegion.PresetRegionInfo(RegionInfo.GetRegionPathByName(model.Region.Split(' ')[model.Region.Split(' ').Length]));
         }
 
 
         protected void Button_Edit_Click(object sender, EventArgs e)
         {
-            string strErr = "";
+            string ErrorMessage = String.Empty;
 
-            if (TextBox_AuctionProductName.Text == "")
+            if (String.IsNullOrEmpty(TextBox_ProductName.Text)) { ErrorMessage += "产品名称不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_StartPrice.Text) || !PageValidate.IsDecimal(TextBox_StartPrice.Text)) { ErrorMessage += "起始价格不正确\n"; }
+            if (String.IsNullOrEmpty(TextBox_AddPrices.Text)) { ErrorMessage += "每次加价不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_StartTime.Text)/* validate */) { ErrorMessage += "开始时间不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_EndTime.Text)/* validate */) { ErrorMessage += "结束时间不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_Brief.Text)) { ErrorMessage += "简要介绍不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_TrueName.Text)) { ErrorMessage += "姓名不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_Phone.Text) && String.IsNullOrEmpty(TextBox_CellPhone.Text)) { ErrorMessage += "请输入您的电话号码或者手机号码\n"; }
+            else { /* validate */}
+            if (String.IsNullOrEmpty(TextBox_PostCode.Text) || !PageValidate.IsNumber(TextBox_PostCode.Text)) { ErrorMessage += "邮政编码不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "地址不能为空\n"; }
+            RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
             {
-                strErr += "产品名称为空！\\n";
-            }
-            if (TextBox_StartPrice.Text == "" || !PageValidate.IsDecimal(TextBox_StartPrice.Text))
-            {
-                strErr += "起拍价为空或者不是数字！\\n";
-            }
-            if (TextBox_AddPrice.Text == "")
-            {
-                string test = TextBox_AddPrice.Text.Replace("，", ",");
-                if (!test.Contains(",") && !PageValidate.IsDecimal(test))
-                    strErr += "每次加价为空或者不是数字！\\n";
-                else
-                {
-                    foreach (string s in test.Split(','))
-                    {
-                        if (!PageValidate.IsDecimal(s))
-                            strErr += "每次加价为空或者不是数字！\\n";
-                    }
-                }
-            }
-            if (TextBox_StartTime.Text == "" || !PageValidate.IsDate(TextBox_StartTime.Text))
-            {
-                strErr += "开始时间为空或者格式错误！\\n";
-            }
-            if (TextBox_EndTime.Text == "" || !PageValidate.IsDate(TextBox_EndTime.Text))
-            {
-                strErr += "结束时间为空或者格式错误！\\n";
+                ErrorMessage += "所在地选择不完整\n";
             }
 
-            if (strErr != "")
+            if (String.IsNullOrEmpty(ErrorMessage))
             {
-                MessageBox.Show(this, strErr);
+                MessageBox.Show(this, ErrorMessage);
                 return;
             }
 
@@ -92,8 +94,8 @@ namespace NoName.NetShop.ForeFlat.member.Auction
 
                 if (MagicWorldImageRule.SaveProductMainImage(model.AuctionID, FileUpload_ProductImage.PostedFile, out ProductImages))
                 {
-                    model.MediumImage = ProductImages[0];
-                    model.SmallImage = ProductImages[1];
+                    model.SmallImage = ProductImages[0];
+                    model.MediumImage = ProductImages[1];
                 }
                 else
                 {
@@ -102,16 +104,27 @@ namespace NoName.NetShop.ForeFlat.member.Auction
                 }
             }
 
-            model.ProductName = TextBox_AuctionProductName.Text;
+            MagicCategoryModel cate = new MagicCategoryBll().GetModel(CategoryID);
+
+            model.ProductName = TextBox_ProductName.Text;
+            model.CategoryID = CategoryID;
+            model.CategoryPath = cate.CategoryPath;
             model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
-            model.AddPrices = TextBox_AddPrice.Text.Replace("，", ",");
-            model.Brief = TextBox_Brief.Text;
+            model.AddPrices = TextBox_AddPrices.Text.Replace('，', ',');
             model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
             model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
+            model.Brief = TextBox_Brief.Text;
+            model.UpdateTime = DateTime.Now;
+
+            model.TrueName = TextBox_TrueName.Text;
+            model.Phone = TextBox_Phone.Text;
+            model.CellPhone = TextBox_CellPhone.Text;
+            model.PostCode = TextBox_PostCode.Text;
+            model.Region = String.Format("{0} {1} {2}", regionInfo.Province, regionInfo.City, regionInfo.County);
+            model.Address = TextBox_Address.Text;
 
             bll.Update(model);
-
-            MessageBox.Show(this, "修改成功");
+            Response.Redirect("../SubmitSucc.aspx");
         }
     }
 }
