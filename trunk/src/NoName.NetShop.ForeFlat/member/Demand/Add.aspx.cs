@@ -72,7 +72,7 @@ namespace NoName.NetShop.ForeFlat.member.Demand
                 ErrorMessage += "所在地选择不完整\n";
             }
 
-            if (String.IsNullOrEmpty(ErrorMessage)) {
+            if (!String.IsNullOrEmpty(ErrorMessage)) {
                 MessageBox.Show(this,ErrorMessage);
                 return;
             }
