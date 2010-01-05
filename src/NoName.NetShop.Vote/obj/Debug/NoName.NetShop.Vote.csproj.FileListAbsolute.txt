@@ -1,5 +1,0 @@
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Vote\bin\Debug\NoName.NetShop.Vote.dll
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Vote\bin\Debug\NoName.NetShop.Vote.pdb
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Vote\obj\Debug\ResolveAssemblyReference.cache
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Vote\obj\Debug\NoName.NetShop.Vote.dll
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Vote\obj\Debug\NoName.NetShop.Vote.pdb
