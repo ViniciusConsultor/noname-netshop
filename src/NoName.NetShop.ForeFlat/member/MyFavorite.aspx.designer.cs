@@ -11,7 +11,7 @@
 namespace NoName.NetShop.ForeFlat.member {
     
     
-    public partial class MyMessages {
+    public partial class MyFavotite {
         
         /// <summary>
         /// rpList 控件。
