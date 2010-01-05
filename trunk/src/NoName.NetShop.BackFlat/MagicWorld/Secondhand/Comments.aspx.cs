@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NoName.NetShop.Comment.BLL;
+using NoName.NetShop.Comment;
 using NoName.NetShop.Common;
 using NoName.Utility;
 
