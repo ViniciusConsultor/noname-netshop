@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
-    <a href="Add.aspx">添加二手商品</a>
+    <a href="../CateSelect.aspx?app=Secondhand">添加二手商品</a>
     <div>
         <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
             <Columns>

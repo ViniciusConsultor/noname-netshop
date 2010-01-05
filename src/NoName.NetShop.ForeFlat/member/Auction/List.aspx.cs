@@ -24,7 +24,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(AspNetPager.PageSize, PageIndex, " and username = '" + GetUserName() + "'", out RecordCount);
+            GridView1.DataSource = bll.GetList(AspNetPager.PageSize, PageIndex, " and userid = '" + GetUserID() + "'", out RecordCount);
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
@@ -61,7 +61,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             }
         }
 
-        private string GetUserName()
+        private string GetUserID()
         {
             return "zhangfeng";
         }

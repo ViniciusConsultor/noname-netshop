@@ -16,37 +16,39 @@
         $(function() {
             InitRegions();
 
+
             $('#<%= Button_Add.ClientID %>').click(function() {
+                debugger;
                 $('#error-inform').hide('fast');
                 $('.field').css({ 'color': '#000' });
                 var errorMessage = ''; var obj = null;
 
-                obj = $('#<%= TextBox_ProductName.ClientID %>')
+                obj = $('#<%= TextBox_ProductName.ClientID %>');
                 if (obj.val() == '') {
                     errorMessage += '<li>请输入产品名称</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                obj = $('#<%= FileUpload_ProductImage.ClientID %>')
+                obj = $('#<%= FileUpload_ProductImage.ClientID %>');
                 if (obj.val() == '') {
                     errorMessage += '<li>请选择产品图片</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                obj = $('#<%= TextBox_StartPrice.ClientID %>')
-                if (obj.val() == '' || !obj.val().isCurrency()) {
+                obj = $('#<%= TextBox_StartPrice.ClientID %>');
+                if (obj.val() == '' || !obj.val().toString().isCurrency()) {
                     errorMessage += '<li>请输入正确的起始价格</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                obj = $('#<%= TextBox_AddPrices.ClientID %>')
+                obj = $('#<%= TextBox_AddPrices.ClientID %>');
                 if (obj.val() == '') {
                     errorMessage += '<li>请输入每次加价</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                obj = $('#<%= TextBox_StartTime.ClientID %>')
+                obj = $('#<%= TextBox_StartTime.ClientID %>');
                 if (obj.val() == '') {
                     errorMessage += '<li>请选择开始时间</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                obj = $('#<%= TextBox_EndTime.ClientID %>')
+                obj = $('#<%= TextBox_EndTime.ClientID %>');
                 if (obj.val() == '') {
                     errorMessage += '<li>请选择结束时间</li>';
                     obj.prev().css({ 'color': 'red' });
@@ -56,22 +58,22 @@
                     errorMessage += '<li>请输入产品简要描述</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                obj = $('#<%= TextBox_TrueName.ClientID %>')
+                obj = $('#<%= TextBox_TrueName.ClientID %>');
                 if (obj.val() == '') {
                     errorMessage += '<li>请输入您的姓名</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                obj = $('#<%= TextBox_PostCode.ClientID %>')
-                if (obj.val() == '' || !obj.val().isPostalCode()) {
+                obj = $('#<%= TextBox_PostCode.ClientID %>');
+                if (obj.val() == '' || !obj.val().toString().isPostalCode()) {
                     errorMessage += '<li>请输入正确的邮政编码</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                obj = $('#<%= TextBox_Address.ClientID %>')
+                obj = $('#<%= TextBox_Address.ClientID %>');
                 if (obj.val() == '') {
                     errorMessage += '<li>请输入地址</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                
+
                 /*phone*/
                 if ($('#<%= TextBox_Phone.ClientID %>').val() == '' && $('#<%= TextBox_CellPhone.ClientID %>').val() == '') {
                     errorMessage += '<li>请输入您的电话号码或者手机号码</li>';
@@ -79,11 +81,11 @@
                     $('#<%= TextBox_CellPhone.ClientID %>').prev().css({ 'color': 'red' });
                 }
                 else {
-                    if ($('#<%= TextBox_Phone.ClientID %>').val() == '' || !$('#<%= TextBox_Phone.ClientID %>').val().isTelephone()) {
+                    if ($('#<%= TextBox_Phone.ClientID %>').val() == '' || !$('#<%= TextBox_Phone.ClientID %>').val().toString().isTelephone()) {
                         errorMessage += '<li>请输入正确的电话号码</li>';
                         $('#<%= TextBox_Phone.ClientID %>').prev().css({ 'color': 'red' });
                     }
-                    if ($('#<%= TextBox_CellPhone.ClientID %>').val() == '' || !$('#<%= TextBox_CellPhone.ClientID %>').val().isMobile()) {
+                    if ($('#<%= TextBox_CellPhone.ClientID %>').val() == '' || !$('#<%= TextBox_CellPhone.ClientID %>').val().toString().isMobile()) {
                         errorMessage += '<li>请输入正确的手机号码</li>';
                         $('#<%= TextBox_CellPhone.ClientID %>').prev().css({ 'color': 'red' });
                     }
