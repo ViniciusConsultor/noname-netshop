@@ -73,6 +73,9 @@
     <Compile Include="AddressBll.cs" />
     <Compile Include="CompanyMemberInfo.cs" />
     <Compile Include="FamlyMemberInfo.cs" />
+    <Compile Include="FavoriteBll.cs" />
+    <Compile Include="FavoriteDal.cs" />
+    <Compile Include="FavoriteModel.cs" />
     <Compile Include="MemberInfo.cs" />
     <Compile Include="DAL\AddressDal.cs" />
     <Compile Include="AddressModel.cs" />
