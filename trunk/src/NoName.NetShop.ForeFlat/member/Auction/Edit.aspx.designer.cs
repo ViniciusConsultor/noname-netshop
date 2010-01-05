@@ -14,13 +14,31 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
     public partial class Edit {
         
         /// <summary>
-        /// TextBox_AuctionProductName 控件。
+        /// TextBox_Category 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_AuctionProductName;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Category;
+        
+        /// <summary>
+        /// TextBox_ProductName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ProductName;
+        
+        /// <summary>
+        /// FileUpload_ProductImage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_ProductImage;
         
         /// <summary>
         /// TextBox_StartPrice 控件。
@@ -32,13 +50,13 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         protected global::System.Web.UI.WebControls.TextBox TextBox_StartPrice;
         
         /// <summary>
-        /// TextBox_AddPrice 控件。
+        /// TextBox_AddPrices 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_AddPrice;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_AddPrices;
         
         /// <summary>
         /// TextBox_StartTime 控件。
@@ -68,22 +86,58 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Brief;
         
         /// <summary>
-        /// Image_ProductImage 控件。
+        /// TextBox_TrueName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image_ProductImage;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_TrueName;
         
         /// <summary>
-        /// FileUpload_ProductImage 控件。
+        /// TextBox_Phone 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload_ProductImage;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Phone;
+        
+        /// <summary>
+        /// TextBox_CellPhone 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_CellPhone;
+        
+        /// <summary>
+        /// TextBox_PostCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_PostCode;
+        
+        /// <summary>
+        /// ucRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::SinaEC.Shopping.WebUI.UC.RegionSelect ucRegion;
+        
+        /// <summary>
+        /// TextBox_Address 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Address;
         
         /// <summary>
         /// Button_Edit 控件。
@@ -92,6 +146,6 @@ namespace NoName.NetShop.ForeFlat.member.Auction {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Edit;
+        protected global::System.Web.UI.WebControls.LinkButton Button_Edit;
     }
 }
