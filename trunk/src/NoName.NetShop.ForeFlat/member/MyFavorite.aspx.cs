@@ -8,10 +8,11 @@ using NoName.NetShop.Common;
 using System.Data;
 using NoName.Utility;
 using NoName.NetShop.IMMessage;
+using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.member
 {
-    public partial class MyMessages : AuthBasePage
+    public partial class MyFavotite : AuthBasePage
     {
         private SearchPageInfo SearPageInfo
         {
@@ -21,15 +22,14 @@ namespace NoName.NetShop.ForeFlat.member
                 {
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
-                    spage.TableName = "imMessage";
-                    spage.FieldNames = "UserId,MsgId,MsgType,Subject,Content,SenderId,InsertTime,ReadTime,Status";
-                    spage.PriKeyName = "MsgId";
+                    spage.TableName = "umFavorite";
+                    spage.FieldNames = "UserId,FavoriteId,FavoriteUrl,FavoriteName,InsertTime,ContentId,ContentType";
+                    spage.PriKeyName = "FavoriteId";
                     spage.StrJoin = "";
                     spage.PageSize = 20;
                     spage.PageIndex = 1;
                     spage.OrderType = "1";
                     spage.StrWhere = String.Empty;
-
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
             }
@@ -65,9 +65,9 @@ namespace NoName.NetShop.ForeFlat.member
         {
             if (e.CommandName == "delete")
             {
-                int msgId = Convert.ToInt32(e.CommandArgument);
-                MessageBll bll = new MessageBll();
-                bll.Delete(this.CurrentUser.UserId, msgId);
+                int favId = Convert.ToInt32(e.CommandArgument);
+                FavoriteBll bll = new FavoriteBll();
+                bll.Delete(this.CurrentUser.UserId,favId);
                 SearPageInfo.PageIndex = 1;
                 BindList();
             }
@@ -75,9 +75,9 @@ namespace NoName.NetShop.ForeFlat.member
 
         protected void btnBatDelete_Click(object sender, EventArgs e)
         {
-            string msgIds = ReqParas["msgid"];
-            MessageBll bll = new MessageBll();
-            bll.Delete(this.CurrentUser.UserId,msgIds);
+            string favIds = ReqParas["favid"];
+            FavoriteBll bll = new FavoriteBll();
+            bll.Delete(this.CurrentUser.UserId, favIds);
             SearPageInfo.PageIndex = 1;
             BindList();
         }
