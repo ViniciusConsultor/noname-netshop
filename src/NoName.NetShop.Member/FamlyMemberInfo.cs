@@ -26,7 +26,7 @@ namespace NoName.NetShop.Member
         public override MemberInfo GetFullUserInfo(string userId)
         {
             string sql = "up_umMember_GetFamly";
-            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
+            Database db = NoName.NetShop.Common.DBFactory.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "UserId", DbType.String, userId);
 
@@ -44,7 +44,7 @@ namespace NoName.NetShop.Member
         public override void SaveExtInfo()
         {
             string sql = "up_umMember_SaveFamly";
-            Database db = NoName.NetShop.Common.DBFacotry.DbReader;
+            Database db = NoName.NetShop.Common.DBFactory.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "@userId", DbType.String, UserId);
             db.AddInParameter(dbCommand, "@idcard", DbType.AnsiString, IdCard);
