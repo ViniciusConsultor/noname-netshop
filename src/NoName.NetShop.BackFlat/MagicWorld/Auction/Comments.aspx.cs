@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.Comment;
 using NoName.Utility;
 using NoName.NetShop.Common;
+using NoName.NetShop.Comment.BLL;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Auction
 {
