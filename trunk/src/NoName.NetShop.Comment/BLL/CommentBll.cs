@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NoName.NetShop.Comment.DAL;
-using NoName.NetShop.Comment.Model;
+using NoName.NetShop.Comment;
 using System.Data;
 using NoName.NetShop.Common;
 
-namespace NoName.NetShop.Comment.BLL
+namespace NoName.NetShop.Comment
 {
     public class CommentBll
     {

@@ -57,9 +57,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AnswerBll.cs" />
     <Compile Include="BLL\CommentBll.cs" />
+    <Compile Include="BLL\QuestionBll.cs" />
+    <Compile Include="BLL\ReplyBll.cs" />
+    <Compile Include="BLL\TopicBll.cs" />
+    <Compile Include="DAL\AnswerDal.cs" />
     <Compile Include="DAL\CommentDal.cs" />
+    <Compile Include="DAL\QuestionDal.cs" />
+    <Compile Include="DAL\ReplyDal.cs" />
+    <Compile Include="DAL\TopicDal.cs" />
+    <Compile Include="Model\AnswerModel.cs" />
     <Compile Include="Model\CommentModel.cs" />
+    <Compile Include="Model\QuestionModel.cs" />
+    <Compile Include="Model\ReplyModel.cs" />
+    <Compile Include="Model\TopicModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
