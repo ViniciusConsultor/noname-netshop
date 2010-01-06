@@ -88,7 +88,7 @@ namespace NoName.NetShop.MagicWorld.DAL
             return model;
         }
 
-        public DataTable GetList(int PageIndex,int PageSize,string Condition,out int RecordCount)
+        public DataTable GetList(int PageIndex,int PageSize,string Condition,string Order,out int RecordCount)
         {
             int PageLowerBound = 0, PageUpperBount = 0;
             PageLowerBound = (PageIndex - 1) * PageSize;
@@ -98,7 +98,7 @@ namespace NoName.NetShop.MagicWorld.DAL
             string sqlData = @" select * from
                                 (select row_number() over (order by createtime desc) as id,* from [mwRentProduct])
                                 as sp
-                                where id > " + PageLowerBound + " and id<" + PageUpperBount + " " + Condition;
+                                where id > " + PageLowerBound + " and id<" + PageUpperBount + " " + Condition + (String.IsNullOrEmpty(Order) ? String.Empty : " order by " + Order);
 
             RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text,sqlCount));
 

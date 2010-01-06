@@ -32,9 +32,9 @@ namespace NoName.NetShop.MagicWorld.BLL
             return dal.GetModel(RentID);
         }
 
-        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        public DataTable GetList(int PageIndex, int PageSize, string Condition,string Order, out int RecordCount)
         {
-            return dal.GetList(PageIndex, PageSize, Condition, out RecordCount);
+            return dal.GetList(PageIndex, PageSize, Condition,Order, out RecordCount);
         }
     }
 }
