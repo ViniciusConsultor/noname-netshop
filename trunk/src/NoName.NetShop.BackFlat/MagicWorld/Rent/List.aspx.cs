@@ -23,7 +23,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
         private void BindData(int PageIndex) 
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, "", out RecordCount);
+            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, "","", out RecordCount);
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
