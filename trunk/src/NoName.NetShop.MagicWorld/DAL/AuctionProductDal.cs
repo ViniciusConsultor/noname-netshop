@@ -26,18 +26,18 @@ namespace NoName.NetShop.MagicWorld.DAL
         {
             DbCommand dbCommand = dbw.GetStoredProcCommand("UP_mwAuctionProduct_ADD");
 
-            dbw.AddInParameter(dbCommand, "AuctionId", DbType.Int32, model.AuctionID);
-            dbw.AddInParameter(dbCommand, "ProductName", DbType.AnsiString, model.ProductName);
-            dbw.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
-            dbw.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
-            dbw.AddInParameter(dbCommand, "OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
-            dbw.AddInParameter(dbCommand, "StartPrice", DbType.Decimal, model.StartPrice);
-            dbw.AddInParameter(dbCommand, "AddPrices", DbType.String, model.AddPrices);
-            dbw.AddInParameter(dbCommand, "CurPrice", DbType.Decimal, model.CurPrice);
-            dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-            dbw.AddInParameter(dbCommand, "StartTime", DbType.DateTime, model.StartTime);
-            dbw.AddInParameter(dbCommand, "EndTime", DbType.DateTime, model.EndTime);
-            dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+            dbw.AddInParameter(dbCommand, "@AuctionId", DbType.Int32, model.AuctionID);
+            dbw.AddInParameter(dbCommand, "@ProductName", DbType.AnsiString, model.ProductName);
+            dbw.AddInParameter(dbCommand, "@SmallImage", DbType.AnsiString, model.SmallImage);
+            dbw.AddInParameter(dbCommand, "@MediumImage", DbType.AnsiString, model.MediumImage);
+            dbw.AddInParameter(dbCommand, "@OutLinkUrl", DbType.AnsiString, model.OutLinkUrl);
+            dbw.AddInParameter(dbCommand, "@StartPrice", DbType.Decimal, model.StartPrice);
+            dbw.AddInParameter(dbCommand, "@AddPrices", DbType.String, model.AddPrices);
+            dbw.AddInParameter(dbCommand, "@CurPrice", DbType.Decimal, model.CurPrice);
+            dbw.AddInParameter(dbCommand, "@Brief", DbType.AnsiString, model.Brief);
+            dbw.AddInParameter(dbCommand, "@StartTime", DbType.DateTime, model.StartTime);
+            dbw.AddInParameter(dbCommand, "@EndTime", DbType.DateTime, model.EndTime);
+            dbw.AddInParameter(dbCommand, "@Status", DbType.Byte, model.Status);
             dbw.AddInParameter(dbCommand, "@CateID", DbType.Int32, model.CategoryID);
             dbw.AddInParameter(dbCommand, "@CatePath", DbType.String, model.CategoryPath);
             dbw.AddInParameter(dbCommand, "@userid", DbType.String, model.UserID);
