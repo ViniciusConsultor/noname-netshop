@@ -36,6 +36,11 @@ namespace NoName.NetShop.Product.BLL
 			return dal.Exists(BrandId);
 		}
 
+        public bool Exists(string BrandName)
+        {
+            return dal.Exists(BrandName);
+        }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
