@@ -3,8 +3,3 @@ G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\bin\Debug\NoName.NetSho
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\obj\Debug\ResolveAssemblyReference.cache
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\obj\Debug\NoName.NetShop.Manager.dll
 G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.Manager\obj\Debug\NoName.NetShop.Manager.pdb
-D:\Projects\netshopsvn\src\NoName.NetShop.Manager\bin\Debug\NoName.NetShop.Manager.dll
-D:\Projects\netshopsvn\src\NoName.NetShop.Manager\bin\Debug\NoName.NetShop.Manager.pdb
-D:\Projects\netshopsvn\src\NoName.NetShop.Manager\obj\Debug\ResolveAssemblyReference.cache
-D:\Projects\netshopsvn\src\NoName.NetShop.Manager\obj\Debug\NoName.NetShop.Manager.dll
-D:\Projects\netshopsvn\src\NoName.NetShop.Manager\obj\Debug\NoName.NetShop.Manager.pdb
