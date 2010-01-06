@@ -29,7 +29,7 @@ namespace NoName.NetShop.ForeFlat.Magic
         {
             if (!IsPostBack)
             {
-                if (!String.IsNullOrEmpty(Request.QueryString["a"])) AuctionID = Convert.ToInt32(Request.QueryString["a"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["pid"])) AuctionID = Convert.ToInt32(Request.QueryString["pid"]);
                 if (AuctionID != -1) BindData();
                 else Response.End();
             }
@@ -58,8 +58,8 @@ namespace NoName.NetShop.ForeFlat.Magic
             Literal_CurrentPrice.Text = model.CurPrice.ToString("0.00"); ;
             Literal_MinAddPrice.Text = dt.Rows[0]["price"].ToString();
             Literal_MaxAddPrice.Text = dt.Rows[dt.Rows.Count - 1]["price"].ToString();
-            Literal_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd HH:mm:ss");
-            Literal_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd HH:mm:ss");
+            Literal_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd");
+            Literal_EndTime.Text = model.EndTime.ToString("yyyy-MM-dd");
             Literal_Description.Text = model.Brief;
 
             Repeater_BidList.DataSource = LogBll.GetList("auctionid=" + AuctionID+" order by auctiontime desc");

@@ -25,7 +25,7 @@ namespace NoName.NetShop.ForeFlat.Magic
         {
             if (!IsPostBack)
             {
-                if (!String.IsNullOrEmpty(Request.QueryString["rentid"])) RentID = Convert.ToInt32(Request.QueryString["rentid"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["pid"])) RentID = Convert.ToInt32(Request.QueryString["pid"]);
                 else Response.End();
                 BindData();
             }
