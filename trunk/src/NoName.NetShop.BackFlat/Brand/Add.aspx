@@ -16,12 +16,6 @@
 	        </td>
 	    </tr>
 	    <tr>
-	        <td>∑÷¿‡£∫</td>
-	        <td>
-		        <asp:DropDownList runat="server" ID="drpCategory"></asp:DropDownList>
-	        </td>
-	    </tr>
-	    <tr>
 	        <td>∆∑≈∆LOGO£∫</td>
 	        <td>
                 <asp:FileUpload ID="fulBrandLogo" runat="server" />

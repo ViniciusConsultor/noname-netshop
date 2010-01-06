@@ -5,12 +5,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <style type="text/css">
+    #list{width:100%;}
+    #list li{width:100px;height:20px;float:left;margin:2px;}
+    
+    #select{width:100%;}
+    #select li{width:100px;height:20px;float:left;background:#eee;border:1px solid #ccc;margin:2px;}
+    </style>
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#list li input').click(function() {
+                if ($(this).attr('checked')) {
+                    addBrand($(this).attr('brandid'), $(this).next().html());
+                }
+                else {
+                    removeBrand($(this).attr('brandid'), $(this).next().html());
+                }
+            });
+
+            function addBrand(brandid, brandname) {
+                $('#select').append($('<li><input type="hidden" id="brand' + brandid + '" name="brand' + brandid + '" value=' + brandid + ' />' + brandname + '</li>'));
+            }
+            function removeBrand(brandid) {
+                $('#brand' + brandid).parent().remove();
+            }
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <div id="list">
+            <asp:Repeater runat="server" ID="Repeater_Brand">
+                <ItemTemplate>
+                    <li><input type="checkbox" brandid='<%# Eval("brandid") %>' /><span><%# Eval("BrandName") %></span></li>                    
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+        <div id="select"></div>
+        <asp:Button runat="server" ID="Button_Submit" OnClick="Button_Submit_Click" Text="提交" />
     </form>
 </body>
 </html>
