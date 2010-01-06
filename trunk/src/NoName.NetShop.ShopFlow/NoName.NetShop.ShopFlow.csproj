@@ -115,6 +115,10 @@
       <Project>{29A4BE47-9ADF-443F-913D-6CCEAD2DD752}</Project>
       <Name>NoName.NetShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NoName.NetShop.IMMessage\NoName.NetShop.IMMessage.csproj">
+      <Project>{44BE5878-2751-44BE-872F-3033F560324A}</Project>
+      <Name>NoName.NetShop.IMMessage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NoName.NetShop.Member\NoName.NetShop.Member.csproj">
       <Project>{94CA0650-A9A9-4778-A74A-6516D36A4D19}</Project>
       <Name>NoName.NetShop.Member</Name>
