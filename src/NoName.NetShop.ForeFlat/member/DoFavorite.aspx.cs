@@ -23,7 +23,6 @@ namespace NoName.NetShop.ForeFlat.member
             favModel.FavoriteUrl = "";
             fbll.Add(favModel);
             Response.Redirect("MyFavorite.aspx");
-
         }
     }
 }
