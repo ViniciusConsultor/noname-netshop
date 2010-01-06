@@ -115,6 +115,34 @@ function viewTransfer(obj){
 	document.getElementById("productList").innerHTML=document.getElementById("productList").innerHTML; //for IE6 bug
 }
 
+function selectFile(obj,id){
+	document.getElementById(id).value=obj.value;
+}
+
+function addPicture(){
+	var firstPictureNode=document.getElementById("productPictures");
+	if(firstPictureNode.clickedAddPicture!==true){
+		firstPictureNode.clickedAddPicture=true;
+		firstPictureNode.currentNumber=0;
+		firstPictureNode.lastNode=getNextsibling(firstPictureNode);
+	}
+	firstPictureNode.currentNumber+=1;
+	
+	var liNode=document.createElement("li");
+	var tempStr="";
+	tempStr='';
+	tempStr+='<span class="field"></span>';
+	tempStr+='<div class="fileSelector">';
+	tempStr+='<input type="text" class="textField" id="productPic'+ firstPictureNode.currentNumber + '" readonly="readonly" />';
+	tempStr+='<a class="button_blue" href="javascript:void(0)">';
+	tempStr+='<input type="file" size="1" name="productPic'+ firstPictureNode.currentNumber + '"  class="realFile" hidefocus=”true” onchange="selectFile(this,\'productPic' + firstPictureNode.currentNumber + '\')"/>';
+	tempStr+='<lable>浏  览</lable>';
+	tempStr+='</a>';
+	tempStr+='</div>';
+	liNode.innerHTML=tempStr;
+	firstPictureNode.parentNode.insertBefore(liNode,firstPictureNode.lastNode);
+}
+
 function zoomInThumb(e,obj){
 	var targetArea=getElementsByClassName(obj,"targetArea")[0];
 	var zoomArea=getElementsByClassName(obj,"zoomInArea")[0];
@@ -193,3 +221,13 @@ var getXY = function(el){
 				}
 				return r;
 			}
+			
+function getNextsibling(n)
+  {
+  var x=n.nextSibling;
+  while (x.nodeType!=1)
+   {
+   x=x.nextSibling;
+   }
+  return x;
+  }

@@ -9,7 +9,7 @@ using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.Facade;
 using System.Data;
 using NoName.NetShop.Common;
-using NoName.NetShop.Comment.BLL;
+using NoName.NetShop.Comment;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {

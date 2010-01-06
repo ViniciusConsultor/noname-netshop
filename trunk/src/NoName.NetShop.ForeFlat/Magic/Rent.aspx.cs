@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Facade;
-using NoName.NetShop.Comment.BLL;
+using NoName.NetShop.Comment;
 using NoName.NetShop.Common;
 
 namespace NoName.NetShop.ForeFlat.Magic

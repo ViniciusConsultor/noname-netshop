@@ -48,10 +48,47 @@ namespace NoName.NetShop.ForeFlat
                 case "regexistuserid": // 注册是检查UserId是不是已经存在
                     result = RegExistUserId(context);
                     break;
+                case "addfavorite": // 添加收藏
+                    result = AddFavorite(context);
+                    break;
             }
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(prefix + result);
+        }
+
+        private string AddFavorite(HttpContext context)
+        {
+            NameValueCollection nv = GetParas(context);
+            bool result = false;
+            string code = "";
+            string message = "";
+
+            if (context.User.Identity.IsAuthenticated)
+            {
+                ShopIdentity iden = context.User.Identity as ShopIdentity;
+
+                if (iden != null)
+                {
+                    FavoriteBll fbll = new FavoriteBll();
+                    FavoriteModel favModel = new FavoriteModel();
+
+                    favModel.ContentId = int.Parse(nv["cid"]);
+                    favModel.UserId = iden.UserId;
+                    favModel.ContentType = (ContentType)int.Parse(nv["ctype"]);
+                    favModel.FavoriteName = "";
+                    favModel.FavoriteUrl = "";
+                    fbll.Add(favModel);
+                    result = true;
+                    message = "收藏成功";
+                }
+                else
+                {
+                    result = false;
+                    message = "您还没有登录，请先登录！";
+                }
+            }
+            return GetJsonResult(result, code, message);
         }
 
         private string RegExistUserId(HttpContext context)
