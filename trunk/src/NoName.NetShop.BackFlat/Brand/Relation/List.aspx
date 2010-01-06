@@ -27,9 +27,12 @@
                 <p class="control"><asp:LinkButton runat="server" ID="Button_AddBrand" OnClick="Button_AddBrand_Click" Text="添加关联品牌" /></p>
                 <asp:Label runat="server" ID="Label_Informer"></asp:Label>
                 
-                <asp:Repeater runat="server" ID="Repeater_BrandList">
+                <asp:Repeater runat="server" ID="Repeater_BrandList" OnItemCommand="Repeater_BrandList_ItemCommand">
                     <ItemTemplate>
-                        <li><%# Eval("BrandName") %></li>
+                        <li>
+                            <%# Eval("BrandName") %>
+                            <asp:ImageButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("Brandid") %>' CommandName="d" ImageUrl="/images/window-close.png" OnClientClick="return confirm('确定删除?')" />
+                        </li>
                     </ItemTemplate>
                 </asp:Repeater>
             </div>    

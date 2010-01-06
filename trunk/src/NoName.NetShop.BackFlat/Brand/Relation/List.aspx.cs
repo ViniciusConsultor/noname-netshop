@@ -82,5 +82,27 @@ namespace NoName.NetShop.BackFlat.Brand.Relation
             int CategoryID = Convert.ToInt32(TreeView1.SelectedValue);
             BindData(CategoryID);
         }
+
+        protected void Repeater_BrandList_ItemCommand(object sender, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "d")
+            {
+                int CategoryID = Convert.ToInt32(TreeView1.SelectedValue);
+                int BrandID = Convert.ToInt32(e.CommandArgument);
+                DeleteRelation(CategoryID, BrandID);
+                BindData(CategoryID);
+            }
+        }
+
+        private void DeleteRelation(int CateID,int BrandID)
+        {
+            bll.Delete(BrandID, CateID);
+
+            DataTable sonCates=new CategoryModelBll().GetList(" parentid="+CateID).Tables[0];
+            if (sonCates.Rows.Count > 0)
+            {
+                foreach (DataRow row in sonCates.Rows) DeleteRelation(Convert.ToInt32(row["cateid"]), BrandID);
+            }
+        }
     }
 }
