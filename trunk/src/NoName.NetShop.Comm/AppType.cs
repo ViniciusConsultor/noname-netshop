@@ -13,5 +13,7 @@ namespace NoName.NetShop.Common
         public readonly static string Address = "04";
         public readonly static string Product = "05";
         public readonly static string MagicWorld = "06";
+        public readonly static string Message = "07";
+        public readonly static string Other = "08";
     }
 }
