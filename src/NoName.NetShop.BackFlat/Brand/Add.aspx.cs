@@ -19,69 +19,68 @@ namespace NoName.NetShop.BackFlat.Brand
 {
     public partial class Add : System.Web.UI.Page
     {
+        private BrandModelBll bll = new BrandModelBll();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BindDropDownList();
             }            
         }
 
 
-        private void BindDropDownList()
+        //private void BindDropDownList()
+        //{
+        //    CategoryModelBll CategoryBll = new CategoryModelBll();
+
+        //    drpCategory.DataSource = CategoryBll.GetList("CateLevel = 1");
+        //    drpCategory.DataTextField = "catename";
+        //    drpCategory.DataValueField = "cateid";
+        //    drpCategory.DataBind();
+        //}
+
+
+        protected void btnAdd_Click(object sender, EventArgs e)
         {
-            CategoryModelBll CategoryBll = new CategoryModelBll();
+            string strErr = "";
+            if (this.txtBrandName.Text == "")
+            {
+                strErr += "BrandName不能为空！\\n";
+            }
+            if (this.fulBrandLogo.FileName == "")
+            {
+                strErr += "BrandLogo不能为空！\\n";
+            }
+            if (this.txtBrief.Text == "")
+            {
+                strErr += "Brief不能为空！\\n";
+            }
 
-            drpCategory.DataSource = CategoryBll.GetList("CateLevel = 1");
-            drpCategory.DataTextField = "catename";
-            drpCategory.DataValueField = "cateid";
-            drpCategory.DataBind();
-        }
-        		
-        protected void Page_LoadComplete(object sender, EventArgs e)
-		{
-            //(Master.FindControl("lblTitle") as Label).Text = "信息添加";
-		}
+            if (strErr != "")
+            {
+                MessageBox.Show(this, strErr);
+                return;
+            }
 
-		protected void btnAdd_Click(object sender, EventArgs e)
-		{        			
-	        string strErr="";
-	        if(this.txtBrandName.Text =="")
-	        {
-		        strErr+="BrandName不能为空！\\n";	
-	        }
-	        if(this.fulBrandLogo.FileName =="")
-	        {
-		        strErr+="BrandLogo不能为空！\\n";	
-	        }
-	        if(this.txtBrief.Text =="")
-	        {
-		        strErr+="Brief不能为空！\\n";	
-	        }
+            if (bll.Exists(txtBrandName.Text)) 
+            {
+                MessageBox.Show(this,"该品牌已存在");
+                return;
+            }
 
-	        if(strErr!="")
-	        {
-		        MessageBox.Show(this,strErr);
-		        return;
-	        }
-	        string BrandName=this.txtBrandName.Text;
-	        int CateId=int.Parse(this.drpCategory.SelectedValue);
-            CategoryModel cate = new CategoryModelBll().GetModel(CateId);
-            string CatePath = cate.CatePath;
-	        string Brief=this.txtBrief.Text;
 
-	        BrandModel model=new BrandModel();
+            BrandModel model = new BrandModel();
+
             model.BrandId = CommDataHelper.GetNewSerialNum("pd");
-	        model.BrandName=BrandName;
-	        model.CateId=CateId;
-            model.CatePath = CatePath;
+            model.BrandName = txtBrandName.Text;
+            model.CateId = 0;
+            model.CatePath = String.Empty;
             model.BrandLogo = UploadBrandLogo(model.BrandId, fulBrandLogo);
-	        model.Brief=Brief;
+            model.Brief = txtBrief.Text;
             model.ShowOrder = model.BrandId;
 
-	        BrandModelBll bll=new BrandModelBll();
-	        bll.Add(model);
-		}
+            bll.Add(model);
+        }
 
         private string UploadBrandLogo(int BrandID,FileUpload fu)
         {
