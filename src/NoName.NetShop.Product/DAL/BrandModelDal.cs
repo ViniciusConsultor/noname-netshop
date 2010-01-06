@@ -59,6 +59,13 @@ namespace NoName.NetShop.Product.DAL
 			}
 		}
 
+        public bool Exists(string BrandName)
+        {
+            DbCommand Command = dbr.GetSqlStringCommand("select count(0) from pdbrand where brandname=@brandname");
+            dbr.AddInParameter(Command, "brandname", DbType.String, BrandName);
+            return Convert.ToInt32(dbr.ExecuteScalar(Command)) > 0;
+        }
+
 		/// <summary>
 		///  增加一条数据
 		/// </summary>

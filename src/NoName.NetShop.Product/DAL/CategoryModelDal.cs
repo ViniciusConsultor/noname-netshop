@@ -138,7 +138,7 @@ namespace NoName.NetShop.Product.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select CateId,CateName,CatePath,Status,PriceRange,IsHide,CateLevel ");
+			strSql.Append("select * ");
 			strSql.Append(" FROM pdCategory ");
 			if(strWhere.Trim()!="")
 			{
