@@ -35,11 +35,12 @@
                     <div class="groupTitle">我的商城交易</div>
                     <ul class="articleList_1 bullet_2">
                         <li>
-                            <a href="myorders.aspx">订单中心</a>
+                            <a href="/member/myorders.aspx">订单中心</a>
                             </li>
                             <li>
-                            <a href="mygiftorders.aspx">礼品兑换</a>
+                            <a href="/member/mygiftorders.aspx">礼品兑换</a>
                         </li>
+                        <li><a href="/member/MyFavorite.aspx">我的收藏</a></li>
                     </ul>
                     <div class="groupTitle">我的魔力世界</div>
                     <ul class="articleList_1 bullet_2">
@@ -74,7 +75,7 @@
                     <div class="groupTitle">我的鼎鼎服务</div>
                     <ul class="articleList_1 bullet_2">
                         <li>
-                            <a href="#">我的站内信</a>
+                            <a href="MyMessages.aspx">我的站内信</a>
                         </li>
                         <li>
                             <a href="#">我的咨询</a>

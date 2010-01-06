@@ -8,6 +8,7 @@
 <link type="text/css" rel="stylesheet" href="~/css/common.css" />
 <link type="text/css" rel="stylesheet" href="~/css/member.css" />
 <link type="text/css" rel="stylesheet" href="~/js/Rainy.css" />
+<link type="text/css" rel="stylesheet" href="css/shopping.css" />
 
 <script type="text/javascript" src="/js/DingdingJsLib.js"></script>
 <script type="text/javascript" src="/js/jquery.js" ></script>
