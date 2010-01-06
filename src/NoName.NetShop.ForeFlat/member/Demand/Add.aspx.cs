@@ -56,9 +56,9 @@ namespace NoName.NetShop.ForeFlat.member.Demand
             string ErrorMessage = String.Empty;
             if (String.IsNullOrEmpty(TextBox_ProductName.Text)) { ErrorMessage += "产品名称不能为空\n"; }
             if (String.IsNullOrEmpty(FileUpload_ProductImage.FileName)) { ErrorMessage += "产品图片不能为空\n"; }
-            if (String.IsNullOrEmpty(TextBox_Price.Text) || PageValidate.IsDecimal(TextBox_Price.Text)) { ErrorMessage += "请输入正确的产品价格\n"; }
-            if (String.IsNullOrEmpty(TextBox_Count.Text) || PageValidate.IsNumber(TextBox_Count.Text)) { ErrorMessage += "请输入正确的产品数量\n"; }
-            if (String.IsNullOrEmpty(TextBox_ExpireTime.Text) || PageValidate.IsDate(TextBox_ExpireTime.Text)) { ErrorMessage += "请输入正确的有效时间\n"; }
+            if (String.IsNullOrEmpty(TextBox_Price.Text) || !PageValidate.IsDecimal(TextBox_Price.Text)) { ErrorMessage += "请输入正确的产品价格\n"; }
+            if (String.IsNullOrEmpty(TextBox_Count.Text) || !PageValidate.IsNumber(TextBox_Count.Text)) { ErrorMessage += "请输入正确的产品数量\n"; }
+            if (String.IsNullOrEmpty(TextBox_ExpireTime.Text) || !PageValidate.IsDate(TextBox_ExpireTime.Text)) { ErrorMessage += "请输入正确的有效时间\n"; }
             if (String.IsNullOrEmpty(TextBox_Brief.Text)) { ErrorMessage += "请输入产品简介\n"; }
             if (String.IsNullOrEmpty(TextBox_TrueName.Text)) { ErrorMessage += "请输入您的姓名\n"; }
             if (String.IsNullOrEmpty(TextBox_Phone.Text) && String.IsNullOrEmpty(TextBox_CellPhone.Text)) { ErrorMessage += "请输入您的电话号码或者手机号码\n"; }
