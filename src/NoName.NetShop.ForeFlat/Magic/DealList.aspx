@@ -37,7 +37,7 @@
                         <asp:Repeater runat="server" ID="Repeater_Sale">
                             <ItemTemplate>
                                 <li>
-                                    <a href='<%# "Secondhand.aspx?s="+Eval("seproductid") %>'><%# Eval("seproductname") %></a>
+                                    <a href='<%# "Secondhand.aspx?pid="+Eval("seproductid") %>'><%# Eval("seproductname") %></a>
                                     <span><%# Convert.ToDateTime(Eval("inserttime")).ToString("MM-dd") %></span>
                                 </li>
                             </ItemTemplate>
@@ -96,8 +96,8 @@
                         <asp:Repeater runat="server" ID="Repeater_Demand">
                             <ItemTemplate>
                                 <li>
-                                    <a href="#"><%# Eval("demandname") %></a>
-                                    <span><%# Convert.ToDateTime(Eval("createtime")).ToString("MM-dd") %></span>
+                                    <a href='<%# "demand.aspx?pid="+Eval("demandid") %>'><%# Eval("demandname") %></a>
+                                    <span><%# Convert.ToDateTime(Eval("inserttime")).ToString("MM-dd") %></span>
                                 </li>
                             </ItemTemplate>
                         </asp:Repeater>
