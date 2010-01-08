@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.MagicWorld.BLL;
-using NoName.NetShop.Comment.BLL;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.Facade;
 using NoName.NetShop.Common;
+using NoName.NetShop.Comment;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
