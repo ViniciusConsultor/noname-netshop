@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using NoName.NetShop.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
-using NoName.NetShop.Comment.Model;
 using System.Data.Common;
 using System.Data;
 
-namespace NoName.NetShop.Comment.DAL
+namespace NoName.NetShop.Comment
 {
     public class CommentDal
     {
