@@ -6,7 +6,7 @@ using NoName.NetShop.Publish.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using NoName.NetShop.Common;
-using NoName.NetShop.Comment.BLL;
+using NoName.NetShop.Comment;
 
 namespace NoName.NetShop.Publish.News.DataAccess
 {
