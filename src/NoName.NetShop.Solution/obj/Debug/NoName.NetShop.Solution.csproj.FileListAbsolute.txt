@@ -1,0 +1,16 @@
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\NoName.NetShop.Solution.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\NoName.NetShop.Solution.pdb
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\NoName.NetShop.Common.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.Unity.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.ObjectBuilder2.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.Unity.xml
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\Microsoft.Practices.ObjectBuilder2.xml
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\bin\Debug\NoName.NetShop.Common.pdb
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\obj\Debug\ResolveAssemblyReference.cache
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\obj\Debug\NoName.NetShop.Solution.dll
+F:\works\Project\NetShop\src\NoName.NetShop.Solution\obj\Debug\NoName.NetShop.Solution.pdb
