@@ -31,19 +31,19 @@ namespace NoName.NetShop.Common
         public static DataSet GetDataFromSingleTableByPage(SearchPageInfo pageInfo)
         {
             string spName = "UP_GetRecordFromSingleTableByPage";
-            DbCommand comm = DBFactory.DbReader.GetStoredProcCommand(spName);
-            DBFactory.DbReader.AddInParameter(comm, "@tblName", DbType.String, pageInfo.TableName);
-            DBFactory.DbReader.AddInParameter(comm, "@priKeyName", DbType.String, pageInfo.PriKeyName);
-            DBFactory.DbReader.AddInParameter(comm, "@fldNames", DbType.String, pageInfo.FieldNames);
-            DBFactory.DbReader.AddInParameter(comm, "@PageSize", DbType.Int32, pageInfo.PageSize);
-            DBFactory.DbReader.AddInParameter(comm, "@PageIndex", DbType.Int32, pageInfo.PageIndex);
-            DBFactory.DbReader.AddInParameter(comm, "@OrderType", DbType.String, pageInfo.OrderType);
-            DBFactory.DbReader.AddInParameter(comm, "@strWhere", DbType.String, pageInfo.StrWhere);
-            DBFactory.DbReader.AddOutParameter(comm, "@TotalItem", DbType.Int32, 4);
-            DBFactory.DbReader.AddOutParameter(comm, "@TotalPage", DbType.Int32, 4);
-            DataSet ds = DBFactory.DbReader.ExecuteDataSet(comm);
-            pageInfo.TotalItem = Convert.ToInt32(DBFactory.DbReader.GetParameterValue(comm, "@TotalItem"));
-            pageInfo.TotalPage = Convert.ToInt32(DBFactory.DbReader.GetParameterValue(comm, "@TotalPage"));
+            DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(spName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@tblName", DbType.String, pageInfo.TableName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@priKeyName", DbType.String, pageInfo.PriKeyName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@fldNames", DbType.String, pageInfo.FieldNames);
+            CommDataAccess.DbReader.AddInParameter(comm, "@PageSize", DbType.Int32, pageInfo.PageSize);
+            CommDataAccess.DbReader.AddInParameter(comm, "@PageIndex", DbType.Int32, pageInfo.PageIndex);
+            CommDataAccess.DbReader.AddInParameter(comm, "@OrderType", DbType.String, pageInfo.OrderType);
+            CommDataAccess.DbReader.AddInParameter(comm, "@strWhere", DbType.String, pageInfo.StrWhere);
+            CommDataAccess.DbReader.AddOutParameter(comm, "@TotalItem", DbType.Int32, 4);
+            CommDataAccess.DbReader.AddOutParameter(comm, "@TotalPage", DbType.Int32, 4);
+            DataSet ds = CommDataAccess.DbReader.ExecuteDataSet(comm);
+            pageInfo.TotalItem = Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@TotalItem"));
+            pageInfo.TotalPage = Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@TotalPage"));
             return ds;
         }
 
@@ -70,21 +70,21 @@ namespace NoName.NetShop.Common
         public static DataSet GetDataFromMultiTablesByPage(SearchPageInfo pageInfo)
         {
             string spName = "UP_GetRecordFromTableWithSimpleLeftOuterJoinByPage";
-            DbCommand comm = DBFactory.DbReader.GetStoredProcCommand(spName);
-            DBFactory.DbReader.AddInParameter(comm, "@tblName", DbType.String, pageInfo.TableName);
-            DBFactory.DbReader.AddInParameter(comm, "@priKeyName", DbType.String, pageInfo.PriKeyName);
-            DBFactory.DbReader.AddInParameter(comm, "@fldNames", DbType.String, pageInfo.FieldNames);
-            DBFactory.DbReader.AddInParameter(comm, "@totalflds", DbType.String, pageInfo.TotalFieldStr);
-            DBFactory.DbReader.AddInParameter(comm, "@PageSize", DbType.Int32, pageInfo.PageSize);
-            DBFactory.DbReader.AddInParameter(comm, "@PageIndex", DbType.Int32, pageInfo.PageIndex);
-            DBFactory.DbReader.AddInParameter(comm, "@OrderType", DbType.String, pageInfo.OrderType);
-            DBFactory.DbReader.AddInParameter(comm, "@strWhere", DbType.String, pageInfo.StrWhere);
-            DBFactory.DbReader.AddInParameter(comm, "@strJoin", DbType.String, pageInfo.StrJoin);
-            DBFactory.DbReader.AddOutParameter(comm, "@TotalItem", DbType.Int32, 4);
-            DBFactory.DbReader.AddOutParameter(comm, "@TotalPage", DbType.Int32, 4);
-            DataSet ds = DBFactory.DbReader.ExecuteDataSet(comm);
-            pageInfo.TotalItem = Convert.ToInt32(DBFactory.DbReader.GetParameterValue(comm, "@TotalItem"));
-            pageInfo.TotalPage = Convert.ToInt32(DBFactory.DbReader.GetParameterValue(comm, "@TotalPage"));
+            DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(spName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@tblName", DbType.String, pageInfo.TableName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@priKeyName", DbType.String, pageInfo.PriKeyName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@fldNames", DbType.String, pageInfo.FieldNames);
+            CommDataAccess.DbReader.AddInParameter(comm, "@totalflds", DbType.String, pageInfo.TotalFieldStr);
+            CommDataAccess.DbReader.AddInParameter(comm, "@PageSize", DbType.Int32, pageInfo.PageSize);
+            CommDataAccess.DbReader.AddInParameter(comm, "@PageIndex", DbType.Int32, pageInfo.PageIndex);
+            CommDataAccess.DbReader.AddInParameter(comm, "@OrderType", DbType.String, pageInfo.OrderType);
+            CommDataAccess.DbReader.AddInParameter(comm, "@strWhere", DbType.String, pageInfo.StrWhere);
+            CommDataAccess.DbReader.AddInParameter(comm, "@strJoin", DbType.String, pageInfo.StrJoin);
+            CommDataAccess.DbReader.AddOutParameter(comm, "@TotalItem", DbType.Int32, 4);
+            CommDataAccess.DbReader.AddOutParameter(comm, "@TotalPage", DbType.Int32, 4);
+            DataSet ds = CommDataAccess.DbReader.ExecuteDataSet(comm);
+            pageInfo.TotalItem = Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@TotalItem"));
+            pageInfo.TotalPage = Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@TotalPage"));
             return ds;
         }
 
@@ -96,11 +96,11 @@ namespace NoName.NetShop.Common
         public static int GetNewSerialNum(string appname)
         {
             string spName = "UP_unSerialNum_GetNewSerial";
-            DbCommand comm = DBFactory.DbReader.GetStoredProcCommand(spName);
-            DBFactory.DbReader.AddInParameter(comm, "@appid", DbType.String, appname);
-            DBFactory.DbReader.AddOutParameter(comm, "@serial", DbType.Int32, 4);
-            DBFactory.DbReader.ExecuteNonQuery(comm);
-            return Convert.ToInt32(DBFactory.DbReader.GetParameterValue(comm, "@serial"));
+            DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(spName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@appid", DbType.String, appname);
+            CommDataAccess.DbReader.AddOutParameter(comm, "@serial", DbType.Int32, 4);
+            CommDataAccess.DbReader.ExecuteNonQuery(comm);
+            return Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@serial"));
         }
         
         /// <summary>
@@ -111,11 +111,11 @@ namespace NoName.NetShop.Common
         public static string GetNewSerialStr(string appname)
         {
             string spName = "UP_unSerialStr_GetNewSerial";
-            DbCommand comm = DBFactory.DbReader.GetStoredProcCommand(spName);
-            DBFactory.DbReader.AddInParameter(comm, "@appid", DbType.String, appname);
-            DBFactory.DbReader.AddOutParameter(comm, "@serial", DbType.String, 20);
-            DBFactory.DbReader.ExecuteNonQuery(comm);
-            return DBFactory.DbReader.GetParameterValue(comm, "@serial").ToString();
+            DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(spName);
+            CommDataAccess.DbReader.AddInParameter(comm, "@appid", DbType.String, appname);
+            CommDataAccess.DbReader.AddOutParameter(comm, "@serial", DbType.String, 20);
+            CommDataAccess.DbReader.ExecuteNonQuery(comm);
+            return CommDataAccess.DbReader.GetParameterValue(comm, "@serial").ToString();
         }    
         
         }
