@@ -26,7 +26,7 @@ namespace NoName.NetShop.Vote.DAL
             if (model.VoteId == 0)
                 model.VoteId = NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Other);
 
-            Database db = DBFactory.DbWriter;
+            Database db = CommDataAccess.DbWriter;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteTopic_Save");
 			db.AddInParameter(dbCommand, "VoteId", DbType.Int32, model.VoteId);
 			db.AddInParameter(dbCommand, "Topic", DbType.AnsiString, model.Topic);
@@ -44,7 +44,7 @@ namespace NoName.NetShop.Vote.DAL
 		/// </summary>
 		public void Delete(int VoteId)
 		{
-            Database db = DBFactory.DbWriter;
+            Database db = CommDataAccess.DbWriter;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteTopic_Delete");
 			db.AddInParameter(dbCommand, "VoteId", DbType.Int32,VoteId);
 
@@ -56,7 +56,7 @@ namespace NoName.NetShop.Vote.DAL
 		/// </summary>
 		public NoName.NetShop.Vote.Model.VoteTopic GetModel(int VoteId)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteTopic_GetModel");
 			db.AddInParameter(dbCommand, "VoteId", DbType.Int32,VoteId);
 

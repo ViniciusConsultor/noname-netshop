@@ -28,7 +28,7 @@ namespace NoName.NetShop.Vote.DAL
                 model.LogId = NoName.NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Other);
             }
 
-            Database db = DBFactory.DbWriter;
+            Database db = CommDataAccess.DbWriter;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteRemark_ADD");
 			db.AddInParameter(dbCommand, "VoteId", DbType.Int32, model.VoteId);
 			db.AddInParameter(dbCommand, "UserId", DbType.String, model.UserId);
@@ -49,7 +49,7 @@ namespace NoName.NetShop.Vote.DAL
         /// <returns></returns>
         public bool Validate(int voteId,string userId, string voteIp)
         {
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteRemark_Validate");
             db.AddInParameter(dbCommand, "VoteId", DbType.Int32, voteId);
             db.AddInParameter(dbCommand, "UserId", DbType.String, userId);
@@ -66,7 +66,7 @@ namespace NoName.NetShop.Vote.DAL
 		/// </summary>
 		public void Delete(int LogId)
 		{
-            Database db = DBFactory.DbWriter;
+            Database db = CommDataAccess.DbWriter;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteRemark_Delete");
 			db.AddInParameter(dbCommand, "LogId", DbType.Int32,LogId);
 
@@ -78,7 +78,7 @@ namespace NoName.NetShop.Vote.DAL
 		/// </summary>
 		public NoName.NetShop.Vote.Model.VoteRemark GetModel(int LogId)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteRemark_GetModel");
 			db.AddInParameter(dbCommand, "LogId", DbType.Int32,LogId);
 
@@ -107,7 +107,7 @@ namespace NoName.NetShop.Vote.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<NoName.NetShop.Vote.Model.VoteRemark> list = new List<NoName.NetShop.Vote.Model.VoteRemark>();
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
