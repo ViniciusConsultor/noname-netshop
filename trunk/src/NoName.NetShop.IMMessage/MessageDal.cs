@@ -24,7 +24,7 @@ namespace NoName.NetShop.IMMessage
 		/// </summary>
 		public void Add(MessageModel model)
 		{
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_imMessage_ADD");
             if (model.MsgId == 0)
                 model.MsgId = NoName.NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Message);
@@ -46,7 +46,7 @@ namespace NoName.NetShop.IMMessage
         public void SetIsReaded(string userId, int msgId)
         {
             string sql = "update imMessage set status=1,readtime=getdate() from immessage where userid=@userId and msgId=@msgId";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
@@ -60,7 +60,7 @@ namespace NoName.NetShop.IMMessage
 		public void Delete(string userId,int msgId)
 		{
             string sql = "delete imMessage from immessage where userid=@userId and msgId=@msgId";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
@@ -75,7 +75,7 @@ namespace NoName.NetShop.IMMessage
             if (Regex.IsMatch(msgIds, @"^(\d+,)*\d+$"))
             {
                 string sql = "delete imMessage from immessage where userid=@userId and msgId in (" + msgIds + ")";
-                Database db = NoName.NetShop.Common.DBFactory.DbReader;
+                Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
                 db.AddInParameter(dbCommand, "userId", DbType.String, userId);
                 db.ExecuteNonQuery(dbCommand);
@@ -91,7 +91,7 @@ namespace NoName.NetShop.IMMessage
         public MessageModel GetModel(int msgId)
         {
             string sql = "SELECT UserId,MsgId,MsgType,Subject,Content,SenderId,InsertTime,ReadTime,Status from imMessage where msgId=@msgId";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
             MessageModel model = null;
@@ -110,7 +110,7 @@ namespace NoName.NetShop.IMMessage
 		public MessageModel GetModel(string userId,int msgId)
 		{
             string sql = "SELECT UserId,MsgId,MsgType,Subject,Content,SenderId,InsertTime,ReadTime,Status from imMessage where userId=@userId and msgId=@msgId";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
