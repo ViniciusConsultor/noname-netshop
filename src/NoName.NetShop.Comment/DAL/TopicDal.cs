@@ -16,7 +16,7 @@ namespace NoName.NetShop.Comment
 		/// </summary>
         public void Add(NoName.NetShop.Comment.TopicModel model)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             if (model.TopicId == 0)
                 model.TopicId = NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Other);
 
@@ -35,7 +35,7 @@ namespace NoName.NetShop.Comment
 		/// </summary>
 		public void Delete(int topicId)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_qaTopic_Delete");
             db.AddInParameter(dbCommand, "TopicId", DbType.Int32, topicId);
             db.ExecuteNonQuery(dbCommand);
@@ -46,7 +46,7 @@ namespace NoName.NetShop.Comment
 		/// </summary>
         public NoName.NetShop.Comment.TopicModel GetModel(int TopicId)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_qaTopic_GetModel");
             db.AddInParameter(dbCommand, "TopicId", DbType.Int32, TopicId);
 
@@ -82,7 +82,7 @@ namespace NoName.NetShop.Comment
                 strSql.Append(" where " + strWhere);
             }
             List<NoName.NetShop.Comment.TopicModel> list = new List<NoName.NetShop.Comment.TopicModel>();
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
             {
                 while (dataReader.Read())
@@ -151,7 +151,7 @@ namespace NoName.NetShop.Comment
         internal void ToggleStatus(int topicId)
         {
             string sql = "update qatopic set Status=case status when 1 then 0 else 1 end where topicId=" + topicId;
-            Database db = DBFactory.DbWriter;
+            Database db = CommDataAccess.DbWriter;
             db.ExecuteNonQuery(CommandType.Text, sql);
         }
     }
