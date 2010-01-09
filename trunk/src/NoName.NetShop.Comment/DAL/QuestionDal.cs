@@ -17,6 +17,8 @@ namespace NoName.NetShop.Comment
         public void Add(NoName.NetShop.Comment.QuestionModel model)
 		{
             Database db = CommDataAccess.DbReader;
+            if (model.QuestionId == 0)
+                model.QuestionId = CommDataHelper.GetNewSerialNum(AppType.Other);
             DbCommand dbCommand = db.GetStoredProcCommand("UP_qaQuestion_ADD");
             db.AddInParameter(dbCommand, "QuestionId", DbType.Int32, model.QuestionId);
             db.AddInParameter(dbCommand, "UserId", DbType.AnsiString, model.UserId);
