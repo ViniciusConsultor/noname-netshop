@@ -485,13 +485,6 @@
     <Compile Include="Brand\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Brand\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Brand\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Category\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -533,13 +526,6 @@
     </Compile>
     <Compile Include="Category\Properity\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Category\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Category\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
     </Compile>
     <Compile Include="CMS\Controls\TagEditorBase.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -1093,6 +1079,20 @@
     <Compile Include="qa\ShowTopic.aspx.designer.cs">
       <DependentUpon>ShowTopic.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Solution\DemandDetail.aspx.cs">
+      <DependentUpon>DemandDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Solution\DemandDetail.aspx.designer.cs">
+      <DependentUpon>DemandDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Solution\DemandList.aspx.cs">
+      <DependentUpon>DemandList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Solution\DemandList.aspx.designer.cs">
+      <DependentUpon>DemandList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vote\ModifyGroup.aspx.cs">
       <DependentUpon>ModifyGroup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1237,7 +1237,6 @@
     <None Include="Controls\FCKEditor\fckeditor.pl" />
     <None Include="Controls\FCKEditor\fckeditor.py" />
     <None Include="Controls\FCKEditor\fckutils.cfm" />
-    <Content Include="Brand\Show.aspx" />
     <Content Include="CMS\Controls\TagEditor_Static.ascx" />
     <Content Include="CMS\Page\ChannelPage\Add.aspx" />
     <Content Include="CMS\Page\ChannelPage\Edit.aspx" />
@@ -1510,7 +1509,6 @@
     <Content Include="Category\Properity\Add.aspx" />
     <Content Include="Category\Properity\Edit.aspx" />
     <Content Include="Category\Properity\List.aspx" />
-    <Content Include="Category\Show.aspx" />
     <Content Include="Controls\CategoryProvider.ashx" />
     <Content Include="admin\AddNewUser.aspx" />
     <Content Include="admin\CacheReset.aspx" />
@@ -1920,6 +1918,8 @@
     <Content Include="qa\ShowQuestion.aspx" />
     <Content Include="qa\TopicList.aspx" />
     <Content Include="qa\ShowTopic.aspx" />
+    <Content Include="Solution\DemandDetail.aspx" />
+    <Content Include="Solution\DemandList.aspx" />
     <Content Include="vote\ModifyGroup.aspx" />
     <Content Include="vote\ModifyTopic.aspx" />
     <Content Include="vote\ShowVoteInfo.aspx" />
@@ -1962,6 +1962,10 @@
     <ProjectReference Include="..\NoName.NetShop.ShopFlow\NoName.NetShop.ShopFlow.csproj">
       <Project>{8D7CC678-4587-4678-813E-142B507DC2AC}</Project>
       <Name>NoName.NetShop.ShopFlow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoName.NetShop.Solution\NoName.NetShop.Solution.csproj">
+      <Project>{FC5D2F43-5581-4456-BFE2-BEB12B83DBCA}</Project>
+      <Name>NoName.NetShop.Solution</Name>
     </ProjectReference>
     <ProjectReference Include="..\NoName.NetShop.Vote\NoName.NetShop.Vote.csproj">
       <Project>{041966F9-B3F1-4A07-8501-5EF8B650EAFB}</Project>
