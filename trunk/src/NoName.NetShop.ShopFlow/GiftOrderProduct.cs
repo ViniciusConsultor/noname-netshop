@@ -14,9 +14,9 @@ namespace NoName.NetShop.ShopFlow
         {
             GiftOrderProduct op = null;
             string sql = "SELECT productId,productName,Stock,SmallImage,Status,Score FROM pdGift where status=1 and stock>0 and productid=@productid";
-            DbCommand comm = DBFactory.DbReader.GetSqlStringCommand(sql);
-            DBFactory.DbReader.AddInParameter(comm, "productId", DbType.Int32, productId);
-            using (IDataReader reader = DBFactory.DbReader.ExecuteReader(comm))
+            DbCommand comm = CommDataAccess.DbReader.GetSqlStringCommand(sql);
+            CommDataAccess.DbReader.AddInParameter(comm, "productId", DbType.Int32, productId);
+            using (IDataReader reader = CommDataAccess.DbReader.ExecuteReader(comm))
             {
                 if (reader.Read())
                 {
@@ -47,13 +47,13 @@ namespace NoName.NetShop.ShopFlow
         internal override void Save()
         {
             string sql = "INSERT INTO spGiftOrderitem (OrderId,ProductId,Quantity,Score,TotalScore) VALUES (@OrderId,@ProductId,@Quantity,@Score,@TotalScore)";
-            DbCommand comm = DBFactory.DbWriter.GetSqlStringCommand(sql);
-            DBFactory.DbWriter.AddInParameter(comm, "orderId", DbType.String, OrderId);
-            DBFactory.DbWriter.AddInParameter(comm, "productid", DbType.Int32, this.ProductID);
-            DBFactory.DbWriter.AddInParameter(comm, "quantity", DbType.Int32, this.Quantity);
-            DBFactory.DbWriter.AddInParameter(comm, "score", DbType.Int32, this.Score);
-            DBFactory.DbWriter.AddInParameter(comm, "TotalScore", DbType.Int32, this.TotalScore);
-            DBFactory.DbWriter.ExecuteNonQuery(comm);
+            DbCommand comm = CommDataAccess.DbWriter.GetSqlStringCommand(sql);
+            CommDataAccess.DbWriter.AddInParameter(comm, "orderId", DbType.String, OrderId);
+            CommDataAccess.DbWriter.AddInParameter(comm, "productid", DbType.Int32, this.ProductID);
+            CommDataAccess.DbWriter.AddInParameter(comm, "quantity", DbType.Int32, this.Quantity);
+            CommDataAccess.DbWriter.AddInParameter(comm, "score", DbType.Int32, this.Score);
+            CommDataAccess.DbWriter.AddInParameter(comm, "TotalScore", DbType.Int32, this.TotalScore);
+            CommDataAccess.DbWriter.ExecuteNonQuery(comm);
         }
 
         private GiftOrderProduct BuildModel(IDataReader reader)

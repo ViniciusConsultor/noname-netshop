@@ -120,7 +120,7 @@ namespace NoName.NetShop.ShopFlow
         internal override string SaveOrderInfo()
         {
             string sql = "orders_Save_Comm";
-            DbCommand comm = DBFactory.DbWriter.GetStoredProcCommand(sql);
+            DbCommand comm = CommDataAccess.DbWriter.GetStoredProcCommand(sql);
 
             if (!String.IsNullOrEmpty(this.OrderId) && this.Exists())
             {
@@ -130,34 +130,34 @@ namespace NoName.NetShop.ShopFlow
             {
                 this.OrderId = CommDataHelper.GetNewSerialStr(AppType.Order);
 
-                DBFactory.DbWriter.AddInParameter(comm, "OrderID", DbType.String, this.OrderId);
-                DBFactory.DbWriter.AddInParameter(comm, "PayMethod", DbType.Int32, PayMethodId);
-                DBFactory.DbWriter.AddInParameter(comm, "ShipMethod", DbType.Int32,ShipMethodId );
-                DBFactory.DbWriter.AddInParameter(comm, "PaySum", DbType.Decimal, TotalSum);
-                DBFactory.DbWriter.AddInParameter(comm, "ShipFee", DbType.Decimal, this.ShipFee);
-                DBFactory.DbWriter.AddInParameter(comm, "ProductFee", DbType.Decimal, ProductSum);
-                DBFactory.DbWriter.AddInParameter(comm, "DerateFee", DbType.Decimal, this.DerateFee);
+                CommDataAccess.DbWriter.AddInParameter(comm, "OrderID", DbType.String, this.OrderId);
+                CommDataAccess.DbWriter.AddInParameter(comm, "PayMethod", DbType.Int32, PayMethodId);
+                CommDataAccess.DbWriter.AddInParameter(comm, "ShipMethod", DbType.Int32,ShipMethodId );
+                CommDataAccess.DbWriter.AddInParameter(comm, "PaySum", DbType.Decimal, TotalSum);
+                CommDataAccess.DbWriter.AddInParameter(comm, "ShipFee", DbType.Decimal, this.ShipFee);
+                CommDataAccess.DbWriter.AddInParameter(comm, "ProductFee", DbType.Decimal, ProductSum);
+                CommDataAccess.DbWriter.AddInParameter(comm, "DerateFee", DbType.Decimal, this.DerateFee);
 
-                DBFactory.DbWriter.AddInParameter(comm, "isNeedInvoice", DbType.Boolean, !String.IsNullOrEmpty(Invoice));
-                DBFactory.DbWriter.AddInParameter(comm, "InvoiceTitle", DbType.String, Invoice);
-                DBFactory.DbWriter.AddInParameter(comm, "UserNotes", DbType.String, UserNotes);
-                DBFactory.DbWriter.AddInParameter(comm, "serverip", DbType.String, ServerIp);
-                DBFactory.DbWriter.AddInParameter(comm, "ClientIp", DbType.String, ClientIp);
+                CommDataAccess.DbWriter.AddInParameter(comm, "isNeedInvoice", DbType.Boolean, !String.IsNullOrEmpty(Invoice));
+                CommDataAccess.DbWriter.AddInParameter(comm, "InvoiceTitle", DbType.String, Invoice);
+                CommDataAccess.DbWriter.AddInParameter(comm, "UserNotes", DbType.String, UserNotes);
+                CommDataAccess.DbWriter.AddInParameter(comm, "serverip", DbType.String, ServerIp);
+                CommDataAccess.DbWriter.AddInParameter(comm, "ClientIp", DbType.String, ClientIp);
 
-                DBFactory.DbWriter.AddInParameter(comm, "OrderType", DbType.Int32, (int)OpType);
+                CommDataAccess.DbWriter.AddInParameter(comm, "OrderType", DbType.Int32, (int)OpType);
 
-                DBFactory.DbWriter.AddInParameter(comm, "userId", DbType.String, Address.UserId);
-                DBFactory.DbWriter.AddInParameter(comm, "RecieverName", DbType.String, Address.RecieverName);
-                DBFactory.DbWriter.AddInParameter(comm, "RecieverEmail", DbType.String, Address.Email);
-                DBFactory.DbWriter.AddInParameter(comm, "RecieverCountry", DbType.String, Address.Country);
-                DBFactory.DbWriter.AddInParameter(comm, "RecieverProvince", DbType.String, Address.Province);
-                DBFactory.DbWriter.AddInParameter(comm, "RecieverCity", DbType.String, Address.City);
-                DBFactory.DbWriter.AddInParameter(comm, "RecieverCounty", DbType.String, Address.County);
-                DBFactory.DbWriter.AddInParameter(comm, "RecieverPhone", DbType.String, (Address.Telephone + " " + Address.Mobile).Trim());
+                CommDataAccess.DbWriter.AddInParameter(comm, "userId", DbType.String, Address.UserId);
+                CommDataAccess.DbWriter.AddInParameter(comm, "RecieverName", DbType.String, Address.RecieverName);
+                CommDataAccess.DbWriter.AddInParameter(comm, "RecieverEmail", DbType.String, Address.Email);
+                CommDataAccess.DbWriter.AddInParameter(comm, "RecieverCountry", DbType.String, Address.Country);
+                CommDataAccess.DbWriter.AddInParameter(comm, "RecieverProvince", DbType.String, Address.Province);
+                CommDataAccess.DbWriter.AddInParameter(comm, "RecieverCity", DbType.String, Address.City);
+                CommDataAccess.DbWriter.AddInParameter(comm, "RecieverCounty", DbType.String, Address.County);
+                CommDataAccess.DbWriter.AddInParameter(comm, "RecieverPhone", DbType.String, (Address.Telephone + " " + Address.Mobile).Trim());
 
-                DBFactory.DbWriter.AddInParameter(comm, "AddressDetial", DbType.String, Address.AddressDetail);
-                DBFactory.DbWriter.AddInParameter(comm, "PostalCode", DbType.String, Address.Postalcode);
-                DBFactory.DbWriter.ExecuteNonQuery(comm);
+                CommDataAccess.DbWriter.AddInParameter(comm, "AddressDetial", DbType.String, Address.AddressDetail);
+                CommDataAccess.DbWriter.AddInParameter(comm, "PostalCode", DbType.String, Address.Postalcode);
+                CommDataAccess.DbWriter.ExecuteNonQuery(comm);
                 return this.OrderId;
             }
 
@@ -170,9 +170,9 @@ namespace NoName.NetShop.ShopFlow
             if (!String.IsNullOrEmpty(this.OrderId))
             {
                 string sql = "select count(*) from spOrder where orderid=@orderId";
-                DbCommand comm = DBFactory.DbReader.GetSqlStringCommand(sql);
-                DBFactory.DbReader.AddInParameter(comm, "orderId", DbType.String, this.OrderId);
-                int retval = Convert.ToInt32(DBFactory.DbReader.ExecuteScalar(comm));
+                DbCommand comm = CommDataAccess.DbReader.GetSqlStringCommand(sql);
+                CommDataAccess.DbReader.AddInParameter(comm, "orderId", DbType.String, this.OrderId);
+                int retval = Convert.ToInt32(CommDataAccess.DbReader.ExecuteScalar(comm));
                 result = retval > 0;
             }
             return result;

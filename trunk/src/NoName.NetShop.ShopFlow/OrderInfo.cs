@@ -13,17 +13,17 @@ namespace NoName.NetShop.ShopFlow
         public static DataTable GetOrderItem(string orderId)
         {
             string sql = "spOrder_GetOrderItems";
-            DbCommand comm = Common.DBFactory.DbReader.GetStoredProcCommand(sql);
-            DBFactory.DbReader.AddInParameter(comm, "OrderId", DbType.String, orderId);
-            return DBFactory.DbReader.ExecuteDataSet(comm).Tables[0];
+            DbCommand comm = Common.CommDataAccess.DbReader.GetStoredProcCommand(sql);
+            CommDataAccess.DbReader.AddInParameter(comm, "OrderId", DbType.String, orderId);
+            return CommDataAccess.DbReader.ExecuteDataSet(comm).Tables[0];
         }
 
         public static DataTable GetGiftOrderItem(string orderId)
         {
             string sql = "spGiftOrder_GetOrderItems";
-            DbCommand comm = Common.DBFactory.DbReader.GetStoredProcCommand(sql);
-            DBFactory.DbReader.AddInParameter(comm, "OrderId", DbType.String, orderId);
-            return DBFactory.DbReader.ExecuteDataSet(comm).Tables[0];
+            DbCommand comm = Common.CommDataAccess.DbReader.GetStoredProcCommand(sql);
+            CommDataAccess.DbReader.AddInParameter(comm, "OrderId", DbType.String, orderId);
+            return CommDataAccess.DbReader.ExecuteDataSet(comm).Tables[0];
         }
     }
 }
