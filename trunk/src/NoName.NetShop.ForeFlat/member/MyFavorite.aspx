@@ -14,7 +14,7 @@
                 </ul>
                 <div class="content">
                 	<div class="box6">
-                    	<div class="title">已收短信</div>
+                    	<div class="title">我的收藏</div>
    
                            <div class="content noPaddingContentBox">
                             <div class="table2">
@@ -33,7 +33,7 @@
                                     <td><%#Eval("InsertTime","{0:yyyy-MM-dd HH:mm}")%></td>
                                     <td>
                                     	<a href='<%#Eval("FavoriteUrl") %>' class="iconButton viewMessage"></a>
-                                        <asp:LinkButton  runat="server" CommandName="delete" CommandArgument='<%# Eval("favId") %>' CssClass="iconButton delete"></asp:LinkButton>
+                                        <asp:LinkButton  runat="server" CommandName="delete" CommandArgument='<%# Eval("FavoriteId") %>' CssClass="iconButton delete"></asp:LinkButton>
                                     </td>
                                   </tr>
                                   </ItemTemplate>
