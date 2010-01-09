@@ -26,7 +26,7 @@ namespace NoName.NetShop.Vote.DAL
             {
                 model.ItemGroupId = NoName.NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Other);
             }
-            Database db = DBFactory.DbWriter;
+            Database db = CommDataAccess.DbWriter;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteItemGroup_Save");
 			db.AddInParameter(dbCommand, "ItemGroupId", DbType.Int32, model.ItemGroupId);
 			db.AddInParameter(dbCommand, "VoteId", DbType.Int32, model.VoteId);
@@ -40,7 +40,7 @@ namespace NoName.NetShop.Vote.DAL
 		/// </summary>
 		public void Delete(int ItemGroupId)
 		{
-            Database db = DBFactory.DbWriter;
+            Database db = CommDataAccess.DbWriter;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteItemGroup_Delete");
 			db.AddInParameter(dbCommand, "ItemGroupId", DbType.Int32,ItemGroupId);
 
@@ -52,7 +52,7 @@ namespace NoName.NetShop.Vote.DAL
 		/// </summary>
 		public NoName.NetShop.Vote.Model.VoteItemGroup GetModel(int ItemGroupId)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_voVoteItemGroup_GetModel");
 			db.AddInParameter(dbCommand, "ItemGroupId", DbType.Int32,ItemGroupId);
 
@@ -81,7 +81,7 @@ namespace NoName.NetShop.Vote.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<NoName.NetShop.Vote.Model.VoteItemGroup> list = new List<NoName.NetShop.Vote.Model.VoteItemGroup>();
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
