@@ -16,7 +16,7 @@ namespace NoName.NetShop.Comment
 		/// </summary>
         public void Add(NoName.NetShop.Comment.QuestionModel model)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_qaQuestion_ADD");
             db.AddInParameter(dbCommand, "QuestionId", DbType.Int32, model.QuestionId);
             db.AddInParameter(dbCommand, "UserId", DbType.AnsiString, model.UserId);
@@ -32,7 +32,7 @@ namespace NoName.NetShop.Comment
 		/// </summary>
 		public void Delete(int QuestionId)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_qaQuestion_Delete");
             db.AddInParameter(dbCommand, "QuestionId", DbType.Int32, QuestionId);
 
@@ -45,7 +45,7 @@ namespace NoName.NetShop.Comment
 		/// </summary>
         public NoName.NetShop.Comment.QuestionModel GetModel(int QuestionId)
 		{
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_qaQuestion_GetModel");
             db.AddInParameter(dbCommand, "QuestionId", DbType.Int32, QuestionId);
 
@@ -81,7 +81,7 @@ namespace NoName.NetShop.Comment
                 strSql.Append(" where " + strWhere);
             }
             List<NoName.NetShop.Comment.QuestionModel> list = new List<NoName.NetShop.Comment.QuestionModel>();
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
             {
                 while (dataReader.Read())
