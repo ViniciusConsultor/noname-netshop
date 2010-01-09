@@ -23,7 +23,7 @@ namespace NoName.NetShop.Member.DAL
 		public bool Exists(int AddressId)
 		{
             string sql = "SELECT count(1) FROM umAddress WHERE AddressId=" + AddressId;
-            int retval = Convert.ToInt32(NoName.NetShop.Common.DBFactory.DbReader.ExecuteScalar(CommandType.Text, sql));
+            int retval = Convert.ToInt32(NoName.NetShop.Common.CommDataAccess.DbReader.ExecuteScalar(CommandType.Text, sql));
             return retval > 0;
 		}
 
@@ -32,7 +32,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Add(NoName.NetShop.Member.Model.AddressModel model)
 		{
-			Database db = NoName.NetShop.Common.DBFactory.DbReader;
+			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umAddress_ADD");
 			db.AddInParameter(dbCommand, "UserId", DbType.String, model.UserId);
 			db.AddInParameter(dbCommand, "AddressId", DbType.Int32, model.AddressId);
@@ -56,7 +56,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Update(NoName.NetShop.Member.Model.AddressModel model)
 		{
-			Database db = NoName.NetShop.Common.DBFactory.DbReader;
+			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_umAddress_Update");
             db.AddInParameter(dbCommand, "UserId", DbType.String, model.UserId);
             db.AddInParameter(dbCommand, "AddressId", DbType.Int32, model.AddressId);
@@ -79,7 +79,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public void Delete(int AddressId)
 		{
-			Database db = NoName.NetShop.Common.DBFactory.DbReader;
+			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umAddress_Delete");
 			db.AddInParameter(dbCommand, "AddressId", DbType.Int32,AddressId);
 
@@ -91,7 +91,7 @@ namespace NoName.NetShop.Member.DAL
 		/// </summary>
 		public NoName.NetShop.Member.Model.AddressModel GetModel(int AddressId)
 		{
-			Database db = NoName.NetShop.Common.DBFactory.DbReader;
+			Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_umAddress_GetModel");
 			db.AddInParameter(dbCommand, "AddressId", DbType.Int32,AddressId);
 
@@ -119,7 +119,7 @@ namespace NoName.NetShop.Member.DAL
                 strSql.Append(" where " + strWhere);
             }
             List<NoName.NetShop.Member.Model.AddressModel> list = new List<NoName.NetShop.Member.Model.AddressModel>();
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
             {
                 while (dataReader.Read())

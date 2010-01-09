@@ -23,7 +23,7 @@ namespace NoName.NetShop.Member
         /// </summary>
         public void Add(NoName.NetShop.Member.FavoriteModel model)
         {
-            Database db = DBFactory.DbWriter;
+            Database db = CommDataAccess.DbWriter;
             if (!this.Exists(model.UserId, model.ContentId, model.ContentType))
             {
                 model.FavoriteId = CommDataHelper.GetNewSerialNum(AppType.Other);
@@ -40,7 +40,7 @@ namespace NoName.NetShop.Member
 
         public bool Exists(string userId, int contentId, ContentType contentType)
         {
-            Database db = DBFactory.DbReader;
+            Database db = CommDataAccess.DbReader;
             string sql = "select count(*) from umFavorite where userid=@userId and contentId=@contentId and contentType=@ContentType";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "UserId", DbType.AnsiString, userId);
@@ -147,7 +147,7 @@ namespace NoName.NetShop.Member
         public void Delete(string userId, int favId)
         {
             string sql = "delete umFavorite from umFavorite where userid=@userId and favoriteId=@favId";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "favId", DbType.Int32, favId);
@@ -162,7 +162,7 @@ namespace NoName.NetShop.Member
             if (Regex.IsMatch(favIds, @"^(\d+,)*\d+$"))
             {
                 string sql = "delete umFavorite from umFavorite where userid=@userId and msgId in (" + favIds + ")";
-                Database db = NoName.NetShop.Common.DBFactory.DbReader;
+                Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
                 db.AddInParameter(dbCommand, "userId", DbType.String, userId);
                 db.ExecuteNonQuery(dbCommand);
