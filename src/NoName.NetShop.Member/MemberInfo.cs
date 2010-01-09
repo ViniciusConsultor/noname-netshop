@@ -35,7 +35,7 @@ namespace NoName.NetShop.Member
         public void LogScore(string appType, int score, string appId, string remark)
         {
             string sql = "um_member_logScore";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "UserId", DbType.String,UserId);
             db.AddInParameter(dbCommand, "@Score",DbType.Int32,score);
@@ -55,7 +55,7 @@ namespace NoName.NetShop.Member
         public static void LogScore(string userId, NoName.NetShop.Common.ScoreType stype, int score, string appId, string remark)
         {
             string sql = "um_member_logScore";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "UserId", DbType.String, userId);
             db.AddInParameter(dbCommand, "@Score", DbType.Int32, score);
@@ -67,7 +67,7 @@ namespace NoName.NetShop.Member
 
         public static MemberInfo GetBaseInfo(string userId)
         {
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_GetModel");
             db.AddInParameter(dbCommand, "UserId", DbType.String,userId);
 
@@ -136,7 +136,7 @@ namespace NoName.NetShop.Member
 
         public bool Register()
         {
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_ADD");
             string md5pass = FormsAuthentication.HashPasswordForStoringInConfigFile(Password, "MD5");
             db.AddInParameter(dbCommand, "userId", DbType.String, UserId);
@@ -158,7 +158,7 @@ namespace NoName.NetShop.Member
         {
             string sql = "UP_umMember_Login";
             string md5pass = FormsAuthentication.HashPasswordForStoringInConfigFile(password, "MD5");
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
             db.AddInParameter(dbCommand, "@userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "@password", DbType.String, md5pass);
@@ -175,7 +175,7 @@ namespace NoName.NetShop.Member
             string md5old = FormsAuthentication.HashPasswordForStoringInConfigFile(oldpass, "MD5"); ;
             string md5new = FormsAuthentication.HashPasswordForStoringInConfigFile(newpass, "MD5"); ;
             string sql = "update umMember set password=@newpass,modifytime=getdate() from umMember where userId=@userId and password=@oldpass";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "oldpass", DbType.String, oldpass);
@@ -188,7 +188,7 @@ namespace NoName.NetShop.Member
         {
             string md5str = FormsAuthentication.HashPasswordForStoringInConfigFile(newpass, "MD5");
             string sql = "update umMember set password=@newpass from umMember where userId=@userId";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "newpass", DbType.String, md5str);
@@ -198,7 +198,7 @@ namespace NoName.NetShop.Member
 
         public static bool SetStatus(string userId, MemberStatus status)
         {
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             string sql = "update umMember set status=@status,modifytime=getdate() from umMember where userId=@userId";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
@@ -211,7 +211,7 @@ namespace NoName.NetShop.Member
         public static bool UserIdExists(string userId)
         {
             string sql = "select count(*) from umMember where userId=@userId";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             int result = (int)db.ExecuteScalar(dbCommand);
@@ -221,7 +221,7 @@ namespace NoName.NetShop.Member
         public static bool UserEmailExists(string userEmail)
         {
             string sql = "select count(*) from umMember where userEmail=@userEmail";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userEmail", DbType.String, userEmail);
             int result = (int)db.ExecuteScalar(dbCommand);
@@ -231,7 +231,7 @@ namespace NoName.NetShop.Member
         public static bool Exists(string userId,string userEmail)
         {
             string sql = "select count(*) from umMember where userId=@userId or userEmail=@userEmail";
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "userEmail", DbType.String, userEmail);
