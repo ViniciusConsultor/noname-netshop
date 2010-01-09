@@ -25,7 +25,7 @@ namespace NoName.NetShop.ShopFlow
 
 
             List<GiftOrderItemModel> list = new List<GiftOrderItemModel>();
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand comm = db.GetSqlStringCommand(strSql.ToString());
             db.AddInParameter(comm, "orderId", DbType.String, orderId);
 

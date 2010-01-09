@@ -21,7 +21,7 @@ namespace NoName.NetShop.ShopFlow
             strSql.Append(" FROM spOrderItem as a join pdProduct as b on a.productid=b.productid where orderId=@orderId");
 
             List<CommOrderItemModel> list = new List<CommOrderItemModel>();
-            Database db = NoName.NetShop.Common.DBFactory.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand comm = db.GetSqlStringCommand(strSql.ToString());
             db.AddInParameter(comm, "orderId", DbType.String, orderId);
 

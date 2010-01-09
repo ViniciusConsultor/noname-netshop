@@ -14,9 +14,9 @@ namespace NoName.NetShop.ShopFlow
         {
             CommOrderProduct op = null;
             string sql = "Product_GetOrderProduct_Common";
-            DbCommand comm = DBFactory.DbReader.GetStoredProcCommand(sql);
-            DBFactory.DbReader.AddInParameter(comm, "ProductId", DbType.Int32, productId);
-            using (IDataReader reader = DBFactory.DbReader.ExecuteReader(comm))
+            DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(sql);
+            CommDataAccess.DbReader.AddInParameter(comm, "ProductId", DbType.Int32, productId);
+            using (IDataReader reader = CommDataAccess.DbReader.ExecuteReader(comm))
             {
                 if (reader.Read())
                 {
@@ -56,22 +56,22 @@ namespace NoName.NetShop.ShopFlow
         internal override void Save()
         {
             string sql = "orderItem_save_Comm";
-            DbCommand comm = DBFactory.DbWriter.GetStoredProcCommand(sql);
-            DBFactory.DbWriter.AddInParameter(comm,"orderId",DbType.String,OrderId );
-            DBFactory.DbWriter.AddInParameter(comm,"productid",DbType.Int32, this.ProductID);
-            DBFactory.DbWriter.AddInParameter(comm, "typecode", DbType.Int32, this.TypeCode);
-            DBFactory.DbWriter.AddInParameter(comm, "typeinfo", DbType.Int32, this.TypeInfo);
+            DbCommand comm = CommDataAccess.DbWriter.GetStoredProcCommand(sql);
+            CommDataAccess.DbWriter.AddInParameter(comm,"orderId",DbType.String,OrderId );
+            CommDataAccess.DbWriter.AddInParameter(comm,"productid",DbType.Int32, this.ProductID);
+            CommDataAccess.DbWriter.AddInParameter(comm, "typecode", DbType.Int32, this.TypeCode);
+            CommDataAccess.DbWriter.AddInParameter(comm, "typeinfo", DbType.Int32, this.TypeInfo);
 
-            DBFactory.DbWriter.AddInParameter(comm, "quantity", DbType.Int32, this.Quantity);
-            DBFactory.DbWriter.AddInParameter(comm, "productsum", DbType.Decimal, this.ProductSum);
-            DBFactory.DbWriter.AddInParameter(comm, "score", DbType.Int32, this.TotalScore);
+            CommDataAccess.DbWriter.AddInParameter(comm, "quantity", DbType.Int32, this.Quantity);
+            CommDataAccess.DbWriter.AddInParameter(comm, "productsum", DbType.Decimal, this.ProductSum);
+            CommDataAccess.DbWriter.AddInParameter(comm, "score", DbType.Int32, this.TotalScore);
 
-            DBFactory.DbWriter.AddInParameter(comm, "factprice", DbType.Decimal, this.FactPrice);
-            DBFactory.DbWriter.AddInParameter(comm, "tradeprice", DbType.Decimal, this.TradePrice);
-            DBFactory.DbWriter.AddInParameter(comm, "merchantprice", DbType.Decimal, this.MerchantPrice);
-            DBFactory.DbWriter.AddInParameter(comm, "reduceprice", DbType.Decimal, this.ReducePrice);
+            CommDataAccess.DbWriter.AddInParameter(comm, "factprice", DbType.Decimal, this.FactPrice);
+            CommDataAccess.DbWriter.AddInParameter(comm, "tradeprice", DbType.Decimal, this.TradePrice);
+            CommDataAccess.DbWriter.AddInParameter(comm, "merchantprice", DbType.Decimal, this.MerchantPrice);
+            CommDataAccess.DbWriter.AddInParameter(comm, "reduceprice", DbType.Decimal, this.ReducePrice);
 
-            DBFactory.DbWriter.ExecuteNonQuery(comm);
+            CommDataAccess.DbWriter.ExecuteNonQuery(comm);
         }
 
         private CommOrderProduct BuildModel(IDataReader reader)
