@@ -6,7 +6,7 @@ using NoName.NetShop.Solution.DAL;
 using NoName.NetShop.Solution.Model;
 using System.Data;
 
-namespace NoName.NetShop.Solution.BLL
+namespace NoName.NetShop.Solution.Bll
 {
     public class SolutionDemandBll
     {
