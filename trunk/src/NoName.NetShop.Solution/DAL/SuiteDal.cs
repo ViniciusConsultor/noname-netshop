@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
+using NoName.NetShop.Common;
 namespace NoName.NetShop.Solution
 {
 	/// <summary>
@@ -55,10 +56,12 @@ namespace NoName.NetShop.Solution
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.Solution.SuiteModel model)
+		public void Save(NoName.NetShop.Solution.SuiteModel model)
 		{
+            if (model.SuiteId == 0)
+                model.SuiteId = CommDataHelper.GetNewSerialNum(AppType.Solution);
 			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slSuite_ADD");
+			DbCommand dbCommand = db.GetStoredProcCommand("UP_slSuite_Save");
 			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32, model.SuiteId);
 			db.AddInParameter(dbCommand, "ScenceId", DbType.Int32, model.ScenceId);
 			db.AddInParameter(dbCommand, "SuiteName", DbType.AnsiString, model.SuiteName);
@@ -70,23 +73,6 @@ namespace NoName.NetShop.Solution
 			db.ExecuteNonQuery(dbCommand);
 		}
 
-		/// <summary>
-		///  更新一条数据
-		/// </summary>
-		public void Update(NoName.NetShop.Solution.SuiteModel model)
-		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slSuite_Update");
-			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32, model.SuiteId);
-			db.AddInParameter(dbCommand, "ScenceId", DbType.Int32, model.ScenceId);
-			db.AddInParameter(dbCommand, "SuiteName", DbType.AnsiString, model.SuiteName);
-			db.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
-			db.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
-			db.AddInParameter(dbCommand, "Price", DbType.Decimal, model.Price);
-			db.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
-			db.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
-			db.ExecuteNonQuery(dbCommand);
-		}
 
 		/// <summary>
 		/// 删除一条数据
@@ -119,41 +105,6 @@ namespace NoName.NetShop.Solution
 			}
 			return model;
 		}
-
-		/// <summary>
-		/// 获得数据列表
-		/// </summary>
-		public DataSet GetList(string strWhere)
-		{
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select SuiteId,ScenceId,SuiteName,SmallImage,MediumImage,Price,Remark,Score ");
-			strSql.Append(" FROM slSuite ");
-			if(strWhere.Trim()!="")
-			{
-				strSql.Append(" where "+strWhere);
-			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
-		}
-
-		/*
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "slSuite");
-			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-			db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-			db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-			db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-			return db.ExecuteDataSet(dbCommand);
-		}*/
-
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>

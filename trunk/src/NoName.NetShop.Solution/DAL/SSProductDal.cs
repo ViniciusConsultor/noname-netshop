@@ -16,50 +16,14 @@ namespace NoName.NetShop.Solution
 		{}
 		#region  成员方法
 
-		/// <summary>
-		/// 得到最大ID
-		/// </summary>
-		public int GetMaxId()
-		{
-			string strsql = "select max(SuiteId)+1 from slProduct";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
-			if (obj != null && obj != DBNull.Value)
-			{
-				return int.Parse(obj.ToString());
-			}
-			return 1;
-		}
-
-		/// <summary>
-		/// 是否存在该记录
-		/// </summary>
-		public bool Exists(int SuiteId,int ProductId)
-		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slProduct_Exists");
-			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32,SuiteId);
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32,ProductId);
-			int result;
-			object obj = db.ExecuteScalar(dbCommand);
-			int.TryParse(obj.ToString(),out result);
-			if(result==1)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
 
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.Solution.SSProductModel model)
+		public void Save(NoName.NetShop.Solution.SSProductModel model)
 		{
 			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slProduct_ADD");
+			DbCommand dbCommand = db.GetStoredProcCommand("UP_slProduct_Save");
 			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32, model.SuiteId);
 			db.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
 			db.AddInParameter(dbCommand, "Price", DbType.Decimal, model.Price);
@@ -67,19 +31,6 @@ namespace NoName.NetShop.Solution
 			db.ExecuteNonQuery(dbCommand);
 		}
 
-		/// <summary>
-		///  更新一条数据
-		/// </summary>
-		public void Update(NoName.NetShop.Solution.SSProductModel model)
-		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slProduct_Update");
-			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32, model.SuiteId);
-			db.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
-			db.AddInParameter(dbCommand, "Price", DbType.Decimal, model.Price);
-			db.AddInParameter(dbCommand, "Quantity", DbType.Int32, model.Quantity);
-			db.ExecuteNonQuery(dbCommand);
-		}
 
 		/// <summary>
 		/// 删除一条数据
@@ -115,39 +66,6 @@ namespace NoName.NetShop.Solution
 			return model;
 		}
 
-		/// <summary>
-		/// 获得数据列表
-		/// </summary>
-		public DataSet GetList(string strWhere)
-		{
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select SuiteId,ProductId,Price,Quantity ");
-			strSql.Append(" FROM slProduct ");
-			if(strWhere.Trim()!="")
-			{
-				strSql.Append(" where "+strWhere);
-			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
-		}
-
-		/*
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-			db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "slProduct");
-			db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-			db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-			db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-			db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-			db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-			return db.ExecuteDataSet(dbCommand);
-		}*/
 
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
