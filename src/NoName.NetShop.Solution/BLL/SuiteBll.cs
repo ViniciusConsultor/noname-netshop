@@ -25,17 +25,9 @@ namespace NoName.NetShop.Solution
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public void Add(NoName.NetShop.Solution.SuiteModel model)
+		public void Save(NoName.NetShop.Solution.SuiteModel model)
 		{
-			dal.Add(model);
-		}
-
-		/// <summary>
-		/// 更新一条数据
-		/// </summary>
-		public void Update(NoName.NetShop.Solution.SuiteModel model)
-		{
-			dal.Update(model);
+			dal.Save(model);
 		}
 
 		/// <summary>
@@ -54,23 +46,6 @@ namespace NoName.NetShop.Solution
 		{
 			
 			return dal.GetModel(SuiteId);
-		}
-
-
-		/// <summary>
-		/// 获得数据列表
-		/// </summary>
-		public DataSet GetList(string strWhere)
-		{
-			return dal.GetList(strWhere);
-		}
-
-		/// <summary>
-		/// 获得数据列表
-		/// </summary>
-		public DataSet GetAllList()
-		{
-			return GetList("");
 		}
 
 		#endregion  成员方法
