@@ -2,14 +2,16 @@ using System;
 using System.Data;
 using System.Collections.Generic;
 using NoName.NetShop.Solution.Model;
-namespace NoName.NetShop.Solution
+using NoName.NetShop.Solution.DAL;
+
+namespace NoName.NetShop.Solution.BLL
 {
 	/// <summary>
 	/// 业务逻辑类Suite 的摘要说明。
 	/// </summary>
 	public class SuiteBll
 	{
-		private readonly NoName.NetShop.Solution.SuiteDal dal=new NoName.NetShop.Solution.SuiteDal();
+		private readonly SuiteDal dal=new SuiteDal();
 		public SuiteBll()
 		{}
 		#region  成员方法
@@ -25,7 +27,7 @@ namespace NoName.NetShop.Solution
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public void Save(NoName.NetShop.Solution.SuiteModel model)
+		public void Save(SuiteModel model)
 		{
 			dal.Save(model);
 		}
@@ -42,7 +44,7 @@ namespace NoName.NetShop.Solution
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.Solution.SuiteModel GetModel(int SuiteId)
+		public SuiteModel GetModel(int SuiteId)
 		{
 			
 			return dal.GetModel(SuiteId);

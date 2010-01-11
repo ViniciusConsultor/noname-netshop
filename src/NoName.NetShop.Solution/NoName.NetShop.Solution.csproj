@@ -57,21 +57,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\SSCategoryBll.cs" />
-    <Compile Include="BLL\SSCategoryConditionBll.cs" />
-    <Compile Include="BLL\SSProductBll.cs" />
+    <Compile Include="BLL\SolutionCategoryBll.cs" />
+    <Compile Include="BLL\CategoryConditionBll.cs" />
+    <Compile Include="BLL\SolutionProductBll.cs" />
     <Compile Include="BLL\SenceBll.cs" />
     <Compile Include="BLL\SolutionDemandBll.cs" />
     <Compile Include="BLL\SuiteBll.cs" />
-    <Compile Include="DAL\SSCategoryDal.cs" />
-    <Compile Include="DAL\SSCategoryConditionDal.cs" />
-    <Compile Include="DAL\SSProductDal.cs" />
+    <Compile Include="DAL\SolutionCategoryDal.cs" />
+    <Compile Include="DAL\CategoryConditionDal.cs" />
+    <Compile Include="DAL\SolutionProductDal.cs" />
     <Compile Include="DAL\SenceDal.cs" />
     <Compile Include="DAL\SolutionDemandDal.cs" />
     <Compile Include="DAL\SuiteDal.cs" />
-    <Compile Include="Model\SSCategoryModel.cs" />
-    <Compile Include="Model\SSCategoryConditionModel.cs" />
-    <Compile Include="Model\SSProductModel.cs" />
+    <Compile Include="Model\SolutionCategoryModel.cs" />
+    <Compile Include="Model\CategoryConditionModel.cs" />
+    <Compile Include="Model\SolutionProductModel.cs" />
     <Compile Include="Model\SenceModel.cs" />
     <Compile Include="Model\SolutionDemandModel.cs" />
     <Compile Include="Model\SuiteModel.cs" />
