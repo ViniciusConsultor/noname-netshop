@@ -1,5 +1,6 @@
 using System;
-namespace NoName.NetShop.Solution
+
+namespace NoName.NetShop.Solution.Model
 {
 	/// <summary>
 	/// 实体类Sence 。(属性说明自动提取数据库字段的描述信息)

@@ -6,13 +6,18 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using NoName.NetShop.Common;
-namespace NoName.NetShop.Solution
+using NoName.NetShop.Solution.Model;
+
+namespace NoName.NetShop.Solution.DAL
 {
 	/// <summary>
 	/// 数据访问类Suite。
 	/// </summary>
 	public class SuiteDal
-	{
+    {
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
+
 		public SuiteDal()
 		{}
 		#region  成员方法
@@ -23,8 +28,8 @@ namespace NoName.NetShop.Solution
 		public int GetMaxId()
 		{
 			string strsql = "select max(SuiteId)+1 from slSuite";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
+			
+			object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
 			if (obj != null && obj != DBNull.Value)
 			{
 				return int.Parse(obj.ToString());
@@ -37,11 +42,11 @@ namespace NoName.NetShop.Solution
 		/// </summary>
 		public bool Exists(int SuiteId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slSuite_Exists");
-			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32,SuiteId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_slSuite_Exists");
+			dbr.AddInParameter(dbCommand, "SuiteId", DbType.Int32,SuiteId);
 			int result;
-			object obj = db.ExecuteScalar(dbCommand);
+			object obj = dbr.ExecuteScalar(dbCommand);
 			int.TryParse(obj.ToString(),out result);
 			if(result==1)
 			{
@@ -56,21 +61,21 @@ namespace NoName.NetShop.Solution
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Save(NoName.NetShop.Solution.SuiteModel model)
+		public void Save(SuiteModel model)
 		{
             if (model.SuiteId == 0)
                 model.SuiteId = CommDataHelper.GetNewSerialNum(AppType.Solution);
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slSuite_Save");
-			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32, model.SuiteId);
-			db.AddInParameter(dbCommand, "ScenceId", DbType.Int32, model.ScenceId);
-			db.AddInParameter(dbCommand, "SuiteName", DbType.AnsiString, model.SuiteName);
-			db.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
-			db.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
-			db.AddInParameter(dbCommand, "Price", DbType.Decimal, model.Price);
-			db.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
-			db.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_slSuite_Save");
+			dbw.AddInParameter(dbCommand, "SuiteId", DbType.Int32, model.SuiteId);
+			dbw.AddInParameter(dbCommand, "ScenceId", DbType.Int32, model.ScenceId);
+			dbw.AddInParameter(dbCommand, "SuiteName", DbType.AnsiString, model.SuiteName);
+			dbw.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
+			dbw.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
+			dbw.AddInParameter(dbCommand, "Price", DbType.Decimal, model.Price);
+			dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
+			dbw.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 
@@ -79,24 +84,24 @@ namespace NoName.NetShop.Solution
 		/// </summary>
 		public void Delete(int SuiteId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slSuite_Delete");
-			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32,SuiteId);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_slSuite_Delete");
+			dbw.AddInParameter(dbCommand, "SuiteId", DbType.Int32,SuiteId);
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.Solution.SuiteModel GetModel(int SuiteId)
+		public SuiteModel GetModel(int SuiteId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_slSuite_GetModel");
-			db.AddInParameter(dbCommand, "SuiteId", DbType.Int32,SuiteId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_slSuite_GetModel");
+            dbr.AddInParameter(dbCommand, "SuiteId", DbType.Int32, SuiteId);
 
-			NoName.NetShop.Solution.SuiteModel model=null;
-			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+			SuiteModel model=null;
+            using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
 				{
@@ -108,7 +113,7 @@ namespace NoName.NetShop.Solution
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<NoName.NetShop.Solution.SuiteModel> GetListArray(string strWhere)
+		public List<SuiteModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select SuiteId,ScenceId,SuiteName,SmallImage,MediumImage,Price,Remark,Score ");
@@ -117,9 +122,9 @@ namespace NoName.NetShop.Solution
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<NoName.NetShop.Solution.SuiteModel> list = new List<NoName.NetShop.Solution.SuiteModel>();
-			Database db = DatabaseFactory.CreateDatabase();
-			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
+			List<SuiteModel> list = new List<SuiteModel>();
+
+            using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
 				{
@@ -133,9 +138,9 @@ namespace NoName.NetShop.Solution
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public NoName.NetShop.Solution.SuiteModel ReaderBind(IDataReader dataReader)
+		public SuiteModel ReaderBind(IDataReader dataReader)
 		{
-			NoName.NetShop.Solution.SuiteModel model=new NoName.NetShop.Solution.SuiteModel();
+			SuiteModel model=new SuiteModel();
 			object ojb; 
 			ojb = dataReader["SuiteId"];
 			if(ojb != null && ojb != DBNull.Value)
