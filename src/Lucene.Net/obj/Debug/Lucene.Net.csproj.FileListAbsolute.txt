@@ -1,0 +1,6 @@
+F:\works\Lucene\Learn.Lucene\Lucene.Net\obj\Debug\ResolveAssemblyReference.cache
+F:\works\Lucene\Learn.Lucene\Lucene.Net\bin\Debug\Lucene.Net.dll
+F:\works\Lucene\Learn.Lucene\Lucene.Net\bin\Debug\Lucene.Net.pdb
+F:\works\Lucene\Learn.Lucene\Lucene.Net\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\works\Lucene\Learn.Lucene\Lucene.Net\obj\Debug\Lucene.Net.dll
+F:\works\Lucene\Learn.Lucene\Lucene.Net\obj\Debug\Lucene.Net.pdb
