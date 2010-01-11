@@ -3,7 +3,8 @@ using System.Data;
 using System.Collections.Generic;
 using NoName.NetShop.Solution.Model;
 using NoName.NetShop.Solution.DAL;
-namespace NoName.NetShop.Solution.Bll
+
+namespace NoName.NetShop.Solution.BLL
 {
 	/// <summary>
 	/// 业务逻辑类CategoryCondition 的摘要说明。
