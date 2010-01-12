@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NoName.NetShop.ForeFlat.Solution
 {
-    public partial class Suite : System.Web.UI.Page
+    public partial class SuiteList : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
