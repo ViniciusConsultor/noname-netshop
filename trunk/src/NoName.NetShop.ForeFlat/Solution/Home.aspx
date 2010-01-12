@@ -102,17 +102,17 @@
         <div class="mainColumn">
         	<div class="mainColumnContainer"> 
            	  <script type="text/javascript">
-				AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','530','height','400','src','/flash/CustomizeSuite','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','id','customizeFlash','name','customizeFlash','allowscriptaccess','sameDomain','movie','/flash/CustomizeSuite' ); //end AC code
+				AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','530','height','400','src','flash/CustomizeSuite','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','id','customizeFlash','name','customizeFlash','allowscriptaccess','sameDomain','movie','flash/CustomizeSuite' ); //end AC code
 				</script>
 				<noscript>
 				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="530" height="400">
-				  <param name="movie" value="/flash/CustomizeSuite.swf" />
+				  <param name="movie" value="flash/CustomizeSuite.swf" />
 				  <param name="quality" value="high" />
 				  
 				  <param name="id" value="customizeFlash" />
 				  <param name="name" value="customizeFlash" />
 				  <param name="allowScriptAccess" value="sameDomain" />
-				  <embed src="/flash/CustomizeSuite.swf" width="530" height="400" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" id="customizeFlash" name="customizeFlash" allowscriptaccess="sameDomain"></embed>
+				  <embed src="flash/CustomizeSuite.swf" width="530" height="400" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" id="customizeFlash" name="customizeFlash" allowscriptaccess="sameDomain"></embed>
 				</object>
 			  </noscript>
           </div>

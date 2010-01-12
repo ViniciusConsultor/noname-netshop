@@ -11,6 +11,6 @@
 namespace NoName.NetShop.ForeFlat.Solution {
     
     
-    public partial class Suite {
+    public partial class SuiteList {
     }
 }

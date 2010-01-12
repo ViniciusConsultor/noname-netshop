@@ -60,3 +60,21 @@ background-position: 0 -3px\9; text-align:left; font-weight:bold; margin-bottom:
 .solutionSuiteDetail_mainbody .subtotal div{ float:left; padding:3px 10px 0 10px;}
 .solutionSuiteDetail_mainbody .subtotal a{ float:right}
 /*solution suite detail End*/
+
+/*solution suite list Begin*/
+.solutionSuiteList_mainbody{ clear:both}
+.solutionSuiteList_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.solutionSuiteList_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
+.solutionSuiteList_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+/*solution suite list End*/
+
+/*solution home Begin*/
+.solutionHome_mainbody{ clear:both}
+.solutionHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.solutionHome_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
+.solutionHome_mainbody .mainColumn{ float:none; margin:0 224px; _margin:0 221px;}
+.solutionHome_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.componentList{ height:344px; overflow:auto;}
+.suiteListContainer{ height:354px; overflow:auto;}
+/*solution home End*/
