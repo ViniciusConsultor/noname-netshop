@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>3bb1b9ba-8bf0-4e16-9d52-2632f51663c9</ProjectGuid>
+    <ProjectGuid>{9174CA78-8C26-4EC9-B327-F8A4D9D66495}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NoName.NetShop.SearchIndex</RootNamespace>
@@ -47,6 +47,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoName.NetShop.Search\NoName.NetShop.Search.csproj">
+      <Project>{64669ACC-13C6-4F64-A7EF-D2137419BB93}</Project>
+      <Name>NoName.NetShop.Search</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
