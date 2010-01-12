@@ -9,7 +9,7 @@ namespace NoName.NetShop.Search.DataIndexer
 {
     public interface IDataIndexer
     {
-        void CreateIndex(ISearchEntity IndexEntity);
-        void DeleteIndex(ISearchEntity IndexEntity);
+        void CreateIndex(List<ISearchEntity> CreateEntities);
+        void DeleteIndex(List<ISearchEntity> DeleteEntities);
     }
 }
