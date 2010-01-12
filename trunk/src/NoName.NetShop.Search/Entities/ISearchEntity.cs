@@ -13,7 +13,8 @@ namespace NoName.NetShop.Search.Entities
 
     public enum EntityProcessType
     {
-        update=2,
-        delete=3,
+        insert = 1,
+        update = 2,
+        delete = 3,
     }
 }
