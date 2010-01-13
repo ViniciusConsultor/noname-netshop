@@ -157,6 +157,11 @@
         <div class="rightColumn">
         	<span class="columnTitle">设备列表</span>
             <div class="equipmentCategory">
+                <asp:Repeater runat="server" ID="Repeater_Category">
+                    <ItemTemplate>
+            	        <a href="#">投影机</a>
+                    </ItemTemplate>
+                </asp:Repeater>
             	<a href="#">投影机</a>
                 <a href="#">音响</a>
                 <a href="#">银幕</a>
