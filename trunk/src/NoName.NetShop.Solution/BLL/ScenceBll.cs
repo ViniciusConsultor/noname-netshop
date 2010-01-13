@@ -9,10 +9,10 @@ namespace NoName.NetShop.Solution.BLL
 	/// <summary>
 	/// 业务逻辑类Sence 的摘要说明。
 	/// </summary>
-	public class SenceBll
+	public class ScenceBll
 	{
-		private readonly SenceDal dal=new SenceDal();
-		public SenceBll()
+		private readonly ScenceDal dal=new ScenceDal();
+		public ScenceBll()
 		{}
 		#region  成员方法
 
@@ -27,7 +27,7 @@ namespace NoName.NetShop.Solution.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public void Save(SenceModel model)
+		public void Save(ScenceModel model)
 		{
 			dal.Save(model);
 		}
@@ -35,7 +35,7 @@ namespace NoName.NetShop.Solution.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public SenceModel GetModel(int ScenceId)
+		public ScenceModel GetModel(int ScenceId)
 		{
 			
 			return dal.GetModel(ScenceId);
@@ -44,7 +44,7 @@ namespace NoName.NetShop.Solution.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<SenceModel> GetModelList(string strWhere)
+		public List<ScenceModel> GetModelList(string strWhere)
 		{
             return dal.GetListArray(strWhere);
 		}

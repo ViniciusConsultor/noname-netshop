@@ -49,6 +49,12 @@ namespace NoName.NetShop.Solution.BLL
 		{
             return dal.GetListArray(strWhere);
 		}
+
+
+        public DataTable GetList(int SuiteID)
+        {
+            return dal.GetList(SuiteID);
+        }
 		#endregion  成员方法
 	}
 }

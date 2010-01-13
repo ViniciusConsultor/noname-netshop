@@ -6,9 +6,9 @@ namespace NoName.NetShop.Solution.Model
 	/// 实体类Sence 。(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
 	[Serializable]
-	public class SenceModel
+	public class ScenceModel
 	{
-		public SenceModel()
+		public ScenceModel()
 		{}
 		#region Model
 		private int _scenceid;
@@ -50,7 +50,7 @@ namespace NoName.NetShop.Solution.Model
 			get{return _senceimg;}
 		}
 		/// <summary>
-		/// 场景类型：0 推荐 1 经典
+		/// 场景类型：0 推荐 1 经典 2 共用
 		/// </summary>
 		public int SenceType
 		{
