@@ -50,6 +50,12 @@ namespace NoName.NetShop.Solution.BLL
 			return dal.GetModel(SuiteId);
 		}
 
+
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, string Order, out int RecordCount)
+        {
+            return dal.GetList(PageIndex, PageSize, Condition, Order, out RecordCount);
+        }
+
 		#endregion  成员方法
 	}
 }

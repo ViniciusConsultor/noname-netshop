@@ -110,6 +110,7 @@ namespace NoName.NetShop.Solution.DAL
 			}
 			return model;
 		}
+
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
@@ -135,6 +136,23 @@ namespace NoName.NetShop.Solution.DAL
 		}
 
 
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, string Order, out int RecordCount)
+        {
+            int PageLowerBound = 0, PageUpperBount = 0;
+            PageLowerBound = (PageIndex - 1) * PageSize;
+            PageUpperBount = PageLowerBound + PageSize;
+
+            string sqlCount = @"select count(0) from [slsuite] where 1=1 " + Condition;
+            string sqlData = @" select * from
+                                (select row_number() over (order by " + (String.IsNullOrEmpty(Order) ? "suiteid desc" : Order) + @") as id,* from [slsuite])
+                                as sp
+                                where id > " + PageLowerBound + " and id<" + PageUpperBount + " " + Condition;
+
+            RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sqlCount));
+
+            return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
+        }
+
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
@@ -145,12 +163,12 @@ namespace NoName.NetShop.Solution.DAL
 			ojb = dataReader["SuiteId"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.SuiteId=(int)ojb;
+				model.SuiteId=Convert.ToInt32(ojb);
 			}
 			ojb = dataReader["ScenceId"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.ScenceId=(int)ojb;
+				model.ScenceId=Convert.ToInt32(ojb);
 			}
 			model.SuiteName=dataReader["SuiteName"].ToString();
 			model.SmallImage=dataReader["SmallImage"].ToString();
@@ -158,13 +176,13 @@ namespace NoName.NetShop.Solution.DAL
 			ojb = dataReader["Price"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.Price=(decimal)ojb;
+				model.Price=Convert.ToDecimal(ojb);
 			}
 			model.Remark=dataReader["Remark"].ToString();
 			ojb = dataReader["Score"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.Score=(int)ojb;
+				model.Score=Convert.ToInt32(ojb);
 			}
 			return model;
 		}

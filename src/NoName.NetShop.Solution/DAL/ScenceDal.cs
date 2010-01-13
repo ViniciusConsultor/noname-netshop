@@ -13,12 +13,12 @@ namespace NoName.NetShop.Solution.DAL
 	/// <summary>
 	/// 数据访问类Sence。
 	/// </summary>
-	public class SenceDal
+	public class ScenceDal
     {
         private Database dbw = CommDataAccess.DbWriter;
         private Database dbr = CommDataAccess.DbReader;
 
-		public SenceDal()
+		public ScenceDal()
 		{
         }
 		#region  成员方法
@@ -46,7 +46,7 @@ namespace NoName.NetShop.Solution.DAL
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
-		public void Save(SenceModel model)
+		public void Save(ScenceModel model)
 		{
             if (model.ScenceId == 0)
                 model.ScenceId = CommDataHelper.GetNewSerialNum(AppType.Solution);
@@ -65,13 +65,13 @@ namespace NoName.NetShop.Solution.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public SenceModel GetModel(int ScenceId)
+		public ScenceModel GetModel(int ScenceId)
 		{
 			
 			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_slSence_GetModel");
 			dbr.AddInParameter(dbCommand, "ScenceId", DbType.Int32,ScenceId);
 
-			SenceModel model=null;
+			ScenceModel model=null;
 			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
@@ -86,7 +86,7 @@ namespace NoName.NetShop.Solution.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<SenceModel> GetListArray(string strWhere)
+		public List<ScenceModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select ScenceId,ScenceName,Remark,SenceImg,SenceType,IsActive ");
@@ -95,7 +95,7 @@ namespace NoName.NetShop.Solution.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<SenceModel> list = new List<SenceModel>();
+			List<ScenceModel> list = new List<ScenceModel>();
 			
 			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -111,14 +111,14 @@ namespace NoName.NetShop.Solution.DAL
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
-		public SenceModel ReaderBind(IDataReader dataReader)
+		public ScenceModel ReaderBind(IDataReader dataReader)
 		{
-			SenceModel model=new SenceModel();
+			ScenceModel model=new ScenceModel();
 			object ojb; 
 			ojb = dataReader["ScenceId"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.ScenceId=(int)ojb;
+				model.ScenceId=Convert.ToInt32(ojb);
 			}
 			model.ScenceName=dataReader["ScenceName"].ToString();
 			model.Remark=dataReader["Remark"].ToString();
@@ -126,12 +126,12 @@ namespace NoName.NetShop.Solution.DAL
 			ojb = dataReader["SenceType"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.SenceType=(int)ojb;
+				model.SenceType=Convert.ToInt32(ojb);
 			}
 			ojb = dataReader["IsActive"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.IsActive=(bool)ojb;
+				model.IsActive=Convert.ToBoolean(ojb);
 			}
 			return model;
 		}

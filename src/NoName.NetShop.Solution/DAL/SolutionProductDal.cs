@@ -97,6 +97,14 @@ namespace NoName.NetShop.Solution.DAL
 			return list;
 		}
 
+        public DataTable GetList(int SuiteID)
+        {
+            string sql = @" select * from slproduct sp
+                                inner join pdproduct p on sp.productid=p.productid
+                            where sp.suiteid="+SuiteID;
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据
