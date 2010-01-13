@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SuiteList.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.Solution.SuiteList" %>
+<%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="head">
     <link type="text/css" rel="stylesheet" href="/css/solution.css" />
@@ -29,54 +30,15 @@
                 </ul>
                 <div class="content noPaddingTop">
 					<ul class="articleList_1 bullet_2">
-                        <li>
-                            <a href="#"><strong>多媒体会议</strong></a>
-                        </li>
-                        <li>
-                            <a href="#">多媒体教学</a>
-                        </li>
-                        <li>
-                            <a href="#">家庭影院</a>
-                        </li>
-                        <li>
-                            <a href="#">影音娱乐</a>
-                        </li>
-                        <li>
-                            <a href="#">影音游戏</a>
-                        </li>
-                        <li>
-                            <a href="#">影音互动</a>
-                        </li>
-                        <li>
-                            <a href="#">影音展示</a>
-                        </li>
-                        <li>
-                            <a href="#">影音无线传输</a>
-                        </li>
-                        <li>
-                            <a href="#">影像拼接</a>
-                        </li>
-                        <li>
-                            <a href="#">智能影音</a>
-                        </li>
-                        <li>
-                            <a href="#">背景音乐</a>
-                        </li>
-                        <li>
-                            <a href="#">影像监控</a>
-                        </li>
-                        <li>
-                            <a href="#">视频会议</a>
-                        </li>
-                        <li>
-                            <a href="#">立体电影</a>
-                        </li>
-                        <li>
-                            <a href="#">舞台灯光</a>
-                        </li>
-                        <li>
-                            <a href="#">箱体背投</a>
-                        </li>
+					    <asp:Repeater runat="server" ID="Repeater_Sence">
+					        <ItemTemplate>
+                                <li>
+                                    <a href='<%# "SuiteList.aspx?s="+Eval("scenceid") %>'>
+                                        <%# ScenceID == Convert.ToInt32(Eval("scenceid")) ? "<strong>" + Eval("scencename") + "</strong>" : Eval("scencename")%>
+                                    </a>
+                                </li>					            
+					        </ItemTemplate>
+					    </asp:Repeater>
                     </ul>
                 </div>
                 <ul class="bottom">
@@ -92,7 +54,7 @@
                     <ul class="title">
                         <li class="left"></li>
                         <li class="heading">
-                            <span class="text">多媒体会议</span>
+                            <span class="text"><asp:Literal runat="server" ID="Literal_SenceName" /></span>
                             <span class="arrow"></span>
                         </li>
                         <li class="right"></li>
@@ -100,202 +62,46 @@
                     <div class="content">
 						<div id="productList" class="list_horizontal">
                             <ul>
-                                <li>
-                                    <a href="#" title="A套装">
-                                        <img src="Pictures/productPic2.jpg" />
-                                        <span class="price">套装总价：￥1188.00</span>
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机"><strong>A套装</strong>：A+B+C</span>
-                                    </a>
-                                    <div class="actionsForInlineButton">
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">购买</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">收藏</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">套装明细</span>
-                                            <span class="right"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" title="A套装">
-                                        <img src="Pictures/productPic2.jpg" />
-                                        <span class="price">套装总价：￥1188.00</span>
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机"><strong>A套装</strong>：A+B+C</span>
-                                    </a>
-                                    <div class="actionsForInlineButton">
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">购买</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">收藏</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">套装明细</span>
-                                            <span class="right"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" title="A套装">
-                                        <img src="Pictures/productPic2.jpg" />
-                                        <span class="price">套装总价：￥1188.00</span>
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机"><strong>A套装</strong>：A+B+C</span>
-                                    </a>
-                                    <div class="actionsForInlineButton">
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">购买</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">收藏</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">套装明细</span>
-                                            <span class="right"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" title="A套装">
-                                        <img src="Pictures/productPic2.jpg" />
-                                        <span class="price">套装总价：￥1188.00</span>
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机"><strong>A套装</strong>：A+B+C</span>
-                                    </a>
-                                    <div class="actionsForInlineButton">
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">购买</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">收藏</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">套装明细</span>
-                                            <span class="right"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" title="A套装">
-                                        <img src="Pictures/productPic2.jpg" />
-                                        <span class="price">套装总价：￥1188.00</span>
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机"><strong>A套装</strong>：A+B+C</span>
-                                    </a>
-                                    <div class="actionsForInlineButton">
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">购买</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">收藏</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">套装明细</span>
-                                            <span class="right"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" title="A套装">
-                                        <img src="Pictures/productPic2.jpg" />
-                                        <span class="price">套装总价：￥1188.00</span>
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机"><strong>A套装</strong>：A+B+C</span>
-                                    </a>
-                                    <div class="actionsForInlineButton">
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">购买</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">收藏</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">套装明细</span>
-                                            <span class="right"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" title="A套装">
-                                        <img src="Pictures/productPic2.jpg" />
-                                        <span class="price">套装总价：￥1188.00</span>
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机"><strong>A套装</strong>：A+B+C</span>
-                                    </a>
-                                    <div class="actionsForInlineButton">
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">购买</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">收藏</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">套装明细</span>
-                                            <span class="right"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" title="A套装">
-                                        <img src="Pictures/productPic2.jpg" />
-                                        <span class="price">套装总价：￥1188.00</span>
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机"><strong>A套装</strong>：A+B+C</span>
-                                    </a>
-                                    <div class="actionsForInlineButton">
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">购买</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">收藏</span>
-                                            <span class="right"></span>
-                                        </a>
-                                        <a class="button_blue3 inlineBlock" href="#">
-                                            <span class="left"></span>
-                                            <span class="text">套装明细</span>
-                                            <span class="right"></span>
-                                        </a>
-                                    </div>
-                                </li>
+                                <asp:Repeater runat="server" ID="Repeater_Suites">
+                                    <ItemTemplate>
+                                        <li>
+                                            <a href='<%# "SuiteDetail.aspx?suite="+Eval("suiteid") %>' title='<%# Eval("SuiteName") %>'>
+                                                <img src='<%# Eval("mediumimage") %>' />
+                                                <span class="price">套装总价：￥<%# Eval("price") %></span>
+                                                <span class="name" title='<%# Eval("SuiteName") %>'><strong><%# Eval("SuiteName") %></strong></span>
+                                            </a>
+                                            <div class="actionsForInlineButton">
+                                                <a class="button_blue3 inlineBlock" href='<%# "SuiteDetail.aspx?suite="+Eval("suiteid") %>'>
+                                                    <span class="left"></span>
+                                                    <span class="text">购买</span>
+                                                    <span class="right"></span>
+                                                </a>
+                                                <a class="button_blue3 inlineBlock" href="#">
+                                                    <span class="left"></span>
+                                                    <span class="text">收藏</span>
+                                                    <span class="right"></span>
+                                                </a>
+                                                <a class="button_blue3 inlineBlock" href='<%# "SuiteDetail.aspx?suite="+Eval("suiteid") %>'>
+                                                    <span class="left"></span>
+                                                    <span class="text">套装明细</span>
+                                                    <span class="right"></span>
+                                                </a>
+                                            </div>
+                                        </li>                                    
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </ul>
                             <div class="paginationContainer">
                             	<div class="line"></div>
                                 <div class="pagination">
+                                    <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="12"
+                                        UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页'
+                                        LastPageText='末页' NextPageText='下一页' OnPageChanged="AspNetPager_PageChanged"
+                                        PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
+                                        ShowPrevNext="True" SubmitButtonClass="buttom" 
+                                        NumericButtonTextFormatString=''>
+                                    </cc1:AspNetPager>                                    
+                                    <!--
                                     <a class="prev" href="#"></a>
                                     <div class="pageNum">
                                         <a class="on" href="#">1</a>
@@ -310,6 +116,7 @@
                                     <div class="jumpTo">
                                         <span>跳转到</span><input type="text" value="1" /><span>页</span>
                                     </div>
+                                    -->
                                 </div>
                             </div>
                         </div>

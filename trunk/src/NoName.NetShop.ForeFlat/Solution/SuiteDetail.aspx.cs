@@ -4,14 +4,61 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NoName.NetShop.Solution.Model;
+using NoName.NetShop.Solution.BLL;
+using System.Data;
 
 namespace NoName.NetShop.ForeFlat.Solution
 {
     public partial class SuiteDetail : System.Web.UI.Page
     {
+        private int SuiteID
+        {
+            get { if (ViewState["SuiteID"] != null) return Convert.ToInt32(ViewState["SuiteID"]); else return -1; }
+            set { ViewState["SuiteID"] = value; }
+        }
+        private SolutionProductBll bll = new SolutionProductBll();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (!String.IsNullOrEmpty(Request.QueryString["suite"])) SuiteID = Convert.ToInt32(Request.QueryString["suite"]);
+                else throw new ArgumentNullException();
+                BindScenceList();
+                BindData();
+            }
+        }
 
+        private void BindScenceList()
+        {
+            Repeater_Sence.DataSource = new ScenceBll().GetModelList("sencetype = 2");
+            Repeater_Sence.DataBind();
+        }
+
+        private void BindData()
+        {
+            SuiteModel suite = new SuiteBll().GetModel(SuiteID);
+            DataTable dt = bll.GetList(SuiteID);
+
+            decimal sumPrice = 0, sumMarketPrice = 0;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                sumPrice += Convert.ToDecimal(row["price"]);
+                sumMarketPrice += Convert.ToDecimal(row["tradeprice"]);
+            }
+
+            Repeater_Products.DataSource = dt;
+            Repeater_Products.DataBind();
+
+            Literal_SuiteSum.Text = suite.Price.ToString("0.00");
+            Literal_SaveValue.Text = (sumMarketPrice - suite.Price).ToString("0.00");
+        }
+
+        protected void Button_Buy_Click(object sender, EventArgs e)
+        {
+ 
         }
     }
 }

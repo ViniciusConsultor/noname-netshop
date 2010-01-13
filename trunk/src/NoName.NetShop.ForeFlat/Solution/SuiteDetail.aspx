@@ -29,54 +29,15 @@
                 </ul>
                 <div class="content noPaddingTop">
 					<ul class="articleList_1 bullet_2">
-                        <li>
-                            <a href="#">多媒体会议</a>
-                        </li>
-                        <li>
-                            <a href="#">多媒体教学</a>
-                        </li>
-                        <li>
-                            <a href="#">家庭影院</a>
-                        </li>
-                        <li>
-                            <a href="#">影音娱乐</a>
-                        </li>
-                        <li>
-                            <a href="#">影音游戏</a>
-                        </li>
-                        <li>
-                            <a href="#">影音互动</a>
-                        </li>
-                        <li>
-                            <a href="#">影音展示</a>
-                        </li>
-                        <li>
-                            <a href="#">影音无线传输</a>
-                        </li>
-                        <li>
-                            <a href="#">影像拼接</a>
-                        </li>
-                        <li>
-                            <a href="#">智能影音</a>
-                        </li>
-                        <li>
-                            <a href="#">背景音乐</a>
-                        </li>
-                        <li>
-                            <a href="#">影像监控</a>
-                        </li>
-                        <li>
-                            <a href="#">视频会议</a>
-                        </li>
-                        <li>
-                            <a href="#">立体电影</a>
-                        </li>
-                        <li>
-                            <a href="#">舞台灯光</a>
-                        </li>
-                        <li>
-                            <a href="#">箱体背投</a>
-                        </li>
+					    <asp:Repeater runat="server" ID="Repeater_Sence">
+					        <ItemTemplate>
+                                <li>
+                                    <a href='<%# "SuiteList.aspx?s="+Eval("scenceid") %>'>
+                                        <%# Eval("scencename") %>
+                                    </a>
+                                </li>					            
+					        </ItemTemplate>
+					    </asp:Repeater>
                     </ul>
                 </div>
                 <ul class="bottom">
@@ -92,7 +53,7 @@
                     <ul class="title">
                         <li class="left"></li>
                         <li class="heading">
-                            <span class="text">A套装产品明细</span>
+                            <span class="text"><asp:literal runat="server" ID="Literal_SuiteName" />产品明细</span>
                             <span class="arrow"></span>
                         </li>
                         <li class="right"></li>
@@ -100,59 +61,23 @@
                     <div class="content">
 						<div id="productList" class="list_vertical">
                             <ul>
-                                <li>
-                                    <a href="#" title="伊莱克斯（Electrolux） 全自动洗衣机">
-                                        <img src="Pictures/productPic.gif" />
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机">伊莱克斯（Electrolux） 全自动洗衣机</span>
-                                        <span>市场价：<span class="marketPrice">￥188.00</span>鼎鼎价：<span class="marketPrice">￥108.00</span></span>
-                                        <span class="price">套装价：￥99.00</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="伊莱克斯（Electrolux） 全自动洗衣机">
-                                        <img src="Pictures/productPic.gif" />
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机">伊莱克斯（Electrolux） 全自动洗衣机</span>
-                                        <span>市场价：<span class="marketPrice">￥188.00</span>鼎鼎价：<span class="marketPrice">￥108.00</span></span>
-                                        <span class="price">套装价：￥99.00</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="伊莱克斯（Electrolux） 全自动洗衣机">
-                                        <img src="Pictures/productPic.gif" />
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机">伊莱克斯（Electrolux） 全自动洗衣机</span>
-                                        <span>市场价：<span class="marketPrice">￥188.00</span>鼎鼎价：<span class="marketPrice">￥108.00</span></span>
-                                        <span class="price">套装价：￥99.00</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="伊莱克斯（Electrolux） 全自动洗衣机">
-                                        <img src="Pictures/productPic.gif" />
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机">伊莱克斯（Electrolux） 全自动洗衣机</span>
-                                        <span>市场价：<span class="marketPrice">￥188.00</span>鼎鼎价：<span class="marketPrice">￥108.00</span></span>
-                                        <span class="price">套装价：￥99.00</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="伊莱克斯（Electrolux） 全自动洗衣机">
-                                        <img src="Pictures/productPic.gif" />
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机">伊莱克斯（Electrolux） 全自动洗衣机</span>
-                                        <span>市场价：<span class="marketPrice">￥188.00</span>鼎鼎价：<span class="marketPrice">￥108.00</span></span>
-                                        <span class="price">套装价：￥99.00</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="伊莱克斯（Electrolux） 全自动洗衣机">
-                                        <img src="Pictures/productPic.gif" />
-                                        <span class="name" title="伊莱克斯（Electrolux） 全自动洗衣机">伊莱克斯（Electrolux） 全自动洗衣机</span>
-                                        <span>市场价：<span class="marketPrice">￥188.00</span>鼎鼎价：<span class="marketPrice">￥108.00</span></span>
-                                        <span class="price">套装价：￥99.00</span>
-                                    </a>
-                                </li>
+                                <asp:Repeater runat="server" ID="Repeater_Products">
+                                    <ItemTemplate>
+                                        <li>
+                                            <a href='<%# "/product-"+Eval("productid")+".html" %>' title='<%# Eval("productname") %>'>
+                                                <img src='<%# Eval("mediumimage") %>' />
+                                                <span class="name" title='<%# Eval("productname") %>'><%# Eval("productname") %></span>
+                                                <span>市场价：<span class="marketPrice">￥<%# Eval("tradeprice") %></span>鼎鼎价：<span class="marketPrice">￥<%# Eval("merchantprice") %></span></span>
+                                                <span class="price">套装价：￥<%# Eval("price") %></span>
+                                            </a>
+                                        </li>                                        
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </ul>
                             <div class="subtotal">
-                            	<a href="#" class="button_blue">放入购物车</a>
-                                <div>套装总价:<span class="important"><strong>￥7988</strong></span></div>
-                            	<div>立即节省：<span class="important"><strong>￥3726</strong></span></div>
+                                <asp:LinkButton runat="server" ID="Button_Buy" CssClass="button_blue" OnClick="Button_Buy_Click" Text="放入购物车"></asp:LinkButton>
+                                <div>套装总价:<span class="important"><strong>￥<asp:Literal runat="server" ID="Literal_SuiteSum" /></strong></span></div>
+                            	<div>立即节省：<span class="important"><strong>￥<asp:Literal runat="server" ID="Literal_SaveValue" /></strong></span></div>
                             </div>
                         </div>
                     </div>
