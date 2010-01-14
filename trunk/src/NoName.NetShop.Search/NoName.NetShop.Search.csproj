@@ -37,7 +37,7 @@
     </Reference>
     <Reference Include="Lucene.Net, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lucene.Net\bin\Debug\Lucene.Net.dll</HintPath>
+      <HintPath>..\..\..\..\Lucene\Learn.Lucene\Lucene.Net\bin\Debug\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,15 +69,19 @@
     <Compile Include="Config\SearchElement.cs" />
     <Compile Include="Config\SearchElementCollection.cs" />
     <Compile Include="Config\SearchSection.cs" />
+    <Compile Include="DataAcquirer\DataAcquirerNews.cs" />
     <Compile Include="DataAcquirer\DataAcquirerProduct.cs" />
+    <Compile Include="DataIndexer\DataIndexerNews.cs" />
     <Compile Include="DataIndexer\IDataIndexer.cs" />
     <Compile Include="DataIndexer\DataIndexerProduct.cs" />
     <Compile Include="DataProcessor.cs" />
     <Compile Include="DataAcquirer\IDataAcquirer.cs" />
     <Compile Include="Entities\ISearchEntity.cs" />
+    <Compile Include="Entities\NewsModel.cs" />
     <Compile Include="Entities\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Searcher.cs" />
+    <Compile Include="Searchers\NewsSearcher.cs" />
     <Compile Include="Searchers\ProductSearcher.cs" />
   </ItemGroup>
   <ItemGroup>
