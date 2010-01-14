@@ -8,7 +8,7 @@ using System.Data.Common;
 using NoName.NetShop.Common;
 using NoName.NetShop.Solution.Model;
 
-namespace NoName.NetShop.Solution.DAL
+namespace NoName.NetShop.Solution.DAL 
 {
 	/// <summary>
 	/// 数据访问类CategoryCondition。

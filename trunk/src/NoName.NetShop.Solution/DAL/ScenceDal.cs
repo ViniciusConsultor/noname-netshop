@@ -28,7 +28,7 @@ namespace NoName.NetShop.Solution.DAL
 		/// </summary>
 		public bool Exists(int ScenceId)
 		{			
-			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_slSence_Exists");
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_slScence_Exists");
 			dbr.AddInParameter(dbCommand, "ScenceId", DbType.Int32,ScenceId);
 			int result;
 			object obj = dbr.ExecuteScalar(dbCommand);
@@ -51,7 +51,7 @@ namespace NoName.NetShop.Solution.DAL
             if (model.ScenceId == 0)
                 model.ScenceId = CommDataHelper.GetNewSerialNum(AppType.Solution);
 
-			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_slSence_Save");
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_slScence_Save");
 			dbw.AddInParameter(dbCommand, "ScenceId", DbType.Int32, model.ScenceId);
 			dbw.AddInParameter(dbCommand, "ScenceName", DbType.AnsiString, model.ScenceName);
 			dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
@@ -68,7 +68,7 @@ namespace NoName.NetShop.Solution.DAL
 		public ScenceModel GetModel(int ScenceId)
 		{
 			
-			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_slSence_GetModel");
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_slScence_GetModel");
 			dbr.AddInParameter(dbCommand, "ScenceId", DbType.Int32,ScenceId);
 
 			ScenceModel model=null;
@@ -90,7 +90,7 @@ namespace NoName.NetShop.Solution.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select ScenceId,ScenceName,Remark,SenceImg,SenceType,IsActive ");
-			strSql.Append(" FROM slSence ");
+			strSql.Append(" FROM slScence ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -138,7 +138,7 @@ namespace NoName.NetShop.Solution.DAL
 
         internal void ToggleStatus(int scenceId)
         {
-            string sql = "update slSence set IsActive=case IsActive when 1 then 0 else 1 end where ScenceId=" + scenceId;
+            string sql = "update slScence set IsActive=case IsActive when 1 then 0 else 1 end where ScenceId=" + scenceId;
             Database db = CommDataAccess.DbWriter;
             db.ExecuteNonQuery(CommandType.Text, sql);
         }
