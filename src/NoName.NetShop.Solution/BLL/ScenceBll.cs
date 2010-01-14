@@ -11,7 +11,7 @@ namespace NoName.NetShop.Solution.BLL
 	/// </summary>
 	public class ScenceBll
 	{
-		private readonly NoName.NetShop.Solution.ScenceDal dal=new NoName.NetShop.Solution.SenceDal();
+		private readonly NoName.NetShop.Solution.DAL.ScenceDal dal=new NoName.NetShop.Solution.DAL.ScenceDal();
 		public ScenceBll()
 		{}
 		#region  成员方法
@@ -27,7 +27,7 @@ namespace NoName.NetShop.Solution.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public void Save(NoName.NetShop.Solution.SenceModel model)
+        public void Save(NoName.NetShop.Solution.Model.ScenceModel model)
 		{
 			dal.Save(model);
 		}
@@ -35,7 +35,7 @@ namespace NoName.NetShop.Solution.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public NoName.NetShop.Solution.SenceModel GetModel(int ScenceId)
+		public NoName.NetShop.Solution.Model.ScenceModel GetModel(int ScenceId)
 		{
 			
 			return dal.GetModel(ScenceId);
@@ -44,7 +44,7 @@ namespace NoName.NetShop.Solution.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<NoName.NetShop.Solution.SenceModel> GetModelList(string strWhere)
+		public List<NoName.NetShop.Solution.Model.ScenceModel> GetModelList(string strWhere)
 		{
             return dal.GetListArray(strWhere);
 		}
