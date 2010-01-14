@@ -136,6 +136,13 @@ namespace NoName.NetShop.Solution.DAL
 			return model;
 		}
 
+        internal void ToggleStatus(int scenceId)
+        {
+            string sql = "update slSence set IsActive=case IsActive when 1 then 0 else 1 end where ScenceId=" + scenceId;
+            Database db = CommDataAccess.DbWriter;
+            db.ExecuteNonQuery(CommandType.Text, sql);
+        }
+
 		#endregion  成员方法
 	}
 }
