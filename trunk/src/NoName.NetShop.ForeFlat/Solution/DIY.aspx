@@ -1,7 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DIY.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.Solution.DIY" %>
+<%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="head">
     <link type="text/css" rel="stylesheet" href="/css/solution.css" />
+
+    <script type="text/javascript" src="/js/hashtable.js"></script>
+    <script type="text/javascript" src="/js/cookie.js"></script>
     <script type="text/javascript" src="/js/solution.diy.js"></script>
 </asp:Content>
 
@@ -24,116 +28,42 @@
     	<div class="leftColumn">
         	<span class="columnTitle">套装配置单</span>
             <div class="table1">
-                <table>
-                  <tr>
-                    <th><span>配置</span></th>
-                    <th><span>名称</span></th>
-                    <th><span>数量</span></th>
-                    <th><span>价格</span></th>
-                    <th><span>删除</span></th>
-                  </tr>
-                  <tr class="odd">
-                    <td>投影机</td>
-                    <td>测试商品1111</td>
-                    <td>1</td>
-                    <td>90.00</td>
-                    <td><a class="iconButton delete" href="#"></a></td>
-                  </tr>
-                  <tr class="even">
-                    <td>音响</td>
-                    <td>测试商品1111</td>
-                    <td>1</td>
-                    <td>90.00</td>
-                    <td><a class="iconButton delete" href="#"></a></td>
-                  </tr>
-                  <tr class="odd">
-                    <td>银幕</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="even">
-                    <td>功放</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="odd">
-                    <td>高清DVD</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="even">
-                    <td>电视机顶盒</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="odd">
-                    <td>游戏机</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="even">
-                    <td>HDMI线</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="odd">
-                    <td>视频线</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="even">
-                    <td>音频线</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="odd">
-                    <td>电源线</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="even">
-                    <td>投影机吊架</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="odd">
-                    <td>其他配件库</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="even">
-                    <td>安装服务</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr class="bottom">
-                    <td colspan="5">总计：￥17695.00</td>
-                  </tr>
-                </table>
+                <asp:Repeater runat="server" ID="Repeater_ConfigCategory">
+                    <HeaderTemplate>
+                        <table>
+                            <tr>
+                                <th><span>配置</span></th>
+                                <th><span>名称</span></th>
+                                <th><span>数量</span></th>
+                                <th><span>价格</span></th>
+                                <th><span>删除</span></th>
+                            </tr>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <tr class="odd">
+                            <td><%# Eval("Remark")%></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a class="iconButton delete" href="#"></a></td>
+                        </tr>                        
+                    </ItemTemplate>
+                    <AlternatingItemTemplate>
+                        <tr class="even">
+                            <td><%# Eval("Remark")%></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a class="iconButton delete" href="#"></a></td>
+                        </tr>
+                    </AlternatingItemTemplate>
+                    <FooterTemplate>
+                            <tr class="bottom">
+                                <td colspan="5">总计：￥17695.00</td>
+                            </tr>
+                        </table>
+                    </FooterTemplate>
+                </asp:Repeater>
             </div>
             <div class="buttons">
             	<a class="button_blue3" href="#">
@@ -159,23 +89,9 @@
             <div class="equipmentCategory">
                 <asp:Repeater runat="server" ID="Repeater_Category">
                     <ItemTemplate>
-            	        <a href="#">投影机</a>
+            	        <a href="#" class='<%# CurrentCategoryID == Convert.ToInt32(Eval("cateid"))?"on":"off" %>' ><%# Eval("remark") %></a>
                     </ItemTemplate>
                 </asp:Repeater>
-            	<a href="#">投影机</a>
-                <a href="#">音响</a>
-                <a href="#">银幕</a>
-                <a href="#">功放</a>
-                <a href="#">高清DVD</a>
-                <a href="#">游戏机</a>
-                <a href="#">HDMI线</a>
-                <a href="#">视频线</a>
-                <a href="#">音频线</a>
-                <a href="#">电源线</a>
-                <a class="on" href="#">投影机吊架</a>
-                <a href="#">其他配件库</a>
-                <a href="#">电视机顶盒</a>
-                <a href="#">安装服务</a>
             </div>
             <ul class="form">
             	<li>
@@ -217,55 +133,43 @@
                 </div>
                 <div class="content noPaddingContentBox">
                     <div class="table2">
-                        <table>
-                          <tr>
-                            <th class="first"><span>商品图片</span></th>
-                            <th><span>商品名称</span></th>
-                            <th><span>商品价格</span></th>
-                            <th><span>选用</span></th>
-                          </tr>
-                          <tr class="odd">
-                            <td><a href="#"><img src="pictures/productPic2.jpg" /></a></td>
-                            <td><a href="#">安桥 CD 迷你音响组合 CS-325 兼容 CD/MP3/CD-R/CD-RW</a></td>
-                            <td>￥6588</td>
-                            <td><input type="checkbox" /></td>
-                          </tr>
-                          <tr class="even">
-                            <td><a href="#"><img src="pictures/productPic2.jpg" /></a></td>
-                            <td><a href="#">安桥 CD 迷你音响组合 CS-325 兼容 CD/MP3/CD-R/CD-RW</a></td>
-                            <td>￥6588</td>
-                            <td><input type="checkbox" /></td>
-                          </tr>
-                          <tr class="odd">
-                            <td><a href="#"><img src="pictures/productPic2.jpg" /></a></td>
-                            <td><a href="#">安桥 CD 迷你音响组合 CS-325 兼容 CD/MP3/CD-R/CD-RW</a></td>
-                            <td>￥6588</td>
-                            <td><input type="checkbox" /></td>
-                          </tr>
-                          <tr class="even">
-                            <td><a href="#"><img src="pictures/productPic2.jpg" /></a></td>
-                            <td><a href="#">安桥 CD 迷你音响组合 CS-325 兼容 CD/MP3/CD-R/CD-RW</a></td>
-                            <td>￥6588</td>
-                            <td><input type="checkbox" /></td>
-                          </tr>                                  
+                            <asp:Repeater runat="server" ID="Repeater_Product">
+                                <HeaderTemplate>
+                                    <table id="product-list">
+                                      <tr>
+                                        <th class="first"><span>商品图片</span></th>
+                                        <th><span>商品名称</span></th>
+                                        <th><span>商品价格</span></th>
+                                        <th><span>选用</span></th>
+                                      </tr>
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                      <tr class="even">
+                                        <td><a href='<%# "/product-"+Eval("productid")+".html" %>'><img src='<%# Eval("mediumimage") %>' /></a></td>
+                                        <td><a href="#"><%# Eval("productname") %></a></td>
+                                        <td>￥<%# Eval("merchantprice") %></td>
+                                        <td><input type="checkbox" productid='<%# Eval("productid") %>' /></td>
+                                      </tr>
+                                </ItemTemplate>
+                                <AlternatingItemTemplate>
+                                      <tr class="odd">
+                                        <td><a href='<%# "/product-"+Eval("productid")+".html" %>'><img src='<%# Eval("mediumimage") %>' /></a></td>
+                                        <td><a href="#"><%# Eval("productname") %></a></td>
+                                        <td>￥<%# Eval("merchantprice") %></td>
+                                        <td><input type="checkbox" productid='<%# Eval("productid") %>' /></td>
+                                      </tr>
+                                </AlternatingItemTemplate>
+                            </asp:Repeater>                     
                           <tr class="bottom">
                             <td colspan="4">
                               <div class="pagination">
-                                <a class="prev" href="#"></a>
-                                <div class="pageNum">
-                                  <a class="on" href="#">1</a>
-                                  <a href="#">2</a>
-                                  <a href="#">3</a>
-                                  <a href="#">4</a>
-                                  <a href="#">5</a>
-                                  <a href="#">6</a>
-                                  <a href="#">7</a>
-                                  </div>
-                                <a class="next" href="#"></a>
-                                <div class="jumpTo">
-                                  <span>跳转到</span><input type="text" value="1" /><span>页</span>
-                                  </div>
-                                </div>
+                                    <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="12"
+                                        UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页'
+                                        LastPageText='末页' NextPageText='下一页' OnPageChanged="AspNetPager_PageChanged"
+                                        PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
+                                        ShowPrevNext="True" SubmitButtonClass="buttom" 
+                                        NumericButtonTextFormatString=''>
+                                    </cc1:AspNetPager>   
                             </td>
                           </tr>
                         </table>
@@ -278,4 +182,5 @@
         </div>
     </div>
     <!--MainBody End-->
+</div>
 </asp:Content>
