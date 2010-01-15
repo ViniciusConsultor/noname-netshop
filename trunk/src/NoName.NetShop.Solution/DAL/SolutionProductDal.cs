@@ -51,26 +51,6 @@ namespace NoName.NetShop.Solution.DAL
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
-		/// <summary>
-		/// 得到一个对象实体
-		/// </summary>
-		public SolutionProductModel GetModel(int SuiteId,int ProductId)
-		{
-			
-			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_slProduct_GetModel");
-			dbr.AddInParameter(dbCommand, "SuiteId", DbType.Int32,SuiteId);
-			dbr.AddInParameter(dbCommand, "ProductId", DbType.Int32,ProductId);
-
-			SolutionProductModel model=null;
-			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
-			{
-				if(dataReader.Read())
-				{
-					model=ReaderBind(dataReader);
-				}
-			}
-			return model;
-		}
 
 
 		/// <summary>
@@ -79,13 +59,13 @@ namespace NoName.NetShop.Solution.DAL
 		public List<SolutionProductModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select SuiteId,ProductId,Price,Quantity ");
-			strSql.Append(" FROM slProduct ");
+            strSql.Append("select sp.SuiteId,sp.ProductId,sp.Price,sp.Quantity,p.productname from slproduct sp inner join pdproduct p on sp.productid=p.productid");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			List<SolutionProductModel> list = new List<SolutionProductModel>();
+
+ 			List<SolutionProductModel> list = new List<SolutionProductModel>();
 			
 			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
@@ -133,6 +113,7 @@ namespace NoName.NetShop.Solution.DAL
 			{
 				model.Quantity=(int)ojb;
 			}
+            model.ProductName = dataReader["ProductName"].ToString();
 			return model;
 		}
 

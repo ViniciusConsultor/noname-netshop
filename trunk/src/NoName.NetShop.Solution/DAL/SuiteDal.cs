@@ -22,20 +22,6 @@ namespace NoName.NetShop.Solution.DAL
 		{}
 		#region  成员方法
 
-		/// <summary>
-		/// 得到最大ID
-		/// </summary>
-		public int GetMaxId()
-		{
-			string strsql = "select max(SuiteId)+1 from slSuite";
-			
-			object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
-			if (obj != null && obj != DBNull.Value)
-			{
-				return int.Parse(obj.ToString());
-			}
-			return 1;
-		}
 
 		/// <summary>
 		/// 是否存在该记录
@@ -64,13 +50,14 @@ namespace NoName.NetShop.Solution.DAL
 		public void Save(SuiteModel model)
 		{
             if (model.SuiteId == 0)
-                model.SuiteId = CommDataHelper.GetNewSerialNum(AppType.Solution);
+                model.SuiteId = CommDataHelper.GetNewSerialNum(AppType.Product); // 因为图片部分与商品类似，因此这里的id也采用了商品一致的id序列
 			
 			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_slSuite_Save");
 			dbw.AddInParameter(dbCommand, "SuiteId", DbType.Int32, model.SuiteId);
 			dbw.AddInParameter(dbCommand, "ScenceId", DbType.Int32, model.ScenceId);
 			dbw.AddInParameter(dbCommand, "SuiteName", DbType.AnsiString, model.SuiteName);
-			dbw.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
+            dbw.AddInParameter(dbCommand, "LargeImage", DbType.AnsiString, model.LargeImage);
+            dbw.AddInParameter(dbCommand, "SmallImage", DbType.AnsiString, model.SmallImage);
 			dbw.AddInParameter(dbCommand, "MediumImage", DbType.AnsiString, model.MediumImage);
 			dbw.AddInParameter(dbCommand, "Price", DbType.Decimal, model.Price);
 			dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
@@ -111,13 +98,24 @@ namespace NoName.NetShop.Solution.DAL
 			return model;
 		}
 
+        /// <summary>
+        /// 根据商品单件计算套装总价
+        /// </summary>
+        /// <param name="suiteId"></param>
+        public void SetPriceFromRefrence(int suiteId)
+        {
+            DbCommand dbCommand = dbw.GetStoredProcCommand("UP_slSuite_SetPriceFromReference");
+            dbw.AddInParameter(dbCommand, "SuiteId", DbType.Int32, suiteId);
+            dbw.ExecuteNonQuery(dbCommand);
+        }
+
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
 		public List<SuiteModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select SuiteId,ScenceId,SuiteName,SmallImage,MediumImage,Price,Remark,Score ");
+            strSql.Append("select SuiteId,ScenceId,SuiteName,LargeImage,SmallImage,MediumImage,Price,Remark,Score ");
 			strSql.Append(" FROM slSuite ");
 			if(strWhere.Trim()!="")
 			{
@@ -173,6 +171,7 @@ namespace NoName.NetShop.Solution.DAL
 			model.SuiteName=dataReader["SuiteName"].ToString();
 			model.SmallImage=dataReader["SmallImage"].ToString();
 			model.MediumImage=dataReader["MediumImage"].ToString();
+            model.LargeImage = dataReader["LargeImage"].ToString();
 			ojb = dataReader["Price"];
 			if(ojb != null && ojb != DBNull.Value)
 			{

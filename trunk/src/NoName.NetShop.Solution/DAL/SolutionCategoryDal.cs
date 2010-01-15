@@ -74,25 +74,21 @@ namespace NoName.NetShop.Solution.DAL
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
-		public List<SolutionCategoryModel> GetListArray(string strWhere)
+        public List<SolutionCategoryModel> GetListArray(int scenceId)
 		{
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select SenceId,CateId,CateImage,Remark,Position,IsShow ");
-			strSql.Append(" FROM slCategory ");
-			if(strWhere.Trim()!="")
-			{
-				strSql.Append(" where "+strWhere);
-			}
-			List<SolutionCategoryModel> list = new List<SolutionCategoryModel>();
+            string sql = "SELECT a.SenceId,a.CateId,a.CateImage,a.Remark,a.Position,a.IsShow,b.catename FROM [slCategory] as a"
+                + "	join dbo.pdCategory as b on a.cateid=b.cateId where a.senceId= " + scenceId;
+            List<SolutionCategoryModel> list = new List<SolutionCategoryModel>();
 
-            using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
-			{
-				while (dataReader.Read())
-				{
-					list.Add(ReaderBind(dataReader));
-				}
-			}
-			return list;
+            using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, sql))
+            {
+                while (dataReader.Read())
+                {
+                    list.Add(ReaderBind(dataReader));
+                }
+            }
+            return list; 
+            
 		}
 
 
@@ -116,6 +112,7 @@ namespace NoName.NetShop.Solution.DAL
 			model.CateImage=dataReader["CateImage"].ToString();
 			model.Remark=dataReader["Remark"].ToString();
 			model.Position=dataReader["Position"].ToString();
+            model.CateName = dataReader["catename"].ToString();
 			ojb = dataReader["IsShow"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
