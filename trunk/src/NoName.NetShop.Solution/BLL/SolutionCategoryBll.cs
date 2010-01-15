@@ -36,17 +36,16 @@ namespace NoName.NetShop.Solution.BLL
 		/// </summary>
         public SolutionCategoryModel GetModel(int SenceId, int CateId)
 		{
-			
 			return dal.GetModel(SenceId,CateId);
 		}
 
         /// <summary>
-		/// 获得数据列表
-		/// </summary>
-        public List<SolutionCategoryModel> GetModelList(string strWhere)
-		{
-            return dal.GetListArray(strWhere);
-		}
+        /// 获得数据列表
+        /// </summary>
+        public List<SolutionCategoryModel> GetModelList(int scenceId)
+        {
+            return dal.GetListArray(scenceId);
+        }
 
 		#endregion  成员方法
 	}

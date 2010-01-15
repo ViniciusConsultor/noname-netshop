@@ -32,6 +32,11 @@ namespace NoName.NetShop.Solution.BLL
             return dal.GetListArray(strWhere);
 		}
 
+        public List<CategoryConditionModel> GetModelList(int scenceId, int cateId)
+        {
+            return dal.GetListArray("SenceId=" + scenceId + " and cateId=" + cateId);
+        }
+
 
         public DataTable GetCategoryProductList(int PageIndex, int PageSize, int CurrentCategoryID, out int RecordCount)
         {

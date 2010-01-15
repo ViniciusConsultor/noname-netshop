@@ -34,15 +34,6 @@ namespace NoName.NetShop.Solution.BLL
 		}
 
 		/// <summary>
-		/// 得到一个对象实体
-		/// </summary>
-        public SolutionProductModel GetModel(int SuiteId, int ProductId)
-		{
-			
-			return dal.GetModel(SuiteId,ProductId);
-		}
-
-		/// <summary>
 		/// 获得数据列表
 		/// </summary>
         public List<SolutionProductModel> GetModelList(string strWhere)
@@ -50,6 +41,13 @@ namespace NoName.NetShop.Solution.BLL
             return dal.GetListArray(strWhere);
 		}
 
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
+        public List<SolutionProductModel> GetModelList(int suiteId)
+        {
+            return dal.GetListArray("suiteId=" + suiteId);
+        }
 
         public DataTable GetList(int SuiteID)
         {

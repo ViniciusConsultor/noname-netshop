@@ -12,6 +12,7 @@ namespace NoName.NetShop.Solution.BLL
 	public class SuiteBll
 	{
 		private readonly SuiteDal dal=new SuiteDal();
+        
 		public SuiteBll()
 		{}
 		#region  成员方法
@@ -54,6 +55,23 @@ namespace NoName.NetShop.Solution.BLL
         public DataTable GetList(int PageIndex, int PageSize, string Condition, string Order, out int RecordCount)
         {
             return dal.GetList(PageIndex, PageSize, Condition, Order, out RecordCount);
+        }
+
+        		/// <summary>
+		/// 获得数据列表（比DataSet效率高，推荐使用）
+		/// </summary>
+        public List<SuiteModel> GetListArray(int scenceId)
+        {
+            return dal.GetListArray("scenceId="+scenceId);
+        }
+
+        /// <summary>
+        /// 根据商品单件计算套装总价
+        /// </summary>
+        /// <param name="suiteId"></param>
+        public void SetPriceFromRefrence(int suiteId)
+        {
+            dal.SetPriceFromRefrence(suiteId);
         }
 
 		#endregion  成员方法
