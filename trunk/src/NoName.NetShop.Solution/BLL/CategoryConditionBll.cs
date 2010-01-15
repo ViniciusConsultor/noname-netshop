@@ -31,6 +31,12 @@ namespace NoName.NetShop.Solution.BLL
 		{
             return dal.GetListArray(strWhere);
 		}
+
+
+        public DataTable GetCategoryProductList(int PageIndex, int PageSize, int CurrentCategoryID, out int RecordCount)
+        {
+            return dal.GetCategoryProductList(PageIndex, PageSize, CurrentCategoryID, out RecordCount);
+        }
 		#endregion  成员方法
 	}
 }
