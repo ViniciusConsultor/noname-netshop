@@ -14,6 +14,15 @@ namespace NoName.NetShop.ForeFlat.Solution {
     public partial class DIY {
         
         /// <summary>
+        /// Repeater_ConfigCategory 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater_ConfigCategory;
+        
+        /// <summary>
         /// Repeater_Category 控件。
         /// </summary>
         /// <remarks>
@@ -21,5 +30,23 @@ namespace NoName.NetShop.ForeFlat.Solution {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater Repeater_Category;
+        
+        /// <summary>
+        /// Repeater_Product 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater_Product;
+        
+        /// <summary>
+        /// AspNetPager 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::NoName.Utility.AspNetPager AspNetPager;
     }
 }
