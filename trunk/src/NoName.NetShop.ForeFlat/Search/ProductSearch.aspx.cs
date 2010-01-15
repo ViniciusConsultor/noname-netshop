@@ -20,20 +20,26 @@ namespace NoName.NetShop.ForeFlat.Search
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string word = "打倒";
+            SearchInfo srh = new SearchInfo() {
+                ConfigElement = Config.Searches["product"],
+                PageIndex=1,
+                PageSize=10,
+                QueryString="打倒"
+            };
 
+            int MatchCount = 0;
 
-            Searcher s = new ProductSearcher(word, Config.Searches["product"]);
+            Searcher s = new ProductSearcher(srh);
 
-            List<ISearchEntity> SearchResult = s.GetSearchResult();
+            List<ISearchEntity> SearchResult = s.GetSearchResult(out MatchCount);
 
             List<ProductModel> ProductSearchResult = new List<ProductModel>();
-            Response.Write(String.Format("以{0}为检索词，共搜索到{1}条数据：<br/>", word,SearchResult.Count));
+            Response.Write(String.Format("以{0}为检索词，共搜索到{1}条数据：<br/>", srh.QueryString, MatchCount));
             foreach (ISearchEntity entity in SearchResult)
             {
                 ProductSearchResult.Add((ProductModel)entity);
 
-                Response.Write(String.Format("{0}\t{1}<br/>", ((ProductModel)entity).EntityIdentity,((ProductModel)entity).ProductName));
+                Response.Write(String.Format("{0}\t{1}<br/>", ((ProductModel)entity).EntityIdentity, ((ProductModel)entity).ProductName));
             }
 
             //GridView1.DataSource = ProductSearchResult;

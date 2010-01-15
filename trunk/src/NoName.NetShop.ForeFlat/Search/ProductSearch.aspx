@@ -11,7 +11,7 @@
     <div>
         <asp:GridView runat="server" ID="GridView1">
             <Columns>
-                <asp:BoundField DataField="productid" />
+                <asp:BoundField DataField="entryidentity" />
                 <asp:BoundField DataField="productname" />
             </Columns>
         </asp:GridView>
