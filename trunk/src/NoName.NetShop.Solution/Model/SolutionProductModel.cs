@@ -14,6 +14,7 @@ namespace NoName.NetShop.Solution.Model
 		private int _productid;
 		private decimal _price;
 		private int _quantity;
+        public string ProductName { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>

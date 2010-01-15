@@ -18,6 +18,8 @@ namespace NoName.NetShop.Solution.Model
 		private decimal _price;
 		private string _remark;
 		private int _score;
+
+        public string LargeImage { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>

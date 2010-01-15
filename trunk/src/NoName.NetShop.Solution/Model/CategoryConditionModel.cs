@@ -14,6 +14,7 @@ namespace NoName.NetShop.Solution.Model
 		private int _senceid;
 		private string _rulename;
 		private string _rulevalue;
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -31,7 +32,7 @@ namespace NoName.NetShop.Solution.Model
 			get{return _senceid;}
 		}
 		/// <summary>
-		/// 
+		/// 查询条件的前半部分，并且提供别名占位符，比如：{0}brandid，{0}merchantprice，{0}paraid=dd and {0}paravalue
 		/// </summary>
 		public string RuleName
 		{
@@ -46,7 +47,50 @@ namespace NoName.NetShop.Solution.Model
 			set{ _rulevalue=value;}
 			get{return _rulevalue;}
 		}
-		#endregion Model
+
+        public string GetFilterExpress(string tableAlias)
+        {
+            tableAlias = String.IsNullOrEmpty(tableAlias) ? "" : tableAlias + ".";
+            return String.Format(RuleName + " {1}", tableAlias, RuleValue);
+        }
+
+        public bool IsBrand
+        {
+            get { return RuleName.ToLower() == "{0}brandid"; }
+        }
+
+        public bool IsPrice
+        {
+            get { return RuleName.ToLower() == "{0}merchantprice"; }
+        }
+
+        public bool IsParameter
+        {
+            get { return RuleName.ToLower().StartsWith("{0}paraid"); }
+        }
+
+        public CategoryConditionModel(int scenceId,int cateId,int maxPrice, int minPrice)
+        {
+            _senceid = scenceId;
+            _cateid = cateId;
+            _rulename = "{0}merchantprice";
+            _rulevalue = "between " + minPrice + " and " + maxPrice;
+        }
+        public CategoryConditionModel(int scenceId,int cateId,string brandIds)
+        {
+            _senceid = scenceId;
+            _cateid = cateId;
+            _rulename = "{0}brandid";
+            _rulevalue = "in(" + brandIds + ")";
+        }
+        public CategoryConditionModel(int scenceId,int cateId,int paraId,string paraValues)
+        {
+            _senceid = scenceId;
+            _cateid = cateId;
+            _rulename = "{0}paraid=" + paraId + " and " + "{0}paravalue";
+            _rulevalue = "in(" + paraValues + ")";
+        }		
+        #endregion Model
 
 	}
 }
