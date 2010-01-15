@@ -16,6 +16,8 @@ namespace NoName.NetShop.Solution.Model
 		private string _remark;
 		private string _position;
 		private bool _isshow;
+        public string CateName { get; set; }
+
 		/// <summary>
 		/// 
 		/// </summary>
