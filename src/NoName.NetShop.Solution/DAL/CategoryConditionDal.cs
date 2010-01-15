@@ -60,6 +60,46 @@ namespace NoName.NetShop.Solution.DAL
 			return list;
 		}
 
+        public DataTable GetCategoryProductList(int PageIndex,int PageSize,int CurrentCategoryID,out int RecordCount)
+        {
+            string Condition = GetModel(1, CurrentCategoryID).RuleValue;
+
+            return GetCategoryProductList(PageIndex, PageSize, Condition, " productid desc ", out RecordCount);
+        }
+
+        public DataTable GetCategoryProductList(int PageIndex, int PageSize, string Condition, string Order, out int RecordCount)
+        {
+            int PageLowerBound = 0, PageUpperBount = 0;
+            PageLowerBound = (PageIndex - 1) * PageSize;
+            PageUpperBount = PageLowerBound + PageSize;
+
+            string sqlCount = "select count(0) from pdproduct where "+Condition;
+            string sqlData = @" select * from
+                                    (select row_number() over(order by "+Order+@") as nid,* 
+                                    from pdproduct 
+                                    where "+Condition+@") as sp
+                                where nid>"+PageLowerBound+" and nid<="+PageUpperBount;
+
+            RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sqlCount));
+            return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
+        }
+
+        public CategoryConditionModel GetModel(int ScenceID,int CategoryID)
+        {
+            string sql = "select * from slcategorycondition where senceid={0} and cateid={1}";
+
+
+            CategoryConditionModel model = null;
+            using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, String.Format(sql, ScenceID, CategoryID)))
+            {
+                if (dataReader.Read())
+                {
+                    model = ReaderBind(dataReader);
+                }
+            }
+            return model;
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据
@@ -76,7 +116,7 @@ namespace NoName.NetShop.Solution.DAL
 			ojb = dataReader["SenceId"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
-				model.SenceId=(int)ojb;
+				model.SenceId=Convert.ToInt32(ojb);
 			}
 			model.RuleName=dataReader["RuleName"].ToString();
 			model.RuleValue=dataReader["RuleValue"].ToString();
