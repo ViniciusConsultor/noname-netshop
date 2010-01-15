@@ -53,13 +53,18 @@ namespace NoName.NetShop.Product.Facade
             return ProcessResult;
         }
 
-        public static ProductModel GetMainImageUr(ProductModel Product)
+        public static ProductModel GetMainImageUrl(ProductModel Product)
         {
             Product.SmallImage = config.UrlRoot + Product.SmallImage;
             Product.MediumImage = config.UrlRoot + Product.MediumImage;
             Product.LargeImage = config.UrlRoot + Product.LargeImage;
 
             return Product;
+        }
+
+        public static string GetMainImageUrl(string ImageShortUrl)
+        {
+            return config.UrlRoot + ImageShortUrl;
         }
 
 
