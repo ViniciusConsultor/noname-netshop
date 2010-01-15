@@ -9,13 +9,12 @@ namespace NoName.NetShop.Search.Searchers
 {
     public class NewsSearcher : Searcher
     {
-        public NewsSearcher(string qString, SearchElement element)
+        public NewsSearcher(SearchInfo info)
         {
-            QueryString = qString;
-            ConfigElement = element;
+            searchInfo = info;
         }
 
-        public override List<ISearchEntity> GetSearchResult()
+        public override List<ISearchEntity> GetSearchResult(out int MatchCount)
         {
             throw new NotImplementedException();
         }

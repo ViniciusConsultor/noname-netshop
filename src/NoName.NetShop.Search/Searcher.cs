@@ -10,10 +10,16 @@ namespace NoName.NetShop.Search
 {
     public abstract class Searcher
     {
-        protected string QueryString;
-        protected SearchElement ConfigElement;
+        protected SearchInfo searchInfo;
 
+        public abstract List<ISearchEntity> GetSearchResult(out int MatchCount);
+    }
 
-        public abstract List<ISearchEntity> GetSearchResult();
+    public class SearchInfo
+    {
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+        public string QueryString { get; set; }
+        public SearchElement ConfigElement { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace NoName.NetShop.Search.DataIndexer
         public void CreateIndex(List<ISearchEntity> CreateEntities)
         {
             Analyzer analyzer = new StandardAnalyzer();
-            IndexWriter writer = new IndexWriter(ConfigElement.IndexDirectory, analyzer, false);
+            IndexWriter writer = new IndexWriter(ConfigElement.IndexDirectory, analyzer, true);
             //第三个参数：是否重新创建索引，True 一律清空 重新建立 False 原有基础上增量添加索引
 
             foreach (ISearchEntity IndexEntity in CreateEntities)

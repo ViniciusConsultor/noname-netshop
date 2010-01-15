@@ -15,19 +15,18 @@ namespace NoName.NetShop.Search.Searchers
 {
     public class ProductSearcher : Searcher
     {
-        public ProductSearcher(string qString, SearchElement element)
+        public ProductSearcher(SearchInfo info)
         {
-            QueryString = qString;
-            ConfigElement = element;
+            searchInfo = info;
         }
 
-        public override List<ISearchEntity> GetSearchResult()
+        public override List<ISearchEntity> GetSearchResult(out int MatchCount)
         {
             Analyzer analyzer = new StandardAnalyzer();
 
-            IndexSearcher searcher = new IndexSearcher(ConfigElement.IndexDirectory);
+            IndexSearcher searcher = new IndexSearcher(searchInfo.ConfigElement.IndexDirectory);
             MultiFieldQueryParser parser = new MultiFieldQueryParser(new string[] { "productname", "keywords", "description" }, analyzer);
-            Query query = parser.Parse(QueryString);
+            Query query = parser.Parse(searchInfo.QueryString);
 
             Hits hits = searcher.Search(query);
 
@@ -52,6 +51,7 @@ namespace NoName.NetShop.Search.Searchers
             }
             searcher.Close();
 
+            MatchCount = hits.Length();
             return ResultList;
         }
     }
