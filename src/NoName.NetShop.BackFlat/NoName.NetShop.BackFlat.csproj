@@ -796,12 +796,12 @@
     <Compile Include="Solution\ScenceList.aspx.designer.cs">
       <DependentUpon>ScenceList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Solution\ShowClassicalSuit.aspx.cs">
-      <DependentUpon>ShowClassicalSuit.aspx</DependentUpon>
+    <Compile Include="Solution\ShowClassicalScence.aspx.cs">
+      <DependentUpon>ShowClassicalScence.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Solution\ShowClassicalSuit.aspx.designer.cs">
-      <DependentUpon>ShowClassicalSuit.aspx</DependentUpon>
+    <Compile Include="Solution\ShowClassicalScence.aspx.designer.cs">
+      <DependentUpon>ShowClassicalScence.aspx</DependentUpon>
     </Compile>
     <Compile Include="Solution\ShowCommendDetail.aspx.cs">
       <DependentUpon>ShowCommendDetail.aspx</DependentUpon>
@@ -1596,7 +1596,7 @@
     <Content Include="Solution\DemandDetail.aspx" />
     <Content Include="Solution\DemandList.aspx" />
     <Content Include="Solution\ScenceList.aspx" />
-    <Content Include="Solution\ShowClassicalSuit.aspx" />
+    <Content Include="Solution\ShowClassicalScence.aspx" />
     <Content Include="Solution\ShowCommendDetail.aspx" />
     <Content Include="Solution\ShowCommendScence.aspx" />
     <Content Include="vote\ModifyGroup.aspx" />
