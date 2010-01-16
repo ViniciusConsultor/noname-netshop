@@ -71,6 +71,25 @@ namespace NoName.NetShop.Solution.DAL
 			return model;
 		}
 
+        /// <summary>
+        /// 获得数据列表（比DataSet效率高，推荐使用）
+        /// </summary>
+        public List<SolutionCategoryModel> GetModelList(string where)
+        {
+            string sql = "SELECT * FROM [slCategory]  where " + where;
+            List<SolutionCategoryModel> list = new List<SolutionCategoryModel>();
+
+            using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, sql))
+            {
+                while (dataReader.Read())
+                {
+                    list.Add(ReaderBind(dataReader));
+                }
+            }
+            return list;
+
+        }
+
 		/// <summary>
 		/// 获得数据列表（比DataSet效率高，推荐使用）
 		/// </summary>
@@ -90,6 +109,8 @@ namespace NoName.NetShop.Solution.DAL
             return list; 
             
 		}
+
+
 
 
 		/// <summary>

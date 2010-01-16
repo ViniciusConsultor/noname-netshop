@@ -39,6 +39,11 @@ namespace NoName.NetShop.Solution.BLL
 			return dal.GetModel(SenceId,CateId);
 		}
 
+        public List<SolutionCategoryModel> GetModelList(string where)
+        {
+            return dal.GetModelList(where);
+        }
+
         /// <summary>
         /// 获得数据列表
         /// </summary>

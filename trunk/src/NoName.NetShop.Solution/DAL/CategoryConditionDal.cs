@@ -62,9 +62,19 @@ namespace NoName.NetShop.Solution.DAL
 
         public DataTable GetCategoryProductList(int PageIndex,int PageSize,int CurrentCategoryID,out int RecordCount)
         {
-            string Condition = GetModel(1, CurrentCategoryID).RuleValue;
+            CategoryConditionModel model = GetModel(1, CurrentCategoryID);
 
-            return GetCategoryProductList(PageIndex, PageSize, Condition, " productid desc ", out RecordCount);
+            if (model != null)
+            {
+                string Condition = model.RuleValue;
+
+                return GetCategoryProductList(PageIndex, PageSize, Condition, " productid desc ", out RecordCount);
+            }
+            else
+            {
+                RecordCount = 0;
+                return new DataTable();
+            }
         }
 
         public DataTable GetCategoryProductList(int PageIndex, int PageSize, string Condition, string Order, out int RecordCount)
