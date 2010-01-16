@@ -13,15 +13,37 @@ namespace NoName.NetShop.BackFlat.Solution
 {
     public partial class ShowCommendDetail : System.Web.UI.Page
     {
+
+        private int ScenceId
+        {
+            get
+            {
+                if (ViewState["scenceId"] == null)
+                    ViewState["scenceId"] = 0;
+                return (int)ViewState["scenceId"];
+            }
+            set
+            {
+                ViewState["scenceId"] = value;
+            }
+        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                int suiteId;
+                int suiteId,scenceId;
                 if (!int.TryParse(Request.QueryString["id"], out suiteId))
                 {
                     suiteId = 0;
                 }
+
+                if (!int.TryParse(Request.QueryString["sid"], out scenceId))
+                {
+                    scenceId = 0;
+                }
+                ScenceId = scenceId;
+
                 ShowInfo(suiteId);
             }
         }
@@ -34,15 +56,20 @@ namespace NoName.NetShop.BackFlat.Solution
             if (smodel == null)
             {
                 btnAddProduct.Visible = false;
+                txtProductId.Visible = false;
+                lblScenceId.Text = ScenceId.ToString();
             }
             else
             {
                 btnAddProduct.Visible = true;
+                txtProductId.Visible = true;
                 lblSuiteId.Text = smodel.SuiteId.ToString();
                 txtRemark.Text = smodel.Remark;
                 txtScore.Text = smodel.Score.ToString();
                 txtScore.ReadOnly = true;
                 txtSuiteName.Text = smodel.SuiteName;
+                lblScenceId.Text = smodel.ScenceId.ToString();
+                lblPrice.Text = smodel.Price.ToString("F2");
 
                 if (!String.IsNullOrEmpty(smodel.SmallImage))
                 {
@@ -77,6 +104,7 @@ namespace NoName.NetShop.BackFlat.Solution
                 spmodel.ProductId = pmodel.ProductId;
                 spmodel.Quantity = 1;
                 spmodel.SuiteId = suiteId;
+                
                 spbll.Save(spmodel);
                 sbll.SetPriceFromRefrence(suiteId);
             }
@@ -95,20 +123,37 @@ namespace NoName.NetShop.BackFlat.Solution
                 smodel.Price =0m;
                 smodel.Score =0;
                 smodel.SuiteId = NoName.NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Product);
+                smodel.ScenceId = ScenceId;
             }
             smodel.Remark = txtRemark.Text.Trim();
-            smodel.SuiteName = txtRemark.Text.Trim();
-
-            string[] MainImages;
-
-            if (ProductMainImageRule.SaveProductMainImage(smodel.SuiteId, fulImage.PostedFile, out MainImages))
+            smodel.SuiteName = txtSuiteName.Text.Trim();
+            if (!String.IsNullOrEmpty(fulImage.FileName))
             {
-                smodel.SmallImage = MainImages[0];
-                smodel.MediumImage = MainImages[1];
-                smodel.LargeImage = MainImages[2];
+                string[] MainImages;
+
+                if (ProductMainImageRule.SaveProductMainImage(smodel.SuiteId, fulImage.PostedFile, out MainImages))
+                {
+                    smodel.SmallImage = MainImages[0];
+                    smodel.MediumImage = MainImages[1];
+                    smodel.LargeImage = MainImages[2];
+                }
             }
             sbll.Save(smodel);
             this.ShowInfo(smodel.SuiteId);
+        }
+
+        protected void gvItems_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            SolutionProductBll spbll = new SolutionProductBll();
+            int productId = Convert.ToInt32(gvItems.DataKeys[e.RowIndex].Values["ProductId"]);
+            int suitId = int.Parse(lblSuiteId.Text);
+            spbll.Delete(suitId, productId);
+            SuiteBll sbll = new SuiteBll();
+            sbll.SetPriceFromRefrence(suitId);
+
+            ShowInfo(suitId);
+
+
         }
     }
 }

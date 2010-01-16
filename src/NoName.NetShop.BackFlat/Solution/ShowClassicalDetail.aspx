@@ -29,10 +29,10 @@
 	</td></tr>
 	<tr>
 	<td height="25" width="30%" align="right">
-		是否显示在场景中，如果不显示，则remark、cateImage、position可以为空
+		是否显示
 	：</td>
 	<td height="25" width="*" align="left">
-		<asp:CheckBox ID="chkIsShow" Text="是否显示在场景中，如果不显示，则描述信息、示例图片、呈现位置" runat="server" Checked="False" />
+		<asp:CheckBox ID="chkIsShow" Text="是否显示在场景中(如果不显示，则描述信息、示例图片、呈现位置)" runat="server" Checked="False" />
 	</td></tr>
 
 	<td height="25" width="30%" align="right">
@@ -75,7 +75,7 @@
 		相关品牌
 	：</td>
 	<td height="25" width="*" align="left">
-		<asp:CheckBoxList runat="server" ID="cblBrands"></asp:CheckBoxList>
+		<asp:CheckBoxList runat="server" ID="cblBrands" RepeatDirection="Horizontal"></asp:CheckBoxList>
 	</td>
 	</tr>
 <asp:Repeater runat="server" ID="rpItems" onitemdatabound="rpItems_ItemDataBound">
@@ -85,7 +85,7 @@
 		<asp:Label ID="lblPropName" runat="server"></asp:Label>
 	：</td>
 	<td height="25" width="*" align="left">
-		<asp:RadioButtonList runat="server" ID="rblPara"></asp:RadioButtonList>
+		<asp:CheckBoxList runat="server" ID="cblPara" RepeatDirection="Horizontal"></asp:CheckBoxList>
 	</td>
 	</tr>
 </ItemTemplate>

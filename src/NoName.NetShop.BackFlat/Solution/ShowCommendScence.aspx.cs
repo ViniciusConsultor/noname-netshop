@@ -52,6 +52,11 @@ namespace NoName.NetShop.BackFlat.Solution
             }
         }
 
+        protected void btnAddNew_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ShowCommendDetail.aspx?sid="+ScenceId);
+        }
+
 
     }
 }
