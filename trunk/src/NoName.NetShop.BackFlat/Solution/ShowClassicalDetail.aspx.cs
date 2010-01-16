@@ -31,7 +31,8 @@ namespace NoName.NetShop.BackFlat.Solution
             SolutionCategoryBll scbll = new SolutionCategoryBll();
             SolutionCategoryModel scmodel = scbll.GetModel(scenceId, cateId);
             CategoryModelBll cbll = new CategoryModelBll();
-            if (!cbll.Exists(cateId))
+            CategoryModel cmodel = cbll.GetModel(cateId);
+            if (cmodel == null)
             {
                 throw new NoName.NetShop.Common.ShopException("分类不存在", true);
             }
@@ -45,7 +46,7 @@ namespace NoName.NetShop.BackFlat.Solution
                 chkIsShow.Checked = scmodel.IsShow;
                 txtRemark.Text = scmodel.Remark;
                 txtPosition.Text = scmodel.Position;
-                
+
                 if (!String.IsNullOrEmpty(scmodel.CateImage))
                 {
                     this.imgCate.Visible = true;
@@ -57,6 +58,13 @@ namespace NoName.NetShop.BackFlat.Solution
                 }
                 PresetConditionItems(scenceId, cateId);
             }
+            else
+            {
+                lblCateId.Text = cmodel.CateId.ToString();
+                lblSenceId.Text = scenceId.ToString();
+                txtRemark.Text = cmodel.CateName;
+            }
+
             
         }
 
@@ -80,24 +88,20 @@ namespace NoName.NetShop.BackFlat.Solution
                 }
                 else if (ccmodel.IsBrand) // 如果是品牌: in (0,2,3,4)
                 {
-                    string[] sels = ccmodel.RuleValue.Substring(4).TrimEnd(')').Split(',');
-                    foreach (ListItem item in cblBrands.Items)
+                    string[] sels = ccmodel.RuleValue.Substring(3).TrimEnd(')').Split(',');
+                    foreach (string str in sels)
                     {
-                        item.Selected = false;
-                        foreach (string str in sels)
+                        ListItem item = cblBrands.Items.FindByValue(str);
+                        if (item != null)
                         {
-                            if (str == item.Value)
-                            {
-                                item.Selected = true;
-                                break;
-                            }
+                            item.Selected = true;
                         }
                     }
                 }
                 else if (ccmodel.IsParameter)
                 {
-                    string paraidreg = @"paraId=(?<paraid>\d+)";
-                    Match match = Regex.Match(ccmodel.RuleName,paraidreg);
+                    string paraidreg = @"paraid=(?<paraid>\d+)";
+                    Match match = Regex.Match(ccmodel.RuleName,paraidreg,RegexOptions.IgnoreCase);
                     if (match.Success && match.Groups["paraid"].Success)
                     {
                         string paraid = match.Groups["paraid"].Value;
@@ -120,10 +124,9 @@ namespace NoName.NetShop.BackFlat.Solution
 
         private void InitConditionItems(int cateId)
         {
-            NoName.NetShop.Product.BLL.CategoryModelBll cbll = new NoName.NetShop.Product.BLL.CategoryModelBll();
-            BrandModelBll bbll = new BrandModelBll();
-            List<BrandModel> blist = bbll.GetModelList("CateId=" + cateId);
-            this.cblBrands.DataSource = blist;
+            BrandCategoryRelationBll bcrbll = new BrandCategoryRelationBll();
+            
+            this.cblBrands.DataSource =  bcrbll.GetCategoryBrandList(cateId);
             this.cblBrands.DataTextField = "BrandName";
             this.cblBrands.DataValueField = "BrandId";
             this.cblBrands.DataBind();
@@ -246,7 +249,7 @@ namespace NoName.NetShop.BackFlat.Solution
             Label lblPropName = item.FindControl("lblPropName") as Label;
             CheckBoxList cblPara = item.FindControl("cblPara") as CheckBoxList;
             List<string> selvals = new List<string>();
-            foreach (ListItem sitem in cblBrands.Items)
+            foreach (ListItem sitem in cblPara.Items)
             {
                 if (sitem.Selected)
                     selvals.Add("'" + sitem.Value + "'");

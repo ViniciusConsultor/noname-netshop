@@ -10,6 +10,11 @@
     <form id="form1" runat="server">
     <div>
        <div id="data-list">
+       <div>
+       <asp:Button runat="server" ID="btnAddNew" Text="添加新的推荐套装商品组合" 
+               onclick="btnAddNew_Click" />
+           <br />
+       </div>
            <asp:GridView runat="server" ID="gvList" AutoGenerateColumns="false" 
                onrowcommand="gvList_RowCommand">
                 <Columns>
@@ -25,6 +30,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
+                
             </asp:GridView>
         </div>
     </div>

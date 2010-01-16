@@ -38,7 +38,7 @@
 	<td height="25" width="*" align="left">
 	<asp:RadioButtonList runat="server" ID="rblScenceType" RepeatDirection="Horizontal">
 	<asp:ListItem Text="ÍÆ¼ö" Value="0"></asp:ListItem>
-	<asp:ListItem Text="¾­µä" Value="0"></asp:ListItem>
+	<asp:ListItem Text="¾­µä" Value="1"></asp:ListItem>
 	</asp:RadioButtonList>
 	</td></tr>
 	<tr>

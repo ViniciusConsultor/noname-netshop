@@ -17,6 +17,13 @@
     </tr>
 		<tr>
 	<td height="25" width="30%" align="right">
+		场景Id
+	：</td>
+	<td height="25" width="*" align="left">
+		<asp:label id="lblScenceId" runat="server"></asp:label>
+	</td></tr>
+		<tr>
+	<td height="25" width="30%" align="right">
 		套装Id
 	：</td>
 	<td height="25" width="*" align="left">
@@ -65,7 +72,7 @@
     </tr>
 	 <tr>
                     <td colspan="2">
-                    <asp:GridView runat="server" ID="gvItems" DataKeyNames="ItemId" 
+                    <asp:GridView runat="server" ID="gvItems" DataKeyNames="ProductId" 
                             AutoGenerateColumns="false" Width="100%" 
                             onrowdeleting="gvItems_RowDeleting">
                     <Columns>

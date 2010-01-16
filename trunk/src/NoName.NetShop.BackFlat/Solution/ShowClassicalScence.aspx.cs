@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NoName.NetShop.BackFlat.Solution
 {
-    public partial class ShowClassicalSuit : System.Web.UI.Page
+    public partial class ShowClassicalScence : System.Web.UI.Page
     {
         private int ScenceId
         {
@@ -49,6 +49,11 @@ namespace NoName.NetShop.BackFlat.Solution
                 sbll.Delete(ScenceId, cateId);
                 this.BindList();
             }
+        }
+
+        protected void btnAddNewCateId_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ShowClassicalDetail.aspx?cid=" + txtCateId.Text +"&sid=" + ScenceId);
         }
 
     }

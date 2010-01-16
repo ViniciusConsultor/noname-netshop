@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ScenceList.aspx.cs" Inherits="NoName.NetShop.BackFlat.Solution.ScenceList" %>
+
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -19,7 +20,7 @@
                    <asp:BoundField DataField="SenceType"  HeaderText="类型" />
                    <asp:TemplateField FooterText="类型">
                    <ItemTemplate>
-                   <asp:Literal runat="server" Text='<%#Convert.ToInt32(Eval("SenceType"))==0? "经典套装":"推荐套装" %>'></asp:Literal>
+                   <asp:Literal runat="server" Text='<%#Convert.ToInt32(Eval("SenceType"))==0? "推荐套装":"经典套装" %>'></asp:Literal>
                    </ItemTemplate>
                    </asp:TemplateField>
                   <asp:TemplateField FooterText="状态">
@@ -29,8 +30,8 @@
                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="维护">
                         <ItemTemplate>
-                             <asp:HyperLink runat="server" ID="HyperLink1" Text="编辑场景" NavigateUrl='<%# "ShowScence.aspx"?id="+Eval("ScenceId") %>' />
-                             <asp:HyperLink runat="server" ID="HyperLinkShow" Text="查看内容" NavigateUrl='<%# (Convert.ToInt32(Eval("SenceType"))==0? "ShowClassicalScence.aspx":"ShowCommendScence.aspx") + "?id="+Eval("ScenceId") %>' />
+                             <asp:HyperLink runat="server" ID="HyperLink1" Text="编辑场景" NavigateUrl='<%# "ShowScence.aspx?id="+Eval("ScenceId") %>' />
+                             <asp:HyperLink runat="server" ID="HyperLinkShow" Text="查看内容" NavigateUrl='<%# (Convert.ToInt32(Eval("SenceType"))==0? "ShowCommendScence.aspx":"ShowClassicalScence.aspx") + "?id="+Eval("ScenceId") %>' />
                             <asp:LinkButton runat="server" ID="lbtnToggle" Text='<%# Convert.ToBoolean(Eval("IsActive"))?"禁止":"允许" %>' CommandName="toggle" CommandArgument='<%#Eval("ScenceId")%>' ></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
