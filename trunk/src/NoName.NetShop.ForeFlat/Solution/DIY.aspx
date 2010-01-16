@@ -30,7 +30,7 @@
             <div class="table1">
                 <asp:Repeater runat="server" ID="Repeater_ConfigCategory">
                     <HeaderTemplate>
-                        <table>
+                        <table id="selected-product-list">
                             <tr>
                                 <th><span>配置</span></th>
                                 <th><span>名称</span></th>
@@ -40,21 +40,21 @@
                             </tr>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <tr class="odd">
+                        <tr class="odd" categoryid='<%# Eval("cateid") %>'>
                             <td><%# Eval("Remark")%></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><a class="iconButton delete" href="#"></a></td>
+                            <td></td>
                         </tr>                        
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr class="even">
+                        <tr class="even" categoryid='<%# Eval("cateid") %>'>
                             <td><%# Eval("Remark")%></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><a class="iconButton delete" href="#"></a></td>
+                            <td></td>
                         </tr>
                     </AlternatingItemTemplate>
                     <FooterTemplate>
@@ -66,12 +66,12 @@
                 </asp:Repeater>
             </div>
             <div class="buttons">
-            	<a class="button_blue3" href="#">
+            	<a class="button_blue3" style="cursor:pointer" id="clear-select">
                     <span class="left"></span>
                     <span class="text">清空配置单</span>
                     <span class="right"></span>
                 </a>
-                <a class="button_blue3" href="#">
+                <a class="button_blue3" style="cursor:pointer" id="submit-select">
                     <span class="left"></span>
                     <span class="text">提交订单</span>
                     <span class="right"></span>
@@ -89,7 +89,7 @@
             <div class="equipmentCategory">
                 <asp:Repeater runat="server" ID="Repeater_Category">
                     <ItemTemplate>
-            	        <a href="#" class='<%# CurrentCategoryID == Convert.ToInt32(Eval("cateid"))?"on":"off" %>' ><%# Eval("remark") %></a>
+            	        <a href='<%# "DIY.aspx?ids="+CategoriesString+"&currcid="+Eval("cateid") %>' class='<%# CurrentCategoryID == Convert.ToInt32(Eval("cateid"))?"on":"off" %>' ><%# Eval("remark") %></a>
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
@@ -148,7 +148,7 @@
                                         <td><a href='<%# "/product-"+Eval("productid")+".html" %>'><img src='<%# Eval("mediumimage") %>' /></a></td>
                                         <td><a href="#"><%# Eval("productname") %></a></td>
                                         <td>￥<%# Eval("merchantprice") %></td>
-                                        <td><input type="checkbox" productid='<%# Eval("productid") %>' /></td>
+                                        <td><input type="checkbox" productid='<%# Eval("productid") %>' categoryid='<%# CurrentCategoryID %>' /></td>
                                       </tr>
                                 </ItemTemplate>
                                 <AlternatingItemTemplate>
@@ -156,7 +156,7 @@
                                         <td><a href='<%# "/product-"+Eval("productid")+".html" %>'><img src='<%# Eval("mediumimage") %>' /></a></td>
                                         <td><a href="#"><%# Eval("productname") %></a></td>
                                         <td>￥<%# Eval("merchantprice") %></td>
-                                        <td><input type="checkbox" productid='<%# Eval("productid") %>' /></td>
+                                        <td><input type="checkbox" productid='<%# Eval("productid") %>' categoryid='<%# CurrentCategoryID %>' /></td>
                                       </tr>
                                 </AlternatingItemTemplate>
                             </asp:Repeater>                     
