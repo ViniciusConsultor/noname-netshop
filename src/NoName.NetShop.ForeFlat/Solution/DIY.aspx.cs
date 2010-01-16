@@ -15,7 +15,7 @@ namespace NoName.NetShop.ForeFlat.Solution
 {
     public partial class DIY : System.Web.UI.Page
     {
-        private string CategoriesString
+        public string CategoriesString
         {
             get { if (ViewState["CategoriesString"] != null) return ViewState["CategoriesString"].ToString(); else return String.Empty; }
             set { ViewState["CategoriesString"] = value; }
