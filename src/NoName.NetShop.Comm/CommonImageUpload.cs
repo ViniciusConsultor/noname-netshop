@@ -26,7 +26,7 @@ namespace NoName.NetShop.Common
             {
                 //用日期作为分割子文件夹的依据，防止文件在同一个文件夹下堆积过多导致IO效率降低
                 string RelativePath = DateTime.Today.ToString("yyyy-MM") + "\\";
-                string FileExtension = Path.GetExtension(control.FileName);
+                string FileExtension = Path.GetExtension(control.FileName).ToLower();
                 string FileName = Guid.NewGuid().ToString() + FileExtension;
 
                 if (control.PostedFile.ContentLength <= Config.MaxSize && Config.AllowedFormat.Contains(FileExtension.Substring(1)))
