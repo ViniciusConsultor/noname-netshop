@@ -50,7 +50,7 @@ namespace NoName.NetShop.Solution.Model
 			get{return _senceimg;}
 		}
 		/// <summary>
-		/// 场景类型：0 推荐 1 经典 2 共用
+		/// 场景类型：0 推荐 1 经典 
 		/// </summary>
 		public int SenceType
 		{
