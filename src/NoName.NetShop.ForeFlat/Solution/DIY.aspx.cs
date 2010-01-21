@@ -74,7 +74,7 @@ namespace NoName.NetShop.ForeFlat.Solution
         {
             CategoryConditionBll bll = new CategoryConditionBll();
             int RecordCount = 0;
-            DataTable dt = bll.GetCategoryProductList(PageIndex, AspNetPager.PageSize, CurrentCategoryID, out RecordCount);
+            DataTable dt = new DataTable();//bll.GetCategoryProductList(PageIndex, AspNetPager.PageSize, CurrentCategoryID, out RecordCount);
             foreach(DataRow row in dt.Rows)
             {
                 row["smallimage"] = ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["smallimage"]));
