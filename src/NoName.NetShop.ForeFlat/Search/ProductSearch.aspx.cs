@@ -20,11 +20,15 @@ namespace NoName.NetShop.ForeFlat.Search
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SearchInfo srh = new SearchInfo() {
+            string word = Request.QueryString["w"];
+            if (String.IsNullOrEmpty(word)) throw new ArgumentNullException();
+
+            SearchInfo srh = new SearchInfo()
+            {
                 ConfigElement = Config.Searches["product"],
-                PageIndex=1,
-                PageSize=10,
-                QueryString="打倒"
+                PageIndex = 1,
+                PageSize = 10,
+                QueryString = word
             };
 
             int MatchCount = 0;
