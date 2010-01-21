@@ -1,4 +1,5 @@
 using System;
+using NoName.Utility;
 
 namespace NoName.NetShop.Product.Model
 {
@@ -75,6 +76,10 @@ namespace NoName.NetShop.Product.Model
         {
             get { return _showorder; }
             set { _showorder = value; }
+        }
+        public string PinYinName
+        {
+            get { return ChineseToPinYin.Convert(_brandname); }
         }
 
 		#endregion Model

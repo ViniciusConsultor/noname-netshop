@@ -79,6 +79,7 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
             dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
+            dbw.AddInParameter(dbCommand, "pinyinname", DbType.Int32, model.PinYinName);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -95,6 +96,7 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
             dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
+            dbw.AddInParameter(dbCommand, "pinyinname", DbType.Int32, model.PinYinName);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -166,7 +168,7 @@ namespace NoName.NetShop.Product.DAL
 		public List<BrandModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select BrandId,BrandName,CateId,CatePath,BrandLogo,Brief ");
+			strSql.Append("select * ");
 			strSql.Append(" FROM pdBrand ");
 			if(strWhere.Trim()!="")
 			{

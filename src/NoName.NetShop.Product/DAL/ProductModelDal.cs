@@ -84,7 +84,8 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "ChangeTime", DbType.DateTime, model.ChangeTime);
 			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
 			dbw.AddInParameter(dbCommand, "SortValue", DbType.Int32, model.SortValue);
-			dbw.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
+            dbw.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
+            dbw.AddInParameter(dbCommand, "brandid", DbType.Int32, model.BrandID);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -114,7 +115,8 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "ChangeTime", DbType.DateTime, model.ChangeTime);
 			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
 			dbw.AddInParameter(dbCommand, "SortValue", DbType.Int32, model.SortValue);
-			dbw.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
+            dbw.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
+            dbw.AddInParameter(dbCommand, "brandid", DbType.Int32, model.BrandID);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -156,7 +158,7 @@ namespace NoName.NetShop.Product.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ProductId,ProductName,ProductCode,CatePath,CateId,TradePrice,MerchantPrice,ReducePrice,Stock,SmallImage,MediumImage,LargeImage,Keywords,Brief,PageView,InsertTime,ChangeTime,Status,SortValue,Score ");
+			strSql.Append("select * ");
 			strSql.Append(" FROM pdProduct ");
 			if(strWhere.Trim()!="")
 			{
@@ -190,7 +192,7 @@ namespace NoName.NetShop.Product.DAL
 		public List<ProductModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ProductId,ProductName,ProductCode,CatePath,CateId,TradePrice,MerchantPrice,ReducePrice,Stock,SmallImage,MediumImage,LargeImage,Keywords,Brief,PageView,InsertTime,ChangeTime,Status,SortValue,Score ");
+			strSql.Append("select * ");
 			strSql.Append(" FROM pdProduct ");
 			if(strWhere.Trim()!="")
 			{
@@ -283,7 +285,12 @@ namespace NoName.NetShop.Product.DAL
 			if(ojb != null && ojb != DBNull.Value)
 			{
 				model.Score=(int)ojb;
-			}
+            }
+            ojb = dataReader["brandid"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.BrandID = Convert.ToInt32(ojb);
+            }
 			return model;
 		}
 
