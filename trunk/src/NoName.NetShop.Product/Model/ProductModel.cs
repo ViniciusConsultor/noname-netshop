@@ -8,6 +8,7 @@ namespace NoName.NetShop.Product.Model
 	{
 		public ProductModel()
 		{}
+
 		#region Model
 		private int _productid;
 		private string _productname;
@@ -16,19 +17,20 @@ namespace NoName.NetShop.Product.Model
 		private int _cateid;
 		private decimal _tradeprice;
 		private decimal _merchantprice;
-		private decimal? _reduceprice;
-		private int? _stock;
+		private decimal _reduceprice;
+		private int _stock;
 		private string _smallimage;
 		private string _mediumimage;
 		private string _largeimage;
 		private string _keywords;
 		private string _brief;
-		private int? _pageview;
-		private DateTime? _inserttime;
-		private DateTime? _changetime;
-		private int? _status;
-		private int? _sortvalue;
-		private int? _score;
+		private int _pageview;
+		private DateTime _inserttime;
+		private DateTime _changetime;
+		private int _status;
+		private int _sortvalue;
+		private int _score;
+        private int _brandid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -88,7 +90,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? ReducePrice
+		public decimal ReducePrice
 		{
 			set{ _reduceprice=value;}
 			get{return _reduceprice;}
@@ -96,7 +98,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Stock
+		public int Stock
 		{
 			set{ _stock=value;}
 			get{return _stock;}
@@ -144,7 +146,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? PageView
+		public int PageView
 		{
 			set{ _pageview=value;}
 			get{return _pageview;}
@@ -152,7 +154,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? InsertTime
+		public DateTime InsertTime
 		{
 			set{ _inserttime=value;}
 			get{return _inserttime;}
@@ -160,7 +162,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? ChangeTime
+		public DateTime ChangeTime
 		{
 			set{ _changetime=value;}
 			get{return _changetime;}
@@ -168,7 +170,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Status
+		public int Status
 		{
 			set{ _status=value;}
 			get{return _status;}
@@ -176,7 +178,7 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? SortValue
+		public int SortValue
 		{
 			set{ _sortvalue=value;}
 			get{return _sortvalue;}
@@ -184,11 +186,16 @@ namespace NoName.NetShop.Product.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Score
+		public int Score
 		{
 			set{ _score=value;}
 			get{return _score;}
 		}
+        public int BrandID
+        {
+            get { return _brandid; }
+            set { _brandid = value; }
+        }
 		#endregion Model
 
 	}

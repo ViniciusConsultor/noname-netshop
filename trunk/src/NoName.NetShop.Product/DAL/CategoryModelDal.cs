@@ -73,6 +73,8 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
             dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
+            dbw.AddInParameter(dbCommand, "pinyinname", DbType.Int32, model.PinYinName);
+
 
 			dbw.ExecuteNonQuery(dbCommand);
 		} 
@@ -90,6 +92,8 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
             dbw.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
+            dbw.AddInParameter(dbCommand, "pinyinname", DbType.Int32, model.PinYinName);
+
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -173,7 +177,7 @@ namespace NoName.NetShop.Product.DAL
 		public List<CategoryModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select CateId,CateName,CatePath,Status,PriceRange,IsHide,CateLevel ");
+			strSql.Append("select * ");
 			strSql.Append(" FROM pdCategory ");
 			if(strWhere.Trim()!="")
 			{
