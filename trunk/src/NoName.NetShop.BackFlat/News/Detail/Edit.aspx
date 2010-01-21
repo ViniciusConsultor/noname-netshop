@@ -10,14 +10,17 @@
     <link href="/css/main.css" rel="stylesheet" type="text/css" />
     <script src="/js/validate.js" type="text/javascript"></script>
     <script src="/js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
     <script type="text/javascript">
     var categoryInfo = [{ "name": "category1", "title": "", "required": "true" },
     { "name": "category2", "title": "", "required": "true" },
     { "name": "category3", "title": "", "required": "false"}];
 
     $(function() {
-
-
+        CKEDITOR.replace('<%= TextBox_Content.ClientID %>', {
+            height: '400px',
+            width: '700px'
+        });
     });
     
     function validate() {
@@ -82,7 +85,7 @@
             </tr>
             <tr>
                 <td>摘要：</td>
-                <td><asp:TextBox runat="server" ID="TextBox_Brief" TextMode="MultiLine" /><span type="inform" class="red"></span></td>
+                <td><asp:TextBox runat="server" ID="TextBox_Brief" TextMode="MultiLine" Width="400" Height="140" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>内容：<span class="red">*</span></td>

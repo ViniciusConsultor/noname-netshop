@@ -11,10 +11,14 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
+        <asp:GridView runat="server" ID="GridView1" CssClass="GridView" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
             <Columns>
                 <asp:BoundField HeaderText="新闻ID" DataField="newsid" />
-                <asp:BoundField HeaderText="标题" DataField="title" />
+                <asp:TemplateField HeaderText="标题">
+                    <ItemTemplate>
+                        <a href=""><%# Eval("title")%></a>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField HeaderText="分类" DataField="catename" />
                 <asp:BoundField HeaderText="作者" DataField="author" />
                 <asp:TemplateField HeaderText="发布日期">
