@@ -1,6 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Add.aspx.cs" Inherits="NoName.NetShop.BackFlat.Product.Add" %>
-<%@ Register src="../Controls/CategorySelect.ascx" tagname="CategorySelect" tagprefix="uc1" %>
-<%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 
 
 
@@ -13,14 +11,13 @@
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script src="/js/validate.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
     <script type="text/javascript">
-    var categoryInfo = [{ "name": "category1", "title": "", "required": "true" },
-    { "name": "category2", "title": "", "required": "true" },
-    { "name": "category3", "title": "", "required": "false"}];
-    
     $(function() {
-        
-
+        CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
+            height: '400px',
+            width: '700px'
+        });
     });
     function validate() {
         $('table td span[type=inform]').html('');
@@ -82,6 +79,10 @@
             <tr>
                 <td>产品名称<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtProductName" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
+                <td>品牌<span class="red">*</span>：</td>
+                <td><asp:DropDownList runat="server" ID="DropDown_Brand" /></td>
             </tr>
             <tr>
                 <td>产品编号：</td>
