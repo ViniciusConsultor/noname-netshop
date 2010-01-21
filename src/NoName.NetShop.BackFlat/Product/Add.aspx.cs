@@ -56,6 +56,11 @@ namespace NoName.NetShop.BackFlat.Product
             drpStatus.DataValueField = "code";
             drpStatus.DataBind();
 
+            DropDown_Brand.DataSource = new BrandCategoryRelationBll().GetCategoryBrandList(CategoryID);
+            DropDown_Brand.DataTextField = "brandname";
+            DropDown_Brand.DataValueField = "brandid";
+            DropDown_Brand.DataBind();
+
             Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(CategoryID);
             txtCategoryID.Value = CategoryID.ToString();
         }

@@ -60,7 +60,12 @@ namespace NoName.NetShop.BackFlat.Product
             drpStatus.DataValueField = "code";
             drpStatus.DataBind();
 
-            ProductModel product = ProductMainImageRule.GetMainImageUr(bll.GetModel(ProductID));
+            DropDown_Brand.DataSource = new BrandCategoryRelationBll().GetCategoryBrandList(CategoryID);
+            DropDown_Brand.DataTextField = "brandname";
+            DropDown_Brand.DataValueField = "brandid";
+            DropDown_Brand.DataBind();
+
+            ProductModel product = ProductMainImageRule.GetMainImageUrl(bll.GetModel(ProductID));
 
             if (product != null)
             {
@@ -84,6 +89,7 @@ namespace NoName.NetShop.BackFlat.Product
                     txtCategoryID.Value = product.CateId.ToString();
                     Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(product.CateId);
                 }
+                DropDown_Brand.SelectedValue = product.BrandID.ToString();
 
                 BindParameterData(product.CateId);
 
