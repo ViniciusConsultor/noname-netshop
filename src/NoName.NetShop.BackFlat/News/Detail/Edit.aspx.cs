@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using NoName.NetShop.News.BLL;
 using NoName.NetShop.News.Model;
 using NoName.Utility;
+using NoName.NetShop.News.Facade;
 
 namespace NoName.NetShop.BackFlat.News.Detail
 {
@@ -105,6 +106,33 @@ namespace NoName.NetShop.BackFlat.News.Detail
             model.Content = TextBox_Content.Text;
             model.ModifyTime = DateTime.Now;
             model.ProductId = String.IsNullOrEmpty(TextBox_ProductID.Text) ? "0" : TextBox_ProductID.Text;
+
+            if (!String.IsNullOrEmpty(FileUpload_Image.FileName))
+            {
+                string ImageUrl = String.Empty;
+
+                if (NewsImageRule.SaveNewsImage(NewsID, FileUpload_Image.PostedFile, out ImageUrl))
+                {
+                    model.ImageUrl = ImageUrl;
+                }
+                else
+                {
+                    MessageBox.Show(this, "图片上传失败！");
+                }
+            }
+            if (!String.IsNullOrEmpty(FileUpload_Video.FileName))
+            {
+                string VideoUrl = String.Empty;
+
+                if (NewsVideoRule.SaveNewsVideo(NewsID, FileUpload_Video.PostedFile, out VideoUrl))
+                {
+                    model.VideoUrl = VideoUrl;
+                }
+                else
+                {
+                    MessageBox.Show(this, "视频上传失败！");
+                }
+            }
 
             bll.Update(model);
             MessageBox.Show(this,"更新成功！");

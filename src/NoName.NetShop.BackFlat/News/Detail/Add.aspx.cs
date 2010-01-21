@@ -14,6 +14,7 @@ using NoName.NetShop.News.BLL;
 using NoName.NetShop.News.Model;
 using NoName.Utility;
 using NoName.NetShop.Common;
+using NoName.NetShop.News.Facade;
 
 namespace NoName.NetShop.BackFlat.News.Detail
 {
@@ -25,8 +26,6 @@ namespace NoName.NetShop.BackFlat.News.Detail
         {
 
         }
-
-
 
         protected void Button_ImageUpload_Click(object sender, EventArgs e) 
         {
@@ -61,9 +60,10 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 return;
             }
 
+            int NewsID = CommDataHelper.GetNewSerialNum("ne"); 
             NewsModel model = new NewsModel();
 
-            model.NewsId = CommDataHelper.GetNewSerialNum("ne"); 
+            model.NewsId = NewsID;
             model.Title = TextBox_Title.Text;
             model.SubTitle = TextBox_SubTitle.Text;
             model.Author = TextBox_Author.Text;
@@ -82,16 +82,33 @@ namespace NoName.NetShop.BackFlat.News.Detail
             model.ImageUrl = "";
             model.SmallImageUrl = "";
             model.VideoUrl = "";
+
             if (!String.IsNullOrEmpty(FileUpload_Image.FileName))
             {
-                string ImageUrl = String.Empty, ImageShotUrl = String.Empty, Message = String.Empty;
+                string ImageUrl = String.Empty;
 
-                if (CommonImageUpload.Upload(FileUpload_Image, out ImageUrl, out ImageShotUrl, out Message))
+                if (NewsImageRule.SaveNewsImage(NewsID, FileUpload_Image.PostedFile, out ImageUrl))
                 {
-                    model.ImageUrl = ImageShotUrl;
+                    model.ImageUrl = ImageUrl;
+                }
+                else
+                {
+                    MessageBox.Show(this,"图片上传失败！");
                 }
             }
-            
+            if (!String.IsNullOrEmpty(FileUpload_Video.FileName))
+            {
+                string VideoUrl = String.Empty;
+
+                if (NewsVideoRule.SaveNewsVideo(NewsID, FileUpload_Video.PostedFile, out VideoUrl))
+                {
+                    model.VideoUrl = VideoUrl;
+                }
+                else
+                {
+                    MessageBox.Show(this,"视频上传失败！");
+                }
+            }            
 
             bll.Add(model);
             MessageBox.Show(this,"添加成功！");
