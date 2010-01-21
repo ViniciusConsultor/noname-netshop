@@ -38,9 +38,38 @@ namespace NoName.NetShop.Solution.BLL
         }
 
 
-        public DataTable GetCategoryProductList(int PageIndex, int PageSize, int CurrentCategoryID, out int RecordCount)
+        public DataTable GetCategoryProductList(int CurrentCategoryID, int ScenceID,int BrandID,string ProductName)
         {
-            return dal.GetCategoryProductList(PageIndex, PageSize, CurrentCategoryID, out RecordCount);
+            List<CategoryConditionModel> Conditions = dal.GetListArray(String.Format(" cateid={0} and senceid={1}", CurrentCategoryID, ScenceID));
+
+            bool IsHasProperity = false;
+            string ConditionString = String.Empty;
+
+            foreach (CategoryConditionModel m in Conditions) if (m.RuleName.Contains("paraid")) IsHasProperity = true;
+            if (IsHasProperity)
+            {
+                foreach (CategoryConditionModel m in Conditions)
+                {
+                    if (m.RuleName.Contains("paraid")) ConditionString += m.GetFilterExpress("pdProductPara");
+                    else ConditionString += m.GetFilterExpress("pdproduct");
+
+                    ConditionString += " and ";
+                }
+                if (BrandID != 0) ConditionString += " pdproduct.brandid = " + BrandID + " and ";
+                if (!String.IsNullOrEmpty(ProductName)) ConditionString += " and pdproduct.productname like '%" + ProductName + "%' and ";
+            }
+            else
+            {
+                foreach (CategoryConditionModel m in Conditions)
+                {
+                    ConditionString += m.GetFilterExpress("");
+                    ConditionString += " and ";
+                }
+                if (BrandID != 0) ConditionString += " brandid = " + BrandID + " and ";
+                if (!String.IsNullOrEmpty(ProductName)) ConditionString += " and productname like '%" + ProductName + "%' and ";
+            }
+
+            return dal.GetCategoryProductList(IsHasProperity, ConditionString.Substring(0, ConditionString.LastIndexOf("and")));
         }
 		#endregion  成员方法
 	}

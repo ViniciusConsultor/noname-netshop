@@ -60,21 +60,21 @@ namespace NoName.NetShop.Solution.DAL
 			return list;
 		}
 
-        public DataTable GetCategoryProductList(int PageIndex,int PageSize,int CurrentCategoryID,out int RecordCount)
+        public DataTable GetCategoryProductList(bool IsJoinProperity,string ConditionString)//int CurrentCategoryID,int ScenceID)
         {
-            CategoryConditionModel model = GetModel(1, CurrentCategoryID);
-
-            if (model != null)
+            string sql = String.Empty;
+            if (IsJoinProperity)
             {
-                string Condition = model.RuleValue;
-
-                return GetCategoryProductList(PageIndex, PageSize, Condition, " productid desc ", out RecordCount);
+                sql = @"select * from pdProduct
+                            inner join pdProductPara on pdProductPara.productid=pdProduct.productid
+                        where 1=1 and " + ConditionString.Substring(0, ConditionString.LastIndexOf("and"));
             }
             else
             {
-                RecordCount = 0;
-                return new DataTable();
+                sql = @"select * from pdProduct where 1=1 and " + ConditionString.Substring(0, ConditionString.LastIndexOf("and")); 
             }
+
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
         public DataTable GetCategoryProductList(int PageIndex, int PageSize, string Condition, string Order, out int RecordCount)
