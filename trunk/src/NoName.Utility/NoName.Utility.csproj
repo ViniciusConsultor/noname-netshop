@@ -71,6 +71,7 @@
     <Compile Include="ImageHelper.cs" />
     <Compile Include="INIFile.cs" />
     <Compile Include="input.cs" />
+    <Compile Include="LanguageUtil.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="PageValidate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
