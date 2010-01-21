@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/js/solution.diy.js"></script>
 </asp:Content>
 
-<asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
+<asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">
     <!--Position Begin-->
     <div class="currentPosition">
     	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">影音解决方案</a> &gt;&gt; <a href="#">经典套装</a> &gt;&gt; <a href="#">私人影院</a> &gt;&gt; <a href="#">入门家庭影院</a> &gt;&gt; <a href="#">配置</a>
@@ -59,7 +59,7 @@
                     </AlternatingItemTemplate>
                     <FooterTemplate>
                             <tr class="bottom">
-                                <td colspan="5">总计：￥17695.00</td>
+                                <td colspan="5"><%--总计：￥17695.00--%></td>
                             </tr>
                         </table>
                     </FooterTemplate>
