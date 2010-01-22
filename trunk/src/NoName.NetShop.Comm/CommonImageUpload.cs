@@ -12,6 +12,7 @@ namespace NoName.NetShop.Common
     public class CommonImageUpload
     {
         private static CommonImageUploadSection Config = (CommonImageUploadSection)ConfigurationManager.GetSection("commonImage");
+        private static string rooturl = ConfigurationManager.AppSettings["foreFlatRootUrl"];
 
         public static bool Upload(FileUpload control,out string ImageUrl,out string ImageShortUrl,out string Message)
         {
@@ -54,7 +55,7 @@ namespace NoName.NetShop.Common
 
         public static string GetCommonImageFullUrl(string ShortUrl)
         {
-            return ConfigurationManager.AppSettings["foreFlatRootUrl"] + ShortUrl;
+            return ShortUrl.StartsWith(rooturl) ? ShortUrl : rooturl + ShortUrl;
         }
     }
 }
