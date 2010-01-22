@@ -58,7 +58,10 @@ namespace NoName.NetShop.ForeFlat.Solution
 
         protected void Button_Buy_Click(object sender, EventArgs e)
         {
- 
+            DataTable dt = bll.GetList(SuiteID);
+            string productIDs = String.Empty;
+            foreach (DataRow row in dt.Rows) productIDs += row["productid"].ToString() + ",";
+            Response.Redirect("/sp/AddToCart.aspx?pid=" + productIDs);
         }
     }
 }
