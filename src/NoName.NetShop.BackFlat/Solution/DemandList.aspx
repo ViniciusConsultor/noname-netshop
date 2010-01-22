@@ -10,9 +10,26 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView runat="server" ID="GridView1">
+            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
                 <Columns>
-                
+                    <asp:BoundField HeaderText="ID" DataField="demandid" />
+                    <asp:BoundField HeaderText="用户ID" DataField="userid" />
+                    <asp:BoundField HeaderText="预算" DataField="budget" />
+                    <asp:BoundField HeaderText="联系人" DataField="contactor" />
+                    <asp:BoundField HeaderText="联系电话" DataField="contactphone" />
+                    <asp:BoundField HeaderText="地区" DataField="region" />
+                    <asp:BoundField HeaderText="创建时间" DataField="createtime" />
+                    <asp:TemplateField HeaderText="状态">
+                        <ItemTemplate>
+                            <%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.DemandProductStatus), Eval("status"))%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="">
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" ID="Button_Pass" CommandArgument='<%# Eval("demandid") %>' CommandName="p" Text="通过审核" Enabled='<%# Convert.ToInt32(Eval("status"))==1? true:false %>' />
+                            <a href='<%# "DemandDetail.aspx?id="+Eval("demandid") %>'>查看详细</a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </div>

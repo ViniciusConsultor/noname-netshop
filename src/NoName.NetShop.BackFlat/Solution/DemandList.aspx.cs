@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.Solution.BLL;
+using NoName.NetShop.Solution.Model;
 
 namespace NoName.NetShop.BackFlat.Solution
 {
@@ -34,6 +35,18 @@ namespace NoName.NetShop.BackFlat.Solution
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "p")
+            {
+                int DemandID = Convert.ToInt32(e.CommandArgument);
+                SolutionDemandModel model = bll.GetModel(DemandID);
+                model.Status = (int)SolutionDemandStatus.已处理;
+                bll.Update(model);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
         }
     }
 }
