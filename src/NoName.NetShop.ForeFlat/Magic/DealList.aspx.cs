@@ -29,7 +29,7 @@ namespace NoName.NetShop.ForeFlat.Magic
         {
             int RecordCount = 0;
 
-            Repeater_Sale.DataSource = sbll.GetList(PageIndex, AspNetPager_Sales.PageSize, " status="+(int)SecondhandProductStatus.审核通过, out RecordCount);
+            Repeater_Sale.DataSource = sbll.GetList(PageIndex, AspNetPager_Sales.PageSize, " and status="+(int)SecondhandProductStatus.审核通过, out RecordCount);
             Repeater_Sale.DataBind();
 
             AspNetPager_Sales.RecordCount = RecordCount;
@@ -39,7 +39,7 @@ namespace NoName.NetShop.ForeFlat.Magic
         {
             int RecordCount = 0;
 
-            Repeater_Demand.DataSource = dbll.GetList(PageIndex, AspNetPager_Demand.PageSize, " status=" + (int)DemandProductStatus.审核通过, out RecordCount);
+            Repeater_Demand.DataSource = dbll.GetList(PageIndex, AspNetPager_Demand.PageSize, " and status=" + (int)DemandProductStatus.审核通过, out RecordCount);
             Repeater_Demand.DataBind();
 
             AspNetPager_Demand.RecordCount = RecordCount;
