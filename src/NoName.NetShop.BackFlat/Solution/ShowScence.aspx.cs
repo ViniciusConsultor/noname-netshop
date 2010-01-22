@@ -48,7 +48,7 @@ namespace NoName.NetShop.BackFlat.Solution
                 if (!String.IsNullOrEmpty(model.SenceImg))
                 {
                     this.imgScence.Visible = true;
-                    this.imgScence.ImageUrl = model.SenceImg;
+                    this.imgScence.ImageUrl = Common.CommonImageUpload.GetCommonImageFullUrl(model.SenceImg);
                 }
                 else
                 {
@@ -98,7 +98,7 @@ namespace NoName.NetShop.BackFlat.Solution
             string fullurl,shorturl,message;
             if (CommonImageUpload.Upload(this.fulImage,out fullurl,out shorturl,out message))
             {
-                model.SenceImg = fullurl;
+                model.SenceImg = shorturl;
             }
             sbll.Save(model);
             Response.Redirect("ScenceList.aspx");
