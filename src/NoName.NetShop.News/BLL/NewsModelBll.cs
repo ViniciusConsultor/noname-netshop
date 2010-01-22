@@ -147,7 +147,7 @@ namespace NoName.NetShop.News.BLL
             SearchPageInfo info = new SearchPageInfo();
 
             info.FieldNames = "*";
-            info.OrderType = "";
+            info.OrderType = " newsid desc";
             info.PageIndex = PageIndex;
             info.PageSize = PageSize;
             info.PriKeyName = "newsid";
