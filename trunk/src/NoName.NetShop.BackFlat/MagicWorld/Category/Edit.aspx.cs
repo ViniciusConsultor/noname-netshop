@@ -24,6 +24,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Category
         {
             if (!IsPostBack)
             {
+                if (!String.IsNullOrEmpty(Request.QueryString["CategoryID"])) CategoryID = Convert.ToInt32(Request.QueryString["CategoryID"]);
                 BindData();
             }
         }
