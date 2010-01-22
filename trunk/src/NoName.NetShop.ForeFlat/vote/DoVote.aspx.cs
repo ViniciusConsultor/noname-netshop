@@ -35,9 +35,7 @@ namespace NoName.NetShop.ForeFlat.vote
                 }
             }
            
-
-            
-            rmodel.VoteId = voteId;
+           rmodel.VoteId = voteId;
             rmodel.ItemIds = items;
             rmodel.LogId =0;
             rmodel.Remark = remark;
