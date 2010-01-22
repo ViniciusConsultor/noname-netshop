@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.Common;
 using NoName.NetShop.Member.Model;
+using NoName.NetShop.IMMessage;
 
 namespace NoName.NetShop.ForeFlat.sp
 {
@@ -64,6 +65,8 @@ namespace NoName.NetShop.ForeFlat.sp
                 if (CurrentShopCart.PreSaveValidate())
                 {
                     CurrentShopCart.Save();
+                    NotifyHelper.SendMessage(CurrentUser.UserId, "您刚刚提交了一个新订单", "您刚刚提交了一个新订单");
+                    NotifyHelper.SendMail(CurrentUser.UserEmail, "您刚刚提交了一个新订单", "您刚刚提交了一个新订单");
                     Context.Items.Add("SavedOrderId", CurrentShopCart.OrderId);
                     CurrentShopCart.RecentSavedOrderId = CurrentShopCart.OrderId;
                     CurrentShopCart.OrderId = String.Empty;

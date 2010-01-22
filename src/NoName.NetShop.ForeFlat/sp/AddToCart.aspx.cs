@@ -20,6 +20,8 @@ namespace NoName.NetShop.ForeFlat.sp
 
             NameValueCollection paras = Request.QueryString;
 
+            
+
             int  quantity=1;
             int opval;
             OrderType opType;
