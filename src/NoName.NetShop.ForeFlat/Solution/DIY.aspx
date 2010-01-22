@@ -3,13 +3,13 @@
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="head">
     <link type="text/css" rel="stylesheet" href="/css/solution.css" />
-
     <script type="text/javascript" src="/js/hashtable.js"></script>
     <script type="text/javascript" src="/js/cookie.js"></script>
-    <script type="text/javascript" src="/js/solution.diy.js"></script>
+    <script type="text/javascript" src="/js/jquery.url.js"></script>
+    <script type="text/javascript" src="/js/solution.diy2.js"></script>
 </asp:Content>
 
-<asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">
+<asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
     <!--Position Begin-->
     <div class="currentPosition">
     	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">影音解决方案</a> &gt;&gt; <a href="#">经典套装</a> &gt;&gt; <a href="#">私人影院</a> &gt;&gt; <a href="#">入门家庭影院</a> &gt;&gt; <a href="#">配置</a>
@@ -59,7 +59,7 @@
                     </AlternatingItemTemplate>
                     <FooterTemplate>
                             <tr class="bottom">
-                                <td colspan="5"><%--总计：￥17695.00--%></td>
+                                <td colspan="5">总计：￥17695.00</td>
                             </tr>
                         </table>
                     </FooterTemplate>
@@ -89,7 +89,7 @@
             <div class="equipmentCategory">
                 <asp:Repeater runat="server" ID="Repeater_Category">
                     <ItemTemplate>
-            	        <a href='<%# "DIY.aspx?ids="+CategoriesString+"&currcid="+Eval("cateid") %>' class='<%# CurrentCategoryID == Convert.ToInt32(Eval("cateid"))?"on":"off" %>' ><%# Eval("remark") %></a>
+            	        <a style="cursor:pointer;" class="off" cateid='<%# Eval("cateid") %>' ><%# Eval("remark") %></a>
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
@@ -115,7 +115,7 @@
                     </div>
                     <input type="text" class="textField1" />
                     <div class="component">
-                    	<a class="button_blue3" href="#">
+                    	<a class="button_blue3" style="cursor:pointer;" id="button-search">
                             <span class="left"></span>
                             <span class="text">搜索</span>
                             <span class="right"></span>
@@ -131,50 +131,9 @@
                         <a href="#">价格由低到高</a>
                     </div>
                 </div>
-                <div class="content noPaddingContentBox">
-                    <div class="table2">
-                            <asp:Repeater runat="server" ID="Repeater_Product">
-                                <HeaderTemplate>
-                                    <table id="product-list">
-                                      <tr>
-                                        <th class="first"><span>商品图片</span></th>
-                                        <th><span>商品名称</span></th>
-                                        <th><span>商品价格</span></th>
-                                        <th><span>选用</span></th>
-                                      </tr>
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                      <tr class="even">
-                                        <td><a href='<%# "/product-"+Eval("productid")+".html" %>'><img src='<%# Eval("mediumimage") %>' /></a></td>
-                                        <td><a href="#"><%# Eval("productname") %></a></td>
-                                        <td>￥<%# Eval("merchantprice") %></td>
-                                        <td><input type="checkbox" productid='<%# Eval("productid") %>' categoryid='<%# CurrentCategoryID %>' /></td>
-                                      </tr>
-                                </ItemTemplate>
-                                <AlternatingItemTemplate>
-                                      <tr class="odd">
-                                        <td><a href='<%# "/product-"+Eval("productid")+".html" %>'><img src='<%# Eval("mediumimage") %>' /></a></td>
-                                        <td><a href="#"><%# Eval("productname") %></a></td>
-                                        <td>￥<%# Eval("merchantprice") %></td>
-                                        <td><input type="checkbox" productid='<%# Eval("productid") %>' categoryid='<%# CurrentCategoryID %>' /></td>
-                                      </tr>
-                                </AlternatingItemTemplate>
-                            </asp:Repeater>                     
-                          <tr class="bottom">
-                            <td colspan="4">
-                              <div class="pagination">
-                                    <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="12"
-                                        UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页'
-                                        LastPageText='末页' NextPageText='下一页' OnPageChanged="AspNetPager_PageChanged"
-                                        PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
-                                        ShowPrevNext="True" SubmitButtonClass="buttom" 
-                                        NumericButtonTextFormatString=''>
-                                    </cc1:AspNetPager>   
-                            </td>
-                          </tr>
-                        </table>
+                <div class="content noPaddingContentBox" id="list-table">
                     </div>
-                </div>
+                
             </div>
             <div class="buttons">
                 <a class="linkButton" href="#">去看看推荐套装&gt;&gt;</a>

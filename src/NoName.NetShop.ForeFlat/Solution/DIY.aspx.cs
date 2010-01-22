@@ -25,11 +25,6 @@ namespace NoName.NetShop.ForeFlat.Solution
             get { if (ViewState["CategoryIDs"] != null) return (ArrayList)ViewState["CategoryIDs"]; else return null; }
             set { ViewState["CategoryIDs"] = value; }
         }
-        public int CurrentCategoryID
-        {
-            get { if (ViewState["CurrentCategoryID"] != null) return Convert.ToInt32(ViewState["CurrentCategoryID"]); else return -1; }
-            set { ViewState["CurrentCategoryID"] = value; }
-        }
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -37,7 +32,7 @@ namespace NoName.NetShop.ForeFlat.Solution
             if (!IsPostBack)
             {
                 CategoriesString = Request.QueryString["ids"];
-                if (!String.IsNullOrEmpty(Request.QueryString["currcid"])) CurrentCategoryID = Convert.ToInt32(Request.QueryString["currcid"]);
+                //if (!String.IsNullOrEmpty(Request.QueryString["currcid"])) CurrentCategoryID = Convert.ToInt32(Request.QueryString["currcid"]);
 
                 if (!String.IsNullOrEmpty(CategoriesString))
                 {
@@ -48,7 +43,7 @@ namespace NoName.NetShop.ForeFlat.Solution
                     else
                         CategoryIDs.Add(int.Parse(CategoriesString));
 
-                    if (CurrentCategoryID == -1) CurrentCategoryID = Convert.ToInt32(CategoryIDs[0]);
+                    //if (CurrentCategoryID == -1) CurrentCategoryID = Convert.ToInt32(CategoryIDs[0]);
                 }
                 else
                 {
@@ -56,7 +51,7 @@ namespace NoName.NetShop.ForeFlat.Solution
                 }
 
                 BindCategoryData();
-                BindData(1);
+                //BindData(1);
             }
         }
 
@@ -70,27 +65,27 @@ namespace NoName.NetShop.ForeFlat.Solution
             Repeater_Category.DataBind();
         }
 
-        private void BindData(int PageIndex)
-        {
-            CategoryConditionBll bll = new CategoryConditionBll();
-            int RecordCount = 0;
-            DataTable dt = new DataTable();//bll.GetCategoryProductList(PageIndex, AspNetPager.PageSize, CurrentCategoryID, out RecordCount);
-            foreach(DataRow row in dt.Rows)
-            {
-                row["smallimage"] = ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["smallimage"]));
-                row["mediumimage"] = ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["mediumimage"]));
-                row["largeimage"] = ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["largeimage"]));
-            }
+        //private void BindData(int PageIndex)
+        //{
+        //    CategoryConditionBll bll = new CategoryConditionBll();
+        //    int RecordCount = 0;
+        //    DataTable dt = new DataTable();//bll.GetCategoryProductList(PageIndex, AspNetPager.PageSize, CurrentCategoryID, out RecordCount);
+        //    foreach(DataRow row in dt.Rows)
+        //    {
+        //        row["smallimage"] = ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["smallimage"]));
+        //        row["mediumimage"] = ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["mediumimage"]));
+        //        row["largeimage"] = ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["largeimage"]));
+        //    }
 
-            Repeater_Product.DataSource = dt;
-            Repeater_Product.DataBind();
-        }
+        //    Repeater_Product.DataSource = dt;
+        //    Repeater_Product.DataBind();
+        //}
 
 
-        protected void AspNetPager_PageChanged(object src, PageChangedEventArgs e)
-        {
-            AspNetPager.CurrentPageIndex = e.NewPageIndex;
-            BindData(AspNetPager.CurrentPageIndex);
-        }
+        //protected void AspNetPager_PageChanged(object src, PageChangedEventArgs e)
+        //{
+        //    AspNetPager.CurrentPageIndex = e.NewPageIndex;
+        //    BindData(AspNetPager.CurrentPageIndex);
+        //}
     }
 }
