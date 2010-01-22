@@ -51,5 +51,10 @@ namespace NoName.NetShop.Common
 
             return Result;
         }
+
+        public static string GetCommonImageFullUrl(string ShortUrl)
+        {
+            return ConfigurationManager.AppSettings["foreFlatRootUrl"] + ShortUrl;
+        }
     }
 }
