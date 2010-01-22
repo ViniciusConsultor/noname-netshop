@@ -34,7 +34,7 @@ namespace NoName.NetShop.IMMessage
 			db.AddInParameter(dbCommand, "MsgType", DbType.Byte, model.MsgType);
 			db.AddInParameter(dbCommand, "Subject", DbType.AnsiString, model.Subject);
 			db.AddInParameter(dbCommand, "Content", DbType.AnsiString, model.Content);
-			db.AddInParameter(dbCommand, "SenderId", DbType.Int32, model.SenderId);
+			db.AddInParameter(dbCommand, "SenderId", DbType.AnsiString, model.SenderId);
 			db.ExecuteNonQuery(dbCommand);
 		}
 
