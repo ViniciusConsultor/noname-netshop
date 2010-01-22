@@ -63,7 +63,7 @@
                     <div class="groupTitle">我的鼎券积分</div>
                     <ul class="articleList_1 bullet_2">
                         <li>
-                            <a href="MyScore.aspx">我的积分</a>
+                            <a href="/member/MyScore.aspx">我的积分</a>
                         </li>
                         <li>
                             <a href="#">我的兑奖</a>
@@ -75,7 +75,7 @@
                     <div class="groupTitle">我的鼎鼎服务</div>
                     <ul class="articleList_1 bullet_2">
                         <li>
-                            <a href="MyMessages.aspx">我的站内信</a>
+                            <a href="/member/MyMessages.aspx">我的站内信</a>
                         </li>
                         <li>
                             <a href="#">我的咨询</a>
