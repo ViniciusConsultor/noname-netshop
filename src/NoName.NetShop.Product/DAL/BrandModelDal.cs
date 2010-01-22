@@ -79,7 +79,7 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
             dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
-            dbw.AddInParameter(dbCommand, "pinyinname", DbType.Int32, model.PinYinName);
+            dbw.AddInParameter(dbCommand, "pinyinname", DbType.String, model.PinYinName);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -96,7 +96,7 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "BrandLogo", DbType.AnsiString, model.BrandLogo);
             dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
-            dbw.AddInParameter(dbCommand, "pinyinname", DbType.Int32, model.PinYinName);
+            dbw.AddInParameter(dbCommand, "pinyinname", DbType.String, model.PinYinName);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 

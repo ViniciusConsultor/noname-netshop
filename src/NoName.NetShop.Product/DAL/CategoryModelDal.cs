@@ -73,7 +73,7 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "PriceRange", DbType.AnsiString, model.PriceRange);
             dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
-            dbw.AddInParameter(dbCommand, "pinyinname", DbType.Int32, model.PinYinName);
+            dbw.AddInParameter(dbCommand, "pinyinname", DbType.String, model.PinYinName);
 
 
 			dbw.ExecuteNonQuery(dbCommand);
@@ -92,7 +92,7 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "IsHide", DbType.Boolean, model.IsHide);
             dbw.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
-            dbw.AddInParameter(dbCommand, "pinyinname", DbType.Int32, model.PinYinName);
+            dbw.AddInParameter(dbCommand, "pinyinname", DbType.String, model.PinYinName);
 
 			dbw.ExecuteNonQuery(dbCommand);
 		}
