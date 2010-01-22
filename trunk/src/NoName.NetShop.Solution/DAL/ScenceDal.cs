@@ -122,7 +122,7 @@ namespace NoName.NetShop.Solution.DAL
 			}
 			model.ScenceName=dataReader["ScenceName"].ToString();
 			model.Remark=dataReader["Remark"].ToString();
-			model.SenceImg=dataReader["SenceImg"].ToString();
+			model.SenceImg= dataReader["SenceImg"].ToString();
 			ojb = dataReader["SenceType"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
@@ -135,6 +135,11 @@ namespace NoName.NetShop.Solution.DAL
 			}
 			return model;
 		}
+
+        private string GetCommonImageFullUrl(string p)
+        {
+            throw new NotImplementedException();
+        }
 
         internal void ToggleStatus(int scenceId)
         {

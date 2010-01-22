@@ -130,7 +130,7 @@ namespace NoName.NetShop.Solution.DAL
 			{
 				model.CateId=(int)ojb;
 			}
-			model.CateImage=dataReader["CateImage"].ToString();
+			model.CateImage= dataReader["CateImage"].ToString();
 			model.Remark=dataReader["Remark"].ToString();
 			model.Position=dataReader["Position"].ToString();
             model.CateName = dataReader["catename"].ToString();
