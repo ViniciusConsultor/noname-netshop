@@ -79,7 +79,7 @@ namespace NoName.NetShop.BackFlat.qa
         {
             int topicId = Convert.ToInt32(e.CommandArgument);
             TopicBll tbll = new TopicBll();
-            if (e.CommandName == "delete")
+            if (e.CommandName == "del")
             {
                 tbll.Delete(topicId);
                 this.BindList();

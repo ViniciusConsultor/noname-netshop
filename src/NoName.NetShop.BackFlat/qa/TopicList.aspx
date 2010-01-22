@@ -28,7 +28,7 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkShow" Text="查看" NavigateUrl='<%# "ShowTopic.aspx?tid="+Eval("TopicId") %>' />
-                            <asp:LinkButton runat="server" ID="lbtnDelete" Text="删除" CommandName="delete" CommandArgument='<%#Eval("TopicId") %>'></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="lbtnDelete" Text="删除" CommandName="del" CommandArgument='<%#Eval("TopicId") %>'></asp:LinkButton>
                             <asp:LinkButton runat="server" ID="LinkButton1" Text='<%# Convert.ToBoolean(Eval("status"))?"禁止":"允许" %>' CommandName="toggle" CommandArgument='<%#Eval("TopicId")%>' ></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
