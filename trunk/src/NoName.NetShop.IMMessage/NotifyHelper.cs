@@ -28,6 +28,7 @@ namespace NoName.NetShop.IMMessage
             sc.Port = int.Parse(smtpcfg["port"].ToString());
             sc.Credentials = new NetworkCredential((string)smtpcfg["username"], (string)smtpcfg["password"]);
             sc.Send(msg);
+
         }
 
         public static void SendMessage(string to, string subject, string content)
