@@ -72,7 +72,7 @@ namespace NoName.NetShop.ForeFlat.qa
             this.litMerchantPrice.Text = pmodel.MerchantPrice.ToString("F2");
             this.litTradePrice.Text = pmodel.TradePrice.ToString("F2");
             this.litProductId.Text = pmodel.ProductId.ToString();
-            this.litStock.Text = (pmodel.Stock ?? 0) > 0 ? "库存充足" : "暂时缺货";
+            this.litStock.Text = pmodel.Stock > 0 ? "库存充足" : "暂时缺货";
             this.imgProductL.ImageUrl = pmodel.MediumImage;
             this.imgProductM.ImageUrl = pmodel.LargeImage;
         }
