@@ -465,7 +465,7 @@
 
     <xsl:template match="/newspage/categorylist/category">
         <li>
-            <a class="m1" href="{categoryid}">
+            <a class="m1" href="/newslist-{categoryid}.html">
                 <span>
                     <xsl:value-of select="categoryname"/>
                 </span>

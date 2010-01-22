@@ -204,7 +204,7 @@
 /*Magic Common Complete Begin*/
 .magicCommonComplete_mainbody{ clear:both}
 .magicCommonComplete_mainbody .box1 .content{ padding:40px 100px;}
-.magicCommonComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(../images/cart_navigation4.jpg) center top no-repeat; }
+.magicCommonComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(/images/cart_navigation4.jpg) center top no-repeat; }
 .magicCommonComplete_mainbody .otherChannel{ text-align:center; clear:both; padding:20px 0;}
 .magicCommonComplete_mainbody .otherChannel a{ text-decoration:underline; padding:0 10px;}
 /*Magic Common Complete End*/
@@ -224,9 +224,9 @@
 
 ul.magicNavigator{ margin:0; padding:0}
 ul.magicNavigator li{ list-style-type:none; float:left; width:100%}
-ul.magicNavigator li a{ height:25px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
+ul.magicNavigator li a{ height:25px; display:block; clear:both; background:url(/images/sprite.gif) 0 -1868px repeat-x}
 ul.magicNavigator li a:hover{ background-position:0 -1898px;}
-ul.magicNavigator li a span{ height:25px; display:block; clear:both; background:url(../images/magicNavigator.gif) no-repeat}
+ul.magicNavigator li a span{ height:25px; display:block; clear:both; background:url(/images/magicNavigator.gif) no-repeat}
 
 ul.magicNavigator li a.m1 span{ background-position:15px 7px;}
 ul.magicNavigator li a.m2 span{ background-position:15px -18px;}

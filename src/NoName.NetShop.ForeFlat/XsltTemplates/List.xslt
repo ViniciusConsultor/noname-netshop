@@ -486,12 +486,12 @@
             <xsl:for-each select="/listpage/categorypath/category">
                 <xsl:choose>
                     <xsl:when test="count(/listpage/categorypath/category) = position()">
-                        <a href="#">
+                        <a href="/list-{categoryid}.html">
                             <xsl:value-of select="categoryname"/>
                         </a>
                     </xsl:when>
                     <xsl:otherwise>
-                        <a href="#">
+                        <a href="/list-{categoryid}.html">
                             <xsl:value-of select="categoryname"/>
                         </a> &gt;&gt;
                     </xsl:otherwise>
@@ -517,12 +517,12 @@
     <xsl:template match="/listpage/categorylist">
         <div class="category_non-popMenu clearfix">
             <xsl:for-each select="fathercategory">
-                <a class="class" href="#">
+                <a class="class" href="/list-{@categoryid}.html">
                     <xsl:value-of select="@categoryname"/>
                     <xsl:if test="soncategory">
                         <div class="subs clearfix">
                             <xsl:for-each select="soncategory">
-                                <a href="#">
+                                <a href="/list-{@categoryid}.html">
                                     <xsl:value-of select="@categoryname"/>
                                 </a>
                             </xsl:for-each>
@@ -535,7 +535,7 @@
 
     <xsl:template match="/listpage/productlist/products/product">
         <li>
-            <a href="#" title="{productname}">
+            <a href="/product-{productid}.html" title="{productname}">
                 <img src="{mediumimage}" />
                 <span class="price">
                     鼎城报价：￥<xsl:value-of select="merchantprice"/>
@@ -546,7 +546,7 @@
                 <span class="commentsNum">已有0人评论</span>
             </a>
             <div class="actions">
-                <a class="button_blue3" href="#">
+                <a class="button_blue3" href="/product-{productid}.html">
                     <span class="left">
                         <xsl:text> </xsl:text>
                     </span>
@@ -564,7 +564,7 @@
                         <xsl:text> </xsl:text>
                     </span>
                 </a>
-                <a class="button_blue3" href="#">
+                <a class="button_blue3" href="/product-{productid}.html">
                     <span class="left">
                         <xsl:text> </xsl:text>
                     </span>
