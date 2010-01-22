@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.Specialized;
 using NoName.NetShop.ShopFlow;
+using System.Text.RegularExpressions;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.ForeFlat.sp
 {
@@ -18,19 +20,15 @@ namespace NoName.NetShop.ForeFlat.sp
 
             NameValueCollection paras = Request.QueryString;
 
-            int productId, quantity,opval;
+            int  quantity=1;
+            int opval;
             OrderType opType;
             // 必须的参数
-            if (!int.TryParse(paras["pid"], out productId))
+            if (!Regex.IsMatch(paras["pid"],@"(\d+,)*(\d+)"))
             {
-                productId = -1;
+                throw new ShopException("传入的数据有误", true);
             }
 
-            // 可以有默认值的参数
-            if (!int.TryParse(paras["qua"], out quantity))
-            {
-                quantity = 1;
-            }
             if (!int.TryParse(paras["opt"], out opval))
             {
                 opval = 0;
@@ -40,10 +38,17 @@ namespace NoName.NetShop.ForeFlat.sp
 
             if (CurrentShopCart != null)
             {
-                OrderProduct op = CurrentShopCart.AddToCart( opType, productId, quantity, paras);
-                if (op != null)
+                string[] pids = paras["pid"].Split(',');
+                foreach(string pid in pids)
                 {
-                    CurrentShopCart.ContinueShopUrl = op.ProductUrl;
+                    OrderProduct op = CurrentShopCart.AddToCart( opType, int.Parse(pid), quantity, paras);
+                    if (op != null)
+                    {
+                        CurrentShopCart.ContinueShopUrl = op.ProductUrl;
+                    }
+                }
+                if (CurrentShopCart.ProductNum > 0)
+                {
                     CurrentShopCart.SaveCartToCookie();
                     CurrentShopCart.GoFirst();
                 }
