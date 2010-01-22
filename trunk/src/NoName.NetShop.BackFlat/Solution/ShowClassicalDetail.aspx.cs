@@ -50,7 +50,7 @@ namespace NoName.NetShop.BackFlat.Solution
                 if (!String.IsNullOrEmpty(scmodel.CateImage))
                 {
                     this.imgCate.Visible = true;
-                    this.imgCate.ImageUrl = scmodel.CateImage;
+                    this.imgCate.ImageUrl = Common.CommonImageUpload.GetCommonImageFullUrl(scmodel.CateImage);
                 }
                 else
                 {
@@ -169,7 +169,7 @@ namespace NoName.NetShop.BackFlat.Solution
             string fullurl, shorturl, message;
             if (CommonImageUpload.Upload(this.fulImage, out fullurl, out shorturl, out message))
             {
-                scmodel.CateImage = fullurl;
+                scmodel.CateImage = shorturl;
             }
             scbll.Save(scmodel);
 

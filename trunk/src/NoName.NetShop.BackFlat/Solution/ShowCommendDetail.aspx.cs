@@ -74,7 +74,7 @@ namespace NoName.NetShop.BackFlat.Solution
                 if (!String.IsNullOrEmpty(smodel.SmallImage))
                 {
                     this.imgSuite.Visible = true;
-                    this.imgSuite.ImageUrl = smodel.SmallImage;
+                    this.imgSuite.ImageUrl = Common.CommonImageUpload.GetCommonImageFullUrl(smodel.SmallImage);
                 }
                 else
                 {
