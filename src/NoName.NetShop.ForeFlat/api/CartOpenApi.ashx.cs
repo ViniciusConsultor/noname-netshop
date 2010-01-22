@@ -9,6 +9,8 @@ using System.Text;
 using NoName.NetShop.Member;
 using NoName.NetShop.Common;
 using NoName.NetShop.ShopFlow;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace NoName.NetShop.ForeFlat
 {
@@ -51,10 +53,60 @@ namespace NoName.NetShop.ForeFlat
                 case "addfavorite": // 添加收藏
                     result = AddFavorite(context);
                     break;
+                case "addtocart": // 添加商品入购物车
+                    result =AddToCart(context);
+                    break;
+                case "getcartinfo": // 获得购物车信息，数量，金额
+                    result = GetCartInfo(context);
+                    break;
             }
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(prefix + result);
+        }
+
+        private string GetCartInfo(HttpContext context)
+        {
+            ShopCart cart = GetCart(context);
+            StringBuilder sb = new StringBuilder(200);
+            JsonWriter jw = new JsonWriter(new StringWriter(sb));
+
+            jw.WriteStartObject();
+            jw.WritePropertyName("qua");
+            jw.WriteValue(cart.ProductQuantity);
+            jw.WritePropertyName("pfee");
+            jw.WriteValue(cart.ProductSum);
+            jw.WriteEndObject();
+            jw.Close();
+            return sb.ToString();
+
+        }
+
+        private string AddToCart(HttpContext context)
+        {
+            ShopCart cart = GetCart(context);
+            string result = "false";
+            int opt, pid;
+
+            if (!int.TryParse(context.Request["opt"], out opt))
+            {
+                opt = 0;
+            }
+            OrderType opType = (OrderType)opt;
+
+            if (!int.TryParse(context.Request["pid"], out pid))
+            {
+                pid = -1;
+            }
+
+            OrderProduct op = cart.AddToCart(opType, pid, 1, context.Request.QueryString);
+            if (op != null)
+            {
+                cart.ContinueShopUrl = op.ProductUrl;
+                cart.SaveCartToCookie();
+                result = "true";
+            }
+            return result;
         }
 
         private string AddFavorite(HttpContext context)
@@ -140,7 +192,7 @@ namespace NoName.NetShop.ForeFlat
         private ShopCart GetCart(HttpContext context)
         {
             string cartkey = String.IsNullOrEmpty(context.Request.QueryString["cartkey"])
-                ? "" : context.Request.QueryString["cartkey"].ToLower();
+                ? "commcart" : context.Request.QueryString["cartkey"].ToLower();
             return CartFactory.Instance().GetShopCart(cartkey);
         }
 
