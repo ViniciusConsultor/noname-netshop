@@ -114,12 +114,12 @@ namespace NoName.NetShop.Product.DAL
             ojb = dataReader["Status"];
             if (ojb != null && ojb != DBNull.Value)
             {
-                model.Status = (int)ojb;
+                model.Status = Convert.ToInt32(ojb);
             }
             ojb = dataReader["SortValue"];
             if (ojb != null && ojb != DBNull.Value)
             {
-                model.SortValue = (int)ojb;
+                model.SortValue = Convert.ToInt32(ojb);
             }
             ojb = dataReader["Score"];
             if (ojb != null && ojb != DBNull.Value)
