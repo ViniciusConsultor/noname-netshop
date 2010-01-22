@@ -129,6 +129,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Category
             {
                 //判断该分类下是否有商品，如果有，不允许删除
                 bll.Delete(Convert.ToInt32(TreeView1.SelectedValue));
+                BindCategoryList();
                 //如果有子类，删除子类
             }
             else
