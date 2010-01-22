@@ -69,7 +69,7 @@ namespace NoName.NetShop.Solution.BLL
                 if (!String.IsNullOrEmpty(ProductName)) ConditionString += " and productname like '%" + ProductName + "%' and ";
             }
 
-            return dal.GetCategoryProductList(IsHasProperity, ConditionString.Substring(0, ConditionString.LastIndexOf("and")));
+            return String.IsNullOrEmpty(ConditionString)?new DataTable() : dal.GetCategoryProductList(IsHasProperity, ConditionString.Substring(0, ConditionString.LastIndexOf("and")));
         }
 		#endregion  成员方法
 	}
