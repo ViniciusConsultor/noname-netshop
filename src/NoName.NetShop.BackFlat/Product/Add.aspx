@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Add.aspx.cs" Inherits="NoName.NetShop.BackFlat.Product.Add" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" ValidateRequest="false" CodeBehind="Add.aspx.cs" Inherits="NoName.NetShop.BackFlat.Product.Add" %>
 
 
 
@@ -137,7 +137,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:RadioButtonList runat="server" ID="RadioList_ParameterValue" />
+                                    <asp:RadioButtonList RepeatDirection="Horizontal" runat="server" ID="RadioList_ParameterValue" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

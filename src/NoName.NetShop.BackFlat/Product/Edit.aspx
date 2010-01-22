@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="NoName.NetShop.BackFlat.Product.Edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" ValidateRequest="false" CodeBehind="Edit.aspx.cs" Inherits="NoName.NetShop.BackFlat.Product.Edit" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -11,12 +11,12 @@
     <script src="/js/validate.js" type="text/javascript"></script>
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
     <script type="text/javascript">
-    $(function() {
-        CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
-            height: '400px',
-            width: '700px'
+        $(function() {
+            CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
+                height: '400px',
+                width: '700px'
+            });
         });
-    });
     function validate() {
         $('table td span[type=inform]').html('');
     
@@ -138,7 +138,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:RadioButtonList runat="server" ID="RadioList_ParameterValue" />
+                                    <asp:RadioButtonList RepeatDirection="Horizontal" runat="server" ID="RadioList_ParameterValue" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

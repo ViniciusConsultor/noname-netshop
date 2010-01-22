@@ -148,7 +148,6 @@
                     <asp:TemplateField HeaderText="">
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkMultiImage" Text="添加多图" NavigateUrl='<%# "multiimage.aspx?productid="+Eval("ProductID") %>' />
-                            <asp:HyperLink runat="server" ID="HyperLinkProperity" Text="产品属性" NavigateUrl='<%# "properity.aspx?productid="+Eval("ProductID") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
