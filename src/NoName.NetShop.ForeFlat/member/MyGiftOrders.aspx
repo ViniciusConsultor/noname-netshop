@@ -56,7 +56,7 @@
                                         <%#Eval("OrderId") %>
                                     </td>
                                     <td colspan="2">
-                                        <table>
+                                        <table frame=void>
                                             <asp:Repeater runat="server" ID="rpProducts">
                                                 <ItemTemplate>
                                                     <tr>

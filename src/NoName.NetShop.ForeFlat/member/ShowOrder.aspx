@@ -2,8 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headerContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightContent" runat="server">
+            	<div class="box1">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>订单详情</span></li>
+                    <li class="right"></li>
+                </ul>
 
-<table cellSpacing="0" cellPadding="0" width="100%" border="1"   style="border-color:Black; border-style:solid; border-width:1px;border-collapse:collapse;" >
+                <div class="content">
+<div class="table1 fixedTable">
+<table >
+                          <tr>
+                            <th colspan="4"><span>订单信息</span></th>
+                          </tr>
 	<tr>
 	<td>订单号</td>
 	<td><asp:Label ID="lblOrderId" runat="server"></asp:Label>
@@ -101,6 +112,7 @@
 </td>
 </tr>
 </table>
-
-
+</div>
+</div>
+</div>
 </asp:Content>
