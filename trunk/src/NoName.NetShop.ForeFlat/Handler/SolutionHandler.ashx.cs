@@ -23,13 +23,13 @@ namespace NoName.NetShop.ForeFlat.Handler
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            NameValueCollection QueryString = context.Request.QueryString;
-            if (!String.IsNullOrEmpty(QueryString["scenceid"]) && !String.IsNullOrEmpty(QueryString["cateid"]))
+            HttpRequest req = context.Request;
+            if (!String.IsNullOrEmpty(req["scenceid"]) && !String.IsNullOrEmpty(req["cateid"]))
             {
-                int ScenceID = Convert.ToInt32(QueryString["scenceid"]);
-                int CategoryID = Convert.ToInt32(QueryString["cateid"]);
-                int BrandID = 0; if (!String.IsNullOrEmpty(QueryString["brandid"])) BrandID = Convert.ToInt32(QueryString["brandid"]);
-                string ProdcutName = String.Empty; if (!String.IsNullOrEmpty(QueryString["pdname"])) ProdcutName = QueryString["pdname"];
+                int ScenceID = Convert.ToInt32(req["scenceid"]);
+                int CategoryID = Convert.ToInt32(req["cateid"]);
+                int BrandID = 0; if (!String.IsNullOrEmpty(req["brandid"])) BrandID = Convert.ToInt32(req["brandid"]);
+                string ProdcutName = String.Empty; if (!String.IsNullOrEmpty(req["pdname"])) ProdcutName = req["pdname"];
 
                 context.Response.Write(GetProductListJson(ScenceID, CategoryID, BrandID, ProdcutName));
             }
