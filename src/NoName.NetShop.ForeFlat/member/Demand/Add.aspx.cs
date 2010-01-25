@@ -99,7 +99,7 @@ namespace NoName.NetShop.ForeFlat.member.Demand
                 model.PostCode = TextBox_PostCode.Text;
                 model.Price = Convert.ToDecimal(TextBox_Price.Text);
                 model.Region = String.Format("{0} {1} {2}", regionInfo.Province, regionInfo.City, regionInfo.County);
-                model.Status = true;
+                model.Status = (int)DemandProductStatus.尚未审核;
                 model.TrueName = TextBox_TrueName.Text;
                 model.UpdateTime = DateTime.Now;
                 model.UsageCondition = Convert.ToInt32(DropDown_Usage.SelectedValue);
