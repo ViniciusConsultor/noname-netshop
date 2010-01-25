@@ -49,7 +49,7 @@
                     <tr>
                         <td>父分类：</td>
                         <td>
-                            <asp:DropDownList runat="server" ID="DropDownList_ParentCategory" />
+                            <asp:Label runat="server" ID="Label_ParentCategory" />
                         </td>
                     </tr>
                 </table>

@@ -56,29 +56,16 @@ namespace NoName.NetShop.BackFlat.News.Category
 
             TextBox_CategoryName.Text = model.CateName;
             DropDownList_Status.SelectedValue = model.Status.ToString();
-            DropDownList_IsHide.SelectedValue = model.IsHide?"1":"0";
-            DropDownList_ParentCategory.SelectedValue = model.ParentID.ToString();
+            DropDownList_IsHide.SelectedValue = model.IsHide ? "1" : "0";
 
+            NewsCategoryModel parentModel = bll.GetModel(model.ParentID);
+
+            Label_ParentCategory.Text = parentModel == null ? "无从属父类" : parentModel.CateName;
         }
 
         private void BindParentCategoryData()
         {
             DataTable dt = bll.GetList(0);
-            DataTable newDt = dt.Clone();
-
-            DataRow row = newDt.NewRow();
-
-            row["catename"] = "无从属父类";
-            row["cateid"] = "0";
-
-            newDt.Rows.Add(row);
-
-            foreach (DataRow srow in dt.Rows) newDt.ImportRow(srow);
-
-            DropDownList_ParentCategory.DataSource = newDt;
-            DropDownList_ParentCategory.DataTextField = "catename";
-            DropDownList_ParentCategory.DataValueField = "cateid";
-            DropDownList_ParentCategory.DataBind();
         }
 
 
@@ -92,7 +79,6 @@ namespace NoName.NetShop.BackFlat.News.Category
 
                 model.CateName = TextBox_CategoryName.Text;
                 model.IsHide = DropDownList_IsHide.SelectedValue == "1" ? true : false;
-                model.ParentID = Convert.ToInt32(DropDownList_ParentCategory.SelectedValue);
                 model.Status = Convert.ToInt32(DropDownList_Status.SelectedValue);
 
                 bll.Update(model);
@@ -114,44 +100,6 @@ namespace NoName.NetShop.BackFlat.News.Category
                 bll.Delete(SelectedID); 
             }
         }
-
-        /*
-       
-        private void BindCategory(int ParentID)
-        {
-            DataTable dt = bll.GetList(ParentID);
-
-            if (dt.Rows.Count > 0)
-            {
-                DropDownList dropDownList = new DropDownList();
-                dropDownList.ID = "DropDownList"+dt.Rows[0]["catelevel"];
-                dropDownList.AutoPostBack = true;
-                dropDownList.SelectedIndexChanged += new EventHandler(SelectedCategoryChanged);
-
-                foreach (DataRow row in dt.Rows)
-                {
-
-                    ListItem item = new ListItem();
-
-                    item.Text = Convert.ToString(row["catename"]);
-                    item.Value = Convert.ToString(row["cateid"]);
-
-                    dropDownList.Items.Add(item);
-                }
-
-
-                Panel_ParentCategory.Controls.Add(dropDownList);
-            }
-        }
-
-        protected void SelectedCategoryChanged(object sender, EventArgs e) 
-        {
-            DropDownList TheSender = (DropDownList)sender;
-
-            int CategoryID = Convert.ToInt32(TheSender.SelectedValue);
-            BindCategory(CategoryID);
-        }
-        */
 
     }
 }
