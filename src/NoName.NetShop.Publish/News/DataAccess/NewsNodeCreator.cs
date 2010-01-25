@@ -24,6 +24,31 @@ namespace NoName.NetShop.Publish.News.DataAccess
             xdoc = document;
         }
 
+
+        public XmlNode GetHeaderContent()
+        {
+            CommonConfig common = CommonConfig.Instance();
+            XmlNode HeaderNode = xdoc.CreateElement("standardheader");
+
+            XmlCDataSection CData = xdoc.CreateCDataSection(common.GetStandardHeaderContent(Config.HeaderFile, Config.PageValidateTempXml));
+
+            HeaderNode.AppendChild((XmlNode)CData);
+
+            return HeaderNode;
+        }
+
+        public XmlNode GetFooterContent()
+        {
+            CommonConfig common = CommonConfig.Instance();
+            XmlNode FooterNode = xdoc.CreateElement("standardfooter");
+
+            XmlCDataSection CData = xdoc.CreateCDataSection(common.GetStandardFooterContent(Config.FooterFile, Config.PageValidateTempXml));
+
+            FooterNode.AppendChild((XmlNode)CData);
+
+            return FooterNode;
+        }
+
         public XmlNode GetNewsCategory()
         {
             XmlNode CategoryListNode = xdoc.CreateElement("categorylist");

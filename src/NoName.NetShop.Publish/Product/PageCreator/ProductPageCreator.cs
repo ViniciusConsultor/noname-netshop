@@ -37,8 +37,11 @@ namespace NoName.NetShop.Publish.Product.PageCreator
 
             ProductNodeCreator helper = new ProductNodeCreator(Parameter, Config, dal, xdoc);
 
+            rootNode.AppendChild(helper.GetHeaderContent());
+            rootNode.AppendChild(helper.GetFooterContent());
             rootNode.AppendChild(helper.GetProductInfo());
             rootNode.AppendChild(helper.GetCategoryPathList());
+            rootNode.AppendChild(helper.GetProductCommentList());
 
             //xdoc.Save(@"d:\dingding_product.xml");
 
