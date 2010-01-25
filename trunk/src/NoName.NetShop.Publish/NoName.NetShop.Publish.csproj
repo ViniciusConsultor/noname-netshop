@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\CommonConfig.cs" />
     <Compile Include="Configuration\ListConfigurationSection.cs" />
     <Compile Include="Configuration\NewsConfigurationElement.cs" />
     <Compile Include="Configuration\NewsConfigurationElementCollection.cs" />

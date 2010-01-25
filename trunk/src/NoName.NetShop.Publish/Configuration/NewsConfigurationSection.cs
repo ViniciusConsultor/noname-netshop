@@ -39,6 +39,24 @@ namespace NoName.NetShop.Publish.Configuration
         }
 
 
+        [ConfigurationProperty("pageValidateTempXml", IsRequired = true)]
+        public string PageValidateTempXml
+        {
+            get { return (string)base["pageValidateTempXml"]; }
+        }
+
+        [ConfigurationProperty("headerFile", IsRequired = true)]
+        public string HeaderFile
+        {
+            get { return (string)base["headerFile"]; }
+        }
+
+        [ConfigurationProperty("footerFile", IsRequired = true)]
+        public string FooterFile
+        {
+            get { return (string)base["footerFile"]; }
+        }
+
         [ConfigurationProperty("", IsDefaultCollection = true)]
         public NewsConfigurationElementCollection PageCreators
         {

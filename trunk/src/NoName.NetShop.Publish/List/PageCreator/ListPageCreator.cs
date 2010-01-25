@@ -37,7 +37,8 @@ namespace NoName.NetShop.Publish.List.PageCreator
             
             ListNodeCreator helper = new ListNodeCreator(Parameter, Config, dal, xdoc);
 
-
+            rootNode.AppendChild(helper.GetHeaderContent());
+            rootNode.AppendChild(helper.GetFooterContent());
             rootNode.AppendChild(helper.GetCategoryPathList());
             rootNode.AppendChild(helper.GetCategoryProperityList());
             rootNode.AppendChild(helper.GetCategoryList());           

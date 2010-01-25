@@ -42,5 +42,23 @@ namespace NoName.NetShop.Publish.Configuration
         {
             get { return (string)base["logger"]; }
         }
+
+        [ConfigurationProperty("pageValidateTempXml", IsRequired = true)]
+        public string PageValidateTempXml
+        {
+            get { return (string)base["pageValidateTempXml"]; }
+        }
+
+        [ConfigurationProperty("headerFile", IsRequired = true)]
+        public string HeaderFile
+        {
+            get { return (string)base["headerFile"]; }
+        }
+
+        [ConfigurationProperty("footerFile", IsRequired = true)]
+        public string FooterFile
+        {
+            get { return (string)base["footerFile"]; }
+        }
     }
 }
