@@ -44,7 +44,7 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkEdit" Text="修改" NavigateUrl='<%# "ShowGiftProduct.aspx?productid="+Eval("ProductID") %>' />
-                            <asp:LinkButton runat="server" ID="LinkButtonDelete" CommandArgument='<%# Eval("ProductID") %>' CommandName="delete">删除</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="LinkButtonDelete" CommandArgument='<%# Eval("ProductID") %>' CommandName="del">删除</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

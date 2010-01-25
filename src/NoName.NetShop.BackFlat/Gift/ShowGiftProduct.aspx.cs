@@ -28,8 +28,7 @@ namespace NoName.NetShop.BackFlat.Gift
             }
         }
 
-        /******************************增加窗体代码********************************/
-        protected void btnAdd_Click(object sender, EventArgs e)
+         protected void btnAdd_Click(object sender, EventArgs e)
         {
 
             string strErr = "";
@@ -87,13 +86,15 @@ namespace NoName.NetShop.BackFlat.Gift
             model.ProductName = ProductName;
             model.Stock = Stock;
 
-            string[] MainImages;
-
-            if (ProductMainImageRule.SaveProductMainImage(model.ProductId, fulImage.PostedFile, out MainImages))
+            if (fulImage.HasFile)
             {
-                model.SmallImage = MainImages[0];
-                model.MediumImage = MainImages[1];
-                model.LargeImage = MainImages[2];
+                string[] MainImages;
+                if (ProductMainImageRule.SaveProductMainImage(model.ProductId, fulImage.PostedFile, out MainImages))
+                {
+                    model.SmallImage = MainImages[0];
+                    model.MediumImage = MainImages[1];
+                    model.LargeImage = MainImages[2];
+                }
             }
             model.Keywords = Keywords;
             model.Brief = Brief;
@@ -101,7 +102,6 @@ namespace NoName.NetShop.BackFlat.Gift
             model.SortValue = 0;
             model.Score = Score;
             model.Decription = Decription;
-
 
             gbll.Save(model);
             Response.Redirect("GiftProductList.aspx");
@@ -126,7 +126,7 @@ namespace NoName.NetShop.BackFlat.Gift
                 if (!String.IsNullOrEmpty(model.SmallImage))
                 {
                     this.imgProduct.Visible = true;
-                    this.imgProduct.ImageUrl = model.SmallImage;
+                    this.imgProduct.ImageUrl = Common.CommonImageUpload.GetCommonImageFullUrl(model.SmallImage);
                 }
                 else
                 {
