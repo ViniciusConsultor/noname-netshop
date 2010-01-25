@@ -80,6 +80,7 @@ namespace NoName.NetShop.BackFlat.Brand
             model.ShowOrder = model.BrandId;
 
             bll.Add(model);
+            MessageBox.ShowAndRedirect(this, "Ìí¼Ó³É¹¦£¡", "List.aspx");
         }
 
         private string UploadBrandLogo(int BrandID,FileUpload fu)

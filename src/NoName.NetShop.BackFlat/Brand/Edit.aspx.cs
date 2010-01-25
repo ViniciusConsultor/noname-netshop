@@ -89,8 +89,9 @@ namespace NoName.NetShop.BackFlat.Brand
             {
                 brand.BrandLogo = UploadBrandLogo(brand.BrandId, fulBrandLogo);
             }
-            
+
             bll.Update(brand);
+            MessageBox.ShowAndRedirect(this, "修改成功！", "List.aspx");
         }
 
 
