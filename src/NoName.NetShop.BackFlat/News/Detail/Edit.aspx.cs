@@ -46,7 +46,9 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 TextBox_Author.Text = model.Author;
                 TextBox_NewsFrom.Text = model.From;
                 TextBox_ProductID.Text = model.ProductId=="0"?"":model.ProductId;
-                NewsCategorySelect1.InitialCategory = model.CategoryID;
+
+                NewsCategorySelect1.PresetCategoryInfo(new NewsCategoryModelBll().GetPath(model.CategoryID));
+
                 TextBox_Tags.Text = model.Tags;
                 TextBox_Brief.Text = model.Brief;
                 TextBox_Content.Text = model.Content;
@@ -135,7 +137,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
             }
 
             bll.Update(model);
-            MessageBox.Show(this,"更新成功！");
+            MessageBox.ShowAndRedirect(this, "更新成功！", "List.aspx");
         }
     }
 }

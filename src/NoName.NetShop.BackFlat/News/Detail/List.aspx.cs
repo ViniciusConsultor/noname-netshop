@@ -70,11 +70,15 @@ namespace NoName.NetShop.BackFlat.News.Detail
 
         private DataTable ProcessCategory(DataTable dt)
         {
+            string ForeFlatRootUrl = ConfigurationManager.AppSettings["foreFlatRootUrl"];
+
             dt.Columns.Add("catename");
+            dt.Columns.Add("fronturl");
 
             foreach (DataRow row in dt.Rows)
             {
                 row["catename"] = new NewsCategoryModelBll().GetModel(Convert.ToInt32(row["cateid"])).CateName;
+                row["fronturl"] = String.Format("{0}news-{1}.html", ForeFlatRootUrl.EndsWith("/") ? ForeFlatRootUrl : ForeFlatRootUrl + "/", row["newsid"]);
             }
             return dt;
         }
