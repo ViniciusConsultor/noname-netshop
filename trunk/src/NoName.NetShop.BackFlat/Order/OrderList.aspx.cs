@@ -65,36 +65,36 @@ namespace NoName.NetShop.BackFlat.Order
             string where = String.Empty;
 
             string orderId = NoName.Utility.input.Filter(txtOrderId.Text.Trim());
-            if (orderId != "")
+            if (!String.IsNullOrEmpty(orderId))
             {
-                if (where != "")
+                if (!String.IsNullOrEmpty(where))
                     where += " and ";
                 where += "orderId='" + orderId + "'";
             }
             DateTime sdate;
             if (DateTime.TryParse(txtStartDate.Text,out sdate))
             {
-                if (where != "")
+                if (!String.IsNullOrEmpty(where))
                     where += " and ";
                 where += "createtime>='" + sdate.ToShortDateString() +"'";
             }
             DateTime edate;
             if (DateTime.TryParse(txtEndDate.Text,out edate))
             {
-                if (where != "")
+                if (!String.IsNullOrEmpty(where))
                     where += " and ";
                 where += "createtime<='" + edate.ToShortDateString() +"'";
             }
 
             if (ddlOrderStatus.SelectedValue != "")
             {
-                if (where != "")
+                if (!String.IsNullOrEmpty(where))
                     where += " and ";
                 where += "orderstatus=" + ddlOrderStatus.SelectedValue;
             }
             if (ddlPayStatus.SelectedValue != "")
             {
-                if (where != "")
+                if (!String.IsNullOrEmpty(where))
                     where += " and ";
                 where += "paystatus=" + ddlPayStatus.SelectedValue;
             }
