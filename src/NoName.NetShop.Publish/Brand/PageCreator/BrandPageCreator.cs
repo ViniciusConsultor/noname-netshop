@@ -39,7 +39,8 @@ namespace NoName.NetShop.Publish.Brand.PageCreator
 
             BrandNodeCreator helper = new BrandNodeCreator(Parameter, Config, dal, xdoc);
 
-
+            rootNode.AppendChild(helper.GetHeaderContent());
+            rootNode.AppendChild(helper.GetFooterContent());
             rootNode.AppendChild(helper.GetBrandInfo());
             rootNode.AppendChild(helper.GetProductList());
 
