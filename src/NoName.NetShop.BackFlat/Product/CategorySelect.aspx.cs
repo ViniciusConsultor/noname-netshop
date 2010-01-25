@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NoName.NetShop.Product.BLL;
+using System.Data;
+using NoName.Utility;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -26,6 +29,17 @@ namespace NoName.NetShop.BackFlat.Product
 
         protected void Button_OK_Click(object sender, EventArgs e)
         {
+            int TheSelectedCategoryID = Convert.ToInt32(CategoryListBox1.SelectedCategoryID);
+
+            BrandCategoryRelationBll relationBll = new BrandCategoryRelationBll();
+
+            DataTable dt = relationBll.GetCategoryBrandList(TheSelectedCategoryID);
+            if (dt.Rows.Count <= 0)
+            {
+                MessageBox.Show(this,"当前分类下尚无品牌，请先添加品牌！");
+                return;
+            }
+
             if (!String.IsNullOrEmpty(Request.QueryString["pid"]))
             {
                 Response.Redirect(String.Format("edit.aspx?ProductID={0}&CategoryID={1}", Request.QueryString["pid"], CategoryListBox1.SelectedCategoryID));
