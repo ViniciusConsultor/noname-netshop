@@ -59,7 +59,7 @@
                     </AlternatingItemTemplate>
                     <FooterTemplate>
                             <tr class="bottom">
-                                <td colspan="5">总计：￥17695.00</td>
+                                <td colspan="5">总计：￥<span id="price-sum">0</span></td>
                             </tr>
                         </table>
                     </FooterTemplate>
@@ -113,7 +113,7 @@
 							brandBox.show();
 						</script>
                     </div>
-                    <input type="text" class="textField1" />
+                    <input type="text" class="textField1" id="search-product-name" />
                     <div class="component">
                     	<a class="button_blue3" style="cursor:pointer;" id="button-search">
                             <span class="left"></span>
@@ -132,7 +132,7 @@
                     </div>
                 </div>
                 <div class="content noPaddingContentBox" id="list-table">
-                    </div>
+                </div>
                 
             </div>
             <div class="buttons">
