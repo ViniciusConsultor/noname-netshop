@@ -24,6 +24,9 @@
                 <script type="text/javascript" src="/js/mini-Rainy.js">
                     <xsl:text> </xsl:text>
                 </script>
+				<script type="text/javascript" src="/js/hashtable.js">
+					<xsl:text> </xsl:text>
+				</script>
                 <script type="text/javascript" src="/js/publish.list.js">
                     <xsl:text> </xsl:text>
                 </script>
@@ -296,7 +299,7 @@
 
     <!-- properity filter start -->
     <xsl:template match="/listpage/properitylist/prop">
-        <li class="properity">
+        <li class="properity" propid="{propid}">
             <span>
                 <xsl:value-of select="propname"/>：
             </span>
