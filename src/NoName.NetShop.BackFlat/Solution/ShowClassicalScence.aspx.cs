@@ -44,7 +44,7 @@ namespace NoName.NetShop.BackFlat.Solution
             int cateId = Convert.ToInt32(e.CommandArgument);
             NoName.NetShop.Solution.BLL.SolutionCategoryBll sbll = new NoName.NetShop.Solution.BLL.SolutionCategoryBll();
 
-            if (e.CommandName == "delete")
+            if (e.CommandName == "del")
             {
                 sbll.Delete(ScenceId, cateId);
                 this.BindList();

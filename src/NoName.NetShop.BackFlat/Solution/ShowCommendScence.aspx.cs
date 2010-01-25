@@ -45,7 +45,7 @@ namespace NoName.NetShop.BackFlat.Solution
             int suiteId = Convert.ToInt32(e.CommandArgument);
             NoName.NetShop.Solution.BLL.SuiteBll sbll = new NoName.NetShop.Solution.BLL.SuiteBll();
 
-            if (e.CommandName == "delete")
+            if (e.CommandName == "del")
             {
                 sbll.Delete(suiteId);
                 this.BindList();

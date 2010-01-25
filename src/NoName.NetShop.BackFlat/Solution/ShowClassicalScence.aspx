@@ -22,7 +22,7 @@
                     <asp:TemplateField HeaderText="维护">
                         <ItemTemplate>
                              <asp:HyperLink runat="server" ID="HyperLinkShow" Text="查看" NavigateUrl='<%# "ShowClassicalDetail.aspx?cid=" + Eval("CateId") +"&sid=" + Eval("SenceId") %>' />
-                            <asp:LinkButton runat="server" ID="lbtnDelete" Text='删除' CommandName="delete" CommandArgument='<%#Eval("CateId")%>' ></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="lbtnDelete" Text='删除' CommandName="del" CommandArgument='<%#Eval("CateId")%>' ></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

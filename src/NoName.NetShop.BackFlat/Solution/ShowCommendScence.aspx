@@ -26,7 +26,7 @@
                     <asp:TemplateField HeaderText="维护">
                         <ItemTemplate>
                              <asp:HyperLink runat="server" ID="HyperLinkShow" Text="查看" NavigateUrl='<%# "ShowCommendDetail.aspx?id=" + Eval("SuiteId") %>' />
-                            <asp:LinkButton runat="server" ID="lbtnDelete" Text='删除' CommandName="delete" CommandArgument='<%#Eval("SuiteId")%>' ></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="lbtnDelete" Text='删除' CommandName="del" CommandArgument='<%#Eval("SuiteId")%>' ></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
