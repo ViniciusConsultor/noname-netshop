@@ -82,7 +82,7 @@ namespace NoName.NetShop.BackFlat.Gift
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "delete")
+            if (e.CommandName == "del")
             {
                 int productId = Convert.ToInt32(e.CommandArgument);
                 gbll.Delete(productId);
