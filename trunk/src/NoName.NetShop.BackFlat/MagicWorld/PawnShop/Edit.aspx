@@ -28,10 +28,6 @@
             <td><asp:TextBox runat="server" ID="TextBox_Count" /><span type="inform" class="red"></span></td>
         </tr>
         <tr>
-            <td>关键词<span class="red">*</span>：</td>
-            <td><asp:TextBox runat="server" Width="400" ID="TextBox_Keyword" /><span type="inform" class="red"></span></td>
-        </tr>
-        <tr>
             <td>描述：</td>
             <td><asp:TextBox runat="server" Width="400" ID="TextBox_Brief" TextMode="MultiLine" Height="400" /></td>
         </tr>

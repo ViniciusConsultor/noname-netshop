@@ -55,10 +55,6 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
             {
                 strErr += "拍品数量为空或者不是数字！\\n";
             }
-            if (TextBox_Keyword.Text == "")
-            {
-                strErr += "关键字为空！\\n";
-            }
 
             if (strErr != "")
             {
