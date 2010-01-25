@@ -15,7 +15,6 @@ namespace NoName.NetShop.ForeFlat.Magic
         private DemandProductBll dbll = new DemandProductBll();
         private SecondhandProductBll sbll = new SecondhandProductBll();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
