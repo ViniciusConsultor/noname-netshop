@@ -4,6 +4,7 @@ $(function() {
 
     getSearchData(currentCategoryID, 0, '');
 
+    /* 分类选择事件触发 */
     $('.equipmentCategory a').click(function() {
         currentCategoryID = $(this).attr('cateid');
         $('.equipmentCategory a').each(function() { $(this).attr('class', 'off'); });
@@ -11,12 +12,31 @@ $(function() {
         getSearchData(currentCategoryID, 0, '');
     });
 
+    /* 搜索事件触发 */
     $('#button-search').click(function() {
+        var brandID = $('#brand').val();
+        var productName = $('#search-product-name').val();
 
+        getSearchData(currentCategoryID, brandID, productName);
+    });
+
+    /* 清空选择事件触发 */
+    $('#clear-select').click(function() { clearSelect(); });
+
+    /* 提交选择事件触发 */
+    $('#submit-select').click(function() {
+        var selectedProducts = getSelectedList();
+        var pids = '';
+        for (var i = 0; i < selectedProducts.Count; i++) {
+            var productInfo = selectedProducts.GetValue(selectedProducts.Keys()[i]);
+            pids += productInfo.productid;
+            if (i != selectedProducts.Count - 1) pids += ',';
+        }
+        alert(pids);
     });
 
 
-
+    /* 函数定义区 开始 */
     function getSearchData(categoryID, brandID, productName) {
         $.ajax({
             url: '/handler/SolutionHandler.ashx',
@@ -24,8 +44,8 @@ $(function() {
             data: getSearchPara(categoryID, brandID, productName),
             cache: false,
             dataType: 'json',
-            beforeSend: function() { },
-            error: function() { },
+            beforeSend: function() { $('#list-table').html('加载中...'); },
+            error: function() { $('#list-table').html('加载列表错误'); },
             success: function(data) {
                 var html = '<div class="table2">' +
                            '     <table id="product-list">' +
@@ -40,7 +60,7 @@ $(function() {
                           '  <td><a href="/product-' + n.productid + '.html" ><img src="' + n.image + '" /></a></td>' +
                           '  <td><a href="#">' + n.productname + '</a></td>' +
                           '  <td>￥' + n.price + '</td>' +
-                          '  <td><input type="checkbox" productid="' + n.productid + '" /></td>' +
+                          '  <td><input type="checkbox" productid="' + n.productid + '" cateid="' + categoryID + '" /></td>' +
                           '</tr>';
                 });
                 html += '<tr class="bottom">' +
@@ -62,16 +82,15 @@ $(function() {
                     $('#product-list tr input[type="checkbox"]').each(function() { if (theBox.attr('productid') != $(this).attr('productid')) $(this).attr('checked', false); });
 
                     if (status) {
-                        //addProduct(theBox.attr('categoryid'), {
-                        //    productid: theBox.attr('productid'),
-                        //    productname: $(row.children('td')[1]).text(),
-                        //    count: 1,
-                        //    price: $(row.children('td')[2]).text()
-                        //});
-                        alert(theBox.attr('categoryid'));
+                        addProduct(theBox.attr('cateid'), {
+                            productid: theBox.attr('productid'),
+                            productname: $(row.children('td')[1]).text(),
+                            count: 1,
+                            price: $(row.children('td')[2]).text()
+                        });
                     }
                     else {
-                        removeProduct(theBox.attr('categoryid'));
+                        removeProduct(theBox.attr('cateid'));
                     }
                 });
                 // checkbox 点击事件结束
@@ -147,8 +166,11 @@ $(function() {
         $('#delete-' + categoryID).click(function() {
             removeProduct(categoryID);
         });
+
+        calculateTotalPrice(true);
     }
     function removeProduct(categoryID) {
+        //debugger;
         var selectedProducts = getSelectedList();
         selectedProducts.Remove(categoryID);
         setSelectedList(selectedProducts);
@@ -160,7 +182,22 @@ $(function() {
         $(theCateRow.children('td')[3]).html('');
         $(theCateRow.children('td')[4]).html('');
 
-        $('#product-list tr input[categoryid="' + categoryID + '"]').attr('checked', false);
+        $('#product-list tr input[cateid="' + categoryID + '"]').attr('checked', false);
+        calculateTotalPrice(false);
+    }
+
+    function calculateTotalPrice(isAdd) {
+        //debugger;
+        var currentPriceSum = 0;
+
+        $('#selected-product-list tr').each(function() {
+            if ($(this).children('td').length == 5 && $($(this).children('td')[1]).html() != '') {
+                //alert($($(this).children('td')[3]).html().replace('￥', ''));
+                currentPriceSum += parseFloat($($(this).children('td')[3]).html().replace('￥', ''));
+            }
+        });
+
+        $('#price-sum').html(currentPriceSum);
     }
 
     function clearSelect() {
@@ -171,5 +208,6 @@ $(function() {
         }
     }
 
+    /* 函数定义区 结束 */
 
 });
