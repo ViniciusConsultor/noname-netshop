@@ -36,7 +36,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
-                            <%# Enum.GetName(typeof(NoName.NetShop.PawnShop.Model.PawnProductStatus), Eval("status")) %>
+                            <%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.PawnProductStatus), Eval("status")) %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>

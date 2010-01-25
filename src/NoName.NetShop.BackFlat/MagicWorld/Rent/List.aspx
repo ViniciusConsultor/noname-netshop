@@ -9,6 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <a href="../Category/Select.aspx?app=Rent">添加出租商品</a>
         <div>
             <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false">
                 <Columns>
