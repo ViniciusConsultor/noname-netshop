@@ -100,7 +100,11 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
             int RecordCount = 0, PageCount=0;
 
-            DataTable dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex, out RecordCount, out PageCount);
+            DataTable dt;
+            if (Parameter.Properities == null)
+                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex, out RecordCount, out PageCount);
+            else
+                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex, Parameter.Properities, out RecordCount, out PageCount);
 
             //商品列表节点
             XmlNode ProductsNode = XmlUtility.AddNewNode(ProductListNode, "products", null);
