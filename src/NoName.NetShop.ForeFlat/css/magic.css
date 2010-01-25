@@ -190,6 +190,37 @@
 .magicRentList_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
 /*Magic RentList End*/
 
+/*Magic pawnshop list Begin*/
+.magicPawnShopList_mainbody{ clear:both}
+.magicPawnShopList_mainbody .list_horizontal ul li {padding:15px 19px;}
+/*Magic pawnshop list End*/
+
+/*Magic pawnshop home Begin*/
+.magicPawnShopHome_mainbody{ clear:both; padding:1px; border:1px solid #B4CFEC;}
+.magicPawnShopHome_mainbody .pawnShopMainContainer{background:url(../images/pawnShopBg.jpg) no-repeat; height:584px; position:relative}
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.actionBtn{ position:absolute; width:135px; height:30px; background:#FFF; opacity:0; filter:alpha(opacity=0); display:block;}
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.actionBtn:hover{ opacity:0.3; filter:alpha(opacity=30); }
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.btn1{ left:100px; top:102px;}
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.btn2{ left:100px; top:152px;}
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.btn3{ left:100px; top:202px;}
+
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.moreBtn{ position:absolute; width:30px; height:20px; background:#FFF; opacity:0; filter:alpha(opacity=0); display:block;}
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.moreBtn:hover{ opacity:0.3; filter:alpha(opacity=30);}
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.btn4{ left:588px; top:449px;}
+.magicPawnShopHome_mainbody .pawnShopMainContainer a.btn5{ left:846px; top:449px;}
+
+.magicPawnShopHome_mainbody .pawnShopMainContainer ul.shelf1{ margin:0; padding:0; position:absolute; left:266px; top:84px; width:362px; height:362px;}
+.magicPawnShopHome_mainbody .pawnShopMainContainer ul.shelf1 li{ list-style-type:none; float:left; width:111px; height:107px; padding:12px 0 0 8px; display:block}
+.magicPawnShopHome_mainbody .pawnShopMainContainer ul.shelf1 li img{ width:100px; height:100px; border:none}
+
+.magicPawnShopHome_mainbody .pawnShopMainContainer ul.shelf2{ margin:0; padding:0; position:absolute; left:641px; top:84px; width:242px; height:362px;}
+.magicPawnShopHome_mainbody .pawnShopMainContainer ul.shelf2 li{ list-style-type:none; float:left; width:111px; height:107px; padding:12px 0 0 8px; display:block}
+.magicPawnShopHome_mainbody .pawnShopMainContainer ul.shelf2 li img{ width:100px; height:100px; border:none}
+
+.rulesContent{ padding-top:6px;}
+
+#mainSceneParent{  height:350px; background:url(../images/loading.gif) center center no-repeat}
+/*Magic pawnshop home End*/
 
 
 /*Magic Rent Submit Begin*/
@@ -204,7 +235,7 @@
 /*Magic Common Complete Begin*/
 .magicCommonComplete_mainbody{ clear:both}
 .magicCommonComplete_mainbody .box1 .content{ padding:40px 100px;}
-.magicCommonComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(/images/cart_navigation4.jpg) center top no-repeat; }
+.magicCommonComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(../images/cart_navigation4.jpg) center top no-repeat; }
 .magicCommonComplete_mainbody .otherChannel{ text-align:center; clear:both; padding:20px 0;}
 .magicCommonComplete_mainbody .otherChannel a{ text-decoration:underline; padding:0 10px;}
 /*Magic Common Complete End*/
@@ -224,9 +255,9 @@
 
 ul.magicNavigator{ margin:0; padding:0}
 ul.magicNavigator li{ list-style-type:none; float:left; width:100%}
-ul.magicNavigator li a{ height:25px; display:block; clear:both; background:url(/images/sprite.gif) 0 -1868px repeat-x}
+ul.magicNavigator li a{ height:25px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
 ul.magicNavigator li a:hover{ background-position:0 -1898px;}
-ul.magicNavigator li a span{ height:25px; display:block; clear:both; background:url(/images/magicNavigator.gif) no-repeat}
+ul.magicNavigator li a span{ height:25px; display:block; clear:both; background:url(../images/magicNavigator.gif) no-repeat}
 
 ul.magicNavigator li a.m1 span{ background-position:15px 7px;}
 ul.magicNavigator li a.m2 span{ background-position:15px -18px;}

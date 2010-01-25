@@ -157,6 +157,9 @@ a.linkButton:hover{ color:#FF9900}
 .category_non-popMenu div.subs{ clear:both; padding:5px;}
 .category_non-popMenu div.subs a{ display:block; float:left; width:50px; padding:5px; height:14px;}
 .category_non-popMenu div.subs a.more{ margin:8px 0 0 0; margin:6px 0 0 0\9; _margin:8px 0 0 0; padding:0; width:34px}
+.category_non-popMenu div.subs span{ display:block; float:left; width:75px; padding:7px 0}
+.category_non-popMenu div.subs span input.checkbox{ width:12px; height:12px; margin:0; padding:0; display:block; float:left; margin-top:1px; margin-top:0px\9;}
+.category_non-popMenu div.subs span label{ display:block; float:left; padding-left:5px;}
 /*Category non-popMenu*/
 
 .hotlist{ clear:both}
@@ -287,10 +290,13 @@ ul.tip2 li.middle span{ display:block; height:21px; background:#CCC; font-weight
 
 .box1 .content{ clear:both; padding:10px 10px 0 10px; background:#FFF; border-left:1px solid #B5D0EC; border-right:1px solid #B5D0EC; zoom:1;}
 .box1 .content:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.box1 .content .groupTitle{ display:block; clear:both; height:14px; padding:5px 0 5px 10px; margin-bottom:5px; background:#DEF0F8; color:#236FA4; font-weight:bold; text-align:left}
+
 
 .box1 ul.bottom{ padding:0; margin:0; height:10px; clear:both; background:#FFF url(../images/sprite.gif) 0 -458px repeat-x; font-size:0; overflow:hidden}
 .box1 ul.bottom li.left{ list-style-type:none; float:left; width:10px; height:10px; background:url(../images/sprite.gif) 0 -441px;}
 .box1 ul.bottom li.right{ list-style-type:none; float:right; width:10px; height:10px; background:url(../images/sprite.gif) -9px -441px;}
+
 
 .box2{ clear:both; width:auto; text-align:left}
 .box2 ul.title{ height:26px; clear:both; background:url(../images/sprite.gif) 0 -382px repeat-x; margin:0; padding:0}
@@ -669,8 +675,8 @@ ul.questions li{ clear:both; padding:10px; list-style-type:none;}
 ul.questions li.odd{ background:#FFF}
 ul.questions li.even{ background:#F1F6FB}
 ul.questions li div{ display:block; clear:both; padding-left:20px; background:url(../images/sprite.gif) no-repeat; line-height:200%}
-ul.questions li div.question{ background-position: -3px -1743px}
-ul.questions li div.answer{ background-position: -3px -1769px}
+ul.questions li div.question{ background-position: -32px -2450px}
+ul.questions li div.answer{ background-position: -1px -2478px}
 ul.questions li div .user{ font-weight:bold; color:#069}
 ul.questions li div .answerer{ color:#090}
 ul.questions li div .date{ color:#999}
@@ -726,10 +732,12 @@ ul.comments li div.commentRightContent .commentRightContentContainer div.comment
 .rating a{ display:block; float:left; width:15px; height:15px; background:url(../images/sprite.gif) -21px -1711px;}
 .rating a.on{ background-position:-6px -1711px;}
 
-
+div.inlineIconButton{ display:inline-block; *padding-top:0; *display:inline; *zoom:1;}
+div.inlineIconButton a{ display:inline-block;}
 a.iconButton{ display:block; height:16px; width:16px; background:url(../images/sprite.gif); margin:0 auto}
 a.viewMessage{ background-position:-4px -1573px;}
 a.delete{ background-position:-32px -1573px;}
+a.edit{ background-position:-6px -1741px;}
 
 
 a.more1{ display:block; width:34px; height:11px; background:url(../images/sprite.gif) -9px -493px no-repeat;}
@@ -755,8 +763,9 @@ text-align:left;
 
 
 ul.articleList_1{ margin:0; padding:0;}
-ul.articleList_1 li{ list-style-type:none; clear:both; padding:6px 0; margin:0;}
+ul.articleList_1 li{ list-style-type:none; clear:both; padding:6px 0; margin:0; zoom:1}
 ul.articleList_1 li a span.date{ color:#999}
+ul.articleList_1 li.separator{ border-bottom:1px dotted #CCC; padding:6px 0 0 0; margin:0 0 6px 0; font-size:0; height:0; overflow:hidden; }
 
 ul.articleList_2{ margin:0; padding:0;}
 ul.articleList_2 li{ list-style-type:none; clear:both; padding:6px 0; margin:0; zoom:1}
@@ -837,4 +846,4 @@ ul.articleList_3 li span{ float:right; color:#999; display:block}
 .newblock{ margin-left:4px;}
 
 .clearfix:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
-.clearfix{zoom:1;}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+.clearfix{zoom:1;}

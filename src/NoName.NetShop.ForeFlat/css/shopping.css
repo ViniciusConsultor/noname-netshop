@@ -22,9 +22,36 @@
 .productDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
 /*Shopping_ProductDetail End*/
 
-/*Shopping_ProductDetail Begin*/
+/*Shopping all Comments Begin*/
 .comments_mainbody{ clear:both}
-/*Shopping_ProductDetail End*/
+/*Shopping all Comments End*/
+
+/*Shopping all questions Begin*/
+.questions_mainbody{ clear:both}
+/*Shopping all questions End*/
+
+/*Shopping all topics Begin*/
+.topics_mainbody{ clear:both}
+/*Shopping all topics End*/
+
+/*Shopping view topic Begin*/
+.viewTopic_mainbody .mainPanel{ clear:both; padding:15px 30px 25px 30px;}
+.viewTopic_mainbody .mainPanel .productColumn{ float:right; width:270px; padding:40px 0 15px 20px;}
+.viewTopic_mainbody .mainPanel .productColumn ul.itemList1 li{ border:none}
+.viewTopic_mainbody .mainPanel h1{ font-size:14px; font-weight:bold; float:none; padding:10px 0; margin:0}
+.viewTopic_mainbody .mainPanel .topicContent{ line-height:200%; float:none}
+.viewTopic_mainbody .mainPanel .userInfo{ color:#999; padding:20px 0 5px 0; float:none}
+
+.viewTopic_mainbody{ clear:both}
+.viewTopic_mainbody .topicSection{ padding:10px 20px;}
+.viewTopic_mainbody .topicSection h1{ font-size:14px; font-weight:bold; clear:both; padding:10px 0; margin:0}
+.viewTopic_mainbody .topicSection .topicContent{ line-height:200%;}
+.viewTopic_mainbody .topicSection .userInfo{ color:#999; padding:20px 0 5px 0;}
+
+.viewTopic_mainbody .paginationParent{ padding:10px; border-top:1px dotted #B5D0EC; float:none; clear:both; zoom:1}
+.viewTopic_mainbody .paginationParent:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.viewTopic_mainbody .paginationParent .pagination{ float:right}
+/*Shopping view topic End*/
 
 /*Shopping_GiftDetail Begin*/
 .giftDetail_mainbody{ clear:both}
