@@ -24,7 +24,7 @@
                 <script type="text/javascript" src="/js/mini-Rainy.js">
                     <xsl:text> </xsl:text>
                 </script>
-                <script type="text/javascript" src="/js/list.js">
+                <script type="text/javascript" src="/js/publish.list.js">
                     <xsl:text> </xsl:text>
                 </script>
             </head>
