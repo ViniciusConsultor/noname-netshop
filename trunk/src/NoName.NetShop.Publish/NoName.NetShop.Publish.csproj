@@ -57,6 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brand\BrandPublishHandler.cs" />
+    <Compile Include="Brand\DataAccess\BrandDataAccess.cs" />
+    <Compile Include="Brand\DataAccess\BrandNodeCreator.cs" />
+    <Compile Include="Brand\PageCreator\BrandPageCreator.cs" />
+    <Compile Include="Configuration\BrandConfigurationSection.cs" />
     <Compile Include="Configuration\CommonConfig.cs" />
     <Compile Include="Configuration\ListConfigurationSection.cs" />
     <Compile Include="Configuration\NewsConfigurationElement.cs" />
