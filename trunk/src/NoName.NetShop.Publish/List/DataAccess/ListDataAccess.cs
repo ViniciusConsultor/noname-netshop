@@ -35,16 +35,20 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
         public DataTable GetProductList(int CategoryID, int PageIndex,Hashtable Parameters, out int RecordCount, out int PageCount)
         {
-            string where = String.Empty;int i=0;
-            foreach(string key in Parameters.Keys)
-            {
-                CategoryParaModel para = new CategoryParaModelBll().GetModel(Convert.ToInt32(key),CategoryID);
-                if (i == Parameters.Count - 1) where += String.Format(" (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
-                else where += String.Format(" (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') or ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
-                i++;
-            }
+            string where = String.Empty; 
+            int i = 0;
+
+            if(Parameters!=null)
+                foreach (string key in Parameters.Keys)
+                {
+                    CategoryParaModel para = new CategoryParaModelBll().GetModel(Convert.ToInt32(key), CategoryID);
+                    if (i == Parameters.Count - 1) where += String.Format(" and (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
+                    else where += String.Format(" and (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') or ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
+                    i++;
+                }
+
             string CategoryPath = Convert.ToString(GetCategoryInfo(CategoryID)["catepath"]);
-            where += String.Format(" catepath like '{0}%'", CategoryPath);
+            where += String.Format(" and pdproduct.catepath like '{0}%'", CategoryPath);
             
             SearchPageInfo pageInfo = new SearchPageInfo();
 
@@ -55,7 +59,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
             pageInfo.PageSize = Config.ListPageSize;
             pageInfo.PageIndex = PageIndex;
             pageInfo.OrderType = "";
-            pageInfo.StrWhere = where;
+            pageInfo.StrWhere = "1=1 " + where;
             pageInfo.StrJoin = " inner join pdproduct on pdproduct.productid=pdproductpara.productid inner join pdcategory on pdproduct.cateid=pdcategory.cateid ";
 
             DataTable dt = CommDataHelper.GetDataFromMultiTablesByPage(pageInfo).Tables[0];

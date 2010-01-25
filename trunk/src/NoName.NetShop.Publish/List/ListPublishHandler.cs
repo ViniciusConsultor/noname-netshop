@@ -57,12 +57,15 @@ namespace NoName.NetShop.Publish.List
                     if (FatherClassificationPath != String.Empty)
                         RelativePath = FatherClassificationPath.Replace("/", "\\") + "\\";
 
-                    string ProperityString = "p";
-                    foreach (string key in PageParameter.Properities.Keys)
+                    string ProperityString = "v";
+                    if (PageParameter.Properities != null)
                     {
-                        ProperityString += key + "-" + PageParameter.Properities[key] + ",";
+                        foreach (string key in PageParameter.Properities.Keys)
+                        {
+                            ProperityString += key + "-" + PageParameter.Properities[key] + ",";
+                        }
+                        ProperityString += ProperityString.Substring(0, ProperityString.Length - 1) + "e";
                     }
-                    ProperityString += ProperityString.Substring(0, ProperityString.Length - 1) + "e";
 
                     string PageName = String.Format("list_{0}{1}{2}{3}.html",
                         PageParameter.CategoryID, PageParameter.PageIndex <= 1 ? "" : "_" + PageParameter.PageIndex.ToString(),
@@ -122,7 +125,7 @@ namespace NoName.NetShop.Publish.List
         {
             ListPageParameter parm = null;
 
-            string pattern = @"list(_|-)+(?<cfid>\d+)((_|-)+(?<pageIndex>\d+))?((_|-)+o(?<order>\d+))?((_|-)+p(?<properity>.+)e)";
+            string pattern = @"list(_|-)+(?<cfid>\d+)((_|-)+(?<pageIndex>\d+))?((_|-)+o(?<order>\d+))?((_|-)+v(?<properity>.+)e)?";
 
             Match match = Regex.Match(Url, pattern);
 
