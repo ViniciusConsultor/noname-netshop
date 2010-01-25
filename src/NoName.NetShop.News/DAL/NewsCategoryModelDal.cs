@@ -66,6 +66,12 @@ namespace NoName.NetShop.News.DAL
             return Convert.ToInt32(dbr.ExecuteScalar(command)) == 1;
         }
 
+        public bool HasChild(int CategoryID)
+        {
+            string sql = "select count(0) from necategory where parentid = "+CategoryID;
+            return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sql)) > 0;
+        }
+
         public DataTable GetList(int ParentID)
         {
             DbCommand command = dbr.GetStoredProcCommand("UP_neCategory_GetList");

@@ -27,6 +27,10 @@ namespace NoName.NetShop.News.BLL
             dal.Update(Model);
         }
 
+        public bool HasChild(int CategoryID)
+        {
+            return dal.HasChild(CategoryID);
+        }
         public bool Exists(int CategoryID)
         {
             return dal.Exists(CategoryID);
