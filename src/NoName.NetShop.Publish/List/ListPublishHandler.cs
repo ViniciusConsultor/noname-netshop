@@ -109,10 +109,10 @@ namespace NoName.NetShop.Publish.List
 
         public bool DeletePageFile()
         {
-            FileInfo BrandFile = new FileInfo(PageFileName);
+            FileInfo ListFile = new FileInfo(PageFileName);
             try
             {
-                BrandFile.Delete();
+                ListFile.Delete();
                 return true;
             }
             catch { return false; }

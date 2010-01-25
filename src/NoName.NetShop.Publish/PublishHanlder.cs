@@ -6,6 +6,7 @@ using log4net;
 using NoName.NetShop.Publish.List;
 using NoName.NetShop.Publish.Product;
 using NoName.NetShop.Publish.News;
+using NoName.NetShop.Publish.Brand;
 
 namespace NoName.NetShop.Publish
 {
@@ -66,6 +67,9 @@ namespace NoName.NetShop.Publish
 
             switch (Suffix)
             {
+                case "brand":
+                    handler = (IPublishHandler)(new BrandPublishHandler(Url));
+                    break;
                 case "list":
                     handler = (IPublishHandler)(new ListPublishHandler(Url));
                     break;
