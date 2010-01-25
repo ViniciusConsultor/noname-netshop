@@ -24,12 +24,6 @@
 	            </td>
 	        </tr>
 	        <tr>
-	            <td height="25" width="30%" align="right">价格区间<span class="red">*</span>：</td>
-	            <td height="25" width="*" align="left">
-		            <asp:TextBox id="txtPriceRange" runat="server" Width="200px"></asp:TextBox>
-	            </td>
-	        </tr>
-	        <tr>
 	            <td height="25" width="30%" align="right">是否隐藏<span class="red">*</span>：</td>
 	            <td height="25" width="*" align="left">
 		            <asp:CheckBox ID="chkIsHide" Text="" runat="server" Checked="False" />

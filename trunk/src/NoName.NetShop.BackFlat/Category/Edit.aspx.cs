@@ -34,7 +34,7 @@ namespace NoName.NetShop.BackFlat.Category
 
             txtCateName.Text = model.CateName;
             drpStatus.SelectedValue = model.Status.ToString();
-            txtPriceRange.Text = model.PriceRange;
+            //txtPriceRange.Text = model.PriceRange;
             chkIsHide.Checked = model.IsHide;
             //CategorySelect1.InitialCategory = model.CateId;
 
@@ -64,7 +64,7 @@ namespace NoName.NetShop.BackFlat.Category
 
             model.CateName = txtCateName.Text;
             model.Status = int.Parse(drpStatus.SelectedValue);
-            model.PriceRange = txtPriceRange.Text;
+            //model.PriceRange = txtPriceRange.Text;
             model.IsHide = chkIsHide.Checked;
 
             bll.Update(model);

@@ -69,10 +69,6 @@ namespace NoName.NetShop.BackFlat.Category
             {
                 strErr += "CateName不能为空！\\n";
             }
-            if (this.txtPriceRange.Text == "")
-            {
-                strErr += "PriceRange不能为空！\\n";
-            }
 
             if (strErr != "")
             {
@@ -83,14 +79,13 @@ namespace NoName.NetShop.BackFlat.Category
 
             string CateName = this.txtCateName.Text;
             int Status = Convert.ToInt32(drpStatus.SelectedValue);
-            string PriceRange = this.txtPriceRange.Text;
+            //string PriceRange = this.txtPriceRange.Text;
             bool IsHide = this.chkIsHide.Checked;
 
             CategoryModel model = new CategoryModel();
             model.CateId = CommDataHelper.GetNewSerialNum("pd");
             model.CateName = CateName;
             model.Status = Status;
-            model.PriceRange = PriceRange;
             model.IsHide = IsHide;
             model.ShowOrder = model.CateId;
 
