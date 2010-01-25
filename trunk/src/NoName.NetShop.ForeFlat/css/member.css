@@ -3,10 +3,16 @@
 .member_mainbody .rightColumn{ float:none; margin-left:174px; _margin-left:171px;}
 .member_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
 .member_mainbody .leftColumn .box2 .content ul{ padding:0 0 5px 10px;}
-.member_mainbody .rightColumn .box1 .content{ min-height:586px; _height:586px; text-align:center}
-.member_mainbody .rightColumn .noPadding .content{ min-height:596px; _height:596px; text-align:center}
+.member_mainbody .leftColumn .box2 .content ul.articleList_1 li.separator{ margin-right:10px; width:125px}
+.member_mainbody .rightColumn .box1 .content{ min-height:794px; _height:794px; text-align:center}
+.member_mainbody .rightColumn .noPadding .content{ min-height:804px; _height:804px; text-align:center}
 .member_mainbody .rightColumn .box1 .content ul.form{ padding:30px 60px; margin:0 auto;}
 
+.member_mainbody .leftColumn ul.articleList_1{ margin:0; padding:0; zoom:1}
+.member_mainbody .leftColumn ul.articleList_1:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.member_mainbody .leftColumn ul.articleList_1 li{ list-style-type:none; float:left; display:block; width:100%; padding:6px 0; margin:0; zoom:1}
+.member_mainbody .leftColumn ul.articleList_1 li a span.date{ color:#999}
+.member_mainbody .leftColumn ul.articleList_1 li.separator{ border-bottom:1px dotted #CCC; padding:6px 0 0 0; margin:0 0 6px 0; font-size:0; height:0; overflow:hidden; }
 
 
 

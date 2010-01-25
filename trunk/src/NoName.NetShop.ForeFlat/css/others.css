@@ -47,3 +47,7 @@
 .dingdingNews_mainbody .articleContent p{ text-indent:24px;}
 .dingdingNews_mainbody .shadow{ position:absolute; bottom:-13px; right:6px; width:461px; height:14px; background:url(../images/dingdingNewsShadow.gif) no-repeat}
 /*Dingding News end*/
+
+/*Search result Begin*/
+.searchResult_mainbody{ clear:both;}
+/*Search result End*/

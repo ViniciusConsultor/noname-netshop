@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.member_mainbody{ clear:both}
+.member_mainbody .leftColumn{ float:left; width:170px; _margin-right:-3px;}
+.member_mainbody .rightColumn{ float:none; margin-left:174px; _margin-left:171px;}
+.member_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+.member_mainbody .leftColumn .box2 .content ul{ padding:0 0 5px 10px;}
+.member_mainbody .rightColumn .box1 .content{ min-height:482px; _height:482px; text-align:center}
+.member_mainbody .rightColumn .noPadding .content{ min-height:492px; _height:492px; text-align:center}
+.member_mainbody .rightColumn .box1 .content ul.form{ padding:30px 60px; margin:0 auto;}
+.member_mainbody .rightColumn .box1 .content .section{ padding:5px 10px;}
+
