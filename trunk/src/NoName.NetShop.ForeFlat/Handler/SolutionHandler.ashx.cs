@@ -9,6 +9,7 @@ using System.Collections.Specialized;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace NoName.NetShop.ForeFlat.Handler
 {
@@ -22,6 +23,7 @@ namespace NoName.NetShop.ForeFlat.Handler
 
         public void ProcessRequest(HttpContext context)
         {
+            Thread.Sleep(1000);
             context.Response.ContentType = "text/plain";
             HttpRequest req = context.Request;
             if (!String.IsNullOrEmpty(req["scenceid"]) && !String.IsNullOrEmpty(req["cateid"]))
