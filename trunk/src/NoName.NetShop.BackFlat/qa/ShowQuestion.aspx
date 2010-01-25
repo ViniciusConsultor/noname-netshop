@@ -60,7 +60,7 @@
                     </td>
                     <td>
                     <asp:LinkButton runat="server" id="lbtnEdit" CommandName="edit" CommandArgument='<%#Eval("answerId") %>'>编辑</asp:LinkButton>
-                    <asp:LinkButton runat="server" id="lbtnDelete" CommandName="delete" CommandArgument='<%#Eval("answerId") %>'>删除</asp:LinkButton>
+                    <asp:LinkButton runat="server" id="lbtnDelete" CommandName="del" CommandArgument='<%#Eval("answerId") %>'>删除</asp:LinkButton>
                     </td>
                     </tr>
                     <tr>

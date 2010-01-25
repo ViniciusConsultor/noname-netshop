@@ -82,7 +82,7 @@ namespace NoName.NetShop.BackFlat.qa
         {
             AnswerBll abll = new AnswerBll();
             int answerId = Convert.ToInt32(e.CommandArgument);
-            if (e.CommandName == "delete")
+            if (e.CommandName == "del")
             {
                 abll.Delete(answerId);
                 BindAnswers();
