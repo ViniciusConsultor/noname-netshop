@@ -25,7 +25,7 @@ namespace NoName.NetShop.MagicWorld.Model
         private string _PostCode;
         private string _Region;
         private string _Address;
-        private bool _Status;
+        private int _Status;
         private DateTime _InsertTime;
         private DateTime _UpdateTime;
 
@@ -120,7 +120,7 @@ namespace NoName.NetShop.MagicWorld.Model
             get { return _Address; }
             set { _Address=value; }
         }
-        public bool Status
+        public int Status
         {
             get { return _Status; }
             set { _Status=value; }
@@ -136,10 +136,12 @@ namespace NoName.NetShop.MagicWorld.Model
             set { _UpdateTime=value; }
         }
     }
+
     public enum DemandProductStatus
     {
         尚未审核 = 1,
         审核通过 = 2,
         审核未通过 = 3,
+        锁定 = 4,
     }
 }

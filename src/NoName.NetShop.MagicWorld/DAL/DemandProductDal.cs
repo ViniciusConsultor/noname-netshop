@@ -37,7 +37,7 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(Command,"@postcode",DbType.String,model.PostCode);
             dbw.AddInParameter(Command,"@region",DbType.String,model.Region);
             dbw.AddInParameter(Command,"@address",DbType.String,model.Address);
-            dbw.AddInParameter(Command,"@status",DbType.Boolean,model.Status);
+            dbw.AddInParameter(Command, "@status", DbType.Int16, model.Status);
             dbw.AddInParameter(Command,"@inserttime",DbType.DateTime,model.InsertTime);
             dbw.AddInParameter(Command,"@updatetime",DbType.DateTime,model.UpdateTime);
 
@@ -67,7 +67,7 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.AddInParameter(Command,"@postcode",DbType.String,model.PostCode);
             dbw.AddInParameter(Command,"@region",DbType.String,model.Region);
             dbw.AddInParameter(Command,"@address",DbType.String,model.Address);
-            dbw.AddInParameter(Command,"@status",DbType.Boolean,model.Status);
+            dbw.AddInParameter(Command,"@status",DbType.Int16,model.Status);
             dbw.AddInParameter(Command,"@inserttime",DbType.DateTime,model.InsertTime);
             dbw.AddInParameter(Command,"@updatetime",DbType.DateTime,model.UpdateTime);
 
@@ -113,7 +113,7 @@ namespace NoName.NetShop.MagicWorld.DAL
                 Price = Convert.ToDecimal(row["Price"]),
                 Region = Convert.ToString(row["Region"]),
                 SmallImage = Convert.ToString(row["SmallImage"]),
-                Status = Convert.ToBoolean(row["Status"]),
+                Status = Convert.ToInt16(row["Status"]),
                 TrueName = Convert.ToString(row["TrueName"]),
                 UpdateTime = Convert.ToDateTime(row["UpdateTime"]),
                 UsageCondition = Convert.ToInt32(row["UsageCondition"]),
