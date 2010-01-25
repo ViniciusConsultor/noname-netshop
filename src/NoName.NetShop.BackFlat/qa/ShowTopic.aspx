@@ -61,7 +61,7 @@
                     回复Id：<%# Eval("ReplyId") %> 回复时间：<%#Eval("ReplyTime")%> 回复人：<%#Eval("Title") %>
                     </td>
                     <td>
-                    <asp:LinkButton runat="server" id="lbtnDelete" CommandName="delete" CommandArgument='<%#Eval("replyId") %>'>删除</asp:LinkButton>
+                    <asp:LinkButton runat="server" id="lbtnDelete" CommandName="del" CommandArgument='<%#Eval("replyId") %>'>删除</asp:LinkButton>
                     </td>
                     </tr>
                     <tr>
