@@ -55,8 +55,9 @@ namespace NoName.NetShop.Common
 
         public static string GetCommonImageFullUrl(string ShortUrl)
         {
-            if (!rooturl.EndsWith("/")) rooturl += "/";
-            return ShortUrl.StartsWith(rooturl) ? ShortUrl : rooturl + ShortUrl;
+            return Config.UrlPrefix + ShortUrl;
+            //if (!rooturl.EndsWith("/")) rooturl += "/";
+            //return ShortUrl.StartsWith(rooturl) ? ShortUrl : rooturl + ShortUrl;
         }
     }
 }
