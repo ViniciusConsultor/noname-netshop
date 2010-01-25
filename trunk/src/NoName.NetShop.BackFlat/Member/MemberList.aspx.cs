@@ -55,7 +55,7 @@ namespace NoName.NetShop.BackFlat.Member
             string userId =  e.CommandArgument.ToString();
             switch (e.CommandName)
             {
-                case "delete":
+                case "del":
                     MemberInfo.SetStatus(userId, MemberStatus.Deleted);
                     break;
                 case "show":
@@ -80,13 +80,13 @@ namespace NoName.NetShop.BackFlat.Member
 
         protected void doSearch_Click(object sender, EventArgs e)
         {
-            string useremail = txtUserEmail.Text.Trim();
+            string userId = NoName.Utility.input.Filter(txtUserId.Text.Trim());
             string usertype = ddlUserType.SelectedValue;
-
+            SearPageInfo.StrWhere = "status<3";
             SearPageInfo.PageIndex = 0;
-            if (!String.IsNullOrEmpty(useremail))
+            if (!String.IsNullOrEmpty(userId))
             {
-                SearPageInfo.StrWhere += " and UserEmail like '" + useremail + "'";
+                SearPageInfo.StrWhere += " and UserId='" + userId + "'";
             }
             if (!String.IsNullOrEmpty(usertype))
             {

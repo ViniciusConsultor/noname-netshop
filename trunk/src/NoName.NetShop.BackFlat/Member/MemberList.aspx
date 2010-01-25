@@ -12,7 +12,7 @@
     <form id="form1" runat="server">
     <div>
     <div>
-    登录帐号：<asp:TextBox ID="txtUserEmail" runat="server"></asp:TextBox>
+    登录帐号：<asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>
     &nbsp;用户类型：
     <asp:DropDownList ID="ddlUserType" runat="server">
     <asp:ListItem Text="初始会员" Value="0"></asp:ListItem>
@@ -36,7 +36,7 @@
         <asp:BoundField DataField="UserType"  HeaderText="用户类型" />
         <asp:TemplateField HeaderText="操作">
             <ItemTemplate>
-            <asp:LinkButton runat="server" Id="lbtnDelete" CommandName="delete" Text="删除" CommandArgument='<%# Eval("userId") %>' ></asp:LinkButton>
+            <asp:LinkButton runat="server" Id="lbtnDelete" CommandName="del" Text="删除" CommandArgument='<%# Eval("userId") %>' ></asp:LinkButton>
             <asp:LinkButton runat="server" Id="lbtnEdit" CommandName="show" Text="查看" CommandArgument='<%# Eval("userId") %>'></asp:LinkButton>
             <asp:LinkButton runat="server" Id="lbtnLock" CommandName="lock" Text="锁定"  CommandArgument='<%# Eval("userId") %>' Enabled='<%# Eval("status").ToString()=="1" %>'></asp:LinkButton>
             <asp:LinkButton runat="server" Id="lbtnActive" CommandName="active" Text="激活" CommandArgument='<%# Eval("userId") %>' Enabled='<%# Eval("status").ToString()=="2" %>'></asp:LinkButton>
