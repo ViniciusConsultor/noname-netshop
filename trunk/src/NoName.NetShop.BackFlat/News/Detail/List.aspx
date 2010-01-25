@@ -16,7 +16,7 @@
                 <asp:BoundField HeaderText="新闻ID" DataField="newsid" />
                 <asp:TemplateField HeaderText="标题">
                     <ItemTemplate>
-                        <a href=""><%# Eval("title")%></a>
+                        <a href='<%# Eval("fronturl") %>' target="_blank"><%# Eval("title")%></a>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="分类" DataField="catename" />

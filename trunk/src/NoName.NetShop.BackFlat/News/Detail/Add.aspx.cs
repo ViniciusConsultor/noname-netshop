@@ -34,7 +34,8 @@ namespace NoName.NetShop.BackFlat.News.Detail
 
         protected void Button_Submit_Click(object sender, EventArgs e) 
         {
-            int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)NewsCategorySelect1.FindControl("selectedCategory")).Value);
+            bool isEndCate = false;
+            int SelectedParentCategoryID = NewsCategorySelect1.GetSelectedCategoryInfo(out isEndCate);
 
             string strErr = String.Empty;
             if (TextBox_Title.Text == String.Empty)
@@ -49,7 +50,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
             {
                 strErr += "新闻标签不能为空！\\n";
             }
-            if (new NewsCategoryModelBll().GetList(SelectedParentCategoryID).Rows.Count > 0)
+            if (!isEndCate)
             {
                 strErr += "新闻不能添加在非末级分类下！\\n";
             }
@@ -108,10 +109,10 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 {
                     MessageBox.Show(this,"视频上传失败！");
                 }
-            }            
+            }
 
             bll.Add(model);
-            MessageBox.Show(this,"添加成功！");
+            MessageBox.ShowAndRedirect(this, "添加成功！", "List.aspx");
             Response.Redirect(Request.RawUrl);
 
         }
