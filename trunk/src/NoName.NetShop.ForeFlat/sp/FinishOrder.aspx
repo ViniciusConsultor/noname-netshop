@@ -32,7 +32,7 @@
                             </span>
                         </li>
                         <li>
-                        	您现在可以去会员中心<a class="linkButton" href="../member/MyGiftOrders.aspx">【查看订单状态】</a>，可以<a class="linkButton" href="<%=CurrentShopCart.ContinueShopUrl %>">【继续购物】</a>。
+                        	您现在可以去会员中心<a class="linkButton" href="../member/MyOrders.aspx">【查看订单状态】</a>，可以<a class="linkButton" href="<%=CurrentShopCart.ContinueShopUrl %>">【继续购物】</a>。
                         </li>
                     </ul>
                 </div>
