@@ -202,7 +202,7 @@
 
 	<!-- footer start -->
 	<xsl:template name="Footer">
-		<xsl:value-of select="/brandpage/standardheader" disable-output-escaping="yes"/>
+		<xsl:value-of select="/brandpage/standardfooter" disable-output-escaping="yes"/>
 	</xsl:template>
 	<!-- footer end -->
 
