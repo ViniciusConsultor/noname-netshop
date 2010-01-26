@@ -35,20 +35,35 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Demand
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "p")
+            if (e.CommandName.ToLower() == "d")
             {
-                int DemandID = Convert.ToInt32(e.CommandArgument);
-                DemandProductModel m = bll.GetModel(DemandID);
-                m.Status = (int)DemandProductStatus.锁定;
-                bll.Update(m);
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.Delete(ProductID);
+                BindData(AspNetPager.CurrentPageIndex);
+                MessageBox.Show(this, "删除成功！");
+            }
+            if (e.CommandName.ToLower() == "p")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)DemandProductStatus.审核通过);
                 BindData(AspNetPager.CurrentPageIndex);
             }
-            if (e.CommandName == "u")
+            if (e.CommandName.ToLower() == "u")
             {
-                int DemandID = Convert.ToInt32(e.CommandArgument);
-                DemandProductModel m = bll.GetModel(DemandID);
-                m.Status = (int)DemandProductStatus.尚未审核;
-                bll.Update(m);
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)DemandProductStatus.审核未通过);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "f")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)DemandProductStatus.冻结);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "m")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ProductID, (int)DemandProductStatus.审核未通过);
                 BindData(AspNetPager.CurrentPageIndex);
             }
         }
@@ -57,6 +72,24 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Demand
         {
             AspNetPager.CurrentPageIndex = e.NewPageIndex;
             BindData(e.NewPageIndex);
+        }
+
+
+        public bool GetButtonStatus(int Status, string ButtonType)
+        {
+            switch (ButtonType)
+            {
+                case "p":
+                    return (Status == (int)DemandProductStatus.尚未审核 || Status == (int)DemandProductStatus.审核未通过);
+                case "u":
+                    return (Status == (int)DemandProductStatus.尚未审核 || Status == (int)DemandProductStatus.审核通过);
+                case "f":
+                    return Status != (int)DemandProductStatus.冻结;
+                case "m":
+                    return Status == (int)DemandProductStatus.冻结;
+                default:
+                    return false;
+            }
         }
     }
 }

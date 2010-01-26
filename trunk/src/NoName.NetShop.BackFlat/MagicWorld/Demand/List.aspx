@@ -26,8 +26,19 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:LinkButton runat="server" ID="Button_Lock" CommandArgument='<%# Eval("demandid") %>' CommandName="p" Text="锁定" />
-                            <asp:LinkButton runat="server" ID="Button_Unlock" CommandArgument='<%# Eval("demandid") %>' CommandName="u" Text="解锁" />
+                            <asp:LinkButton runat="server" Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"p") %>' ID="Button_Pass" CommandArgument='<%# Eval("demandid") %>' CommandName="p" Text="通过" />
+                            <asp:LinkButton runat="server" Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"u") %>' ID="Button_DePass" CommandArgument='<%# Eval("demandid") %>' CommandName="u" Text="驳回" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"f") %>' ID="Button_Freeze" CommandArgument='<%# Eval("demandid") %>' CommandName="f" Text="冻结" />
+                            <asp:LinkButton runat="server" Enabled='<%# GetButtonStatus(Convert.ToInt32(Eval("status")),"m") %>' ID="Button_DeFreeze" CommandArgument='<%# Eval("demandid") %>' CommandName="m" Text="解冻" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("demandid") %>' CommandName="d" Text="删除" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

@@ -26,7 +26,7 @@
                     <asp:BoundField HeaderText="数量" DataField="Stock" />                
                     <asp:TemplateField  HeaderText="状态">
                         <ItemTemplate>
-                            <%# Enum.GetName(typeof(NoName.NetShop.Secondhand.Model.SecondhandProductStatus), Eval("status"))%>
+                            <%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.SecondhandProductStatus), Eval("status"))%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
