@@ -15,9 +15,9 @@
     	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">影音解决方案</a> &gt;&gt; <a href="#">经典套装</a> &gt;&gt; <a href="#">私人影院</a> &gt;&gt; <a href="#">入门家庭影院</a> &gt;&gt; <a href="#">配置</a>
         <div class="solutionSubNav">
             <div class="solutionButtonTab">
-                <a class="button_blue" href="#">按需制定</a>
-                <a class="button_blue" href="#">推荐套装</a>
-                <a class="button_blue2" href="#">经典套装</a>
+                <a class="button_blue" href="Demand.aspx">按需制定</a>
+                <a class="button_blue" href="SuiteList.aspx">推荐套装</a>
+                <a class="button_blue2" href="Home.aspx">经典套装</a>
             </div>
         </div>
     </div>
