@@ -267,13 +267,13 @@
         <xsl:choose>
             <xsl:when test="imageurl != ''">
                 <li class="widthThumb">
-                    <a href="#">
+                    <a href="/news-{newsid}.html">
                         <img src="{imageurl}" />
                     </a>
                     <div class="text">
                         <div class="textContainer">
                             <h1>
-                                <a href="#">
+                                <a href="/news-{newsid}.html">
                                     <xsl:value-of select="title"/>
                                 </a>
                             </h1>
@@ -281,7 +281,7 @@
                                 <xsl:value-of select="brief"/>
                             </p>
                             <div class="more">
-                                <a href="#">详细 &gt;&gt;</a>
+                                <a href="/news-{newsid}.html">详细 &gt;&gt;</a>
                             </div>
                         </div>
                     </div>
@@ -292,7 +292,7 @@
                     <div class="text">
                         <div class="textContainer">
                             <h1>
-                                <a href="#">
+                                <a href="/news-{newsid}.html">
                                     <xsl:value-of select="title"/>
                                 </a>
                             </h1>
@@ -300,7 +300,7 @@
                                 <xsl:value-of select="brief"/>
                             </p>
                             <div class="more">
-                                <a href="#">详细 &gt;&gt;</a>
+                                <a href="/news-{newsid}.html">详细 &gt;&gt;</a>
                             </div>
                         </div>
                     </div>

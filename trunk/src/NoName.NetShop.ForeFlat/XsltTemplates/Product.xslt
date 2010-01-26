@@ -452,20 +452,18 @@
                 <xsl:for-each select="/productpage/categorypath/category">
                     <xsl:choose>
                         <xsl:when test="count(/productpage/categorypath/category) = position()">
-                            <a href="#">
+                            <a href="/list-{categoryid}.html">
                                 <xsl:value-of select="categoryname"/>
                             </a> &gt;&gt;
                         </xsl:when>
                         <xsl:otherwise>
-                            <a href="#">
+                            <a href="/list-{categoryid}.html">
                                 <xsl:value-of select="categoryname"/>
                             </a> &gt;&gt;
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
-                <a href="#">
                     <xsl:value-of select="$ProductName"/>
-                </a>
             </div>
         </div>
     </xsl:template>
@@ -533,7 +531,7 @@
                         </div>
                     </li>
                     <li class="buttons">
-                        <a class="purchase" href="#">
+                        <a class="purchase" href="/sp/addtocart.aspx?pid={productid}">
                             <xsl:text> </xsl:text>
                         </a>
                         <a class="addToFavorite" href="#">
