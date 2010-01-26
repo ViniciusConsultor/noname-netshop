@@ -61,7 +61,8 @@ namespace NoName.NetShop.ForeFlat.Solution
             DataTable dt = bll.GetList(SuiteID);
             string productIDs = String.Empty;
             foreach (DataRow row in dt.Rows) productIDs += row["productid"].ToString() + ",";
-            Response.Redirect("/sp/AddToCart.aspx?pid=" + productIDs);
+
+            Response.Redirect("/sp/AddToCart.aspx?pid=" + productIDs.Substring(0, productIDs.Length - 1));
         }
     }
 }
