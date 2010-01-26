@@ -84,12 +84,14 @@ namespace NoName.NetShop.ForeFlat.Controls
         protected void ListBox1_SelectChanged(object sender, EventArgs e)
         {
             int CategoryID = Convert.ToInt32(ListBox1.SelectedValue);
+            SelectedCategoryID = CategoryID;
             BindCategory(CategoryID, 2, null);
         }
 
         protected void ListBox2_SelectChanged(object sender, EventArgs e)
         {
             int CategoryID = Convert.ToInt32(ListBox2.SelectedValue);
+            SelectedCategoryID = CategoryID;
             BindCategory(CategoryID, 3, null);
         }
 
