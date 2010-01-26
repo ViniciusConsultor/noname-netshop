@@ -24,7 +24,7 @@
     }
 
     function showNextRegion(curIndex) {
-        debugger;
+        //debugger;
         $("#regionerr").hide();
         if (curIndex == undefined) {
             curIndex = -1;
