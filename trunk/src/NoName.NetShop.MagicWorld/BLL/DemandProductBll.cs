@@ -30,6 +30,11 @@ namespace NoName.NetShop.MagicWorld.BLL
             dal.Delete(DemandID);
         }
 
+        public void UpdateStatus(int DemandID, int Status)
+        {
+            dal.UpdateStatus(DemandID, Status); 
+        }
+
         public DemandProductModel GetModel(int DemandID)
         {
             return dal.GetModel(DemandID);
