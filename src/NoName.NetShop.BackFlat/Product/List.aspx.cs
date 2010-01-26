@@ -104,19 +104,6 @@ namespace NoName.NetShop.BackFlat.Product
         {
             //构建搜索条件
             
-            if (CheckBox1.Checked)
-            {
-                int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)CategorySelect1.FindControl("selectedCategory")).Value);
-                if (SelectedParentCategoryID != 0)
-                {
-                    SearchCondition += " and cateid = "+SelectedParentCategoryID;
-                }
-                else
-                {
-                    MessageBox.Show(this,"请选择分类");
-                    return;
-                }
-            }
             if (CheckBox2.Checked)
             {
                 if (!String.IsNullOrEmpty(TextBox1.Text) && PageValidate.IsNumber(TextBox1.Text))

@@ -189,7 +189,7 @@ namespace NoName.NetShop.BackFlat.Product
                     }
                 }
 
-                MessageBox.ShowAndRedirect(this, "添加成功！", "List.aspx");
+                Response.Redirect("List.aspx");
             }
             else
             {
