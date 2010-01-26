@@ -29,16 +29,6 @@ namespace NoName.NetShop.BackFlat.Brand
         }
 
 
-        //private void BindDropDownList()
-        //{
-        //    CategoryModelBll CategoryBll = new CategoryModelBll();
-
-        //    drpCategory.DataSource = CategoryBll.GetList("CateLevel = 1");
-        //    drpCategory.DataTextField = "catename";
-        //    drpCategory.DataValueField = "cateid";
-        //    drpCategory.DataBind();
-        //}
-
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
@@ -73,24 +63,20 @@ namespace NoName.NetShop.BackFlat.Brand
 
             model.BrandId = CommDataHelper.GetNewSerialNum("pd");
             model.BrandName = txtBrandName.Text;
-            model.CateId = 0;
-            model.CatePath = String.Empty;
             model.BrandLogo = UploadBrandLogo(model.BrandId, fulBrandLogo);
             model.Brief = txtBrief.Text;
             model.ShowOrder = model.BrandId;
 
             bll.Add(model);
-            MessageBox.ShowAndRedirect(this, "Ìí¼Ó³É¹¦£¡", "List.aspx");
+            Response.Redirect("List.aspx");
         }
 
         private string UploadBrandLogo(int BrandID,FileUpload fu)
         {
-            string path = Server.MapPath(ConfigurationManager.AppSettings["brandLogoPath"]);
-            string FileName = String.Format("logo-{0}{1}", BrandID, Path.GetExtension(fu.FileName));
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            string ImageUrl, ImageShortUrl, Message;
+            CommonImageUpload.Upload(fu, out ImageUrl, out ImageShortUrl, out Message);
 
-            fu.SaveAs(path + FileName);
-            return FileName;
+            return ImageShortUrl;
         }
 
     }

@@ -16,12 +16,6 @@
 	        </td>
 	    </tr>
 	    <tr>
-	        <td>分类：</td>
-	        <td>
-		        <asp:DropDownList runat="server" ID="drpCategory"></asp:DropDownList>
-	        </td>
-	    </tr>
-	    <tr>
 	        <td>品牌LOGO：</td>
 	        <td>
 	            <asp:Image runat="server" ID="imgBrandLogo" />
