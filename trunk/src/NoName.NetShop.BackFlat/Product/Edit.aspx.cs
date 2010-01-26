@@ -222,7 +222,7 @@ namespace NoName.NetShop.BackFlat.Product
 
             bll.Update(product);
 
-            MessageBox.ShowAndRedirect(this,"更改成功","List.aspx");
+            Response.Redirect("List.aspx");
         }
     }
 }

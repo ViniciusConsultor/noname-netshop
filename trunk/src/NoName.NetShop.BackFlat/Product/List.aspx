@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="NoName.NetShop.BackFlat.Product.List" %>
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
-<%@ Register src="../Controls/CategorySelect.ascx" tagname="CategorySelect" tagprefix="uc1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,27 +14,14 @@
     <script src="/js/validate.js" type="text/javascript"></script>
     
     <script type="text/javascript">
-        var categoryInfo = [{ "name": "category1", "title": "请选择", "required": "true" },
-        { "name": "category2", "title": "请选择", "required": "true" },
-        { "name": "category3", "title": "请选择", "required": "false"}];
-                            
-        function SelectAll(tempControl) {
-            var theBox = tempControl;
-            xState = theBox.checked;
-
-            elem = document.getElementById('<%= GridView1.ClientID %>').elements;
-            for (i = 0; i < elem.length; i++)
-                if (elem[i].type == "checkbox" && elem[i].id != theBox.id)
-                if (elem[i].checked != xState) elem[i].click();
-        }
-
         $(function() {
-            $('#select-all').change(function() {
+            $('#select-all').click(function() {
                 var checked = $(this).attr('checked');
                 $('#<%= GridView1.ClientID %>').find('input[type=checkbox]').each(function() {
                     $(this).attr('checked', checked);
                 });
             });
+
             $('#<%=TextBox3.ClientID %>').datepicker();
             $('#<%=TextBox4.ClientID %>').datepicker();
         });
@@ -44,14 +30,6 @@
             debugger;
             var result = false;
             var errorMessage = '';
-            if ($('#<%= CheckBox1.ClientID %>').attr('checked')) {
-                if ($('#CategorySelect1_selectedCategory').val() != 0) {
-                    result = true;
-                }
-                else {
-                    errorMessage = '请选择分类\n';
-                }
-            }
             if ($('#<%= CheckBox2.ClientID %>').attr('checked')) {
                 if ($('#<%=TextBox1.ClientID %>').val() != '' && $('#<%=TextBox1.ClientID %>').val().isNumber())
                     result = true;
@@ -89,12 +67,6 @@
     <form id="form1" runat="server">
         <div id="search-panel">
             <table>
-                <tr>
-                    <td colspan="2">
-                        <asp:CheckBox ID="CheckBox1" runat="server" Text="按商品分类" />
-                        <uc1:CategorySelect ID="CategorySelect1" runat="server" />
-                    </td>
-                </tr>
                 <tr>
                     <td>
                         <asp:CheckBox ID="CheckBox2" runat="server" Text="按商品ID" />
