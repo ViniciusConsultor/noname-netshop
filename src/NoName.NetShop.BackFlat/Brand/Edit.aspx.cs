@@ -9,6 +9,7 @@ using NoName.NetShop.Product.Model;
 using System.Configuration;
 using System.IO;
 using NoName.Utility;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.BackFlat.Brand
 {
@@ -27,7 +28,6 @@ namespace NoName.NetShop.BackFlat.Brand
             if (!IsPostBack)
             {
                 BindData();
-                BindDropDownList();
             }
         }
 
@@ -38,20 +38,9 @@ namespace NoName.NetShop.BackFlat.Brand
             if (brand != null)
             {
                 txtBrandName.Text=brand.BrandName;
-                drpCategory.SelectedValue = brand.CateId.ToString();
-                imgBrandLogo.ImageUrl = brand.BrandLogo;
+                imgBrandLogo.ImageUrl = CommonImageUpload.GetCommonImageFullUrl(brand.BrandLogo);
                 txtBrief.Text = brand.Brief;
             }
-        }
-
-        private void BindDropDownList()
-        {
-            CategoryModelBll CategoryBll = new CategoryModelBll();
-
-            drpCategory.DataSource = CategoryBll.GetList("CateLevel = 1");
-            drpCategory.DataTextField = "catename";
-            drpCategory.DataValueField = "cateid";
-            drpCategory.DataBind();
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
@@ -78,11 +67,8 @@ namespace NoName.NetShop.BackFlat.Brand
             }
 
             BrandModel brand = bll.GetModel(BrandID);
-            CategoryModel cate = new CategoryModelBll().GetModel(Convert.ToInt32(drpCategory.SelectedValue));
 
             brand.BrandName = txtBrandName.Text;
-            brand.CateId = cate.CateId;
-            brand.CatePath = cate.CatePath;
             brand.Brief = txtBrief.Text;
 
             if (fulBrandLogo.FileName != String.Empty)
@@ -91,18 +77,16 @@ namespace NoName.NetShop.BackFlat.Brand
             }
 
             bll.Update(brand);
-            MessageBox.ShowAndRedirect(this, "修改成功！", "List.aspx");
+            Response.Redirect("List.aspx");
         }
 
 
         private string UploadBrandLogo(int BrandID, FileUpload fu)
         {
-            string path = Server.MapPath(ConfigurationManager.AppSettings["brandLogoPath"]);
-            string FileName = String.Format("logo-{0}{1}", BrandID, Path.GetExtension(fu.FileName));
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            string ImageUrl, ImageShortUrl, Message;
+            CommonImageUpload.Upload(fu, out ImageUrl, out ImageShortUrl, out Message);
 
-            fu.SaveAs(path + FileName);
-            return FileName;
+            return ImageShortUrl;
         }
     }
 }
