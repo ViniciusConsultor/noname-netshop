@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NoName.NetShop.Common;
+using System.Data;
 
 namespace NoName.NetShop.Comment
 {
@@ -61,6 +62,11 @@ namespace NoName.NetShop.Comment
         {
             string strWhere = "conentId=" + contentId + " and contentType " + (int)contentType;
             return dal.GetListArray(top, strWhere);
+        }
+
+        public DataTable GetList(int PageIndex, int PageSize, int TargetID, ContentType contentType, out int RecordCount)
+        {
+            return dal.GetList(PageIndex, PageSize, TargetID, contentType, out RecordCount);
         }
 		#endregion  成员方法
 

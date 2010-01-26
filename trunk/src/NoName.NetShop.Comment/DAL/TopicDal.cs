@@ -93,6 +93,20 @@ namespace NoName.NetShop.Comment
             return list;
 		}
 
+        public DataTable GetList(int PageIndex,int PageSize,int TargetID,ContentType contentType,out int RecordCount)
+        {
+            int PageLowerBound = PageSize * (PageIndex - 1);
+            int PageUpperBound = PageLowerBound + PageSize;
+
+            string sqlCount = @"select count(0) from [qaTopic] where contentid={0} and contenttype={1}";
+            string sqlData = @"select * from 
+                                (select row_number() over(order by topicid desc) as nid,* from [qaTopic] where contentid={0} and contenttype={1}) as sp
+                               where nid>{2} and nid<={3}";
+
+            RecordCount = Convert.ToInt32(CommDataAccess.DbReader.ExecuteScalar(CommandType.Text,String.Format(sqlCount,TargetID,(int)contentType)));
+            return CommDataAccess.DbReader.ExecuteDataSet(CommandType.Text, String.Format(sqlData, TargetID, (int)contentType, PageLowerBound, PageUpperBound)).Tables[0]; 
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据
