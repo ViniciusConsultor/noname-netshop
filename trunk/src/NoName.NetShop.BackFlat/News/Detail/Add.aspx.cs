@@ -112,9 +112,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
             }
 
             bll.Add(model);
-            MessageBox.ShowAndRedirect(this, "添加成功！", "List.aspx");
-            Response.Redirect(Request.RawUrl);
-
+            Response.Redirect("List.aspx");
         }
     }
 }

@@ -52,6 +52,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 TextBox_Tags.Text = model.Tags;
                 TextBox_Brief.Text = model.Brief;
                 TextBox_Content.Text = model.Content;
+                Image_NewsImage.ImageUrl = NewsImageRule.GetImageUrl(model.ImageUrl);
             }
             else
             {
@@ -137,7 +138,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
             }
 
             bll.Update(model);
-            MessageBox.ShowAndRedirect(this, "更新成功！", "List.aspx");
+            Response.Redirect("List.aspx");
         }
     }
 }
