@@ -55,7 +55,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             TextBox_CellPhone.Text = model.CellPhone;
             TextBox_PostCode.Text = model.PostCode;
             TextBox_Address.Text = model.Address;
-            ucRegion.PresetRegionInfo(RegionInfo.GetRegionPathByName(model.Region.Split(' ')[model.Region.Split(' ').Length]));
+            ucRegion.PresetRegionInfo(RegionInfo.GetRegionPathByName(model.Region.Split(' ')[model.Region.Split(' ').Length-1]));
         }
 
 
