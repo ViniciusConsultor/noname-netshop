@@ -142,6 +142,6 @@ namespace NoName.NetShop.MagicWorld.Model
         尚未审核 = 1,
         审核通过 = 2,
         审核未通过 = 3,
-        锁定 = 4,
+        冻结 = 4,
     }
 }

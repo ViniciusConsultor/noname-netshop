@@ -80,6 +80,12 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.ExecuteNonQuery(CommandType.Text, sql);
         }
 
+        public void UpdateStatus(int DemandID, int Status)
+        {
+            string sql = "update mwdemand set status = " + Status + " where demandid=" + DemandID;
+            dbw.ExecuteNonQuery(CommandType.Text,sql);
+        }
+
 
         public DemandProductModel GetModel(int DemandID)
         {
