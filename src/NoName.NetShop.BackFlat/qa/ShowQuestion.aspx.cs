@@ -60,6 +60,7 @@ namespace NoName.NetShop.BackFlat.qa
             if (this.lblAnswerId.Text == "")
             {
                 amodel = new AnswerModel();
+                amodel.QuestionId = int.Parse(this.lblQuestionId.Text);
             }
             else
             {
