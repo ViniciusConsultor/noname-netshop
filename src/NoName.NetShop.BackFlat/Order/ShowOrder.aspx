@@ -102,8 +102,6 @@
 <tr>
 <td colspan="4">
 <asp:TextBox ID="txtActionRemark" runat="server" MaxLength="100"></asp:TextBox>
-<asp:RequiredFieldValidator runat="server" ID="rfvActionRemark" ControlToValidate="txtActionRemark"
- Display="Dynamic" ErrorMessage="请填写操作备注" EnableClientScript="true"></asp:RequiredFieldValidator>  
 <asp:Button runat="server" ID="btnSend" onclick="btnSend_Click" Text="发货"  />
 <asp:Button runat="server" ID="btnClose" onclick="btnClose_Click" Text="关闭订单"   />
 <asp:Button runat="server" ID="btnPrepareGoods" onclick="btnPrepareGoods_Click" Text="开始备货"   />

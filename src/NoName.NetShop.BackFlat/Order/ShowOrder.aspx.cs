@@ -92,11 +92,12 @@ namespace NoName.NetShop.BackFlat.Order
             btnFinish.Visible = false;
             btnPaySucc.Visible = false;
             btnRefund.Visible = false;
+            txtActionRemark.Visible = false;
 
             if (order.OrderStatus == OrderStatus.交易关闭 || order.OrderStatus == OrderStatus.交易失败
                 || order.OrderStatus == OrderStatus.交易完成)
             {
-                txtActionRemark.Visible = false;
+                return;
             }
 
             if (order.PayMethod == PayMethType.货到付款)
@@ -105,20 +106,24 @@ namespace NoName.NetShop.BackFlat.Order
                 {
                     btnPrepareGoods.Visible = true;
                     btnClose.Visible = true;
+                    txtActionRemark.Visible = true;
                 }
                 else if (order.OrderStatus == OrderStatus.备货中)
                 {
                     btnSend.Visible = true;
                     btnClose.Visible = true;
+                    txtActionRemark.Visible = true;
                 }
                 else if (order.OrderStatus == OrderStatus.已发货)
                 {
                     btnCherrys.Visible = true;
                     btnFail.Visible = true;
+                    txtActionRemark.Visible = true;
                 }
                 else if (order.OrderStatus == OrderStatus.物流到货)
                 {
                     btnFinish.Visible = true;
+                    txtActionRemark.Visible = true;
                 }
             }
 
@@ -130,6 +135,7 @@ namespace NoName.NetShop.BackFlat.Order
                    { 
                        btnClose.Visible = true;
                        btnPaySucc.Visible = true;
+                       txtActionRemark.Visible = true;
                    }
                 }
                 else if (order.PayStatus == PayStatus.支付成功)
@@ -138,30 +144,45 @@ namespace NoName.NetShop.BackFlat.Order
                     {
                         btnRefund.Visible = true;
                         btnPrepareGoods.Visible = true;
+                        txtActionRemark.Visible = true;
+                    }
+                    else if (order.OrderStatus == OrderStatus.备货中)
+                    {
+                        btnRefund.Visible = true;
+                        btnSend.Visible = true;
+                        txtActionRemark.Visible = true;
                     }
                     else if (order.OrderStatus == OrderStatus.已发货)
                     {
-                        btnRefund.Visible = true;
                         btnCherrys.Visible = true;
+                        txtActionRemark.Visible = true;
                     }
                     else if (order.OrderStatus == OrderStatus.物流到货 || order.OrderStatus == OrderStatus.买家确认)
                     {
                         btnFinish.Visible = true;
+                        txtActionRemark.Visible = true;
                     }
                 }
                 else if (order.PayStatus == PayStatus.退款申请中)
                 {
                     btnRefund.Visible = true;
+                    txtActionRemark.Visible = true;
                 }
                 else if (order.PayStatus == PayStatus.退款完成)
                 {
                     btnFail.Visible = true;
+                    txtActionRemark.Visible = true;
                 }
             }
 
             if (order.PayMethod == PayMethType.在线支付)
             {
-                if (order.PayStatus == PayStatus.支付成功)
+                if (order.PayStatus == PayStatus.等待付款)
+                {
+                    txtActionRemark.Visible = true;
+                    btnClose.Visible = true;
+                }
+                else if (order.PayStatus == PayStatus.支付成功)
                 {
                     btnRefund.Visible = true;
 
@@ -169,27 +190,46 @@ namespace NoName.NetShop.BackFlat.Order
                     {
                         btnRefund.Visible = true;
                         btnPrepareGoods.Visible = true;
+                        txtActionRemark.Visible = true;
+                        btnClose.Visible = true;
+                    }
+                    else if (order.OrderStatus == OrderStatus.备货中)
+                    {
+                        btnSend.Visible = true;
+                        txtActionRemark.Visible = true;
+                        if (order.PayStatus == PayStatus.退款申请中)
+                        {
+                            btnRefund.Visible = true;
+                        }
                     }
                     else if (order.OrderStatus == OrderStatus.已发货)
                     {
-                        btnRefund.Visible = true;
+                        if (order.PayStatus == PayStatus.退款申请中)
+                        {
+                            btnRefund.Visible = true;
+                        } 
                         btnCherrys.Visible = true;
+                        txtActionRemark.Visible = true;
                     }
                     else if (order.OrderStatus == OrderStatus.物流到货)
                     {
                         btnFinish.Visible = true;
+                        txtActionRemark.Visible = true;
                     }
                     else if (order.OrderStatus == OrderStatus.买家确认)
                     {
                         btnFinish.Visible = true;
+                        txtActionRemark.Visible = true;
                     }
                 }
                 else if (order.PayStatus == PayStatus.退款申请中)
                 {
+                    txtActionRemark.Visible = true;
                     btnRefund.Visible = true;
                 }
                 else if (order.PayStatus == PayStatus.退款完成)
                 {
+                    txtActionRemark.Visible = true;
                     btnFail.Visible = true;
                 }
             }

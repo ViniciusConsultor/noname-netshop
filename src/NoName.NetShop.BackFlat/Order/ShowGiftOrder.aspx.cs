@@ -63,26 +63,30 @@ namespace NoName.NetShop.BackFlat.Order
             btnFail.Visible = false;
             btnSend.Visible = false;
             btnFinish.Visible = false;
+            txtActionRemark.Visible = false;
 
-            if (order.OrderStatus == OrderStatus.交易完成 || order.OrderStatus == OrderStatus.交易失败)
-            {
-                txtActionRemark.Visible = false;
-            }
+            //if (order.OrderStatus == OrderStatus.交易完成 || order.OrderStatus == OrderStatus.交易失败)
+            //{
+            //    txtActionRemark.Visible = false;
+            //}
 
             if (order.OrderStatus == OrderStatus.已创建)
             {
                 btnFail.Visible = true;
                 btnPrepareGoods.Visible = true;
+                txtActionRemark.Visible = true;
             }
             else if (order.OrderStatus == OrderStatus.备货中)
             {
                 btnFail.Visible = true;
                 btnSend.Visible = true;
+                txtActionRemark.Visible = true;
             }
             else if (order.OrderStatus == OrderStatus.已发货)
             {
                 btnFail.Visible = true;
                 btnFinish.Visible = true;
+                txtActionRemark.Visible = true;
             }
         }
 
@@ -101,11 +105,11 @@ namespace NoName.NetShop.BackFlat.Order
                 obll.ChangeOrderStatus(order.OrderId, OrderStatus.已发货);
                 lbll.Add(order.OrderId, txtActionRemark.Text.Trim(), OrderStatus.已发货.ToString(),
                     Context.User.Identity.Name);
-                ShowOrderInfo(lblOrderId.Text);
             }
+            ShowOrderInfo(lblOrderId.Text);
 
         }
- 
+
         /// <summary>
         /// 置为备货状态，前置条件为：订单为初始创建
         /// </summary>
@@ -113,16 +117,16 @@ namespace NoName.NetShop.BackFlat.Order
         /// <param name="e"></param>
         protected void btnPrepareGoods_Click(object sender, EventArgs e)
         {
-            CommOrderBll obll = new CommOrderBll();
+            GiftOrderBll obll = new GiftOrderBll();
             OrderChangeLogBll lbll = new OrderChangeLogBll();
-            CommOrderModel order = obll.GetModel(lblOrderId.Text);
+            GiftOrderModel order = obll.GetModel(lblOrderId.Text);
             if (order != null && order.OrderStatus == OrderStatus.已创建)
             {
                 obll.ChangeOrderStatus(order.OrderId, OrderStatus.备货中);
                 lbll.Add(order.OrderId, txtActionRemark.Text.Trim(), OrderStatus.备货中.ToString(),
                     Context.User.Identity.Name);
-                ShowOrderInfo(lblOrderId.Text);
             }
+            ShowOrderInfo(lblOrderId.Text);
         }
 
         /// <summary>
@@ -132,21 +136,21 @@ namespace NoName.NetShop.BackFlat.Order
         /// <param name="e"></param>
         protected void btnFail_Click(object sender, EventArgs e)
         {
-            CommOrderBll obll = new CommOrderBll();
+            GiftOrderBll obll = new GiftOrderBll();
             OrderChangeLogBll lbll = new OrderChangeLogBll();
-            CommOrderModel order = obll.GetModel(lblOrderId.Text);
-            if (order != null && 
-                (order.OrderStatus== OrderStatus.已创建 || order.OrderStatus== OrderStatus.备货中 
-                || order.OrderStatus== OrderStatus.已发货))
+            GiftOrderModel order = obll.GetModel(lblOrderId.Text);
+            if (order != null &&
+                (order.OrderStatus == OrderStatus.已创建 || order.OrderStatus == OrderStatus.备货中
+                || order.OrderStatus == OrderStatus.已发货))
             {
                 obll.ChangeOrderStatus(order.OrderId, OrderStatus.交易失败);
                 lbll.Add(order.OrderId, txtActionRemark.Text.Trim(), OrderStatus.交易失败.ToString(),
                     Context.User.Identity.Name);
-                ShowOrderInfo(lblOrderId.Text);
             }
+            ShowOrderInfo(lblOrderId.Text);
         }
 
- 
+
         /// <summary>
         /// 置为订单完成，前置条件：物流已到货，且支付成功
         /// </summary>
@@ -154,16 +158,16 @@ namespace NoName.NetShop.BackFlat.Order
         /// <param name="e"></param>
         protected void btnFinish_Click(object sender, EventArgs e)
         {
-            CommOrderBll obll = new CommOrderBll();
+            GiftOrderBll obll = new GiftOrderBll();
             OrderChangeLogBll lbll = new OrderChangeLogBll();
-            CommOrderModel order = obll.GetModel(lblOrderId.Text);
+            GiftOrderModel order = obll.GetModel(lblOrderId.Text);
             if (order != null && order.OrderStatus == OrderStatus.已发货)
             {
                 obll.ChangeOrderStatus(order.OrderId, OrderStatus.交易完成);
                 lbll.Add(order.OrderId, txtActionRemark.Text.Trim(), OrderStatus.交易完成.ToString(),
                     Context.User.Identity.Name);
-                ShowOrderInfo(lblOrderId.Text);
             }
+            ShowOrderInfo(lblOrderId.Text);
         }
 
     }
