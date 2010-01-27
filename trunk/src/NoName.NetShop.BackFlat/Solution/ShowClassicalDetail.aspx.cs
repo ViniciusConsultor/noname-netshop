@@ -171,6 +171,7 @@ namespace NoName.NetShop.BackFlat.Solution
             {
                 scmodel.CateImage = shorturl;
             }
+
             scbll.Save(scmodel);
 
             SaveCateConditions();
