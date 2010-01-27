@@ -23,7 +23,7 @@ namespace NoName.NetShop.Common
             ImageShortUrl = String.Empty;
             Message = String.Empty;
 
-            if (!String.IsNullOrEmpty(control.FileName))
+            if (control.HasFile)
             {
                 //用日期作为分割子文件夹的依据，防止文件在同一个文件夹下堆积过多导致IO效率降低
                 string RelativePath = DateTime.Today.ToString("yyyy-MM") + "\\";
