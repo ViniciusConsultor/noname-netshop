@@ -11,8 +11,9 @@
     <div>
        <div id="data-list">
         <div>
-        问题ID：<asp:TextBox runat="server" ID="txtUserId"></asp:TextBox>
-        &nbsp; 
+        发起人ID：<asp:TextBox runat="server" ID="txtUserId"></asp:TextBox>
+        问题ID：<asp:TextBox runat="server" ID="txtTopicId"></asp:TextBox>
+       &nbsp; 
         <asp:Button runat="server" Text="· 查询 ·" ID="btnSearch"
          onclick="btnSearch_Click" />&nbsp; &nbsp; 
         </div>

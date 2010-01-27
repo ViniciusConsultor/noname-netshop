@@ -64,11 +64,22 @@ namespace NoName.NetShop.BackFlat.qa
             string where = "";
 
             string userId = NoName.Utility.input.Filter(txtUserId.Text.Trim());
-            if (userId != "")
+            if (!String.IsNullOrEmpty(userId))
             {
                 if (!String.IsNullOrEmpty(where))
                     where += " and ";
                 where += "userId='" + userId + "'";
+            }
+            int topicId;
+            if (!int.TryParse(txtTopicId.Text, out topicId))
+            {
+                topicId = 0;
+            }
+            if (topicId != 0)
+            {
+                if (!String.IsNullOrEmpty(where))
+                    where += " and ";
+                where += "topicId=" + topicId;
             }
             SearPageInfo.StrWhere = where;
             SearPageInfo.PageIndex = 1;
