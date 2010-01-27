@@ -126,7 +126,7 @@ namespace NoName.NetShop.BackFlat.Gift
                 if (!String.IsNullOrEmpty(model.SmallImage))
                 {
                     this.imgProduct.Visible = true;
-                    this.imgProduct.ImageUrl = Common.CommonImageUpload.GetCommonImageFullUrl(model.SmallImage);
+                    this.imgProduct.ImageUrl = ProductMainImageRule.GetMainImageUrl(model.SmallImage);
                 }
                 else
                 {

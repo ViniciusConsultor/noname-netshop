@@ -1,10 +1,31 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ShowGiftProduct.aspx.cs" Inherits="NoName.NetShop.BackFlat.Gift.ShowGiftProduct" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" validateRequest="false" CodeBehind="ShowGiftProduct.aspx.cs" Inherits="NoName.NetShop.BackFlat.Gift.ShowGiftProduct" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/validate.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
+    <script type="text/javascript">
+    $(function() {
+    CKEDITOR.replace('<%= txtDecription.ClientID %>', {
+            height: '400px',
+            width: '700px'
+        });
+    });
+    </script>
+    <style type="text/css">
+        table.parameter{border:0;}
+        table.parameter td,th{border:0;}
+        table.parameter table{width:550px;border:0;}
+        table.parameter table tr{width:100px;border:0;display:block;float:left;}
+        table.parameter table td{width:100px;border:0;display:block;float:left;}
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -87,7 +108,7 @@
 		商品描述
 	：</td>
 	<td height="25" width="*" align="left">
-		<asp:TextBox id="txtDecription" runat="server" Width="200px"></asp:TextBox>
+		<asp:TextBox id="txtDecription" runat="server" Width="200px" TextMode="MultiLine"></asp:TextBox>
 	</td>
 	</tr>
 	<tr>
