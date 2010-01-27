@@ -55,7 +55,7 @@
 		固定电话
 	：</td>
 	<td height="25" width="*" align="left">
-		<asp:TextBox id="txtTelePhone" runat="server" Width="200px"></asp:TextBox>
+		<asp:TextBox id="txtTelePhone" runat="server" Width="200px" ></asp:TextBox>
 	</td></tr>
 	<tr>
 	<td height="25" width="30%" align="right">

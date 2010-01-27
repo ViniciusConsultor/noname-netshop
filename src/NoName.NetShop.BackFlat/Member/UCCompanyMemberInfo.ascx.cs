@@ -40,5 +40,6 @@ namespace NoName.NetShop.BackFlat.Member
                 }
             }
         }
+
     }
 }
