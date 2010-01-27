@@ -23,7 +23,7 @@
                 	<div class="groupTitle">我的个人信息</div>
                     <ul class="articleList_1 bullet_2">
                         <li>
-                            <a href="#">个人资料</a>
+                            <a href="/member/MyProfile.aspx">个人资料</a>
                         </li>
                         <li>
                             <a href="/member/ModifyPwd.aspx">修改密码</a>
