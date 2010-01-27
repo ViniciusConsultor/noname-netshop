@@ -22,7 +22,7 @@ namespace NoName.NetShop.ForeFlat.member
         private void ShowOrderInfo(string orderId)
         {
             NoName.NetShop.ShopFlow.CommOrderBll bll = new NoName.NetShop.ShopFlow.CommOrderBll();
-            CommOrderModel order = bll.GetModel(orderId,CurrentUser.UserId);
+            CommOrderModel order = bll.GetModel(orderId, CurrentUser.UserId);
             if (order != null)
             {
                 gvProducts.DataSource = bll.GetOrderItems(orderId);
@@ -87,7 +87,7 @@ namespace NoName.NetShop.ForeFlat.member
             btnAskRefund.Visible = false;
             btnCherrys.Visible = false;
             btnGoPay.Visible = false;
-txtActionRemark.Visible = false;
+            txtActionRemark.Visible = false;
 
             if ((order.OrderStatus == OrderStatus.交易关闭 || order.OrderStatus == OrderStatus.交易失败
                 || order.OrderStatus == OrderStatus.交易完成)
@@ -151,7 +151,7 @@ txtActionRemark.Visible = false;
             }
         }
 
- 
+
         /// <summary>
         /// 置为退款完成，前置条件：退款申请中订单，不包括货到付款订单
         /// 如果是线上支付订单，需要调用接口完成退款操作（目前暂无接口）
