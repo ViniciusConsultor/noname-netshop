@@ -118,7 +118,7 @@ namespace NoName.NetShop.ShopFlow
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             StringBuilder strSql = new StringBuilder();
 
-            strSql.Append("update spGiftOrder set changetime=getdate(),status=@ostatus from spGiftOrder ");
+            strSql.Append("update spGiftOrder set changetime=getdate(),orderStatus=@ostatus from spGiftOrder ");
             strSql.Append(" where OrderId=@OrderId ");
 
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
