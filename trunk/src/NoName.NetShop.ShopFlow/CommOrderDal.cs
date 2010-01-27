@@ -76,7 +76,7 @@ namespace NoName.NetShop.ShopFlow
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             StringBuilder strSql = new StringBuilder();
 
-            strSql.Append("update spOrder set changetime=getdate(),orderstatus=@ostatus from spOrder ");
+            strSql.Append("update spOrder set changetime=getdate(),paystatus=@pstatus from spOrder ");
             if (pstatus == PayStatus.支付成功)
             {
                 strSql.Append("update spOrder set changetime=getdate(),paytime=getdate(),paystatus=@pstatus from spOrder ");
