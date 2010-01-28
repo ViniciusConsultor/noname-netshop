@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.Product.BLL;
 using NoName.Utility;
+using System.Data;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.BackFlat.Brand
 {
@@ -24,7 +26,11 @@ namespace NoName.NetShop.BackFlat.Brand
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(PageIndex,AspNetPager.PageSize, "",out RecordCount);
+            DataTable dt = bll.GetList(PageIndex,AspNetPager.PageSize, "",out RecordCount).Tables[0];
+
+            foreach (DataRow row in dt.Rows) row["brandlogo"] = CommonImageUpload.GetCommonImageFullUrl(row["brandlogo"].ToString());
+
+            GridView1.DataSource = dt;
             GridView1.DataBind();
             AspNetPager.RecordCount = RecordCount;
         }
