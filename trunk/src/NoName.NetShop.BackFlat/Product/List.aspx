@@ -36,14 +36,13 @@
                 else
                     errorMessage = '请输入产品ID\n';
             }
-            if ($('#<%= CheckBox3.ClientID %>').attr('checked')) {
+            if ($('#<%= CheckBox4.ClientID %>').attr('checked')) {
                 if ($('#<%=TextBox2.ClientID %>').val() != '')
                     result = true;
                 else
                     errorMessage = '请输入产品名称\n';
-            
-            }
 
+            }
             if ($('#<%= CheckBox5.ClientID %>').attr('checked')) {
                 if ($('#<%=TextBox3.ClientID %>').val() != '' || $('#<%=TextBox4.ClientID %>').val() != '')
                     result = true;
@@ -52,7 +51,7 @@
             }
 
             if (errorMessage != '') alert(errorMessage);
-//            if (!result) alert('请至少选择一个搜索条件');
+            if (!result) alert('请至少选择一个搜索条件');
             
             return result;
         }
@@ -90,7 +89,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><asp:Button runat="server" ID="ButtonSearch" OnClientClick="return validate()" OnClick="ButtonSearch_Click" Text="搜索" /></td>
+                    <td colspan="2"><asp:Button runat="server" ID="ButtonSearch" OnClientClick="return validate();" OnClick="ButtonSearch_Click" Text="搜索" /></td>
                 </tr>
             </table>
             <hr />
@@ -101,15 +100,19 @@
     	    </div>
         </div>
         <div id="data-list">
-            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
+            <asp:GridView runat="server" CssClass="GridView" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
     	                    <asp:CheckBox id="chkItem" runat="server"></asp:CheckBox>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="productid" HeaderText="产品ID" />            
-                    <asp:BoundField DataField="productname" HeaderText="产品名称" />
+                    <asp:BoundField DataField="productid" HeaderText="产品ID" />          
+                    <asp:TemplateField HeaderText="产品名称">
+                        <ItemTemplate>
+                            <a href='Eval("producturl")'><%# Eval("productname")%></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
                             <%# Enum.GetName(typeof(NoName.NetShop.Product.Model.ProductStatus),Convert.ToInt32(Eval("status"))) %>
@@ -117,11 +120,11 @@
                     </asp:TemplateField>
                     <asp:BoundField DataField="merchantprice" HeaderText="销售价格" />            
                     <asp:BoundField DataField="changetime" HeaderText="更新日期" />
-                    <asp:TemplateField HeaderText="">
+                    <%--<asp:TemplateField HeaderText="">
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkMultiImage" Text="添加多图" NavigateUrl='<%# "multiimage.aspx?productid="+Eval("ProductID") %>' />
                         </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>--%>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkEdit" Text="修改" NavigateUrl='<%# "Edit.aspx?productid="+Eval("ProductID") %>' />

@@ -9,6 +9,7 @@ using NoName.NetShop.Product.BLL;
 using System.Data;
 using NoName.NetShop.Product.Model;
 using System.Web.UI.HtmlControls;
+using System.Configuration;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -33,7 +34,12 @@ namespace NoName.NetShop.BackFlat.Product
         private void BindData(int PageIndex)
         {
             int RecordCount=0;
-            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, SearchCondition,out RecordCount);
+            DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, SearchCondition,out RecordCount).Tables[0];
+
+            dt.Columns.Add("producturl");
+            foreach (DataRow row in dt.Rows) row["producturl"] = GetProductUrl(Convert.ToInt32(row["productid"]));
+
+            GridView1.DataSource = dt;
             GridView1.DataBind();
         }
 
@@ -98,6 +104,12 @@ namespace NoName.NetShop.BackFlat.Product
                     ((LinkButton)e.Row.Cells[6].FindControl("LinkButtonDelete")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[2].Text.Trim() + "\"吗?')");                    
                 }
             }
+        }
+
+        private string GetProductUrl(int ProductID)
+        {
+            string ForeFlatRootUrl = ConfigurationManager.AppSettings["foreFlatRootUrl"];
+            return String.Format("{0}product-{1}.html", ForeFlatRootUrl.EndsWith("/") ? ForeFlatRootUrl : ForeFlatRootUrl + "/", ProductID);
         }
 
         protected void ButtonSearch_Click(object sender, EventArgs e)
