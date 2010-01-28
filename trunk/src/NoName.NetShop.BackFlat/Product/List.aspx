@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="NoName.NetShop.BackFlat.Product.List" %>
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 
+<%@ Register src="../Controls/CategorySelect.ascx" tagname="CategorySelect" tagprefix="uc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -30,6 +32,9 @@
             debugger;
             var result = false;
             var errorMessage = '';
+            if ($('#<%= CheckBox1.ClientID %>').attr('checked')) {
+                result = true;
+            }
             if ($('#<%= CheckBox2.ClientID %>').attr('checked')) {
                 if ($('#<%=TextBox1.ClientID %>').val() != '' && $('#<%=TextBox1.ClientID %>').val().isNumber())
                     result = true;
@@ -66,6 +71,12 @@
     <form id="form1" runat="server">
         <div id="search-panel">
             <table>
+                <tr>
+                    <td colspan="2">
+                        <asp:CheckBox ID="CheckBox1" runat="server" Text="按分类" />
+                        <uc1:CategorySelect ID="CategorySelect1" runat="server" />
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <asp:CheckBox ID="CheckBox2" runat="server" Text="按商品ID" />
