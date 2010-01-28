@@ -73,6 +73,7 @@ namespace NoName.NetShop.BackFlat.Product
                     {
                         box.SelectedValue = CategoryPath.Split('/')[Level - 1];
                     }
+                    box.Visible = true;
                     SelectedCategoryID = Convert.ToInt32(box.SelectedValue);
                     BindCategory(Convert.ToInt32(box.SelectedValue), Level + 1, CategoryPath);
                 }
@@ -81,6 +82,8 @@ namespace NoName.NetShop.BackFlat.Product
 
         protected void ListBox1_SelectChanged(object sender, EventArgs e)
         {
+            if (ListBox2.Visible) ListBox2.Visible = false;
+            if (ListBox3.Visible) ListBox3.Visible = false;
             int CategoryID = Convert.ToInt32(ListBox1.SelectedValue);
             SelectedCategoryID = CategoryID;
             BindCategory(CategoryID, 2, null);
@@ -88,6 +91,7 @@ namespace NoName.NetShop.BackFlat.Product
 
         protected void ListBox2_SelectChanged(object sender, EventArgs e)
         {
+            if (ListBox3.Visible) ListBox3.Visible = false;
             int CategoryID = Convert.ToInt32(ListBox2.SelectedValue);
             SelectedCategoryID = CategoryID;
             BindCategory(CategoryID, 3, null);
@@ -101,6 +105,7 @@ namespace NoName.NetShop.BackFlat.Product
 
         protected void Button_OK_Click(object sender, EventArgs e)
         {
+            //Response.Write(SelectedCategoryID);
             BrandCategoryRelationBll relationBll = new BrandCategoryRelationBll();
 
             DataTable dt = relationBll.GetCategoryBrandList(SelectedCategoryID);
