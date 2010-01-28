@@ -12,7 +12,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
+        <asp:GridView runat="server" ID="GridView1" CssClass="GridView" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="BrandId" />
                 <asp:BoundField HeaderText="品牌名称" DataField="BrandName" />
