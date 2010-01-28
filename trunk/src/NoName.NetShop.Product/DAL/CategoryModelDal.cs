@@ -171,6 +171,12 @@ namespace NoName.NetShop.Product.DAL
 		}
 
 
+        public bool HasChild(int CategoryID)
+        {
+            string sql = "select count(0) from pdcategory where parentid = " + CategoryID;
+            return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sql)) > 0;
+        }
+
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
