@@ -115,6 +115,23 @@ namespace NoName.NetShop.BackFlat.Product
         protected void ButtonSearch_Click(object sender, EventArgs e)
         {
             //构建搜索条件
+            if (CheckBox1.Checked)
+            {
+                bool IsEnd;
+                int SelectedCategoryID = CategorySelect1.GetSelectedCategoryInfo(out IsEnd);
+                if (SelectedCategoryID != -1)
+                {
+                    string CategoryPath = new CategoryModelBll().GetModel(SelectedCategoryID).CatePath;
+                    SearchCondition += " and catepath like '" + CategoryPath + "%'";
+
+                    //CategoryPath = CategoryPath.Substring(0, CategoryPath.LastIndexOf("/"));
+                    //CategorySelect1.PresetCategoryInfo(CategoryPath);
+                }
+                else 
+                {
+                    MessageBox.Show(this,"请至少选择一个分类");
+                }
+            }
             
             if (CheckBox2.Checked)
             {
