@@ -110,7 +110,7 @@
                     <asp:BoundField DataField="productid" HeaderText="产品ID" />          
                     <asp:TemplateField HeaderText="产品名称">
                         <ItemTemplate>
-                            <a href='Eval("producturl")'><%# Eval("productname")%></a>
+                            <a href='<%# Eval("producturl") %>' target="_blank"><%# Eval("productname")%></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="状态">
