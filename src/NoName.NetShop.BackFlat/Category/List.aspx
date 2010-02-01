@@ -23,6 +23,7 @@
                     <asp:LinkButton runat="server" OnClick="Button_New_Click" ID="Button_New" Text="新建子类" />
                     <asp:LinkButton runat="server" OnClick="Button_Edit_Click" ID="Button_Edit" Text="编辑" />
                     <asp:LinkButton runat="server" OnClick="Button_Delete_Click" ID="Button_Delete" Text="删除" />
+                    <asp:LinkButton runat="server" OnClick="Button_PreView_Click" ID="Button_PreView" Text="查看页面" />
                 </div>
                 <asp:TreeView ID="TreeView1" runat="server" ShowLines="True" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" SelectedNodeStyle-Font-Underline="True">
                     <SelectedNodeStyle Font-Underline="True" Font-Bold="True" ForeColor="#990033"/>

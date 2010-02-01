@@ -8,12 +8,14 @@ using System.Data;
 using NoName.NetShop.Product.BLL;
 using NoName.Utility;
 using System.Web.UI.HtmlControls;
+using System.Configuration;
 
 namespace NoName.NetShop.BackFlat.Category
 {
     public partial class List : System.Web.UI.Page
     {
         private CategoryModelBll bll = new CategoryModelBll();
+        private string ForeFlatRootUrl = ConfigurationManager.AppSettings["foreFlatRootUrl"];
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -128,6 +130,19 @@ namespace NoName.NetShop.BackFlat.Category
                 //判断该分类下是否有商品，如果有，不允许删除
                 bll.Delete(Convert.ToInt32(TreeView1.SelectedValue));
                 //如果有子类，删除子类
+            }
+            else
+            {
+                MessageBox.Show(this, "请选择分类");
+            } 
+        }
+
+        protected void Button_PreView_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
+            {
+                string url = String.Format("{0}list-{1}.html", ForeFlatRootUrl, TreeView1.SelectedValue);
+                MessageBox.ResponseScript(this, "window.open('" + url + "')");
             }
             else
             {
