@@ -1,0 +1,35 @@
+鼎鼎前端入口链接
+
+购物街：
+
+商品列表 http://dingding.uncc.cn/list-{分类ID}.html
+商品页 http://dingding.uncc.cn/product-{商品ID}.html
+
+品牌页 http://dingding.uncc.cn/brand-{品牌ID}.html
+
+
+资讯：
+
+新闻列表 http://dingding.uncc.cn/newslist-{新闻分类ID}.html
+新闻页 http://dingding.uncc.cn/news-{新闻ID}.html
+
+
+魔力世界：
+
+二手交易列表页（包括二手信息与二手需求） http://dingding.uncc.cn/Magic/DealList.aspx
+出租列表页 http://dingding.uncc.cn/Magic/RentList.aspx
+拍卖列表页 http://dingding.uncc.cn/Magic/AuctionList.aspx
+典当列表页 http://dingding.uncc.cn/Magic/PawnList.aspx
+
+二手信息详细页 http://dingding.uncc.cn/Magic/Secondhand.aspx?pid={二手商品ID}
+二手需求详细页 http://dingding.uncc.cn/Magic/Demand.aspx?pid={需求商品ID}
+出租商品详细页 http://dingding.uncc.cn/Magic/Rent.aspx?pid={出租商品ID}
+拍卖商品详细页 http://dingding.uncc.cn/Magic/Auction.aspx?pid={拍卖商品ID}
+典当商品详细页 http://dingding.uncc.cn/Magic/PawnProduct.aspx?pid={典当商品ID}
+
+
+解决方案：
+ 
+经典套装 http://dingding.uncc.cn/Solution/Home.aspx
+推荐套装 http://dingding.uncc.cn/Solution/SuiteList.aspx
+按需定制 http://dingding.uncc.cn/Solution/Demand.aspx
