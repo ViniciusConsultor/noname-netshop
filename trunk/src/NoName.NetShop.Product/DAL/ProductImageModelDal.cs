@@ -134,6 +134,7 @@ namespace NoName.NetShop.Product.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
+            strSql.Append(" order by imageid desc");
 			
 			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}

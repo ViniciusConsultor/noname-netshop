@@ -67,30 +67,6 @@ namespace NoName.NetShop.Product.BLL
 		}
 
 		/// <summary>
-		/// 得到一个对象实体，从缓存中。
-		/// </summary>
-        //public ProductImageModel GetModelByCache(int ImageId)
-        //{
-			
-        //    string CacheKey = "ProductImageModelModel-" + ImageId;
-        //    object objModel = LTP.Common.DataCache.GetCache(CacheKey);
-        //    if (objModel == null)
-        //    {
-        //        try
-        //        {
-        //            objModel = dal.GetModel(ImageId);
-        //            if (objModel != null)
-        //            {
-        //                int ModelCache = LTP.Common.ConfigHelper.GetConfigInt("ModelCache");
-        //                LTP.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-        //            }
-        //        }
-        //        catch{}
-        //    }
-        //    return (ProductImageModel)objModel;
-        //}
-
-		/// <summary>
 		/// 获得数据列表
 		/// </summary>
 		public DataSet GetList(string strWhere)
