@@ -24,7 +24,8 @@
                 </tr>
             </table>
         </div> 
-        <div runat="server" id="EidtPanel">
+        <div runat="server" id="EidtPanel" style="border:1px solid #ccc;padding:1em;">
+            <h3>编辑图片</h3>
             <table>
                 <tr>
                     <td>图片描述：</td>
@@ -32,7 +33,10 @@
                 </tr>
                 <tr>
                     <td>图片：</td>
-                    <td><asp:FileUpload runat="server" ID="FileUpload2" /></td>
+                    <td>
+                        <asp:FileUpload runat="server" ID="FileUpload2" />
+                        <asp:Image runat="server" ID="Image_EditImage" />
+                    </td>
                 </tr>
                 <tr>
                     <td><input runat="server" id="imageID" type="hidden" /></td>
@@ -49,15 +53,15 @@
                             <asp:Image Height="100" Width="100" ImageUrl='<%# Eval("smallimage") %>' runat="server" ID="ProductMultiImage" />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:BoundField DataField="title" HeaderText="图片描述" />
+                    <%--<asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="Button_MoveUp" CommandArgument='<%# Eval("imageid") %>' CommandName='u' Text="上移" />
-                            <asp:LinkButton runat="server" ID="Button_MoveDown" CommandArgument='<%# Eval("imageid") %>' CommandName='d' Text="下移" />
+                            <asp:LinkButton runat="server" ID="Button_MoveDown" CommandArgument='<%# Eval("imageid") %>' CommandName=l' Text="下移" />
                         </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>--%>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:LinkButton id="EditButton" runat="server" Text="编辑" CommandArgument='<%# Eval("imageid") %>' CommandName="e" />
                             <asp:LinkButton id="DeleteButton" runat="server" Text="删除" CommandArgument='<%# Eval("imageid") %>' CommandName="d" />
                         </ItemTemplate>
                     </asp:TemplateField>
