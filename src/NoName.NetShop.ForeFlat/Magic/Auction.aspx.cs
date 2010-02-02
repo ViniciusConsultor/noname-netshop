@@ -24,7 +24,6 @@ namespace NoName.NetShop.ForeFlat.Magic
         private AuctionLogBll LogBll = new AuctionLogBll();
         private CommentBll CmtBll = new CommentBll();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -94,13 +93,9 @@ namespace NoName.NetShop.ForeFlat.Magic
             }
         }
 
-
         private string GetUserName()
         {
             return "zhangfeng";
         }
-
-
     }
 }
-
