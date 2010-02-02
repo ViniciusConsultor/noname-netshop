@@ -131,11 +131,11 @@
                     </asp:TemplateField>
                     <asp:BoundField DataField="merchantprice" HeaderText="销售价格" />            
                     <asp:BoundField DataField="changetime" HeaderText="更新日期" />
-                    <%--<asp:TemplateField HeaderText="">
+                    <asp:TemplateField HeaderText="">
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkMultiImage" Text="添加多图" NavigateUrl='<%# "multiimage.aspx?productid="+Eval("ProductID") %>' />
                         </ItemTemplate>
-                    </asp:TemplateField>--%>
+                    </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkEdit" Text="修改" NavigateUrl='<%# "Edit.aspx?productid="+Eval("ProductID") %>' />

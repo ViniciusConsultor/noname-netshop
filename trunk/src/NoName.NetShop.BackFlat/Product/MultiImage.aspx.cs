@@ -9,6 +9,7 @@ using NoName.NetShop.Product.Facade;
 using NoName.NetShop.Product.Model;
 using NoName.NetShop.Common;
 using NoName.Utility;
+using System.Data;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -33,7 +34,16 @@ namespace NoName.NetShop.BackFlat.Product
 
         private void BindData()
         {
-            GridView1.DataSource = bll.GetList(ProductID);
+            DataTable dt = bll.GetList(ProductID).Tables[0];
+
+            foreach(DataRow row in dt.Rows) 
+            {
+                row["smallimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["smallimage"]));
+                row["largeimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["largeimage"]));
+                row["originimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["originimage"]));
+            }
+
+            GridView1.DataSource = dt;
             GridView1.DataBind();
         }
 
@@ -50,14 +60,6 @@ namespace NoName.NetShop.BackFlat.Product
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName.ToLower() == "e")
-            {
-                int ImageID = Convert.ToInt32(e.CommandArgument);
-                ProductImageModel model = bll.GetModel(ImageID);
-
-                TextBox2.Text = model.Title;
-                EidtPanel.Visible = true;
-            }
             if (e.CommandName.ToLower() == "d")
             {
                 int ImageID = Convert.ToInt32(e.CommandArgument);
@@ -69,6 +71,7 @@ namespace NoName.NetShop.BackFlat.Product
                 ProductMultiImageRule.DeleteMultiImage(model.SmallImage);
 
                 bll.Delete(ImageID);
+                BindData();
 
                 MessageBox.Show(this,"删除成功");
             }
@@ -93,6 +96,10 @@ namespace NoName.NetShop.BackFlat.Product
                     model.Title = TextBox1.Text;
 
                     bll.Add(model);
+                    BindData();
+
+                    MessageBox.Show(this, "添加成功！");
+
                 }
             }
             else
