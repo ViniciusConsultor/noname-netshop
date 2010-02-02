@@ -134,7 +134,7 @@ namespace NoName.NetShop.BackFlat.Category
             else
             {
                 MessageBox.Show(this, "请选择分类");
-            } 
+            }
         }
 
         protected void Button_PreView_Click(object sender, EventArgs e)
@@ -147,7 +147,7 @@ namespace NoName.NetShop.BackFlat.Category
             else
             {
                 MessageBox.Show(this, "请选择分类");
-            } 
+            }
         }
     }
 }
