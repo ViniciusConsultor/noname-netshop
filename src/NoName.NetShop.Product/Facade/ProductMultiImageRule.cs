@@ -59,6 +59,11 @@ namespace NoName.NetShop.Product.Facade
             return true;
         }
 
+        public static string GetMultiImageUrl(string ImageShortUrl)
+        {
+            return config.UrlRoot + ImageShortUrl;
+        }
+
         public static ProductImageModel GetMultiImageUrl(ProductImageModel MultiImage)
         {
             MultiImage.SmallImage = config.UrlRoot + MultiImage.SmallImage;
