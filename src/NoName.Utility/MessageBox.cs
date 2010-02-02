@@ -57,7 +57,7 @@ namespace NoName.Utility
 		/// <param name="script">Êä³ö½Å±¾</param>
 		public static void ResponseScript(System.Web.UI.Page page,string script)
 		{
-            page.ClientScript.RegisterStartupScript(page.GetType(), "message", "<script language='javascript' defer>" + script + "</script>");
+            page.ClientScript.RegisterStartupScript(page.GetType(), "message", "<script type=\"text/javascript\" defer>" + script + "</script>");
              
 		}
 
