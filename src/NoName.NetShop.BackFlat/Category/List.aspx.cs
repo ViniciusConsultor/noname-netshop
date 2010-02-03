@@ -39,7 +39,7 @@ namespace NoName.NetShop.BackFlat.Category
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 TreeNode tn = new TreeNode();
-                tn.Text = dt.Rows[i]["catename"].ToString();
+                tn.Text = String.Format("{0}({1})",dt.Rows[i]["catename"].ToString(),dt.Rows[i]["cateid"].ToString());
                 tn.Value = dt.Rows[i]["cateid"].ToString();
                 tn.ImageToolTip = dt.Rows[i]["catename"].ToString();
                 tn.ToolTip = dt.Rows[i]["catename"].ToString();
@@ -128,8 +128,38 @@ namespace NoName.NetShop.BackFlat.Category
             if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
             {
                 //判断该分类下是否有商品，如果有，不允许删除
-                bll.Delete(Convert.ToInt32(TreeView1.SelectedValue));
-                //如果有子类，删除子类
+                //判断该分类是否已经关联了品牌，如果关联，不允许删除
+                //判断该分类是否已经有产品属性，如果有，不允许删除
+
+                int CateID = Convert.ToInt32(TreeView1.SelectedValue);
+
+                if (new ProductModelBll().CategoryExistsProduct(CateID))
+                {
+                    MessageBox.Show(this, "该分类下存在商品，禁止删除！");
+                }
+                //else if (true)
+                //{
+                //    MessageBox.Show(this, "该分类下已经关联了品牌，禁止删除！");
+                //}
+                //else if (true)
+                //{
+                //    MessageBox.Show(this, "该分类下定义了产品属性，禁止删除！");
+                //}
+                else
+                {
+                    //如果有子类，删除子类
+                    //判断，如果关联了品牌，先删除品牌关系
+                    //判断，如果有产品属性，先删除产品属性
+
+                    foreach (DataRow row in bll.GetOffsprings(CateID).Rows)
+                    {
+                        new BrandCategoryRelationBll().Delete(CateID);
+                        new CategoryParaModelBll().DeleteCategoryPara(Convert.ToInt32(row["cateid"]));
+                    }
+
+                    bll.DeleteOffsprings(Convert.ToInt32(TreeView1.SelectedValue));
+                    BindCategoryList();
+                }
             }
             else
             {
