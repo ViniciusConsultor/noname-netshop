@@ -58,9 +58,19 @@ namespace NoName.NetShop.Product.BLL
 		/// </summary>
 		public void Delete(int CateId)
 		{
-			
 			dal.Delete(CateId);
 		}
+
+
+        public void DeleteOffsprings(int AncestorID)
+        {
+            dal.DeleteOffsprings(AncestorID);
+        }
+
+        public DataTable GetOffsprings(int AncestorID) 
+        {
+            return dal.GetOffsprings(AncestorID);
+        }
 
 		/// <summary>
 		/// 得到一个对象实体

@@ -33,6 +33,11 @@ namespace NoName.NetShop.Product.BLL
 			return dal.Exists(ProductId);
 		}
 
+        public bool CategoryExistsProduct(int CategoryID)
+        {
+            return dal.CategoryExistsProduct(CategoryID);
+        }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>

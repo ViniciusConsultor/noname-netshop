@@ -112,6 +112,12 @@ namespace NoName.NetShop.Product.DAL
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
+        public void DeleteCategoryPara(int CategoryID)
+        {
+            string sql = "DELETE FROM [pdCategorypara] WHERE cateid="+CategoryID;
+            dbw.ExecuteNonQuery(CommandType.Text, sql);
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>

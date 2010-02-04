@@ -31,6 +31,9 @@ namespace NoName.NetShop.Product.Model
 		private int _sortvalue;
 		private int _score;
         private int _brandid;
+		private string _Specifications;
+		private string _PackingList;
+        private string _AfterSaleService;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -196,14 +199,29 @@ namespace NoName.NetShop.Product.Model
             get { return _brandid; }
             set { _brandid = value; }
         }
+        public string Specifications
+        {
+            get { return _Specifications; }
+            set { _Specifications = value; }
+        }
+        public string PackingList
+        {
+            get { return _PackingList; }
+            set { _PackingList = value; }
+        }
+        public string AfterSaleService
+        {
+            get { return _AfterSaleService; }
+            set { _AfterSaleService = value; }
+        }
 		#endregion Model
 
 	}
 
     public enum ProductStatus
     {
-        产品状态1 = 1,
-        产品状态2 = 2,
+        上架 = 1,
+        下架 = 2,
     }
 }
 
