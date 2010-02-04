@@ -16,6 +16,51 @@
                 height: '400px',
                 width: '700px'
             });
+            CKEDITOR.replace('<%= TextBox_Spe.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            });
+            CKEDITOR.replace('<%= TextBox_Packing.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            });
+            CKEDITOR.replace('<%= TextBox_Service.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            }); 
         });
     function validate() {
         $('table td span[type=inform]').html('');
@@ -95,8 +140,8 @@
                 <td><asp:TextBox id="txtMerchantPrice" runat="server" Width="200"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
-                <td>促销价<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtReducePrice" runat="server" Width="200"></asp:TextBox><span type="inform" class="red"></span></td>
+                <td>直降：<span class="red">*</span>：</td>
+                <td><asp:TextBox id="txtReducePrice" runat="server" Width="200" Text="0"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>库存<span class="red">*</span>：</td>
@@ -113,6 +158,18 @@
             <tr>
                 <td>简介<span class="red">*</span>：</td>
                 <td><asp:TextBox runat="server" ID="TextBox_Brief" TextMode="MultiLine" /></td>
+            </tr>
+            <tr>
+                <td>规格参数：</td>
+                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Spe" /></td>
+            </tr>
+            <tr>
+                <td>包装列表：</td>
+                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Packing" /></td>
+            </tr>
+            <tr>
+                <td>售后服务：</td>
+                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Service" /></td>
             </tr>
             <tr>
                 <td>商品图片<span class="red">*</span>：</td>
@@ -147,13 +204,14 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:Button ID="btnEdit" runat="server" Text="提交" OnClick="btnEdit_Click" ></asp:Button></td>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
             </tr>
         </table>
+        <div id="always-float"><asp:Button ID="btnEdit" runat="server" Text="提交" OnClick="btnEdit_Click" ></asp:Button></div>
     </form>
 </body>
 </html>

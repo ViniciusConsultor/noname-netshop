@@ -55,17 +55,17 @@ namespace NoName.NetShop.BackFlat.Product
                 dt.Rows.Add(row);
             }
 
+            ProductModel product = ProductMainImageRule.GetMainImageUrl(bll.GetModel(ProductID));
+
             drpStatus.DataSource = dt;
             drpStatus.DataTextField = "status";
             drpStatus.DataValueField = "code";
             drpStatus.DataBind();
 
-            DropDown_Brand.DataSource = new BrandCategoryRelationBll().GetCategoryBrandList(CategoryID);
+            DropDown_Brand.DataSource = new BrandCategoryRelationBll().GetCategoryBrandList(CategoryID == -1 ? product.CateId : CategoryID);
             DropDown_Brand.DataTextField = "brandname";
             DropDown_Brand.DataValueField = "brandid";
             DropDown_Brand.DataBind();
-
-            ProductModel product = ProductMainImageRule.GetMainImageUrl(bll.GetModel(ProductID));
 
             if (product != null)
             {
@@ -79,6 +79,12 @@ namespace NoName.NetShop.BackFlat.Product
                 txtKeywords.Text = product.Keywords;
                 TextBox_Brief.Text = product.Brief;
                 imgProduct.ImageUrl = product.SmallImage;
+
+
+                TextBox_Spe.Text = product.Specifications;
+                TextBox_Packing.Text = product.PackingList;
+                TextBox_Service.Text = product.AfterSaleService;
+
                 if (CategoryID != -1)
                 {
                     Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(CategoryID);
@@ -193,6 +199,10 @@ namespace NoName.NetShop.BackFlat.Product
             product.Status = Convert.ToInt32(drpStatus.SelectedValue);
             product.Keywords = txtKeywords.Text;
             product.Brief = TextBox_Brief.Text;
+
+            product.Specifications = TextBox_Spe.Text;
+            product.PackingList = TextBox_Packing.Text;
+            product.AfterSaleService = TextBox_Service.Text;
 
             if (fulImage.FileName != String.Empty)
             {

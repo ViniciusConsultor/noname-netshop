@@ -13,12 +13,60 @@
     <script src="/js/validate.js" type="text/javascript"></script>
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
     <script type="text/javascript">
-    $(function() {
-        CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
-            height: '400px',
-            width: '700px'
+        $(function() {
+            CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
+                height: '400px',
+                width: '700px'
+            });
+            CKEDITOR.replace('<%= TextBox_Spe.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            });
+            CKEDITOR.replace('<%= TextBox_Packing.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            });
+            CKEDITOR.replace('<%= TextBox_Service.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            });
+            changePos();
+            window.onscroll = function() { changePos(); };
+            window.onresize = function() { changePos(); };
         });
-    });
     function validate() {
         $('table td span[type=inform]').html('');
     
@@ -51,9 +99,26 @@
         
         return result;
     }
+    function changePos() {
+        $('#always-float').css({
+            'position': 'absolute',
+            'left': ($('body').width()-600) + 'px',
+            'top': (getScrollTop() + window.screen.height - 200)+ 'px'
+        });
+    }
     function inform(o, message) {
         o.parent().children('span[type=inform]').html(message);
         o.focus();
+    }
+    function getScrollTop() {
+        var scrollTop = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scrollTop = document.documentElement.scrollTop;
+        }
+        else if (document.body) {
+            scrollTop = document.body.scrollTop;
+        }
+        return scrollTop;
     }
     </script>
     <style type="text/css">
@@ -62,6 +127,7 @@
         table.parameter table{width:550px;border:0;}
         table.parameter table tr{width:100px;border:0;display:block;float:left;}
         table.parameter table td{width:100px;border:0;display:block;float:left;}
+        #always-float{position:absolute;float:right;text-align:right;background:white;border:1px solid #eee;}
     </style>
 </head>
 <body>
@@ -97,8 +163,8 @@
                 <td><asp:TextBox id="txtMerchantPrice" runat="server" Width="200"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
-                <td>促销价<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtReducePrice" runat="server" Width="200"></asp:TextBox><span type="inform" class="red"></span></td>
+                <td>直降：<span class="red">*</span>：</td>
+                <td><asp:TextBox id="txtReducePrice" runat="server" Width="200" Text="0"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>库存<span class="red">*</span>：</td>
@@ -115,6 +181,18 @@
             <tr>
                 <td>简介<span class="red">*</span>：</td>
                 <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Description" /></td>
+            </tr>
+            <tr>
+                <td>规格参数：</td>
+                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Spe" /></td>
+            </tr>
+            <tr>
+                <td>包装列表：</td>
+                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Packing" /></td>
+            </tr>
+            <tr>
+                <td>售后服务：</td>
+                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Service" /></td>
             </tr>
             <tr>
                 <td>商品图片<span class="red">*</span>：</td>
@@ -146,9 +224,14 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:Button ID="btnAdd" runat="server" Text="提交" OnClientClick="return validate()" OnClick="btnAdd_Click" ></asp:Button></td>
+                <td></td>
             </tr>
         </table>
+        <div id="always-float">
+            <asp:Button ID="btnAddGoOn" runat="server" Text="提交并继续添加同类产品" OnClick="btnAddGoOn_Click" ></asp:Button>
+            <asp:Button ID="btnAdd" runat="server" Text="保存当前" OnClick="btnAdd_Click" ></asp:Button>
+            <asp:Button ID="btnAddGoList" runat="server" Text="提交并返回产品列表" OnClick="btnAddGoList_Click" ></asp:Button>
+        </div>
     </form>
 </body>
 </html>
