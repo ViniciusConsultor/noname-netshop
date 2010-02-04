@@ -15,7 +15,7 @@ namespace NoName.Utility
 	{
 		private static Regex RegNumber = new Regex("^[0-9]+$");
 		private static Regex RegNumberSign = new Regex("^[+-]?[0-9]+$");
-		private static Regex RegDecimal = new Regex("^[0-9]+[.]?[0-9]+$");
+		private static Regex RegDecimal = new Regex("^[0-9]+([.][0-9]+)?$");
 		private static Regex RegDecimalSign = new Regex("^[+-]?[0-9]+[.]?[0-9]+$"); //等价于^[+-]?\d+[.]?\d+$
 		private static Regex RegEmail = new Regex("^[\\w-]+@[\\w-]+\\.(com|net|org|edu|mil|tv|biz|info)$");//w 英文字母或数字的字符串，和 [a-zA-Z0-9] 语法一样 
 		private static Regex RegCHZN = new Regex("[\u4e00-\u9fa5]");
