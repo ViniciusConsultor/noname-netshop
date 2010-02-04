@@ -31,6 +31,11 @@ namespace NoName.NetShop.Product.BLL
             dal.Delete(BrandID, CategoryID);
         }
 
+        public void Delete(int CategoryID)
+        {
+            dal.Delete(CategoryID);
+        }
+
         /// <summary>
         /// 
         /// </summary>

@@ -58,6 +58,17 @@ namespace NoName.NetShop.Product.DAL
 			}
 		}
 
+        /// <summary>
+        /// 某分类下是否存在商品
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <returns></returns>
+        public bool CategoryExistsProduct(int CategoryID)
+        {
+            string sql = "select Count(0) from pdproduct where catepath like( select catepath+'%' from pdcategory where cateid="+CategoryID+")";
+            return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text,sql)) > 0;
+        }
+
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
@@ -86,6 +97,9 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "SortValue", DbType.Int32, model.SortValue);
             dbw.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
             dbw.AddInParameter(dbCommand, "brandid", DbType.Int32, model.BrandID);
+            dbw.AddInParameter(dbCommand, "specifications", DbType.AnsiString, model.Specifications);
+            dbw.AddInParameter(dbCommand, "packinglist", DbType.AnsiString, model.PackingList);
+            dbw.AddInParameter(dbCommand, "aftersaleservice", DbType.AnsiString, model.AfterSaleService);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -117,6 +131,9 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "SortValue", DbType.Int32, model.SortValue);
             dbw.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
             dbw.AddInParameter(dbCommand, "brandid", DbType.Int32, model.BrandID);
+            dbw.AddInParameter(dbCommand, "specifications", DbType.AnsiString, model.Specifications);
+            dbw.AddInParameter(dbCommand, "packinglist", DbType.AnsiString, model.PackingList);
+            dbw.AddInParameter(dbCommand, "aftersaleservice", DbType.AnsiString, model.AfterSaleService);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -291,6 +308,10 @@ namespace NoName.NetShop.Product.DAL
             {
                 model.BrandID = Convert.ToInt32(ojb);
             }
+
+            model.Specifications = Convert.ToString(dataReader["Specifications"]);
+            model.PackingList = Convert.ToString(dataReader["PackingList"]);
+            model.AfterSaleService = Convert.ToString(dataReader["AfterSaleService"]);
 			return model;
 		}
 

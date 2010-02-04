@@ -45,6 +45,13 @@ namespace NoName.NetShop.Product.DAL
             dbw.ExecuteNonQuery(Command);
         }
 
+
+        public void Delete(int CategoryID)
+        {
+            string sql = "delete from pdbrandcategoryrelation where cateid="+CategoryID;
+            dbw.ExecuteNonQuery(CommandType.Text, sql);
+        }
+
         /// <summary>
         /// 
         /// </summary>

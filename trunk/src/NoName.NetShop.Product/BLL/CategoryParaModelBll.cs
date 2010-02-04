@@ -68,6 +68,11 @@ namespace NoName.NetShop.Product.BLL
 			dal.Delete(ParaId);
 		}
 
+        public void DeleteCategoryPara(int CateogryID)
+        {
+            dal.DeleteCategoryPara(CateogryID);
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>

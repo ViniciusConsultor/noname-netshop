@@ -109,6 +109,18 @@ namespace NoName.NetShop.Product.DAL
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
+        public void DeleteOffsprings(int AncestorID)
+        {
+            string sql = "delete from pdcategory where catepath like (select catepath+'%' from pdcategory where cateid=" + AncestorID + ")";
+            dbw.ExecuteNonQuery(CommandType.Text, sql);
+        }
+
+        public DataTable GetOffsprings(int AncestorID)
+        {
+            string sql = "select * from pdcategory where catepath like (select catepath+'%' from pdcategory where cateid=" + AncestorID + ")";
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
