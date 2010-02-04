@@ -85,6 +85,7 @@ namespace NoName.NetShop.BackFlat.Product
             if (ListBox2.Visible) ListBox2.Visible = false;
             if (ListBox3.Visible) ListBox3.Visible = false;
             int CategoryID = Convert.ToInt32(ListBox1.SelectedValue);
+
             SelectedCategoryID = CategoryID;
             BindCategory(CategoryID, 2, null);
         }
@@ -108,12 +109,12 @@ namespace NoName.NetShop.BackFlat.Product
             //Response.Write(SelectedCategoryID);
             BrandCategoryRelationBll relationBll = new BrandCategoryRelationBll();
 
-            //DataTable dt = relationBll.GetCategoryBrandList(SelectedCategoryID);
-            //if (dt.Rows.Count <= 0)
-            //{
-            //    MessageBox.Show(this, "当前分类下尚无品牌，请先添加品牌！");
-            //    return;
-            //}
+            DataTable dt = relationBll.GetCategoryBrandList(SelectedCategoryID);
+            if (dt.Rows.Count <= 0)
+            {
+                MessageBox.Show(this, "当前分类下尚无品牌，请先添加品牌！");
+                return;
+            }
 
             if (!String.IsNullOrEmpty(Request.QueryString["pid"]))
             {

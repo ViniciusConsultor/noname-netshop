@@ -87,8 +87,24 @@ namespace NoName.NetShop.BackFlat.Product
                 }
             }
         }
-
+        
+        protected void btnAddGoOn_Click(object sender, EventArgs e)
+        {
+            AddProduct();
+            Response.Redirect(Request.RawUrl);
+        }
         protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddProduct();
+            MessageBox.Show(this,"添加成功！");
+        }
+        protected void btnAddGoList_Click(object sender, EventArgs e)
+        {
+            AddProduct();
+            Response.Redirect("List.aspx");
+        }
+
+        protected void AddProduct()
         {
             string strErr = "";
             if (this.txtProductName.Text == "")
@@ -169,6 +185,10 @@ namespace NoName.NetShop.BackFlat.Product
                 product.Status = Convert.ToInt32(drpStatus.SelectedValue);
                 product.Stock = Convert.ToInt32(txtStock.Text);
 
+                product.Specifications = TextBox_Spe.Text;
+                product.PackingList = TextBox_Packing.Text;
+                product.AfterSaleService = TextBox_Service.Text;
+
                 bll.Add(product);
 
                 //添加产品属性
@@ -188,8 +208,6 @@ namespace NoName.NetShop.BackFlat.Product
                         pvBll.Add(para);
                     }
                 }
-
-                Response.Redirect("List.aspx");
             }
             else
             {

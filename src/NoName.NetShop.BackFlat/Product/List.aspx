@@ -16,6 +16,9 @@
     <script src="/js/validate.js" type="text/javascript"></script>
     
     <script type="text/javascript">
+        var categoryInfo = [{ "name": "category1", "title": "请选择分类", "required": "true" },
+    { "name": "category2", "title": "请选择分类", "required": "true" },
+    { "name": "category3", "title": "请选择分类", "required": "false"}];
         $(function() {
             $('#select-all').click(function() {
                 var checked = $(this).attr('checked');
