@@ -1,8 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CategorySelect.ascx.cs" Inherits="NoName.NetShop.BackFlat.Controls.CategorySelect" %>
 <script type="text/javascript">
-    var categoryInfo = [{ "name": "category1", "title": "请选择分类", "required": "true" },
-    { "name": "category2", "title": "请选择分类", "required": "true" },
-    { "name": "category3", "title": "请选择分类", "required": "false"}];
     
     var topregion = { "name": "category1", "topid": "0-all" }
 
