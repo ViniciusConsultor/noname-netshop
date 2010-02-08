@@ -74,5 +74,31 @@ namespace NoName.NetShop.BackFlat.qa
             BindList();
         }
 
+        protected void gvList_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Literal litContentType = e.Row.FindControl("litContentType") as Literal;
+                DataRowView row = e.Row.DataItem as DataRowView;
+                switch (Convert.ToInt32(row["ContentType"]))
+                {
+                    case 1: // product
+                        litContentType.Text = "商品提问";
+                        break;
+                    case 2: // news
+                        litContentType.Text = "资讯提问";
+                        break;
+                    case 3: // Complaint
+                        litContentType.Text = "投诉";
+                        break;
+                    case 4:
+                        litContentType.Text = "维修申请";
+                        break;
+                }
+            }
+        }
+
+
+
     }
 }
