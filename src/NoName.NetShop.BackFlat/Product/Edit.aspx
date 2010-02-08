@@ -127,7 +127,7 @@
                 <td>品牌<span class="red">*</span>：</td>
                 <td><asp:DropDownList runat="server" ID="DropDown_Brand" /></td>
             </tr>
-            <tr>
+            <tr style="display:none;">
                 <td>产品编号：</td>
                 <td><asp:TextBox id="txtProductCode" runat="server" Width="400"></asp:TextBox></td>
             </tr>
