@@ -81,6 +81,7 @@
     <Compile Include="MessageType.cs" />
     <Compile Include="NotifyHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NoName.NetShop.Comm\NoName.NetShop.Common.csproj">

@@ -18,6 +18,9 @@ namespace NoName.NetShop.IMMessage
 		private DateTime _inserttime;
 		private DateTime? _readtime;
 		private bool _status;
+
+        public int UserType { get; set; }
+
 		/// <summary>
 		/// 
 		/// </summary>
