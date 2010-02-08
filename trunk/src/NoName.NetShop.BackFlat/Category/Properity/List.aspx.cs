@@ -14,12 +14,22 @@ namespace NoName.NetShop.BackFlat.Category.Properity
     {
         private CategoryModelBll cBll = new CategoryModelBll();
         private CategoryParaModelBll bll = new CategoryParaModelBll();
+        private int CurrentCategoryID
+        {
+            get { if (ViewState["CurrentCategoryID"] != null) return Convert.ToInt32(ViewState["CurrentCategoryID"]); else return -1; }
+            set { ViewState["CurrentCategoryID"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 BindCategoryList();
+                if (!String.IsNullOrEmpty(Request.QueryString["cid"]))
+                {
+                    CurrentCategoryID = Convert.ToInt32(Request.QueryString["cid"]);
+                    BindData(CurrentCategoryID);
+                }
             }
         }
 
@@ -59,6 +69,10 @@ namespace NoName.NetShop.BackFlat.Category.Properity
                 tn.ImageToolTip = dt.Rows[i]["catename"].ToString();
                 tn.ToolTip = dt.Rows[i]["catename"].ToString();
                 tn.SelectAction = TreeNodeSelectAction.Select;
+                if (CurrentCategoryID != -1 && CurrentCategoryID == Convert.ToInt32(dt.Rows[i]["cateid"]))
+                {
+                    tn.Selected = true;
+                }
                 nodes.Add(tn);
 
                 PopulateNodes(tn.ChildNodes, Convert.ToInt32(dt.Rows[i]["cateid"]));
