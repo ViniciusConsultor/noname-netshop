@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.Common;
-using System.Data;
 using NoName.NetShop.ShopFlow;
+using System.Data;
 
 namespace NoName.NetShop.ForeFlat.member
 {

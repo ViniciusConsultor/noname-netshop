@@ -79,12 +79,15 @@
         <div class="regTitle">
         </div>
         <asp:Panel ID="panReg" runat="server">
+            <asp:Label ID="lblPrompt" EnableViewState="false" ForeColor="Red" runat="server"></asp:Label>
             <ul class="form">
                 <li><span class="field">用户类型：</span>
+                <span  style="text-align:left">
                 <input type="radio" id="rutPerson" name="userType" value="1" onclick="window.location='RegPerson.aspx'"/>个人用户
                 <input type="radio" id="rutCompany" name="userType" value="2"  onclick="window.location='RegCompany.aspx'"/>企业用户
                 <input type="radio" id="rutFamly" name="userType" value="3"  checked="checked" />家庭用户
                 <input type="radio" id="rutSchool" name="userType" value="4" onclick="window.location='RegSchool.aspx'" />学校用户
+                   </span>
                     </li>
                 <li><span class="field">用户帐号：</span>
                     <asp:TextBox ID="txtUserId" runat="server" CssClass="textField1" ></asp:TextBox>

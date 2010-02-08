@@ -34,7 +34,7 @@ namespace NoName.NetShop.ForeFlat
             if (!String.IsNullOrEmpty(password1) && (password1 == password2) && vhelper.Validate(vcode, true))
             {
 
-                if (!MemberInfo.Exists(userId,useremail))
+                if (!MemberInfo.Exists(userId, useremail))
                 {
                     CompanyMemberInfo memberModel = new CompanyMemberInfo();
                     memberModel.UserEmail = useremail;
@@ -70,9 +70,17 @@ namespace NoName.NetShop.ForeFlat
 
                     if (!String.IsNullOrEmpty(Request.QueryString["returnUrl"]))
                     {
-                        Response.AddHeader("REFRESH", "3;URL='" + Request.QueryString["returnUrl"] +"'");
+                        Response.AddHeader("REFRESH", "3;URL='" + Request.QueryString["returnUrl"] + "'");
                     }
                 }
+                else
+                {
+                    lblPrompt.Text = "用户已存在！";
+                }
+            }
+            else
+            {
+                lblPrompt.Text = "验证失败，请检查你的密码是否一致！";
             }
         }
     }

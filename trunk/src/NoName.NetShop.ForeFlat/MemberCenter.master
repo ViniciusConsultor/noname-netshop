@@ -78,13 +78,13 @@
                             <a href="/member/MyMessages.aspx">我的站内信</a>
                         </li>
                         <li>
-                            <a href="#">我的咨询</a>
+                            <a href="/member/MyQuestion.aspx">我的咨询</a>
                         </li>
                         <li>
-                            <a href="#">我的维修</a>
+                            <a href="/member/MyMaintenance.aspx">我的维修</a>
                         </li>
                         <li>
-                            <a href="#">我的投诉</a>
+                            <a href="/member/Complaint.aspx">我的投诉</a>
                         </li>
                     </ul>
                 </div>

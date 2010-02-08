@@ -73,6 +73,14 @@ namespace NoName.NetShop.ForeFlat
                         Response.AddHeader("REFRESH", "3;URL='" + Request.QueryString["returnUrl"] + "'");
                     }
                 }
+                else
+                {
+                    lblPrompt.Text = "用户已存在！";
+                }
+            }
+            else
+            {
+                lblPrompt.Text = "验证失败，请检查你的密码是否一致！";
             }
         }
     }
