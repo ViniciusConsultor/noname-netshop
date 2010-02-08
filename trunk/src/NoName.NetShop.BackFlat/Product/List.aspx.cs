@@ -41,6 +41,8 @@ namespace NoName.NetShop.BackFlat.Product
 
             GridView1.DataSource = dt;
             GridView1.DataBind();
+
+            AspNetPager.RecordCount = RecordCount;
         }
 
         private void BindDropDownData()
