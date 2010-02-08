@@ -30,6 +30,20 @@ namespace NoName.NetShop.IMMessage
             model.SenderId = sender;
             model.Subject = subject;
             model.Content = content;
+            model.UserType = 0; // 默认为前台用户
+            dal.Add(model);
+        }
+
+        public void Add(string content, string subject, string userId, string sender,int userType)
+        {
+            MessageModel model = new MessageModel();
+            model.MsgId = 0;
+            model.MsgType = 0;
+            model.UserId = userId;
+            model.SenderId = sender;
+            model.Subject = subject;
+            model.Content = content;
+            model.UserType = userType; // 默认为前台用户
             dal.Add(model);
         }
 
@@ -38,15 +52,30 @@ namespace NoName.NetShop.IMMessage
 		/// </summary>
 		public void Delete(string userId,int msgId)
 		{
-			dal.Delete(userId,msgId);
+			dal.Delete(userId,msgId,0);
 		}
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public void Delete(string userId, int msgId,int userType)
+        {
+            dal.Delete(userId, msgId, userType);
+        }
 
         /// <summary>
         /// 删除多条数据
         /// </summary>
         public void Delete(string userId, string msgIds)
         {
-            dal.Delete(userId, msgIds);
+            dal.Delete(userId, msgIds, 0);
+        }
+
+        /// <summary>
+        /// 删除多条数据
+        /// </summary>
+        public void Delete(string userId, string msgIds,int usertype)
+        {
+            dal.Delete(userId, msgIds, usertype);
         }
 
 		/// <summary>
@@ -58,9 +87,9 @@ namespace NoName.NetShop.IMMessage
 			return dal.GetModel(msgId);
 		}
 
-        public void SetIsReaded(string userId, int msgId)
+        public void SetIsReaded(int msgId)
         {
-            dal.SetIsReaded(userId, msgId);
+            dal.SetIsReaded(msgId);
         }
 
 		#endregion  成员方法
