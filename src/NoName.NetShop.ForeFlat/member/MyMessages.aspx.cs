@@ -22,13 +22,13 @@ namespace NoName.NetShop.ForeFlat.member
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "imMessage";
-                    spage.FieldNames = "UserId,MsgId,MsgType,Subject,Content,SenderId,InsertTime,ReadTime,Status";
+                    spage.FieldNames = "UserId,MsgId,MsgType,Subject,Content,SenderId,InsertTime,ReadTime,Status,userttype";
                     spage.PriKeyName = "MsgId";
                     spage.StrJoin = "";
                     spage.PageSize = 20;
                     spage.PageIndex = 1;
                     spage.OrderType = "1";
-                    spage.StrWhere = String.Empty;
+                    spage.StrWhere = "usertype=0 and userid='" + CurrentUser.UserId + "'";
 
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
