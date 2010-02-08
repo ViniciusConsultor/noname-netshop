@@ -65,7 +65,8 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             AddChildCategoryParameter(model);
 
 
-            MessageBox.Show(this,"添加成功！");
+            //MessageBox.Show(this,"添加成功！");
+            Response.Redirect("List.aspx?cid=" + CategoryID);
         }
 
         private void AddChildCategoryParameter(CategoryParaModel model)
