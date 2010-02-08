@@ -200,7 +200,7 @@ namespace NoName.NetShop.Product.BLL
             SearchPageInfo info = new SearchPageInfo();
 
             info.FieldNames = "*";
-            info.OrderType = "";
+            info.OrderType = " productid desc";
             info.PageIndex = PageIndex;
             info.PageSize = PageSize;
             info.PriKeyName = "productid";
