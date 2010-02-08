@@ -16,11 +16,19 @@
         <asp:Button runat="server" Text="· 查询 ·" ID="btnSearch"
          onclick="btnSearch_Click" />&nbsp; &nbsp; 
         </div>
-           <asp:GridView runat="server" ID="gvList" AutoGenerateColumns="false">
+           <asp:GridView runat="server" ID="gvList" AutoGenerateColumns="false" 
+               onrowdatabound="gvList_RowDataBound">
                 <Columns>
-                    <asp:BoundField DataField="QuestionId" HeaderText="ID" />            
+                    <asp:BoundField DataField="QuestionId" HeaderText="ID" />  
+                              
                     <asp:BoundField DataField="UserId" HeaderText="提问人" />
+                    <asp:TemplateField HeaderText="问题类型">
+                    <ItemTemplate>
+                    <asp:Literal ID="litContentType" runat="server"></asp:Literal>
+                    </ItemTemplate>
+                    </asp:TemplateField>
                    <asp:BoundField DataField="Title" HeaderText="标题" />
+                   
                     <asp:BoundField DataField="InsertTime" HeaderText="提问时间"  DataFormatString="{0:yyyy-MM-dd HH:mm}"/>
                     <asp:BoundField DataField="AnswerNum" HeaderText="回复数" />
                     <asp:BoundField DataField="LastAnswerTime" HeaderText="最近回复时间" DataFormatString="{0:yyyy-MM-dd HH:mm}" />
