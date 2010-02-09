@@ -5,6 +5,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <script src="../../js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('.list-image').hover(function() {
+                var image = new Image();
+                image.src = $(this).attr('href');
+                var height = image.height;
+                var width = image.width;
+
+                var obj = $('<img class="sub-image-ge" src="' + image.src + '" />').css({
+                    'position': 'absolute',
+                    'width': (width / 2) + 'px',
+                    'height': (height / 2) + 'px',
+                    'border': '1px solid #ccc',
+                    'padding': '3px'
+                });
+
+                $(this).parent().append(obj);
+                obj.show(300);
+            }, function() {
+                $('.sub-image-ge').hide('fast').remove();
+            });
+
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -28,7 +53,7 @@
                     <asp:TemplateField HeaderText="文件名" HeaderStyle-Width="440">
                         <ItemTemplate>
                             <asp:LinkButton Visible='<%# Convert.ToInt32(Eval("type"))==1?false:true %>' CommandArgument='<%# Eval("fullname") %>' CommandName="dir" runat="server" ID="Button_Dir" Text='<%# Eval("FileName") %>' />
-                            <a target="_blank" href='<%# Eval("url") %>' style="display:<%# Convert.ToInt32(Eval("type"))==1?"inline":"none" %>"><%# Eval("FileName") %></a>
+                            <a target="_blank" href='<%# Eval("url") %>' class='<%# Convert.ToInt32(Eval("type"))==1?"list-image":"" %>' style="display:<%# Convert.ToInt32(Eval("type"))==1?"inline":"none" %>"><%# Eval("FileName") %></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="大小(Kb)" DataField="Size" HeaderStyle-Width="80"/>
