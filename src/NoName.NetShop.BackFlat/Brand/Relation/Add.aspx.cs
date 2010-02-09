@@ -52,7 +52,7 @@ namespace NoName.NetShop.BackFlat.Brand.Relation
                     AddRelation(CategoryID, BrandID);
                 }
             }
-            MessageBox.Show(this,"添加成功！");
+            MessageBox.ShowAndRedirect(this, "添加成功！", Request.RawUrl);
         }
 
         private void AddRelation(int CateID, int BrandID)

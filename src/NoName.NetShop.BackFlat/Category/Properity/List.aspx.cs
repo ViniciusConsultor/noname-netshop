@@ -24,12 +24,12 @@ namespace NoName.NetShop.BackFlat.Category.Properity
         {
             if (!IsPostBack)
             {
-                BindCategoryList();
                 if (!String.IsNullOrEmpty(Request.QueryString["cid"]))
                 {
                     CurrentCategoryID = Convert.ToInt32(Request.QueryString["cid"]);
-                    BindData(CurrentCategoryID);
                 }
+                BindCategoryList();
+                BindData(CurrentCategoryID);
             }
         }
 
@@ -42,7 +42,7 @@ namespace NoName.NetShop.BackFlat.Category.Properity
 
         private void BindData(int CategoryID)
         {
-            DataTable dt = bll.GetList("cateid=" + CategoryID).Tables[0];
+            DataTable dt = bll.GetList("cateid=" + (CategoryID==-1?0:CategoryID)).Tables[0];
             if (dt.Rows.Count > 0)
             {
                 GridView1.DataSource = dt;
@@ -69,9 +69,10 @@ namespace NoName.NetShop.BackFlat.Category.Properity
                 tn.ImageToolTip = dt.Rows[i]["catename"].ToString();
                 tn.ToolTip = dt.Rows[i]["catename"].ToString();
                 tn.SelectAction = TreeNodeSelectAction.Select;
-                if (CurrentCategoryID != -1 && CurrentCategoryID == Convert.ToInt32(dt.Rows[i]["cateid"]))
+                if (CurrentCategoryID != -1 && CurrentCategoryID == Convert.ToInt32(tn.Value))
                 {
                     tn.Selected = true;
+                    Response.Write(tn.Selected);
                 }
                 nodes.Add(tn);
 

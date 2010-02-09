@@ -104,6 +104,18 @@ namespace NoName.NetShop.BackFlat.Product
             Response.Redirect("List.aspx");
         }
 
+        protected void Button_Exists_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(this.txtProductName.Text))
+            {
+                MessageBox.Show(this, bll.Exists(this.txtProductName.Text) ? "该商品已经存在" : "不存在该商品");
+            }
+            else
+            {
+                MessageBox.Show(this, "请输入商品名称");
+            }
+        }
+
         protected void AddProduct()
         {
             string strErr = "";
