@@ -63,9 +63,9 @@
                         ['TextColor', 'BGColor', 'Maximize']
                     ]
             });
-            changePos();
-            window.onscroll = function() { changePos(); };
-            window.onresize = function() { changePos(); };
+            //changePos();
+            //window.onscroll = function() { changePos(); };
+            //window.onresize = function() { changePos(); };
         });
     function validate() {
         $('table td span[type=inform]').html('');
@@ -144,7 +144,11 @@
             </tr>
             <tr>
                 <td>产品名称<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtProductName" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span></td>
+                <td>
+                    <asp:TextBox id="txtProductName" runat="server" Width="400"></asp:TextBox>
+                    <asp:Button runat="server" ID="Button_Exists" Text="存在检测" OnClick="Button_Exists_Click" />
+                    <span type="inform" class="red"></span>
+                </td>
             </tr>
             <tr>
                 <td>品牌<span class="red">*</span>：</td>

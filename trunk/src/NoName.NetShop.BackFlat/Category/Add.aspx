@@ -23,7 +23,7 @@
 	            <asp:DropDownList runat="server" ID="drpStatus" ></asp:DropDownList>
 	        </td>
 	    </tr>
-	    <tr>
+	    <tr style="display:none;">
 	        <td height="25" width="30%" align="right">ÊÇ·ñÒþ²Ø<span class="red">*</span>£º</td>
 	        <td height="25" width="*" align="left">
 		        <asp:CheckBox ID="chkIsHide" Text="IsHide" runat="server" Checked="False" />
