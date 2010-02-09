@@ -59,6 +59,17 @@ namespace NoName.NetShop.Product.DAL
 		}
 
         /// <summary>
+        /// 是否存在同名商品
+        /// </summary>
+        /// <param name="ProductName"></param>
+        /// <returns></returns>
+        public bool Exists(string ProductName)
+        {
+            string sql = String.Format("select count(0) from pdproduct where productname = '{0}'", ProductName);
+            return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sql)) > 0;
+        }
+
+        /// <summary>
         /// 某分类下是否存在商品
         /// </summary>
         /// <param name="CategoryID"></param>
