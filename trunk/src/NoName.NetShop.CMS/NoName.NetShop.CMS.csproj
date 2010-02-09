@@ -62,6 +62,9 @@
     <Compile Include="CMSTag.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Config\FileManagementElement.cs" />
+    <Compile Include="Config\FileManagementElementCollection.cs" />
+    <Compile Include="Config\FileManagementSection.cs" />
     <Compile Include="Config\PageCategoryElementCollection.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,6 +98,8 @@
     <Compile Include="DataAccess\TagDataAccess.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FileManage\FileManager.cs" />
+    <Compile Include="FileManage\FileSystemObject.cs" />
     <Compile Include="Model\PageModel.cs" />
     <Compile Include="Model\TagContentModel.cs" />
     <Compile Include="Model\TagModel.cs" />
