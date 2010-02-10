@@ -118,10 +118,15 @@ namespace NoName.NetShop.Member
 
         public void Save()
         {
-            if (!Exists(UserId,UserEmail))
+            if (!Exists(UserId, UserEmail))
             {
                 Register();
-            SaveExtInfo();
+                SaveExtInfo();
+            }
+            else
+            {
+                SaveBaseInfo();
+                SaveExtInfo();
             }
         }
 
@@ -154,6 +159,18 @@ namespace NoName.NetShop.Member
             return retval == 0;
         }
 
+        public bool SaveBaseInfo()
+        {
+            Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
+            string sql = "update umMember set username=@userName,useremail=@UserEmail,modifytime=getdate() from umMember where userId=@userId";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "userId", DbType.String, UserId);
+            db.AddInParameter(dbCommand, "userName", DbType.String, UserName);
+            db.AddInParameter(dbCommand, "useremail", DbType.String, UserEmail);
+            int result = db.ExecuteNonQuery(dbCommand);
+            return result == 1;
+        }
+
         public static bool Login(string userId, string password,string loginIp)
         {
             string sql = "UP_umMember_Login";
@@ -178,8 +195,8 @@ namespace NoName.NetShop.Member
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
-            db.AddInParameter(dbCommand, "oldpass", DbType.String, oldpass);
-            db.AddInParameter(dbCommand, "newpass", DbType.String, newpass);
+            db.AddInParameter(dbCommand, "oldpass", DbType.String, md5old);
+            db.AddInParameter(dbCommand, "newpass", DbType.String, md5new);
             int result = db.ExecuteNonQuery(dbCommand);
             return (result == 1);
         }

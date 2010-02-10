@@ -35,16 +35,6 @@
       <TD height="2" align="center"></TD></TR>
   </table>
 </div>
-<iframe name="hidden_frame" id="hidden_frame" style="display:none" src=""></iframe>
-<!-- START WRating v1.0 -->
-<script type="text/javascript" src="http://sina.wrating.com/a1.js"></script>
-<script type="text/javascript">
-var vjAcc="860010-0315040000"; 
-var wrUrl="http://sina.wrating.com/"
-vjTrack("");
-</script>
-<noscript><img src="http://sina.wrating.com/a.gif?a=&c=860010-0315040000" width="1" height="1"/></noscript>
-<!-- END WRating v1.0 -->
     </form>
 </body>
 </html>

@@ -8,6 +8,8 @@ namespace NoName.NetShop.Common
     public enum ContentType
     {
         Product =1,
-        News =2
+        News =2,
+        Complaint=3,
+        Maintenance=4
     }
 }
