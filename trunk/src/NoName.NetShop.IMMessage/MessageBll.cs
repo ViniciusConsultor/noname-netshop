@@ -87,6 +87,18 @@ namespace NoName.NetShop.IMMessage
 			return dal.GetModel(msgId);
 		}
 
+        public List<MessageModel> GetList(string userId,int userType)
+        {
+            string where = "userId='" + userId + "' and usertype=" + userType;
+            return dal.GetList(where);
+        }
+
+        public List<MessageModel> GetList(string userId, int userType,int status)
+        {
+            string where = "userId='" + userId + "' and usertype=" + userType + " and status=" + status;
+            return dal.GetList(where);
+        }
+
         public void SetIsReaded(int msgId)
         {
             dal.SetIsReaded(msgId);

@@ -20,17 +20,17 @@
                             <ul class="form">
                                 <li>
                                     <span class="field">旧 密 码</span>
-                                    <asp:TextBox ID="txtOldPass" runat="server" CssClass="textField1"></asp:TextBox>
+                                    <asp:TextBox ID="txtOldPass" runat="server" CssClass="textField1" TextMode="Password" EnableViewState="false"></asp:TextBox>
                                     <span class="tip">当前密码</span>
                                 </li>
                                 <li>
                                     <span class="field">新 密 码</span>
-                                    <asp:TextBox ID="txtNewPass1"  runat="server" CssClass="textField1"></asp:TextBox>
+                                    <asp:TextBox ID="txtNewPass1"  runat="server" CssClass="textField1" TextMode="Password" EnableViewState="false"></asp:TextBox>
                                     <span class="tip">要修改成的新密码</span>
                                 </li>
                                 <li>
                                     <span class="field">确认密码</span>
-                                    <asp:TextBox ID="txtNewPass2" runat="server" CssClass="textField1"></asp:TextBox>
+                                    <asp:TextBox ID="txtNewPass2" runat="server" CssClass="textField1" TextMode="Password" EnableViewState="false"></asp:TextBox>
                                     <span class="tip">重复输入新密码</span>
                                 </li><asp:Label runat="server" id="lblResult" EnableViewState="false"></asp:Label>
                                 <li>

@@ -128,6 +128,27 @@ namespace NoName.NetShop.IMMessage
             return model;
         }
 
+        internal List<MessageModel> GetList(string where)
+        {
+            string sql = "SELECT UserId,MsgId,MsgType,usertype,Subject,Content,SenderId,InsertTime,ReadTime,Status from imMessage";
+            if (!String.IsNullOrEmpty(where))
+            {
+                sql += " where " + where;
+            }
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            List<MessageModel> list = new List<MessageModel>();
+            using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, sql))
+            {
+                while (dataReader.Read())
+                {
+                    MessageModel model = ReaderBind(dataReader);
+                    list.Add(model);
+                }
+            }
+            return list;
+        }
+
+
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
@@ -173,6 +194,7 @@ namespace NoName.NetShop.IMMessage
 		}
 
 		#endregion  成员方法
-	}
+
+    }
 }
 
