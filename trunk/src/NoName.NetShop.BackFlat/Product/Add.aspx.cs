@@ -162,6 +162,12 @@ namespace NoName.NetShop.BackFlat.Product
                 return;
             }
 
+            if (bll.Exists(txtProductName.Text))
+            {
+                MessageBox.Show(this,"对不起，该商品名称已存在，无法添加同名商品");
+                return;
+            }
+
             int ProductID = CommDataHelper.GetNewSerialNum(AppType.Product);
 
             string[] MainImages;
