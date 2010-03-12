@@ -503,7 +503,7 @@
                     <li>
                         <span class="field ddPriceField">鼎 鼎 价：</span>
                         <span class="ddPrice">
-                            ￥<xsl:value-of select="merchantprice"/>
+                            ￥<xsl:value-of select="actualprice"/> 
                         </span>
                     </li>
                     <li>
