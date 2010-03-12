@@ -33,6 +33,7 @@ namespace NoName.NetShop.Product.DAL
 
 
             dbw.AddInParameter(Command, "@SpecificationID", DbType.Int32, Model.SpecificationID);
+            dbw.AddInParameter(Command, "@Title", DbType.String, Model.Title);
             dbw.AddInParameter(Command, "@Content", DbType.String, Model.Content);
             dbw.AddInParameter(Command, "@CategoryID", DbType.Int32, Model.CategoryID);
             dbw.AddInParameter(Command, "@CategoryPath", DbType.String, Model.CategoryPath);
@@ -48,6 +49,7 @@ namespace NoName.NetShop.Product.DAL
             DbCommand Command = dbw.GetStoredProcCommand(SpName);
 
             dbw.AddInParameter(Command, "@SpecificationID", DbType.Int32, Model.SpecificationID);
+            dbw.AddInParameter(Command, "@Title", DbType.String, Model.Title);
             dbw.AddInParameter(Command, "@Content", DbType.String, Model.Content);
             dbw.AddInParameter(Command, "@CategoryID", DbType.Int32, Model.CategoryID);
             dbw.AddInParameter(Command, "@CategoryPath", DbType.String, Model.CategoryPath);

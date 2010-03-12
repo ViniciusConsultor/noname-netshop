@@ -13,12 +13,14 @@ namespace NoName.NetShop.Product.Model
         {
             _specificationid = Convert.ToInt32(row["specificationid"]);
             _createtime = Convert.ToDateTime(row["createtime"]);
+            _title = Convert.ToString(row["title"]);
             _content = Convert.ToString(row["content"]);
             _categorypath = Convert.ToString(row["categorypath"]);
             _categoryid = Convert.ToInt32(row["categoryid"]);
         }
 
         private int _specificationid;
+        private string _title;
         private string _content;
         private int _categoryid;
         private string _categorypath;
@@ -30,6 +32,11 @@ namespace NoName.NetShop.Product.Model
         {
             set { _specificationid = value; }
             get { return _specificationid; }
+        }
+        public string Title
+        {
+            get { return _title; }
+            set { _title = value; }
         }
         /// <summary>
         /// 
