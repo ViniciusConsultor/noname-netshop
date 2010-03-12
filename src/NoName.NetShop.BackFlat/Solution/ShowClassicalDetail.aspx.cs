@@ -98,10 +98,22 @@ namespace NoName.NetShop.BackFlat.Solution
                         }
                     }
                 }
+                else if (ccmodel.IsSubCategory) // 如果是子分类（最终分类）：in (2,3,4)
+                {
+                    string[] sels = ccmodel.RuleValue.Substring(3).TrimEnd(')').Split(',');
+                    foreach (string str in sels)
+                    {
+                        ListItem item = cblSubCate.Items.FindByValue(str);
+                        if (item != null)
+                        {
+                            item.Selected = true;
+                        }
+                    }
+                }
                 else if (ccmodel.IsParameter)
                 {
                     string paraidreg = @"paraid=(?<paraid>\d+)";
-                    Match match = Regex.Match(ccmodel.RuleName,paraidreg,RegexOptions.IgnoreCase);
+                    Match match = Regex.Match(ccmodel.RuleName, paraidreg, RegexOptions.IgnoreCase);
                     if (match.Success && match.Groups["paraid"].Success)
                     {
                         string paraid = match.Groups["paraid"].Value;
@@ -130,6 +142,13 @@ namespace NoName.NetShop.BackFlat.Solution
             this.cblBrands.DataTextField = "BrandName";
             this.cblBrands.DataValueField = "BrandId";
             this.cblBrands.DataBind();
+
+            NoName.NetShop.Product.BLL.CategoryModelBll cbll = new CategoryModelBll();
+            this.cblSubCate.DataSource = cbll.GetSubCategory(cateId);
+            this.cblSubCate.DataTextField = "CateName";
+            this.cblSubCate.DataValueField = "CateId";
+            this.cblSubCate.DataBind();
+
 
             CategoryParaModelBll cpbll = new CategoryParaModelBll();
             List<CategoryParaModel> plist = cpbll.GetModelList("status=1 and paratype=0 and cateid=" + cateId);
@@ -239,7 +258,24 @@ namespace NoName.NetShop.BackFlat.Solution
             if (selvals.Count > 0)
             {
                 string selbrans = String.Join(",",selvals.ToArray());
-                ccmodel = new CategoryConditionModel(scenceId, cateId,selbrans );
+                ccmodel = new CategoryConditionModel(scenceId, cateId,"brandid",selbrans );
+            }
+            return ccmodel;
+        }
+
+        private CategoryConditionModel GetSubCondition(int scenceId, int cateId)
+        {
+            CategoryConditionModel ccmodel = null;
+            List<string> selvals = new List<string>();
+            foreach (ListItem item in cblSubCate.Items)
+            {
+                if (item.Selected)
+                    selvals.Add(item.Value);
+            }
+            if (selvals.Count > 0)
+            {
+                string selsubids = String.Join(",", selvals.ToArray());
+                ccmodel = new CategoryConditionModel(scenceId, cateId, "cateid" ,selsubids);
             }
             return ccmodel;
         }

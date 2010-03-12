@@ -78,6 +78,15 @@
 		<asp:CheckBoxList runat="server" ID="cblBrands" RepeatDirection="Horizontal"></asp:CheckBoxList>
 	</td>
 	</tr>
+	<tr>
+	<td height="25" width="30%" align="right">
+		子分类
+	：</td>
+	<td height="25" width="*" align="left">
+		<asp:CheckBoxList runat="server" ID="cblSubCate" RepeatDirection="Horizontal"></asp:CheckBoxList>
+	</td>
+	</tr>
+
 <asp:Repeater runat="server" ID="rpItems" onitemdatabound="rpItems_ItemDataBound">
 <ItemTemplate>
 	<tr>
