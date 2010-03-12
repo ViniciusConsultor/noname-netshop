@@ -64,6 +64,11 @@ namespace NoName.NetShop.Solution.Model
             get { return RuleName.ToLower() == "{0}merchantprice"; }
         }
 
+        public bool IsSubCategory
+        {
+            get { return RuleName.ToLower() == "[0}cateid"; }
+        }
+
         public bool IsParameter
         {
             get { return RuleName.ToLower().StartsWith("{0}paraid"); }
@@ -76,20 +81,21 @@ namespace NoName.NetShop.Solution.Model
             _rulename = "{0}merchantprice";
             _rulevalue = "between " + minPrice + " and " + maxPrice;
         }
-        public CategoryConditionModel(int scenceId,int cateId,string brandIds)
-        {
-            _senceid = scenceId;
-            _cateid = cateId;
-            _rulename = "{0}brandid";
-            _rulevalue = "in(" + brandIds + ")";
-        }
         public CategoryConditionModel(int scenceId,int cateId,int paraId,string paraValues)
         {
             _senceid = scenceId;
             _cateid = cateId;
             _rulename = "{0}paraid=" + paraId + " and " + "{0}paravalue";
             _rulevalue = "in(" + paraValues + ")";
-        }		
+        }
+
+        public CategoryConditionModel(int scenceId, int cateId,string type, string invals)
+        {
+            _senceid = scenceId;
+            _cateid = cateId;
+            _rulename = "{0}"+type;
+            _rulevalue = "in(" + invals + ")";
+        }
         #endregion Model
 
 	}
