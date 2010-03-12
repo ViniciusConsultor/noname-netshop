@@ -67,6 +67,7 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             XmlUtility.AddNewNode(ProductNode, "categoryid", Convert.ToString(row["CateId"]));
             XmlUtility.AddNewNode(ProductNode, "tradeprice", Convert.ToString(row["TradePrice"]));
             XmlUtility.AddNewNode(ProductNode, "merchantprice", Convert.ToString(row["MerchantPrice"]));
+            XmlUtility.AddNewNode(ProductNode, "actualprice", Convert.ToString(Convert.ToDecimal(row["MerchantPrice"]) - Convert.ToDecimal(row["reduceprice"])));
             XmlUtility.AddNewNode(ProductNode, "tradeprice", Convert.ToString(row["ReducePrice"]));
             XmlUtility.AddNewNode(ProductNode, "stock", Convert.ToString(row["Stock"]));
             XmlUtility.AddNewNode(ProductNode, "smallimage", "http://dingding.uncc.cn/upload/productmain/"+Convert.ToString(row["SmallImage"]));
