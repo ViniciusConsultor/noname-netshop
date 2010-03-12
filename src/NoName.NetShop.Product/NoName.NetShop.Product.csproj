@@ -70,6 +70,7 @@
     <Compile Include="BLL\ProductImageModelBll.cs" />
     <Compile Include="BLL\ProductModelBll.cs" />
     <Compile Include="BLL\ProductParaModelBll.cs" />
+    <Compile Include="BLL\ProductSpecificationBll.cs" />
     <Compile Include="BLL\RelaProductModelBll.cs" />
     <Compile Include="BLL\SalesInfoModelBll.cs" />
     <Compile Include="BLL\SalesProductModelBll.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="DAL\ProductImageModelDal.cs" />
     <Compile Include="DAL\ProductModelDal.cs" />
     <Compile Include="DAL\ProductParaModelDal.cs" />
+    <Compile Include="DAL\ProductSpecificationDal.cs" />
     <Compile Include="DAL\RelaProductModelDal.cs" />
     <Compile Include="DAL\SalesInfoModelDal.cs" />
     <Compile Include="DAL\SalesProductModelDal.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="Model\ProductImageModel.cs" />
     <Compile Include="Model\ProductModel.cs" />
     <Compile Include="Model\ProductParaModel.cs" />
+    <Compile Include="Model\ProductSpecificationModel.cs" />
     <Compile Include="Model\RelaProductModel.cs" />
     <Compile Include="Model\SalesInfoModel.cs" />
     <Compile Include="Model\SalesProductModel.cs" />
