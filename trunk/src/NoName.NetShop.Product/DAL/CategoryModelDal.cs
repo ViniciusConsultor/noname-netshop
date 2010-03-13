@@ -230,6 +230,7 @@ namespace NoName.NetShop.Product.DAL
         }
 
 
+
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>
