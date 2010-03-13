@@ -212,7 +212,7 @@ namespace NoName.NetShop.BackFlat.Product
                 //添加产品属性
                 foreach (GridViewRow row in GridView_Parameter.Rows)
                 {
-                    RadioButtonList ParameterValueList =((RadioButtonList)row.Cells[0].FindControl("RadioList_ParameterValue"));
+                    RadioButtonList ParameterValueList = ((RadioButtonList)row.Cells[0].FindControl("RadioList_ParameterValue"));
                     if (!String.IsNullOrEmpty(ParameterValueList.SelectedValue))
                     {
                         int ParameterID = Convert.ToInt32(((HiddenField)row.Cells[0].FindControl("Hidden_ParameterID")).Value);
@@ -231,7 +231,6 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 MessageBox.Show(this, "图片上传失败，请检查！");
             }
-
         }
     }
 }
