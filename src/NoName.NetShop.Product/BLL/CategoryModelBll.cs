@@ -195,6 +195,10 @@ namespace NoName.NetShop.Product.BLL
             return GetChildCount(ParentID) > 0; 
         }
 
+        public List<CategoryModel> GetSubCategory(int parentId)
+        {
+            return dal.GetListArray("parentid = " + parentId);
+        }
 		#endregion  成员方法
 	}
 }
