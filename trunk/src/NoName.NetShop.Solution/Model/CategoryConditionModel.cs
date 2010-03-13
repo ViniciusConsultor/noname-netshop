@@ -66,7 +66,7 @@ namespace NoName.NetShop.Solution.Model
 
         public bool IsSubCategory
         {
-            get { return RuleName.ToLower() == "[0}cateid"; }
+            get { return RuleName.ToLower() == "{0}cateid"; }
         }
 
         public bool IsParameter
