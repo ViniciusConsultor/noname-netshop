@@ -15,10 +15,10 @@ namespace NoName.NetShop.ForeFlat.Solution
 {
     public partial class DIY : System.Web.UI.Page
     {
-        public string CategoriesString
+        public int ScenceID
         {
-            get { if (ViewState["CategoriesString"] != null) return ViewState["CategoriesString"].ToString(); else return String.Empty; }
-            set { ViewState["CategoriesString"] = value; }
+            get { if (ViewState["ScenceID"] != null) return Convert.ToInt32(ViewState["ScenceID"]); else return -1; }
+            set { ViewState["ScenceID"] = value; }
         }
         private ArrayList CategoryIDs
         {
@@ -31,33 +31,22 @@ namespace NoName.NetShop.ForeFlat.Solution
         {
             if (!IsPostBack)
             {
-                CategoriesString = Request.QueryString["ids"];
-                //if (!String.IsNullOrEmpty(Request.QueryString["currcid"])) CurrentCategoryID = Convert.ToInt32(Request.QueryString["currcid"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["ids"])) ScenceID = Convert.ToInt32(Request.QueryString["ids"]);
 
-                if (!String.IsNullOrEmpty(CategoriesString))
+                if (ScenceID!=-1)
                 {
-                    CategoryIDs = new ArrayList(); 
-                    if (CategoriesString.Contains(","))
-                        foreach (string c in CategoriesString.Split(','))
-                            CategoryIDs.Add(int.Parse(c));
-                    else
-                        CategoryIDs.Add(int.Parse(CategoriesString));
-
-                    //if (CurrentCategoryID == -1) CurrentCategoryID = Convert.ToInt32(CategoryIDs[0]);
+                    BindCategoryData();
                 }
                 else
                 {
                     throw new ArgumentNullException();
                 }
-
-                BindCategoryData();
-                //BindData(1);
             }
         }
 
         private void BindCategoryData()
         {
-            List<SolutionCategoryModel> Categories =  new SolutionCategoryBll().GetModelList("cateid in (" + CategoriesString + ")");
+            List<SolutionCategoryModel> Categories =  new SolutionCategoryBll().GetModelList("senceid = "+ScenceID);
 
             Repeater_ConfigCategory.DataSource = Categories;
             Repeater_ConfigCategory.DataBind();
