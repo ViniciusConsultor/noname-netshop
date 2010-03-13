@@ -214,6 +214,11 @@ namespace NoName.NetShop.BackFlat.Solution
             {
                 ccbll.Save(pmodel);
             }
+            pmodel = GetSubCondition(scenceId, cateId);
+            if (pmodel != null)
+            {
+                ccbll.Save(pmodel);
+            }
 
             foreach (RepeaterItem item in rpItems.Items)
             {
