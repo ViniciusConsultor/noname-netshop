@@ -9,7 +9,7 @@
     <style type="text/css">
         .left{width:200px;}
         .iframe{width:500px;margin-left:10px;}
-        .iframe iframe{width:700px;}
+        .iframe iframe{width:500px;}
         .control a{display:block;padding:2px 5px;height:18px;line-height:18px;border:1px solid #eee;float:left;margin:2px;}
     </style>
 </head>
