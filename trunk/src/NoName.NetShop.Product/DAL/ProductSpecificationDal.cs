@@ -38,6 +38,7 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(Command, "@CategoryID", DbType.Int32, Model.CategoryID);
             dbw.AddInParameter(Command, "@CategoryPath", DbType.String, Model.CategoryPath);
             dbw.AddInParameter(Command, "@CreateTime", DbType.DateTime, Model.CreateTime);
+            dbw.AddInParameter(Command, "@Type", DbType.Int32, Model.Type);
 
             dbw.ExecuteNonQuery(Command);
         }
@@ -54,6 +55,7 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(Command, "@CategoryID", DbType.Int32, Model.CategoryID);
             dbw.AddInParameter(Command, "@CategoryPath", DbType.String, Model.CategoryPath);
             dbw.AddInParameter(Command, "@CreateTime", DbType.DateTime, Model.CreateTime);
+            dbw.AddInParameter(Command, "@Type", DbType.Int32, Model.Type);
 
             dbw.ExecuteNonQuery(Command);
         }
