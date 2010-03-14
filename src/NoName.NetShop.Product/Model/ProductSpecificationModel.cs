@@ -17,6 +17,7 @@ namespace NoName.NetShop.Product.Model
             _content = Convert.ToString(row["content"]);
             _categorypath = Convert.ToString(row["categorypath"]);
             _categoryid = Convert.ToInt32(row["categoryid"]);
+            _type = Convert.ToInt16(row["type"]);
         }
 
         private int _specificationid;
@@ -25,6 +26,8 @@ namespace NoName.NetShop.Product.Model
         private int _categoryid;
         private string _categorypath;
         private DateTime _createtime;
+        private int _type;
+        
         /// <summary>
         /// 
         /// </summary>
@@ -70,5 +73,17 @@ namespace NoName.NetShop.Product.Model
             set { _createtime = value; }
             get { return _createtime; }
         }
+        public int Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+    }
+
+    public enum SpecificationType
+    {
+        包装清单=1,
+        优惠套装=2,
+        售后服务=3
     }
 }
