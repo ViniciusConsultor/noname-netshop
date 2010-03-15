@@ -21,6 +21,19 @@ namespace NoName.NetShop.BackFlat.Product
             get { if (ViewState["CategoryID"] != null) return Convert.ToInt32(ViewState["CategoryID"]); else return -1; }
             set { ViewState["CategoryID"] = value; }
         }
+        private int ProductID
+        {
+            get
+            {
+                if (ViewState["ProductID"] != null)
+                    return Convert.ToInt32(ViewState["ProductID"]);
+                else 
+                {
+                    ViewState["ProductID"] = CommDataHelper.GetNewSerialNum(AppType.Product);
+                    return Convert.ToInt32(ViewState["ProductID"]);
+                }
+            }
+        }
         private ProductModelBll bll = new ProductModelBll();
         private CategoryParaModelBll pBll = new CategoryParaModelBll();
         private ProductParaModelBll pvBll = new ProductParaModelBll();
@@ -63,6 +76,24 @@ namespace NoName.NetShop.BackFlat.Product
 
             Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(CategoryID);
             txtCategoryID.Value = CategoryID.ToString();
+
+
+            DropDown_Packing.DataSource = AddSelectRow(new ProductSpecificationBll().GetList(SpecificationType.包装清单));
+            DropDown_Packing.DataTextField = "title";
+            DropDown_Packing.DataValueField = "content";
+            DropDown_Packing.DataBind();
+
+            DropDown_Service.DataSource = AddSelectRow(new ProductSpecificationBll().GetList(SpecificationType.售后服务));
+            DropDown_Service.DataTextField = "title";
+            DropDown_Service.DataValueField = "content";
+            DropDown_Service.DataBind();
+
+            DropDown_OfferSet.DataSource = AddSelectRow(new ProductSpecificationBll().GetList(SpecificationType.优惠套装));
+            DropDown_OfferSet.DataTextField = "title";
+            DropDown_OfferSet.DataValueField = "content";
+            DropDown_OfferSet.DataBind();
+
+            txtProductCode.Text = ProductID.ToString();
         }
 
         private void BindParameterData()
@@ -86,6 +117,21 @@ namespace NoName.NetShop.BackFlat.Product
                     ValueList.Items.Add(item);
                 }
             }
+        }
+
+        private void BindMultiImageData()
+        {
+            DataTable multiImageDataTable = new ProductImageModelBll().GetList(ProductID).Tables[0];
+
+            foreach (DataRow row in multiImageDataTable.Rows)
+            {
+                row["smallimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["smallimage"]));
+                row["largeimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["largeimage"]));
+                row["originimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["originimage"]));
+            }
+
+            GridView_MultiImage.DataSource = multiImageDataTable;
+            GridView_MultiImage.DataBind();
         }
         
         protected void btnAddGoOn_Click(object sender, EventArgs e)
@@ -116,44 +162,112 @@ namespace NoName.NetShop.BackFlat.Product
             }
         }
 
-        protected void AddProduct()
+        protected void GridView_MultiImage_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.ToLower() == "d")
+            {
+                int ImageID = Convert.ToInt32(e.CommandArgument);
+
+                ProductImageModel model = new ProductImageModelBll().GetModel(ImageID);
+
+                ProductMultiImageRule.DeleteMultiImage(model.LargeImage);
+                ProductMultiImageRule.DeleteMultiImage(model.OriginImage);
+                ProductMultiImageRule.DeleteMultiImage(model.SmallImage);
+
+                new ProductImageModelBll().Delete(ImageID);
+                BindMultiImageData();
+            }
+            if (e.CommandName.ToLower() == "u")
+            {
+                int ImageID = Convert.ToInt32(e.CommandArgument);
+                int ImageCount = GridView_MultiImage.Rows.Count;
+                int Position = 0;
+                for (int i = 0; i < ImageCount; i++)
+                {
+                    if (ImageID == Convert.ToInt32(GridView_MultiImage.Rows[i].Cells[0].Text))
+                    {
+                        Position = i;
+                        break;
+                    }
+                }
+
+                if (Position != 0)
+                {
+                    new ProductImageModelBll().SwitchOrder(ImageID, Convert.ToInt32(GridView_MultiImage.Rows[Position - 1].Cells[0].Text));
+                }
+
+                BindMultiImageData(); 
+            }
+            if (e.CommandName.ToLower() == "l")
+            {
+                int ImageID = Convert.ToInt32(e.CommandArgument);
+                int ImageCount = GridView_MultiImage.Rows.Count;
+                int Position = 0;
+                for (int i = 0; i < ImageCount; i++)
+                {
+                    if (ImageID == Convert.ToInt32(GridView_MultiImage.Rows[i].Cells[0].Text))
+                    {
+                        Position = i;
+                        break;
+                    }
+                }
+
+                if (Position != ImageCount)
+                {
+                    new ProductImageModelBll().SwitchOrder(ImageID, Convert.ToInt32(GridView_MultiImage.Rows[Position + 1].Cells[0].Text));
+                }
+
+                BindMultiImageData(); 
+            }
+        }
+
+        protected void Button_MultiImageUpload_Click(object sender, EventArgs e)
+        {
+            AddMultiImage();
+        }
+
+        private void AddProduct()
         {
             string strErr = "";
             if (this.txtProductName.Text == "")
             {
-                strErr += "ProductName不能为空！\\n";
+                strErr += "产品名称不能为空！\\n";
             }
             if (!PageValidate.IsDecimal(txtTradePrice.Text))
             {
-                strErr += "TradePrice不是数字！\\n";
+                strErr += "市场价输入有误！\\n";
             }
             if (!PageValidate.IsDecimal(txtMerchantPrice.Text))
             {
-                strErr += "MerchantPrice不是数字！\\n";
+                strErr += "销售价输入有误！\\n";
             }
             if (!PageValidate.IsDecimal(txtReducePrice.Text))
             {
-                strErr += "ReducePrice不是数字！\\n";
+                strErr += "直降价输入有误！\\n";
             }
             if (!PageValidate.IsNumber(txtStock.Text))
             {
-                strErr += "Stock不是数字！\\n";
+                strErr += "商品库存输入有误！\\n";
+            }
+            if (!PageValidate.IsDecimal(txtWeight.Text))
+            {
+                strErr += "商品重量输入有误！\\n";
             }
             if (this.fulImage.FileName == "")
             {
-                strErr += "SmallImage不能为空！\\n";
+                strErr += "产品图片不能为空！\\n";
             }
             if (this.txtKeywords.Text == "")
             {
-                strErr += "Keywords不能为空！\\n";
+                strErr += "关键词不能为空！\\n";
             }
             if (this.TextBox_Description.Text == "")
             {
-                strErr += "Brief不能为空！\\n";
+                strErr += "商品简介不能为空！\\n";
             }
             if (!PageValidate.IsNumber(drpStatus.SelectedValue))
             {
-                strErr += "Status不是数字！\\n";
+                strErr += "商品状态选择有误！\\n";
             }
 
             if (strErr != "")
@@ -167,8 +281,6 @@ namespace NoName.NetShop.BackFlat.Product
                 MessageBox.Show(this,"对不起，该商品名称已存在，无法添加同名商品");
                 return;
             }
-
-            int ProductID = CommDataHelper.GetNewSerialNum(AppType.Product);
 
             string[] MainImages;
 
@@ -188,6 +300,7 @@ namespace NoName.NetShop.BackFlat.Product
                 product.ChangeTime = DateTime.Now;
                 product.Keywords = txtKeywords.Text;
                 product.Brief = TextBox_Description.Text;
+                product.BrandID = Convert.ToInt32(DropDown_Brand.SelectedValue);
 
 
                 product.SmallImage = MainImages[0];
@@ -203,16 +316,18 @@ namespace NoName.NetShop.BackFlat.Product
                 product.Status = Convert.ToInt32(drpStatus.SelectedValue);
                 product.Stock = Convert.ToInt32(txtStock.Text);
 
-                product.Specifications = TextBox_Spe.Text;
                 product.PackingList = TextBox_Packing.Text;
                 product.AfterSaleService = TextBox_Service.Text;
+                product.OfferSet = TextBox_OfferSet.Text;
+
+                product.Weight = Convert.ToDecimal(txtWeight.Text);
 
                 bll.Add(product);
 
                 //添加产品属性
                 foreach (GridViewRow row in GridView_Parameter.Rows)
                 {
-                    RadioButtonList ParameterValueList = ((RadioButtonList)row.Cells[0].FindControl("RadioList_ParameterValue"));
+                    RadioButtonList ParameterValueList =((RadioButtonList)row.Cells[0].FindControl("RadioList_ParameterValue"));
                     if (!String.IsNullOrEmpty(ParameterValueList.SelectedValue))
                     {
                         int ParameterID = Convert.ToInt32(((HiddenField)row.Cells[0].FindControl("Hidden_ParameterID")).Value);
@@ -231,6 +346,53 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 MessageBox.Show(this, "图片上传失败，请检查！");
             }
+
         }
+
+        private void AddMultiImage()
+        {
+            if (!String.IsNullOrEmpty(TextBox_MiltiImageDescription.Text) && !String.IsNullOrEmpty(FileUpload_MultiImage.FileName))
+            {
+                string[] FileNames;
+                ProductMultiImageRule.SaveProductMultiImage(ProductID, FileUpload_MultiImage.PostedFile, out FileNames);
+
+                if (FileNames != null)
+                {
+                    ProductImageModel model = new ProductImageModel();
+                    model.ImageId = CommDataHelper.GetNewSerialNum(AppType.Product);
+                    model.ProductId = ProductID;
+                    model.LargeImage = FileNames[1];
+                    model.OriginImage = FileNames[2];
+                    model.SmallImage = FileNames[0];
+                    model.Title = TextBox_MiltiImageDescription.Text;
+
+                    new ProductImageModelBll().Add(model);
+                    BindMultiImageData();
+
+                    MessageBox.Show(this, "添加成功！");
+                }
+            }
+            else
+            {
+                MessageBox.Show(this, "输入不完整");
+            }
+        }
+
+        private DataTable AddSelectRow(DataTable InputTable)
+        {
+            DataTable newTable = InputTable.Clone();
+
+            DataRow row = newTable.NewRow();
+
+            row["title"] = "请选择...";
+            row["content"] = String.Empty;
+
+            newTable.Rows.Add(row);
+
+            foreach (DataRow nrow in InputTable.Rows) newTable.ImportRow(nrow);
+
+            return newTable;
+        }
+
     }
 }

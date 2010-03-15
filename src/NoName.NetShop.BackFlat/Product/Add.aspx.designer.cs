@@ -113,6 +113,15 @@ namespace NoName.NetShop.BackFlat.Product {
         protected global::System.Web.UI.WebControls.TextBox txtStock;
         
         /// <summary>
+        /// txtWeight 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtWeight;
+        
+        /// <summary>
         /// drpStatus 控件。
         /// </summary>
         /// <remarks>
@@ -140,13 +149,13 @@ namespace NoName.NetShop.BackFlat.Product {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Description;
         
         /// <summary>
-        /// TextBox_Spe 控件。
+        /// DropDown_Packing 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Spe;
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Packing;
         
         /// <summary>
         /// TextBox_Packing 控件。
@@ -156,6 +165,33 @@ namespace NoName.NetShop.BackFlat.Product {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Packing;
+        
+        /// <summary>
+        /// DropDown_OfferSet 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_OfferSet;
+        
+        /// <summary>
+        /// TextBox_OfferSet 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_OfferSet;
+        
+        /// <summary>
+        /// DropDown_Service 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Service;
         
         /// <summary>
         /// TextBox_Service 控件。
@@ -183,6 +219,42 @@ namespace NoName.NetShop.BackFlat.Product {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView_Parameter;
+        
+        /// <summary>
+        /// TextBox_MiltiImageDescription 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_MiltiImageDescription;
+        
+        /// <summary>
+        /// FileUpload_MultiImage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_MultiImage;
+        
+        /// <summary>
+        /// Button_MultiImageUpload 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_MultiImageUpload;
+        
+        /// <summary>
+        /// GridView_MultiImage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView_MultiImage;
         
         /// <summary>
         /// btnAddGoOn 控件。
