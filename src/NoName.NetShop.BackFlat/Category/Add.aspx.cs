@@ -67,7 +67,7 @@ namespace NoName.NetShop.BackFlat.Category
             string strErr = "";
             if (this.txtCateName.Text == "")
             {
-                strErr += "CateName不能为空！\\n";
+                strErr += "分类名称不能为空！\\n";
             }
 
             if (strErr != "")

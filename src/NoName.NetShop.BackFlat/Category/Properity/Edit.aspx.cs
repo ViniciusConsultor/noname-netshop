@@ -41,6 +41,11 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             TextBox_ParaName.Text=model.ParaName;
             TextBox_ParaValue.Text=model.ParaValues;
             DropDownList_Status.SelectedValue = model.Status.ToString();
+
+            DropDown_ParaType.DataSource = DataTableUtil.GetEnumKeyValue(typeof(CategoryParameterType));
+            DropDown_ParaType.DataTextField = "key";
+            DropDown_ParaType.DataValueField = "value";
+            DropDown_ParaType.DataBind();
         }
 
         protected void Button_Eidt_Click(object sender, EventArgs e)
@@ -48,11 +53,11 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             string ErrorMessage = String.Empty;
             if (TextBox_ParaName.Text == String.Empty)
             {
-                ErrorMessage += "属性名称不可为空\n";
+                ErrorMessage += "属性名称不可为空\\n";
             }
             if (TextBox_ParaValue.Text == String.Empty)
             {
-                ErrorMessage += "属性值不可为空\n";
+                ErrorMessage += "属性值不可为空\\n";
             }
 
             if (!String.IsNullOrEmpty(ErrorMessage))
@@ -66,6 +71,7 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             model.ParaName = TextBox_ParaName.Text;
             model.ParaValues = TextBox_ParaValue.Text.Replace("，", ",");
             model.Status = Convert.ToInt32(DropDownList_Status.SelectedValue);
+            model.ParaType = Convert.ToInt32(DropDown_ParaType.SelectedValue);
 
             bll.Update(model);
             MessageBox.Show(this,"修改成功！");
