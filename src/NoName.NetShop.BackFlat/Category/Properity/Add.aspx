@@ -16,6 +16,10 @@
                 <td><asp:TextBox runat="server" ID="TextBox_ParaName" /></td>
             </tr>
             <tr>
+                <td>属性类型：</td>
+                <td><asp:DropDownList runat="server" ID="DropDown_ParaType" /></td>
+            </tr>
+            <tr>
                 <td>状态：</td>
                 <td>
                     <asp:DropDownList runat="server" ID="DropDownList_Status">
