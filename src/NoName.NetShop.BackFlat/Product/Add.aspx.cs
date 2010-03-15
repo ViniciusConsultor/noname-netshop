@@ -98,7 +98,7 @@ namespace NoName.NetShop.BackFlat.Product
 
         private void BindParameterData()
         {
-            DataTable dt = pBll.GetList("cateid = "+CategoryID).Tables[0];
+            DataTable dt = pBll.GetList("cateid = " + CategoryID + " and paratype=" + (int)CategoryParameterType.检索参数).Tables[0];
 
             GridView_Parameter.DataSource = dt;
             GridView_Parameter.DataBind();

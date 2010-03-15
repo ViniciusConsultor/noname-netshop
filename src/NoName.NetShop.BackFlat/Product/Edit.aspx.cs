@@ -124,7 +124,7 @@ namespace NoName.NetShop.BackFlat.Product
 
         private void BindParameterData(int cateid)
         {
-            DataTable dt = pBll.GetList("cateid = " + cateid).Tables[0];
+            DataTable dt = pBll.GetList("cateid = " + CategoryID + " and paratype=" + (int)CategoryParameterType.检索参数).Tables[0];
             DataTable ValueTable = pvBll.GetList(" productid = " + ProductID).Tables[0];
 
             Hashtable vtable = new Hashtable();
