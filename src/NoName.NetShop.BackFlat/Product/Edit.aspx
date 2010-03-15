@@ -16,21 +16,6 @@
                 height: '400px',
                 width: '700px'
             });
-            CKEDITOR.replace('<%= TextBox_Spe.ClientID %>', {
-                height: '200px',
-                width: '700px',
-                toolbarStartupExpanded: false,
-                toolbar: [
-                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
-                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
-                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
-                        '/',
-                        ['Outdent', 'Indent', 'Blockquote'],
-                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
-                        ['Styles', 'Format', 'Font', 'FontSize'],
-                        ['TextColor', 'BGColor', 'Maximize']
-                    ]
-            });
             CKEDITOR.replace('<%= TextBox_Packing.ClientID %>', {
                 height: '200px',
                 width: '700px',
@@ -60,7 +45,35 @@
                         ['Styles', 'Format', 'Font', 'FontSize'],
                         ['TextColor', 'BGColor', 'Maximize']
                     ]
-            }); 
+            });
+            CKEDITOR.replace('<%= TextBox_OfferSet.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            });
+
+            $('#<%= DropDown_Packing.ClientID %>').change(function() {                
+                CKEDITOR.instances.<%= TextBox_Packing.ClientID %>.setData($(this).val()); 
+            });
+            $('#<%= DropDown_Service.ClientID %>').change(function() {
+                CKEDITOR.instances.<%= TextBox_Service.ClientID %>.setData($(this).val()); 
+            });
+            $('#<%= DropDown_OfferSet.ClientID %>').change(function() {
+                CKEDITOR.instances.<%= TextBox_OfferSet.ClientID %>.setData($(this).val()); 
+            });
+
+
+            $('#<%= btnEdit.ClientID %>').click(validate);
         });
     function validate() {
         $('table td span[type=inform]').html('');
@@ -91,6 +104,10 @@
             result = false;
             inform($('#<%=txtKeywords.ClientID %>'), '请输入关键字');
         }        
+        if ($('#<%= txtWeight.ClientID %>').val() == '' || !$('#<% =txtWeight.ClientID %>').val().isCurrency()) {
+            result = false;
+            inform($('#<%=txtWeight.ClientID %>'), '请输入正确的重量');            
+        }
         
         return result;
     }
@@ -148,6 +165,10 @@
                 <td><asp:TextBox id="txtStock" runat="server" Width="200"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
+                <td>重量<span class="red">*</span>：</td>
+                <td><asp:TextBox id="txtWeight" runat="server" Width="100"></asp:TextBox>kg<span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
                 <td>状态<span class="red">*</span>：</td>
                 <td><asp:DropDownList runat="server" ID="drpStatus"></asp:DropDownList></td>
             </tr>
@@ -160,16 +181,25 @@
                 <td><asp:TextBox runat="server" ID="TextBox_Brief" TextMode="MultiLine" /></td>
             </tr>
             <tr>
-                <td>规格参数：</td>
-                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Spe" /></td>
+                <td>包装清单：</td>
+                <td>
+                    选择包装清单模板：<asp:DropDownList runat="server" ID="DropDown_Packing" />
+                    <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Packing" />
+                </td>
             </tr>
             <tr>
-                <td>包装列表：</td>
-                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Packing" /></td>
+                <td>优惠套装：</td>
+                <td>
+                    选择优惠套装模板：<asp:DropDownList runat="server" ID="DropDown_OfferSet" />
+                    <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_OfferSet" />
+                </td>
             </tr>
             <tr>
                 <td>售后服务：</td>
-                <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Service" /></td>
+                <td>
+                    选择售后服务模板：<asp:DropDownList runat="server" ID="DropDown_Service" />
+                    <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Service" />
+                </td>
             </tr>
             <tr>
                 <td>商品图片<span class="red">*</span>：</td>
@@ -203,8 +233,50 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>商品多图：</td>
+                <td>                
+                    <div>
+                        <table>
+                            <tr>
+                                <td>图片描述：</td>
+                                <td><asp:TextBox runat="server" ID="TextBox_MiltiImageDescription"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>图片：</td>
+                                <td><asp:FileUpload runat="server" ID="FileUpload_MultiImage" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><asp:Button runat="server" ID="Button_MultiImageUpload" Text="上传" OnClick="Button_MultiImageUpload_Click" /></td>
+                            </tr>
+                        </table>
+                    </div> 
+                    <div>
+                        <asp:GridView runat="server" ID="GridView_MultiImage" OnRowCommand="GridView_MultiImage_RowCommand" AutoGenerateColumns="false">
+                            <Columns>
+                                <asp:BoundField DataField="imageid" HeaderText="图片ID" />
+                                <asp:TemplateField HeaderText="图片">
+                                    <ItemTemplate>
+                                        <asp:Image Height="100" Width="100" ImageUrl='<%# Eval("smallimage") %>' runat="server" ID="ProductMultiImage" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="title" HeaderText="图片描述" />
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:LinkButton runat="server" ID="Button_MoveUp" CommandArgument='<%# Eval("imageid") %>' CommandName='u' Text="上移" />
+                                        <asp:LinkButton runat="server" ID="Button_MoveDown" CommandArgument='<%# Eval("imageid") %>' CommandName='l' Text="下移" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:LinkButton id="DeleteButton" runat="server" Text="删除" CommandArgument='<%# Eval("imageid") %>' CommandName="d" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        
+                        </asp:GridView>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td></td>
