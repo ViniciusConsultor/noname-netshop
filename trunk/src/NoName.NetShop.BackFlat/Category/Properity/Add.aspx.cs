@@ -28,6 +28,14 @@ namespace NoName.NetShop.BackFlat.Category.Properity
                 if (Request.QueryString["cid"] != null) CategoryID = Convert.ToInt32(Request.QueryString["cid"]);
             }
         }
+
+        private void BindData()
+        {
+            DropDown_ParaType.DataSource = DataTableUtil.GetEnumKeyValue(typeof(CategoryParameterType));
+            DropDown_ParaType.DataTextField = "key";
+            DropDown_ParaType.DataValueField = "value";
+            DropDown_ParaType.DataBind();
+        }
              
 
         protected void Button_Add_Click(object sender, EventArgs e)
@@ -55,7 +63,7 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             model.CateId = CategoryID;
             model.DefaultValue = "";
             model.ParaGroupId = 0;
-            model.ParaType = 0;
+            model.ParaType = Convert.ToInt32(DropDown_ParaType.SelectedValue);
             model.ParaValues = TextBox_ParaValue.Text.Replace("，",",");
             model.Status = Convert.ToInt32(DropDownList_Status.SelectedValue) ;
 
