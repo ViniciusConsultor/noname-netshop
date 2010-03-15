@@ -42,8 +42,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <a href="Add.aspx">添加文件</a>
-        <asp:Label runat="server" ID="Label_ServerPhysicalPath" />
+        <a href="Add.aspx">添加文件</a><br/><br/>
+        当前服务器物理路径：<asp:Label runat="server" ID="Label_ServerPhysicalPath" />
         <div>
             <asp:GridView CssClass="GridView" runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
