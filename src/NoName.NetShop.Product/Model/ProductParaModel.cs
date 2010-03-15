@@ -39,5 +39,6 @@ namespace NoName.NetShop.Product.Model
 		#endregion Model
 
 	}
+
 }
 

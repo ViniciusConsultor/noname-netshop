@@ -111,6 +111,9 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "specifications", DbType.AnsiString, model.Specifications);
             dbw.AddInParameter(dbCommand, "packinglist", DbType.AnsiString, model.PackingList);
             dbw.AddInParameter(dbCommand, "aftersaleservice", DbType.AnsiString, model.AfterSaleService);
+            dbw.AddInParameter(dbCommand, "offerset", DbType.AnsiString, model.OfferSet);
+            dbw.AddInParameter(dbCommand, "weight", DbType.Decimal, model.Weight);
+
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -145,6 +148,10 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "specifications", DbType.AnsiString, model.Specifications);
             dbw.AddInParameter(dbCommand, "packinglist", DbType.AnsiString, model.PackingList);
             dbw.AddInParameter(dbCommand, "aftersaleservice", DbType.AnsiString, model.AfterSaleService);
+            dbw.AddInParameter(dbCommand, "offerset", DbType.AnsiString, model.OfferSet);
+            dbw.AddInParameter(dbCommand, "weight", DbType.Decimal, model.Weight);
+
+
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -323,6 +330,8 @@ namespace NoName.NetShop.Product.DAL
             model.Specifications = Convert.ToString(dataReader["Specifications"]);
             model.PackingList = Convert.ToString(dataReader["PackingList"]);
             model.AfterSaleService = Convert.ToString(dataReader["AfterSaleService"]);
+            model.OfferSet = Convert.ToString(dataReader["OfferSet"]);
+            model.Weight = Convert.ToDecimal(dataReader["weight"]);
 			return model;
 		}
 

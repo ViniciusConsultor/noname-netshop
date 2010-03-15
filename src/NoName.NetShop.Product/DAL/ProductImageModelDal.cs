@@ -102,6 +102,16 @@ namespace NoName.NetShop.Product.DAL
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
+        public void SwitchOrder(int OrginalID, int SwitchedID)
+        {
+            DbCommand Command = dbw.GetStoredProcCommand("UP_pdProductImage_SwitchOrder");
+
+            dbw.AddInParameter(Command, "@OriginalImageID", DbType.Int32, OrginalID);
+            dbw.AddInParameter(Command, "@SwitchedImageID", DbType.Int32, SwitchedID);
+
+            dbw.ExecuteDataSet(Command);
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
@@ -128,13 +138,13 @@ namespace NoName.NetShop.Product.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ImageId,ProductId,SmallImage,LargeImage,OriginImage,Title ");
+			strSql.Append("select * ");
 			strSql.Append(" FROM pdProductImage ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
 			}
-            strSql.Append(" order by imageid desc");
+            strSql.Append(" order by ordervalue desc");
 			
 			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
@@ -164,7 +174,7 @@ namespace NoName.NetShop.Product.DAL
 		public List<ProductImageModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ImageId,ProductId,SmallImage,LargeImage,OriginImage,Title ");
+			strSql.Append("select * ");
 			strSql.Append(" FROM pdProductImage ");
 			if(strWhere.Trim()!="")
 			{
@@ -181,6 +191,8 @@ namespace NoName.NetShop.Product.DAL
 			}
 			return list;
 		}
+
+        
 
 
 		/// <summary>

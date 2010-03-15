@@ -57,6 +57,11 @@ namespace NoName.NetShop.Product.BLL
 			dal.Delete(ImageId);
 		}
 
+        public void SwitchOrder(int OrginalID, int SwitchedID)
+        {
+            dal.SwitchOrder(OrginalID, SwitchedID);
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>

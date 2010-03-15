@@ -46,9 +46,9 @@ namespace NoName.NetShop.Product.BLL
         }
 
 
-        public DataTable GetList()
+        public DataTable GetList(SpecificationType sType)
         {
-            return dal.GetList();
+            return dal.GetList(sType);
         }
     }
 }
