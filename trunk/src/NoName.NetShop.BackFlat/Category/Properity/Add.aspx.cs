@@ -26,6 +26,7 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             if (!IsPostBack)
             {
                 if (Request.QueryString["cid"] != null) CategoryID = Convert.ToInt32(Request.QueryString["cid"]);
+                BindData();
             }
         }
 
@@ -43,11 +44,11 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             string ErrorMessage = String.Empty;
             if (TextBox_ParaName.Text == String.Empty)
             {
-                ErrorMessage += "属性名称不可为空\n";
+                ErrorMessage += "属性名称不可为空\\n";
             }
             if (TextBox_ParaValue.Text == String.Empty)
             {
-                ErrorMessage += "属性值不可为空\n";
+                ErrorMessage += "属性值不可为空\\n";
             }
 
             if (!String.IsNullOrEmpty(ErrorMessage))
