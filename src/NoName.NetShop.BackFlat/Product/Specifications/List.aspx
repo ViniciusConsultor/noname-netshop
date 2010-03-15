@@ -8,11 +8,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    <a href="Add.aspx">添加规格参数</a>
+    <p>
+        查看类别：
+        <asp:DropDownList runat="server" ID="DropDown_Type" AutoPostBack="true" OnSelectedIndexChanged="DropDown_Type_Changed" />        
+    </p>
     <div>
         <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView_RowCommand" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="SpecificationID" />
-                <asp:BoundField HeaderText="内容" DataField="Content" />
+                <asp:BoundField HeaderText="标题" DataField="Title" />
                 <asp:TemplateField  HeaderText="创建时间">
                     <ItemTemplate>
                         <%# Convert.ToDateTime(Eval("CreateTime")).ToString("yyyy-MM-dd HH:mm:ss") %>

@@ -8,15 +8,21 @@
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function() {
-            $('#<%=Button_Add.ClientID %>').click(function() {
+            $('#<%=Button_AddGo.ClientID %>').click(validate);
+            $('#<%=Button_AddReturn.ClientID %>').click(validate);
+
+
+            function validate() {
+                if ($('#<%= TextBox_Title.ClientID %>').val() == '') {
+                    alert('请输入标题');
+                    return false;
+                }
                 if ($('#<%= TextBox_Content.ClientID %>').val() == '') {
                     alert('请输入内容');
                     return false;
                 }
-                else {
-                    return true;
-                }
-            });
+                return true;
+            }
         });
     </script>
 </head>
@@ -25,15 +31,26 @@
     <div>
         <table>
             <tr>
-                <td>规格参数内容：</td>
+                <td>类型：</td>
+                <td>
+                    <asp:DropDownList runat="server" ID="DropDown_Type" />
+                </td>
             </tr>
             <tr>
+                <td>名称：</td>
+                <td>
+                    <asp:TextBox ID="TextBox_Title" runat="server" Width="400" />
+                </td>
+            </tr>
+            <tr>
+                <td>内容：</td>
                 <td>
                     <asp:TextBox ID="TextBox_Content" runat="server" TextMode="MultiLine" Width="400" Height="300" />
                 </td>
             </tr>
         </table>
-        <asp:Button runat="server" ID="Button_Add" OnClick="Button_Add_Click" Text=" 提交 " />
+        <asp:Button runat="server" ID="Button_AddGo" OnClick="Button_AddGo_Click" Text=" 提交并继续添加 " />
+        <asp:Button runat="server" ID="Button_AddReturn" OnClick="Button_AddReturn_Click" Text=" 提交并返回 " />
         <asp:Button runat="server" ID="Button_Return" OnClick="Button_Return_Click" Text=" 返回 " />
     </div>
     </form>

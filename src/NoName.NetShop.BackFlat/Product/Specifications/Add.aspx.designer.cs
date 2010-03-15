@@ -23,6 +23,24 @@ namespace NoName.NetShop.BackFlat.Product.Specifications {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// DropDown_Type 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Type;
+        
+        /// <summary>
+        /// TextBox_Title 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Title;
+        
+        /// <summary>
         /// TextBox_Content 控件。
         /// </summary>
         /// <remarks>
@@ -32,13 +50,22 @@ namespace NoName.NetShop.BackFlat.Product.Specifications {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Content;
         
         /// <summary>
-        /// Button_Add 控件。
+        /// Button_AddGo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Add;
+        protected global::System.Web.UI.WebControls.Button Button_AddGo;
+        
+        /// <summary>
+        /// Button_AddReturn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_AddReturn;
         
         /// <summary>
         /// Button_Return 控件。
