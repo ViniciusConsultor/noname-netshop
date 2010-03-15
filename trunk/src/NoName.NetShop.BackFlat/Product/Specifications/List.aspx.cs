@@ -5,25 +5,49 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.Product.BLL;
+using NoName.Utility;
+using NoName.NetShop.Product.Model;
 
 namespace NoName.NetShop.BackFlat.Product.Specifications
 {
     public partial class List : System.Web.UI.Page
     {
         private ProductSpecificationBll bll = new ProductSpecificationBll();
+        private int TheSubmitType
+        {
+            get { if (ViewState["TheSubmitType"] != null) return Convert.ToInt16(ViewState["TheSubmitType"]); else return -1; }
+            set { ViewState["TheSubmitType"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (!String.IsNullOrEmpty(Request.QueryString["type"])) TheSubmitType = Convert.ToInt16(Request.QueryString["type"]);
+                BindDropDownData();
                 BindData();
             }
         }
 
+        private void BindDropDownData()
+        {
+            DropDown_Type.DataSource = DataTableUtil.GetEnumKeyValue(typeof(SpecificationType));
+            DropDown_Type.DataTextField = "key";
+            DropDown_Type.DataValueField = "value";
+            DropDown_Type.DataBind();
+
+            if (TheSubmitType != -1) DropDown_Type.SelectedValue = TheSubmitType.ToString();
+        }
+
         private void BindData()
         {
-            GridView1.DataSource = bll.GetList();
+            GridView1.DataSource = bll.GetList((SpecificationType)Enum.Parse(typeof(SpecificationType), DropDown_Type.SelectedValue));
             GridView1.DataBind(); 
+        }
+
+        protected void DropDown_Type_Changed(object sender, EventArgs e)
+        {
+            BindData();
         }
 
         protected void GridView_RowCommand(object Sender, GridViewCommandEventArgs e)
