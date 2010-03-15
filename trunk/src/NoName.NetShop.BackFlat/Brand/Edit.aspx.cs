@@ -53,11 +53,11 @@ namespace NoName.NetShop.BackFlat.Brand
             string strErr = "";
             if (this.txtBrandName.Text == "")
             {
-                strErr += "BrandName不能为空！\\n";
+                strErr += "品牌名称不能为空！\\n";
             }
             if (this.txtBrief.Text == "")
             {
-                strErr += "Brief不能为空！\\n";
+                strErr += "简要描述不能为空！\\n";
             }
 
             if (strErr != "")
