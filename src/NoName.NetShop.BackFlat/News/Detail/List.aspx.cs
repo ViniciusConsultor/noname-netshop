@@ -53,6 +53,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 int NewsID = Convert.ToInt32(e.CommandArgument);
                 bll.Delete(NewsID);
                 MessageBox.Show(this,"删除成功！");
+                BindData(AspNetPager.CurrentPageIndex);
             }
         }
 
