@@ -46,8 +46,8 @@ namespace NoName.NetShop.BackFlat.CMS.Page.SalesPage
         {
             string ErrorMessage = String.Empty;
 
-            if (String.IsNullOrEmpty(TextBox_PageName.Text)) ErrorMessage += "页面名称不能为空\n";
-            if (String.IsNullOrEmpty(TextBox_PageTitle.Text)) ErrorMessage += "页面标题不能为空";
+            if (String.IsNullOrEmpty(TextBox_PageName.Text)) ErrorMessage += "页面名称不能为空\\n";
+            if (String.IsNullOrEmpty(TextBox_PageTitle.Text)) ErrorMessage += "页面标题不能为空\\n";
 
             if (!String.IsNullOrEmpty(ErrorMessage)) MessageBox.Show(this, ErrorMessage);
 
