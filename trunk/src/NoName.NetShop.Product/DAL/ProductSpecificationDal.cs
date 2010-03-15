@@ -92,10 +92,13 @@ namespace NoName.NetShop.Product.DAL
         }
 
 
-        public DataTable GetList()
+        public DataTable GetList(SpecificationType sType)
         {
             string SpName = "UP_pdProductSpecification_GetList";
             DbCommand Command = dbr.GetStoredProcCommand(SpName);
+
+            dbr.AddInParameter(Command, "@type", DbType.Int16, (int)sType);
+
             return dbr.ExecuteDataSet(Command).Tables[0];
         }
 

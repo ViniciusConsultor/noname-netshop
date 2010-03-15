@@ -85,5 +85,13 @@ namespace NoName.NetShop.Product.Model
 		#endregion Model
 
 	}
+
+
+
+    public enum CategoryParameterType
+    {
+        规格参数 = 1,
+        检索参数 = 2
+    }
 }
 
