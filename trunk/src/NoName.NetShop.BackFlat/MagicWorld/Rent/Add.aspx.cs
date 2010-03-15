@@ -41,14 +41,14 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
         protected void Button_Add_Click(object sender, EventArgs e)
         {
             string ErrorMessage = String.Empty;
-            if(String.IsNullOrEmpty(TextBox_RentName.Text)) ErrorMessage+="商品名称不能为空\n";
-            if (String.IsNullOrEmpty(TextBox_Stock.Text) || !PageValidate.IsNumber(TextBox_Stock.Text)) ErrorMessage += "商品数量不正确\n";
-            if (String.IsNullOrEmpty(TextBox_Keywords.Text)) ErrorMessage += "关键词不能为空\n";
-            if (String.IsNullOrEmpty(TextBox_RentPrice.Text) || !PageValidate.IsDecimal(TextBox_RentPrice.Text)) ErrorMessage += "出租价格不正确\n";
-            if (String.IsNullOrEmpty(TextBox_CashPledge.Text) || !PageValidate.IsDecimal(TextBox_CashPledge.Text)) ErrorMessage += "出租押金不正确\n";            
-            if (String.IsNullOrEmpty(TextBox_MaxRentDays.Text) || !PageValidate.IsNumber(TextBox_MaxRentDays.Text)) ErrorMessage += "最大出租时间不正确\n";
-            if (String.IsNullOrEmpty(TextBox_Brief.Text)) ErrorMessage += "商品简介不能为空\n";
-            if (String.IsNullOrEmpty(FileUpload_MainImage.FileName)) ErrorMessage += "商品图片不能为空\n";
+            if(String.IsNullOrEmpty(TextBox_RentName.Text)) ErrorMessage+="商品名称不能为空\\n";
+            if (String.IsNullOrEmpty(TextBox_Stock.Text) || !PageValidate.IsNumber(TextBox_Stock.Text)) ErrorMessage += "商品数量不正确\\n";
+            if (String.IsNullOrEmpty(TextBox_Keywords.Text)) ErrorMessage += "关键词不能为空\\n";
+            if (String.IsNullOrEmpty(TextBox_RentPrice.Text) || !PageValidate.IsDecimal(TextBox_RentPrice.Text)) ErrorMessage += "出租价格不正确\\n";
+            if (String.IsNullOrEmpty(TextBox_CashPledge.Text) || !PageValidate.IsDecimal(TextBox_CashPledge.Text)) ErrorMessage += "出租押金不正确\\n";            
+            if (String.IsNullOrEmpty(TextBox_MaxRentDays.Text) || !PageValidate.IsNumber(TextBox_MaxRentDays.Text)) ErrorMessage += "最大出租时间不正确\\n";
+            if (String.IsNullOrEmpty(TextBox_Brief.Text)) ErrorMessage += "商品简介不能为空\\n";
+            if (String.IsNullOrEmpty(FileUpload_MainImage.FileName)) ErrorMessage += "商品图片不能为空\\n";
 
             if(!String.IsNullOrEmpty(ErrorMessage))
             {
