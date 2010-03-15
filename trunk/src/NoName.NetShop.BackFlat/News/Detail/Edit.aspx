@@ -98,7 +98,7 @@
                 <td>上传图片：</td>
                 <td>
                     <asp:FileUpload ID="FileUpload_Image" runat="server" />
-                    <asp:Button ID="Button_ImageUpload" runat="server" Text="上传" OnClick="Button_ImageUpload_Click" />
+                    <%--<asp:Button ID="Button_ImageUpload" runat="server" Text="上传" OnClick="Button_ImageUpload_Click" />--%>
                     <asp:Image runat="server" ID="Image_NewsImage" Width="120" Height="120" />
                 </td>
             </tr>
@@ -106,7 +106,7 @@
                 <td>上传视频：</td>
                 <td>
                     <asp:FileUpload ID="FileUpload_Video" runat="server" />
-                    <asp:Button ID="Button_VideoUpload" runat="server" Text="上传" OnClick="Button_VideoUpload_Click" />
+                    <%--<asp:Button ID="Button_VideoUpload" runat="server" Text="上传" OnClick="Button_VideoUpload_Click" />--%>
                 </td>
             </tr>
         </table>

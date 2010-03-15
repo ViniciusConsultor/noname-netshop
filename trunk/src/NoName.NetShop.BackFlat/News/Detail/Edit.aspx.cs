@@ -60,14 +60,6 @@ namespace NoName.NetShop.BackFlat.News.Detail
             } 
         }
 
-        protected void Button_ImageUpload_Click(object sender, EventArgs e) 
-        {
-        }
-
-        protected void Button_VideoUpload_Click(object sender, EventArgs e) 
-        {
-        }
-
         protected void Button_Submit_Click(object sender, EventArgs e)
         {
             NewsModel model = bll.GetModel(NewsID);

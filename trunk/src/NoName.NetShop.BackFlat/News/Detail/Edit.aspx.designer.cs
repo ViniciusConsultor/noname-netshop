@@ -113,15 +113,6 @@ namespace NoName.NetShop.BackFlat.News.Detail {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload_Image;
         
         /// <summary>
-        /// Button_ImageUpload 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_ImageUpload;
-        
-        /// <summary>
         /// Image_NewsImage 控件。
         /// </summary>
         /// <remarks>
@@ -138,15 +129,6 @@ namespace NoName.NetShop.BackFlat.News.Detail {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload_Video;
-        
-        /// <summary>
-        /// Button_VideoUpload 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_VideoUpload;
         
         /// <summary>
         /// Button_Submit 控件。
