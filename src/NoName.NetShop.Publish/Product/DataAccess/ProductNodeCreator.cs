@@ -80,6 +80,10 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             XmlUtility.AddNewNode(ProductNode, "changetime", Convert.ToString(row["ChangeTime"]));
             XmlUtility.AddNewNode(ProductNode, "score", Convert.ToString(row["Score"]));
 
+            XmlUtility.AddCDataNode(ProductNode, "packinglist", Convert.ToString(row["packinglist"]));
+            XmlUtility.AddCDataNode(ProductNode, "saleservice", Convert.ToString(row["aftersaleservice"]));
+            XmlUtility.AddCDataNode(ProductNode, "offerset", Convert.ToString(row["offerset"]));
+
             return ProductInfoNode;
 
             //多图节点
@@ -103,6 +107,23 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             }
 
             return CategoryPathListNode;
+        }
+
+        public XmlNode GetProductSpecificationList()
+        {
+            XmlNode SpecificationListNode = xdoc.CreateElement("specifications");
+
+            DataTable dt = dal.GetProductSpecificationList(Parameter.ProductID,Parameter.CategoryID);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode CategoryNode = XmlUtility.AddNewNode(SpecificationListNode, "specification", null);
+
+                XmlUtility.AddNewNode(CategoryNode, "paraname", Convert.ToString(row["paraname"]));
+                XmlUtility.AddNewNode(CategoryNode, "paravalue", Convert.ToString(row["paravalue"]));
+            }            
+
+            return SpecificationListNode;
         }
 
         public XmlNode GetProductCommentList()
