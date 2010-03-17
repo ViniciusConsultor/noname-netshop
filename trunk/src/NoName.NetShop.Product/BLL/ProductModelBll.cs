@@ -222,6 +222,12 @@ namespace NoName.NetShop.Product.BLL
             return ds;
         }
 
+
+        public void UpdateStatus(int ProductID, ProductStatus status)
+        {
+            dal.UpdateStatus(ProductID, status);
+        }
+
 		#endregion  成员方法
 	}
 }

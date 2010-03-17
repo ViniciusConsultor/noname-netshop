@@ -199,6 +199,11 @@ namespace NoName.NetShop.Product.BLL
         {
             return dal.GetListArray("parentid = " + parentId);
         }
+
+        public string GetCategoryName(int CategoryID)
+        {
+            return dal.GetCategoryName(CategoryID);
+        }
 		#endregion  成员方法
 	}
 }

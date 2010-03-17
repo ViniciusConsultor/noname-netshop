@@ -90,7 +90,7 @@ namespace NoName.NetShop.Product.Model
 
     public enum CategoryParameterType
     {
-        检索参数 = 1,
+        检索属性 = 1,
         规格参数 = 2,
     }
 }
