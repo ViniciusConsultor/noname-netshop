@@ -233,6 +233,30 @@
                 </td>
             </tr>
             <tr>
+                <td>规格参数：</td>
+                <td>
+                    <asp:GridView CssClass="parameter" runat="server" ID="GridView_Specification" AutoGenerateColumns="false">
+                        <Columns>                        
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:HiddenField ID="Hidden_SpecificationID" runat="server" Value='<%# Eval("paraid") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <b><%# Eval("paraname") %></b>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:RadioButtonList RepeatDirection="Horizontal" runat="server" ID="RadioList_SpecificationValue" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+            </tr>
+            <tr>
                 <td>商品多图：</td>
                 <td>                
                     <div>

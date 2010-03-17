@@ -31,13 +31,22 @@ namespace NoName.NetShop.BackFlat.Product
             }
         }
 
+        //大类>>小类，商品点击量|购买量    批量操作上下架
         private void BindData(int PageIndex)
         {
             int RecordCount=0;
             DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, SearchCondition,out RecordCount).Tables[0];
 
             dt.Columns.Add("producturl");
-            foreach (DataRow row in dt.Rows) row["producturl"] = GetProductUrl(Convert.ToInt32(row["productid"]));
+            dt.Columns.Add("primarycategoryname");
+            dt.Columns.Add("endcategoryname");
+            foreach (DataRow row in dt.Rows)
+            {
+                string CategoryNamePath = new CategoryModelBll().GetCategoryNamePath(Convert.ToInt32(row["cateid"]));
+                row["producturl"] = GetProductUrl(Convert.ToInt32(row["productid"]));
+                row["primarycategoryname"] = CategoryNamePath.Split('/')[0];
+                row["endcategoryname"] = CategoryNamePath.Split('/')[CategoryNamePath.Split('/').Length-2];
+            }
 
             GridView1.DataSource = dt;
             GridView1.DataBind();
@@ -96,6 +105,32 @@ namespace NoName.NetShop.BackFlat.Product
             BindData(AspNetPager.CurrentPageIndex); 
         }
 
+        protected void Button_MassOn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < GridView1.Rows.Count; i++)
+            {
+                if (((CheckBox)GridView1.Rows[i].FindControl("chkItem")).Checked == true)
+                {
+                    int ProductID = int.Parse(GridView1.Rows[i].Cells[1].Text);
+                    bll.UpdateStatus(ProductID,ProductStatus.上架);
+                }
+            }
+            BindData(AspNetPager.CurrentPageIndex);
+        }
+
+        protected void Button_MassOff_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < GridView1.Rows.Count; i++)
+            {
+                if (((CheckBox)GridView1.Rows[i].FindControl("chkItem")).Checked == true)
+                {
+                    int ProductID = int.Parse(GridView1.Rows[i].Cells[1].Text);
+                    bll.UpdateStatus(ProductID, ProductStatus.下架);
+                }
+            }
+            BindData(AspNetPager.CurrentPageIndex);
+        }
+
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             //如果是绑定数据行 
@@ -103,7 +138,7 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
                 {
-                    ((LinkButton)e.Row.Cells[6].FindControl("LinkButtonDelete")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[2].Text.Trim() + "\"吗?')");                    
+                    ((LinkButton)e.Row.Cells[10].FindControl("LinkButtonDelete")).Attributes.Add("onclick", "javascript:return confirm('确认删除?')");                    
                 }
             }
         }
