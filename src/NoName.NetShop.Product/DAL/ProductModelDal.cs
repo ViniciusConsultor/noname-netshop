@@ -167,6 +167,12 @@ namespace NoName.NetShop.Product.DAL
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
+        public void UpdateStatus(int ProductID, ProductStatus status)
+        {
+            string sql = String.Format("update pdproduct set status = {0} where productid={1}",(int)status,ProductID);
+            dbw.ExecuteNonQuery(CommandType.Text, sql);
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>

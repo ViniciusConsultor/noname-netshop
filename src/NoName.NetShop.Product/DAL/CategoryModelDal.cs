@@ -229,6 +229,11 @@ namespace NoName.NetShop.Product.DAL
             return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text,sql));
         }
 
+        public string GetCategoryName(int CategoryID)
+        {
+            string sql = "select catename from pdcategory where cateid=" + CategoryID;
+            return dbr.ExecuteScalar(CommandType.Text, sql).ToString();
+        }
 
 
 		/// <summary>
