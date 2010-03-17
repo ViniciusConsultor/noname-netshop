@@ -8,6 +8,9 @@ using NoName.NetShop.Product.BLL;
 using System.Data;
 using NoName.Utility;
 using NoName.NetShop.Product.Model;
+using System.Configuration;
+using System.Xml;
+using System.IO;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -23,18 +26,42 @@ namespace NoName.NetShop.BackFlat.Product
             get { if (ViewState["SelectedCategoryID"] != null)return Convert.ToInt32(ViewState["SelectedCategoryID"]); else return -1; }
             set { ViewState["SelectedCategoryID"] = value; }
         }
+        private string LastSelectedCategoryPath
+        {
+            get
+            {
+                string TempDataPath = Server.MapPath(ConfigurationManager.AppSettings["productTempCategoryXml"]);
+                //if (!File.Exists(TempDataPath)) return String.Empty;
+                XmlDocument xdoc = new XmlDocument();
+                xdoc.Load(TempDataPath);
+
+                return xdoc.SelectSingleNode("/root/category/@path").Value;
+            }
+            set
+            {
+                string TempDataPath = Server.MapPath(ConfigurationManager.AppSettings["productTempCategoryXml"]);
+                XmlDocument xdoc = new XmlDocument();
+                xdoc.Load(TempDataPath);
+
+                xdoc.SelectSingleNode("/root/category/@path").Value = value;
+                xdoc.Save(TempDataPath);
+            }
+        }
         private CategoryModelBll bll = new CategoryModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (!String.IsNullOrEmpty(LastSelectedCategoryPath)) InitialCategoryID = Convert.ToInt32(LastSelectedCategoryPath.Split('/')[LastSelectedCategoryPath.Split('/').Length-2]);
                 if (!String.IsNullOrEmpty(Request.QueryString["cid"])) InitialCategoryID = Convert.ToInt32(Request.QueryString["cid"]);
+                
 
                 CategoryModel model = InitialCategoryID == -1 ? null : bll.GetModel(InitialCategoryID);
                 BindCategory(0, 1, model == null ? null : model.CatePath);
             }
         }
+
 
         private void BindCategory(int ParentID, int Level, string CategoryPath)
         {
@@ -57,7 +84,7 @@ namespace NoName.NetShop.BackFlat.Product
 
             if (box != null)
             {
-                DataTable dt = bll.GetList("parentid=" + ParentID).Tables[0];
+                DataTable dt = bll.GetList("parentid=" + ParentID + " order by showorder").Tables[0];
                 if (dt.Rows.Count > 0)
                 {
                     box.DataSource = dt;
@@ -115,6 +142,8 @@ namespace NoName.NetShop.BackFlat.Product
                 MessageBox.Show(this, "当前分类下尚无品牌，请先添加品牌！");
                 return;
             }
+
+            LastSelectedCategoryPath = bll.GetModel(SelectedCategoryID).CatePath;
 
             if (!String.IsNullOrEmpty(Request.QueryString["pid"]))
             {

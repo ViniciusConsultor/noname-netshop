@@ -35,6 +35,11 @@
                                 <%# Convert.ToInt32(Eval("status"))==1?"正常":"锁定" %>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="类型">
+                            <ItemTemplate>
+                                <%# Enum.GetName(typeof(NoName.NetShop.Product.Model.CategoryParameterType),Eval("paratype")) %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="属性值">
                             <ItemTemplate>
                                 <%# Convert.ToString(Eval("ParaValues")).Length > 10 ? Convert.ToString(Eval("ParaValues")).Substring(0, 10) : Convert.ToString(Eval("ParaValues"))%>

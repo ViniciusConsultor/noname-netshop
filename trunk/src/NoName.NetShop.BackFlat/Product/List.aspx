@@ -67,6 +67,12 @@
         function confirmDelete() {
             return confirm('确认删除？');
         }
+        function confirmMassOn() {
+            return confirm('确认上架？');
+        }
+        function confirmMassOff() {
+            return confirm('确认下架？');
+        }
 
     </script>
 </head>
@@ -111,6 +117,8 @@
     	        <input type="checkbox" class="check" id="select-all" />
     	        <span class="txt">全选</span>
     	        <span class="txt"><asp:LinkButton runat="server" Text="删除" ID="Button_DeleteAll" OnClientClick="confirmDelete();" onclick="Button_DeleteAll_Click"></asp:LinkButton></span>
+    	        <span class="txt"><asp:LinkButton runat="server" Text="上架" ID="Button_MassOn" OnClientClick="confirmMassOn();" onclick="Button_MassOn_Click"></asp:LinkButton></span>
+    	        <span class="txt"><asp:LinkButton runat="server" Text="下架" ID="Button_MassOff" OnClientClick="confirmMassOff();" onclick="Button_MassOff_Click"></asp:LinkButton></span>
     	    </div>
         </div>
         <div id="data-list">
@@ -127,18 +135,17 @@
                             <a href='<%# Eval("producturl") %>' target="_blank"><%# Eval("productname")%></a>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:BoundField DataField="primarycategoryname" HeaderText="一级分类" />
+                    <asp:BoundField DataField="endcategoryname" HeaderText="末级分类" />
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
                             <%# Enum.GetName(typeof(NoName.NetShop.Product.Model.ProductStatus),Convert.ToInt32(Eval("status"))) %>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="merchantprice" HeaderText="销售价格" />            
+                    <asp:BoundField DataField="merchantprice" HeaderText="销售价格" />
+                    <asp:BoundField DataField="reduceprice" HeaderText="直降" />
                     <asp:BoundField DataField="changetime" HeaderText="更新日期" />
-                    <asp:TemplateField HeaderText="">
-                        <ItemTemplate>
-                            <asp:HyperLink runat="server" ID="HyperLinkMultiImage" Text="添加多图" NavigateUrl='<%# "multiimage.aspx?productid="+Eval("ProductID") %>' />
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    <asp:BoundField DataField="pageview" HeaderText="浏览量" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkEdit" Text="修改" NavigateUrl='<%# "Edit.aspx?productid="+Eval("ProductID") %>' />

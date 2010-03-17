@@ -46,6 +46,8 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             DropDown_ParaType.DataTextField = "key";
             DropDown_ParaType.DataValueField = "value";
             DropDown_ParaType.DataBind();
+
+            DropDownList_Status.SelectedValue = model.ParaType.ToString();
         }
 
         protected void Button_Eidt_Click(object sender, EventArgs e)
