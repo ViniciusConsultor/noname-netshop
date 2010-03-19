@@ -10,6 +10,7 @@ using System.Text;
 using System.IO;
 using Newtonsoft.Json;
 using System.Threading;
+using NoName.NetShop.Solution.Model;
 
 namespace NoName.NetShop.ForeFlat.Handler
 {
@@ -20,25 +21,75 @@ namespace NoName.NetShop.ForeFlat.Handler
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     public class SolutionHandler : IHttpHandler
     {
-
         public void ProcessRequest(HttpContext context)
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             context.Response.ContentType = "text/plain";
             HttpRequest req = context.Request;
-            if (!String.IsNullOrEmpty(req["scenceid"]) && !String.IsNullOrEmpty(req["cateid"]))
-            {
-                int ScenceID = Convert.ToInt32(req["scenceid"]);
-                int CategoryID = Convert.ToInt32(req["cateid"]);
-                int BrandID = 0; if (!String.IsNullOrEmpty(req["brandid"])) BrandID = Convert.ToInt32(req["brandid"]);
-                string ProdcutName = String.Empty; if (!String.IsNullOrEmpty(req["pdname"])) ProdcutName = req["pdname"];
 
-                context.Response.Write(GetProductListJson(ScenceID, CategoryID, BrandID, ProdcutName));
-            }
-            else
+            string ActionType = req["action"];
+            int ScenceID = Convert.ToInt32(req["sid"]);
+
+            switch (ActionType)
             {
-                context.Response.Write("[]");
+                case "category":
+                    string CategoryJson = GetCategoryJson(ScenceID);
+
+                    context.Response.Write(CategoryJson);
+                    return;
+                case "product":
+                    int CategoryID = Convert.ToInt32(req["cid"]);
+                    int BrandID = 0; if (!String.IsNullOrEmpty(req["brandid"])) BrandID = Convert.ToInt32(req["brandid"]);
+                    string ProdcutName = String.Empty; if (!String.IsNullOrEmpty(req["pdname"])) ProdcutName = req["pdname"];
+                    context.Response.Write(GetProductListJson(ScenceID, CategoryID, BrandID, ProdcutName));
+                    return;
+                default:
+                    context.Response.Write("[]");
+                    return;
             }
+        }
+
+        private string GetCategoryJson(int ScenceID)
+        {
+            StringBuilder result = new StringBuilder();
+            StringWriter sw = new StringWriter(result);
+            JsonWriter writer = new JsonWriter(sw);
+
+            writer.Formatting = Formatting.Indented;
+
+            List<SolutionCategoryModel> Categories = new SolutionCategoryBll().GetModelList("senceid = " + ScenceID);
+
+            writer.WriteStartArray();
+
+            foreach (SolutionCategoryModel model in Categories)
+            {
+                writer.WriteStartObject();
+
+                WriteJsonKeyValue(writer, "categoryid", model.CateId.ToString());
+                WriteJsonKeyValue(writer, "categoryname", model.Remark);
+
+                writer.WritePropertyName("subcates");
+                writer.WriteStartArray();
+                DataTable subTable = new CategoryConditionBll().GetConditionSubCategory(ScenceID, model.CateId);
+                if(subTable!=null)
+                    foreach (DataRow row in subTable.Rows)
+                    {
+                        writer.WriteStartObject();
+
+                        WriteJsonKeyValue(writer, "categoryid", row["cateid"].ToString());
+                        WriteJsonKeyValue(writer, "categoryname", row["catename"].ToString());
+
+                        writer.WriteEndObject(); 
+                    }
+                writer.WriteEndArray();
+
+                writer.WriteEndObject(); 
+            }
+
+            writer.WriteEndArray();
+            writer.Close();
+
+            return result.ToString();
         }
 
         private String GetProductListJson(int ScenceID, int CategoryID, int BrandID, string ProductName)

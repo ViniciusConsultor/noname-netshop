@@ -48,10 +48,10 @@ namespace NoName.NetShop.ForeFlat.Solution
         {
             List<SolutionCategoryModel> Categories =  new SolutionCategoryBll().GetModelList("senceid = "+ScenceID);
 
-            Repeater_ConfigCategory.DataSource = Categories;
-            Repeater_ConfigCategory.DataBind();
-            Repeater_Category.DataSource = Categories;
-            Repeater_Category.DataBind();
+            //Repeater_ConfigCategory.DataSource = Categories;
+            //Repeater_ConfigCategory.DataBind();
+            //Repeater_Category.DataSource = Categories;
+            //Repeater_Category.DataBind();
         }
 
         //private void BindData(int PageIndex)
