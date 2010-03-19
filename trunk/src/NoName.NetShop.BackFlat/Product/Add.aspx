@@ -16,7 +16,10 @@
         $(function() {
             CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
                 height: '400px',
-                width: '700px'
+                width: '700px',
+                ignoreEmptyParagraph :true,
+                forcePasteAsPlainText :false,
+                enterMode : CKEDITOR.ENTER_BR
             });
             CKEDITOR.replace('<%= TextBox_Packing.ClientID %>', {
                 height: '200px',
@@ -31,7 +34,9 @@
                         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
                         ['Styles', 'Format', 'Font', 'FontSize'],
                         ['TextColor', 'BGColor', 'Maximize']
-                    ]
+                    ],
+                ignoreEmptyParagraph :true,
+                forcePasteAsPlainText :false
             });
             CKEDITOR.replace('<%= TextBox_Service.ClientID %>', {
                 height: '200px',
@@ -46,7 +51,9 @@
                         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
                         ['Styles', 'Format', 'Font', 'FontSize'],
                         ['TextColor', 'BGColor', 'Maximize']
-                    ]
+                    ],
+                ignoreEmptyParagraph :true,
+                forcePasteAsPlainText :false
             });
             CKEDITOR.replace('<%= TextBox_OfferSet.ClientID %>', {
                 height: '200px',
@@ -61,7 +68,9 @@
                         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
                         ['Styles', 'Format', 'Font', 'FontSize'],
                         ['TextColor', 'BGColor', 'Maximize']
-                    ]
+                    ],
+                ignoreEmptyParagraph :true,
+                forcePasteAsPlainText :false
             });
 
             $('#<%= DropDown_Packing.ClientID %>').change(function() {                

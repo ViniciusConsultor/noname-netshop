@@ -44,7 +44,7 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 string CategoryNamePath = new CategoryModelBll().GetCategoryNamePath(Convert.ToInt32(row["cateid"]));
                 row["producturl"] = GetProductUrl(Convert.ToInt32(row["productid"]));
-                row["primarycategoryname"] = CategoryNamePath.Split('/')[0];
+                row["primarycategoryname"] = CategoryNamePath.Split('/')[1];
                 row["endcategoryname"] = CategoryNamePath.Split('/')[CategoryNamePath.Split('/').Length-2];
             }
 

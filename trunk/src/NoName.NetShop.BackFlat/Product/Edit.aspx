@@ -14,7 +14,10 @@
         $(function() {
             CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
                 height: '400px',
-                width: '700px'
+                width: '700px',
+                ignoreEmptyParagraph :true,
+                forcePasteAsPlainText :false,
+                enterMode : CKEDITOR.ENTER_BR
             });
             CKEDITOR.replace('<%= TextBox_Packing.ClientID %>', {
                 height: '200px',
@@ -307,7 +310,10 @@
                 <td></td>
             </tr>
         </table>
-        <div id="always-float"><asp:Button ID="btnEdit" runat="server" Text="提交" OnClick="btnEdit_Click" ></asp:Button></div>
+        <div id="always-float">
+            <asp:Button ID="btnEdit" runat="server" Text="提交" OnClick="btnEdit_Click" ></asp:Button>
+            <asp:Button ID="btnReturn" runat="server" Text="返回" OnClick="btnReturn_Click" ></asp:Button>
+        </div>
     </form>
 </body>
 </html>
