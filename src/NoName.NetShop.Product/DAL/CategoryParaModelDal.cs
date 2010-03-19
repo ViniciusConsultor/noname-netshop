@@ -151,6 +151,8 @@ namespace NoName.NetShop.Product.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
+
+            strSql.Append(" order by ParaId desc");
 			
 			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
