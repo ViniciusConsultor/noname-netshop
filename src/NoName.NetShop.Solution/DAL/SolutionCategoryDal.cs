@@ -87,7 +87,6 @@ namespace NoName.NetShop.Solution.DAL
                 }
             }
             return list;
-
         }
 
 		/// <summary>
@@ -106,8 +105,7 @@ namespace NoName.NetShop.Solution.DAL
                     list.Add(ReaderBind(dataReader));
                 }
             }
-            return list; 
-            
+            return list;             
 		}
 
 

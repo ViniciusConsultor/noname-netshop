@@ -13,7 +13,9 @@ namespace NoName.NetShop.Solution.BLL
 	{
         private readonly CategoryConditionDal dal = new CategoryConditionDal();
         public CategoryConditionBll()
-		{}
+        { 
+
+        }
 		#region  成员方法
 
 		/// <summary>
@@ -71,7 +73,11 @@ namespace NoName.NetShop.Solution.BLL
 
             return String.IsNullOrEmpty(ConditionString)?new DataTable() : dal.GetCategoryProductList(IsHasProperity, ConditionString.Substring(0, ConditionString.LastIndexOf("and")));
         }
+
+        public DataTable GetConditionSubCategory(int ScenceID, int CategoryID)
+        {
+            return dal.GetConditionSubCategory(ScenceID, CategoryID);
+        }
 		#endregion  成员方法
 	}
 }
-

@@ -110,6 +110,35 @@ namespace NoName.NetShop.Solution.DAL
             return model;
         }
 
+        public DataTable GetConditionSubCategory(int ScenceID, int CategoryID)
+        {
+            string sql = "select * from slcategorycondition where senceid={0} and cateid={1}";
+            sql = String.Format(sql, ScenceID, CategoryID);
+
+            DataTable dt = dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                string RuleName = row["RuleName"].ToString();
+                string RuleValue = row["RuleValue"].ToString();
+
+                if (RuleName.Contains("cateid"))
+                {
+                    string sql2 = "select * from pdcategory where cateid " + RuleValue;
+                    return dbr.ExecuteDataSet(CommandType.Text, sql2).Tables[0];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据
