@@ -215,6 +215,11 @@ namespace NoName.NetShop.BackFlat.Product
             SaveData();
         }
 
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("List.aspx");
+        }
+
         protected void Button_MultiImageUpload_Click(object sender, EventArgs e)
         {
             AddMultiImage();

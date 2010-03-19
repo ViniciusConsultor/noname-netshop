@@ -26,6 +26,7 @@ namespace NoName.NetShop.BackFlat.Product
             get { if (ViewState["SelectedCategoryID"] != null)return Convert.ToInt32(ViewState["SelectedCategoryID"]); else return -1; }
             set { ViewState["SelectedCategoryID"] = value; }
         }
+
         private string LastSelectedCategoryPath
         {
             get

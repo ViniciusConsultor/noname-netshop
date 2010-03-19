@@ -135,7 +135,7 @@
                             <a href='<%# Eval("producturl") %>' target="_blank"><%# Eval("productname")%></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="primarycategoryname" HeaderText="一级分类" />
+                    <asp:BoundField DataField="primarycategoryname" HeaderText="二级分类" />
                     <asp:BoundField DataField="endcategoryname" HeaderText="末级分类" />
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
