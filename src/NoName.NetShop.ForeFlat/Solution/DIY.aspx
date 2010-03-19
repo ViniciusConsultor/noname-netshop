@@ -6,13 +6,13 @@
     <script type="text/javascript" src="/js/hashtable.js"></script>
     <script type="text/javascript" src="/js/cookie.js"></script>
     <script type="text/javascript" src="/js/jquery.url.js"></script>
-    <script type="text/javascript" src="/js/solution.diy2.js"></script>
+    <script type="text/javascript" src="/js/solution.diy3.js"></script>
 </asp:Content>
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">影音解决方案</a> &gt;&gt; <a href="#">经典套装</a> &gt;&gt; <a href="#">私人影院</a> &gt;&gt; <a href="#">入门家庭影院</a> &gt;&gt; <a href="#">配置</a>
+    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">影音解决方案</a> &gt;&gt; <a href="#">经典套装</a> &gt;&gt; <a href="#">配置</a>
         <div class="solutionSubNav">
             <div class="solutionButtonTab">
                 <a class="button_blue" href="Demand.aspx">按需制定</a>
@@ -27,43 +27,7 @@
     <div class="solutionCustomize_mainbody clearfix newline">
     	<div class="leftColumn">
         	<span class="columnTitle">套装配置单</span>
-            <div class="table1">
-                <asp:Repeater runat="server" ID="Repeater_ConfigCategory">
-                    <HeaderTemplate>
-                        <table id="selected-product-list">
-                            <tr>
-                                <th><span>配置</span></th>
-                                <th><span>名称</span></th>
-                                <th><span>数量</span></th>
-                                <th><span>价格</span></th>
-                                <th><span>删除</span></th>
-                            </tr>
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <tr class="odd" categoryid='<%# Eval("cateid") %>'>
-                            <td><%# Eval("Remark")%></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>                        
-                    </ItemTemplate>
-                    <AlternatingItemTemplate>
-                        <tr class="even" categoryid='<%# Eval("cateid") %>'>
-                            <td><%# Eval("Remark")%></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </AlternatingItemTemplate>
-                    <FooterTemplate>
-                            <tr class="bottom">
-                                <td colspan="5">总计：￥<span id="price-sum">0</span></td>
-                            </tr>
-                        </table>
-                    </FooterTemplate>
-                </asp:Repeater>
+            <div class="table1" id="suit-config-list-wrapper">
             </div>
             <div class="buttons">
             	<a class="button_blue3" style="cursor:pointer" id="clear-select">
@@ -86,12 +50,7 @@
         
         <div class="rightColumn">
         	<span class="columnTitle">设备列表</span>
-            <div class="equipmentCategory">
-                <asp:Repeater runat="server" ID="Repeater_Category">
-                    <ItemTemplate>
-            	        <a style="cursor:pointer;" class="off" cateid='<%# Eval("cateid") %>' ><%# Eval("remark") %></a>
-                    </ItemTemplate>
-                </asp:Repeater>
+            <div class="equipmentCategory" id="equipment-category">
             </div>
             <ul class="form">
             	<li>

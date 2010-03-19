@@ -554,10 +554,29 @@
             <div id="description" style="display:none">
                 <xsl:value-of select="brief" disable-output-escaping="yes"/>
             </div>
-            <div id="specs" style="display:none">text1</div>
-            <div id="packageInclude" style="display:none">text2</div>
-            <div id="suites" style="display:none">text3</div>
-            <div id="service" style="display:none">text4</div>
+            <div id="specs" style="display:none">
+				<table>
+					<xsl:for-each select="/productpage/specifications/specification">
+						<tr>
+							<td>
+								<xsl:value-of select="paraname"/>
+							</td>
+							<td>
+								<xsl:value-of select="paravalue"/>
+							</td>
+						</tr>
+					</xsl:for-each>
+				</table>
+            </div>
+            <div id="packageInclude" style="display:none">
+				<xsl:value-of disable-output-escaping="yes" select="packinglist"/>
+			</div>
+            <div id="suites" style="display:none">
+				<xsl:value-of disable-output-escaping="yes" select="offerset"/>
+            </div>
+            <div id="service" style="display:none">
+				<xsl:value-of disable-output-escaping="yes" select="saleservice"/>
+			</div>
             <div id="news" style="display:none">text5</div>
             <div class="content">
                 <script type="text/javascript">
