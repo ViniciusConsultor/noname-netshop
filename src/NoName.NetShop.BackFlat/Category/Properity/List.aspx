@@ -25,34 +25,36 @@
             <div class="left iframe">
                 <p><b>属性列表</b></p>
                 <p class="control"><asp:LinkButton runat="server" ID="Button_AddPara" OnClick="Button_AddPara_Click" Text="添加属性" /></p>
-                <asp:Label runat="server" ID="Label_Informer"></asp:Label>
-                <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
-                    <Columns>
-                        <asp:BoundField HeaderText="属性ID" DataField="ParaId" />
-                        <asp:BoundField HeaderText="属性名称" DataField="ParaName" />
-                        <asp:TemplateField HeaderText="状态">
-                            <ItemTemplate>
-                                <%# Convert.ToInt32(Eval("status"))==1?"正常":"锁定" %>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="类型">
-                            <ItemTemplate>
-                                <%# Enum.GetName(typeof(NoName.NetShop.Product.Model.CategoryParameterType),Eval("paratype")) %>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="属性值">
-                            <ItemTemplate>
-                                <%# Convert.ToString(Eval("ParaValues")).Length > 10 ? Convert.ToString(Eval("ParaValues")).Substring(0, 10) : Convert.ToString(Eval("ParaValues"))%>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <a href='<%# "Edit.aspx?pid=" + Eval("ParaId") + "&cid=" + Eval("cateid") %>'>编辑</a>
-                                <asp:LinkButton runat="server" ID="Button_Delete" Text="删除" CommandArgument='<%# Eval("ParaId") %>' CommandName="d" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>                
+                <p>
+                    <asp:Label runat="server" ID="Label_Informer"></asp:Label>
+                    <asp:GridView CssClass="GridView" runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
+                        <Columns>
+                            <asp:BoundField HeaderText="属性ID" DataField="ParaId" />
+                            <asp:BoundField HeaderText="属性名称" DataField="ParaName" />
+                            <asp:TemplateField HeaderText="状态">
+                                <ItemTemplate>
+                                    <%# Convert.ToInt32(Eval("status"))==1?"正常":"锁定" %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="类型">
+                                <ItemTemplate>
+                                    <%# Enum.GetName(typeof(NoName.NetShop.Product.Model.CategoryParameterType),Eval("paratype")) %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="属性值">
+                                <ItemTemplate>
+                                    <%# Convert.ToString(Eval("ParaValues")).Length > 10 ? Convert.ToString(Eval("ParaValues")).Substring(0, 10) : Convert.ToString(Eval("ParaValues"))%>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <a href='<%# "Edit.aspx?pid=" + Eval("ParaId") + "&cid=" + Eval("cateid") %>'>编辑</a>
+                                    <asp:LinkButton runat="server" ID="Button_Delete" Text="删除" CommandArgument='<%# Eval("ParaId") %>' CommandName="d" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>    
+                </p>            
             </div>    
         </div>
     </form>

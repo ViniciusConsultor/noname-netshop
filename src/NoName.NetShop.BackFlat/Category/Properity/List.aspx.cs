@@ -72,7 +72,7 @@ namespace NoName.NetShop.BackFlat.Category.Properity
                 if (CurrentCategoryID != -1 && CurrentCategoryID == Convert.ToInt32(tn.Value))
                 {
                     tn.Selected = true;
-                    Response.Write(tn.Selected);
+                    //Response.Write(tn.Selected);
                 }
                 nodes.Add(tn);
 
