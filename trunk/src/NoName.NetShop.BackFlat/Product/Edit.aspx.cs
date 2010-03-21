@@ -312,10 +312,6 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 strErr += "商品重量输入有误！\\n";
             }
-            if (this.fulImage.FileName == "")
-            {
-                strErr += "产品图片不能为空！\\n";
-            }
             if (this.txtKeywords.Text == "")
             {
                 strErr += "关键词不能为空！\\n";

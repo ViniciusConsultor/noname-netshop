@@ -208,7 +208,7 @@
                 <td>商品图片<span class="red">*</span>：</td>
                 <td>
                     <asp:Image runat="server" ID="imgProduct" />
-                    <asp:FileUpload runat="server" ID="fulImage" />
+                    <asp:FileUpload runat="server" ID="fulImage" EnableViewState="true" />
                 </td>
             </tr>
             <tr>
