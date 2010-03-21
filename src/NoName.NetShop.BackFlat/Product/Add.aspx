@@ -14,6 +14,7 @@
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
     <script type="text/javascript">
         $(function() {
+            $('#<%= fulImage.ClientID %>').val('aaa');
             CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
                 height: '400px',
                 width: '700px',
@@ -241,7 +242,7 @@
             </tr>
             <tr>
                 <td>商品图片：<span class="red">*</span>：</td>
-                <td><asp:FileUpload runat="server" ID="fulImage" /></td>
+                <td><asp:FileUpload runat="server" ID="fulImage" EnableViewState="true" /></td>
             </tr>
             <tr>
                 <td>检索属性：</td>
