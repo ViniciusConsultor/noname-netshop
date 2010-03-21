@@ -46,5 +46,11 @@ namespace NoName.NetShop.Publish.Product.DataAccess
 
             return db.ExecuteDataSet(CommandType.Text, String.Format(sql, ProductID, CategoryID)).Tables[0];
         }
+
+        public DataTable GetSameBrandProduct(int ProductID)
+        {
+            string sql = "select top 10 * from pdproduct where brandid = (select brandid from pdproduct where productid={0})";
+            return db.ExecuteDataSet(CommandType.Text, String.Format(sql, ProductID)).Tables[0];
+        }
     }
 }

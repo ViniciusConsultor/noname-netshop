@@ -132,5 +132,24 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             return CommentNode;
         }
 
+        public XmlNode GetSameBrandProductList()
+        {
+            XmlNode BrandProductsNode = xdoc.CreateElement("samebrandproducts");
+
+            DataTable dt = dal.GetSameBrandProduct(Parameter.ProductID);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode ProductNode = XmlUtility.AddNewNode(BrandProductsNode, "product", null);
+
+                XmlUtility.AddNewNode(ProductNode, "productid", Convert.ToString(row["productid"]));
+                XmlUtility.AddNewNode(ProductNode, "productname", Convert.ToString(row["productname"]));
+                XmlUtility.AddNewNode(ProductNode, "productnameshort", Convert.ToString(row["productname"]).Length > 10 ? Convert.ToString(row["productname"]).Substring(0, 10) + ".." : Convert.ToString(row["productname"]));
+                XmlUtility.AddNewNode(ProductNode, "price", Convert.ToDecimal(Convert.ToDecimal(row["MerchantPrice"]) - Convert.ToDecimal(row["reduceprice"])).ToString("00"));
+            }
+
+            return BrandProductsNode;
+        }
+
     }
 }
