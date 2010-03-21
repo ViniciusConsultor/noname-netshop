@@ -107,50 +107,7 @@
                                 </ul>
                                 <div class="content">
                                     <ul class="articleList_2 bullet_2">
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Gateway TC7814c 笔记本电脑">Gateway TC7814c 笔记本电脑</a>
-                                            <span>￥188</span>
-                                        </li>
+                                        <xsl:apply-templates select="/productpage/samebrandproducts/product"/>
                                     </ul>
                                 </div>
                                 <ul class="bottom">
@@ -508,27 +465,12 @@
                     </li>
                     <li>
                         <span class="field">库存状态：</span>
-                        <span>北京现货</span>
-                    </li>
-                    <li>
-                        <span class="field">评　　分：</span>
-                        <div class="rating">
-                            <a class="on" href="javascript:void(0)">
-                                <xsl:text> </xsl:text>
-                            </a>
-                            <a class="on" href="javascript:void(0)">
-                                <xsl:text> </xsl:text>
-                            </a>
-                            <a class="on" href="javascript:void(0)">
-                                <xsl:text> </xsl:text>
-                            </a>
-                            <a href="javascript:void(0)">
-                                <xsl:text> </xsl:text>
-                            </a>
-                            <a href="javascript:void(0)">
-                                <xsl:text> </xsl:text>
-                            </a>
-                        </div>
+                        <span>
+                            <xsl:choose>
+                                <xsl:when test="stock > 0">北京现货</xsl:when>
+                                <xsl:otherwise>北京缺货</xsl:otherwise>
+                            </xsl:choose>
+                        </span>
                     </li>
                     <li class="buttons">
                         <a class="purchase" href="/sp/addtocart.aspx?pid={productid}">
@@ -645,6 +587,18 @@
                 </div>
             </div>
         </div>
+    </xsl:template>
+    
+    <!---->
+    <xsl:template match="/productpage/samebrandproducts/product">
+        <li>
+            <a href="/product-{productid}.html" title="{productname}">
+                <xsl:value-of select="productnameshort"/>
+            </a>
+            <span>
+                ￥<xsl:value-of select="price"/>
+            </span>
+        </li>
     </xsl:template>
 
 
