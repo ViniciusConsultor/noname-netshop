@@ -1,6 +1,7 @@
 ﻿$(function() {
     $('#comment-button').click(function() {
-        var content = $('#comment-content').val();
+    var content = $('#comment-content').val();
+    var validate = $('#comment-validate').val();
         var pawnID = $(this).attr('pwid');
         if (content == '') {
             alert('请输入评论内容');
@@ -9,15 +10,15 @@
             $.ajax({
                 url: '/handler/CommentHandler.ashx',
                 type: 'post',
-                data: 'app=6&tid=' + pawnID + '&cnt=' + content,
+                data: 'app=6&tid=' + pawnID + '&cnt=' + content + '&vld=' + validate,
                 cache: false,
                 dataType: 'text',
                 success: function(data, textStatus) {
-                    if (data.toLowerCase() == 'true') {
+                    if (data.result.toString() == 'true') {
                         alert('发表成功！');
                         window.location.reload();
                     }
-                    else alert('添加失败');
+                    else alert(data.msg);
                 }
             });
         }

@@ -215,11 +215,12 @@
                                 <div class="leaveComment">
                                     <div class="title">我来说几句</div>
                                     <textarea id="comment-content"></textarea>
+                                    <input type="text" id="comment-validate" />
+                                    <img src="../ValiateCode.aspx" onclick="this.src='../ValiateCode.aspx?_='+new Date().getUTCMilliseconds()" />
                                     <input auid='<%= AuctionID %>' type="button" id="comment-button" class"button_blue" value="发表" />
                                 </div>
                             </div>
-                        </div>
-                        
+                        </div>                        
                     </div>
                     <ul class="bottom">
                        <li class="left"></li>
