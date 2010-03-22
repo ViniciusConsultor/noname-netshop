@@ -21,7 +21,7 @@ namespace NoName.NetShop.BackFlat.Order
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "spOrder";
-                    spage.FieldNames = "UserId,OrderId,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,DerateFee,RecieverName,ChangeTime,PayTime,CreateTime,OrderType";
+                    spage.FieldNames = "UserId,OrderId,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,DerateFee,userid,RecieverName,ChangeTime,PayTime,CreateTime,OrderType";
                     spage.PriKeyName = "OrderId";
                     spage.StrJoin = "";
                     spage.PageSize = 20;
@@ -49,7 +49,7 @@ namespace NoName.NetShop.BackFlat.Order
             DataSet ds = NoName.NetShop.Common.CommDataHelper.GetDataFromMultiTablesByPage(SearPageInfo);
             gvList.DataSource = ds.Tables[0];
             gvList.DataBind();
-            pageNav.CurrentPageIndex = SearPageInfo.PageIndex - 1;
+            pageNav.CurrentPageIndex = SearPageInfo.PageIndex;
             pageNav.PageSize = SearPageInfo.PageSize;
             pageNav.RecordCount = SearPageInfo.TotalItem;
         }
@@ -71,19 +71,33 @@ namespace NoName.NetShop.BackFlat.Order
                     where += " and ";
                 where += "orderId='" + orderId + "'";
             }
-            DateTime sdate;
-            if (DateTime.TryParse(txtStartDate.Text,out sdate))
+            string userId = NoName.Utility.input.Filter(txtUserId.Text.Trim());
+            if (!String.IsNullOrEmpty(userId))
             {
                 if (!String.IsNullOrEmpty(where))
                     where += " and ";
-                where += "createtime>='" + sdate.ToShortDateString() +"'";
+                where += "userId='" + userId + "'";
+            }
+            string recievername = NoName.Utility.input.Filter(txtReceiver.Text.Trim());
+            if (!String.IsNullOrEmpty(recievername))
+            {
+                if (!String.IsNullOrEmpty(where))
+                    where += " and ";
+                where += "recievername='" + recievername + "'";
+            }
+            DateTime sdate;
+            if (DateTime.TryParse(txtStartDate.Text, out sdate))
+            {
+                if (!String.IsNullOrEmpty(where))
+                    where += " and ";
+                where += "createtime>='" + sdate.ToShortDateString() + "'";
             }
             DateTime edate;
-            if (DateTime.TryParse(txtEndDate.Text,out edate))
+            if (DateTime.TryParse(txtEndDate.Text, out edate))
             {
                 if (!String.IsNullOrEmpty(where))
                     where += " and ";
-                where += "createtime<='" + edate.ToShortDateString() +"'";
+                where += "createtime<='" + edate.ToShortDateString() + "'";
             }
 
             if (ddlOrderStatus.SelectedValue != "")

@@ -27,7 +27,7 @@ namespace NoName.NetShop.BackFlat.message
         {
             MessageBll mbll = new MessageBll();
             MessageModel model = mbll.GetModel(msgId);
-            if (model != null && model.UserId == Context.User.Identity.Name)
+            if (model != null)
             {
                 lblContent.Text = model.Content;
                 lblMsgId.Text = model.MsgId.ToString();

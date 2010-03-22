@@ -13,7 +13,8 @@
 <script type="text/javascript" charset="utf-8">
     $(function() {
         var now = new Date();
-        var enddate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+        var enddate = now.asString();
+        // now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
         $('.date-pick').datePicker({ startDate: '2009-01-01', endDate: enddate, createButton: false, clickInput: true });
     });
 </script>
@@ -25,6 +26,8 @@
         <div id="data-list">
         <div>
         订单ID：<asp:TextBox runat="server" ID="txtOrderId"></asp:TextBox>
+        购买人ID：<asp:TextBox runat="server" ID="txtUserId"></asp:TextBox>
+        收货人姓名：<asp:TextBox runat="server" ID="txtReceiver"></asp:TextBox>
         &nbsp; 
   订单生成时间：从 
   <asp:TextBox Width="71" runat="server" ID="txtStartDate" CssClass="date-pick"></asp:TextBox>
@@ -55,7 +58,8 @@
            <asp:GridView runat="server" ID="gvList" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField DataField="orderid" HeaderText="订单ID" />            
-                    <asp:BoundField DataField="userid" HeaderText="收货人" />
+                    <asp:BoundField DataField="userid" HeaderText="订货人" />
+                    <asp:BoundField DataField="recievername" HeaderText="收货人" />
                     <asp:TemplateField HeaderText="物流状态">
                         <ItemTemplate>
                             <%# Enum.GetName(typeof(NoName.NetShop.ShopFlow.OrderStatus),Convert.ToInt32(Eval("orderstatus"))) %>

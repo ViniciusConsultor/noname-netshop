@@ -22,13 +22,13 @@ namespace NoName.NetShop.BackFlat.message
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "imMessage";
-                    spage.FieldNames = "UserId,MsgId,MsgType,Subject,Content,SenderId,InsertTime,ReadTime,Status,usertype";
+                    spage.FieldNames = "UserId,MsgId,case MsgType when 1 then '公告' when 2 then '组消息' else '用户消息' end as TMsgType,Subject,Content,SenderId,InsertTime,ReadTime,Status,case usertype when 0 then '前台用户' else '后台用户' end as TUserType ";
                     spage.PriKeyName = "MsgId";
                     spage.StrJoin = "";
                     spage.PageSize = 20;
                     spage.PageIndex = 1;
                     spage.OrderType = "1";
-                    spage.StrWhere = "usertype=1 and userid='" + Context.User.Identity.Name + "'";
+                    spage.StrWhere = "";
 
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
@@ -72,7 +72,7 @@ namespace NoName.NetShop.BackFlat.message
             }
             MessageBll bll = new MessageBll();
 
-            bll.Delete(Context.User.Identity.Name, String.Join(",", msgIds.ToArray()), 1);
+            bll.Delete(Context.User.Identity.Name, String.Join(",", msgIds.ToArray()));
             SearPageInfo.PageIndex = 1;
             BindList();
         }
@@ -82,7 +82,7 @@ namespace NoName.NetShop.BackFlat.message
         {
             int msgId = Convert.ToInt32(gvList.DataKeys[e.RowIndex][0]);
             MessageBll bll = new MessageBll();
-            bll.Delete(Context.User.Identity.Name, msgId,1);
+            bll.Delete(Context.User.Identity.Name, msgId);
             SearPageInfo.PageIndex = 1;
             BindList();
 

@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -21,6 +22,8 @@
         <asp:BoundField DataField="Subject" HeaderText="标题" />
         <asp:BoundField DataField="InsertTime" DataFormatString="{0:yyyy-MM-dd HH:mm}"  HeaderText="收件时间"/>
         <asp:BoundField DataField="SenderId"  HeaderText="发件人"/>
+        <asp:BoundField DataField="TMsgType" HeaderText="消息类型" />
+        <asp:BoundField DataField="TUserType" HeaderText="用户类型" />
         <asp:HyperLinkField Text="查看"   DataNavigateUrlFormatString="ShowMessage.aspx?msgId={0}" HeaderText="查看" DataNavigateUrlFields="msgId" />
         <asp:CommandField DeleteText="删除" ShowDeleteButton="true"  HeaderText="删除" />
     </Columns>
