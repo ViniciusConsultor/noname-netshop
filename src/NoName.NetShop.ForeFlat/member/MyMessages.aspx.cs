@@ -39,6 +39,7 @@ namespace NoName.NetShop.ForeFlat.member
         {
             if (!IsPostBack)
             {
+                BindNotice();
                 BindList();
             }
         }
@@ -52,6 +53,23 @@ namespace NoName.NetShop.ForeFlat.member
             pageNav.PageSize = SearPageInfo.PageSize;
             pageNav.RecordCount = SearPageInfo.TotalItem;
 
+        }
+
+        private void BindNotice()
+        {
+            MessageBll mbll = new MessageBll();
+            List<MessageModel> list = mbll.GetNoticeList(0, true);
+            if (list.Count > 0)
+            {
+                panNotice.Visible = true;
+                rpNotice.DataSource = list;
+                rpNotice.DataBind();
+            }
+            else
+            {
+                panNotice.Visible = false;
+
+            }
         }
 
         protected void pageNav_PageChanged(object src, NoName.Utility.PageChangedEventArgs e)

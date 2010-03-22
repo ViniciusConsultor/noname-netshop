@@ -81,9 +81,10 @@
                         <ul class="form">
                             <li><span class="field">咨询内容</span>
                                 <asp:TextBox TextMode="MultiLine" runat="server" ID="txtContent" CssClass="textarea4"></asp:TextBox>
+                                <asp:RequiredFieldValidator runat="server" ID="rfvContent" ControlToValidate="txtContent" ErrorMessage="内容不能为空" EnableClientScript="true" ValidationGroup="doquestion"></asp:RequiredFieldValidator>
                             </li>
                             <li class="submit">
-                                <asp:LinkButton runat="server" ID="lbtnDoQuestion" CssClass="button_blue" Text="提交咨询"
+                                <asp:LinkButton runat="server" ID="lbtnDoQuestion" CssClass="button_blue" Text="提交咨询" ValidationGroup="doquestion"
                                     OnClick="lbtnDoQuestion_Click"></asp:LinkButton>
                             </li>
                         </ul>

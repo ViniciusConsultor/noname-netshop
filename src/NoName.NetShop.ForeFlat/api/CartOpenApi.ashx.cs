@@ -11,6 +11,8 @@ using NoName.NetShop.Common;
 using NoName.NetShop.ShopFlow;
 using Newtonsoft.Json;
 using System.IO;
+using NoName.NetShop.IMMessage;
+using System.Web.Script.Serialization;
 
 namespace NoName.NetShop.ForeFlat
 {
@@ -59,10 +61,34 @@ namespace NoName.NetShop.ForeFlat
                 case "getcartinfo": // 获得购物车信息，数量，金额
                     result = GetCartInfo(context);
                     break;
+                case "getmessage":
+                    result = GetMessage(context);
+                    break;
             }
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(prefix + result);
+        }
+
+        private string GetMessage(HttpContext context)
+        {
+            int msgId;
+            string result = String.Empty;
+            if (!int.TryParse(context.Request["msgId"], out msgId))
+            {
+                msgId = 0;
+            }
+            MessageBll mbll = new MessageBll();
+            MessageModel model = mbll.GetModel(msgId);
+            if (model != null && (model.UserId == context.User.Identity.Name || model.MsgType==1) && model.UserType==0)
+            {
+                if (model.MsgType == 0)
+                    mbll.SetIsReaded(msgId);
+
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                result = jss.Serialize(model);
+            }
+            return result;
         }
 
         private string GetCartInfo(HttpContext context)
