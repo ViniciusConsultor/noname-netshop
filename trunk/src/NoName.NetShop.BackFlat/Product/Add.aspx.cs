@@ -144,20 +144,6 @@ namespace NoName.NetShop.BackFlat.Product
             }
         }
 
-        private void BindMultiImageData()
-        {
-            DataTable multiImageDataTable = new ProductImageModelBll().GetList(ProductID).Tables[0];
-
-            foreach (DataRow row in multiImageDataTable.Rows)
-            {
-                row["smallimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["smallimage"]));
-                row["largeimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["largeimage"]));
-                row["originimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["originimage"]));
-            }
-
-            GridView_MultiImage.DataSource = multiImageDataTable;
-            GridView_MultiImage.DataBind();
-        }
         
         protected void btnAddGoOn_Click(object sender, EventArgs e)
         {
@@ -187,69 +173,6 @@ namespace NoName.NetShop.BackFlat.Product
             }
         }
 
-        protected void GridView_MultiImage_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName.ToLower() == "d")
-            {
-                int ImageID = Convert.ToInt32(e.CommandArgument);
-
-                ProductImageModel model = new ProductImageModelBll().GetModel(ImageID);
-
-                ProductMultiImageRule.DeleteMultiImage(model.LargeImage);
-                ProductMultiImageRule.DeleteMultiImage(model.OriginImage);
-                ProductMultiImageRule.DeleteMultiImage(model.SmallImage);
-
-                new ProductImageModelBll().Delete(ImageID);
-                BindMultiImageData();
-            }
-            if (e.CommandName.ToLower() == "u")
-            {
-                int ImageID = Convert.ToInt32(e.CommandArgument);
-                int ImageCount = GridView_MultiImage.Rows.Count;
-                int Position = 0;
-                for (int i = 0; i < ImageCount; i++)
-                {
-                    if (ImageID == Convert.ToInt32(GridView_MultiImage.Rows[i].Cells[0].Text))
-                    {
-                        Position = i;
-                        break;
-                    }
-                }
-
-                if (Position != 0)
-                {
-                    new ProductImageModelBll().SwitchOrder(ImageID, Convert.ToInt32(GridView_MultiImage.Rows[Position - 1].Cells[0].Text));
-                }
-
-                BindMultiImageData(); 
-            }
-            if (e.CommandName.ToLower() == "l")
-            {
-                int ImageID = Convert.ToInt32(e.CommandArgument);
-                int ImageCount = GridView_MultiImage.Rows.Count;
-                int Position = 0;
-                for (int i = 0; i < ImageCount; i++)
-                {
-                    if (ImageID == Convert.ToInt32(GridView_MultiImage.Rows[i].Cells[0].Text))
-                    {
-                        Position = i;
-                        break;
-                    }
-                }
-
-                if (Position != ImageCount)
-                {
-                    new ProductImageModelBll().SwitchOrder(ImageID, Convert.ToInt32(GridView_MultiImage.Rows[Position + 1].Cells[0].Text));
-                }
-
-                BindMultiImageData(); 
-            }
-        }
-
-        protected void Button_MultiImageUpload_Click(object sender, EventArgs e)
-        {
-            AddMultiImage();
-        }
 
         private void AddProduct()
         {
@@ -383,6 +306,28 @@ namespace NoName.NetShop.BackFlat.Product
                         pvBll.Add(para);
                     }
                 }
+                //添加商品多图
+                foreach (string s in Request.Files.AllKeys)
+                {
+                    if (s.StartsWith("fileUpload"))
+                    {
+                        string[] FileNames;
+                        ProductMultiImageRule.SaveProductMultiImage(ProductID, Request.Files[s], out FileNames);
+
+                        if (FileNames != null)
+                        {
+                            ProductImageModel model = new ProductImageModel();
+                            model.ImageId = CommDataHelper.GetNewSerialNum("pd");
+                            model.ProductId = ProductID;
+                            model.LargeImage = FileNames[1];
+                            model.OriginImage = FileNames[2];
+                            model.SmallImage = FileNames[0];
+                            model.Title = String.Empty;
+
+                            new ProductImageModelBll().Add(model);
+                        }
+                    }
+                }
             }
             else
             {
@@ -391,34 +336,6 @@ namespace NoName.NetShop.BackFlat.Product
 
         }
 
-        private void AddMultiImage()
-        {
-            if (!String.IsNullOrEmpty(TextBox_MiltiImageDescription.Text) && !String.IsNullOrEmpty(FileUpload_MultiImage.FileName))
-            {
-                string[] FileNames;
-                ProductMultiImageRule.SaveProductMultiImage(ProductID, FileUpload_MultiImage.PostedFile, out FileNames);
-
-                if (FileNames != null)
-                {
-                    ProductImageModel model = new ProductImageModel();
-                    model.ImageId = CommDataHelper.GetNewSerialNum(AppType.Product);
-                    model.ProductId = ProductID;
-                    model.LargeImage = FileNames[1];
-                    model.OriginImage = FileNames[2];
-                    model.SmallImage = FileNames[0];
-                    model.Title = TextBox_MiltiImageDescription.Text;
-
-                    new ProductImageModelBll().Add(model);
-                    BindMultiImageData();
-
-                    MessageBox.Show(this, "添加成功！");
-                }
-            }
-            else
-            {
-                MessageBox.Show(this, "输入不完整");
-            }
-        }
 
         private DataTable AddSelectRow(DataTable InputTable)
         {
@@ -435,6 +352,84 @@ namespace NoName.NetShop.BackFlat.Product
 
             return newTable;
         }
+
+
+
+
+        /*
+        private void BindMultiImageData()
+        {
+            DataTable multiImageDataTable = new ProductImageModelBll().GetList(ProductID).Tables[0];
+
+            foreach (DataRow row in multiImageDataTable.Rows)
+            {
+                row["smallimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["smallimage"]));
+                row["largeimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["largeimage"]));
+                row["originimage"] = ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["originimage"]));
+            }
+
+            GridView_MultiImage.DataSource = multiImageDataTable;
+            GridView_MultiImage.DataBind();
+        }
+        protected void GridView_MultiImage_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.ToLower() == "d")
+            {
+                int ImageID = Convert.ToInt32(e.CommandArgument);
+
+                ProductImageModel model = new ProductImageModelBll().GetModel(ImageID);
+
+                ProductMultiImageRule.DeleteMultiImage(model.LargeImage);
+                ProductMultiImageRule.DeleteMultiImage(model.OriginImage);
+                ProductMultiImageRule.DeleteMultiImage(model.SmallImage);
+
+                new ProductImageModelBll().Delete(ImageID);
+                BindMultiImageData();
+            }
+            if (e.CommandName.ToLower() == "u")
+            {
+                int ImageID = Convert.ToInt32(e.CommandArgument);
+                int ImageCount = GridView_MultiImage.Rows.Count;
+                int Position = 0;
+                for (int i = 0; i < ImageCount; i++)
+                {
+                    if (ImageID == Convert.ToInt32(GridView_MultiImage.Rows[i].Cells[0].Text))
+                    {
+                        Position = i;
+                        break;
+                    }
+                }
+
+                if (Position != 0)
+                {
+                    new ProductImageModelBll().SwitchOrder(ImageID, Convert.ToInt32(GridView_MultiImage.Rows[Position - 1].Cells[0].Text));
+                }
+
+                BindMultiImageData(); 
+            }
+            if (e.CommandName.ToLower() == "l")
+            {
+                int ImageID = Convert.ToInt32(e.CommandArgument);
+                int ImageCount = GridView_MultiImage.Rows.Count;
+                int Position = 0;
+                for (int i = 0; i < ImageCount; i++)
+                {
+                    if (ImageID == Convert.ToInt32(GridView_MultiImage.Rows[i].Cells[0].Text))
+                    {
+                        Position = i;
+                        break;
+                    }
+                }
+
+                if (Position != ImageCount)
+                {
+                    new ProductImageModelBll().SwitchOrder(ImageID, Convert.ToInt32(GridView_MultiImage.Rows[Position + 1].Cells[0].Text));
+                }
+
+                BindMultiImageData(); 
+            }
+        }
+         * */
 
     }
 }

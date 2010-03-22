@@ -220,11 +220,6 @@ namespace NoName.NetShop.BackFlat.Product
             Response.Redirect("List.aspx");
         }
 
-        protected void Button_MultiImageUpload_Click(object sender, EventArgs e)
-        {
-            AddMultiImage();
-        }
-
         protected void GridView_MultiImage_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName.ToLower() == "d")
@@ -396,12 +391,52 @@ namespace NoName.NetShop.BackFlat.Product
                     pvBll.Update(para);
                 }
             }
+            //添加商品多图
+            foreach (string s in Request.Files.AllKeys)
+            {
+                if (s.StartsWith("fileUpload"))
+                {
+                    string[] FileNames;
+                    ProductMultiImageRule.SaveProductMultiImage(ProductID, Request.Files[s], out FileNames);
+
+                    if (FileNames != null)
+                    {
+                        ProductImageModel model = new ProductImageModel();
+                        model.ImageId = CommDataHelper.GetNewSerialNum("pd");
+                        model.ProductId = ProductID;
+                        model.LargeImage = FileNames[1];
+                        model.OriginImage = FileNames[2];
+                        model.SmallImage = FileNames[0];
+                        model.Title = String.Empty;
+
+                        new ProductImageModelBll().Add(model);
+                    }
+                }
+            }
 
             bll.Update(product);
 
             Response.Redirect("List.aspx");
         }
 
+
+        private DataTable AddSelectRow(DataTable InputTable)
+        {
+            DataTable newTable = InputTable.Clone();
+
+            DataRow row = newTable.NewRow();
+
+            row["title"] = "请选择...";
+            row["content"] = String.Empty;
+
+            newTable.Rows.Add(row);
+
+            foreach (DataRow nrow in InputTable.Rows) newTable.ImportRow(nrow);
+
+            return newTable;
+        }
+
+        /*
         private void AddMultiImage()
         {
             if (!String.IsNullOrEmpty(TextBox_MiltiImageDescription.Text) && !String.IsNullOrEmpty(FileUpload_MultiImage.FileName))
@@ -429,22 +464,6 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 MessageBox.Show(this, "输入不完整");
             }
-        }
-
-        private DataTable AddSelectRow(DataTable InputTable)
-        {
-            DataTable newTable = InputTable.Clone();
-
-            DataRow row = newTable.NewRow();
-
-            row["title"] = "请选择...";
-            row["content"] = String.Empty;
-
-            newTable.Rows.Add(row);
-
-            foreach (DataRow nrow in InputTable.Rows) newTable.ImportRow(nrow);
-
-            return newTable;
-        }
+        }*/
     }
 }

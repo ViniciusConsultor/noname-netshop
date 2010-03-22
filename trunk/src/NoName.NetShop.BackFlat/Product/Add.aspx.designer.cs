@@ -230,42 +230,6 @@ namespace NoName.NetShop.BackFlat.Product {
         protected global::System.Web.UI.WebControls.GridView GridView_Specification;
         
         /// <summary>
-        /// TextBox_MiltiImageDescription 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_MiltiImageDescription;
-        
-        /// <summary>
-        /// FileUpload_MultiImage 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload_MultiImage;
-        
-        /// <summary>
-        /// Button_MultiImageUpload 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_MultiImageUpload;
-        
-        /// <summary>
-        /// GridView_MultiImage 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView_MultiImage;
-        
-        /// <summary>
         /// btnAddGoOn 控件。
         /// </summary>
         /// <remarks>

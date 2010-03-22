@@ -12,6 +12,10 @@
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
     <script type="text/javascript">
         $(function() {
+            $('#product-multi-image-upload-add').click(function(){
+                $('#product-multi-image-upload-zone').append($('<div><input type="file" id="fileUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>'));
+            });
+            
             CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
                 height: '400px',
                 width: '700px',
@@ -261,23 +265,11 @@
             </tr>
             <tr>
                 <td>商品多图：</td>
-                <td>                
-                    <div>
-                        <table>
-                            <tr>
-                                <td>图片描述：</td>
-                                <td><asp:TextBox runat="server" ID="TextBox_MiltiImageDescription"></asp:TextBox></td>
-                            </tr>
-                            <tr>
-                                <td>图片：</td>
-                                <td><asp:FileUpload runat="server" ID="FileUpload_MultiImage" /></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><asp:Button runat="server" ID="Button_MultiImageUpload" Text="上传" OnClick="Button_MultiImageUpload_Click" /></td>
-                            </tr>
-                        </table>
-                    </div> 
+                <td>            
+                    <div id="product-multi-image-upload-zone">                        
+                        <input type="button" value=" Add " id="product-multi-image-upload-add" />
+                        <div><input type="file" id="fileUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>                        
+                    </div>     
                     <div>
                         <asp:GridView runat="server" ID="GridView_MultiImage" OnRowCommand="GridView_MultiImage_RowCommand" AutoGenerateColumns="false">
                             <Columns>
@@ -287,7 +279,7 @@
                                         <asp:Image Height="100" Width="100" ImageUrl='<%# Eval("smallimage") %>' runat="server" ID="ProductMultiImage" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="title" HeaderText="图片描述" />
+                                <%--<asp:BoundField DataField="title" HeaderText="图片描述" />--%>
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:LinkButton runat="server" ID="Button_MoveUp" CommandArgument='<%# Eval("imageid") %>' CommandName='u' Text="上移" />
@@ -299,8 +291,7 @@
                                         <asp:LinkButton id="DeleteButton" runat="server" Text="删除" CommandArgument='<%# Eval("imageid") %>' CommandName="d" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                            </Columns>
-                        
+                            </Columns>                        
                         </asp:GridView>
                     </div>
                 </td>
