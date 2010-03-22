@@ -35,7 +35,7 @@ namespace NoName.NetShop.BackFlat.commapi
                 case "getmsglist":
                     result = GetMsgList(context);
                     break;
-                case "getmsg":
+                case "getmessage":
                     result = GetMessage(context);
                     break;
 
@@ -55,7 +55,7 @@ namespace NoName.NetShop.BackFlat.commapi
             }
             MessageBll mbll = new MessageBll();
             MessageModel model = mbll.GetModel(msgId);
-            if (model != null && model.UserId == context.User.Identity.Name)
+            if (model != null && (model.UserId == context.User.Identity.Name || model.MsgType==1) && model.UserType==1)
             {
                 JavaScriptSerializer jss = new JavaScriptSerializer();
                 result = jss.Serialize(model);
@@ -66,7 +66,7 @@ namespace NoName.NetShop.BackFlat.commapi
         private string GetMsgList(HttpContext context)
         {
             MessageBll mbll = new MessageBll();
-            List<MessageModel> list = mbll.GetList(context.User.Identity.Name, 1,0);
+            List<MessageModel> list = mbll.GetAllList(context.User.Identity.Name,null,1);
 
             StringBuilder result = new StringBuilder();
             StringWriter sw = new StringWriter(result);

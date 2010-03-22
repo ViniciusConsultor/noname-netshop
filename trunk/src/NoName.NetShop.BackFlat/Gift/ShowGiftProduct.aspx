@@ -10,12 +10,14 @@
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script src="/js/validate.js" type="text/javascript"></script>
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
+    <script src="../ckfinder/ckfinder.js" type="text/javascript"></script>
     <script type="text/javascript">
     $(function() {
-    CKEDITOR.replace('<%= txtDecription.ClientID %>', {
+    var editor = CKEDITOR.replace('<%= txtDecription.ClientID %>', {
             height: '400px',
             width: '700px'
         });
+        CKFinder.SetupCKEditor(editor, '/ckfinder/'); 
     });
     </script>
     <style type="text/css">
