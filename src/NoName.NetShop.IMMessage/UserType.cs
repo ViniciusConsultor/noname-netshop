@@ -7,7 +7,9 @@ namespace NoName.NetShop.IMMessage
 {
     public enum UserType
     {
-        ForeUser =0,
-        BackUser =1
+        ForeUser = 0,
+        BackUser = 1,
+        AllForeUser = 2,
+        AllBackUser =3
     }
 }
