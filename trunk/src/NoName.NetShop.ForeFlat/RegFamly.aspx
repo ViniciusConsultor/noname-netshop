@@ -26,7 +26,7 @@
                     data: "action=regexistuserid&userId=" + $txtUserId.val(),
                     dataType: "json",
                     success: function(data) {
-                        if (data == "true") {
+                        if (data == true) {
                             $txtUserId.select();
                             $txtUserId.next(".tip").html("此帐号已被注册").css({ color: "red" });
                         }
@@ -53,7 +53,7 @@
                     data: "action=regexistemail&email=" + $txtUserEmail.val(),
                     dataType: "json",
                     success: function(data) {
-                        if (data == "true") {
+                        if (data == true) {
                             $txtUserEmail.select();
                             $txtUserEmail.next(".tip").html("此邮箱已被注册").css({ color: "red" });
                         }
