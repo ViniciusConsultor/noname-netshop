@@ -64,6 +64,10 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -78,10 +82,8 @@
     <Compile Include="MessageBll.cs" />
     <Compile Include="MessageDal.cs" />
     <Compile Include="MessageModel.cs" />
-    <Compile Include="MessageType.cs" />
     <Compile Include="NotifyHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NoName.NetShop.Comm\NoName.NetShop.Common.csproj">

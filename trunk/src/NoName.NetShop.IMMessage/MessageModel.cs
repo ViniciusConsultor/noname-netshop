@@ -1,4 +1,6 @@
 using System;
+using System.Text;
+using System.Web.Script.Serialization;
 namespace NoName.NetShop.IMMessage
 {
 	/// <summary>
@@ -19,6 +21,14 @@ namespace NoName.NetShop.IMMessage
 		private DateTime? _readtime;
 		private bool _status;
 
+        /// <summary>
+        /// 过期时间（针对组公告和全体公告有效）
+        /// </summary>
+        public DateTime? ExpireTime { get; set; }
+
+        /// <summary>
+        /// 用户类型：0 前台用户 1 后台用户
+        /// </summary>
         public int UserType { get; set; }
 
 		/// <summary>
@@ -38,7 +48,7 @@ namespace NoName.NetShop.IMMessage
 			get{return _msgid;}
 		}
 		/// <summary>
-		/// 
+		/// 0 个人用户通知 1 全体用户通知（对应的userid暂定为alluser） 2 用户组通知：对应的用户组为用户角色名
 		/// </summary>
 		public int MsgType
 		{
@@ -93,6 +103,12 @@ namespace NoName.NetShop.IMMessage
 			set{ _status=value;}
 			get{return _status;}
 		}
+
+        public string ToJson()
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Serialize(this);
+        }    
 		#endregion Model
 
 

@@ -1,10 +1,22 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
+using System.Text;
 namespace NoName.NetShop.IMMessage
 {
 	/// <summary>
 	/// 业务逻辑类MessageModelBll 的摘要说明。
+    /// 站内信目前不支持回复功能，目前仅实现为通知功能。
+    /// 对于消息类型分为三种方式：
+    /// 单个用户消息
+    /// 用户组消息：前台用户分组（等级？类型？目前不确定），后台用户组（角色）
+    /// 全体用户消息：消息接收者alluser
+    /// 用户类型：前台用户，后台用户
+    /// 涉及关键字段：收信人、消息类型、用户类型
+    /// 具体定义：
+    /// 用户类型 UserType 0 前台用户 1 后台用户
+    /// 消息类型 MsgType 0 单个用户消息 1 全体用户消息 2 用户组消息
+    /// 其中 单个用户消息可以有阅读时间 全体消息和用户组消息，没有阅读时间
 	/// </summary>
 	public class MessageBll
 	{
@@ -21,64 +33,31 @@ namespace NoName.NetShop.IMMessage
 			dal.Add(model);
 		}
 
-        public void Add(string content,string subject,string userId,string sender)
-        {
-            MessageModel model = new MessageModel();
-            model.MsgId = 0;
-            model.MsgType = 0;
-            model.UserId = userId;
-            model.SenderId = sender;
-            model.Subject = subject;
-            model.Content = content;
-            model.UserType = 0; // 默认为前台用户
-            dal.Add(model);
-        }
-
-        public void Add(string content, string subject, string userId, string sender,int userType)
-        {
-            MessageModel model = new MessageModel();
-            model.MsgId = 0;
-            model.MsgType = 0;
-            model.UserId = userId;
-            model.SenderId = sender;
-            model.Subject = subject;
-            model.Content = content;
-            model.UserType = userType; // 默认为前台用户
-            dal.Add(model);
-        }
-
-		/// <summary>
-		/// 删除一条数据
-		/// </summary>
-		public void Delete(string userId,int msgId)
-		{
-			dal.Delete(userId,msgId,0);
-		}
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public void Delete(string userId, int msgId,int userType)
+        public void Delete(int msgId)
         {
-            dal.Delete(userId, msgId, userType);
+            dal.Delete(msgId);
         }
+
+    	/// <summary>
+		/// 删除某个用户的一条数据
+		/// </summary>
+		public void Delete(string userId,int msgId)
+		{
+			dal.Delete(userId,msgId);
+		}
 
         /// <summary>
         /// 删除多条数据
         /// </summary>
         public void Delete(string userId, string msgIds)
         {
-            dal.Delete(userId, msgIds, 0);
+            dal.Delete(userId, msgIds);
         }
 
-        /// <summary>
-        /// 删除多条数据
-        /// </summary>
-        public void Delete(string userId, string msgIds,int usertype)
-        {
-            dal.Delete(userId, msgIds, usertype);
-        }
-
-		/// <summary>
+    	/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
 		public MessageModel GetModel(int msgId)
@@ -87,17 +66,61 @@ namespace NoName.NetShop.IMMessage
 			return dal.GetModel(msgId);
 		}
 
-        public List<MessageModel> GetList(string userId,int userType)
+        /// <summary>
+        /// 获得个人用户的消息列表
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="userType"></param>
+        /// <returns></returns>
+        public List<MessageModel> GetUserMessageList(string userId,int userType,bool isValidMsg)
         {
-            string where = "userId='" + userId + "' and usertype=" + userType;
+            string where = "msgtype=0 and userId='" + userId + "' and usertype=" + userType;
+            if (isValidMsg)
+                where += " and status=0";
+            return dal.GetList(where);
+        }
+        /// <summary>
+        /// 获得组用户消息
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <param name="userType"></param>
+        /// <param name="isValidMsg"></param>
+        /// <returns></returns>
+        public List<MessageModel> GetGroupMessageList(string roleId, int userType,bool isValidMsg)
+        {
+            string where = "msgtype=2 and userId='" + roleId + "' and usertype=" + userType;
+            if (isValidMsg)
+                where += " and expireTime>getdate()";
             return dal.GetList(where);
         }
 
-        public List<MessageModel> GetList(string userId, int userType,int status)
+        /// <summary>
+        /// 获得公告消息
+        /// </summary>
+        /// <param name="userType"></param>
+        /// <param name="isValidMsg"></param>
+        /// <returns></returns>
+        public List<MessageModel> GetNoticeList(int userType,bool isValidMsg)
         {
-            string where = "userId='" + userId + "' and usertype=" + userType + " and status=" + status;
+            string where = "msgtype=1 and userId='alluser' and usertype=" + userType;
+            if (isValidMsg)
+                where += " and expireTime>getdate()";
             return dal.GetList(where);
         }
+
+        public List<MessageModel> GetAllList(string userId,string roleId, int userType)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("usertype=" + userType + " and (");
+            sb.Append("(msgtype=1 and userId='alluser' and expireTime>getdate())");
+            if (!String.IsNullOrEmpty(userId))
+                sb.Append(" or (msgtype=0 and status=0 and userId='" + userId + "')");
+            if (!String.IsNullOrEmpty(roleId))
+                sb.Append(" or (msgtype=2 and userId='" + roleId + "' and  expireTime>getdate())");
+            sb.Append(")");
+            return dal.GetList(sb.ToString());
+        }
+
 
         public void SetIsReaded(int msgId)
         {

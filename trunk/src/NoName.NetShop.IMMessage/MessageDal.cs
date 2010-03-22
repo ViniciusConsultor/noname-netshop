@@ -36,17 +36,18 @@ namespace NoName.NetShop.IMMessage
 			db.AddInParameter(dbCommand, "Content", DbType.AnsiString, model.Content);
 			db.AddInParameter(dbCommand, "SenderId", DbType.AnsiString, model.SenderId);
             db.AddInParameter(dbCommand, "UserType", DbType.Int32, model.UserType);
+            db.AddInParameter(dbCommand, "ExpireTime", DbType.DateTime, model.ExpireTime);
 			db.ExecuteNonQuery(dbCommand);
 		}
 
         /// <summary>
-        /// 设置消息为已读状态
+        /// 设置消息为已读状态，仅针对用户消息
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="msgId"></param>
         public void SetIsReaded(int msgId)
         {
-            string sql = "update imMessage set status=1,readtime=getdate() from immessage where msgId=@msgId";
+            string sql = "update imMessage set status=1,readtime=getdate() from immessage where msgType=0 and msgId=@msgId";
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
@@ -54,24 +55,35 @@ namespace NoName.NetShop.IMMessage
         }
 
 
-		/// <summary>
-		/// 删除一条数据
-		/// </summary>
-		public void Delete(string userId,int msgId,int userType)
-		{
-            string sql = "delete imMessage from immessage where userid=@userId and msgId=@msgId and usertype=@userType";
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public void Delete(int msgId)
+        {
+            string sql = "delete imMessage from immessage where msgId=@msgId";
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
+            db.ExecuteNonQuery(dbCommand);
+        }		
+        
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public void Delete(string userId, int msgId)
+        {
+            string sql = "delete imMessage from immessage where userid=@userId and msgId=@msgId";
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
-            db.AddInParameter(dbCommand, "usertype", DbType.Int32, userType);
             db.ExecuteNonQuery(dbCommand);
         }
 
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public void Delete(string userId,string msgIds,int usertype )
+        public void Delete(string userId,string msgIds)
         {
             if (Regex.IsMatch(msgIds, @"^(\d+,)*\d+$"))
             {
@@ -79,7 +91,6 @@ namespace NoName.NetShop.IMMessage
                 Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
                 db.AddInParameter(dbCommand, "userId", DbType.String, userId);
-                db.AddInParameter(dbCommand, "usertype", DbType.Int32, usertype);
                 db.ExecuteNonQuery(dbCommand);
             }
             else
@@ -92,7 +103,7 @@ namespace NoName.NetShop.IMMessage
         /// </summary>
         public MessageModel GetModel(int msgId)
         {
-            string sql = "SELECT UserId,MsgId,MsgType,usertype,Subject,Content,SenderId,InsertTime,ReadTime,Status from imMessage where msgId=@msgId";
+            string sql = "SELECT UserId,MsgId,MsgType,usertype,Subject,Content,SenderId,InsertTime,ReadTime,Status,ExpireTime from imMessage where msgId=@msgId";
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
@@ -111,7 +122,7 @@ namespace NoName.NetShop.IMMessage
 		/// </summary>
 		public MessageModel GetModel(string userId,int msgId,int usertype)
 		{
-            string sql = "SELECT UserId,MsgId,MsgType,usertype,Subject,Content,SenderId,InsertTime,ReadTime,Status from imMessage where userId=@userId and msgId=@msgId and usertype=@userType";
+            string sql = "SELECT UserId,MsgId,MsgType,usertype,Subject,Content,SenderId,InsertTime,ReadTime,Status,ExpireTime from imMessage where userId=@userId and msgId=@msgId and usertype=@userType";
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
@@ -130,7 +141,7 @@ namespace NoName.NetShop.IMMessage
 
         internal List<MessageModel> GetList(string where)
         {
-            string sql = "SELECT UserId,MsgId,MsgType,usertype,Subject,Content,SenderId,InsertTime,ReadTime,Status from imMessage";
+            string sql = "SELECT UserId,MsgId,MsgType,usertype,Subject,Content,SenderId,InsertTime,ReadTime,Status,expiretime from imMessage";
             if (!String.IsNullOrEmpty(where))
             {
                 sql += " where " + where;
@@ -190,6 +201,11 @@ namespace NoName.NetShop.IMMessage
 			{
 				model.Status=(bool)ojb;
 			}
+            ojb = dataReader["expireTime"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.ExpireTime = Convert.ToDateTime(ojb);
+            }
 			return model;
 		}
 

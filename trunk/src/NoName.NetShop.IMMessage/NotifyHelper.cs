@@ -33,8 +33,17 @@ namespace NoName.NetShop.IMMessage
 
         public static void SendMessage(string to, string subject, string content)
         {
-            MessageBll msgbll = new MessageBll();
-            msgbll.Add(content, subject, to, "system");
+            MessageBll mbll = new MessageBll();
+            MessageModel model = new MessageModel();
+            model.MsgId = 0;
+            model.MsgType = 0;
+            model.UserId = to;
+            model.SenderId = "system";
+            model.Subject = subject;
+            model.Content = content;
+            model.UserType = 0; // 默认为前台用户
+            mbll.Add(model);
+
         }
 
     }
