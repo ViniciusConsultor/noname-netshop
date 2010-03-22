@@ -132,7 +132,7 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" enctype="multipart/form-data">
         <h3>商品修改</h3>
         <table>
             <tr>
