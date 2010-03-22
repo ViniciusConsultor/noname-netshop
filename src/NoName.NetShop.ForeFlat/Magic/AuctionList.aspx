@@ -33,14 +33,14 @@
                             <asp:Repeater runat="server" ID="Repeater_ProductList">
                                 <ItemTemplate>
                         	        <li>
-                            	        <a href="#">
+                            	        <a href='Auction.aspx?pid=<%# Eval("auctionid") %>' target="_blank">
                                 	        <img src='<%# Eval("mediumimage")  %>' />
                                         </a>
                                         <div class="infoContainer">
                                 	        <ul class="info">
                                                 <li>
                                                     <span class="field">商品名称:</span>
-                                                    <span class="name"><a href="#"><%# Eval("productname") %></a></span>
+                                                    <span class="name"><a href='Auction.aspx?pid=<%# Eval("auctionid") %>' target="_blank"><%# Eval("productname") %></a></span>
                                                 </li>
                                                 <li>
                                                     <span class="field">起始价格:</span>
@@ -54,14 +54,6 @@
                                                     <span class="field">结束时间:</span>
                                                     <span><%# Convert.ToDateTime(Eval("endtime")).ToString("yyyy年MM月dd日") %></span>
                                                 </li>
-                                                <!--
-                                                <li>
-                                                    <span class="field">竞拍人数:</span>
-                                                    <span>8人</span>
-                                                    <span class="field">商品数量:</span>
-                                                    <span>10件</span>
-                                                </li>
-                                                -->
                                                 <li>
                                         	        <span class="field">商品说明:</span>
                                                     <span class="description"><%# Eval("brief") %></span>
@@ -81,22 +73,6 @@
                                     ShowPrevNext="True" SubmitButtonClass="buttom" 
                                     NumericButtonTextFormatString=''>
                                 </cc1:AspNetPager>
-                                <!--
-                                <a class="prev" href="#"></a>
-                                <div class="pageNum">
-                                    <a class="on" href="#">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">5</a>
-                                    <a href="#">6</a>
-                                    <a href="#">7</a>
-                                </div>
-                                <a class="next" href="#"></a>
-                                <div class="jumpTo">
-                                    <span>跳转到</span><input type="text" value="1" /><span>页</span>
-                                </div>
-                                -->
                             </div>
                         </div>
                     </div>

@@ -24,11 +24,13 @@ namespace NoName.NetShop.ForeFlat.Handler
             int AppCode = Convert.ToInt32(context.Request["app"]);
             int TargetID = Convert.ToInt32(context.Request["tid"]);
             string Content = Convert.ToString(context.Request["cnt"]);
+            string ValidateCode = Convert.ToString(context.Request["vld"]);
+            string Message = String.Empty;
 
-            context.Response.Write(AddComment(AppCode, TargetID, Content));
+            AddComment(context,AppCode, TargetID, Content,ValidateCode);
         }
 
-        public bool AddComment(int AppCode, int TargetID, string Content)
+        public void AddComment(HttpContext CurrentContext,int AppCode, int TargetID, string Content,string ValidateCode)
         {
             string AppName = String.Empty;
             switch (AppCode)
@@ -57,26 +59,39 @@ namespace NoName.NetShop.ForeFlat.Handler
 
             try
             {
-                CommentBll bll = new CommentBll();
+                if (CurrentContext.Session["ValidateCode"] != null && CurrentContext.Session["ValidateCode"].ToString() == ValidateCode)
+                {
+                    CommentBll bll = new CommentBll();
 
 
-                CommentModel Comment = new CommentModel();
+                    CommentModel Comment = new CommentModel();
 
-                Comment.CommentID = CommDataHelper.GetNewSerialNum(AppName) ;
-                Comment.AppType = AppName;
-                Comment.Content = Content;
-                Comment.CreateTime = DateTime.Now;
-                Comment.TargetID = TargetID;
-                Comment.UserID = GetUserID();
+                    Comment.CommentID = CommDataHelper.GetNewSerialNum(AppName);
+                    Comment.AppType = AppName;
+                    Comment.Content = Content;
+                    Comment.CreateTime = DateTime.Now;
+                    Comment.TargetID = TargetID;
+                    Comment.UserID = GetUserID();
 
-                bll.Add(Comment);
+                    bll.Add(Comment);
 
-                return true;
+                    CurrentContext.Response.Write(FormatResult(true, "添加成功"));
+                }
+                else
+                {
+                    CurrentContext.Response.Write(FormatResult(false, "添加失败，验证码错误"));
+                }
             }
             catch(Exception e)
             {
-                return false;
+                CurrentContext.Response.Write(FormatResult(false, "添加失败，内部程序错误"));
             }
+        }
+
+        public string FormatResult(bool Result, string Reason)
+        {
+            string Json = "{result:{0},msg='{1}'}";
+            return String.Format(Json, Result, Reason);
         }
 
         public string GetUserID()
