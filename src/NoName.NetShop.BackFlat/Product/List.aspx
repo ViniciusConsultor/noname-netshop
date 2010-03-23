@@ -58,8 +58,18 @@
                 if ($('#<%=TextBox3.ClientID %>').val() != '' || $('#<%=TextBox4.ClientID %>').val() != '')
                     result = true;
                 else
-                    errorMessage = '请至少输入起始或者结束日期\n';                
+                    errorMessage = '请至少输入起始或者结束日期\n';
             }
+            if ($('#<%= CheckBox6.ClientID %>').attr('checked')) {
+                if ($('#<%=TextBoxSearch_ScoreStart.ClientID %>').val() != '' || $('#<%=TextBoxSearch_ScoreEnd.ClientID %>').val() != '')
+                    result = true;
+                else
+                    errorMessage = '请输入积分区间\n';
+            }
+            if ($('#<%= CheckBox7.ClientID %>').attr('checked')) {
+                result = true;
+            }
+            
 
             if (errorMessage != '') alert(errorMessage);
             if (!result) alert('请至少选择一个搜索条件');
@@ -81,6 +91,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <a href="CategorySelect.aspx">添加商品</a>
+        <a href="List.aspx">商品列表首頁</a>
         <div id="search-panel">
             <table>
                 <tr>
@@ -109,6 +121,20 @@
                         <asp:CheckBox ID="CheckBox5" runat="server" Text="按日期" />
                         <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:CheckBox ID="CheckBox6" runat="server" Text="按积分" />
+                        从<asp:TextBox runat="server" ID="TextBoxSearch_ScoreStart" />
+                        到<asp:TextBox runat="server" ID="TextBoxSearch_ScoreEnd" />
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="CheckBox7" runat="server" Text="库存状态" />
+                        <asp:DropDownList ID="DropDownList_Stock" runat="server">
+                            <asp:ListItem Text="无货" Value="0" />
+                            <asp:ListItem Text="有货" Value="1" />
+                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>

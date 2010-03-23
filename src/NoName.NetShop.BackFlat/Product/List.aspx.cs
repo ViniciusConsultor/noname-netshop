@@ -222,6 +222,24 @@ namespace NoName.NetShop.BackFlat.Product
                     return;
                 }
             }
+            if (CheckBox6.Checked)
+            {
+                if (!String.IsNullOrEmpty(TextBoxSearch_ScoreStart.Text) && !String.IsNullOrEmpty(TextBoxSearch_ScoreEnd.Text))
+                    SearchCondition += String.Format(" and score between {0} and {1}", TextBoxSearch_ScoreStart.Text, TextBoxSearch_ScoreEnd.Text);
+                else
+                {
+                    MessageBox.Show(this, "请输入正确的积分");
+                    return;
+                }
+            }
+            if (CheckBox7.Checked)
+            {
+                int StockStatus = Convert.ToInt32(DropDownList_Stock.SelectedValue);
+                if (StockStatus == 0)
+                    SearchCondition += " and stock=0";
+                else
+                    SearchCondition += " and stock>0";
+            }
 
             if (!String.IsNullOrEmpty(SearchCondition))
             {
