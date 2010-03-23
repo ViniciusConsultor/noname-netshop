@@ -90,6 +90,7 @@
 
             $('#<%= btnAddGoOn.ClientID %>').click(validate);
             $('#<%= btnAddGoList.ClientID %>').click(validate);
+            $('#<%= btnAdd.ClientID %>').click(validate);
 
             //changePos();
             //window.onscroll = function() { changePos(); };
@@ -119,7 +120,11 @@
         if ($('#<%=txtStock.ClientID %>').val() == '' || !$('#<% =txtStock.ClientID %>').val().isInteger()) {
             result = false;
             inform($('#<%=txtStock.ClientID %>'), '请输入正确的数字');
-        }
+        }        
+        if ($('#<%=txtScore.ClientID %>').val() == '' || !$('#<% =txtScore.ClientID %>').val().isInteger()) {
+            result = false;
+            inform($('#<%=txtScore.ClientID %>'), '请输入正确的积分数字');
+        }        
         if ($('#<%=txtKeywords.ClientID %>').val() == '') {
             result = false;
             inform($('#<%=txtKeywords.ClientID %>'), '请输入关键字');
@@ -127,6 +132,10 @@
         if ($('#<%= txtWeight.ClientID %>').val() == '' || !$('#<% =txtWeight.ClientID %>').val().isCurrency()) {
             result = false;
             inform($('#<%=txtWeight.ClientID %>'), '请输入正确的重量');            
+        }
+        if($('#<%= fulImage.ClientID %>').val() == ''){
+            result = false;
+            inform($('#<%=fulImage.ClientID %>'), '请选择商品图片');            
         }
         
         return result;
@@ -203,8 +212,12 @@
                 <td><asp:TextBox id="txtReducePrice" runat="server" Width="200" Text="0"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
+                <td>积分：<span class="red">*</span>：</td>
+                <td><asp:TextBox id="txtScore" runat="server" Width="200" Text="0"></asp:TextBox><span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
                 <td>库存<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtStock" runat="server" Width="200"></asp:TextBox><span type="inform" class="red"></span></td>
+                <td><asp:TextBox id="txtStock" runat="server" Width="200" Text="20"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>重量<span class="red">*</span>：</td>
@@ -245,7 +258,7 @@
             </tr>
             <tr>
                 <td>商品图片：<span class="red">*</span>：</td>
-                <td><asp:FileUpload runat="server" ID="fulImage" EnableViewState="true" /></td>
+                <td><asp:FileUpload runat="server" ID="fulImage" EnableViewState="true" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>检索属性：</td>
@@ -299,7 +312,7 @@
                 <td>商品多图：</td>
                 <td>                
                     <div id="product-multi-image-upload-zone">                        
-                        <input type="button" value=" Add " id="product-multi-image-upload-add" />
+                        <input type="button" value=" 添加多图 " id="product-multi-image-upload-add" />
                         <div><input type="file" id="fileUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>                        
                     </div> 
                 </td>

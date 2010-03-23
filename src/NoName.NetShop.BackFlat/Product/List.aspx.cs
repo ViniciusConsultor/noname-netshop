@@ -20,13 +20,19 @@ namespace NoName.NetShop.BackFlat.Product
             get { if (ViewState["SearchCondition"] != null) return ViewState["SearchCondition"].ToString(); else return String.Empty; }
             set { ViewState["SearchCondition"]=value; }
         }
+        private int InitialPageIndex
+        {
+            get { if (ViewState["InitialPageIndex"] != null) return Convert.ToInt32(ViewState["InitialPageIndex"]); else return 1; }
+            set { ViewState["InitialPageIndex"] = value; }
+        }
         private ProductModelBll bll = new ProductModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BindData(1);
+                if (!String.IsNullOrEmpty(Request.QueryString["page"])) InitialPageIndex = Convert.ToInt32(Request.QueryString["page"]);
+                BindData(InitialPageIndex);
                 BindDropDownData();
             }
         }
@@ -34,8 +40,9 @@ namespace NoName.NetShop.BackFlat.Product
         //大类>>小类，商品点击量|购买量    批量操作上下架
         private void BindData(int PageIndex)
         {
+            Response.Write(SearchCondition);
             int RecordCount=0;
-            DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, SearchCondition,out RecordCount).Tables[0];
+            DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, SearchCondition, out RecordCount).Tables[0];
 
             dt.Columns.Add("producturl");
             dt.Columns.Add("primarycategoryname");
@@ -51,7 +58,7 @@ namespace NoName.NetShop.BackFlat.Product
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
-            AspNetPager.RecordCount = RecordCount;
+            AspNetPager.RecordCount = RecordCount;            
         }
 
         private void BindDropDownData()
@@ -151,6 +158,7 @@ namespace NoName.NetShop.BackFlat.Product
 
         protected void ButtonSearch_Click(object sender, EventArgs e)
         {
+            SearchCondition = String.Empty;
             //构建搜索条件
             if (CheckBox1.Checked)
             {
@@ -161,8 +169,8 @@ namespace NoName.NetShop.BackFlat.Product
                     string CategoryPath = new CategoryModelBll().GetModel(SelectedCategoryID).CatePath;
                     SearchCondition += " and catepath like '" + CategoryPath + "%'";
 
-                    //CategoryPath = CategoryPath.Substring(0, CategoryPath.LastIndexOf("/"));
-                    //CategorySelect1.PresetCategoryInfo(CategoryPath);
+                    CategoryPath = CategoryPath.Substring(0, CategoryPath.LastIndexOf("/"));
+                    CategorySelect1.PresetCategoryInfo(CategoryPath);
                 }
                 else 
                 {
@@ -219,6 +227,11 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 BindData(1);
             }
+        }
+
+        protected void ButtonReturn_Click(object sender, EventArgs e)
+        {
+            BindData(1);
         }
     }
 }

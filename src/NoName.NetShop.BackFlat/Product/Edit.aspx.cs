@@ -27,6 +27,11 @@ namespace NoName.NetShop.BackFlat.Product
             get { if (ViewState["CategoryID"] != null) return Convert.ToInt32(ViewState["CategoryID"]); else return -1; }
             set { ViewState["CategoryID"] = value; }
         }
+        private int CurrentPageIndex
+        {
+            get { if (ViewState["CurrentPageIndex"] != null) return Convert.ToInt32(ViewState["CurrentPageIndex"]); else return 1; }
+            set { ViewState["CurrentPageIndex"] = value; }
+        }
         private ProductModelBll bll = new ProductModelBll();
         private CategoryParaModelBll pBll = new CategoryParaModelBll();
         private ProductParaModelBll pvBll = new ProductParaModelBll();
@@ -37,6 +42,7 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 if (!String.IsNullOrEmpty(Request.QueryString["productid"])) ProductID = Convert.ToInt32(Request.QueryString["productid"]);
                 if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["pageid"])) CurrentPageIndex = Convert.ToInt32(Request.QueryString["pageid"]);
                 BindData();
                 BindMultiImageData();
             }
@@ -89,6 +95,7 @@ namespace NoName.NetShop.BackFlat.Product
                 txtProductName.Text = product.ProductName;
                 txtProductCode.Text = product.ProductCode;
                 txtTradePrice.Text = product.TradePrice.ToString();
+                txtScore.Text = product.Score.ToString();
                 txtMerchantPrice.Text = product.MerchantPrice.ToString();
                 txtReducePrice.Text = product.ReducePrice.ToString();
                 txtStock.Text = product.Stock.ToString();
@@ -125,7 +132,7 @@ namespace NoName.NetShop.BackFlat.Product
 
         private void BindParameterData(int cateid)
         {
-            DataTable dt = pBll.GetList("cateid = " + CategoryID + " and paratype=" + (int)CategoryParameterType.检索属性).Tables[0];
+            DataTable dt = pBll.GetList("cateid = " + cateid + " and paratype=" + (int)CategoryParameterType.检索属性).Tables[0];
             DataTable ValueTable = pvBll.GetList(" productid = " + ProductID).Tables[0];
 
             Hashtable vtable = new Hashtable();
@@ -161,7 +168,7 @@ namespace NoName.NetShop.BackFlat.Product
 
         private void BindSpecificationData(int cateid)
         {
-            DataTable dt = pBll.GetList("cateid = " + CategoryID + " and paratype=" + (int)CategoryParameterType.规格参数).Tables[0];
+            DataTable dt = pBll.GetList("cateid = " + cateid + " and paratype=" + (int)CategoryParameterType.规格参数).Tables[0];
             DataTable ValueTable = pvBll.GetList(" productid = " + ProductID).Tables[0];
 
             Hashtable vtable = new Hashtable();
@@ -213,11 +220,13 @@ namespace NoName.NetShop.BackFlat.Product
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             SaveData();
+
+            Response.Redirect("List.aspx?page=" + CurrentPageIndex);
         }
 
         protected void btnReturn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("List.aspx");
+            Response.Redirect("List.aspx?page=" + CurrentPageIndex);
         }
 
         protected void GridView_MultiImage_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -298,6 +307,10 @@ namespace NoName.NetShop.BackFlat.Product
             if (!PageValidate.IsDecimal(txtReducePrice.Text))
             {
                 strErr += "直降价输入有误！\\n";
+            }
+            if (!PageValidate.IsNumber(txtScore.Text))
+            {
+                strErr += "商品积分输入有误！\\n";
             }
             if (!PageValidate.IsNumber(txtStock.Text))
             {
@@ -415,8 +428,6 @@ namespace NoName.NetShop.BackFlat.Product
             }
 
             bll.Update(product);
-
-            Response.Redirect("List.aspx");
         }
 
 

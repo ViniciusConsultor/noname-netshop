@@ -193,6 +193,10 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 strErr += "直降价输入有误！\\n";
             }
+            if (!PageValidate.IsNumber(txtScore.Text))
+            {
+                strErr += "商品积分输入有误！\\n";
+            }
             if (!PageValidate.IsNumber(txtStock.Text))
             {
                 strErr += "商品库存输入有误！\\n";

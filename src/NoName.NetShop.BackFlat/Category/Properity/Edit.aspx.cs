@@ -47,7 +47,7 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             DropDown_ParaType.DataValueField = "value";
             DropDown_ParaType.DataBind();
 
-            DropDownList_Status.SelectedValue = model.ParaType.ToString();
+            DropDown_ParaType.SelectedValue = model.ParaType.ToString();
         }
 
         protected void Button_Eidt_Click(object sender, EventArgs e)
@@ -76,7 +76,8 @@ namespace NoName.NetShop.BackFlat.Category.Properity
             model.ParaType = Convert.ToInt32(DropDown_ParaType.SelectedValue);
 
             bll.Update(model);
-            MessageBox.Show(this,"修改成功！");
+            //MessageBox.Show(this, "修改成功！");
+            Response.Redirect("List.aspx?cid=" + CategoryID);
         }
     }
 }

@@ -37,6 +37,10 @@
             result = false;
             inform($('#<%=TextBox_Author.ClientID %>'), '请输入作者');
         }
+        if ($('#<%=TextBox_NewsFrom.ClientID %>').val() == '') {
+            result = false;
+            inform($('#<%=TextBox_NewsFrom.ClientID %>'), '请输入新闻来源');
+        }
         if ($('#<%=TextBox_Tags.ClientID %>').val() == '') {
             result = false;
             inform($('#<%=TextBox_Tags.ClientID %>'), '请输入新闻标签');
