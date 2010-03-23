@@ -76,6 +76,10 @@ namespace NoName.NetShop.BackFlat.News.Detail
             {
                 strErr += "新闻作者不能为空！\\n";
             }
+            if (TextBox_NewsFrom.Text == String.Empty)
+            {
+                strErr += "新闻来源不能为空！\\n";
+            }
             if (TextBox_Tags.Text == String.Empty)
             {
                 strErr += "新闻标签不能为空！\\n";

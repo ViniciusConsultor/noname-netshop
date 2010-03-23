@@ -140,7 +140,11 @@ namespace NoName.NetShop.BackFlat.Product
             DataTable dt = relationBll.GetCategoryBrandList(SelectedCategoryID);
             if (dt.Rows.Count <= 0)
             {
-                MessageBox.Show(this, "当前分类下尚无品牌，请先添加品牌！");
+                //MessageBox.Show(this, "当前分类下尚无品牌，请先添加品牌！");
+                MessageBox.ResponseScript(this, @"
+                    if(confirm('当前分类下尚无品牌，是否转向品牌添加页面？'))
+                        window.self.location.href='/Brand/Relation/List.aspx?cid=" + SelectedCategoryID + @"';
+                    ");
                 return;
             }
 

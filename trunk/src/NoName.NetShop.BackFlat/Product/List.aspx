@@ -16,9 +16,9 @@
     <script src="/js/validate.js" type="text/javascript"></script>
     
     <script type="text/javascript">
-        var categoryInfo = [{ "name": "category1", "title": "请选择分类", "required": "true" },
-    { "name": "category2", "title": "请选择分类", "required": "true" },
-    { "name": "category3", "title": "请选择分类", "required": "false"}];
+        var categoryInfo = [{ "name": "category1", "title": "全部", "required": "true" },
+                { "name": "category2", "title": "全部", "required": "true" },
+                { "name": "category3", "title": "全部", "required": "false"}];
         $(function() {
             $('#select-all').click(function() {
                 var checked = $(this).attr('checked');
@@ -43,6 +43,9 @@
                     result = true;
                 else
                     errorMessage = '请输入产品ID\n';
+            }
+            if ($('#<%= CheckBox3.ClientID %>').attr('checked')) {
+                result = true;
             }
             if ($('#<%= CheckBox4.ClientID %>').attr('checked')) {
                 if ($('#<%=TextBox2.ClientID %>').val() != '')
@@ -109,7 +112,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><asp:Button runat="server" ID="ButtonSearch" OnClientClick="return validate();" OnClick="ButtonSearch_Click" Text="搜索" /></td>
+                    <td colspan="2">
+                        <asp:Button runat="server" ID="ButtonSearch" OnClientClick="return validate();" OnClick="ButtonSearch_Click" Text="搜索" />
+                        <asp:Button runat="server" ID="ButtonReturn" OnClick="ButtonReturn_Click" Text="返回" />
+                    </td>
                 </tr>
             </table>
             <hr />
@@ -142,13 +148,17 @@
                             <%# Enum.GetName(typeof(NoName.NetShop.Product.Model.ProductStatus),Convert.ToInt32(Eval("status"))) %>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="merchantprice" HeaderText="销售价格" />
-                    <asp:BoundField DataField="reduceprice" HeaderText="直降" />
+                    <asp:BoundField DataField="tradeprice" HeaderText="市场价" />
+                    <asp:TemplateField HeaderText="鼎鼎价">
+                        <ItemTemplate>
+                            <%# Convert.ToDecimal(Convert.ToDecimal(Eval("merchantprice")) - Convert.ToDecimal(Eval("reduceprice"))).ToString("0.00")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="changetime" HeaderText="更新日期" />
                     <asp:BoundField DataField="pageview" HeaderText="浏览量" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink runat="server" ID="HyperLinkEdit" Text="修改" NavigateUrl='<%# "Edit.aspx?productid="+Eval("ProductID") %>' />
+                            <asp:HyperLink runat="server" ID="HyperLinkEdit" Text="修改" NavigateUrl='<%# "Edit.aspx?productid="+Eval("ProductID")+"&pageid="+ AspNetPager.CurrentPageIndex %>' />
                             <asp:LinkButton runat="server" ID="LinkButtonDelete" CommandArgument='<%# Eval("ProductID") %>' CommandName="d">删除</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -159,10 +169,10 @@
         </div>
         <div id="page">
             <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="12"
-                UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页'
+                UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页' ShowInputBox="Always"
                 LastPageText='末页' NextPageText='下一页' OnPageChanged="AspNetPager_PageChanged"
-                PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
-                ShowPrevNext="True" SubmitButtonClass="buttom" 
+                PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8" 
+                ShowPrevNext="True" SubmitButtonClass="buttom" ShowPageIndex="true"
                 NumericButtonTextFormatString=''>
             </cc1:AspNetPager>
         </div>
