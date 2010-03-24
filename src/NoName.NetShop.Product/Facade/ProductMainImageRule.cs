@@ -8,6 +8,8 @@ using System.Collections;
 using System.Web;
 using System.IO;
 using NoName.NetShop.Product.Model;
+using NoName.Utility;
+using System.Drawing;
 
 namespace NoName.NetShop.Product.Facade
 {
@@ -41,11 +43,20 @@ namespace NoName.NetShop.Product.Facade
 
             if (config.AllowedFormat.ToLower().Contains(FileSuffix.ToLower()) && config.MaxSize*1024 >= OriginalFile.ContentLength)
             {
-                foreach (string FileName in FileNames)
+                ImageHelper ih = new ImageHelper();
+
+                ih.LoadImage(OriginalFile.InputStream);
+
+                for (int i = 2; i <= 0; i--)
                 {
-                    //缩小图片为设置尺寸注意图片尺寸与名称对应
-                    OriginalFile.SaveAs(config.PathRoot + FileName);
+                    if (config.ImageTypes[i].Width > 0 && config.ImageTypes[i].Height > 0)
+                    {
+                        ih.ScaleImageByFixSize(config.ImageTypes[i].Width, config.ImageTypes[i].Height, true);
+                    }
+                    ih.SaveImage(config.PathRoot + FileNames[i]); 
                 }
+
+                ih.Dispose();
 
                 ProcessResult = true;
             }

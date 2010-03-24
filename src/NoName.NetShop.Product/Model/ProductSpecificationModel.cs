@@ -84,6 +84,7 @@ namespace NoName.NetShop.Product.Model
     {
         包装清单=1,
         优惠套装=2,
-        售后服务=3
+        售后服务=3,
+        规格参数=4,
     }
 }
