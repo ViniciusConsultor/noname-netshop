@@ -102,9 +102,9 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
             DataTable dt;
             if (Parameter.Properities == null)
-                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex, out RecordCount, out PageCount);
+                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex,Parameter.OrderValue, out RecordCount, out PageCount);
             else
-                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex, Parameter.Properities, out RecordCount, out PageCount);
+                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex, Parameter.OrderValue, Parameter.Properities, out RecordCount, out PageCount);
 
             //商品列表节点
             XmlNode ProductsNode = XmlUtility.AddNewNode(ProductListNode, "products", null);
