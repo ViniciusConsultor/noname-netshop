@@ -3,9 +3,7 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="head"></asp:Content>
 
-<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="cpMain">
-    <form id="form1" runat="server">
-    
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="cpMain">    
     <!--Position Begin-->
     <div class="currentPosition">
     	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="#">购物街</a> &gt;&gt; <a href="#">查看产品评论</a>
@@ -198,5 +196,4 @@
         
     </div>
     <!--MainBody End-->
-    </form>
 </asp:Content>
