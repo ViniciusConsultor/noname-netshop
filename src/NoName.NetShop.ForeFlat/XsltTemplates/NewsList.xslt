@@ -7,7 +7,9 @@
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                <title>视听资讯</title>
+                <title>
+					<xsl:value-of select="/newslistpage/categorylist/category[last()]/categoryname"/>-鼎鼎商城
+                </title>
                 <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/common.css" />
                 <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/news.css" />
                 <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/Rainy.css" />
