@@ -75,6 +75,11 @@ namespace NoName.NetShop.BackFlat.Product
             DropDown_Brand.DataValueField = "brandid";
             DropDown_Brand.DataBind();
 
+            DropDown_Specification.DataSource = AddSelectRow(new ProductSpecificationBll().GetList(SpecificationType.规格参数));
+            DropDown_Specification.DataTextField = "title";
+            DropDown_Specification.DataValueField = "content";
+            DropDown_Specification.DataBind();
+
             DropDown_Packing.DataSource = AddSelectRow(new ProductSpecificationBll().GetList(SpecificationType.包装清单));
             DropDown_Packing.DataTextField = "title";
             DropDown_Packing.DataValueField = "content";
@@ -104,10 +109,11 @@ namespace NoName.NetShop.BackFlat.Product
                 TextBox_Brief.Text = product.Brief;
                 imgProduct.ImageUrl = product.SmallImage;
 
-
+                TextBox_Specification.Text = product.Specifications;
                 TextBox_Packing.Text = product.PackingList;
                 TextBox_Service.Text = product.AfterSaleService;
                 TextBox_OfferSet.Text = product.OfferSet;
+
                 txtWeight.Text = product.Weight.ToString("0.00");
 
                 if (CategoryID != -1)
@@ -353,6 +359,7 @@ namespace NoName.NetShop.BackFlat.Product
             product.Brief = TextBox_Brief.Text;
             product.BrandID = Convert.ToInt32(DropDown_Brand.SelectedValue);
 
+            product.Specifications = TextBox_Specification.Text;
             product.OfferSet = TextBox_OfferSet.Text;
             product.PackingList = TextBox_Packing.Text;
             product.AfterSaleService = TextBox_Service.Text;

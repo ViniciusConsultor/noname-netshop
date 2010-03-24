@@ -94,6 +94,11 @@ namespace NoName.NetShop.BackFlat.Product
             DropDown_OfferSet.DataValueField = "content";
             DropDown_OfferSet.DataBind();
 
+            DropDown_Specification.DataSource = AddSelectRow(new ProductSpecificationBll().GetList(SpecificationType.规格参数));
+            DropDown_Specification.DataTextField = "title";
+            DropDown_Specification.DataValueField = "content";
+            DropDown_Specification.DataBind();
+
             txtProductCode.Text = ProductID.ToString();
         }
 
@@ -268,6 +273,7 @@ namespace NoName.NetShop.BackFlat.Product
                 product.Status = Convert.ToInt32(drpStatus.SelectedValue);
                 product.Stock = Convert.ToInt32(txtStock.Text);
 
+                product.Specifications = TextBox_Specification.Text;
                 product.PackingList = TextBox_Packing.Text;
                 product.AfterSaleService = TextBox_Service.Text;
                 product.OfferSet = TextBox_OfferSet.Text;
