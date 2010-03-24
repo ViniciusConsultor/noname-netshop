@@ -85,7 +85,7 @@
             });
 
             $('#<%= DropDown_Specification.ClientID %>').change(function() {
-                CKEDITOR.instances.<%= TextBox_Specificatio.ClientID %>.setData($(this).val()); 
+                CKEDITOR.instances.<%= TextBox_Specification.ClientID %>.setData($(this).val()); 
             });
             $('#<%= DropDown_Packing.ClientID %>').change(function() {                
                 CKEDITOR.instances.<%= TextBox_Packing.ClientID %>.setData($(this).val()); 
@@ -242,7 +242,7 @@
                 </td>
             </tr>
             <tr>
-                <td>商品图片<span class="red">*</span>：</td>
+                <td>商品图片：</td>
                 <td>
                     <asp:Image runat="server" ID="imgProduct" />
                     <asp:FileUpload runat="server" ID="fulImage" EnableViewState="true" />

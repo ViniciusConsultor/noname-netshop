@@ -93,7 +93,7 @@
             });
 
             $('#<%= DropDown_Specification.ClientID %>').change(function() {
-                CKEDITOR.instances.<%= TextBox_Specificatio.ClientID %>.setData($(this).val()); 
+                CKEDITOR.instances.<%= TextBox_Specification.ClientID %>.setData($(this).val()); 
             });
             $('#<%= DropDown_Packing.ClientID %>').change(function() {                
                 CKEDITOR.instances.<%= TextBox_Packing.ClientID %>.setData($(this).val()); 
