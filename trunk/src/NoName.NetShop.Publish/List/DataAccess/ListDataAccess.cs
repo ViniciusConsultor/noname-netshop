@@ -33,7 +33,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
             return row;
         }
 
-        public DataTable GetProductList(int CategoryID, int PageIndex,Hashtable Parameters, out int RecordCount, out int PageCount)
+        public DataTable GetProductList(int CategoryID, int PageIndex,int OrderType,Hashtable Parameters, out int RecordCount, out int PageCount)
         {
             string where = String.Empty; 
             int i = 0;
@@ -69,7 +69,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
             return dt;
         }
 
-        public DataTable GetProductList(int CategoryID, int PageIndex,out int RecordCount,out int PageCount)
+        public DataTable GetProductList(int CategoryID, int PageIndex, int OrderType, out int RecordCount, out int PageCount)
         {
             SearchPageInfo pageinfo = new SearchPageInfo();
 
