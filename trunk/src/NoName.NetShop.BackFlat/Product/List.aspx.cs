@@ -25,6 +25,11 @@ namespace NoName.NetShop.BackFlat.Product
             get { if (ViewState["InitialPageIndex"] != null) return Convert.ToInt32(ViewState["InitialPageIndex"]); else return 1; }
             set { ViewState["InitialPageIndex"] = value; }
         }
+        private int InitialCategoryID
+        {
+            get { if (ViewState["InitialCategoryID"] != null) return Convert.ToInt32(ViewState["InitialCategoryID"]); else return -1; }
+            set { ViewState["InitialCategoryID"] = value; }
+        }
         private ProductModelBll bll = new ProductModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,6 +37,7 @@ namespace NoName.NetShop.BackFlat.Product
             if (!IsPostBack)
             {
                 if (!String.IsNullOrEmpty(Request.QueryString["page"])) InitialPageIndex = Convert.ToInt32(Request.QueryString["page"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["cid"])) InitialCategoryID = Convert.ToInt32(Request.QueryString["cid"]);
                 BindData(InitialPageIndex);
                 BindDropDownData();
             }
@@ -40,25 +46,37 @@ namespace NoName.NetShop.BackFlat.Product
         //大类>>小类，商品点击量|购买量    批量操作上下架
         private void BindData(int PageIndex)
         {
-            Response.Write(SearchCondition);
+            ConstructSearchCondition();
+
+            //Response.Write(SearchCondition);
             int RecordCount=0;
             DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, SearchCondition, out RecordCount).Tables[0];
 
+            //Response.Write("<br/>recordcount:"+RecordCount);
+
             dt.Columns.Add("producturl");
-            dt.Columns.Add("primarycategoryname");
+            dt.Columns.Add("secondarycategoryid");
+            dt.Columns.Add("secondarycategoryname");
+            dt.Columns.Add("endcategoryid");
             dt.Columns.Add("endcategoryname");
+
             foreach (DataRow row in dt.Rows)
             {
                 string CategoryNamePath = new CategoryModelBll().GetCategoryNamePath(Convert.ToInt32(row["cateid"]));
+                string CategoryIDPath = new CategoryModelBll().GetCategoryPath(Convert.ToInt32(row["cateid"]));
                 row["producturl"] = GetProductUrl(Convert.ToInt32(row["productid"]));
-                row["primarycategoryname"] = CategoryNamePath.Split('/')[1];
+
+                row["secondarycategoryid"] = CategoryIDPath.Split('/')[1];
+                row["endcategoryid"] = CategoryIDPath.Split('/')[CategoryIDPath.Split('/').Length - 2];
+
+                row["secondarycategoryname"] = CategoryNamePath.Split('/')[1];
                 row["endcategoryname"] = CategoryNamePath.Split('/')[CategoryNamePath.Split('/').Length-2];
             }
 
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
-            AspNetPager.RecordCount = RecordCount;            
+            AspNetPager.RecordCount = RecordCount;
         }
 
         private void BindDropDownData()
@@ -158,26 +176,43 @@ namespace NoName.NetShop.BackFlat.Product
 
         protected void ButtonSearch_Click(object sender, EventArgs e)
         {
+                BindData(1);
+        }
+
+        private void ConstructSearchCondition()
+        {
             SearchCondition = String.Empty;
             //构建搜索条件
-            if (CheckBox1.Checked)
+            if (CheckBox1.Checked || InitialCategoryID!=-1)
             {
                 bool IsEnd;
-                int SelectedCategoryID = CategorySelect1.GetSelectedCategoryInfo(out IsEnd);
+                int SelectedCategoryID = 0;
+
+                if (IsPostBack)
+                {
+                    SelectedCategoryID = CategorySelect1.GetSelectedCategoryInfo(out IsEnd);
+                    if (SelectedCategoryID == -1)
+                    {
+                        MessageBox.Show(this, "请至少选择一个分类");
+                        return; 
+                    }
+                }
+                else
+                {
+                    SelectedCategoryID = InitialCategoryID;
+                }
+
                 if (SelectedCategoryID != -1)
                 {
                     string CategoryPath = new CategoryModelBll().GetModel(SelectedCategoryID).CatePath;
                     SearchCondition += " and catepath like '" + CategoryPath + "%'";
 
+                    if (!CheckBox1.Checked) CheckBox1.Checked = true;
                     CategoryPath = CategoryPath.Substring(0, CategoryPath.LastIndexOf("/"));
                     CategorySelect1.PresetCategoryInfo(CategoryPath);
                 }
-                else 
-                {
-                    MessageBox.Show(this,"请至少选择一个分类");
-                }
             }
-            
+
             if (CheckBox2.Checked)
             {
                 if (!String.IsNullOrEmpty(TextBox1.Text) && PageValidate.IsNumber(TextBox1.Text))
@@ -186,14 +221,14 @@ namespace NoName.NetShop.BackFlat.Product
                 }
                 else
                 {
-                    MessageBox.Show(this,"请输入正确的产品ID");
+                    MessageBox.Show(this, "请输入正确的产品ID");
                     return;
                 }
             }
             if (CheckBox3.Checked)
             {
                 int Status = Convert.ToInt32(drpStatus.SelectedValue);
-                SearchCondition += " and status='" + Status+"'";
+                SearchCondition += " and status='" + Status + "'";
 
             }
             if (CheckBox4.Checked)
@@ -204,7 +239,7 @@ namespace NoName.NetShop.BackFlat.Product
                 }
                 else
                 {
-                    MessageBox.Show(this,"请输入产品名称");
+                    MessageBox.Show(this, "请输入产品名称");
                     return;
                 }
             }
@@ -218,7 +253,7 @@ namespace NoName.NetShop.BackFlat.Product
                 }
                 else
                 {
-                    MessageBox.Show(this,"请输入正确的日期");
+                    MessageBox.Show(this, "请输入正确的日期");
                     return;
                 }
             }
@@ -240,16 +275,20 @@ namespace NoName.NetShop.BackFlat.Product
                 else
                     SearchCondition += " and stock>0";
             }
-
-            if (!String.IsNullOrEmpty(SearchCondition))
+            if (CheckBox8.Checked)
             {
-                BindData(1);
+                if (!String.IsNullOrEmpty(TextBoxSearch_StartTime.Text) && !String.IsNullOrEmpty(TextBoxSearch_EndTime.Text) && PageValidate.IsDate(TextBoxSearch_StartTime.Text) && PageValidate.IsDate(TextBoxSearch_EndTime.Text))
+                {
+                    DateTime start = Convert.ToDateTime(TextBoxSearch_StartTime.Text);
+                    DateTime end = Convert.ToDateTime(TextBoxSearch_EndTime.Text);
+                    SearchCondition += String.Format(" and changetime >= '{0}' and changetime <= '{1}'", start, end);
+                }
+                else
+                {
+                    MessageBox.Show(this, "请输入正确的日期");
+                    return;
+                }
             }
-        }
-
-        protected void ButtonReturn_Click(object sender, EventArgs e)
-        {
-            BindData(1);
         }
     }
 }

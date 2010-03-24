@@ -95,6 +95,24 @@ namespace NoName.NetShop.BackFlat.Product {
         protected global::System.Web.UI.WebControls.DropDownList drpStatus;
         
         /// <summary>
+        /// CheckBox7 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox7;
+        
+        /// <summary>
+        /// DropDownList_Stock 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Stock;
+        
+        /// <summary>
         /// CheckBox5 控件。
         /// </summary>
         /// <remarks>
@@ -149,22 +167,31 @@ namespace NoName.NetShop.BackFlat.Product {
         protected global::System.Web.UI.WebControls.TextBox TextBoxSearch_ScoreEnd;
         
         /// <summary>
-        /// CheckBox7 控件。
+        /// CheckBox8 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox7;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox8;
         
         /// <summary>
-        /// DropDownList_Stock 控件。
+        /// TextBoxSearch_StartTime 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Stock;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxSearch_StartTime;
+        
+        /// <summary>
+        /// TextBoxSearch_EndTime 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxSearch_EndTime;
         
         /// <summary>
         /// ButtonSearch 控件。
@@ -174,15 +201,6 @@ namespace NoName.NetShop.BackFlat.Product {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonSearch;
-        
-        /// <summary>
-        /// ButtonReturn 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonReturn;
         
         /// <summary>
         /// Button_DeleteAll 控件。

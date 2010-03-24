@@ -69,6 +69,13 @@
             if ($('#<%= CheckBox7.ClientID %>').attr('checked')) {
                 result = true;
             }
+            if ($('#<%= CheckBox8.ClientID %>').attr('checked')) {
+                if ($('#<%=TextBoxSearch_StartTime.ClientID %>').val() != '' || $('#<%=TextBoxSearch_EndTime.ClientID %>').val() != '')
+                    result = true;
+                else
+                    errorMessage = '请至少输入起始或者结束日期\n';
+            }
+            
             
 
             if (errorMessage != '') alert(errorMessage);
@@ -118,18 +125,6 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:CheckBox ID="CheckBox5" runat="server" Text="按日期" />
-                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:CheckBox ID="CheckBox6" runat="server" Text="按积分" />
-                        从<asp:TextBox runat="server" ID="TextBoxSearch_ScoreStart" />
-                        到<asp:TextBox runat="server" ID="TextBoxSearch_ScoreEnd" />
-                    </td>
-                    <td>
                         <asp:CheckBox ID="CheckBox7" runat="server" Text="库存状态" />
                         <asp:DropDownList ID="DropDownList_Stock" runat="server">
                             <asp:ListItem Text="无货" Value="0" />
@@ -138,9 +133,29 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <asp:CheckBox ID="CheckBox5" runat="server" Text="按添加日期" />
+                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="CheckBox6" runat="server" Text="按积分" />
+                        从<asp:TextBox runat="server" ID="TextBoxSearch_ScoreStart" />
+                        到<asp:TextBox runat="server" ID="TextBoxSearch_ScoreEnd" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:CheckBox ID="CheckBox8" runat="server" Text="按更新日期" />
+                        <asp:TextBox ID="TextBoxSearch_StartTime" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxSearch_EndTime" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <asp:Button runat="server" ID="ButtonSearch" OnClientClick="return validate();" OnClick="ButtonSearch_Click" Text="搜索" />
-                        <asp:Button runat="server" ID="ButtonReturn" OnClick="ButtonReturn_Click" Text="返回" />
                     </td>
                 </tr>
             </table>
@@ -167,8 +182,16 @@
                             <a href='<%# Eval("producturl") %>' target="_blank"><%# Eval("productname")%></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="primarycategoryname" HeaderText="二级分类" />
-                    <asp:BoundField DataField="endcategoryname" HeaderText="末级分类" />
+                    <asp:TemplateField HeaderText="二级分类">
+                        <ItemTemplate>
+                            <a href='?cid=<%# Eval("secondarycategoryid") %>'><%# Eval("secondarycategoryname")%></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="末级分类">
+                        <ItemTemplate>
+                            <a href='?cid=<%# Eval("endcategoryid") %>'><%# Eval("endcategoryname")%></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
                             <%# Enum.GetName(typeof(NoName.NetShop.Product.Model.ProductStatus),Convert.ToInt32(Eval("status"))) %>
