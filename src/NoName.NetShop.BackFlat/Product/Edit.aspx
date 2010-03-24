@@ -23,6 +23,21 @@
                 forcePasteAsPlainText :false,
                 enterMode : CKEDITOR.ENTER_BR
             });
+            CKEDITOR.replace('<%= TextBox_Specification.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            });
             CKEDITOR.replace('<%= TextBox_Packing.ClientID %>', {
                 height: '200px',
                 width: '700px',
@@ -69,6 +84,9 @@
                     ]
             });
 
+            $('#<%= DropDown_Specification.ClientID %>').change(function() {
+                CKEDITOR.instances.<%= TextBox_Specificatio.ClientID %>.setData($(this).val()); 
+            });
             $('#<%= DropDown_Packing.ClientID %>').change(function() {                
                 CKEDITOR.instances.<%= TextBox_Packing.ClientID %>.setData($(this).val()); 
             });
@@ -194,6 +212,13 @@
             <tr>
                 <td>简介<span class="red">*</span>：</td>
                 <td><asp:TextBox runat="server" ID="TextBox_Brief" TextMode="MultiLine" /></td>
+            </tr>
+            <tr>
+                <td>规格参数：</td>
+                <td>
+                    选择规格参数模板：<asp:DropDownList runat="server" ID="DropDown_Specification" /><br/>
+                    <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Specification" />
+                </td>
             </tr>
             <tr>
                 <td>包装清单：</td>

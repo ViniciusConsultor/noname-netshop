@@ -8,7 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <a href="Add.aspx">添加规格参数</a>
+    <a href="Add.aspx">添加商品属性模板</a>
     <p>
         查看类别：
         <asp:DropDownList runat="server" ID="DropDown_Type" AutoPostBack="true" OnSelectedIndexChanged="DropDown_Type_Changed" />        

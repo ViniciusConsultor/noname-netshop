@@ -25,6 +25,21 @@
                 forcePasteAsPlainText :false,
                 enterMode : CKEDITOR.ENTER_BR
             });
+            CKEDITOR.replace('<%= TextBox_Specification.ClientID %>', {
+                height: '200px',
+                width: '700px',
+                toolbarStartupExpanded: false,
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ]
+            });
             CKEDITOR.replace('<%= TextBox_Packing.ClientID %>', {
                 height: '200px',
                 width: '700px',
@@ -77,6 +92,9 @@
                 forcePasteAsPlainText :false
             });
 
+            $('#<%= DropDown_Specification.ClientID %>').change(function() {
+                CKEDITOR.instances.<%= TextBox_Specificatio.ClientID %>.setData($(this).val()); 
+            });
             $('#<%= DropDown_Packing.ClientID %>').change(function() {                
                 CKEDITOR.instances.<%= TextBox_Packing.ClientID %>.setData($(this).val()); 
             });
@@ -236,23 +254,30 @@
                 <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Description" /></td>
             </tr>
             <tr>
+                <td>规格参数：</td>
+                <td>
+                    选择规格参数模板：<asp:DropDownList runat="server" ID="DropDown_Specification" /><br/>
+                    <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Specification" />
+                </td>
+            </tr>
+            <tr>
                 <td>包装清单：</td>
                 <td>
-                    选择包装清单模板：<asp:DropDownList runat="server" ID="DropDown_Packing" />
+                    选择包装清单模板：<asp:DropDownList runat="server" ID="DropDown_Packing" /><br/>
                     <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Packing" />
                 </td>
             </tr>
             <tr>
                 <td>优惠套装：</td>
                 <td>
-                    选择优惠套装模板：<asp:DropDownList runat="server" ID="DropDown_OfferSet" />
+                    选择优惠套装模板：<asp:DropDownList runat="server" ID="DropDown_OfferSet" /><br/>
                     <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_OfferSet" />
                 </td>
             </tr>
             <tr>
                 <td>售后服务：</td>
                 <td>
-                    选择售后服务模板：<asp:DropDownList runat="server" ID="DropDown_Service" />
+                    选择售后服务模板：<asp:DropDownList runat="server" ID="DropDown_Service" /><br/>
                     <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Service" />
                 </td>
             </tr>
