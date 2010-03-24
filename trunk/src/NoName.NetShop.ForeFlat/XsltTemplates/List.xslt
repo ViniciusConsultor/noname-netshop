@@ -11,7 +11,9 @@
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                <title>购物街</title>
+                <title>
+					<xsl:value-of select="$CategoryName"/>-鼎鼎商城
+                </title>
                 <link type="text/css" rel="stylesheet" href="css/common.css" />
                 <link type="text/css" rel="stylesheet" href="css/shopping.css" />
                 <link type="text/css" rel="stylesheet" href="css/Rainy.css" />

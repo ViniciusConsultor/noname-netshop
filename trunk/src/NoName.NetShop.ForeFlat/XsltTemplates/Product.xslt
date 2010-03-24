@@ -9,7 +9,9 @@
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                <title>产品详情</title>
+                <title>
+					<xsl:value-of select="$ProductName"/>-鼎鼎商城
+                </title>
                 <link type="text/css" rel="stylesheet" href="/css/common.css" />
                 <link type="text/css" rel="stylesheet" href="/css/shopping.css" />
                 <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
@@ -468,7 +470,7 @@
                         <span>
                             <xsl:choose>
                                 <xsl:when test="stock > 0">北京现货</xsl:when>
-                                <xsl:otherwise>北京缺货</xsl:otherwise>
+                                <xsl:otherwise><span style="color:red">北京缺货</span></xsl:otherwise>
                             </xsl:choose>
                         </span>
                     </li>
