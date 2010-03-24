@@ -82,6 +82,11 @@ namespace NoName.NetShop.Product.BLL
 		}
 
 
+        public string GetCategoryPath(int CategoryID)
+        {
+            return dal.GetCategoryPath(CategoryID);
+        }
+
         public string GetCategoryNamePath(int CategoryID)
         {
             return dal.GetCategoryNamePath(CategoryID);

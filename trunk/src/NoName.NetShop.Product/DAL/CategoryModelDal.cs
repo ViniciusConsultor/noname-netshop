@@ -141,6 +141,13 @@ namespace NoName.NetShop.Product.DAL
 			return model;
 		}
 
+        public string GetCategoryPath(int CategoryID)
+        {
+            string sql = "select catepath from pdcategory where cateid={0}";
+            sql = String.Format(sql, CategoryID);
+            return dbr.ExecuteScalar(CommandType.Text, sql).ToString();
+        }
+
         public string GetCategoryNamePath(int CategoryID)
         {
             string sql = "select dbo.[GetProductCategoryNamePath]({0}) as catepath";
