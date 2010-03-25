@@ -41,11 +41,13 @@ namespace NoName.NetShop.Publish.Product.PageCreator
             rootNode.AppendChild(helper.GetFooterContent());
             rootNode.AppendChild(helper.GetProductInfo());
             rootNode.AppendChild(helper.GetCategoryPathList());
+            rootNode.AppendChild(helper.GetProductQuestionList());
             rootNode.AppendChild(helper.GetProductCommentList());
+            rootNode.AppendChild(helper.GetProductTopicList());
             rootNode.AppendChild(helper.GetProductSpecificationList());
             rootNode.AppendChild(helper.GetSameBrandProductList());
 
-            //xdoc.Save(@"d:\dingding_product.xml");
+            xdoc.Save(@"d:\dingding_product.xml");
 
 
             return xdoc;

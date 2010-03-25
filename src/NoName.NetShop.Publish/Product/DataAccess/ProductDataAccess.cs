@@ -33,6 +33,13 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];           
         }
 
+        public DataTable GetProductMultiImage(int ProductID)
+        {
+            string sql = "select productid,smallimage,largeimage,originimage from pdproductimage where productid={0} order by ordervalue";
+            sql = String.Format(sql,ProductID);
+            return db.ExecuteDataSet(CommandType.Text,sql).Tables[0];
+        }
+
         public DataTable GetCategoryPathList(string CategoryPath)
         {
             string sql = String.Format("select * from pdcategory where cateid in ({0}) order by catelevel", CategoryPath.Substring(0, CategoryPath.Length - 1).Replace("/", ","));
@@ -59,21 +66,24 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             string sql = @" select top 3 q.*,a.[content] as answercontent, a.answertime from qaquestion q
 	                            left join qaanswer a on q.questionid=a.questionid
                             where q.contentid={0} and q.contenttype={1}";
-            sql = String.Format(sql, ProductID, ContentType.Product);
+            sql = String.Format(sql, ProductID, (int)ContentType.Product);
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
-        public DataTable GetProductCommentList(int ProductID)
+        public DataTable GetProductCommentList(int ProductID,out int RecordCount)
         {
+            string countSql = "select count(0) from qacomment where apptype={0} and targetid={1}";
             string sql = "select top 5 * from qacomment where apptype={0} and targetid={1}";
+            countSql = String.Format(countSql,AppType.Product,ProductID);
             sql = String.Format(sql,AppType.Product,ProductID);
+            RecordCount = Convert.ToInt32(db.ExecuteScalar(CommandType.Text, countSql));
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
         public DataTable GetProductTopicList(int ProductID)
         {
             string sql = "select top 3 * from qatopic where contenttype={0} and contentid={1}";
-            sql = String.Format(sql, ContentType.Product, ProductID);
+            sql = String.Format(sql, (int)ContentType.Product, ProductID);
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
         }
     }

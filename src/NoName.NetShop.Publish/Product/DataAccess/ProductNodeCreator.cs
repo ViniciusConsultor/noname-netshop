@@ -5,6 +5,7 @@ using NoName.NetShop.Publish.Configuration;
 using System.Xml;
 using NoName.Utility;
 using System.Data;
+using NoName.NetShop.Product.Facade;
 
 namespace NoName.NetShop.Publish.Product.DataAccess
 {
@@ -70,9 +71,9 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             XmlUtility.AddNewNode(ProductNode, "actualprice", Convert.ToString(Convert.ToDecimal(row["MerchantPrice"]) - Convert.ToDecimal(row["reduceprice"])));
             XmlUtility.AddNewNode(ProductNode, "tradeprice", Convert.ToString(row["ReducePrice"]));
             XmlUtility.AddNewNode(ProductNode, "stock", Convert.ToString(row["Stock"]));
-            XmlUtility.AddNewNode(ProductNode, "smallimage", "http://dingding.uncc.cn/upload/productmain/"+Convert.ToString(row["SmallImage"]));
-            XmlUtility.AddNewNode(ProductNode, "mediumimage", "http://dingding.uncc.cn/upload/productmain/"+Convert.ToString(row["MediumImage"]));
-            XmlUtility.AddNewNode(ProductNode, "largeimage", "http://dingding.uncc.cn/upload/productmain/" + Convert.ToString(row["LargeImage"]));
+            XmlUtility.AddNewNode(ProductNode, "smallimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["SmallImage"])));
+            XmlUtility.AddNewNode(ProductNode, "mediumimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["MediumImage"])));
+            XmlUtility.AddNewNode(ProductNode, "largeimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["LargeImage"])));
             XmlUtility.AddNewNode(ProductNode, "keywords", Convert.ToString(row["Keywords"]));
             XmlUtility.AddCDataNode(ProductNode, "brief", Convert.ToString(row["Brief"]));
             XmlUtility.AddNewNode(ProductNode, "pageview", Convert.ToString(row["PageView"]));
@@ -83,6 +84,21 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             XmlUtility.AddCDataNode(ProductNode, "packinglist", Convert.ToString(row["packinglist"]));
             XmlUtility.AddCDataNode(ProductNode, "saleservice", Convert.ToString(row["aftersaleservice"]));
             XmlUtility.AddCDataNode(ProductNode, "offerset", Convert.ToString(row["offerset"]));
+
+            XmlNode MultiImagesNode = XmlUtility.AddNewNode(ProductNode,"multiimages",null);
+            XmlNode MainImageNode = XmlUtility.AddNewNode(MultiImagesNode, "image", null);
+            XmlUtility.AddNewNode(MainImageNode, "smallimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["SmallImage"])));
+            XmlUtility.AddNewNode(MainImageNode, "largeimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["MediumImage"])));
+            XmlUtility.AddNewNode(MainImageNode, "originimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["LargeImage"])));
+
+            foreach (DataRow imageRow in dal.GetProductMultiImage(Parameter.ProductID).Rows)
+            {
+                XmlNode MultiImageNode = XmlUtility.AddNewNode(MultiImagesNode, "image", null);
+
+                XmlUtility.AddNewNode(MultiImageNode, "smallimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(imageRow["smallimage"])));
+                XmlUtility.AddNewNode(MultiImageNode, "largeimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(imageRow["largeimage"])));
+                XmlUtility.AddNewNode(MultiImageNode, "originimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(imageRow["originimage"])));
+            }
 
             return ProductInfoNode;
 
@@ -136,9 +152,9 @@ namespace NoName.NetShop.Publish.Product.DataAccess
 
                 XmlUtility.AddNewNode(QuestionNode, "userid", Convert.ToString(row["userid"]));
                 XmlUtility.AddNewNode(QuestionNode, "questioncontent", Convert.ToString(row["content"]));
-                XmlUtility.AddNewNode(QuestionNode, "questiontime", Convert.ToString(row["inserttime"]));
+                XmlUtility.AddNewNode(QuestionNode, "questiontime", Convert.ToDateTime(row["inserttime"]).ToString("yyyy-MM-dd"));
                 XmlUtility.AddNewNode(QuestionNode, "answercontent", Convert.ToString(row["answercontent"]));
-                XmlUtility.AddNewNode(QuestionNode, "answertime", Convert.ToString(row["answertime"]));
+                XmlUtility.AddNewNode(QuestionNode, "answertime", row["answertime"].ToString()==""?"":Convert.ToDateTime(row["answertime"]).ToString("yyyy-MM-dd"));
             }
 
             return QuestionListNode;
@@ -146,15 +162,18 @@ namespace NoName.NetShop.Publish.Product.DataAccess
 
         public XmlNode GetProductCommentList()
         {
+            int RecordCount = 0;
+            DataTable dt = dal.GetProductCommentList(Parameter.ProductID,out RecordCount);
             XmlNode CommentListNode = xdoc.CreateElement("comments");
+            XmlUtility.SetAtrributeValue(CommentListNode, "count", RecordCount.ToString());
 
-            foreach (DataRow row in dal.GetProductCommentList(Parameter.ProductID).Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 XmlNode CommentNode = XmlUtility.AddNewNode(CommentListNode, "comment", null);
 
                 XmlUtility.AddNewNode(CommentNode, "userid", Convert.ToString(row["userid"]));
                 XmlUtility.AddNewNode(CommentNode, "content", Convert.ToString(row["content"]));
-                XmlUtility.AddNewNode(CommentNode, "createtime", Convert.ToString(row["createtime"]));
+                XmlUtility.AddNewNode(CommentNode, "createtime", Convert.ToDateTime(row["createtime"]).ToString("yyyy-MM-dd"));
             }
 
             return CommentListNode;
@@ -170,7 +189,7 @@ namespace NoName.NetShop.Publish.Product.DataAccess
 
                 XmlUtility.AddNewNode(TopicNode, "userid", Convert.ToString(row["userid"]));
                 XmlUtility.AddNewNode(TopicNode, "title", Convert.ToString(row["title"]));
-                XmlUtility.AddNewNode(TopicNode, "inserttime", Convert.ToString(row["inserttime"]));
+                XmlUtility.AddNewNode(TopicNode, "inserttime", Convert.ToDateTime(row["inserttime"]).ToString("yyyy-MM-dd"));
                 XmlUtility.AddNewNode(TopicNode, "replynumber", Convert.ToString(row["replynum"]));
             }
 
