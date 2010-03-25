@@ -126,10 +126,55 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             return SpecificationListNode;
         }
 
+        public XmlNode GetProductQuestionList()
+        {
+            XmlNode QuestionListNode = xdoc.CreateElement("questions");
+
+            foreach (DataRow row in dal.GetProductQuestionList(Parameter.ProductID).Rows)
+            {
+                XmlNode QuestionNode = XmlUtility.AddNewNode(QuestionListNode, "question", null);
+
+                XmlUtility.AddNewNode(QuestionNode, "userid", Convert.ToString(row["userid"]));
+                XmlUtility.AddNewNode(QuestionNode, "questioncontent", Convert.ToString(row["content"]));
+                XmlUtility.AddNewNode(QuestionNode, "questiontime", Convert.ToString(row["inserttime"]));
+                XmlUtility.AddNewNode(QuestionNode, "answercontent", Convert.ToString(row["answercontent"]));
+                XmlUtility.AddNewNode(QuestionNode, "answertime", Convert.ToString(row["answertime"]));
+            }
+
+            return QuestionListNode;
+        }
+
         public XmlNode GetProductCommentList()
         {
-            XmlNode CommentNode = xdoc.CreateElement("comments");
-            return CommentNode;
+            XmlNode CommentListNode = xdoc.CreateElement("comments");
+
+            foreach (DataRow row in dal.GetProductCommentList(Parameter.ProductID).Rows)
+            {
+                XmlNode CommentNode = XmlUtility.AddNewNode(CommentListNode, "comment", null);
+
+                XmlUtility.AddNewNode(CommentNode, "userid", Convert.ToString(row["userid"]));
+                XmlUtility.AddNewNode(CommentNode, "content", Convert.ToString(row["content"]));
+                XmlUtility.AddNewNode(CommentNode, "createtime", Convert.ToString(row["createtime"]));
+            }
+
+            return CommentListNode;
+        }
+
+        public XmlNode GetProductTopicList()
+        {
+            XmlNode TopicListNode = xdoc.CreateElement("topics");
+
+            foreach (DataRow row in dal.GetProductTopicList(Parameter.ProductID).Rows)
+            {
+                XmlNode TopicNode = XmlUtility.AddNewNode(TopicListNode, "topic", null);
+
+                XmlUtility.AddNewNode(TopicNode, "userid", Convert.ToString(row["userid"]));
+                XmlUtility.AddNewNode(TopicNode, "title", Convert.ToString(row["title"]));
+                XmlUtility.AddNewNode(TopicNode, "inserttime", Convert.ToString(row["inserttime"]));
+                XmlUtility.AddNewNode(TopicNode, "replynumber", Convert.ToString(row["replynum"]));
+            }
+
+            return TopicListNode;
         }
 
         public XmlNode GetSameBrandProductList()

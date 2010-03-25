@@ -4,6 +4,7 @@ using System.Text;
 using NoName.NetShop.Publish.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Publish.Product.DataAccess
 {
@@ -51,6 +52,29 @@ namespace NoName.NetShop.Publish.Product.DataAccess
         {
             string sql = "select top 10 * from pdproduct where brandid = (select brandid from pdproduct where productid={0})";
             return db.ExecuteDataSet(CommandType.Text, String.Format(sql, ProductID)).Tables[0];
+        }
+
+        public DataTable GetProductQuestionList(int ProductID)
+        {
+            string sql = @" select top 3 q.*,a.[content] as answercontent, a.answertime from qaquestion q
+	                            left join qaanswer a on q.questionid=a.questionid
+                            where q.contentid={0} and q.contenttype={1}";
+            sql = String.Format(sql, ProductID, ContentType.Product);
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
+        public DataTable GetProductCommentList(int ProductID)
+        {
+            string sql = "select top 5 * from qacomment where apptype={0} and targetid={1}";
+            sql = String.Format(sql,AppType.Product,ProductID);
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
+        public DataTable GetProductTopicList(int ProductID)
+        {
+            string sql = "select top 3 * from qatopic where contenttype={0} and contentid={1}";
+            sql = String.Format(sql, ContentType.Product, ProductID);
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
         }
     }
 }
