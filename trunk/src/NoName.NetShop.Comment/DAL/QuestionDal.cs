@@ -99,10 +99,12 @@ namespace NoName.NetShop.Comment
             int PageLowerBound = PageSize * (PageIndex - 1);
             int PageUpperBound = PageLowerBound + PageSize;
 
-            string sqlCount = @"select count(0) from [qaQuestion] where contentid=(0) and contenttype={1}";
+            string sqlCount = @"select count(0) from [qaQuestion] where contentid={0} and contenttype={1}";
             string sqlData = @"select * from 
-                                (select row_number() over(order by QuestionId desc) as nid,* from [qaQuestion] where contentid=(0) and contenttype={1}) as sp
-                               where nid>{2} and nid<={3} ";
+                                (select row_number() over(order by q.QuestionId desc) as nid,q.*,a.[content] as answercontent, a.answertime from [qaQuestion] q
+                                left join qaanswer a on a.questionid=q.questionid
+                                 where q.contentid={0} and q.contenttype={1}) as s
+                                where nid>{2} and nid<={3}";
 
             RecordCount = Convert.ToInt32(CommDataAccess.DbReader.ExecuteScalar(CommandType.Text,String.Format(sqlCount,TargetID,(int)contentType)));
             return CommDataAccess.DbReader.ExecuteDataSet(CommandType.Text, String.Format(sqlData, TargetID, (int)contentType, PageLowerBound, PageUpperBound)).Tables[0]; 
