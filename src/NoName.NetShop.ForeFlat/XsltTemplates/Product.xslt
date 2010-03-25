@@ -463,7 +463,7 @@
                                         <xsl:value-of select="questiontime "/>
                                     </span>
                                 </div>
-                                <xsl:if test="answercontent">
+                                <xsl:if test="answercontent != ''">
                                     <div class="answer">
                                         <span class="answerer">鼎视回答：</span>
                                         <span>
