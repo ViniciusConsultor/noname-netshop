@@ -47,6 +47,20 @@ namespace NoName.NetShop.Publish.List.DataAccess
             return FooterNode;
         }
 
+        public XmlNode GetCategoryInfo()
+        {
+            XmlNode CategoryInfoNode = xdoc.CreateElement("categoryinfo");
+
+            DataRow row = dal.GetCategoryInfo(Parameter.CategoryID);
+
+            XmlUtility.AddNewNode(CategoryInfoNode, "categoryid", Convert.ToString(row["cateid"]));
+            XmlUtility.AddNewNode(CategoryInfoNode, "categoryname", Convert.ToString(row["catename"]));
+            XmlUtility.AddNewNode(CategoryInfoNode, "isendclass", (!(dal.GetCategorySonList(Parameter.CategoryID).Rows.Count > 0)).ToString()); 
+
+            return CategoryInfoNode;
+        }
+
+
         public XmlNode GetCategoryPathList()
         {
             XmlNode CategoryPathListNode = xdoc.CreateElement("categorypath");
