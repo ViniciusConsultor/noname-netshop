@@ -52,7 +52,8 @@
             var prop = parameterTable.Keys()[i];
             var propValue = parameterTable.GetValue(prop);
 
-            parmPart += prop + '-' + propValue + ',';
+            if (parseInt(propValue) != -1)
+                parmPart += prop + '-' + propValue + ',';
         }
 
         if (parmPart != '') {
