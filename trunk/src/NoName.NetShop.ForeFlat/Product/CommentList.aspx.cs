@@ -15,7 +15,7 @@ using NoName.NetShop.Product.Facade;
 
 namespace NoName.NetShop.ForeFlat.Product
 {
-    public partial class CommentList : System.Web.UI.Page
+    public partial class CommentList : AuthBasePage
     {
         private int ProductID
         {
@@ -30,6 +30,12 @@ namespace NoName.NetShop.ForeFlat.Product
             if (!IsPostBack)
             {
                 //验证用户，如果未登录则提示登录
+                if (CurrentUser == null || !CurrentUser.IsAuthenticated)
+                {
+                    Response.Redirect("/Login.aspx?returnurl=" + Request.RawUrl);
+                    return;
+                }
+
                 if (!String.IsNullOrEmpty(Request.QueryString["productid"])) ProductID = Convert.ToInt32(Request.QueryString["productid"]);
                 else throw new ArgumentNullException();
 
@@ -72,7 +78,7 @@ namespace NoName.NetShop.ForeFlat.Product
             //验证用户，如果未登录则提示登录
             if (String.IsNullOrEmpty(TextBox_CommentContent.Text))
             {
-                MessageBox.Show(this,"请登录。");
+                MessageBox.Show(this,"请输入评论内容");
                 return;
             }
 
@@ -86,12 +92,15 @@ namespace NoName.NetShop.ForeFlat.Product
             model.UserID = GetUserID();
 
             BindCommentData(AspNetPager.CurrentPageIndex);
-            MessageBox.Show(this, "添加成功！");
+
+            commentBll.Add(model);
+
+            Response.Redirect(Request.RawUrl);
         }
 
         private string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
 
         protected void AspNetPager_PageChanged(object sender, PageChangedEventArgs e)
