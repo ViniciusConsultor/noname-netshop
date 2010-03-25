@@ -306,12 +306,12 @@
                                 <div class="section padding noPaddingBottom clearfix">
                                     <div class="floatLeft">
                                         <p class="noPaddingBottom">
-                                            有问题，请您在此咨询<a href="#">【我要咨询】</a>
+                                            有问题，请您在此咨询<a href="/Product/QuestionList.aspx?productid={$ProductID}">【我要咨询】</a>
                                         </p>
                                     </div>
                                     <div class="floatRight">
                                         <p class="noPaddingBottom">
-                                            <a href="#">【查看全部咨询】</a>
+                                            <a href="/Product/QuestionList.aspx?productid={$ProductID}">【查看全部咨询】</a>
                                         </p>
                                     </div>
                                 </div>
@@ -366,12 +366,12 @@
                                 <div class="section padding noPaddingBottom clearfix">
                                     <div class="floatLeft">
                                         <p class="noPaddingBottom">
-                                            您可以发起属于自己的话题。<a href="#">【我要发起】</a>
+                                            您可以发起属于自己的话题。<a href="/Product/TopicList.aspx?productid={$ProductID}">【我要发起】</a>
                                         </p>
                                     </div>
                                     <div class="floatRight">
                                         <p class="noPaddingBottom">
-                                            <a href="#">【查看全部话题】</a>
+                                            <a href="/Product/TopicList.aspx?productid={$ProductID}">【查看全部话题】</a>
                                         </p>
                                     </div>
                                 </div>
@@ -393,13 +393,13 @@
     
     <!-- header start -->
     <xsl:template name="Header">
-        <xsl:value-of select="/productpage/standardheader" disable-output-escaping="yes"/>
+        <!--<xsl:value-of select="/productpage/standardheader" disable-output-escaping="yes"/>-->
     </xsl:template>
     <!-- header end -->
 
     <!-- footer start -->
     <xsl:template name="Footer">
-        <xsl:value-of select="/productpage/standardfooter" disable-output-escaping="yes"/>
+        <!--<xsl:value-of select="/productpage/standardfooter" disable-output-escaping="yes"/>-->
     </xsl:template>
     <!-- footer end -->
 
@@ -578,12 +578,12 @@
                 <div class="section padding noPaddingBottom clearfix">
                     <div class="floatLeft">
                         <p class="noPaddingBottom">
-                            请购买之后发表您的评论<a href="#">【我要评论】</a>
+                            <a href="/Product/CommentList.aspx?productid={$ProductID}">【我要评论】</a>
                         </p>
                     </div>
                     <div class="floatRight">
                         <p class="noPaddingBottom">
-                            <a href="#">【查看全部评论】</a>
+                            <a href="/Product/CommentList.aspx?productid={$ProductID}">【查看全部评论】</a>
                         </p>
                     </div>
                 </div>
@@ -591,7 +591,7 @@
         </div>
     </xsl:template>
     
-    <!---->
+    <!-- same brand prodct list start -->
     <xsl:template match="/productpage/samebrandproducts/product">
         <li>
             <a href="/product-{productid}.html" title="{productname}">
@@ -602,6 +602,6 @@
             </span>
         </li>
     </xsl:template>
-
+	<!-- same brand prodct list end -->
 
 </xsl:stylesheet>
