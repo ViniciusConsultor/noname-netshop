@@ -41,16 +41,6 @@
                             <li>
                                 <span class="field ddPriceField">鼎 鼎 价：</span><span class="ddPrice">￥<asp:Literal runat="server" ID="Literal_MerchantPrice" /></span>
                             </li>
-                            <li>
-                                <span class="field">评　　分：</span>
-                                <div class="rating">
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a href="javascript:void(0)"></a>
-                                    <a href="javascript:void(0)"></a>
-                                </div>
-                            </li>
                             <li class="buttons">
                                 <asp:HyperLink runat="server" ID="HyperLink_Buy" CssClass="purchase" />
                                 <asp:HyperLink runat="server" ID="HyperLink_Favorite" CssClass="addToFavorite" />
@@ -66,15 +56,15 @@
                             <table>
                               <tr>
                                 <th>主题</th>
-                                <th>回复/浏览</th>
+                                <th>浏览</th>
                                 <th>最后发表</th>
                               </tr>
                               <asp:Repeater runat="server" ID="Repeater_TopicList">
                                 <ItemTemplate>
                                   <tr>
-                                    <td><a href="#">这个东西很好很强大？</a><span>2009-02-23</span></td>
-                                    <td>0/39</td>
-                                    <td><span>天空的白云</span></td>
+                                    <td><a href="#"><%# Eval("title") %></a><span><%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %></span></td>
+                                    <td><%# Eval("replynum") %></td>
+                                    <td><span><%# Eval("userid") %></span></td>
                                   </tr>
                                 </ItemTemplate>
                               </asp:Repeater>

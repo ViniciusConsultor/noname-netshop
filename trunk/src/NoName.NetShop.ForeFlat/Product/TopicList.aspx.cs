@@ -89,14 +89,14 @@ namespace NoName.NetShop.ForeFlat.Product
             TopicModel model = new TopicModel();
 
             model.TopicId = CommDataHelper.GetNewSerialNum(AppType.Other);
-            model.Title = "";
-            model.Content = "";
-            model.UserId = "";
+            model.Title = TextBox_TopicTitle.Text;
+            model.Content = TextBox_TopicContent.Text;
+            model.UserId = GetUserID();
             model.InsertTime = DateTime.Now;
 
             model.ContentId = ProductID;
             model.ContentType = NoName.NetShop.Common.ContentType.Product;
-            //model.LastReplyId = "";
+            //model.LastReplyId = model.UserId;
             //model.LastReplyTime = "";
             //model.ReplyNum = "";
             model.Status = true;

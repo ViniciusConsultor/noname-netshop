@@ -6,10 +6,9 @@
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="cpMain">
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">购物街</a> &gt;&gt; <a href="#">查看产品咨询</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/shopping/">购物街</a> &gt;&gt; <a href="#">查看产品咨询</a>
     </div>
     <!--Position End-->
-    
     <!--MainBody Begin-->
     <div class="questions_mainbody newline clearfix">
         <div class="box1 noPadding">
@@ -41,16 +40,6 @@
                             <li>
                                 <span class="field ddPriceField">鼎 鼎 价：</span><span class="ddPrice">￥<asp:Literal runat="server" ID="Literal_MerchantPrice" /></span>
                             </li>
-                            <li>
-                                <span class="field">评　　分：</span>
-                                <div class="rating">
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a href="javascript:void(0)"></a>
-                                    <a href="javascript:void(0)"></a>
-                                </div>
-                            </li>
                             <li class="buttons">
                                 <asp:HyperLink runat="server" ID="HyperLink_Buy" CssClass="purchase" />
                                 <asp:HyperLink runat="server" ID="HyperLink_Favorite" CssClass="addToFavorite" />
@@ -67,28 +56,28 @@
                                 <ItemTemplate>
                                     <li class="odd">
                                         <div class="question">
-                                            <span class="user">天空的白云：</span>
-                                            <span>请问你们可以提供正规发票吗？</span>
-                                            <span class="date">2009-3-3</span>
+                                            <span class="user"><%# Eval("userid") %>：</span>
+                                            <span><%# Eval("content") %></span>
+                                            <span class="date"><%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %></span>
                                         </div>
-                                        <div class="answer">
+                                        <div class="answer" style='<%# Eval("answercontent").ToString()==""?"display:none":"display:block" %>'>
                                             <span class="answerer">鼎视回答：</span>
-                                            <span>您好。可以提供发票。谢谢您的提问。</span>
-                                            <span class="date">2009-3-3</span>
+                                            <span><%# Eval("answercontent") %></span>
+                                            <span class="date"><%# Eval("answertime").ToString()==""?"":Convert.ToDateTime(Eval("answertime")).ToString("yyyy-MM-dd")%></span>
                                         </div>
                                     </li>
                                 </ItemTemplate>
                                 <AlternatingItemTemplate>
                                     <li class="even">
                                         <div class="question">
-                                            <span class="user">天空的白云：</span>
-                                            <span>怎么安装系统啊？急！！！</span>
-                                            <span class="date">2009-3-3</span>
+                                            <span class="user"><%# Eval("userid") %>：</span>
+                                            <span><%# Eval("content") %></span>
+                                            <span class="date"><%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %></span>
                                         </div>
-                                        <div class="answer">
+                                        <div class="answer" style='<%# Eval("answercontent").ToString()==""?"display:none":"display:block" %>'>
                                             <span class="answerer">鼎视回答：</span>
-                                            <span>您好！标配 linux系统，安装XP系统的话将安装光盘放入光驱，让系统从光盘启动，进入安装界面按照提示一步步的设置就可以了，感谢您对鼎视的支持！祝您购物愉快！</span>
-                                            <span class="date">2009-3-3</span>
+                                            <span><%# Eval("answercontent") %></span>
+                                            <span class="date"><%# Eval("answertime").ToString()==""?"":Convert.ToDateTime(Eval("answertime")).ToString("yyyy-MM-dd")%></span>
                                         </div>
                                     </li>
                                 </AlternatingItemTemplate>
