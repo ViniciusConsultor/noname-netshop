@@ -150,7 +150,7 @@ function zoomInThumb(e,obj){
 	obj.onmouseout=hideZoomIn;
 	var scrollLeft=document.documentElement.scrollLeft?document.documentElement.scrollLeft:document.body.scrollLeft;
 	var scrollTop=document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop;
-	if((scrollLeft+e.clientX-getXY(obj).l)>(obj.clientWidth-2)){hideZoomIn()}
+	if((scrollLeft+e.clientX-getXY(obj).l)>(obj.clientWidth-2)){hideZoomIn();}
 	
 	var left=scrollLeft+e.clientX-getXY(obj).l-targetArea.clientWidth/2;
 	var top=scrollTop+e.clientY-getXY(obj).t-targetArea.clientHeight/2;
@@ -180,6 +180,35 @@ function zoomInThumb(e,obj){
 	function showZoomIn(){
 		zoomArea.style.display="block";
 		targetArea.style.display="block";
+	}
+}
+
+function selectProductPicture(obj,i){
+	obj.blur();
+	var elements=obj.parentNode.getElementsByTagName("a");
+	for(var j in elements){
+		elements[j].className="";
+	}
+	obj.className="selected";
+	document.getElementById("mainThumbArea").innerHTML=document.getElementById("productThumb"+i).innerHTML;
+}
+
+function productThumbListScroll(obj,type){
+	var picWidth=74;
+	if(obj){obj.blur()}
+	if((type=="next")&&(document.getElementById("picList").scrollLeft<(document.getElementById("scrollContainer").getElementsByTagName("a").length-4)*picWidth)){
+		document.getElementById("picList").scrollLeft+=picWidth;
+	}else if((type=="prev")&&(document.getElementById("picList").scrollLeft>0)){
+		document.getElementById("picList").scrollLeft-=picWidth;
+	}
+	
+	document.getElementById("nextBtn").className="nextBtn";
+	document.getElementById("prevBtn").className="prevBtn";
+	if(document.getElementById("picList").scrollLeft>=(document.getElementById("scrollContainer").getElementsByTagName("a").length-4)*picWidth){
+		document.getElementById("nextBtn").className="nextBtn disabled"
+	}
+	if(document.getElementById("picList").scrollLeft<=0){
+		document.getElementById("prevBtn").className="prevBtn disabled"
 	}
 }
 

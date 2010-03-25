@@ -17,9 +17,9 @@ function changeComponentStatu(obj,i){
 }
 
 function selectSuite(obj,index){
-	var lis=obj.parentNode.parentNode.getElementsByTagName("li");
+	var lis=obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("li");
 	for(var i=0;i<lis.length;i++){
-		if(lis[i].getElementsByTagName("a")){
+		if(lis[i].getElementsByTagName("a")[0]){
 			lis[i].getElementsByTagName("a")[0].className="";
 		}
 	}
@@ -36,4 +36,12 @@ function resetComponents(){
 	for(var i=0;i<listObj.getElementsByTagName("span").length;i++){
 		listObj.getElementsByTagName("span")[i].getElementsByTagName("input")[0].checked=false;
 	}
+}
+
+function expandGroup(obj){
+	for(var i=0;i<obj.parentNode.parentNode.getElementsByTagName("div").length;i++){
+		//alert(obj.parentNode.parentNode.getElementsByTagName("div")[i].className)
+		obj.parentNode.parentNode.getElementsByTagName("div")[i].className=obj.parentNode.parentNode.getElementsByTagName("div")[i].className.replace("expanded","collapsed")
+	}
+	obj.parentNode.className=obj.parentNode.className.replace("collapsed","expanded");
 }
