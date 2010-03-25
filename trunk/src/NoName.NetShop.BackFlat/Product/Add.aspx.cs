@@ -319,7 +319,7 @@ namespace NoName.NetShop.BackFlat.Product
                 //添加商品多图
                 foreach (string s in Request.Files.AllKeys)
                 {
-                    if (s.StartsWith("fileUpload"))
+                    if (s.StartsWith("multiImageUpload"))
                     {
                         string[] FileNames;
                         ProductMultiImageRule.SaveProductMultiImage(ProductID, Request.Files[s], out FileNames);

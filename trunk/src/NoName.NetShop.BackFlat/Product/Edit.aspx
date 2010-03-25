@@ -13,7 +13,8 @@
     <script type="text/javascript">
         $(function() {
             $('#product-multi-image-upload-add').click(function(){
-                $('#product-multi-image-upload-zone').append($('<div><input type="file" id="fileUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>'));
+                var count = $('#product-multi-image-upload-zone input[name^="multiImage"]').length;
+                $('#product-multi-image-upload-zone').append($('<div><input type="file" id="multiImageUpload'+(count+1)+'" name="multiImageUpload'+(count+1)+'" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>'));
             });
             
             CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
@@ -223,21 +224,21 @@
             <tr>
                 <td>包装清单：</td>
                 <td>
-                    选择包装清单模板：<asp:DropDownList runat="server" ID="DropDown_Packing" />
+                    选择包装清单模板：<asp:DropDownList runat="server" ID="DropDown_Packing" /><br/>
                     <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Packing" />
                 </td>
             </tr>
             <tr>
                 <td>优惠套装：</td>
                 <td>
-                    选择优惠套装模板：<asp:DropDownList runat="server" ID="DropDown_OfferSet" />
+                    选择优惠套装模板：<asp:DropDownList runat="server" ID="DropDown_OfferSet" /><br/>
                     <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_OfferSet" />
                 </td>
             </tr>
             <tr>
                 <td>售后服务：</td>
                 <td>
-                    选择售后服务模板：<asp:DropDownList runat="server" ID="DropDown_Service" />
+                    选择售后服务模板：<asp:DropDownList runat="server" ID="DropDown_Service" /><br/>
                     <asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Service" />
                 </td>
             </tr>
@@ -301,7 +302,7 @@
                 <td>            
                     <div id="product-multi-image-upload-zone">                        
                         <input type="button" value=" 添加多图 " id="product-multi-image-upload-add" />
-                        <div><input type="file" id="fileUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>                        
+                        <div><input type="file" id="multiImageUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>                        
                     </div>     
                     <div>
                         <asp:GridView runat="server" ID="GridView_MultiImage" OnRowCommand="GridView_MultiImage_RowCommand" AutoGenerateColumns="false">

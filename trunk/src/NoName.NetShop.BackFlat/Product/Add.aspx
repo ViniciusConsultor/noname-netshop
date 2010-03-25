@@ -15,7 +15,8 @@
     <script type="text/javascript">
         $(function() {
             $('#product-multi-image-upload-add').click(function(){
-                $('#product-multi-image-upload-zone').append($('<div><input type="file" id="fileUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>'));
+                var count = $('#product-multi-image-upload-zone input[name^="multiImage"]').length;
+                $('#product-multi-image-upload-zone').append($('<div><input type="file" id="multiImageUpload'+(count+1)+'" name="multiImageUpload'+(count+1)+'" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>'));
             });
         
             CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
@@ -338,7 +339,7 @@
                 <td>                
                     <div id="product-multi-image-upload-zone">                        
                         <input type="button" value=" 添加多图 " id="product-multi-image-upload-add" />
-                        <div><input type="file" id="fileUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>                        
+                        <div><input type="file" id="multiImageUpload1" name="multiImageUpload1" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>                        
                     </div> 
                 </td>
             </tr>
