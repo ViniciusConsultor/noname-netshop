@@ -250,73 +250,7 @@
                             </div>
                         </div>
                         <!--sales consultant begin-->
-                        <div class="box7 newline">
-                            <div class="title">售前咨询</div>
-                            <div class="content">
-                                <ul class="questions">
-                                    <li class="odd">
-                                        <div class="question">
-                                            <span class="user">天空的白云：</span>
-                                            <span>请问你们可以提供正规发票吗？</span>
-                                            <span class="date">2009-3-3</span>
-                                        </div>
-                                        <div class="answer">
-                                            <span class="answerer">鼎视回答：</span>
-                                            <span>您好。可以提供发票。谢谢您的提问。</span>
-                                            <span class="date">2009-3-3</span>
-                                        </div>
-                                    </li>
-                                    <li class="even">
-                                        <div class="question">
-                                            <span class="user">天空的白云：</span>
-                                            <span>怎么安装系统啊？急！！！</span>
-                                            <span class="date">2009-3-3</span>
-                                        </div>
-                                        <div class="answer">
-                                            <span class="answerer">鼎视回答：</span>
-                                            <span>您好！标配 linux系统，安装XP系统的话将安装光盘放入光驱，让系统从光盘启动，进入安装界面按照提示一步步的设置就可以了，感谢您对鼎视的支持！祝您购物愉快！</span>
-                                            <span class="date">2009-3-3</span>
-                                        </div>
-                                    </li>
-                                    <li class="odd">
-                                        <div class="question">
-                                            <span class="user">天空的白云：</span>
-                                            <span>请问你们可以提供正规发票吗？</span>
-                                            <span class="date">2009-3-3</span>
-                                        </div>
-                                        <div class="answer">
-                                            <span class="answerer">鼎视回答：</span>
-                                            <span>您好。可以提供发票。谢谢您的提问。</span>
-                                            <span class="date">2009-3-3</span>
-                                        </div>
-                                    </li>
-                                    <li class="even">
-                                        <div class="question">
-                                            <span class="user">天空的白云：</span>
-                                            <span>怎么安装系统啊？急！！！</span>
-                                            <span class="date">2009-3-3</span>
-                                        </div>
-                                        <div class="answer">
-                                            <span class="answerer">鼎视回答：</span>
-                                            <span>您好！标配 linux系统，安装XP系统的话将安装光盘放入光驱，让系统从光盘启动，进入安装界面按照提示一步步的设置就可以了，感谢您对鼎视的支持！祝您购物愉快！</span>
-                                            <span class="date">2009-3-3</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="section padding noPaddingBottom clearfix">
-                                    <div class="floatLeft">
-                                        <p class="noPaddingBottom">
-                                            有问题，请您在此咨询<a href="/Product/QuestionList.aspx?productid={$ProductID}">【我要咨询】</a>
-                                        </p>
-                                    </div>
-                                    <div class="floatRight">
-                                        <p class="noPaddingBottom">
-                                            <a href="/Product/QuestionList.aspx?productid={$ProductID}">【查看全部咨询】</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <xsl:apply-templates select="/productpage/questions"/>
                         <!--sales consultant end-->
 
                         <!--product comments begin-->
@@ -324,59 +258,7 @@
                         <!--product comments end-->
 
                         <!--user topics begin-->
-                        <div class="box7">
-                            <div class="title">用户话题</div>
-                            <div class="content">
-                                <div class="table3">
-                                    <table>
-                                        <tr>
-                                            <th>主题</th>
-                                            <th>回复/浏览</th>
-                                            <th>最后发表</th>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                这个东西很好很强大？<span>2009-02-23</span>
-                                            </td>
-                                            <td>0/39</td>
-                                            <td>
-                                                <span>天空的白云</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                这个东西很好很强大？<span>2009-02-23</span>
-                                            </td>
-                                            <td>0/39</td>
-                                            <td>
-                                                <span>天空的白云</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                这个东西很好很强大？<span>2009-02-23</span>
-                                            </td>
-                                            <td>0/39</td>
-                                            <td>
-                                                <span>天空的白云</span>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="section padding noPaddingBottom clearfix">
-                                    <div class="floatLeft">
-                                        <p class="noPaddingBottom">
-                                            您可以发起属于自己的话题。<a href="/Product/TopicList.aspx?productid={$ProductID}">【我要发起】</a>
-                                        </p>
-                                    </div>
-                                    <div class="floatRight">
-                                        <p class="noPaddingBottom">
-                                            <a href="/Product/TopicList.aspx?productid={$ProductID}">【查看全部话题】</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <xsl:apply-templates select="/productpage/topics"/>
                         <!--user topics end-->
                     </div>
                     <!--MainBody End-->
@@ -431,14 +313,38 @@
     <!-- product info start -->
     <xsl:template match="/productpage/productinfo/product">
         <div class="productGeneralProperties padding">
-            <div class="thumbnail" onmousemove="zoomInThumb(event,this);" onmouseover="zoomInThumb(event,this);">
-                <img src="{mediumimage}" />
-                <div class="targetArea">
-                    <xsl:text> </xsl:text>
+            <div class="productImage">
+                <xsl:for-each select="multiimages/image">
+                    <div id="productThumb{position() - 1}" style="display:none">
+                        <img src="{smallimage}" />
+                        <div class="targetArea"></div>
+                        <div class="zoomInArea">
+                            <img src="{largeimage}" />
+                        </div>
+                    </div>                    
+                </xsl:for-each>                
+                <div id="mainThumbArea" class="thumbnail" onmousemove="zoomInThumb(event,this);" onmouseover="zoomInThumb(event,this);">
+                    <script type="text/javascript">
+                        document.write(document.getElementById("productThumb0").innerHTML);
+                    </script>
                 </div>
-                <div class="zoomInArea">
-                    <img src="{largeimage}" />
+                <a class="prevBtn disabled" id="prevBtn" href="javascript:void(0)" onclick="productThumbListScroll(this,'prev')"></a>
+                <div class="picList" id="picList">
+                    <div class="scrollContainer" id="scrollContainer">
+                        <xsl:for-each select="multiimages/image">                            
+                            <a href="javascript:void(0)" onclick="selectProductPicture(this,{position() - 1})">
+                                <xsl:if test="position() = 1">
+                                    <xsl:attribute name="class">selected</xsl:attribute>
+                                </xsl:if>
+                                <img src="{smallimage}" />
+                            </a>                            
+                        </xsl:for-each>
+                    </div>
                 </div>
+                <a class="nextBtn" id="nextBtn" href="javascript:void(0)" onclick="productThumbListScroll(this,'next')"></a>
+                <script type="text/javascript">
+                    productThumbListScroll(null,null);
+                </script>
             </div>
             <div class="properties">
                 <ul>
@@ -530,66 +436,165 @@
         </div>
     </xsl:template>
     <!-- product info end -->
-    
+
+    <!-- question list start -->
+    <xsl:template match="/productpage/questions">
+        <xsl:if test="count(question) > 0">
+            <div class="box7 newline">
+                <div class="title">售前咨询</div>
+                <div class="content">
+                    <ul class="questions">
+                        <xsl:for-each select="question">
+                            <li>
+                                <xsl:attribute name="class">
+                                    <xsl:choose>
+                                        <xsl:when test="position() mod 2 = 0">even</xsl:when>
+                                        <xsl:otherwise>odd</xsl:otherwise>
+                                    </xsl:choose>                                    
+                                </xsl:attribute>
+                                <div class="question">
+                                    <span class="user">
+                                        <xsl:value-of select="userid "/>
+                                    </span>
+                                    <span>
+                                        <xsl:value-of select="questioncontent "/>
+                                    </span>
+                                    <span class="date">
+                                        <xsl:value-of select="questiontime "/>
+                                    </span>
+                                </div>
+                                <xsl:if test="answercontent">
+                                    <div class="answer">
+                                        <span class="answerer">鼎视回答：</span>
+                                        <span>
+                                            <xsl:value-of select="answercontent"/>
+                                        </span>
+                                        <span class="date">
+                                            <xsl:value-of select="answertime "/>
+                                        </span>
+                                    </div>
+                                </xsl:if>
+                            </li>
+                        </xsl:for-each>
+                    </ul>
+                    <div class="section padding noPaddingBottom clearfix">
+                        <div class="floatLeft">
+                            <p class="noPaddingBottom">
+                                有问题，请您在此咨询<a href="/Product/QuestionList.aspx?productid={$ProductID}">【我要咨询】</a>
+                            </p>
+                        </div>
+                        <div class="floatRight">
+                            <p class="noPaddingBottom">
+                                <a href="/Product/QuestionList.aspx?productid={$ProductID}">【查看全部咨询】</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </xsl:if>
+    </xsl:template>
+    <!-- question list end -->
+
     <!-- comment list start -->
     <xsl:template match="/productpage/comments">
-        <div class="box7">
-            <div class="title">商品评论</div>
-            <div class="content">
-                <div class="section padding noPaddingTop">
-                    已有6人在此发表了评论。
-                </div>
-                <ul class="comments">
-                    <xsl:for-each select="comment">
-                        <li>
-                            <img src="images/memberLevel1.gif" />
-                            <div class="commentRightContent">
-                                <div class="commentRightContentContainer">
-                                    <div class="userInfo">
-                                        <span class="user">天空的白云</span>
-                                        <span>(双钻会员)</span>
-                                        <div class="rating">
-                                            <a href="javascript:void(0)" class="on">
-                                                <xsl:text> </xsl:text>
-                                            </a>
-                                            <a href="javascript:void(0)" class="on">
-                                                <xsl:text> </xsl:text>
-                                            </a>
-                                            <a href="javascript:void(0)" class="on">
-                                                <xsl:text> </xsl:text>
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <xsl:text> </xsl:text>
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <xsl:text> </xsl:text>
-                                            </a>
+        <xsl:if test="count(comment) > 0">
+            <div class="box7">
+                <div class="title">商品评论</div>
+                <div class="content">
+                    <div class="section padding noPaddingTop">
+                        已有<xsl:value-of select="@count"/>人在此发表了评论。
+                    </div>
+                    <ul class="comments">
+                        <xsl:for-each select="comment">
+                            <li>
+                                <img src="images/memberLevel1.gif" />
+                                <div class="commentRightContent">
+                                    <div class="commentRightContentContainer">
+                                        <div class="userInfo">
+                                            <span class="user">
+                                                <xsl:value-of select="userid"/>
+                                            </span>
+                                            <span class="date">
+                                                <xsl:value-of select="createtime"/>
+                                            </span>
                                         </div>
-                                        <span class="date">2009-02-23</span>
-                                    </div>
-                                    <div class="commentContent">
-                                        有6年没有用过台式机了，不太好比较性价比，不过这一款家庭用还行，并且大屏幕信息也多，可以抬着头看东西，用笔记本时间长了，颈椎很受伤，这也是我为什么买台式机的原因。
+                                        <div class="commentContent">
+                                            <xsl:value-of select="content"/>                                            
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>                        
-                    </xsl:for-each>
-                </ul>
-                <div class="section padding noPaddingBottom clearfix">
-                    <div class="floatLeft">
-                        <p class="noPaddingBottom">
-                            <a href="/Product/CommentList.aspx?productid={$ProductID}">【我要评论】</a>
-                        </p>
-                    </div>
-                    <div class="floatRight">
-                        <p class="noPaddingBottom">
-                            <a href="/Product/CommentList.aspx?productid={$ProductID}">【查看全部评论】</a>
-                        </p>
+                            </li>
+                        </xsl:for-each>
+                    </ul>
+                    <div class="section padding noPaddingBottom clearfix">
+                        <div class="floatLeft">
+                            <p class="noPaddingBottom">
+                                <a href="/Product/CommentList.aspx?productid={$ProductID}">【我要评论】</a>
+                            </p>
+                        </div>
+                        <div class="floatRight">
+                            <p class="noPaddingBottom">
+                                <a href="/Product/CommentList.aspx?productid={$ProductID}">【查看全部评论】</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            
+        </xsl:if>
     </xsl:template>
+    <!-- comment list end -->
+
+    <!-- topic list start -->
+    <xsl:template match="/productpage/topics">
+        <xsl:if test="count(topic) > 0">
+            <div class="box7">
+                <div class="title">用户话题</div>
+                <div class="content">
+                    <div class="table3">
+                        <table>
+                            <tr>
+                                <th>主题</th>
+                                <th>回复</th>
+                                <th>最后发表</th>
+                            </tr>
+                            <xsl:for-each select="topic">
+                                <tr>
+                                    <td>
+                                        <xsl:value-of select="title"/>
+                                        <span>
+                                            <xsl:value-of select="inserttime"/>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="replynumber"/>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <xsl:value-of select="userid"/>
+                                        </span>
+                                    </td>
+                                </tr>                                
+                            </xsl:for-each>
+                        </table>
+                    </div>
+                    <div class="section padding noPaddingBottom clearfix">
+                        <div class="floatLeft">
+                            <p class="noPaddingBottom">
+                                您可以发起属于自己的话题。<a href="/Product/TopicList.aspx?productid={$ProductID}">【我要发起】</a>
+                            </p>
+                        </div>
+                        <div class="floatRight">
+                            <p class="noPaddingBottom">
+                                <a href="/Product/TopicList.aspx?productid={$ProductID}">【查看全部话题】</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </xsl:if>
+    </xsl:template>
+    <!-- topic list end -->    
     
     <!-- same brand prodct list start -->
     <xsl:template match="/productpage/samebrandproducts/product">
