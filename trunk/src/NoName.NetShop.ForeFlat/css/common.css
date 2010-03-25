@@ -28,7 +28,7 @@ a.linkButton:hover{ color:#FF9900}
 
 .header ul.navigator{ padding:0; margin:0; float:right; width:630px; padding-top:7px; overflow:hidden;height:40px}
 .header ul.navigator li{ list-style-type:none; float:left; padding-left:10px;}
-.header ul.navigator li a{ display:block; height:40px; background:url(../images/header.jpg) no-repeat}
+.header ul.navigator li a{ display:block; height:40px; background:url(../images/header.gif) no-repeat}
 .header ul.navigator li a.home{ background-position:-330px 0; width:90px;}
 .header ul.navigator li a.home:hover{ background-position:-330px -43px;}
 .header ul.navigator li a.shopping{ background-position:-440px 0; width:90px;}
@@ -99,11 +99,12 @@ a.linkButton:hover{ color:#FF9900}
 
 .homePage_mainbody .vote{ clear:both}
 .homePage_mainbody .vote .topic{ clear:both; padding:0 10px 10px 10px}
-.homePage_mainbody .vote ul.options{ padding:0 20px; clear:both; margin:0}
-.homePage_mainbody .vote ul.options li{ list-style-type:none; padding:4px 0; height:17px;}
+.homePage_mainbody .vote ul.options{ padding:0 20px; clear:both; margin:0; zoom:1}
+.homePage_mainbody .vote ul.options:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.homePage_mainbody .vote ul.options li{ list-style-type:none; padding:4px 0; height:17px; float:left; width:100%;}
 .homePage_mainbody .vote ul.options li input{ width:14px; height:14px; margin:1px 5px 0 0;margin:0 5px 0 0\9; _margin:1px 5px 0 0; display:block; float:left; padding:0;_display:inline}
 .homePage_mainbody .vote ul.options li span{ display:block; float:left;}
-.homePage_mainbody .vote .buttons{ padding:3px 0 0 20px; margin:0; clear:both;}
+.homePage_mainbody .vote .buttons{ padding:3px 0 0 20px; margin:0; clear:both; height:22px; overflow:hidden}
 .homePage_mainbody .vote .buttons a{ margin-right:10px; float:left}
 
 .homePage_mainbody ul.recommendation{ clear:both; padding:32px 10px 0 10px; margin:0}
@@ -135,16 +136,18 @@ a.linkButton:hover{ color:#FF9900}
 .cateBox div.content{ padding:10px 10px 0 0}
 .cateBox .mainCategory .groupTitle{ margin-left:10px;}
 
+.staticMenuContainer{ height:14px; width:180px; overflow:hidden;}
+
 .topCate{ float:left; margin-right:10px;}
-.cateMenu_normal{ width:180px; height:14px; padding:5px 5px 8px 20px; background:url(../images/sprite.gif) 190px -537px no-repeat;}
+.cateMenu_normal{ width:180px; height:14px; padding:5px 5px 8px 20px; background:url(../images/sprite.gif) 190px -537px no-repeat; white-space:nowrap}
 .cateMenu_hover{ width:180px; height:14px; padding:5px 5px 8px 20px; background:url(../images/sprite.gif) 0 -569px repeat-x; z-index:1000}
 .cateMenu_normal{ position:relative}
 .cateMenu_normal span { float:left; display:block; padding-left:8px; color:#999}
 .cateMenu_hover{ position:relative}
 .cateMenu_hover span { display:none;}
-.pop{ border:1px solid #B4CFEC; border-left:none; width:160px; position:absolute; left:185px; top:0; background:#FFFFFF url(../images/vLine.gif) 0 22px no-repeat; padding:0 5px; z-index:1001}
-.pop a{ display:block; padding:6px 5px 7px 20px; width:55px; float:left; background:url(../images/sprite.gif) 0px -538px no-repeat}
-.popShadow{ left:188px; top:4px; width:160px; padding:0 5px; background:#000; position:absolute; z-index:1000;filter:alpha(opacity=20);opacity: 0.2; }
+.pop{ border:1px solid #B4CFEC; border-left:none; width:170px; position:absolute; left:185px; top:0; background:#FFFFFF url(../images/vLine.gif) 0 22px no-repeat; padding:0 5px; z-index:1001}
+.pop a{ display:block; padding:6px 5px 7px 20px; width:60px; float:left; background:url(../images/sprite.gif) 0px -538px no-repeat}
+.popShadow{ left:188px; top:4px; width:170px; padding:0 5px; background:#000; position:absolute; z-index:1000;filter:alpha(opacity=20);opacity: 0.2;}
 .cateMenu_normal .pop,.cateMenu_normal .popShadow{ display:none}
 .cateMenu_hover .pop,.cateMenu_hover .popShadow{ display:block;}
 #checkLoadCate{ display:none}
@@ -168,8 +171,9 @@ a.linkButton:hover{ color:#FF9900}
 .hotlist .tableHeader .column1{ width:25px;}
 .hotlist .tableHeader .column2{ width:70px;}
 .hotlist .tableHeader .column3{ width:38px;}
-.hotlist ul.listContent{ margin:0; padding:0; clear:both}
-.hotlist ul.listContent li{ clear:both; list-style-type:none; zoom:1; *display:inline}
+.hotlist ul.listContent{ margin:0; padding:0; clear:both; zoom:1}
+.hotlist ul.listContent:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.hotlist ul.listContent li{ float:left; width:100%; list-style-type:none; zoom:1;}
 .hotlist ul.listContent li:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
 .hotlist ul.listContent li a{padding:5px 10px; float:left; display:block; text-align:center;  height:14px; line-height:14px;white-space:nowrap;
 ; overflow:hidden}
@@ -702,9 +706,24 @@ ul.comments li div.commentRightContent .commentRightContentContainer div.comment
 .productGeneralProperties .thumbnail .targetArea{ width:115px; height:87px; position:absolute; top:0; left:0; border:1px solid #F90; background:#FC0; filter:alpha(opacity=50); opacity: 0.5; cursor:move; display:none; z-index:1000; }
 .productGeneralProperties .thumbnail .zoomInArea{ position:absolute; left:355px; top:-1px; width:345px; height:260px; overflow:hidden; border:1px solid #9CF; display:none}
 .productGeneralProperties .thumbnail .zoomInArea img{ width:1035px; height:780px;}
+
+.productGeneralProperties .productImage{ float:left; width:347px;}
+.productGeneralProperties .productImage .thumbnail{ clear:both; float:none; zoom:1}
+.productGeneralProperties .productImage a.disabled{ opacity:0.3; filter:alpha(opacity=30); cursor:default}
+.productGeneralProperties .productImage a.prevBtn{ float:left; width:16px; height:16px; display:block; background:url(../images/sprite.gif) -4px -2095px no-repeat; margin:25px 3px 0 4px; _margin:25px 4px 0 2px;}
+.productGeneralProperties .productImage a.nextBtn{ float:left; width:16px; height:16px; display:block; background:url(../images/sprite.gif) -4px -2045px no-repeat; margin:25px 4px 0 3px; _margin:25px 2px 0 3px;}
+.productGeneralProperties .productImage .picList{ float:left; width:296px; padding:2px; zoom:1; overflow:hidden; height:56px; padding-top:4px;}
+.productGeneralProperties .productImage .picList:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+.productGeneralProperties .productImage .picList a{ float:left; margin:2px;}
+.productGeneralProperties .productImage .picList a:hover{ opacity:0.8; filter:alpha(opacity=80); }
+.productGeneralProperties .productImage .picList a.selected{}
+.productGeneralProperties .productImage .picList a img{ width:66px; height:50px; padding:1px; border:1px solid #ebebeb;}
+.productGeneralProperties .productImage .picList a.selected img{ border: 2px solid #9CF; width:64px; height:48px;}
+.productGeneralProperties .productImage .picList .scrollContainer{ width:10000px; height:58px}
+
 .productGeneralProperties .properties{ float:none; padding:0; margin:0; padding-left:20px; margin-left:355px; text-align:center}
 .productGeneralProperties .properties ul{ overflow:hidden;_height:0;_overflow:visible; padding:0; margin:0}
-.productGeneralProperties .properties ul li{ clear:both; list-style-type:none; padding-bottom:13px; zoom:1}
+.productGeneralProperties .properties ul li{ float:left; width:100%; list-style-type:none; padding-bottom:13px; zoom:1}
 .productGeneralProperties .properties ul li:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
 .productGeneralProperties .properties ul li h1{ font-weight:bold; font-size:14px; text-align:center; display:block; line-height:100%; margin:5px auto 10px auto;}
 .productGeneralProperties .properties ul li span{ float:left; text-align:left; display:block; padding:3px;}
@@ -712,7 +731,7 @@ ul.comments li div.commentRightContent .commentRightContentContainer div.comment
 .productGeneralProperties .properties ul li span.ddPriceField{padding-top:8px;}
 .productGeneralProperties .properties ul li span.marketPrice{ text-decoration:line-through}
 .productGeneralProperties .properties ul li span.ddPrice{ color:#F60; font-size:24px; line-height:100%;}
-.productGeneralProperties .properties ul li.buttons{ margin:0 auto; width:215px;}
+.productGeneralProperties .properties ul li.buttons{ margin:0 auto; width:215px; clear:both; float:none;}
 .productGeneralProperties .properties ul li.buttons a{ float:left; margin-right:20px;}
 .productGeneralProperties .properties ul li.buttons a.addToFavorite{ float:left; margin:0;}
 
@@ -763,7 +782,7 @@ text-align:left;
 
 
 ul.articleList_1{ margin:0; padding:0;}
-ul.articleList_1 li{ list-style-type:none; clear:both; padding:6px 0; margin:0; zoom:1}
+ul.articleList_1 li{ list-style-type:none; float:left; width:100%; padding:6px 0; margin:0; zoom:1}
 ul.articleList_1 li a span.date{ color:#999}
 ul.articleList_1 li.separator{ border-bottom:1px dotted #CCC; padding:6px 0 0 0; margin:0 0 6px 0; font-size:0; height:0; overflow:hidden; }
 

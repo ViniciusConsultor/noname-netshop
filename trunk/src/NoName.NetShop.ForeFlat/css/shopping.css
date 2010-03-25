@@ -20,6 +20,8 @@
 .productDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
 .productDetail_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
 .productDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.productDetail_mainbody .mainColumn .productGeneralProperties .properties ul li{ padding-bottom:24px;}
 /*Shopping_ProductDetail End*/
 
 /*Shopping all Comments Begin*/
