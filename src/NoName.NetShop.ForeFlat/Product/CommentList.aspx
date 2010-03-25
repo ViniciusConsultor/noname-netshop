@@ -41,16 +41,6 @@
                             <li>
                                 <span class="field ddPriceField">鼎 鼎 价：</span><span class="ddPrice">￥<asp:Literal runat="server" ID="Literal_MerchantPrice" /></span>
                             </li>
-                            <li>
-                                <span class="field">评　　分：</span>
-                                <div class="rating">
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a class="on" href="javascript:void(0)"></a>
-                                    <a href="javascript:void(0)"></a>
-                                    <a href="javascript:void(0)"></a>
-                                </div>
-                            </li>
                             <li class="buttons">
                                 <asp:HyperLink runat="server" ID="HyperLink_Buy" CssClass="purchase" />
                                 <asp:HyperLink runat="server" ID="HyperLink_Favorite" CssClass="addToFavorite" />
@@ -70,19 +60,12 @@
                                         <div class="commentRightContent">
                                             <div class="commentRightContentContainer">
                                                 <div class="userInfo">
-                                                    <span class="user">天空的白云</span>
-                                                    <span>(双钻会员)</span>
-                                                    <div class="rating">
-                                                        <a href="javascript:void(0)" class="on"></a>
-                                                        <a href="javascript:void(0)" class="on"></a>
-                                                        <a href="javascript:void(0)" class="on"></a>
-                                                        <a href="javascript:void(0)"></a>
-                                                        <a href="javascript:void(0)"></a>
-                                                    </div>
-                                                    <span class="date">2009-02-23</span>
+                                                    <span class="user"><%# Eval("userid") %></span>
+                                                    <span></span>
+                                                    <span class="date"><%# Convert.ToDateTime(Eval("createtime")).ToString("yyyy-MM-dd") %></span>
                                                 </div>
                                                 <div class="commentContent">
-                                                    这个东西很好很强大？
+                                                    <%# Eval("content") %>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,74 +91,6 @@
                     <div class="title">发表评论</div>
                     <div class="content">
                     	<ul class="form">
-                        	<li>
-                            	<span class="field">打分</span>
-                                <div class="section">
-                                    <input class="radio" type="radio" name="rating" />
-                                    <div class="component">
-                                        <div class="rating">
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)"></a>
-                                            <a href="javascript:void(0)"></a>
-                                            <a href="javascript:void(0)"></a>
-                                            <a href="javascript:void(0)"></a>
-                                        </div>
-                                    </div>
-                                    <label>很不喜欢</label>
-                                </div>
-                                <div class="section">
-                                    <input class="radio" type="radio" name="rating" />
-                                    <div class="component">
-                                        <div class="rating">
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)"></a>
-                                            <a href="javascript:void(0)"></a>
-                                            <a href="javascript:void(0)"></a>
-                                        </div>
-                                    </div>
-                                    <label>不喜欢</label>
-                                </div>
-                                <div class="section">
-                                    <input class="radio" type="radio" name="rating" />
-                                    <div class="component">
-                                        <div class="rating">
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)"></a>
-                                            <a href="javascript:void(0)"></a>
-                                        </div>
-                                    </div>
-                                    <label>还行</label>
-                                </div>
-                                <div class="section">
-                                    <input class="radio" type="radio" name="rating" />
-                                    <div class="component">
-                                        <div class="rating">
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)"></a>
-                                        </div>
-                                    </div>
-                                    <label>喜欢</label>
-                                </div>
-                                <div class="section">
-                                    <input class="radio" type="radio" name="rating" />
-                                    <div class="component">
-                                        <div class="rating">
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                            <a href="javascript:void(0)" class="on"></a>
-                                        </div>
-                                    </div>
-                                    <label>非常喜欢</label>
-                                </div>
-                            </li>
                             <li>
                             	<span class="field">评论内容</span>
                             	<asp:TextBox runat="server" ID="TextBox_CommentContent" TextMode="MultiLine" CssClass="textarea4"></asp:TextBox>
