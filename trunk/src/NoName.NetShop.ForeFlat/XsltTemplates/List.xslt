@@ -2,9 +2,9 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" indent="yes"/>
 
-    <xsl:variable name="CategoryID" select="listpage/classificationinfo/classificationid"/>
-    <xsl:variable name="CategoryName" select="listpage/classificationinfo/classificationname"/>
-    <xsl:variable name="IsEndCategory" select="listpage/classificationinfo/isendclass"/>
+    <xsl:variable name="CategoryID" select="listpage/categoryinfo/categoryid"/>
+    <xsl:variable name="CategoryName" select="listpage/categoryinfo/categoryname"/>
+    <xsl:variable name="IsEndCategory" select="listpage/categoryinfo/isendclass"/>
     <xsl:variable name="PageIndex" select="listpage/productinfo/pageinfo/@currentpage"/>
 
     <xsl:template match="/">
@@ -167,16 +167,18 @@
                         </div>
                         <div class="rightColumn">
                             <div class="rightColumnContainer">
-                                <div class="box7">
-                                    <div class="title">
-                                        <xsl:value-of select="$CategoryID"/> - 商品筛选
-                                    </div>
-                                    <div class="content">
-                                        <ul class="productFilter">
-                                            <xsl:apply-templates select="/listpage/properitylist/prop"/>
-                                        </ul>
-                                    </div>
-                                </div>
+								<xsl:if test="/listpage/properitylist/prop">
+									<div class="box7">
+										<div class="title">
+											<xsl:value-of select="$CategoryID"/> - 商品筛选
+										</div>
+										<div class="content">
+											<ul class="productFilter">
+												<xsl:apply-templates select="/listpage/properitylist/prop"/>
+											</ul>
+										</div>
+									</div>									
+								</xsl:if>
                                 <div class="box8 newline">
                                     <ul class="title">
                                         <li class="left">
