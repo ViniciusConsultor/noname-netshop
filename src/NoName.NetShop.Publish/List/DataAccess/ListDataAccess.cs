@@ -43,7 +43,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
                 {
                     CategoryParaModel para = new CategoryParaModelBll().GetModel(Convert.ToInt32(key), CategoryID);
                     if (i == Parameters.Count - 1) where += String.Format(" and (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
-                    else where += String.Format(" and (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') or ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
+                    else where += String.Format(" and (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
                     i++;
                 }
 
