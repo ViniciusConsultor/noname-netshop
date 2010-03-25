@@ -14,7 +14,7 @@ using NoName.NetShop.Common;
 
 namespace NoName.NetShop.ForeFlat.Product
 {
-    public partial class QuestionList : System.Web.UI.Page
+    public partial class QuestionList : AuthBasePage
     {
         private int ProductID
         {
@@ -29,6 +29,12 @@ namespace NoName.NetShop.ForeFlat.Product
             if (!IsPostBack)
             {
                 //验证用户，如果未登录则提示登录
+                if (CurrentUser == null || !CurrentUser.IsAuthenticated)
+                {
+                    Response.Redirect("/Login.aspx?returnurl="+Request.RawUrl);
+                    return;
+                }
+
                 if (!String.IsNullOrEmpty(Request.QueryString["productid"])) ProductID = Convert.ToInt32(Request.QueryString["productid"]);
                 else throw new ArgumentNullException();
 
@@ -73,7 +79,7 @@ namespace NoName.NetShop.ForeFlat.Product
             //验证用户，如果未登录则提示登录
             if (String.IsNullOrEmpty(TextBox_QuestionContent.Text))
             {
-                MessageBox.Show(this, "请登录。");
+                MessageBox.Show(this, "输入问题内容");
                 return;
             }
 
@@ -89,13 +95,16 @@ namespace NoName.NetShop.ForeFlat.Product
             model.Title = "";
             model.UserId = GetUserID();
 
+            questionBll.Add(model);
+
             BindQuestionData(AspNetPager.CurrentPageIndex);
-            MessageBox.Show(this, "添加成功！");
+
+            Response.Redirect(Request.RawUrl);
         }
         
         private string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
 
         protected void AspNetPager_PageChanged(object sender, PageChangedEventArgs e)
