@@ -14,7 +14,7 @@ namespace NoName.NetShop.ForeFlat.Handler
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    public class CommentHandler : IHttpHandler, IRequiresSessionState 
+    public class CommentHandler :AuthBasePage, IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
