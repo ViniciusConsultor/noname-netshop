@@ -6,6 +6,7 @@
     <xsl:variable name="CategoryName" select="listpage/categoryinfo/categoryname"/>
     <xsl:variable name="IsEndCategory" select="listpage/categoryinfo/isendclass"/>
     <xsl:variable name="PageIndex" select="listpage/productinfo/pageinfo/@currentpage"/>
+	<xsl:variable name="PageCount" select="listpage/productinfo/pageinfo/@pagecount"/>
 
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -170,7 +171,7 @@
 								<xsl:if test="/listpage/properitylist/prop">
 									<div class="box7">
 										<div class="title">
-											<xsl:value-of select="$CategoryID"/> - 商品筛选
+											<xsl:value-of select="$CategoryName"/> - 商品筛选
 										</div>
 										<div class="content">
 											<ul class="productFilter">
@@ -185,7 +186,9 @@
                                             <xsl:text> </xsl:text>
                                         </li>
                                         <li class="heading">
-                                            <span class="text">影像商品 - 投影 - 商品列表</span>
+                                            <span class="text">
+												<xsl:value-of select="$CategoryName"/> - 商品列表
+											</span>
                                             <span class="arrow">
                                                 <xsl:text> </xsl:text>
                                             </span>
@@ -204,10 +207,10 @@
                                         </li>
                                         <li class="sort">
                                             <span>请选择排序方式</span>
-                                            <a class="on" href="#">销量</a>
-                                            <a href="#">价格</a>
-                                            <a href="#">上架时间</a>
-                                            <a href="#">浏览量</a>
+											<a class="on" style="cursor:pointer;" field="changetime" type="0">上架时间</a>
+                                            <a style="cursor:pointer;" field="sales" type="0">销量</a>
+                                            <a style="cursor:pointer;" field="price" type="0">价格</a>
+                                            <a style="cursor:pointer;" field="hit" type="0">浏览量</a>
                                         </li>
                                     </ul>
                                     <div class="content">
@@ -216,31 +219,7 @@
                                                 <xsl:apply-templates select="/listpage/productlist/products/product"/>
                                             </ul>
                                             <div class="paginationContainer">
-                                                <div class="line">
-                                                    <xsl:text> </xsl:text>
-                                                </div>
-                                                <div class="pagination">
-                                                    <a class="prev" href="#">
-                                                        <xsl:text> </xsl:text>
-                                                    </a>
-                                                    <div class="pageNum">
-                                                        <a class="on" href="#">1</a>
-                                                        <a href="#">2</a>
-                                                        <a href="#">3</a>
-                                                        <a href="#">4</a>
-                                                        <a href="#">5</a>
-                                                        <a href="#">6</a>
-                                                        <a href="#">7</a>
-                                                    </div>
-                                                    <a class="next" href="#">
-                                                        <xsl:text> </xsl:text>
-                                                    </a>
-                                                    <div class="jumpTo">
-                                                        <span>跳转到</span>
-                                                        <input type="text" value="1" />
-                                                        <span>页</span>
-                                                    </div>
-                                                </div>
+												<xsl:call-template name="Pagination"/>
                                             </div>
                                         </div>
                                     </div>
@@ -269,13 +248,13 @@
 
     <!-- header start -->
     <xsl:template name="Header">
-        <xsl:value-of select="/listpage/standardheader" disable-output-escaping="yes"/>
+        <!--<xsl:value-of select="/listpage/standardheader" disable-output-escaping="yes"/>-->
     </xsl:template>
     <!-- header end -->
 
     <!-- footer start -->
     <xsl:template name="Footer">
-        <xsl:value-of select="/listpage/standardheader" disable-output-escaping="yes"/>
+        <!--<xsl:value-of select="/listpage/standardheader" disable-output-escaping="yes"/>-->
     </xsl:template>
     <!-- footer end -->
     
@@ -383,5 +362,32 @@
         </li>
     </xsl:template>
     <!-- product list start -->
+
+	<xsl:template name="Pagination">
+		<xsl:if test="$PageCount > 1">
+			<div class="line">
+				<xsl:text> </xsl:text>
+			</div>
+			<div class="pagination">
+				<xsl:if test="$PageIndex != 1">
+					<a type="page" class="prev" style="cursor:pointer">
+						<xsl:text> </xsl:text>
+					</a>
+				</xsl:if>
+				<div class="pageNum">
+					<xsl:for-each select="listpage/productlist/pageinfo/page">
+						<a type="page" style="cursor:pointer" page="{pageindex}">
+							<xsl:value-of select="pageindex"/>
+						</a>
+					</xsl:for-each>
+				</div>
+				<xsl:if test="$PageIndex != $PageCount">
+					<a type="page" class="next" style="cursor:pointer">
+						<xsl:text> </xsl:text>
+					</a>
+				</xsl:if>
+			</div>
+		</xsl:if>
+	</xsl:template>
 
 </xsl:stylesheet>
