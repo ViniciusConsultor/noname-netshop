@@ -6,6 +6,7 @@
     <script type="text/javascript" src="/js/hashtable.js"></script>
     <script type="text/javascript" src="/js/cookie.js"></script>
     <script type="text/javascript" src="/js/jquery.url.js"></script>
+    <script type="text/javascript" src="/js/jquery.query.js"></script>
     <script type="text/javascript" src="/js/solution.diy3.js"></script>
 </asp:Content>
 
@@ -54,23 +55,8 @@
             </div>
             <ul class="form">
             	<li>
-                	<span class="field">投影机吊架</span>
-                    <div class="component">
-                    	<script type="text/javascript">
-							var brandBox=new RainySelectBox();
-							brandBox.boxName="brand";
-							brandBox.fire="click";
-							brandBox.name="brand";
-							brandBox.id="brand";
-							brandBox.width=120;
-							brandBox.listMaxHeight=300;
-							brandBox.selectedClass="commonSelectBox_currentOption";
-							brandBox.listClass="commonSelectBox_list";
-							brandBox.addOption("品牌","0","Selected");
-							brandBox.addOption("西门子","1");
-							brandBox.addOption("松下","2");
-							brandBox.show();
-						</script>
+                	<span class="field"></span>
+                    <div class="component" id="brand-list">
                     </div>
                     <input type="text" class="textField1" id="search-product-name" />
                     <div class="component">

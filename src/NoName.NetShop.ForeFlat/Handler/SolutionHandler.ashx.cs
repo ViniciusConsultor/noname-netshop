@@ -11,6 +11,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Threading;
 using NoName.NetShop.Solution.Model;
+using NoName.NetShop.Product.BLL;
 
 namespace NoName.NetShop.ForeFlat.Handler
 {
@@ -37,11 +38,17 @@ namespace NoName.NetShop.ForeFlat.Handler
 
                     context.Response.Write(CategoryJson);
                     return;
+                case "brand":
+                    int BrandCategoryID = Convert.ToInt32(req["cid"]);
+                    string BrandJson = GetBrandJson(BrandCategoryID);
+                    context.Response.Write(BrandJson);
+                    return;
                 case "product":
-                    int CategoryID = Convert.ToInt32(req["cid"]);
+                    int ProductCategoryID = Convert.ToInt32(req["cid"]);
+                    int ProductFatherCategoryID = Convert.ToInt32(req["fcid"]);
                     int BrandID = 0; if (!String.IsNullOrEmpty(req["brandid"])) BrandID = Convert.ToInt32(req["brandid"]);
                     string ProdcutName = String.Empty; if (!String.IsNullOrEmpty(req["pdname"])) ProdcutName = req["pdname"];
-                    context.Response.Write(GetProductListJson(ScenceID, CategoryID, BrandID, ProdcutName));
+                    context.Response.Write(GetProductListJson(ScenceID, ProductCategoryID, ProductFatherCategoryID, BrandID, ProdcutName));
                     return;
                 default:
                     context.Response.Write("[]");
@@ -92,8 +99,45 @@ namespace NoName.NetShop.ForeFlat.Handler
             return result.ToString();
         }
 
-        private String GetProductListJson(int ScenceID, int CategoryID, int BrandID, string ProductName)
+        private string GetBrandJson(int CategoryID)
         {
+            StringBuilder result = new StringBuilder();
+            StringWriter sw = new StringWriter(result);
+            JsonWriter writer = new JsonWriter(sw);
+
+            writer.Formatting = Formatting.Indented;
+
+            DataTable dt = new BrandCategoryRelationBll().GetCategoryBrandList(CategoryID);
+
+            writer.WriteStartArray();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                writer.WriteStartObject();
+
+                WriteJsonKeyValue(writer, "brandid", row["brandid"].ToString());
+                WriteJsonKeyValue(writer, "brandname", row["brandname"].ToString());
+
+                writer.WriteEndObject(); 
+            }
+
+            writer.WriteEndArray();
+            writer.Close();
+
+            return result.ToString();
+        }
+
+        private string GetProductListJson(int ScenceID, int CategoryID,int FatherCategoryID, int BrandID, string ProductName)
+        {
+            if (FatherCategoryID != 0)
+            {
+ 
+            }
+            else
+            {
+ 
+            }
+
             DataTable dt = new CategoryConditionBll().GetCategoryProductList(CategoryID, ScenceID, BrandID, ProductName);
 
             StringBuilder result = new StringBuilder();
