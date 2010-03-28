@@ -42,6 +42,8 @@ namespace NoName.NetShop.Solution.BLL
 
         public DataTable GetCategoryProductList(int CurrentCategoryID, int ScenceID,int BrandID,string ProductName)
         {
+
+
             List<CategoryConditionModel> Conditions = dal.GetListArray(String.Format(" cateid={0} and senceid={1}", CurrentCategoryID, ScenceID));
 
             bool IsHasProperity = false;
