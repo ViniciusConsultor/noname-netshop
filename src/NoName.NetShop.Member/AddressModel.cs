@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 namespace NoName.NetShop.Member.Model
 {
 	/// <summary>
@@ -82,8 +83,28 @@ namespace NoName.NetShop.Member.Model
 
         public string RegionPath
         {
-            get {return _regionPath;}
-            set { _regionPath = value; }
+            get { return _regionPath; }
+            set
+            {
+                _regionPath = value;
+            }
+        }
+
+        public int RegionId
+        {
+            get
+            {
+                int regionId = 0;
+                if (!String.IsNullOrEmpty(_regionPath))
+                {
+                    Match ma = Regex.Match(_regionPath,"/(?<rid>\\d+)/$");
+                    if (ma.Success && ma.Groups["rid"].Success)
+                    {
+                        regionId = int.Parse(ma.Groups["rid"].Value);
+                    }
+                }
+                return regionId;
+            }
         }
 		/// <summary>
 		/// 

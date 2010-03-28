@@ -47,7 +47,7 @@ namespace NoName.NetShop.Member.DAL
 			db.AddInParameter(dbCommand, "Telephone", DbType.AnsiString, model.Telephone);
 			db.AddInParameter(dbCommand, "Postalcode", DbType.AnsiString, model.Postalcode);
 			db.AddInParameter(dbCommand, "Email", DbType.AnsiString, model.Email);
-			db.ExecuteNonQuery(dbCommand);
+            db.ExecuteNonQuery(dbCommand);
 
 		}
 

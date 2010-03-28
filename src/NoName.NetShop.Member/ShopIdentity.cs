@@ -18,12 +18,14 @@ namespace NoName.NetShop.Member
         private string userName;
         private MemberStatus userStatus;
         private MemberType userType;
+        private UserLevel userLevel;
 
         public string UserEmail { get { return userEmail; } }
         public string UserId { get { return userId; } }
         public string UserName { get { return userName; } }
         public MemberStatus UserStatus { get { return userStatus; } }
         public MemberType UserType { get { return userType; } }
+        public UserLevel UserLevel { get { return UserLevel; } }
 
         public ShopIdentity(FormsAuthenticationTicket ticket)
         {
@@ -35,6 +37,7 @@ namespace NoName.NetShop.Member
             userName = ud[1];
             userStatus = (MemberStatus)(int.Parse(ud[2]));
             userType = (MemberType)(int.Parse(ud[3]));
+            userLevel = (UserLevel)(int.Parse(ud[4]));
         }
 
         public string AuthenticationType

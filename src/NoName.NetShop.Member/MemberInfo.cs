@@ -24,6 +24,7 @@ namespace NoName.NetShop.Member
         public DateTime ModifyTime { get; set; }
         public MemberType UserType{get;set;}
         public MemberStatus Status{get;set;}
+        public UserLevel UserLevel { get; set; }
 
         /// <summary>
         /// 记录用户的积分消费记录
@@ -153,6 +154,7 @@ namespace NoName.NetShop.Member
             db.AddInParameter(dbCommand, "UserType", DbType.Byte, (int)UserType);
             db.AddInParameter(dbCommand, "status", DbType.Byte, (int)Status);
             db.AddInParameter(dbCommand,"@LoginIp",DbType.String,LoginIp);
+            db.AddInParameter(dbCommand, "@UserLevel", DbType.Int32, (int)UserLevel);
             db.AddParameter(dbCommand, "returnvalue", DbType.Int32, ParameterDirection.ReturnValue, null, DataRowVersion.Default, null);
             db.ExecuteNonQuery(dbCommand);
             int retval = (int)db.GetParameterValue(dbCommand, "returnvalue");
@@ -304,7 +306,11 @@ namespace NoName.NetShop.Member
             {
                 model.Status = (MemberStatus)(Convert.ToInt32(ojb));
             }
-            return model;
+            ojb = dataReader["userLevel"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.UserLevel = (UserLevel)(Convert.ToInt32(ojb));
+            } return model;
         }
 
 

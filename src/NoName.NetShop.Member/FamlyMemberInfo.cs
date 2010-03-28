@@ -103,7 +103,11 @@ namespace NoName.NetShop.Member
             {
                 model.Status = (MemberStatus)(Convert.ToInt32(ojb));
             }
-
+            ojb = dataReader["UserLevel"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.UserLevel = (UserLevel)(Convert.ToInt32(ojb));
+            }
 
             model.IdCard = dataReader["idcard"].ToString();
             model.Address = dataReader["Address"].ToString();
