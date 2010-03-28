@@ -48,7 +48,7 @@ function initialize() {
     $.ajax({
         url: '/handler/solutionhandler.ashx',
         type: 'post',
-        data: 'action=category&sid=23',
+        data: 'action=category&sid=' + $.query.get('ids'),
         cache: false,
         dataType: 'json',
         async: false,
@@ -91,7 +91,7 @@ function initialize() {
                             html1.append('      <td></td>');
                             html1.append('  </tr>');
                         }
-                        html2.append('<a cateid="' + m.categoryid + '">' + m.categoryname + '</a>');
+                        html2.append('<a cateid="' + m.categoryid + '" fatherid="' + n.categoryid + '">' + m.categoryname + '</a>');
                     });
                     html2.append('</div>');
                 }
@@ -120,10 +120,37 @@ function initialize() {
 }
 
 function showBrandInfo(categoryid) {
+    $.ajax({
+        url: '/handler/solutionhandler.ashx',
+        type: 'post',
+        data: 'action=brand&cid=' + categoryid,
+        cache: false,
+        dataType: 'json',
+        async: false,
+        beforeSend: function() { },
+        error: function() { },
+        success: function(data) {
+            alert(data.length);
+            $.each(data, function(i, n) {
+                var script = '<select id="brand">';
+                script += '<option value="' + n.brandname + '">' + n.brandid + '</option>';
+                script += '</select>';
+                $('#brand-list').html(script);
 
+                $('#brand').change(function() {
+                    showSearchedProduct(categoryid,$(this).val(),'');
+                });
+            });
+        }
+    })
 }
 
-function showSearchedProduct(categoryid, brandid, productName) {
+function showSearchedProduct(categoryid,fatherCategoryID, brandid, productName) {
+    productName = $('#search-product-name').val();
+    
+    
+
+
 }
 
 

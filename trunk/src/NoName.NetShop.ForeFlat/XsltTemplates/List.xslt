@@ -248,13 +248,13 @@
 
     <!-- header start -->
     <xsl:template name="Header">
-        <!--<xsl:value-of select="/listpage/standardheader" disable-output-escaping="yes"/>-->
+        <xsl:value-of select="/listpage/standardheader" disable-output-escaping="yes"/>
     </xsl:template>
     <!-- header end -->
 
     <!-- footer start -->
     <xsl:template name="Footer">
-        <!--<xsl:value-of select="/listpage/standardheader" disable-output-escaping="yes"/>-->
+        <xsl:value-of select="/listpage/standardfooter" disable-output-escaping="yes"/>
     </xsl:template>
     <!-- footer end -->
     
