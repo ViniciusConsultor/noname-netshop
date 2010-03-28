@@ -32,7 +32,7 @@ namespace NoName.NetShop.ShopFlow
 
         public string ServerIp { get; set; }
         public string ClientIp { get; set; }
-
+        public string UserId { get; set; }
         public abstract OrderProduct AddToCart(OrderType opType, int productId, int quantity, NameValueCollection paras);
         public abstract OrderProduct AddToCart(OrderType opType, int productId, int quantity, string[] paras);
         protected abstract HttpCookie BuildCartCookie();
@@ -94,6 +94,17 @@ namespace NoName.NetShop.ShopFlow
             {
                 return (from s in OrderProducts
                         select s.ProductSum).Sum();
+            }
+        }
+
+        /// <summary>
+        /// 订单中商品总重量
+        /// </summary>
+        public decimal TotalWeight
+        {
+            get
+            {
+                return (from s in OrderProducts select s.Weight).Sum();
             }
         }
 

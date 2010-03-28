@@ -28,6 +28,8 @@ namespace NoName.NetShop.ShopFlow
         protected int _quantity;
         protected OrderType _producttype;  // ∂‘”¶orderType
 
+        protected decimal _weight;
+
         public ShopCart Container { get; set; }
 
         /// <summary>
@@ -44,6 +46,17 @@ namespace NoName.NetShop.ShopFlow
         public int TotalScore
         {
             get { return _score * _quantity; }
+        }
+
+        public decimal Weight
+        {
+            get { return _weight; }
+            set { _weight = value; }
+        }
+
+        public decimal TotalWeight
+        {
+            get { return _weight * _quantity; }
         }
 
         /// <summary>

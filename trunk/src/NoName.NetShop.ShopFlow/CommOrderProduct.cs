@@ -87,6 +87,7 @@ namespace NoName.NetShop.ShopFlow
             op.Stock = Convert.ToInt32(reader["Stock"]);
             op.ReducePrice = Convert.ToDecimal(reader["ReducePrice"]);
             op.Score = Convert.ToInt32(reader["Score"]);
+            op.Weight = reader["weight"]==DBNull.Value? 0 : Convert.ToDecimal(reader["weight"]);
             return op;
         }
 
