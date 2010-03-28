@@ -65,32 +65,19 @@ namespace NoName.NetShop.IMMessage
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
             db.ExecuteNonQuery(dbCommand);
-        }		
-        
-        /// <summary>
-        /// 删除一条数据
-        /// </summary>
-        public void Delete(string userId, int msgId)
-        {
-            string sql = "delete imMessage from immessage where userid=@userId and msgId=@msgId";
-            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
-            DbCommand dbCommand = db.GetSqlStringCommand(sql);
-            db.AddInParameter(dbCommand, "userId", DbType.String, userId);
-            db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
-            db.ExecuteNonQuery(dbCommand);
         }
 
         /// <summary>
-        /// 删除一条数据
+        /// 批量删除多条数据
         /// </summary>
-        public void Delete(string userId,string msgIds)
+        /// <param name="msgIds"></param>
+        internal void Delete(string msgIds)
         {
             if (Regex.IsMatch(msgIds, @"^(\d+,)*\d+$"))
             {
-                string sql = "delete imMessage from immessage where userid=@userId and usertype=@userType and msgId in (" + msgIds + ")";
-                Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+                string sql = "delete imMessage from immessage where msgId in (" + msgIds + ")";
+                Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
-                db.AddInParameter(dbCommand, "userId", DbType.String, userId);
                 db.ExecuteNonQuery(dbCommand);
             }
             else
@@ -98,6 +85,43 @@ namespace NoName.NetShop.IMMessage
                 throw new ShopException("输入有误", true);
             }
         }
+
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public void Delete(string userId,int usertype, int msgId)
+        {
+            string sql = "delete imMessage from immessage where userid=@userId and usertype=@usertype and msgId=@msgId";
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "userId", DbType.String, userId);
+            db.AddInParameter(dbCommand, "msgId", DbType.Int32, msgId);
+            db.AddInParameter(dbCommand, "usertype", DbType.Int32, usertype);
+            db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public void Delete(string userId,int usertype, string msgIds)
+        {
+            if (Regex.IsMatch(msgIds, @"^(\d+,)*\d+$"))
+            {
+                string sql = "delete imMessage from immessage where userid=@userId and usertype=@userType and msgId in (" + msgIds + ")";
+                Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+                DbCommand dbCommand = db.GetSqlStringCommand(sql);
+                db.AddInParameter(dbCommand, "userId", DbType.String, userId);
+                db.AddInParameter(dbCommand, "usertype", DbType.Int32, usertype);
+                db.ExecuteNonQuery(dbCommand);
+            }
+            else
+            {
+                throw new ShopException("输入有误", true);
+            }
+        }
+
+
+
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
@@ -210,6 +234,8 @@ namespace NoName.NetShop.IMMessage
 		}
 
 		#endregion  成员方法
+
+
 
     }
 }

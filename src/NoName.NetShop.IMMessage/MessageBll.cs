@@ -44,17 +44,22 @@ namespace NoName.NetShop.IMMessage
     	/// <summary>
 		/// 删除某个用户的一条数据
 		/// </summary>
-		public void Delete(string userId,int msgId)
+		public void Delete(string userId,int usertype,int msgId)
 		{
-			dal.Delete(userId,msgId);
+			dal.Delete(userId,usertype,msgId);
 		}
 
         /// <summary>
         /// 删除多条数据
         /// </summary>
-        public void Delete(string userId, string msgIds)
+        public void Delete(string userId,int usertype, string msgIds)
         {
-            dal.Delete(userId, msgIds);
+            dal.Delete(userId,usertype, msgIds);
+        }
+
+        public void Delete(string msgIds)
+        {
+            dal.Delete(msgIds);
         }
 
     	/// <summary>
@@ -108,15 +113,18 @@ namespace NoName.NetShop.IMMessage
             return dal.GetList(where);
         }
 
-        public List<MessageModel> GetAllList(string userId,string roleId, int userType)
+        public List<MessageModel> GetAllList(string userId,string[] roleIds, int userType)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("usertype=" + userType + " and (");
-            sb.Append("(msgtype=1 and userId='alluser' and expireTime>getdate())");
+            sb.Append("(msgtype=1 and userId='alluser' and (expireTime is null or expireTime>getdate()))");
             if (!String.IsNullOrEmpty(userId))
                 sb.Append(" or (msgtype=0 and status=0 and userId='" + userId + "')");
-            if (!String.IsNullOrEmpty(roleId))
-                sb.Append(" or (msgtype=2 and userId='" + roleId + "' and  expireTime>getdate())");
+
+            if (roleIds!=null && roleIds.Length > 0)
+            {
+                sb.Append(" or (msgtype=2 and userId in ('" + String.Join("','",roleIds) + "') and (expiretime is null or expireTime>getdate()))");
+            }
             sb.Append(")");
             return dal.GetList(sb.ToString());
         }
