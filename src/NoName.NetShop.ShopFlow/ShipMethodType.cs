@@ -7,9 +7,9 @@ namespace NoName.NetShop.ShopFlow
 {
     public enum ShipMethodType
     {
-        EMS=0,
-        快递=1,
-        邮寄=2,
-        上门安装=3 
+        上门自提=1,
+        EMS=2,
+        中铁快运=3,
+        快递=4 
     }
 }

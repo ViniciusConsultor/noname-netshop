@@ -69,6 +69,7 @@ namespace NoName.NetShop.ShopFlow
             op.Stock = Convert.ToInt32(reader["Stock"]);
             op.ReducePrice = 0m;
             op.Score = Convert.ToInt32(reader["Score"]);
+            op.Weight = 0m;
             return op;
         }
     }

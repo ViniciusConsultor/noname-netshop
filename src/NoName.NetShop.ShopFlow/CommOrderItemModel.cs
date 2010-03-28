@@ -20,6 +20,7 @@ namespace NoName.NetShop.ShopFlow
         private decimal _merchantprice;
         private decimal _tradeprice;
         private decimal _reduceprice;
+        private decimal Weight { get; set; }
         public string ProductName{get;set;}
 
         /// <summary>
@@ -110,6 +111,7 @@ namespace NoName.NetShop.ShopFlow
             set { _reduceprice = value; }
             get { return _reduceprice; }
         }
+
         #endregion Model
 
 
