@@ -28,7 +28,7 @@ namespace NoName.NetShop.ForeFlat.member
                     spage.PageSize = 20;
                     spage.PageIndex = 1;
                     spage.OrderType = "1";
-                    spage.StrWhere = "usertype=0 and userid='" + CurrentUser.UserId + "'";
+                    spage.StrWhere = "usertype=0 and (msgtype=2 or (msgtype=0 and userid='" + CurrentUser.UserId + "'))";
 
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
@@ -85,7 +85,7 @@ namespace NoName.NetShop.ForeFlat.member
             {
                 int msgId = Convert.ToInt32(e.CommandArgument);
                 MessageBll bll = new MessageBll();
-                bll.Delete(this.CurrentUser.UserId, msgId);
+                bll.Delete(this.CurrentUser.UserId,0, msgId);
                 SearPageInfo.PageIndex = 1;
                 BindList();
             }
@@ -95,7 +95,7 @@ namespace NoName.NetShop.ForeFlat.member
         {
             string msgIds = ReqParas["msgid"];
             MessageBll bll = new MessageBll();
-            bll.Delete(this.CurrentUser.UserId,msgIds);
+            bll.Delete(this.CurrentUser.UserId,0,msgIds);
             SearPageInfo.PageIndex = 1;
             BindList();
         }

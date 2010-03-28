@@ -14,6 +14,15 @@ namespace NoName.NetShop.ForeFlat.sp {
     public partial class FillInfo {
         
         /// <summary>
+        /// lblPaySum 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPaySum;
+        
+        /// <summary>
         /// ucAddress 控件。
         /// </summary>
         /// <remarks>
@@ -23,15 +32,6 @@ namespace NoName.NetShop.ForeFlat.sp {
         protected global::SinaEC.Shopping.WebUI.UC.UserAddress ucAddress;
         
         /// <summary>
-        /// rbtlPayMethod 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtlPayMethod;
-        
-        /// <summary>
         /// rbtlShipMethod 控件。
         /// </summary>
         /// <remarks>
@@ -39,6 +39,15 @@ namespace NoName.NetShop.ForeFlat.sp {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbtlShipMethod;
+        
+        /// <summary>
+        /// rbtlPayMethod 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtlPayMethod;
         
         /// <summary>
         /// txtUserNotes 控件。

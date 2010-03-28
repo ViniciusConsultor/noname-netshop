@@ -64,10 +64,38 @@ namespace NoName.NetShop.ForeFlat
                 case "getmessage":
                     result = GetMessage(context);
                     break;
+                case "getshipfee":
+                    result = GetShipFee(context);
+                    break;
             }
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(prefix + result);
+        }
+
+        private string GetShipFee(HttpContext context)
+        {
+            CommShopCart cart = GetCart(context) as CommShopCart;
+            string result = String.Empty;
+            if (cart != null)
+            {
+                int shipId, regionId;
+
+                if (!int.TryParse(context.Request["shipId"], out shipId))
+                {
+                    shipId = 0;
+                }
+                if (!int.TryParse(context.Request["regionId"], out regionId))
+                {
+                    regionId = 0;
+                }
+                decimal shipFee = cart.CaculateShipFee(shipId, regionId);
+                cart.ShipFee = shipFee;
+
+                result = String.Format("订单金额：商品费用：￥{0:0.00} + 配送费：￥{1:0.00} - 优惠费用：￥{2:0.00} = ￥{3:0.00}",
+                cart.ProductSum, cart.ShipFee, cart.DerateFee, cart.TotalSum);
+            }
+            return result;
         }
 
         private string GetMessage(HttpContext context)

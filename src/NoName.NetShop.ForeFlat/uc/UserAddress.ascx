@@ -92,20 +92,25 @@ function ucaddress_checkAddr() {
             alert("地址不能为空");
             return false;
         }
-        
-        
-
     }
     return true;
 }
-
+function getUserAddressRegionId() {
+    var result = 0;
+    if ($("input[name='addrId']").length > 0 && $("input[name='addrId']:checked").length > 0) {
+        result = $("input[name='addrId']:checked").attr("regionId");
+    }
+    if ($("input[name='addrId']").length == 0 || $("input[name='addrId']:checked").val() == "0") {
+        result = getRegionId();
+    }
+    return result;
+}
 </script>
-	<div class="pd10" runat="server" id="panAddrList">
+	<div class="pd10" runat="server" id="panAddrList" onclick="getPayInfo()">
 	<asp:Repeater runat="server" id="rpAddrList">
 	<ItemTemplate>
 		<p class="pd5">
-		<input type="radio"name="addrId" value="<%# Eval("AddressId") %>"  onclick="hideNewAddr()" /><%# Eval("FullAddress") %></p>
-
+		<input type="radio"name="addrId" value="<%# Eval("AddressId") %>" regionId='<%# System.Text.RegularExpressions.Regex.Match(Eval("RegionPath").ToString(),"/(?<rid>\\d+)/$").Groups["rid"].Value %>' onclick="hideNewAddr()" /><%# Eval("FullAddress") %></p>
 	</ItemTemplate>
 	<FooterTemplate>
 		<p class="pd5"><input type="radio" name="addrId" value="0" onclick="showNewAddr()" />新建地址</p>
@@ -143,7 +148,7 @@ function ucaddress_checkAddr() {
                             </li>                            
                             <li>
                             	<span class="field">所在地区</span>
-                            	<uc1:RegionSelect ID="ucRegion" runat="server" />
+                            	<uc1:RegionSelect ID="ucRegion" runat="server" onclick="getPayInfo()" />
                             </li>
                             <li>
                             	<span class="field">详细地址</span>

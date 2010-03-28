@@ -28,7 +28,7 @@
         if (curIndex == undefined) {
             curIndex = -1;
         }
-
+        
         // 后边的级联需要被隐藏并清空
         $("#region").find("select").each(function(index) {
             if (index > curIndex) {
@@ -102,6 +102,26 @@
         }
         $("#region").find("select").hide();
         showNextRegion();
+    }
+    
+    function getRegionId(){
+        var result = 0;
+        $city = $("#region").find("select[name='city']");
+        $province =  $("#region").find("select[name='province']");
+        $county =  $("#region").find("select[name='county']");
+        
+        if ($county.val() != null && $county.val() != "")
+        {
+            result = $county.val();
+        }
+        else if ($city.val() != null && $city.val() != ""){
+             result = $city.val();
+        }
+        else if ($province.val() != null && $province.val() != "")
+        {
+        result = $province.val();
+        }
+        return result;
     }
     
 </script>

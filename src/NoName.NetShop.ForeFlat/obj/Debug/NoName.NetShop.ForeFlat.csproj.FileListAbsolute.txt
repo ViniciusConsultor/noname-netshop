@@ -47,3 +47,6 @@ D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Search.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.SearchIndex.exe
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\Lucene.Net.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Search.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\AjaxControlToolkit.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\System.Web.Ajax.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\System.Web.Ajax.pdb

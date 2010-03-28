@@ -72,6 +72,7 @@ namespace NoName.NetShop.ForeFlat.sp
                 cartName = "commcart";
 
             CurrentShopCart = CartFactory.Instance().GetCart(cartName) as ShopCart;
+            CurrentShopCart.UserId = this.CurrentUser.UserId;
         }
 
 

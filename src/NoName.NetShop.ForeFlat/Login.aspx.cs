@@ -32,7 +32,7 @@ namespace NoName.NetShop.ForeFlat
             if (MemberInfo.Login(userId, password, Request.UserHostAddress))
             {
                 MemberInfo mmodel = MemberInfo.GetBaseInfo(userId);
-                string userData = String.Format("{0}:{1}:{2}:{3}", mmodel.UserEmail, mmodel.UserName, (int)mmodel.Status, (int)mmodel.UserType);
+                string userData = String.Format("{0}:{1}:{2}:{3}:{4}", mmodel.UserEmail, mmodel.UserName, (int)mmodel.Status, (int)mmodel.UserType,(int)mmodel.UserLevel);
 
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
                   userId,

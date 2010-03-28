@@ -1,22 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FillInfo.aspx.cs" Inherits="NoName.NetShop.ForeFlat.sp.FillInfo" %>
+
 <%@ Register src="../uc/UserAddress.ascx" tagname="UserAddress" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <script type="text/javascript">
 
     function check() {
-        var $objs;
-        var selval = -1;
-        $objs = $("input[name$='rbtlPayMethod']");
-        for (var i = 0; i < $objs.length; i++) {
-            if ($objs[i].checked) {
-                selval = $objs[i].value;
-                break;
-            }
-        }
-        if (selval == -1) {
-            alert("请选择一个支付方式");
+        if (!ucaddress_checkAddr()) {
+            alert("请提供有效的收获人地址");
             return false;
         }
+        var $objs;
         selval = -1;
         $objs = $("input[name$='rbtlShipMethod']");
         for (var i = 0; i < $objs.length; i++) {
@@ -29,21 +22,35 @@
             alert("请选择一个配送方式");
             return false;
         }
-
-       
-        
-         if (!ucaddress_checkAddr()) {
+        var selval = -1;
+        $objs = $("input[name$='rbtlPayMethod']");
+        for (var i = 0; i < $objs.length; i++) {
+            if ($objs[i].checked) {
+                selval = $objs[i].value;
+                break;
+            }
+        }
+        if (selval == -1) {
+            alert("请选择一个支付方式");
             return false;
         }
-      
-        
+       
         return true;
     }
 
+    function getPayInfo() {
+        var shipId = $("#<%=rbtlShipMethod.ClientID %>").find("input:checked").val();
+        var regionId = getUserAddressRegionId();
+        $.get("<%=ResolveClientUrl("~/api/CartOpenApi.ashx") %>", 
+        { "action": "getshipfee", "shipId": shipId, "regionId":regionId, "rand": Math.random() },
+        function(data){
+            $("#<%=lblPaySum.ClientID %>").html(data);
+        }); 
+    }
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    
+
     <!--Position Begin-->
     <div class="currentPosition">
     	您现在的位置: <a href="#">首页</a> &gt;&gt; 填写信息
@@ -60,12 +67,30 @@
             </ul>
             <div class="content centerText">
             	<div class="shoppingNavigation3"></div>
+                 <div class="box6">
+                    <div class="title">订单金额</div>
+                    <div class="content">
+                        <asp:Label runat="server" ID="lblPaySum"></asp:Label>
+                    </div>
+                </div>
 				<div class="box6">
                     <div class="title">请填写收货人信息</div>
                     <div>
                     <uc1:UserAddress ID="ucAddress" runat="server" />
                     </div>
-                    
+                </div>
+                <div class="box6 newline">
+                    <div class="title">选择配送方式</div>
+                    <div class="content">
+                     <asp:RadioButtonList runat="server" ID="rbtlShipMethod" onclick="getPayInfo()"   
+                            RepeatDirection="Horizontal" CssClass="form_h" 
+                            >
+                    <asp:ListItem Text="上门自提" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="EMS" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="中铁快运" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="快递" Value="4"></asp:ListItem>
+                    </asp:RadioButtonList>
+                   </div>
                 </div>
                 <div class="box6 newline">
                     <div class="title">选择支付方式</div>
@@ -79,18 +104,7 @@
                     </div>
                 </div>
                 <div class="box6 newline">
-                    <div class="title">选择配送方式</div>
-                    <div class="content">
-                     <asp:RadioButtonList runat="server" ID="rbtlShipMethod" RepeatDirection="Horizontal" CssClass="form_h">
-                    <asp:ListItem Text="EMS" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="快递" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="邮寄" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="上门安装" Value="4"></asp:ListItem>
-                    </asp:RadioButtonList>
-
-                    </div>
-                </div>
-                <div class="box6 newline">
+                    
                     <div class="title">发票</div>
                     <div class="content">
                     	<ul class="form_h">
@@ -152,4 +166,5 @@
     </div>
     <!--MainBody End-->
 
+    </div>
 </asp:Content>
