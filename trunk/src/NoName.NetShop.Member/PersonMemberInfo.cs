@@ -15,7 +15,6 @@ namespace NoName.NetShop.Member
         public string IdCard { get; set; }
         public string Mobile { get; set; }
         public string Telephone { get; set; }
-        public int UserLevel{get;set;}
 
         #endregion Model
 
@@ -46,7 +45,6 @@ namespace NoName.NetShop.Member
             db.AddInParameter(dbCommand, "@idcard", DbType.AnsiString, IdCard);
             db.AddInParameter(dbCommand, "@Mobile", DbType.String, Mobile);
             db.AddInParameter(dbCommand, "@TelePhone", DbType.String, Telephone);
-            db.AddInParameter(dbCommand, "@UserLevel", DbType.Int32, UserLevel);
             db.ExecuteNonQuery(dbCommand);
         }
 
@@ -101,7 +99,7 @@ namespace NoName.NetShop.Member
             ojb = dataReader["UserLevel"];
             if (ojb != null && ojb != DBNull.Value)
             {
-                model.UserLevel = (int)ojb;
+                model.UserLevel = (UserLevel)(Convert.ToInt32(ojb));
             }
             return model;
 

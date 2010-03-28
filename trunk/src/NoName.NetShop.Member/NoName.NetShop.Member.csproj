@@ -87,6 +87,7 @@
     <Compile Include="SchoolMemberInfo.cs" />
     <Compile Include="ShopIdentity.cs" />
     <Compile Include="ShopPrincipal.cs" />
+    <Compile Include="UserLevel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NoName.NetShop.Comm\NoName.NetShop.Common.csproj">

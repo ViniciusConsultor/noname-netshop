@@ -20,12 +20,14 @@ namespace NoName.NetShop.Member
         public string _province;
         public string _city;
         public string _county;
+        public int _shipRegion;
 
         public int RegionId { get { return _regionId; } }
         public string RegionName { get { return _regionName; } }
         public string RegionPath { get { return _regionPath; } }
         public string RegionNamePath { get { return _regionNamePath; } }
         public int FatherId { get { return _fatherId; } }
+        public int ShipRegion { get { return _shipRegion; } }
 
         public string Country { get { return _country; } }
         public string Province { get { return _province; } }
@@ -34,7 +36,7 @@ namespace NoName.NetShop.Member
 
         public RegionInfo(int regionId)
         {
-            string sql = "SELECT RegionId,FatherId,RegionPath,RegionName,regionnamepath FROM unRegion where regionid="+regionId;
+            string sql = "SELECT RegionId,FatherId,RegionPath,RegionName,regionnamepath,shipRegion FROM unRegion where regionid="+regionId;
             using (IDataReader reader = CommDataAccess.DbReader.ExecuteReader(CommandType.Text, sql))
             {
                 if (reader.Read())
@@ -44,6 +46,7 @@ namespace NoName.NetShop.Member
                     this._regionPath = reader["RegionPath"].ToString();
                     this._regionNamePath = reader["regionnamepath"].ToString();
                     this._fatherId = Convert.ToInt32(reader["FatherId"]);
+                    this._shipRegion = Convert.ToInt32(reader["ShipRegion"]);
 
                     string[] regions = this.RegionNamePath.TrimEnd('/').Split('/');
                     //string[] regionIds = this.RegionPath.TrimEnd('/').Split('/');

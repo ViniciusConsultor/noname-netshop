@@ -110,6 +110,11 @@ namespace NoName.NetShop.Member
             {
                 model.Status = (MemberStatus)(Convert.ToInt32(ojb));
             }
+            ojb = dataReader["UserLevel"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.UserLevel = (UserLevel)(Convert.ToInt32(ojb));
+            }
 
             model.Duty = dataReader["duty"].ToString();
             model.School = dataReader["school"].ToString();
