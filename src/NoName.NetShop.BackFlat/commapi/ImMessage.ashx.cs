@@ -11,6 +11,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.IO;
 using System.Web.SessionState;
+using System.Web.Security;
 
 namespace NoName.NetShop.BackFlat.commapi
 {
@@ -55,10 +56,15 @@ namespace NoName.NetShop.BackFlat.commapi
             }
             MessageBll mbll = new MessageBll();
             MessageModel model = mbll.GetModel(msgId);
-            if (model != null && (model.UserId == context.User.Identity.Name || model.MsgType==1) && model.UserType==1)
+            if (model != null &&  model.UserType==1
+                && ((model.UserId == context.User.Identity.Name && model.MsgType==0)
+                || (context.User.IsInRole(model.UserId) && model.MsgType==2)
+                || model.MsgType==1))
             {
                 JavaScriptSerializer jss = new JavaScriptSerializer();
                 result = jss.Serialize(model);
+                if (model.MsgType == 0)
+                    mbll.SetIsReaded(model.MsgId);
             }
             return result;
         }
@@ -66,7 +72,8 @@ namespace NoName.NetShop.BackFlat.commapi
         private string GetMsgList(HttpContext context)
         {
             MessageBll mbll = new MessageBll();
-            List<MessageModel> list = mbll.GetAllList(context.User.Identity.Name,null,1);
+            string[] roles = Roles.GetRolesForUser();
+            List<MessageModel> list = mbll.GetAllList(context.User.Identity.Name,roles,1);
 
             StringBuilder result = new StringBuilder();
             StringWriter sw = new StringWriter(result);

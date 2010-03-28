@@ -11,16 +11,24 @@
 <script type="text/javascript" src="../js/jquery-1.3.2.js"></script>
 <script type="text/javascript" src="../js/date.js"></script>
 <script type="text/javascript" src="../js/jquery.datePicker.js"></script>    
-<script type="text/javascript" charset="utf-8">
-    $(function() {
-        var now = new Date();
-        var enddate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-        $('.date-pick').datePicker({ startDate: '2009-01-01', endDate: enddate, createButton: false, clickInput: true });
-    });
-</script>
+ <script type="text/javascript" charset="utf-8">
+     function initDateBox() {
+         var now = new Date();
+         var enddate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+         $('.date-pick').datePicker({ startDate: enddate, createButton: false, clickInput: true });
+     }
+</script> 
+
+    <script type="text/javascript">
+        function load() {
+            initDateBox();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initDateBox);
+        }
+        
+   </script>
 
 </head>
-<body>
+<body onload="load()">
     <form id="form1" runat="server">
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -33,7 +41,8 @@
 
     <asp:UpdatePanel runat="server" ID="UpdatePanel1">
     <ContentTemplate>
-    <table width="90%">
+
+   <table width="90%">
     <thead>
     <tr>
     <td colspan="2">消息发送</td>
@@ -89,7 +98,7 @@
 </td></tr>
     </tfoot>
     </table>
-    </ContentTemplate>
+ </ContentTemplate>
     </asp:UpdatePanel>
     </div>
     </form>
