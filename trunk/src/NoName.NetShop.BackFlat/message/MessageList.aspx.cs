@@ -72,7 +72,7 @@ namespace NoName.NetShop.BackFlat.message
             }
             MessageBll bll = new MessageBll();
 
-            bll.Delete(Context.User.Identity.Name, String.Join(",", msgIds.ToArray()));
+            bll.Delete(String.Join(",", msgIds.ToArray()));
             SearPageInfo.PageIndex = 1;
             BindList();
         }
@@ -82,7 +82,7 @@ namespace NoName.NetShop.BackFlat.message
         {
             int msgId = Convert.ToInt32(gvList.DataKeys[e.RowIndex][0]);
             MessageBll bll = new MessageBll();
-            bll.Delete(Context.User.Identity.Name, msgId);
+            bll.Delete(msgId);
             SearPageInfo.PageIndex = 1;
             BindList();
 
