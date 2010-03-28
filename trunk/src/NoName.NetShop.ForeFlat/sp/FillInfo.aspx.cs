@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.Common;
 using NoName.NetShop.Member.Model;
 using NoName.NetShop.IMMessage;
+using NoName.NetShop.ShopFlow;
 
 namespace NoName.NetShop.ForeFlat.sp
 {
@@ -32,6 +33,7 @@ namespace NoName.NetShop.ForeFlat.sp
                 else
                 {
                     ucAddress.ShowAddressList(CurrentUser.UserId);
+                    ShowPaysumInfo();
                 }
 
             }
@@ -50,8 +52,14 @@ namespace NoName.NetShop.ForeFlat.sp
             {
                 CurrentShopCart.Address = addr;
                 CurrentShopCart.UserNotes = txtUserNotes.Text.Trim();
-                CurrentShopCart.PayMethodId = int.Parse(rbtlPayMethod.SelectedValue);
-                CurrentShopCart.ShipMethodId = int.Parse(rbtlShipMethod.SelectedValue);
+                CurrentShopCart.PayMethodId = int.Parse(this.rbtlPayMethod.SelectedValue); 
+                CurrentShopCart.ShipMethodId = int.Parse(this.rbtlShipMethod.SelectedValue);
+
+                if (CurrentShopCart is CommShopCart)
+                {
+                    CurrentShopCart.ShipFee = ((CommShopCart)CurrentShopCart).CaculateShipFee(CurrentShopCart.ShipMethodId,
+                        CurrentShopCart.Address.RegionId);
+                }
 
                 string isNeedInvoce = ReqParas["invoice"].Trim();
                 if (isNeedInvoce == "1")
@@ -76,6 +84,12 @@ namespace NoName.NetShop.ForeFlat.sp
                 }
 
             }
+        }
+
+        private void ShowPaysumInfo()
+        {
+            this.lblPaySum.Text = String.Format("订单金额：商品费用：￥{0} + 配送费：￥{1} - 优惠费用：￥{2} = ￥{3}",
+                CurrentShopCart.ProductSum, CurrentShopCart.ShipFee, CurrentShopCart.DerateFee, CurrentShopCart.TotalSum);
         }
     }
 }
