@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SinaEC.Jiaju.BackFlat.Security.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="NoName.NetShop.BackFlat.Security.Login" %>
 <html>
 <head runat="server">
     <title>用户登录—鼎鼎商城</title>

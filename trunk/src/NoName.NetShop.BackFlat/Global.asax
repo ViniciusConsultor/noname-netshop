@@ -1,1 +1,1 @@
-<%@ Application Codebehind="Global.asax.cs" Inherits="SinaEC.Jiaju.BackFlat.Global" Language="C#" %>
+<%@ Application Codebehind="Global.asax.cs" Inherits="NoName.NetShop.BackFlat.Global" Language="C#" %>

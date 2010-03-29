@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-namespace SinaEC.Jiaju.BackFlat.Security
+namespace NoName.NetShop.BackFlat.Security
 {
     public partial class Login : System.Web.UI.Page
     {
