@@ -13,7 +13,7 @@
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">影音解决方案</a> &gt;&gt; <a href="#">经典套装</a> &gt;&gt; <a href="#">配置</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/Channel/solution/">解决方案</a> &gt;&gt; <a href="#">经典套装</a>
         <div class="solutionSubNav">
             <div class="solutionButtonTab">
                 <a class="button_blue" href="Demand.aspx">按需制定</a>
@@ -41,11 +41,13 @@
                     <span class="text">提交订单</span>
                     <span class="right"></span>
                 </a>
-                <a class="button_blue3" href="#">
+                <!--
+                <a class="button_blue3" style="cursor:pointer">
                     <span class="left"></span>
                     <span class="text">保存配置单</span>
                     <span class="right"></span>
                 </a>
+                -->
             </div>
     	</div>
         
@@ -72,8 +74,8 @@
                 <div class="title">
                 	<span>商品列表</span>
                     <div class="sort">
-                    	<a href="#" class="on">价格由高到低</a>
-                        <a href="#">价格由低到高</a>
+                    	<a style="cursor:pointer;" class="on" ordervalue="1">价格由高到低</a>
+                        <a style="cursor:pointer;" ordervalue="2">价格由低到高</a>
                     </div>
                 </div>
                 <div class="content noPaddingContentBox" id="list-table">
@@ -81,7 +83,7 @@
                 
             </div>
             <div class="buttons">
-                <a class="linkButton" href="#">去看看推荐套装&gt;&gt;</a>
+                <a class="linkButton" href="/Solution/SuiteList.aspx">去看看推荐套装&gt;&gt;</a>
             </div>
         </div>
     </div>
