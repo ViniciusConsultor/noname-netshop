@@ -42,6 +42,8 @@ namespace NoName.NetShop.Solution.BLL
 
         public DataTable GetCategoryProductList(int ScenceID,int CategoryID,int FatherCategoryID,int BrandID,string ProductName)
         {
+
+
             //if (FatherCategoryID != 0) //点击了子分类的情况
             //{
             //    //此时用ScenceID和FatherCategoryID获取所有条件，循环拼接SQL
@@ -61,11 +63,11 @@ namespace NoName.NetShop.Solution.BLL
 
             if (IsHasProperity)
             {
-                ConditionString += " pdproduct.catepath like (select catepath+'%' from pdcategory where cateid=" + (FatherCategoryID == 0 ? CategoryID : FatherCategoryID) + ") and ";
+                ConditionString += " pdproduct.catepath like (select catepath+'%' from pdcategory where cateid=" + FatherCategoryID + ") and ";
                 foreach (CategoryConditionModel m in Conditions)
                 {
                     if (m.RuleName.Contains("paraid")) ConditionString += m.GetFilterExpress("pdProductPara");
-                    else if (m.RuleName.Contains("cateid")) ConditionString += FatherCategoryID == 0 ? m.GetFilterExpress("pdproduct") : " pdproduct.cateid = " + CategoryID;
+                    else if (m.RuleName.Contains("cateid")) ConditionString += CategoryID == 0 ? m.GetFilterExpress("pdproduct") : " pdproduct.cateid = " + CategoryID;
                     else ConditionString += m.GetFilterExpress("pdproduct");
 
                     ConditionString += " and ";
@@ -75,10 +77,10 @@ namespace NoName.NetShop.Solution.BLL
             }
             else
             {
-                ConditionString += " catepath like (select catepath+'%' from pdcategory where cateid=" + (FatherCategoryID == 0 ? CategoryID : FatherCategoryID) + ") and ";
+                ConditionString += " catepath like (select catepath+'%' from pdcategory where cateid=" + FatherCategoryID + ") and ";
                 foreach (CategoryConditionModel m in Conditions)
                 {
-                    if (m.RuleName.Contains("cateid")) ConditionString += FatherCategoryID == 0 ? m.GetFilterExpress("") : " cateid = " + CategoryID;
+                    if (m.RuleName.Contains("cateid")) ConditionString += CategoryID == 0 ? m.GetFilterExpress("") : " cateid = " + CategoryID;
                     else  ConditionString += m.GetFilterExpress("");
                     ConditionString += " and ";
                 }
