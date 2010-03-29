@@ -1,4 +1,5 @@
 ﻿var currentCategoryID = 0;
+var currentFatherCategoryID = 0;
 function StringBuffer() { this.data = []; } StringBuffer.prototype.append = function() { this.data.push(arguments[0]); return this; }; StringBuffer.prototype.toString = function() { return this.data.join(""); }
 
 $(function() {
@@ -13,6 +14,7 @@ $(function() {
     */
     $('#equipment-category a').click(function() {
         currentCategoryID = $(this).attr('cateid');
+
         $('#equipment-category a').each(function() { $(this).attr('class', 'off'); });
         $(this).attr('class', 'on');
 
@@ -23,13 +25,13 @@ $(function() {
                 $(this).attr('class', 'on');
                 currentCategoryID = $(this).attr('cateid');
                 showBrandInfo(currentCategoryID);
-                showSearchedProduct(currentCategoryID, 0, '');
+                showSearchedProduct(currentCategoryID, $(this).attr('fatherid'), 0, '');
             });
         }
         else $('#equipment-sub-category').html('');
 
         showBrandInfo(currentCategoryID);
-        showSearchedProduct(currentCategoryID, 0, '');
+        showSearchedProduct(currentCategoryID, 0, 0, '');
     });
 
 
@@ -112,7 +114,7 @@ function initialize() {
             currentCategoryID = parseInt($($('#equipment-category a')[0]).attr('cateid'));
 
             showBrandInfo(currentCategoryID)
-            showSearchedProduct(currentCategoryID, 0, '');
+            showSearchedProduct(currentCategoryID,0, 0, '');
             /*set the primary values end*/
         }
     });
@@ -130,7 +132,7 @@ function showBrandInfo(categoryid) {
         beforeSend: function() { },
         error: function() { },
         success: function(data) {
-            alert(data.length);
+            //alert(data.length);
             $.each(data, function(i, n) {
                 var script = '<select id="brand">';
                 script += '<option value="' + n.brandname + '">' + n.brandid + '</option>';
@@ -146,11 +148,43 @@ function showBrandInfo(categoryid) {
 }
 
 function showSearchedProduct(categoryid,fatherCategoryID, brandid, productName) {
-    productName = $('#search-product-name').val();
-    
-    
+    $.ajax({
+        url: '/handler/solutionhandler.ashx',
+        type: 'post',
+        data: 'action=product&sid=' + $.query.get('ids') + '&cid=' + categoryid + '&fcid=' + fatherCategoryID + '&brandid=' + brandid + '&pdname=' + productName,
+        cache: false,
+        dataType: 'json',
+        beforeSend: function() { $('#list-table').html('加载中...'); },
+        error: function() { $('#list-table').html('加载列表错误'); },
+        success: function(data) {
+            debugger;
+            var html = '<div class="table2">' +
+                           '     <table id="product-list">' +
+                           '       <tr>' +
+                           '         <th class="first"><span>商品图片</span></th>' +
+                           '         <th><span>商品名称</span></th>' +
+                           '         <th><span>商品价格</span></th>' +
+                           '         <th><span>选用</span></th>' +
+                           '       </tr>';
+            $.each(data, function(i, n) {
+                html += '<tr class="' + (i % 2 == 0 ? "odd" : 'even') + '">' +
+                          '  <td><a href="/product-' + n.productid + '.html" ><img src="' + n.image + '" /></a></td>' +
+                          '  <td><a href="#">' + n.productname + '</a></td>' +
+                          '  <td>￥' + n.price + '</td>' +
+                          '  <td><input type="checkbox" productid="' + n.productid + '" cateid="' + categoryid + '" fatherid="'+fatherCategoryID+'" /></td>' +
+                          '</tr>';
+            });
+            html += '<tr class="bottom">' +
+                        '    <td colspan="4">' +
+                        '      <div class="pagination">' +
+                        '      </div>' +
+                        '    </td>' +
+                        '  </tr>' +
+                        '</table>';
 
-
+            $('#list-table').html(html);
+        }
+    }); 
 }
 
 
