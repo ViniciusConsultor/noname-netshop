@@ -8,7 +8,7 @@
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">解决方案</a> &gt;&gt; <a href="#">超值套装</a> &gt;&gt; <a href="#">多媒体会议</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/Channel/solution/">解决方案</a> &gt;&gt; <a href="#">推荐套装</a>
         <div class="solutionSubNav">
             <div class="solutionButtonTab">
                 <a class="button_blue" href="/solution/Demand.aspx">按需制定</a>
