@@ -71,7 +71,7 @@ namespace NoName.NetShop.Solution.DAL
             }
             else
             {
-                sql = @"select * from pdProduct where 1=1 and " + ConditionString.Substring(0, ConditionString.LastIndexOf("and")); 
+                sql = @"select * from pdProduct where 1=1 and " + ConditionString; 
             }
 
             return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
