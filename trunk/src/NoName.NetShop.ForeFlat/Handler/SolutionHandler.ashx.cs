@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.Threading;
 using NoName.NetShop.Solution.Model;
 using NoName.NetShop.Product.BLL;
+using NoName.NetShop.Product.Facade;
 
 namespace NoName.NetShop.ForeFlat.Handler
 {
@@ -48,7 +49,8 @@ namespace NoName.NetShop.ForeFlat.Handler
                     int ProductFatherCategoryID = Convert.ToInt32(req["fcid"]);
                     int BrandID = 0; if (!String.IsNullOrEmpty(req["brandid"])) BrandID = Convert.ToInt32(req["brandid"]);
                     string ProdcutName = String.Empty; if (!String.IsNullOrEmpty(req["pdname"])) ProdcutName = req["pdname"];
-                    context.Response.Write(GetProductListJson(ScenceID, ProductCategoryID, ProductFatherCategoryID, BrandID, ProdcutName));
+                    int OrderType = 1; if (!String.IsNullOrEmpty(req["order"])) OrderType = Convert.ToInt32(req["order"]);
+                    context.Response.Write(GetProductListJson(ScenceID, ProductCategoryID, ProductFatherCategoryID, BrandID, ProdcutName,OrderType));
                     return;
                 default:
                     context.Response.Write("[]");
@@ -90,7 +92,7 @@ namespace NoName.NetShop.ForeFlat.Handler
                     }
                 writer.WriteEndArray();
 
-                writer.WriteEndObject(); 
+                writer.WriteEndObject();
             }
 
             writer.WriteEndArray();
@@ -127,9 +129,10 @@ namespace NoName.NetShop.ForeFlat.Handler
             return result.ToString();
         }
 
-        private string GetProductListJson(int ScenceID, int CategoryID,int FatherCategoryID, int BrandID, string ProductName)
+        private string GetProductListJson(int ScenceID, int CategoryID,int FatherCategoryID, int BrandID, string ProductName,int OrderType)
         {
-            DataTable dt = new CategoryConditionBll().GetCategoryProductList(ScenceID, CategoryID, FatherCategoryID, BrandID, ProductName);
+            bool HasSubCateogry;
+            DataTable dt = new CategoryConditionBll().GetCategoryProductList(ScenceID, CategoryID, FatherCategoryID, BrandID, ProductName,OrderType,out HasSubCateogry);
 
             StringBuilder result = new StringBuilder();
             StringWriter sw = new StringWriter(result);
@@ -144,8 +147,10 @@ namespace NoName.NetShop.ForeFlat.Handler
                 writer.WriteStartObject();
                 WriteJsonKeyValue(writer, "productid", row["productid"].ToString());
                 WriteJsonKeyValue(writer, "productname", row["productname"].ToString());
-                WriteJsonKeyValue(writer, "image", row["smallimage"].ToString());
+                WriteJsonKeyValue(writer, "url", String.Format("/product-{0}.html", row["productid"]));
+                WriteJsonKeyValue(writer, "image", ProductMainImageRule.GetMainImageUrl(row["smallimage"].ToString()));
                 WriteJsonKeyValue(writer, "price", row["merchantprice"].ToString());
+                WriteJsonKeyValue(writer, "categoryid", HasSubCateogry ? row["cateid"].ToString() : "0");
                 writer.WriteEndObject(); 
             }
 
