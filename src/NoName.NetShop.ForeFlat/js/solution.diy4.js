@@ -2,6 +2,8 @@
 var currentFatherCategoryID = 0;
 function StringBuffer() { this.data = []; } StringBuffer.prototype.append = function() { this.data.push(arguments[0]); return this; }; StringBuffer.prototype.toString = function() { return this.data.join(""); }
 
+
+
 $(function() {
     /* initialize category list of the scence */
     initialize();
@@ -13,7 +15,9 @@ $(function() {
     *     when the selected category has subcategory, show the subcategories and define the same click event handler function
     */
     $('#equipment-category a').click(function() {
-        currentCategoryID = $(this).attr('cateid');
+
+        currentFatherCategoryID = $(this).attr('fatherid');
+        currentCategoryID = $(this).attr('categoryid');
 
         $('#equipment-category a').each(function() { $(this).attr('class', 'off'); });
         $(this).attr('class', 'on');
@@ -23,23 +27,24 @@ $(function() {
             $('#equipment-sub-category a').click(function() {
                 $('#equipment-sub-category a').each(function() { $(this).attr('class', 'off'); });
                 $(this).attr('class', 'on');
-                currentCategoryID = $(this).attr('cateid');
-                showBrandInfo(currentCategoryID);
-                showSearchedProduct(currentCategoryID, $(this).attr('fatherid'), 0, '');
+
+                currentFatherCategoryID = $(this).attr('fatherid');
+                currentCategoryID = $(this).attr('categoryid');
+
+                showBrandInfo(currentFatherCategoryID, currentCategoryID);
+                showSearchedProduct(currentCategoryID, currentFatherCategoryID, 0, '');
             });
         }
         else $('#equipment-sub-category').html('');
 
-        showBrandInfo(currentCategoryID);
-        showSearchedProduct(currentCategoryID, 0, 0, '');
+        showBrandInfo(currentFatherCategoryID, currentCategoryID);
+        showSearchedProduct(currentCategoryID, currentFatherCategoryID, 0, '');
     });
 
 
     //$().click();
     //$().click();
     /* events define end */
-
-
 
 });
 
@@ -70,7 +75,7 @@ function initialize() {
             $.each(data, function(i, n) {
                 var rowStyle = i % 2 != 0 ? 'odd' : 'even';
 
-                html1.append('  <tr class="' + rowStyle + '" categoryid="' + n.categoryid + '">');
+                html1.append('  <tr class="' + rowStyle + '" fatherid="' + n.categoryid + '" categoryid="0">');
                 html1.append('      <td' + (n.subcates.length > 0 ? ' rowspan="' + n.subcates.length + '"' : '') + '>' + n.categoryname + '</td>');
                 html1.append('      <td>' + (n.subcates.length > 0 ? n.subcates[0].categoryname : '') + '</td>');
                 html1.append('      <td></td>');
@@ -79,13 +84,13 @@ function initialize() {
                 html1.append('      <td></td>');
                 html1.append('  </tr>');
 
-                html2.append('<a style="cursor:pointer;" class="off" cateid="' + n.categoryid + '" hassub="' + (n.subcates.length > 0 ? '1' : '0') + '">' + n.categoryname + '</a>');
+                html2.append('<a style="cursor:pointer;" class="off" fatherid="' + n.categoryid + '" categoryid="0" hassub="' + (n.subcates.length > 0 ? '1' : '0') + '">' + n.categoryname + '</a>');
 
                 if (n.subcates.length > 0) {
                     html2.append('<div style="display:none;">');
                     $.each(n.subcates, function(j, m) {
                         if (j != 0) {
-                            html1.append('  <tr class="' + rowStyle + '" categoryid="' + m.categoryid + '">');
+                            html1.append('  <tr class="' + rowStyle + '" fatherid="' + n.categoryid + '" categoryid="' + m.categoryid + '">');
                             html1.append('      <td>' + m.categoryname + '</td>');
                             html1.append('      <td></td>');
                             html1.append('      <td></td>');
@@ -93,7 +98,7 @@ function initialize() {
                             html1.append('      <td></td>');
                             html1.append('  </tr>');
                         }
-                        html2.append('<a cateid="' + m.categoryid + '" fatherid="' + n.categoryid + '">' + m.categoryname + '</a>');
+                        html2.append('<a fatherid="' + n.categoryid + '" categoryid="' + m.categoryid + '">' + m.categoryname + '</a>');
                     });
                     html2.append('</div>');
                 }
@@ -114,18 +119,19 @@ function initialize() {
             currentCategoryID = parseInt($($('#equipment-category a')[0]).attr('cateid'));
 
             showBrandInfo(currentCategoryID)
-            showSearchedProduct(currentCategoryID,0, 0, '');
+            showSearchedProduct(currentCategoryID, 0, 0, '');
             /*set the primary values end*/
         }
     });
     /* initialize category info end */
 }
 
-function showBrandInfo(categoryid) {
+
+function showBrandInfo(fatherCategoryID, categoryID) {
     $.ajax({
         url: '/handler/solutionhandler.ashx',
         type: 'post',
-        data: 'action=brand&cid=' + categoryid,
+        data: 'action=brand&cid=' + categoryID,
         cache: false,
         dataType: 'json',
         async: false,
@@ -140,14 +146,16 @@ function showBrandInfo(categoryid) {
                 $('#brand-list').html(script);
 
                 $('#brand').change(function() {
-                    showSearchedProduct(categoryid,$(this).val(),'');
+                    showSearchedProduct(categoryID, fatherCategoryID, $(this).val(), '');
                 });
             });
         }
     })
 }
 
-function showSearchedProduct(categoryid,fatherCategoryID, brandid, productName) {
+
+
+function showSearchedProduct(categoryid, fatherCategoryID, brandid, productName) {
     $.ajax({
         url: '/handler/solutionhandler.ashx',
         type: 'post',
@@ -171,7 +179,7 @@ function showSearchedProduct(categoryid,fatherCategoryID, brandid, productName) 
                           '  <td><a href="/product-' + n.productid + '.html" ><img src="' + n.image + '" /></a></td>' +
                           '  <td><a href="#">' + n.productname + '</a></td>' +
                           '  <td>￥' + n.price + '</td>' +
-                          '  <td><input type="checkbox" productid="' + n.productid + '" cateid="' + categoryid + '" fatherid="' + fatherCategoryID + '" /></td>' +
+                          '  <td><input type="checkbox" productid="' + n.productid + '" categoryid="' + categoryid + '" fatherid="' + fatherCategoryID + '" /></td>' +
                           '</tr>';
             });
             html += '<tr class="bottom">' +
@@ -184,53 +192,71 @@ function showSearchedProduct(categoryid,fatherCategoryID, brandid, productName) 
 
             $('#list-table').html(html);
 
+            // click event for the product checkbox start
             $('#product-list tr input[type="checkbox"]').click(function() {
                 var theBox = $(this);
                 var row = theBox.parent().parent();
                 var status = theBox.attr('checked');
 
-
                 $('#product-list tr input[type="checkbox"]').each(function() {
-                    if (theBox.attr('productid') != $(this).attr('productid') && theBox.attr(''))
+                    if (theBox.attr('productid') != $(this).attr('productid') && theBox.attr('fatherid') == $(this).attr('fatherid') && theBox.attr('categoryid') == $(this).attr('categoryid'))
                         $(this).attr('checked', false);
                 });
 
-                alert(status);
+                /****注意这里已经不再是分类ID作为主键了，而是父分类和子分类共同作为检索主键****/
+                if (status) {
+                    addProduct(theBox.attr('cateid'), {
+                        productid: theBox.attr('productid'),
+                        productname: $(row.children('td')[1]).text(),
+                        count: 1,
+                        price: $(row.children('td')[2]).text()
+                    });
+                }
+                else {
+                    removeProduct(theBox.attr('cateid'));
+                }
             });
+            // click event for the product checkbox end
 
         }
-    }); 
+    });
 }
 
 
-function getSelectedList() {
-    var cookieStr = $.cookie('slselectproducts');
-    var selectedProducts = new Hashtable();
-    if (cookieStr == null) { } // 此时cookie中尚无任何信息{}
-    if (cookieStr == '') { } // 此时cookie内容被清{}
-    if (cookieStr != null && cookieStr != '' && cookieStr.indexOf(';') == -1) // 此时cookie中只包含一条数据
-    {
-        selectedProducts.Add(cookieStr.split(',')[0], { productid: cookieStr.split(',')[1], productname: cookieStr.split(',')[2], count: cookieStr.split(',')[3], price: cookieStr.split(',')[4] });
-    }
-    if (cookieStr != null && cookieStr != '' && cookieStr.indexOf(';') >= 0) // 此时cookie中包含多条数据
-    {
-        for (var i = 0; i < cookieStr.split(';').length; i++) {
-            var p = cookieStr.split(';')[i];
-            selectedProducts.Add(p.split(',')[0], { productid: p.split(',')[1], productname: p.split(',')[2], count: p.split(',')[3], price: p.split(',')[4] });
-        }
-    }
 
-    return selectedProducts;
+
+function addProduct(categoryID, productInfo) {
+    //debugger;
+    var selectedProducts = getSelectedList();
+    selectedProducts.Add(categoryID, productInfo);
+    setSelectedList(selectedProducts);
+
+    var theCateRow = $('#selected-product-list tr[categoryid="' + categoryID + '"]');
+    theCateRow.attr('productid', productInfo.productid);
+    $(theCateRow.children('td')[1]).html(productInfo.productname);
+    $(theCateRow.children('td')[2]).html(productInfo.count);
+    $(theCateRow.children('td')[3]).html(productInfo.price);
+    $(theCateRow.children('td')[4]).html('<a id="delete-' + categoryID + '" class="iconButton delete" style="cursor:pointer"></a>');
+
+    $('#delete-' + categoryID).click(function() {
+        removeProduct(categoryID);
+    });
+
+    calculateTotalPrice(true);
 }
-function setSelectedList(selectedProducts) {
-    var cookieStr = '';
-    for (var i = 0; i < selectedProducts.Count; i++) {
-        var key = selectedProducts.Keys()[i];
-        var info = selectedProducts.GetValue(key);
+function removeProduct(categoryID) {
+    //debugger;
+    var selectedProducts = getSelectedList();
+    selectedProducts.Remove(categoryID);
+    setSelectedList(selectedProducts);
 
-        cookieStr += key + ',' + info.productid + ',' + info.productname + ',' + info.count + ',' + info.price;
+    var theCateRow = $('#selected-product-list tr[categoryid="' + categoryID + '"]');
+    theCateRow.removeAttr('productid');
+    $(theCateRow.children('td')[1]).html('');
+    $(theCateRow.children('td')[2]).html('');
+    $(theCateRow.children('td')[3]).html('');
+    $(theCateRow.children('td')[4]).html('');
 
-        if (i != selectedProducts.Count - 1) cookieStr += ';';
-    }
-    $.cookie('slselectproducts', cookieStr);
+    $('#product-list tr input[cateid="' + categoryID + '"]').attr('checked', false);
+    calculateTotalPrice(false);
 }
