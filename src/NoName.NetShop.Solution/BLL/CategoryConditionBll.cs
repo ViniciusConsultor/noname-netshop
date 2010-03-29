@@ -40,26 +40,18 @@ namespace NoName.NetShop.Solution.BLL
         }
 
 
-        public DataTable GetCategoryProductList(int ScenceID,int CategoryID,int FatherCategoryID,int BrandID,string ProductName)
+        public DataTable GetCategoryProductList(int ScenceID,int CategoryID,int FatherCategoryID,int BrandID,string ProductName,int OrderType,out bool HasSubCategory)
         {
+            List<CategoryConditionModel> Conditions = dal.GetListArray(String.Format(" cateid={0} and senceid={1}", FatherCategoryID , ScenceID));
 
-
-            //if (FatherCategoryID != 0) //点击了子分类的情况
-            //{
-            //    //此时用ScenceID和FatherCategoryID获取所有条件，循环拼接SQL
-            //    //循环中判断，如果RuleName包含CateID时，排除该条件，添加CategoryID的条件
-            //}
-            //else //点击了父分类的情况
-            //{
-            //    //按照正常情况获取所有条件，拼接SQL 
-            //}
-
-            List<CategoryConditionModel> Conditions = dal.GetListArray(String.Format(" cateid={0} and senceid={1}", FatherCategoryID == 0 ? CategoryID : FatherCategoryID, ScenceID));
-
-            bool IsHasProperity = false;
+            bool IsHasProperity = false; HasSubCategory = false;
             string ConditionString = String.Empty;
 
-            foreach (CategoryConditionModel m in Conditions) if (m.RuleName.Contains("paraid")) IsHasProperity = true;
+            foreach (CategoryConditionModel m in Conditions)
+            {
+                if (m.RuleName.Contains("paraid")) IsHasProperity = true;
+                if (m.RuleName.Contains("cateid")) HasSubCategory = true;
+            }
 
             if (IsHasProperity)
             {
@@ -88,7 +80,7 @@ namespace NoName.NetShop.Solution.BLL
                 if (!String.IsNullOrEmpty(ProductName)) ConditionString += " productname like '%" + ProductName + "%' and ";
             }
 
-            return String.IsNullOrEmpty(ConditionString)?new DataTable() : dal.GetCategoryProductList(IsHasProperity, ConditionString.Substring(0, ConditionString.LastIndexOf("and")));
+            return String.IsNullOrEmpty(ConditionString) ? new DataTable() : dal.GetCategoryProductList(IsHasProperity, ConditionString.Substring(0, ConditionString.LastIndexOf("and")), OrderType);
         }
 
         public DataTable GetConditionSubCategory(int ScenceID, int CategoryID)

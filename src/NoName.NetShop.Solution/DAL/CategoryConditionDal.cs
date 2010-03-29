@@ -60,18 +60,19 @@ namespace NoName.NetShop.Solution.DAL
 			return list;
 		}
 
-        public DataTable GetCategoryProductList(bool IsJoinProperity,string ConditionString)//int CurrentCategoryID,int ScenceID)
+        public DataTable GetCategoryProductList(bool IsJoinProperity,string ConditionString,int OrderType)//int CurrentCategoryID,int ScenceID)
         {
             string sql = String.Empty;
+
             if (IsJoinProperity)
             {
                 sql = @"select * from pdProduct
                             inner join pdProductPara on pdProductPara.productid=pdProduct.productid
-                        where 1=1 and " + ConditionString.Substring(0, ConditionString.LastIndexOf("and"));
+                        where 1=1 and " + ConditionString + @" order by " + "pdproduct." + (OrderType == 1 ? "merchantprice asc" : " merchantprice desc");
             }
             else
             {
-                sql = @"select * from pdProduct where 1=1 and " + ConditionString; 
+                sql = @"select * from pdProduct where 1=1 and " + ConditionString + " order by " + (OrderType == 1 ? "merchantprice asc" : " merchantprice desc");
             }
 
             return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
