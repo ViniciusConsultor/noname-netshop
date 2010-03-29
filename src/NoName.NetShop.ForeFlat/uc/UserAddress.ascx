@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserAddress.ascx.cs" Inherits="SinaEC.Shopping.WebUI.UC.UserAddress" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserAddress.ascx.cs" Inherits="NoName.NetShop.ForeFlat.UC.UserAddress" %>
 		<%@ Register src="RegionSelect.ascx" tagname="RegionSelect" tagprefix="uc1" %>
 		<script type="text/javascript">
 function showNewAddr() {

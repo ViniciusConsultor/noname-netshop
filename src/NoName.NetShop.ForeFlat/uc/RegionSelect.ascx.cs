@@ -8,7 +8,7 @@ using System.Text;
 using System.IO;
 using NoName.NetShop.Member;
 
-namespace SinaEC.Shopping.WebUI.UC
+namespace NoName.NetShop.ForeFlat.UC
 {
     public partial class RegionSelect : System.Web.UI.UserControl
     {

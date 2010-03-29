@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegionSelect.ascx.cs" Inherits="SinaEC.Shopping.WebUI.UC.RegionSelect" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegionSelect.ascx.cs" Inherits="NoName.NetShop.ForeFlat.UC.RegionSelect" %>
 <script type="text/javascript">
     
     var regionInfo = [{ "name": "province", "title": "请选择省/直辖市", "required": "true" },
