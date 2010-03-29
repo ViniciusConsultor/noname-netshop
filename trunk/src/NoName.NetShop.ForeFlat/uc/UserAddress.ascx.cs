@@ -8,7 +8,7 @@ using NoName.NetShop.Member.Model;
 using NoName.NetShop.Member.BLL;
 using NoName.NetShop.Member;
 
-namespace SinaEC.Shopping.WebUI.UC
+namespace NoName.NetShop.ForeFlat.UC
 {
     public partial class UserAddress : System.Web.UI.UserControl
     {
