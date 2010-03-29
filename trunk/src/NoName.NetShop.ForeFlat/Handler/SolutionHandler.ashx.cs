@@ -129,16 +129,7 @@ namespace NoName.NetShop.ForeFlat.Handler
 
         private string GetProductListJson(int ScenceID, int CategoryID,int FatherCategoryID, int BrandID, string ProductName)
         {
-            if (FatherCategoryID != 0)
-            {
- 
-            }
-            else
-            {
- 
-            }
-
-            DataTable dt = new CategoryConditionBll().GetCategoryProductList(CategoryID, ScenceID, BrandID, ProductName);
+            DataTable dt = new CategoryConditionBll().GetCategoryProductList(ScenceID, CategoryID, FatherCategoryID, BrandID, ProductName);
 
             StringBuilder result = new StringBuilder();
             StringWriter sw = new StringWriter(result);
