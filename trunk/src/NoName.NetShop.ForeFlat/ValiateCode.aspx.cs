@@ -27,7 +27,6 @@ namespace NoName.NetShop.ForeFlat
             Response.ContentType = "image/jpeg";
             CreateImages(checkCode);
             Response.End();
-
         }
 
         /*产生验证图片*/
