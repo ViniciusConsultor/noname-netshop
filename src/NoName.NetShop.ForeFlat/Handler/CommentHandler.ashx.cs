@@ -59,7 +59,7 @@ namespace NoName.NetShop.ForeFlat.Handler
 
             try
             {
-                if (CurrentContext.Session["ValidateCode"] != null && CurrentContext.Session["ValidateCode"].ToString() == ValidateCode)
+                if (new ValidateHelper().Validate(ValidateCode,true))
                 {
                     CommentBll bll = new CommentBll();
 
