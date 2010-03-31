@@ -58,7 +58,11 @@ namespace NoName.NetShop.Publish.Product.DataAccess
 
             DataTable dt = dal.GetProductInfo(Parameter.ProductID);
 
-            if(dt==null||dt.Rows==null||dt.Rows.Count<=0) throw new PublishException("商品不存在");
+            if (dt == null || dt.Rows == null || dt.Rows.Count <= 0)
+                throw new PublishException("商品不存在");
+            if (Convert.ToInt32(dt.Rows[0]["status"]) != 1)
+                throw new PublishException("商品已下架");
+
             DataRow row =  dt.Rows[0];
 
             XmlUtility.AddNewNode(ProductNode, "productid", Convert.ToString(row["ProductId"]));
@@ -213,6 +217,25 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             }
 
             return BrandProductsNode;
+        }
+
+        public XmlNode GetHotSaleProductList()
+        {
+            XmlNode HotSaleProductsNode = xdoc.CreateElement("hotsale");
+
+            DataTable dt = dal.GetHotSaleProduct(Parameter.CategoryPath);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode ProductNode = XmlUtility.AddNewNode(HotSaleProductsNode, "product", null);
+
+                XmlUtility.AddNewNode(ProductNode, "productid", Convert.ToString(row["productid"]));
+                XmlUtility.AddNewNode(ProductNode, "productname", Convert.ToString(row["productname"]));
+                XmlUtility.AddNewNode(ProductNode, "productimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["smallimage"])));
+                XmlUtility.AddNewNode(ProductNode, "price", Convert.ToDecimal(Convert.ToDecimal(row["MerchantPrice"]) - Convert.ToDecimal(row["reduceprice"])).ToString("00"));
+            }
+
+            return HotSaleProductsNode;
         }
 
     }

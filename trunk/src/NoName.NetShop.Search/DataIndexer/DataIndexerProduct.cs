@@ -19,7 +19,6 @@ namespace NoName.NetShop.Search.DataIndexer
             ConfigElement = Element;
         }
 
-
         public void CreateIndex(List<ISearchEntity> CreateEntities)
         {
             Analyzer analyzer = new StandardAnalyzer();

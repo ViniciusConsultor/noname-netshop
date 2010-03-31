@@ -5,6 +5,7 @@ using NoName.NetShop.Publish.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using NoName.NetShop.Common;
+using System.Data.Common;
 
 namespace NoName.NetShop.Publish.Product.DataAccess
 {
@@ -85,6 +86,18 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             string sql = "select top 3 * from qatopic where contenttype={0} and contentid={1}";
             sql = String.Format(sql, (int)ContentType.Product, ProductID);
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
+        }
+
+        public DataTable GetHotSaleProduct(string CategoryPath)
+        {
+            string sql = @" select top 4 * FROM [pdProduct] p
+	                            inner join [pdSalesProduct] sp on sp.productid=p.productid
+                            where 
+	                            sp.saletype=1 and 
+	                            sp.siteid=0 and
+	                            p.catepath like '" + CategoryPath + "%'";
+
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];            
         }
     }
 }
