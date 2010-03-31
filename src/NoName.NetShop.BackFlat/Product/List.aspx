@@ -205,6 +205,13 @@
                     </asp:TemplateField>
                     <asp:BoundField DataField="changetime" HeaderText="更新日期" />
                     <asp:BoundField DataField="pageview" HeaderText="浏览量" />
+                    <asp:TemplateField HeaderText="热卖">
+                        <ItemTemplate>
+                            <asp:ImageButton runat="server" ID="ButtonDesetHotSale" ImageUrl="/images/uncheck.gif" Visible='<%# Convert.ToBoolean(Eval("ishotsale")) %>' CommandArgument='<%# Eval("productid") %>' CommandName="ds" />
+                            <asp:ImageButton runat="server" ID="ButtonSetHotSale" ImageUrl="/images/check.gif" Visible='<%# !Convert.ToBoolean(Eval("ishotsale")) %>' CommandArgument='<%# Eval("productid") %>' CommandName="ss" />
+                          
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HyperLink runat="server" ID="HyperLinkEdit" Text="修改" NavigateUrl='<%# "Edit.aspx?productid="+Eval("ProductID")+"&pageid="+ AspNetPager.CurrentPageIndex %>' />

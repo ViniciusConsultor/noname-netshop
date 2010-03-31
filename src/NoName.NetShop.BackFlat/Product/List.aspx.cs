@@ -59,6 +59,7 @@ namespace NoName.NetShop.BackFlat.Product
             dt.Columns.Add("secondarycategoryname");
             dt.Columns.Add("endcategoryid");
             dt.Columns.Add("endcategoryname");
+            dt.Columns.Add("ishotsale");
 
             foreach (DataRow row in dt.Rows)
             {
@@ -71,6 +72,8 @@ namespace NoName.NetShop.BackFlat.Product
 
                 row["secondarycategoryname"] = CategoryNamePath.Split('/')[1];
                 row["endcategoryname"] = CategoryNamePath.Split('/')[CategoryNamePath.Split('/').Length-2];
+
+                row["ishotsale"] = new SalesProductModelBll().Exists(Convert.ToInt32(row["productid"]));
             }
 
             GridView1.DataSource = dt;
@@ -113,6 +116,18 @@ namespace NoName.NetShop.BackFlat.Product
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.Delete(ProductID);
                 MessageBox.Show(this, "删除成功"); 
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "ss")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                new SalesProductModelBll().SetSalesProduct(ProductID);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "ds")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                new SalesProductModelBll().DesetSalesProduct(ProductID);
                 BindData(AspNetPager.CurrentPageIndex);
             }
         }

@@ -72,7 +72,7 @@
                 <td><asp:TextBox runat="server" ID="TextBox_Author" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
-                <td>来源：</td>
+                <td>来源：<span class="red">*</span></td>
                 <td><asp:TextBox runat="server" ID="TextBox_NewsFrom" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
