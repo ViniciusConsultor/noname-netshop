@@ -32,6 +32,16 @@ namespace NoName.NetShop.Product.BLL
 			return dal.Exists(ProductId,SaleType,SiteId);
 		}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ProductID"></param>
+        /// <returns></returns>
+        public bool Exists(int ProductID)
+        {
+            return dal.Exists(ProductID,1,0);
+        }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -65,30 +75,6 @@ namespace NoName.NetShop.Product.BLL
 			
 			return dal.GetModel(ProductId,SaleType,SiteId);
 		}
-
-		/// <summary>
-		/// 得到一个对象实体，从缓存中。
-		/// </summary>
-        //public SalesProductModel GetModelByCache(int ProductId,int SaleType,int SiteId)
-        //{
-			
-        //    string CacheKey = "SalesProductModelModel-" + ProductId+SaleType+SiteId;
-        //    object objModel = LTP.Common.DataCache.GetCache(CacheKey);
-        //    if (objModel == null)
-        //    {
-        //        try
-        //        {
-        //            objModel = dal.GetModel(ProductId,SaleType,SiteId);
-        //            if (objModel != null)
-        //            {
-        //                int ModelCache = LTP.Common.ConfigHelper.GetConfigInt("ModelCache");
-        //                LTP.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-        //            }
-        //        }
-        //        catch{}
-        //    }
-        //    return (SalesProductModel)objModel;
-        //}
 
 		/// <summary>
 		/// 获得数据列表
@@ -144,6 +130,27 @@ namespace NoName.NetShop.Product.BLL
         {
             return dal.GetList(PageSize, PageIndex, strWhere);
         }
+
+        public void SetSalesProduct(int ProductID)
+        {
+            if (!Exists(ProductID, 1, 0))
+            {
+                Add(new SalesProductModel()
+                {
+                    ProductId = ProductID,
+                    SaleType = 1, //hot sales product
+                    SiteId = 0 //from this site                
+                });
+            }
+        }
+
+        public void DesetSalesProduct(int ProductID)
+        {
+            Delete(ProductID, 1, 0);
+        }
+
+        
+
 
 		#endregion  成员方法
 	}

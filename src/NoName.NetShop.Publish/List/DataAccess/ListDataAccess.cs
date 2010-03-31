@@ -49,6 +49,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
             string CategoryPath = Convert.ToString(GetCategoryInfo(CategoryID)["catepath"]);
             where += String.Format(" and pdproduct.catepath like '{0}%'", CategoryPath);
+            where += " and pdproduct.status = 1";
             
             SearchPageInfo pageInfo = new SearchPageInfo();
 
