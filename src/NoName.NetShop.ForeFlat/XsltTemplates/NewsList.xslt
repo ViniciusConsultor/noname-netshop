@@ -31,7 +31,7 @@
 
                     <!--Position Begin-->
                     <div class="currentPosition">
-                        您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">视听资讯栏目公共页面</a>
+                        您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="#">视听资讯栏目公共页面</a>
                     </div>
                     <!--Position End-->
 

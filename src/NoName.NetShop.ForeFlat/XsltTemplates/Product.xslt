@@ -41,6 +41,7 @@
                     <!--MainBody Begin-->
                     <div class="productDetail_mainbody newline clearfix">
                         <div class="rightColumn">
+                            <xsl:if test="/productpage/hotsale/product">
                             <div class="box2">
                                 <ul class="title">
                                     <li class="left">
@@ -55,34 +56,7 @@
                                 </ul>
                                 <div class="content noPaddingTop">
                                     <ul class="itemList1">
-                                        <li>
-                                            <a href="#">
-                                                <img src="images/thumbnail_s.jpg" />
-                                                <span class="price">￥188.00</span>
-                                                <span>伊莱克斯 Electrolux 全自动洗衣机</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="images/thumbnail_s.jpg" />
-                                                <span class="price">￥188.00</span>
-                                                <span>伊莱克斯 Electrolux 全自动洗衣机</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="images/thumbnail_s.jpg" />
-                                                <span class="price">￥188.00</span>
-                                                <span>伊莱克斯 Electrolux 全自动洗衣机</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="images/thumbnail_s.jpg" />
-                                                <span class="price">￥188.00</span>
-                                                <span>伊莱克斯 Electrolux 全自动洗衣机</span>
-                                            </a>
-                                        </li>
+                                        <xsl:apply-templates select="/productpage/hotsale/product"/>
                                     </ul>
                                 </div>
                                 <ul class="bottom">
@@ -94,6 +68,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            </xsl:if>
 
                             <div class="box2 newline">
                                 <ul class="title">
@@ -140,6 +115,7 @@
                                     <div class="content">
                                         <xsl:apply-templates select="/productpage/productinfo/product"/>
 
+                                        <!--
                                         <div class="box7">
                                             <div class="title">相关服务项目</div>
                                             <div class="content">
@@ -236,6 +212,7 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        -->
 
                                     </div>
                                     <ul class="bottom">
@@ -608,5 +585,17 @@
         </li>
     </xsl:template>
 	<!-- same brand prodct list end -->
+	
+    <!-- hot sale prodct list start -->
+    <xsl:template match="/productpage/hotsale/product">
+        <li>
+            <a href="/product-{productid}.html">
+                <img src="{productimage}" />
+                <span class="price">￥<xsl:value-of select="price"/></span>
+                <span><xsl:value-of select="productname"/></span>
+            </a>
+        </li>
+    </xsl:template>
+	<!-- hot sale prodct list end -->
 
 </xsl:stylesheet>
