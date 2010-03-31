@@ -9,7 +9,6 @@ namespace NoName.NetShop.Common
 {
     public class CommDataHelper
     {
-       
         /// <summary>
         /// 分页查询单个表的数据
         /// PROCEDURE GetRecordFromSingleTableByPage
@@ -97,12 +96,14 @@ namespace NoName.NetShop.Common
         {
             string spName = "UP_unSerialNum_GetNewSerial";
             DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(spName);
+
             CommDataAccess.DbReader.AddInParameter(comm, "@appid", DbType.String, appname);
             CommDataAccess.DbReader.AddOutParameter(comm, "@serial", DbType.Int32, 4);
+
             CommDataAccess.DbReader.ExecuteNonQuery(comm);
             return Convert.ToInt32(CommDataAccess.DbReader.GetParameterValue(comm, "@serial"));
         }
-        
+
         /// <summary>
         /// 获得一个新的序列号，用于为各个应用能够提供一个独立的序列号，格式为：yyMMddAAXXXXXX
         /// </summary>
@@ -116,7 +117,6 @@ namespace NoName.NetShop.Common
             CommDataAccess.DbReader.AddOutParameter(comm, "@serial", DbType.String, 20);
             CommDataAccess.DbReader.ExecuteNonQuery(comm);
             return CommDataAccess.DbReader.GetParameterValue(comm, "@serial").ToString();
-        }    
-        
         }
-} 
+    }
+}
