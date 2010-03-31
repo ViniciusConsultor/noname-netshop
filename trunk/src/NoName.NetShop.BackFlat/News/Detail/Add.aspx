@@ -20,8 +20,6 @@
             height: '400px',
             width: '700px'
         });
-        
-
     });
     
     function validate() {
@@ -73,7 +71,7 @@
                 <td><asp:TextBox runat="server" ID="TextBox_Author" Width="400" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
-                <td>来源：</td>
+                <td>来源：<span class="red">*</span></td>
                 <td><asp:TextBox runat="server" ID="TextBox_NewsFrom" Width="400" /><span type="inform" class="red"></span></td>
             </tr>
             <tr>
