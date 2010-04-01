@@ -70,6 +70,7 @@ namespace NoName.NetShop.Product.DAL
 			dbw.AddInParameter(dbCommand, "ProductId", DbType.Int32, model.ProductId);
 			dbw.AddInParameter(dbCommand, "SaleType", DbType.Byte, model.SaleType);
 			dbw.AddInParameter(dbCommand, "SiteId", DbType.Int32, model.SiteId);
+            dbw.AddInParameter(dbCommand, "timestamp", DbType.DateTime, model.TimeStamp);
 			dbw.ExecuteNonQuery(dbCommand);
 		}
 
@@ -128,7 +129,7 @@ namespace NoName.NetShop.Product.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ProductId,SaleType,SiteId ");
+			strSql.Append("select ProductId,SaleType,SiteId,timestamp ");
 			strSql.Append(" FROM pdSalesProduct ");
 			if(strWhere.Trim()!="")
 			{
@@ -162,7 +163,7 @@ namespace NoName.NetShop.Product.DAL
 		public List<SalesProductModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ProductId,SaleType,SiteId ");
+			strSql.Append("select ProductId,SaleType,SiteId,timestamp ");
 			strSql.Append(" FROM pdSalesProduct ");
 			if(strWhere.Trim()!="")
 			{
@@ -202,7 +203,12 @@ namespace NoName.NetShop.Product.DAL
 			if(ojb != null && ojb != DBNull.Value)
 			{
 				model.SiteId=(int)ojb;
-			}
+            }
+            ojb = dataReader["timestamp"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.TimeStamp = Convert.ToDateTime(ojb);
+            }
 			return model;
 		}
 

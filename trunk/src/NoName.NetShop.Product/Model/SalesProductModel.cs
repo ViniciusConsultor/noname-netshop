@@ -12,6 +12,7 @@ namespace NoName.NetShop.Product.Model
 		private int _productid;
 		private int _saletype;
 		private int _siteid;
+        private DateTime _TimeStamp;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -36,6 +37,12 @@ namespace NoName.NetShop.Product.Model
 			set{ _siteid=value;}
 			get{return _siteid;}
 		}
+
+        public DateTime TimeStamp
+        {
+            get { return _TimeStamp; }
+            set { _TimeStamp = value; }
+        }
 		#endregion Model
 
 	}
