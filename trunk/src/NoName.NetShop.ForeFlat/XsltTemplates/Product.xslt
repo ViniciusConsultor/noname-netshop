@@ -361,7 +361,7 @@
                         <a class="purchase" href="/sp/addtocart.aspx?pid={productid}">
                             <xsl:text> </xsl:text>
                         </a>
-                        <a class="addToFavorite" href="#">
+                        <a class="addToFavorite" style="cursor:pointer;" productid="{$ProductID}">
                             <xsl:text> </xsl:text>
                         </a>
                     </li>
