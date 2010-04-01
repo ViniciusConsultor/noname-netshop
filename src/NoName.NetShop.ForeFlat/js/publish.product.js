@@ -23,4 +23,28 @@
             });
         }
     });
+
+    $('.addToFavorite').click(function() {
+        var productID = $(this).attr();
+        addFav(productID);
+    });
 });
+
+function addFav(productID) {
+    $.ajax({
+        url: '/api/CartOpenApi.ashx.ashx',
+        type: 'post',
+        data: 'ctype=1&cid=' + productID,
+        cache: false,
+        dataType: 'text',
+        error: function() { alert('收藏失败,请稍后重试。'); },
+        success: function(data, textStatus) {
+            if (data.result == true) {
+                alert('收藏成功！');
+            }
+            else {
+                alert(data.message);
+            }
+        }
+    });
+}
