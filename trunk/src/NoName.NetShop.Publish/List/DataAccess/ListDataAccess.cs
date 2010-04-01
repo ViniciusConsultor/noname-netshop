@@ -59,7 +59,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
             pageInfo.TotalFieldStr = "";
             pageInfo.PageSize = Config.ListPageSize;
             pageInfo.PageIndex = PageIndex;
-            pageInfo.OrderType = "";
+            pageInfo.OrderType = GetOrderString(OrderType);
             pageInfo.StrWhere = "1=1 " + where;
             pageInfo.StrJoin = " inner join pdproduct on pdproduct.productid=pdproductpara.productid inner join pdcategory on pdproduct.cateid=pdcategory.cateid ";
 
@@ -85,6 +85,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
             pageinfo.PriKeyName = "ProductId";
             pageinfo.StrWhere = where;
             pageinfo.TableName = "pdproduct";
+            pageinfo.OrderType = GetOrderString(OrderType);
             pageinfo.TotalFieldStr = "";
             pageinfo.TotalItem = 0;
             pageinfo.TotalPage = 0;
@@ -95,6 +96,8 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
             return dt;
         }
+
+
 
         public DataTable GetCategoryPathList(int CategoryID)
         {
@@ -145,6 +148,40 @@ namespace NoName.NetShop.Publish.List.DataAccess
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
+        private string GetOrderString(int OrderType)
+        {
+            string OrderString = String.Empty;
+            switch (OrderType)
+            {
+                case 1:
+                    OrderString = " changetime desc";
+                    break;
+                case 2:
+                    OrderString = " changetime asc";
+                    break;
+                case 3:
+                    OrderString = " pageview desc";
+                    break;
+                case 4:
+                    OrderString = " pageview desc";
+                    break;
+                case 5:
+                    OrderString = " merchantprice desc";
+                    break;
+                case 6:
+                    OrderString = " merchantprice desc";
+                    break;
+                case 7:
+                    OrderString = " pageview desc";
+                    break;
+                case 8:
+                    OrderString = " pageview desc";
+                    break;
+                default:
+                    break;
+            }
+            return OrderString;
+        }
         
     }
 }

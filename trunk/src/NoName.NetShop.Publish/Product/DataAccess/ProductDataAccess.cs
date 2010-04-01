@@ -95,7 +95,8 @@ namespace NoName.NetShop.Publish.Product.DataAccess
                             where 
 	                            sp.saletype=1 and 
 	                            sp.siteid=0 and
-	                            p.catepath like '" + CategoryPath + "%'";
+	                            p.catepath like '" + CategoryPath + @"%'
+                            order by sp.timestamp desc";
 
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];            
         }
