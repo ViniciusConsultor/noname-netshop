@@ -108,7 +108,11 @@ namespace NoName.NetShop.Product.BLL
 					if(ds.Tables[0].Rows[n]["SiteId"].ToString()!="")
 					{
 						model.SiteId=int.Parse(ds.Tables[0].Rows[n]["SiteId"].ToString());
-					}
+                    }
+                    if (ds.Tables[0].Rows[n]["timestamp"].ToString() != "")
+                    {
+                        model.TimeStamp = Convert.ToDateTime(ds.Tables[0].Rows[n]["timestamp"].ToString());
+                    }
 					modelList.Add(model);
 				}
 			}
@@ -139,7 +143,8 @@ namespace NoName.NetShop.Product.BLL
                 {
                     ProductId = ProductID,
                     SaleType = 1, //hot sales product
-                    SiteId = 0 //from this site                
+                    SiteId = 0 , //from this site
+                    TimeStamp = DateTime.Now
                 });
             }
         }
