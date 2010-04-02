@@ -17,37 +17,122 @@ namespace NoName.NetShop.ForeFlat.Search
     public partial class ProductSearch : System.Web.UI.Page
     {
         private static SearchSection Config = (SearchSection)ConfigurationManager.GetSection("searches");
+        private string SearchWord
+        {
+            get { if (ViewState["SearchWord"] != null) return Convert.ToString(ViewState["SearchWord"]); else return String.Empty; }
+            set { ViewState["SearchWord"] = value; }
+        }
+        private int SearchCategory 
+        {
+            get { if (ViewState["SearchCategory"] != null) return Convert.ToInt32(ViewState["SearchCategory"]); else return 0; }
+            set { ViewState["SearchCategory"] = value; }
+        }
+        private int PageIndex
+        {
+            get { if (ViewState["PageIndex"] != null) return Convert.ToInt32(ViewState["PageIndex"]); else return 1; }
+            set { ViewState["PageIndex"] = value; }
+        }
+        private int PageSize
+        {
+            get { return Convert.ToInt32(ConfigurationManager.AppSettings["pageSize"]); }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string word = Request.QueryString["w"];
-            if (String.IsNullOrEmpty(word)) throw new ArgumentNullException();
+            if(!String.IsNullOrEmpty(Request.QueryString["w"])) SearchWord = Request.QueryString["w"];
+            if (!String.IsNullOrEmpty(Request.QueryString["c"])) SearchCategory = Convert.ToInt32(Request.QueryString["c"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["p"])) PageIndex = Convert.ToInt32(Request.QueryString["p"]);
 
-            SearchInfo srh = new SearchInfo()
-            {
-                ConfigElement = Config.Searches["product"],
-                PageIndex = 1,
-                PageSize = 10,
-                QueryString = word
-            };
+            if (String.IsNullOrEmpty(SearchWord)) throw new ArgumentNullException();
 
-            int MatchCount = 0;
-
-            Searcher s = new ProductSearcher(srh);
-
-            List<ISearchEntity> SearchResult = s.GetSearchResult(out MatchCount);
-
-            List<ProductModel> ProductSearchResult = new List<ProductModel>();
-            Response.Write(String.Format("以{0}为检索词，共搜索到{1}条数据：<br/>", srh.QueryString, MatchCount));
-            foreach (ISearchEntity entity in SearchResult)
-            {
-                ProductSearchResult.Add((ProductModel)entity);
-
-                Response.Write(String.Format("{0}\t{1}<br/>", ((ProductModel)entity).EntityIdentity, ((ProductModel)entity).ProductName));
-            }
+            BindData();
 
             //GridView1.DataSource = ProductSearchResult;
             //GridView1.DataBind();
+        }
+
+        private void BindData()
+        {
+            int MatchCount = 0,PageCount = 0;
+
+            List<ProductModel> SearchResult = GetSearchResult(out MatchCount, out PageCount);
+
+            Literal_SearchInfo.Text = String.Format("以{0}为检索词，共搜索到{1}条数据，共{2}页", SearchWord, MatchCount, PageCount);
+
+            Repeater_ProductList.DataSource = SearchResult;
+            Repeater_ProductList.DataBind();
+
+            Pagination.InnerHtml = GetPaginateHtml(PageCount);
+        }
+
+        private List<ProductModel> GetSearchResult(out int MatchCount, out int PageCount)
+        {
+            SearchInfo InputInfo = new SearchInfo()
+            {
+                ConfigElement = Config.Searches["product"],
+                PageIndex = PageIndex,
+                PageSize = PageSize,
+                QueryString = SearchWord,
+                Category = SearchCategory
+            };
+
+            Searcher s = new ProductSearcher(InputInfo);
+            List<ISearchEntity> RawResult = s.GetSearchResult(out MatchCount);
+
+
+            //在这里排序
+
+
+
+            List<ProductModel> SearchResult = new List<ProductModel>();
+            int PageLowerBound = (InputInfo.PageIndex - 1) * PageSize;
+            int PageUpperBound = PageLowerBound + PageSize;
+            PageCount = (int)(MatchCount / PageSize) + 1;
+
+            for (int i = 0; i < RawResult.Count; i++)
+            {
+                if (i > PageLowerBound && i <= PageUpperBound)
+                {
+                    SearchResult.Add((ProductModel)RawResult[i]);
+                }
+            }
+
+            return SearchResult; 
+        }
+
+        private string GetPaginateHtml(int PageCount)
+        {
+            string HtmlCode = String.Empty;
+
+            if (PageIndex == 1)
+                HtmlCode+="<a class=\"prev\"></a>";
+            else
+                HtmlCode += "<a class=\"prev\" style=\"cursor:pointer\" page=\"" + (PageIndex-1) + "\"></a>";
+            
+            int i = 0;
+            HtmlCode += "<div class=\"pageNum\">";
+            for (i = PageIndex - 5; i <= PageIndex + 5; i++)
+            {
+                if (i > 0 && i <= PageCount)
+                {
+                    if (i == PageIndex)//当前页
+                    {
+                        HtmlCode += "<a class=\"on\" style=\"cursor:pointer\">" + i + "</a>";
+                    }
+                    else
+                    {
+                        HtmlCode += "<a style=\"cursor:pointer\" page=\"" + i + "\">" + i + "</a>";
+                    }
+                }
+            }
+            HtmlCode += "</div>";
+
+            if (PageIndex == PageCount)
+                HtmlCode+="<a class=\"next\"></a>";
+            else
+                HtmlCode += "<a class=\"next\" style=\"cursor:pointer\" page=\"" + (PageIndex + 1) + "\"></a>";
+
+            return HtmlCode;
         }
     }
 }

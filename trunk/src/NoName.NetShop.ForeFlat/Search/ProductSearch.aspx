@@ -1,21 +1,131 @@
-Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProductSearch.aspx.cs" Inherits="NoName.NetShop.ForeFlat.Search.ProductSearch" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProductSearch.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.Search.ProductSearch" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <asp:GridView runat="server" ID="GridView1">
-            <Columns>
-                <asp:BoundField DataField="entryidentity" />
-                <asp:BoundField DataField="productname" />
-            </Columns>
-        </asp:GridView>
+<asp:Content ContentPlaceHolderID="head" runat="server" ID="Head">
+    <script src="/js/common.search.js" type="text/javascript"></script>
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="cpMain" runat="server" ID="Body">
+    <!--MainBody Begin-->
+    <div class="shoppingClass_mainbody newline clearfix">
+		<div class="leftColumn">
+        	<div class="box2 cateBox">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>…Ã∆∑∑÷¿‡</span></li>
+                    <li class="right"></li>
+                </ul>
+                <div class="content">
+					<div class="category_non-popMenu clearfix">
+                        <a class="class" href="#">¥Û∆¡œ‘ æ</a>
+                        <div class="subs clearfix">
+                            <a href="#">Õ∂”∞ª˙</a>
+                            <a href="#">±≥Õ∂</a>
+                            <a href="#">LED∆¥Ω”</a>
+                            <a href="#">»Î√≈</a>
+                            <a href="#">øÕÃ¸</a>
+                            <a href="#">’˚∑ø</a>
+                        </div>
+                        <a class="class" href="#">¥Û∆¡œ‘ æ</a>
+                        <div class="subs clearfix">
+                            <a href="#">Õ∂”∞ª˙</a>
+                            <a href="#">±≥Õ∂</a>
+                            <a href="#">LED∆¥Ω”</a>
+                            <a href="#">»Î√≈</a>
+                            <a href="#">øÕÃ¸</a>
+                            <a href="#">’˚∑ø</a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="bottom">
+                   <li class="left"></li>
+                   <li class="right"></li>
+                </ul>
+            </div>            
+        </div>
+        <div class="rightColumn">
+        	<div class="rightColumnContainer">        	
+            	<div class="box8 newline">
+                    <ul class="title">
+                        <li class="left"></li>
+                        <li class="heading">
+                            <span class="text">
+                                <asp:Literal runat="server" ID="Literal_SearchInfo" />
+                            </span>
+                            <span class="arrow"></span>
+                        </li>
+                        <li class="right"></li>
+                        <li class="view">
+                        	<span>œ‘ æ∑Ω Ω</span>
+                            <a class="viewBtn horizontal_on" href="javascript:void(0)" onclick="viewTransfer(this)"></a>
+                            <a class="viewBtn vertical" href="javascript:void(0)" onclick="viewTransfer(this)"></a>
+                        </li>
+                        <li class="sort">
+                        	<span>«Î—°‘Ò≈≈–Ú∑Ω Ω</span>
+                            <a class="on" href="#">œ˙¡ø</a>
+                            <a href="#">º€∏Ò</a>
+                            <a href="#">…œº‹ ±º‰</a>
+                            <a href="#">‰Ø¿¿¡ø</a>
+                        </li>
+                    </ul>
+                    <div class="content">
+						<div id="productList" class="list_horizontal">
+                            <ul>
+                                <asp:Repeater runat="server" ID="Repeater_ProductList">
+                                    <ItemTemplate>
+                                        <li>
+                                            <a href='/product-<%# Eval("entityidentity") %>.html' title='<%# Eval("productname") %>'>
+                                                <img src='<%# NoName.NetShop.Product.Facade.ProductMainImageRule.GetMainImageUrl(Eval("productimage").ToString()) %>' />
+                                                <span class="price">∂¶≥«±®º€£∫£§188.00</span>
+                                                <span class="name" title='<%# Eval("productname") %>'><%# Eval("productname") %></span>
+                                                <span class="commentsNum"></span>
+                                            </a>
+                                            <div class="actions">
+                                                <a class="button_blue3" href="#">
+                                                    <span class="left"></span>
+                                                    <span class="text">π∫¬Ú</span>
+                                                    <span class="right"></span>
+                                                </a>
+                                                <a class="button_blue3" href="#">
+                                                    <span class="left"></span>
+                                                    <span class="text"> ’≤ÿ</span>
+                                                    <span class="right"></span>
+                                                </a>
+                                                <a class="button_blue3" href="#">
+                                                    <span class="left"></span>
+                                                    <span class="text">∂‘±»</span>
+                                                    <span class="right"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ul>
+                            <div class="paginationContainer">
+                            	<div class="line"></div>
+                                <div class="pagination" id="Pagination" runat="server">
+                                    <a class="prev" href="#"></a>
+                                    <div class="pageNum">
+                                        <a class="on" href="#">1</a>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#">4</a>
+                                        <a href="#">5</a>
+                                        <a href="#">6</a>
+                                        <a href="#">7</a>
+                                    </div>
+                                    <a class="next" href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="bottom">
+                       <li class="left"></li>
+                       <li class="right"></li>
+                    </ul>
+            	</div>
+            </div>
+        </div>
     </div>
-    </form>
-</body>
-</html>
+    <!--MainBody End-->
+</asp:Content>
