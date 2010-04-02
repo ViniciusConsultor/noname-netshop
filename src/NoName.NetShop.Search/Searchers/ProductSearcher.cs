@@ -10,6 +10,7 @@ using Lucene.Net.Analysis;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.Documents;
 using NoName.NetShop.Search.Entities;
+using Lucene.Net.Index;
 
 namespace NoName.NetShop.Search.Searchers
 {
@@ -25,10 +26,16 @@ namespace NoName.NetShop.Search.Searchers
             Analyzer analyzer = new StandardAnalyzer();
 
             IndexSearcher searcher = new IndexSearcher(searchInfo.ConfigElement.IndexDirectory);
-            MultiFieldQueryParser parser = new MultiFieldQueryParser(new string[] { "productname", "keywords", "description" }, analyzer);
-            Query query = parser.Parse(searchInfo.QueryString);
+            MultiFieldQueryParser parserName = new MultiFieldQueryParser(new string[] { "productname", "keywords", "description" }, analyzer);
 
-            Hits hits = searcher.Search(query);
+            Query queryName = parserName.Parse(searchInfo.QueryString);
+            Query queryCategory = new WildcardQuery(new Term("catepath", "*" + searchInfo.Category + "*"));
+
+            BooleanQuery bQuery = new BooleanQuery();
+            bQuery.Add(queryName, BooleanClause.Occur.MUST);
+            if (searchInfo.Category != 0) bQuery.Add(queryCategory, BooleanClause.Occur.MUST);
+
+            Hits hits = searcher.Search(bQuery);
 
             List<ISearchEntity> ResultList = new List<ISearchEntity>();
 
@@ -46,7 +53,8 @@ namespace NoName.NetShop.Search.Searchers
                     Description = doc.Get("description"),
                     Price = Convert.ToDecimal(doc.Get("price")),
                     CreateTime = Convert.ToDateTime(doc.Get("createtime")),
-                    UpdateTime = Convert.ToDateTime(doc.Get("updatetime"))
+                    UpdateTime = Convert.ToDateTime(doc.Get("updatetime")),
+                    ProductImage = Convert.ToString(doc.Get("mainimage"))                    
                 });
             }
             searcher.Close();

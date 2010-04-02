@@ -40,6 +40,7 @@ namespace NoName.NetShop.Search.DataIndexer
                 doc.Add(new Field("price", Convert.ToString(product.Price), Field.Store.YES, Field.Index.UN_TOKENIZED));
                 doc.Add(new Field("createtime", Convert.ToString(product.CreateTime), Field.Store.YES, Field.Index.UN_TOKENIZED));
                 doc.Add(new Field("updatetime", Convert.ToString(product.UpdateTime), Field.Store.YES, Field.Index.UN_TOKENIZED));
+                doc.Add(new Field("mainimage", Convert.ToString(product.ProductImage), Field.Store.YES, Field.Index.UN_TOKENIZED));
 
                 writer.AddDocument(doc);
                 Console.WriteLine("created index for {0}:{1}", product.EntityIdentity, product.ProductName);
