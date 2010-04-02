@@ -21,5 +21,6 @@ namespace NoName.NetShop.Search
         public int PageSize { get; set; }
         public string QueryString { get; set; }
         public SearchElement ConfigElement { get; set; }
+        public int Category { get; set; }
     }
 }

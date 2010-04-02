@@ -8,6 +8,7 @@ using NoName.NetShop.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
 using NoName.NetShop.Search.Config;
+using NoName.NetShop.Product.Facade;
 
 namespace NoName.NetShop.Search.DataAcquirer
 {
@@ -26,7 +27,7 @@ namespace NoName.NetShop.Search.DataAcquirer
             // configuration element ConfigElement contains time and frequence settings
             // sync time and frequence will be decided here by your preference
 
-            DataTable dt = GetChangedProduct(DateTime.Now.AddDays(-6), DateTime.Now);
+            DataTable dt = GetChangedProduct(DateTime.Now.AddMonths(-6), DateTime.Now);
 
             var query = from q in dt.AsEnumerable()
                         select new ProductModel()
@@ -40,7 +41,8 @@ namespace NoName.NetShop.Search.DataAcquirer
                             Description = q.Field<string>("brief"),
                             CreateTime = q.Field<DateTime>("inserttime"),
                             UpdateTime = q.Field<DateTime>("changetime"),
-                            ProcessType = (EntityProcessType)Enum.Parse(typeof(EntityProcessType), q.Field<Int16>("changetype").ToString())
+                            ProcessType = (EntityProcessType)Enum.Parse(typeof(EntityProcessType), q.Field<Int16>("changetype").ToString()),
+                            ProductImage = q.Field<string>("mediumimage")
                         };
 
             List<ISearchEntity> ProductList = new List<ISearchEntity>();
