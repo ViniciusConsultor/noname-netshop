@@ -175,64 +175,76 @@ namespace NoName.NetShop.BackFlat.Order
                 }
             }
 
-            if (order.PayMethod == PayMethType.在线支付)
+            #region 支付宝
+            if (order.PayMethod == PayMethType.支付宝)
             {
-                if (order.PayStatus == PayStatus.等待付款)
+                if (order.PayStatus == PayStatus.等待付款 && String.IsNullOrEmpty(order.PayorderId))
                 {
                     txtActionRemark.Visible = true;
                     btnClose.Visible = true;
                 }
-                else if (order.PayStatus == PayStatus.支付成功)
-                {
-                    btnRefund.Visible = true;
-
-                    if (order.OrderStatus == OrderStatus.已创建)
-                    {
-                        btnRefund.Visible = true;
-                        btnPrepareGoods.Visible = true;
-                        txtActionRemark.Visible = true;
-                        btnClose.Visible = true;
-                    }
-                    else if (order.OrderStatus == OrderStatus.备货中)
-                    {
-                        btnSend.Visible = true;
-                        txtActionRemark.Visible = true;
-                        if (order.PayStatus == PayStatus.退款申请中)
-                        {
-                            btnRefund.Visible = true;
-                        }
-                    }
-                    else if (order.OrderStatus == OrderStatus.已发货)
-                    {
-                        if (order.PayStatus == PayStatus.退款申请中)
-                        {
-                            btnRefund.Visible = true;
-                        } 
-                        btnCherrys.Visible = true;
-                        txtActionRemark.Visible = true;
-                    }
-                    else if (order.OrderStatus == OrderStatus.物流到货)
-                    {
-                        btnFinish.Visible = true;
-                        txtActionRemark.Visible = true;
-                    }
-                    else if (order.OrderStatus == OrderStatus.买家确认)
-                    {
-                        btnFinish.Visible = true;
-                        txtActionRemark.Visible = true;
-                    }
-                }
-                else if (order.PayStatus == PayStatus.退款申请中)
-                {
-                    txtActionRemark.Visible = true;
-                    btnRefund.Visible = true;
-                }
-                else if (order.PayStatus == PayStatus.退款完成)
-                {
-                    txtActionRemark.Visible = true;
-                    btnFail.Visible = true;
-                }
             }
+
+            //if (order.PayMethod == PayMethType.支付宝)
+            //{
+            //    if (order.PayStatus == PayStatus.等待付款 && String.IsNullOrEmpty(order.PayorderId))
+            //    {
+            //        txtActionRemark.Visible = true;
+            //        btnClose.Visible = true;
+            //    }
+            //    else if (order.PayStatus == PayStatus.支付成功)
+            //    {
+                   
+            //        btnRefund.Visible = true;
+
+            //        if (order.OrderStatus == OrderStatus.已创建)
+            //        {
+            //            btnRefund.Visible = true;
+            //            btnPrepareGoods.Visible = true;
+            //            txtActionRemark.Visible = true;
+            //            btnClose.Visible = true;
+            //        }
+            //        else if (order.OrderStatus == OrderStatus.备货中)
+            //        {
+            //            btnSend.Visible = true;
+            //            txtActionRemark.Visible = true;
+            //            if (order.PayStatus == PayStatus.退款申请中)
+            //            {
+            //                btnRefund.Visible = true;
+            //            }
+            //        }
+            //        else if (order.OrderStatus == OrderStatus.已发货)
+            //        {
+            //            if (order.PayStatus == PayStatus.退款申请中)
+            //            {
+            //                btnRefund.Visible = true;
+            //            } 
+            //            btnCherrys.Visible = true;
+            //            txtActionRemark.Visible = true;
+            //        }
+            //        else if (order.OrderStatus == OrderStatus.物流到货)
+            //        {
+            //            btnFinish.Visible = true;
+            //            txtActionRemark.Visible = true;
+            //        }
+            //        else if (order.OrderStatus == OrderStatus.买家确认)
+            //        {
+            //            btnFinish.Visible = true;
+            //            txtActionRemark.Visible = true;
+            //        }
+            //    }
+            //    else if (order.PayStatus == PayStatus.退款申请中)
+            //    {
+            //        txtActionRemark.Visible = true;
+            //        btnRefund.Visible = true;
+            //    }
+            //    else if (order.PayStatus == PayStatus.退款完成)
+            //    {
+            //        txtActionRemark.Visible = true;
+            //        btnFail.Visible = true;
+            //    }
+            //}
+            #endregion
         }
 
         /// <summary>
@@ -372,7 +384,7 @@ namespace NoName.NetShop.BackFlat.Order
             OrderChangeLogBll lbll = new OrderChangeLogBll();
             CommOrderModel order = obll.GetModel(lblOrderId.Text);
             if (order != null &&               
-                ((order.PayMethod != PayMethType.在线支付 && order.PayStatus == PayStatus.等待付款)
+                ((order.PayMethod != PayMethType.支付宝 && order.PayStatus == PayStatus.等待付款)
                 || order.PayStatus == PayStatus.退款申请中))
             {
                 obll.ChangePayStatus(order.OrderId, PayStatus.支付成功);
