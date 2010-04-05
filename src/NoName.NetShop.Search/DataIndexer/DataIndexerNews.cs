@@ -35,6 +35,8 @@ namespace NoName.NetShop.Search.DataIndexer
                 doc.Add(new Field("title", Convert.ToString(news.Title), Field.Store.YES, Field.Index.UN_TOKENIZED));
                 doc.Add(new Field("content", Convert.ToString(news.Content), Field.Store.YES, Field.Index.TOKENIZED));
                 doc.Add(new Field("keywords", Convert.ToString(news.Keywords), Field.Store.YES, Field.Index.UN_TOKENIZED));
+                doc.Add(new Field("catepath", Convert.ToString(news.CategoryPath), Field.Store.YES, Field.Index.UN_TOKENIZED));
+                doc.Add(new Field("createtime", Convert.ToString(news.CreateTime), Field.Store.YES, Field.Index.UN_TOKENIZED));
 
                 writer.AddDocument(doc);
                 Console.WriteLine("created index for {0}:{1}", news.EntityIdentity, news.Title);
@@ -47,7 +49,15 @@ namespace NoName.NetShop.Search.DataIndexer
 
         public void DeleteIndex(List<ISearchEntity> DeleteEntities)
         {
-            throw new NotImplementedException();
+            IndexReader reader = IndexReader.Open(ConfigElement.IndexDirectory);
+
+            foreach (ISearchEntity IndexEntity in DeleteEntities)
+            {
+                int Count = reader.DeleteDocuments(new Term("newsid", IndexEntity.EntityIdentity.ToString()));
+                Console.WriteLine("doc count:{0}, deleted document:{1}", reader.NumDocs(), Count);
+            }
+
+            reader.Close();
         }
     }
 }

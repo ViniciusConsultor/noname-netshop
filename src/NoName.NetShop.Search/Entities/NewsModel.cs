@@ -13,5 +13,7 @@ namespace NoName.NetShop.Search.Entities
         public string Title { get; set; }
         public string Content { get; set; }
         public string Keywords { get; set; }
+        public string CategoryPath { get; set; }
+        public DateTime CreateTime { get; set; }
     }
 }
