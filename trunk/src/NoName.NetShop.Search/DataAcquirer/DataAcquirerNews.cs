@@ -6,10 +6,11 @@ using NoName.NetShop.Search.Entities;
 using NoName.NetShop.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using NoName.NetShop.Search.Config;
+using System.Data;
 
 namespace NoName.NetShop.Search.DataAcquirer
 {
-    public class DataAcquirerNews
+    public class DataAcquirerNews : IDataAcquirer
     {
         private Database db = CommDataAccess.DbReader;
         private SearchElement ConfigElement;
@@ -21,7 +22,27 @@ namespace NoName.NetShop.Search.DataAcquirer
 
         public List<ISearchEntity> GetData()
         {
-            throw new NotImplementedException();
+            string sql = "select * from nenews";
+
+            var query = from q in db.ExecuteDataSet(CommandType.Text, sql).Tables[0].AsEnumerable()
+                        select new NewsModel()
+                        {
+                            EntityIdentity = q.Field<int>("newsid"),
+                            Title = q.Field<string>("title"),
+                            Keywords = q.Field<string>("tags"),
+                            Content = q.Field<string>("newscontent"),
+                            ProcessType = EntityProcessType.insert,
+                            CategoryPath = new News.BLL.NewsCategoryModelBll().GetPath(q.Field<int>("cateid")),
+                            CreateTime = q.Field<DateTime>("inserttime")
+                        };
+
+            List<ISearchEntity> NewsList = new List<ISearchEntity>();
+            foreach (var o in query)
+            {
+                NewsList.Add((ISearchEntity)o);
+            }
+
+            return NewsList;
         }
     }
 }

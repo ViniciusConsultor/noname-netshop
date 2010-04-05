@@ -89,6 +89,10 @@
       <Project>{29A4BE47-9ADF-443F-913D-6CCEAD2DD752}</Project>
       <Name>NoName.NetShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NoName.NetShop.News\NoName.NetShop.News.csproj">
+      <Project>{6B1F4013-2FBB-4521-A36E-A0247FE0ED92}</Project>
+      <Name>NoName.NetShop.News</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NoName.NetShop.Product\NoName.NetShop.Product.csproj">
       <Project>{9D56D4A2-A88C-4354-AABB-02F33E688238}</Project>
       <Name>NoName.NetShop.Product</Name>
