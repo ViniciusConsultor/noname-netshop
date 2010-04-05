@@ -36,6 +36,9 @@ namespace NoName.NetShop.ShopFlow
         private string _usernotes;
         private string _recievercountry;
         private string _recievercounty;
+        private string _payorderId;
+        private bool _isTotalFeeAdjust;
+
         /// <summary>
         /// 
         /// </summary>
@@ -260,6 +263,22 @@ namespace NoName.NetShop.ShopFlow
             set { _recievercounty = value; }
             get { return _recievercounty; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string PayorderId
+        {
+            set { _payorderId = value; }
+            get { return _payorderId; }
+        }        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsTotalFeeAdjust
+        {
+            set { _isTotalFeeAdjust = value; }
+            get { return _isTotalFeeAdjust; }
+        }
+        
         #endregion Model
 
     }

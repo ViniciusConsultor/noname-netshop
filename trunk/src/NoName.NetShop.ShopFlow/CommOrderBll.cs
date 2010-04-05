@@ -47,5 +47,16 @@ namespace NoName.NetShop.ShopFlow
             return dal.ChangePayStatus(orderId,pstatus);
         }
 
+        public bool SetPayOrderId(string orderId, string payOrderId)
+        {
+            return dal.SetPayOrderId(orderId, payOrderId);
+
+        }
+
+
+        public bool ModifyTotalFee(string orderId, decimal totalFee)
+        {
+            return dal.ModifyTotalFee(orderId, totalFee);
+        }
     }
 }

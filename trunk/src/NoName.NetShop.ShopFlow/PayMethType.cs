@@ -7,9 +7,9 @@ namespace NoName.NetShop.ShopFlow
 {
     public enum PayMethType
     {
-        在线支付=1,
+        支付宝 = 1,
         银行转账=2,
         邮局汇款=3,
-        货到付款=4 
+        货到付款=4,
     }
 }
