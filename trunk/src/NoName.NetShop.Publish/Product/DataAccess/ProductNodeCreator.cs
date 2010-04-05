@@ -91,9 +91,9 @@ namespace NoName.NetShop.Publish.Product.DataAccess
 
             XmlNode MultiImagesNode = XmlUtility.AddNewNode(ProductNode,"multiimages",null);
             XmlNode MainImageNode = XmlUtility.AddNewNode(MultiImagesNode, "image", null);
-            XmlUtility.AddNewNode(MainImageNode, "smallimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["SmallImage"])));
-            XmlUtility.AddNewNode(MainImageNode, "largeimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["MediumImage"])));
-            XmlUtility.AddNewNode(MainImageNode, "originimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(row["LargeImage"])));
+            XmlUtility.AddNewNode(MainImageNode, "smallimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["SmallImage"])));
+            XmlUtility.AddNewNode(MainImageNode, "largeimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["MediumImage"])));
+            XmlUtility.AddNewNode(MainImageNode, "originimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["LargeImage"])));
 
             foreach (DataRow imageRow in dal.GetProductMultiImage(Parameter.ProductID).Rows)
             {
