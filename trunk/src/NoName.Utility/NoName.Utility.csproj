@@ -66,11 +66,13 @@
   <ItemGroup>
     <Compile Include="AspNetPager.cs" />
     <Compile Include="ClientDeal.cs" />
+    <Compile Include="CommUtil.cs" />
     <Compile Include="CookieHelper.cs" />
     <Compile Include="DataCache.cs" />
     <Compile Include="DataTableUtil.cs" />
     <Compile Include="HtmlHelper.cs" />
     <Compile Include="HttpUtil.cs" />
+    <Compile Include="IdCard.cs" />
     <Compile Include="ImageHelper.cs" />
     <Compile Include="INIFile.cs" />
     <Compile Include="input.cs" />
@@ -84,8 +86,10 @@
     <Compile Include="Session.cs" />
     <Compile Include="staticFunction.cs" />
     <Compile Include="StringPlus.cs" />
+    <Compile Include="StringUtility.cs" />
     <Compile Include="SystemCms.cs" />
     <Compile Include="TimeParser.cs" />
+    <Compile Include="UnixTimeStamp.cs" />
     <Compile Include="UP_img.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
