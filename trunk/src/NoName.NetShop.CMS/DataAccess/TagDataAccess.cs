@@ -77,11 +77,11 @@ namespace NoName.NetShop.CMS.DataAccess
         {
             bool IsPublic = Convert.ToBoolean(Get(TagID).Rows[0]["ispublic"]);
 
-            string sql = String.Format("select content from [cmsTagContent] WHERE [pageid]={0} AND [tagid]={1} AND [serverid]='{2}'", PageID, TagID, ServerID);
+            string sql = String.Format("select [content] from [cmsTagContent] WHERE [pageid]={0} AND [tagid]={1} AND [serverid]='{2}'", PageID, TagID, ServerID);
             
             if (IsPublic)
             {
-                sql = "select content from [cmsTagContent] WHERE [tagid]=" + TagID;
+                sql = "select [content] from [cmsTagContent] WHERE [tagid]=" + TagID;
             }
 
             return Convert.ToString(db.ExecuteScalar(CommandType.Text,sql));
@@ -89,7 +89,7 @@ namespace NoName.NetShop.CMS.DataAccess
         
         public static string TagParameterGet(int PageID,int TagID,string ServerID)
         {
-            string sql = "select content from [cmsTagParameter] WHERE [pageid]={0} AND [tagid]={1} AND [serverid]='{2}'";
+            string sql = "select [content] from [cmsTagParameter] WHERE [pageid]={0} AND [tagid]={1} AND [serverid]='{2}'";
             sql = String.Format(sql,PageID,TagID,ServerID);
             return Convert.ToString(db.ExecuteScalar(CommandType.Text,sql));
         }
