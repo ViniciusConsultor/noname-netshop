@@ -15,13 +15,13 @@
                 <link type="text/css" rel="stylesheet" href="/css/common.css" />
                 <link type="text/css" rel="stylesheet" href="/css/shopping.css" />
                 <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
-                <script type="text/javascript" src="/js/DingdingJsLib.js">
+                <script type="text/javascript" src="/js/dingdingjslib.js">
                     <xsl:text> </xsl:text>
                 </script>
                 <script type="text/javascript" src="/js/jquery.js">
                     <xsl:text> </xsl:text>
                 </script>
-                <script type="text/javascript" src="/js/mini-Rainy.js">
+                <script type="text/javascript" src="/js/mini-rainy.js">
                     <xsl:text> </xsl:text>
                 </script>
                 <script type="text/javascript" src="/js/publish.product.js">
@@ -247,7 +247,6 @@
                 </div>
             </body>
         </html>
-
     </xsl:template>
     
     <!-- header start -->
@@ -352,8 +351,8 @@
                         <span class="field">库存状态：</span>
                         <span>
                             <xsl:choose>
-                                <xsl:when test="stock > 0">北京现货</xsl:when>
-                                <xsl:otherwise><span style="color:red">北京缺货</span></xsl:otherwise>
+                                <xsl:when test="stock > 0">现货</xsl:when>
+                                <xsl:otherwise><span style="color:red">缺货</span></xsl:otherwise>
                             </xsl:choose>
                         </span>
                     </li>
@@ -416,7 +415,7 @@
 
     <!-- question list start -->
     <xsl:template match="/productpage/questions">
-        <xsl:if test="count(question) > 0">
+        <!--<xsl:if test="count(question) > 0">-->
             <div class="box7 newline">
                 <div class="title">售前咨询</div>
                 <div class="content">
@@ -468,13 +467,13 @@
                     </div>
                 </div>
             </div>            
-        </xsl:if>
+        <!--</xsl:if>-->
     </xsl:template>
     <!-- question list end -->
 
     <!-- comment list start -->
     <xsl:template match="/productpage/comments">
-        <xsl:if test="count(comment) > 0">
+        <!--<xsl:if test="count(comment) > 0">-->
             <div class="box7">
                 <div class="title">商品评论</div>
                 <div class="content">
@@ -518,13 +517,13 @@
                 </div>
             </div>
             
-        </xsl:if>
+        <!--</xsl:if>-->
     </xsl:template>
     <!-- comment list end -->
 
     <!-- topic list start -->
     <xsl:template match="/productpage/topics">
-        <xsl:if test="count(topic) > 0">
+        <!--<xsl:if test="count(topic) > 0">-->
             <div class="box7">
                 <div class="title">用户话题</div>
                 <div class="content">
@@ -569,7 +568,7 @@
                     </div>
                 </div>
             </div>            
-        </xsl:if>
+        <!--</xsl:if>-->
     </xsl:template>
     <!-- topic list end -->    
     
@@ -597,5 +596,4 @@
         </li>
     </xsl:template>
 	<!-- hot sale prodct list end -->
-
 </xsl:stylesheet>
