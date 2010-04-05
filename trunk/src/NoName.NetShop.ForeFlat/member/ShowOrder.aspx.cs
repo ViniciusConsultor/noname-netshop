@@ -96,9 +96,9 @@ namespace NoName.NetShop.ForeFlat.member
                 return;
             }
 
-            if (order.PayMethod == PayMethType.在线支付)
+            if (order.PayMethod == PayMethType.支付宝)
             {
-                if (order.PayStatus == PayStatus.等待付款)
+                if (order.PayStatus == PayStatus.等待付款 && String.IsNullOrEmpty(order.PayorderId))
                 {
                     btnGoPay.Visible = true;
                 }
@@ -123,6 +123,7 @@ namespace NoName.NetShop.ForeFlat.member
         /// <param name="e"></param>
         protected void btnGoPay_Click(object sender, EventArgs e)
         {
+            Response.Redirect("~/alipay/StandardPay.aspx?orderId=" + this.lblOrderId.Text);
         }
 
         /// <summary>
@@ -142,7 +143,7 @@ namespace NoName.NetShop.ForeFlat.member
                 lbll.Add(order.OrderId, txtActionRemark.Text.Trim(), OrderStatus.买家确认.ToString(),
                     Context.User.Identity.Name);
 
-                if (order.PayMethod == PayMethType.在线支付)
+                if (order.PayMethod == PayMethType.支付宝)
                 {
                     // 转向支付结算页面
                 }
