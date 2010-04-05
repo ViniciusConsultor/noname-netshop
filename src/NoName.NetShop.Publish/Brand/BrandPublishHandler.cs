@@ -41,7 +41,6 @@ namespace NoName.NetShop.Publish.Brand
             return false;
         }
 
-
         public string GetPageFileName()
         {
             if (PageParameter != null)
@@ -72,7 +71,6 @@ namespace NoName.NetShop.Publish.Brand
                 throw new PublishException("页面参数错误",true);
             }
         }
-
 
         public bool ValidatePageFile()
         {
