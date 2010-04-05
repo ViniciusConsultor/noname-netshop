@@ -1,0 +1,7 @@
+bin\Debug\CommonAliPay.dll
+bin\Debug\CommonAliPay.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\CommonAliPay.dll
+obj\Debug\CommonAliPay.pdb
+bin\Debug\CommonAliPay.XML
+bin\Debug\log4net.dll
