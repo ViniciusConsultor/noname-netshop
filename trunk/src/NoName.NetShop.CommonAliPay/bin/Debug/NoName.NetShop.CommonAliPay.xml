@@ -1,0 +1,717 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NoName.NetShop.CommonAliPay</name>
+    </assembly>
+    <members>
+        <member name="T:NoName.NetShop.CommonAliPay.StandardGoods">
+            <summary>
+            交易参数，默认编码改为了Utf－8
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.DigitalGoods">
+            <summary>
+            BuyParam，默认编码改为了Utf－8
+            </summary>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.DigitalGoods.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Int32},System.String,System.String)">
+            <summary>
+            所有参数都是必须的，但是sellerEmail和sellerId可以任意填写其一,另一个设置位Null
+            </summary>
+            <param name="service">create_digital_goods_trade_p</param>
+            <param name="partner">合作伙伴在支付宝的用户ID</param>
+            <param name="sign">支付宝的Key</param>
+            <param name="signType"></param>
+            <param name="subject">商品名称</param>
+            <param name="outTradeNo">外部交易号</param>
+            <param name="price"></param>
+            <param name="quantity"></param>
+            <param name="sellerEmail">和sellerId任意填写一个</param>
+            <param name="sellerId"></param>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Service">
+            <summary>
+            create_digital_goods_trade_p
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Partner">
+            <summary>
+            合作伙伴在支付宝的用户ID
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Notify_Url">
+            <summary>
+            通知返回URL,仅适用于异步返回处理结果的接口。有些服务是无法立即返回处理结果的，那么需要通过这个URL将处理结果异步返回给合作伙伴。
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Return_Url">
+            <summary>
+            结果返回URL，仅适用于立即返回处理结果的接口。支付宝处理完请求后，立即将处理结果返回给这个URL
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Agent">
+            <summary>
+            如果一些交易网站的交易，有一定的“代理”所属关系，代理商可以在交易中传递该参数，来表明代理的身份。这里传送的值，请使用代理商所属支付宝账户的PartnerID
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods._Input_Charset">
+            <summary>
+            合作伙伴系统与支付宝系统之间交互信息时使用的编码字符集,默认为Utf－8
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Sign">
+            <summary>
+            在此输入交易安全校验码（key），不同于支付宝文档的Sign
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Sign_Type">
+            <summary>
+            加密参数的算法如Md5（只实现了Md5），DSA
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Subject">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Body">
+            <summary>
+            商品描述
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Out_Trade_No">
+            <summary>
+            外部交易号,要保证唯一，推荐GUID
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Price">
+            <summary>
+            商品单价，保留两位小数，必须为0.01在100000000.00之间,如果小数超过两位会四舍五入
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Quantity">
+            <summary>
+            购买数量，不超过六位的正整数
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Show_Url">
+            <summary>
+            商品展示网址
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Seller_Email">
+            <summary>
+            卖家在支付宝的注册Email
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Seller_Id">
+            <summary>
+            卖家在支付宝的注册ID
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Buyer_Email">
+            <summary>
+            买家在支付宝的注册Email
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Buyer_Id">
+            <summary>
+            买家在支付宝的注册ID，
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.DigitalGoods.Buyer_Msg">
+            <summary>
+            买家留言
+            </summary>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.StandardGoods.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Decimal,System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Decimal},System.String,System.String)">
+            <summary>
+            所有参数都是必须的，但是sellerEmail和sellerId可以任意填写其一,另一个设置位Null
+            </summary>
+            <param name="service">trade_create_by_buyer</param>
+            <param name="partner">合作伙伴在支付宝的用户ID</param>
+            <param name="sign">支付宝的Key</param>
+            <param name="signType"></param>
+            <param name="subject">商品名称</param>
+            <param name="outTradeNo">外部交易号</param>
+            <param name="price"></param>
+            <param name="quantity"></param>
+            <param name="sellerEmail">和sellerId任意填写一个</param>
+            <param name="sellerId"></param>
+            <param name="logisticsType"></param>
+            <param name="logisticsType"></param>
+            <param name="logisticsPayment"></param>
+            <param name="paymentType">1-6,不能为空</param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.StandardGoods.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Decimal,System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Decimal},System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="service"></param>
+            <param name="partner"></param>
+            <param name="notifyUrl"></param>
+            <param name="returnUrl"></param>
+            <param name="agent"></param>
+            <param name="inputCharset"></param>
+            <param name="sign"></param>
+            <param name="signType"></param>
+            <param name="subject"></param>
+            <param name="body"></param>
+            <param name="outTradeNo"></param>
+            <param name="price"></param>
+            <param name="quantity"></param>
+            <param name="showUrl"></param>
+            <param name="sellerEmail"></param>
+            <param name="sellerId"></param>
+            <param name="buyerEmail"></param>
+            <param name="buyerId"></param>
+            <param name="buyerMsg"></param>
+            <param name="logisticsType"></param>
+            <param name="logisticsFee"></param>
+            <param name="logisticsPayment"></param>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.NotifyEventArgs">
+            <summary>
+            交易通知信息，包含了虚拟和实物两种信息
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.NotifyEventArgs.Notify_Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.LogisticsPayment">
+            <summary>
+            物流支付类型
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsPayment.SELLER_PAY">
+            <summary>
+            卖家支付,由卖家支付物流费用（费用不用计算到总价内）
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsPayment.BUYER_PAY">
+            <summary>
+            买家支付,买家支付物流费用（费用需要计算到总价内）
+            </summary>
+        </member>
+        <member name="T:Log4net">
+            <summary>
+            配置Log4net
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.Result.CommonAliPayBaseException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.RefundStatus">
+            <summary>
+            退款状态枚举
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.WAIT_SELLER_AGREE">
+            <summary>
+            买家申请退款
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.REFUND_SUCCESS">
+            <summary>
+            退款成功
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.REFUND_CLOSED">
+            <summary>
+            退款关闭
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.AliPay">
+            <summary>
+            支付宝接口
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.AliPay.eventList">
+            <summary>
+            事件委托列表
+            </summary>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.OnWaitSellerSendGoods(NoName.NetShop.CommonAliPay.NotifyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.OnWaitBuyerPay(NoName.NetShop.CommonAliPay.NotifyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.OnWaitSysConfirmPay(NoName.NetShop.CommonAliPay.NotifyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.OnWaitSellerConfirmTrade(NoName.NetShop.CommonAliPay.NotifyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.OnWaitBuyerConfirmGoods(NoName.NetShop.CommonAliPay.NotifyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.OnWaitSysPaySeller(NoName.NetShop.CommonAliPay.NotifyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.OnTradeFinished(NoName.NetShop.CommonAliPay.NotifyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.OnTradeClosed(NoName.NetShop.CommonAliPay.NotifyEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.CreateDigitalTrade(System.String,NoName.NetShop.CommonAliPay.DigitalGoods,System.Web.UI.Page)">
+            <summary>
+            创建虚拟交易
+            </summary>
+            <param name="gatewayUrl">提交支付宝的地址</param>
+            <param name="digitalGoods">交易参数</param>
+            <param name="page">Page对象</param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.CreateStandardTrade(System.String,NoName.NetShop.CommonAliPay.StandardGoods,System.Web.UI.Page)">
+            <summary>
+            创建标准交易，包含虚拟交易
+            </summary>
+            <param name="gatewayUrl">提交支付宝的地址</param>
+            <param name="standardGoods">交易参数</param>
+            <param name="page">Page对象</param>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.CommonProcessNotify(System.Web.UI.Page,System.String,System.String,NoName.NetShop.CommonAliPay.Verify,System.String)">
+            <summary>
+            处理返回的Notify
+            </summary>
+            <param name="page">传如Page对象</param>
+            <param name="verifyUrl">验证的地址，如：https://www.alipay.com/cooperate/gateway.do</param>
+            <param name="key">账户的交易安全校验码（key）</param>
+            <param name="verify">verify对象</param>
+            <param name="encode">编码</param>
+            <exception cref="T:NoName.NetShop.CommonAliPay.Result.SignVerifyFailedException">支付宝通知签名验证失败</exception>
+            <exception cref="T:NoName.NetShop.CommonAliPay.Result.CommonAliPayBaseException">支付宝通知验证失败</exception>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.ProcessNotify(System.Web.UI.Page,System.String,System.String,NoName.NetShop.CommonAliPay.Verify,System.String)">
+            <summary>
+            处理返回的Notify
+            </summary>
+            <param name="page">传如Page对象</param>
+            <param name="verifyUrl">验证的地址，如：https://www.alipay.com/cooperate/gateway.do</param>
+            <param name="key">账户的交易安全校验码（key）</param>
+            <param name="verify">verify对象</param>
+            <param name="encode">编码</param>
+            <exception cref="T:NoName.NetShop.CommonAliPay.Result.SignVerifyFailedException">支付宝通知签名验证失败</exception>
+            <exception cref="T:NoName.NetShop.CommonAliPay.Result.CommonAliPayBaseException">支付宝通知验证失败</exception>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.VerifyNotify(System.String,NoName.NetShop.CommonAliPay.Verify)">
+            <summary>
+            通知验证接口
+            </summary>
+            <param name="verifyUrl"></param>
+            <param name="verify">验证参数</param>
+            <returns>true，通过验证</returns>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.ParseNotify(System.Collections.Specialized.NameValueCollection,System.Object)">
+            <summary>
+             解析Form集合到DigitalNotifyEventArgs,值类型会被初始化为null
+            </summary>
+            <param name="nv"></param>
+            <param name="obj"></param>
+            <remarks>为防止值类型的默认值污染参数集合,用了nullable范型</remarks>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.Md5SignParam(NoName.NetShop.CommonAliPay.DigitalGoods)">
+            <summary>
+            获取Md5sign后的参数
+            </summary>
+            <param name="digitalGoods"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.GetParam(System.Object)">
+            <summary>
+            获取排序后的参数
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.GetUrlParam(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean)">
+            <summary>
+            获取Url的参数
+            </summary>
+            <param name="sortedList"></param>
+            <param name="isEncode">参数是否经过编码,被签名的参数不用编码,Post的参数要编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.GetMd5Sign(System.String,System.String)">
+            <summary>
+            获取字符串的MD5签名
+            </summary>
+            <param name="encode">签名时用的编码</param>
+            <param name="param">要签名的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.AliPay.PostData(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="data"></param>
+            <param name="encode"></param>
+            <returns></returns>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.ModifyTradeBaseTotalFee">
+            <summary>
+            议价
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.WaitBuyerPay">
+            <summary>
+            等待买家付款
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.WaitSellerConfirmTrade">
+            <summary>
+            交易已创建，等待卖家确认
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.WaitSysConfirmPay">
+            <summary>
+            确认买家付款中，暂勿发货
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.WaitSellerSendGoods">
+            <summary>
+            支付宝收到买家付款，请卖家发货
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.WaitBuyerConfirmGoods">
+            <summary>
+            确认买家付款中，暂勿发货
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.WaitSysPaySeller">
+            <summary>
+            买家确认收到货，等待支付宝打款给卖家
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.TradeFinished">
+            <summary>
+            交易成功结束
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.TradeClosed">
+            <summary>
+            交易中途关闭（未完成）
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.WaitSellerAgree">
+            <summary>
+            买家申请退款
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.RefundSuccess">
+            <summary>
+            退款成功
+            </summary>
+        </member>
+        <member name="E:NoName.NetShop.CommonAliPay.AliPay.RefundClose">
+            <summary>
+            退款关闭
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.AliPay.ProcessNotifyEventHandler">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.TradeStatus">
+            <summary>
+            订单交易状态枚举
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_BUYER_PAY">
+            <summary>
+            交易创建
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_SELLER_SEND_GOODS">
+            <summary>
+            买家付款成功
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_BUYER_CONFIRM_GOODS">
+            <summary>
+            卖家发货成功
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.TRADE_FINISHED">
+            <summary>
+            交易成功结束
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.TRADE_CLOSED">
+            <summary>
+            交易关闭
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.MODIFY_TRADEBASE_TOTALFEE">
+            <summary>
+            修改交易价格
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.PayServiceType.create_direct_pay_by_user">
+            <summary>
+            即时到账交易
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.PayServiceType.create_partner_trade_by_buyer">
+            <summary>
+            担保交易
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.PayServiceType.trade_create_by_buyer">
+            <summary>
+            标准双接口
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.PayServiceType.notify_verify">
+            <summary>
+            通知验证
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.Verify">
+            <summary>
+            Verify object for NHibernate mapped table 'Verify'.
+            </summary>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.Verify.#ctor(System.String,System.String,System.String)">
+            <summary>
+            验证接口参数
+            </summary>
+            <param name="service">接口名称notify_verify</param>
+            <param name="partner">合作伙伴在支付宝的用户ID</param>
+            <param name="notifyId">支付宝发送的通知ID</param>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.POST">
+            <summary>
+            平邮
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.EMS">
+            <summary>
+            EMS
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.EXPRESS">
+            <summary>
+            其他快递
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.LogisticsStatus">
+            <summary>
+            支付宝物流状态
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.INITIAL_STATUS">
+            <summary>
+            初始状态
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_LOGISTICS_FETCH_GOODS">
+            <summary>
+            等待物流取货
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_LOGISTICS_SEND_GOODS">
+            <summary>
+            等待物流发货
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.LOGISTICS_SENDING">
+            <summary>
+            物流发货中
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_RECEIVER_CONFIRM_GOODS">
+            <summary>
+            等待收货人确讣收货
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.GOODS_RECEIVED">
+            <summary>
+            货物收到了
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.LOGISTICS_FAILURE">
+            <summary>
+            物流失败
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.ErrorStatus">
+            <summary>
+            错误类型
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_SIGN">
+            <summary>
+            签名验证出错
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_ARGUMENT">
+            <summary>
+            参数不正确
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.HASH_NO_PRIVILEGE">
+            <summary>
+            没有权限访问该服务
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_SERVICE">
+            <summary>
+            Service参数不正确
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_PARTNER">
+            <summary>
+            商户ID不正确
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.HAS_NO_PUBLICKEY">
+            <summary>
+            没有上传公钥
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.USER_NOT_EXIST">
+            <summary>
+            会员不存在
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.OUT_TRADE_NO_EXIST">
+            <summary>
+            外部交易号已经存在
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.TRADE_NOT_EXIST">
+            <summary>
+            交易不存在
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_PAYMENT_TYPE">
+            <summary>
+            无效支付类型
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.BUYER_NOT_EXIST">
+            <summary>
+            买家不存在
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.SELLER_NOT_EXIST">
+            <summary>
+            卖家不存在
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.BUYER_SELLER_EQUAL">
+            <summary>
+            买家、卖家是同一帐户
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_SIGN_TYPE">
+            <summary>
+            签名类型不正确
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.COMMISION_ID_NOT_EXIST">
+            <summary>
+            佣金收取帐户不存在
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.COMMISION_SELLER_DUPLICATE">
+            <summary>
+            收取佣金帐户和卖家是同一帐户
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.COMMISION_FEE_OUT_OF_RANGE">
+            <summary>
+            佣金金额超出范围
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_LOGISTICS_FORMAT">
+            <summary>
+            无效物流格式
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.TOTAL_FEE_LESSEQUAL_ZERO">
+            <summary>
+            交易总金额小于等于0
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.TOTAL_FEE_OUT_OF_RANGE">
+            <summary>
+            交易总金额超出范围
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_FEE_PARAM">
+            <summary>
+            非法交易金额格式
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.DONATE_GREATER_THAN_MAX">
+            <summary>
+            小额捐赠总金额超出最大值限制
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.DIRECT_PAY_AMOUNT_OUT_OF_RANGE">
+            <summary>
+            快速付款交易总金额超出最大值限制
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.DIGITAL_FEE_GREATER_THAN_MAX">
+            <summary>
+            虚拟物品交易总金额超出最大值限制
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.SELF_TIMEOUT_NOT_SUPPORT">
+            <summary>
+            不支持自定义超时
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.COMMISION_NOT_SUPPORT">
+            <summary>
+            不支持佣金
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.VIRTUAL_NOT_SUPPORT">
+            <summary>
+            不支持虚拟发货方式
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_CHARSET">
+            <summary>
+            字符集不合法
+            </summary>
+        </member>
+    </members>
+</doc>
