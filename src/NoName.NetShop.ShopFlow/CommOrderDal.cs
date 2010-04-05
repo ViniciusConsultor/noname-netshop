@@ -17,7 +17,7 @@ namespace NoName.NetShop.ShopFlow
         {
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee from spOrder ");
+            strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,payorderId,IsTotalFeeAdjust  from spOrder ");
             strSql.Append(" where OrderId=@OrderId ");
 
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
@@ -40,7 +40,7 @@ namespace NoName.NetShop.ShopFlow
         {
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee from spOrder ");
+            strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,payorderId,IsTotalFeeAdjust from spOrder ");
             strSql.Append(" where OrderId=@OrderId and userId=@userId");
 
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
@@ -76,18 +76,44 @@ namespace NoName.NetShop.ShopFlow
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             StringBuilder strSql = new StringBuilder();
 
-            strSql.Append("update spOrder set changetime=getdate(),paystatus=@pstatus from spOrder ");
+            strSql.Append("update spOrder set changetime=getdate(),paystatus=@pstatus from spOrder");
             if (pstatus == PayStatus.支付成功)
             {
                 strSql.Append("update spOrder set changetime=getdate(),paytime=getdate(),paystatus=@pstatus from spOrder ");
             }
-            strSql.Append(" where OrderId=@OrderId ");
+            strSql.Append(" where OrderId=@OrderId and paystatus!=@pstatus");
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
             db.AddInParameter(dbCommand, "OrderId", DbType.AnsiString, orderId);
             db.AddInParameter(dbCommand, "pstatus", DbType.Int16, (int)pstatus);
             return db.ExecuteNonQuery(dbCommand) > 0;
         }
- 
+
+        internal bool SetPayOrderId(string orderId, string payOrderId)
+        {
+            Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
+            StringBuilder strSql = new StringBuilder();
+
+            strSql.Append("update spOrder set payorderId=@payOrderId,changeTime=getdate() from spOrder ");
+            strSql.Append(" where OrderId=@OrderId");
+
+            DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
+            db.AddInParameter(dbCommand, "OrderId", DbType.AnsiString, orderId);
+            db.AddInParameter(dbCommand, "payOrderId", DbType.String, payOrderId);
+            return db.ExecuteNonQuery(dbCommand) > 0;
+        }
+
+        internal bool ModifyTotalFee(string orderId, decimal totalFee)
+        {
+            Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update spOrder set paysum=@paysum,IsTotalFeeAdjust=1,changeTime=getdate() from spOrder ");
+            strSql.Append(" where OrderId=@OrderId");
+            DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
+            db.AddInParameter(dbCommand, "OrderId", DbType.AnsiString, orderId);
+            db.AddInParameter(dbCommand, "paysum", DbType.Single, totalFee);
+            return db.ExecuteNonQuery(dbCommand) > 0;
+        }
+
         /// <summary>
         /// 对象实体绑定数据
         /// </summary>
@@ -175,10 +201,14 @@ namespace NoName.NetShop.ShopFlow
             model.UserNotes = dataReader["UserNotes"].ToString();
             model.RecieverCountry = dataReader["RecieverCountry"].ToString();
             model.RecieverCounty = dataReader["RecieverCounty"].ToString();
+            model.PayorderId = dataReader["payorderId"].ToString();
+            ojb = dataReader["IsTotalFeeAdjust"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.IsTotalFeeAdjust = (bool)ojb;
+            }
             return model;
         }
-
- 
 
 
     }
