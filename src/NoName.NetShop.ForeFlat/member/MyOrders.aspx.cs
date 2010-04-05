@@ -50,7 +50,7 @@ namespace NoName.NetShop.ForeFlat.member
             rpOrders.DataBind();
             panNoResult.Visible = ds.Tables[0].Rows.Count == 0;
 
-            pageNav.CurrentPageIndex = SearPageInfo.PageIndex - 1;
+            pageNav.CurrentPageIndex = SearPageInfo.PageIndex;
             pageNav.PageSize = SearPageInfo.PageSize;
             pageNav.RecordCount = SearPageInfo.TotalItem;
 
@@ -107,7 +107,7 @@ namespace NoName.NetShop.ForeFlat.member
 
         protected void pageNav_ChangePageIndex(object src, NoName.Utility.PageChangedEventArgs e)
         {
-            SearPageInfo.PageIndex = e.NewPageIndex + 1;
+            SearPageInfo.PageIndex = e.NewPageIndex;
             BindOrders();
         }
 
