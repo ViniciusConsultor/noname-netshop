@@ -50,9 +50,7 @@ namespace NoName.NetShop.SearchIndex
             }
             else
             {
-
-
-                DataProcessor.Process("product");
+                DataProcessor.Process("news");
                 Console.Read();
             }
 
