@@ -47,7 +47,7 @@ namespace NoName.NetShop.Product.Facade
 
                 ih.LoadImage(OriginalFile.InputStream);
 
-                for (int i = 2; i <= 0; i--)
+                for (int i = 2; i >= 0; i--)
                 {
                     if (config.ImageTypes[i].Width > 0 && config.ImageTypes[i].Height > 0)
                     {
