@@ -88,6 +88,7 @@ namespace NoName.NetShop.CMS.Model
         HomePage=1,
         ChannelPage=2,
         MagicWorld=3,
-        SalesPage=4
+        SalesPage=4,
+        News=5,
     }
 }
