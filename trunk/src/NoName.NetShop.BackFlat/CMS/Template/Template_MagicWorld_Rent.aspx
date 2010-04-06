@@ -10,18 +10,16 @@
     <link type="text/css" rel="stylesheet" href="/css/common.css" />
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
     <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
-    <script type="text/javascript" src="js/DingdingJsLib.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/mini-Rainy.js"></script>
+    <script type="text/javascript" src="/js/DingdingJsLib.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/mini-Rainy.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="wrapper">    
             <dd:CMSTag ID="cmsTag1" Description="鼎鼎标准头标签" TagID="2" runat="server" ></dd:CMSTag>
             <!--Position Begin-->
-            <div class="currentPosition">
-                <dd:CMSTag ID="cmsTag3" Description="导航条" TagID="1" runat="server" />
-            </div>
+            <dd:CMSTag ID="cmsTag3" Description="导航条" TagID="1" runat="server" />
             <!--Position End-->
             
             <!--MainBody Begin-->
@@ -39,8 +37,7 @@
                 <div class="row newline">
                     <dd:CMSTag ID="cmsTag9" Description="租赁分类3" TagID="1" runat="server" />
                     <dd:CMSTag ID="cmsTag10" Description="租赁分类4" TagID="1" runat="server" />
-                </div>
-                
+                </div>                
             </div>
             <!--MainBody End-->
 
