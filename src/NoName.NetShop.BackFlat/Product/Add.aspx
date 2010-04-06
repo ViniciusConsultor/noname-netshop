@@ -240,7 +240,7 @@
             </tr>
             <tr>
                 <td>重量<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtWeight" runat="server" Width="100"></asp:TextBox>kg<span type="inform" class="red"></span></td>
+                <td><asp:TextBox id="txtWeight" runat="server" Width="100"></asp:TextBox>g<span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>状态<span class="red">*</span>：</td>
