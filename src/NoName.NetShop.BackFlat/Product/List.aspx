@@ -207,9 +207,12 @@
                     <asp:BoundField DataField="pageview" HeaderText="浏览量" />
                     <asp:TemplateField HeaderText="热卖">
                         <ItemTemplate>
-                            <asp:ImageButton runat="server" ID="ButtonDesetHotSale" ImageUrl="/images/uncheck.gif" Visible='<%# Convert.ToBoolean(Eval("ishotsale")) %>' CommandArgument='<%# Eval("productid") %>' CommandName="ds" />
-                            <asp:ImageButton runat="server" ID="ButtonSetHotSale" ImageUrl="/images/check.gif" Visible='<%# !Convert.ToBoolean(Eval("ishotsale")) %>' CommandArgument='<%# Eval("productid") %>' CommandName="ss" />
-                          
+                            <asp:LinkButton runat="server" ID="ButtonSetHotSale" Visible='<%# !Convert.ToBoolean(Eval("ishotsale")) %>' Text="设为热卖" CommandArgument='<%# Eval("productid") %>' CommandName="s1" />
+                            <asp:LinkButton runat="server" ID="ButtonDesetHotSale" Visible='<%# Convert.ToBoolean(Eval("ishotsale")) %>' Text="取消热卖" CommandArgument='<%# Eval("productid") %>' CommandName="d1" />
+                            <asp:LinkButton runat="server" ID="ButtonSetReduce" Visible='<%# !Convert.ToBoolean(Eval("isreduce")) %>' Text="设为直降" CommandArgument='<%# Eval("productid") %>' CommandName="s2" />
+                            <asp:LinkButton runat="server" ID="ButtonDesetReduce" Visible='<%# Convert.ToBoolean(Eval("isreduce")) %>' Text="取消直降" CommandArgument='<%# Eval("productid") %>' CommandName="d2" />
+                            <asp:LinkButton runat="server" ID="ButtonSetRecommend" Visible='<%# !Convert.ToBoolean(Eval("isrecommend")) %>' Text="设为推荐" CommandArgument='<%# Eval("productid") %>' CommandName="s3" />
+                            <asp:LinkButton runat="server" ID="ButtonDesetRecommend" Visible='<%# Convert.ToBoolean(Eval("isrecommend")) %>' Text="取消推荐" CommandArgument='<%# Eval("productid") %>' CommandName="d4" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
