@@ -31,7 +31,7 @@ namespace NoName.NetShop.ForeFlat.Solution
         {
             if (!IsPostBack)
             {
-                if (!String.IsNullOrEmpty(Request.QueryString["ids"])) ScenceID = Convert.ToInt32(Request.QueryString["ids"]);
+                if (!String.IsNullOrEmpty(Request.QueryString["scenceid"])) ScenceID = Convert.ToInt32(Request.QueryString["scenceid"]);
 
                 if (ScenceID!=-1)
                 {
