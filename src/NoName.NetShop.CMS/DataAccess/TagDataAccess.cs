@@ -28,7 +28,7 @@ namespace NoName.NetShop.CMS.DataAccess
 
         public static void Update(TagModel tag)
         {
-            DbCommand Command = db.GetStoredProcCommand("UP_cmsTag_Add");
+            DbCommand Command = db.GetStoredProcCommand("UP_cmsTag_Update");
 
             db.AddInParameter(Command, "@tagid", DbType.Int32, tag.TagID);
             db.AddInParameter(Command, "@tagname", DbType.String, tag.TagName);
