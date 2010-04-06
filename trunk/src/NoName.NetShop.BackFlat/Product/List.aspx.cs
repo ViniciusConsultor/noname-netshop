@@ -60,6 +60,8 @@ namespace NoName.NetShop.BackFlat.Product
             dt.Columns.Add("endcategoryid");
             dt.Columns.Add("endcategoryname");
             dt.Columns.Add("ishotsale");
+            dt.Columns.Add("isreduce");
+            dt.Columns.Add("isrecommend");
 
             foreach (DataRow row in dt.Rows)
             {
@@ -73,7 +75,10 @@ namespace NoName.NetShop.BackFlat.Product
                 row["secondarycategoryname"] = CategoryNamePath.Split('/')[1];
                 row["endcategoryname"] = CategoryNamePath.Split('/')[CategoryNamePath.Split('/').Length-2];
 
-                row["ishotsale"] = new SalesProductModelBll().Exists(Convert.ToInt32(row["productid"]));
+                SalesProductModelBll salesBll = new SalesProductModelBll();
+                row["ishotsale"] = salesBll.Exists(Convert.ToInt32(row["productid"]),SalesProductType.热销商品);
+                row["isreduce"] = salesBll.Exists(Convert.ToInt32(row["productid"]), SalesProductType.直降特卖);
+                row["isrecommend"] = salesBll.Exists(Convert.ToInt32(row["productid"]), SalesProductType.鼎鼎推荐);
             }
 
             GridView1.DataSource = dt;
@@ -118,16 +123,40 @@ namespace NoName.NetShop.BackFlat.Product
                 MessageBox.Show(this, "删除成功"); 
                 BindData(AspNetPager.CurrentPageIndex);
             }
-            if (e.CommandName.ToLower() == "ss")
+            if (e.CommandName.ToLower() == "s1")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
-                new SalesProductModelBll().SetSalesProduct(ProductID);
+                new SalesProductModelBll().SetSalesProduct(ProductID, SalesProductType.热销商品);
                 BindData(AspNetPager.CurrentPageIndex);
             }
-            if (e.CommandName.ToLower() == "ds")
+            if (e.CommandName.ToLower() == "d1")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
-                new SalesProductModelBll().DesetSalesProduct(ProductID);
+                new SalesProductModelBll().DesetSalesProduct(ProductID, SalesProductType.热销商品);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "s2")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                new SalesProductModelBll().SetSalesProduct(ProductID, SalesProductType.直降特卖);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "d2")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                new SalesProductModelBll().DesetSalesProduct(ProductID, SalesProductType.直降特卖);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "s3")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                new SalesProductModelBll().SetSalesProduct(ProductID, SalesProductType.鼎鼎推荐);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName.ToLower() == "d3")
+            {
+                int ProductID = Convert.ToInt32(e.CommandArgument);
+                new SalesProductModelBll().DesetSalesProduct(ProductID, SalesProductType.鼎鼎推荐);
                 BindData(AspNetPager.CurrentPageIndex);
             }
         }
