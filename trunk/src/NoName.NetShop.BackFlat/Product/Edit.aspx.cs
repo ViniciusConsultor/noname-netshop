@@ -103,7 +103,7 @@ namespace NoName.NetShop.BackFlat.Product
                 txtScore.Text = product.Score.ToString();
                 txtMerchantPrice.Text = product.MerchantPrice.ToString();
                 txtReducePrice.Text = product.ReducePrice.ToString();
-                txtStock.Text = product.Stock.ToString();
+
                 drpStatus.SelectedValue = product.Status.ToString();
                 txtKeywords.Text = product.Keywords;
                 TextBox_Brief.Text = product.Brief;
@@ -115,6 +115,9 @@ namespace NoName.NetShop.BackFlat.Product
                 TextBox_OfferSet.Text = product.OfferSet;
 
                 txtWeight.Text = product.Weight.ToString("0.00");
+
+                SetStockTip(product.StockTip);
+                txtRelateProduct.Text = product.RelateProducts;
 
                 if (CategoryID != -1)
                 {
@@ -318,10 +321,6 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 strErr += "商品积分输入有误！\\n";
             }
-            if (!PageValidate.IsNumber(txtStock.Text))
-            {
-                strErr += "商品库存输入有误！\\n";
-            }
             if (!PageValidate.IsDecimal(txtWeight.Text))
             {
                 strErr += "商品重量输入有误！\\n";
@@ -353,7 +352,6 @@ namespace NoName.NetShop.BackFlat.Product
             product.TradePrice = Convert.ToDecimal(txtTradePrice.Text);
             product.MerchantPrice = Convert.ToDecimal(txtMerchantPrice.Text);
             product.ReducePrice = Convert.ToDecimal(txtReducePrice.Text);
-            product.Stock = Convert.ToInt32(txtStock.Text);
             product.Status = Convert.ToInt32(drpStatus.SelectedValue);
             product.Keywords = txtKeywords.Text;
             product.Brief = TextBox_Brief.Text;
@@ -365,6 +363,9 @@ namespace NoName.NetShop.BackFlat.Product
             product.AfterSaleService = TextBox_Service.Text;
 
             product.Weight = Convert.ToDecimal(txtWeight.Text);
+
+            product.StockTip = GetStockTip();
+            product.RelateProducts = txtRelateProduct.Text.Replace("，",",");
 
             product.ChangeTime = DateTime.Now;
 
@@ -452,6 +453,42 @@ namespace NoName.NetShop.BackFlat.Product
             foreach (DataRow nrow in InputTable.Rows) newTable.ImportRow(nrow);
 
             return newTable;
+        }
+
+        private string GetStockTip()
+        {
+            string StockTip = String.Empty;
+
+            if (Convert.ToInt32(CheckBoxList_BJ.SelectedValue) == 1) StockTip += "北京有货, ";
+            else StockTip += "北京无货, ";
+
+            if (Convert.ToInt32(CheckBoxList_GZ.SelectedValue) == 1) StockTip += "广州有货, ";
+            else StockTip += "广州无货, ";
+
+            if (Convert.ToInt32(CheckBoxList_HH.SelectedValue) == 1) StockTip += "呼和浩特有货, ";
+            else StockTip += "呼和浩特无货, ";
+
+            if (Convert.ToInt32(CheckBoxList_SH.SelectedValue) == 1) StockTip += "上海有货, ";
+            else StockTip += "上海无货, ";
+
+            return StockTip.Substring(0, StockTip.Length - 1);
+        }
+
+        private void SetStockTip(string StockTip)
+        {
+            string[] TipArray = StockTip.Split(',');
+
+            foreach (string Tip in TipArray)
+            {
+                if (Tip.Contains("北京"))
+                    CheckBoxList_BJ.SelectedValue = Tip.Replace("北京", "") == "有货" ? "1" : "0";
+                else if (Tip.Contains("广州"))
+                    CheckBoxList_GZ.SelectedValue = Tip.Replace("广州", "") == "有货" ? "1" : "0";
+                else if (Tip.Contains("呼和浩特"))
+                    CheckBoxList_HH.SelectedValue = Tip.Replace("呼和浩特", "") == "有货" ? "1" : "0";
+                else if (Tip.Contains("上海"))
+                    CheckBoxList_SH.SelectedValue = Tip.Replace("上海", "") == "有货" ? "1" : "0";
+            } 
         }
 
         /*

@@ -202,10 +202,6 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 strErr += "商品积分输入有误！\\n";
             }
-            if (!PageValidate.IsNumber(txtStock.Text))
-            {
-                strErr += "商品库存输入有误！\\n";
-            }
             if (!PageValidate.IsDecimal(txtWeight.Text))
             {
                 strErr += "商品重量输入有误！\\n";
@@ -271,7 +267,7 @@ namespace NoName.NetShop.BackFlat.Product
                 product.Score = 0;
                 //product.SortValue = "";
                 product.Status = Convert.ToInt32(drpStatus.SelectedValue);
-                product.Stock = Convert.ToInt32(txtStock.Text);
+                product.Stock = int.MaxValue;
 
                 product.Specifications = TextBox_Specification.Text;
                 product.PackingList = TextBox_Packing.Text;
@@ -279,6 +275,9 @@ namespace NoName.NetShop.BackFlat.Product
                 product.OfferSet = TextBox_OfferSet.Text;
 
                 product.Weight = Convert.ToDecimal(txtWeight.Text);
+
+                product.StockTip = GetStockTip();
+                product.RelateProducts = txtRelateProduct.Text.Replace("，",",");
 
                 bll.Add(product);
 
@@ -361,6 +360,25 @@ namespace NoName.NetShop.BackFlat.Product
             foreach (DataRow nrow in InputTable.Rows) newTable.ImportRow(nrow);
 
             return newTable;
+        }
+
+        private string GetStockTip()
+        {
+            string StockTip = String.Empty;
+
+            if (Convert.ToInt32(CheckBoxList_BJ.SelectedValue) == 1) StockTip += "北京有货, ";
+            else StockTip += "北京无货, ";
+
+            if (Convert.ToInt32(CheckBoxList_GZ.SelectedValue) == 1) StockTip += "广州有货, ";
+            else StockTip += "广州无货, ";
+
+            if (Convert.ToInt32(CheckBoxList_HH.SelectedValue) == 1) StockTip += "呼和浩特有货, ";
+            else StockTip += "呼和浩特无货, ";
+
+            if (Convert.ToInt32(CheckBoxList_SH.SelectedValue) == 1) StockTip += "上海有货, ";
+            else StockTip += "上海无货, ";
+
+            return StockTip.Substring(0, StockTip.Length - 1);
         }
 
 
