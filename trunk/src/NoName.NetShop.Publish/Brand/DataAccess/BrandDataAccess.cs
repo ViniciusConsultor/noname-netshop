@@ -60,5 +60,16 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
             RecordCount = Convert.ToInt32(db.ExecuteScalar(CommandType.Text, String.Format(sqlCount, ConditionString)));
             return db.ExecuteDataSet(CommandType.Text, String.Format(sqlData, OrderString, ConditionString, PageLowerBound, PageUpperBount)).Tables[0];
         }
+
+        public DataTable GetBrandHotSaleProductList(int BrandID)
+        {
+            string sql = @" select * from pdsalesproduct ps
+	                            inner join pdproduct p on ps.productid=p.productid
+                            where ps.saletype=1 and ps.siteid=0 and p.brandid={0}";
+            sql = String.Format(sql, BrandID);
+
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
+        }
+
     }
 }
