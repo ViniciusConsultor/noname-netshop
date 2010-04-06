@@ -113,13 +113,40 @@ namespace NoName.NetShop.BackFlat.Product {
         protected global::System.Web.UI.WebControls.TextBox txtScore;
         
         /// <summary>
-        /// txtStock 控件。
+        /// CheckBoxList_BJ 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStock;
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_BJ;
+        
+        /// <summary>
+        /// CheckBoxList_GZ 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_GZ;
+        
+        /// <summary>
+        /// CheckBoxList_HH 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_HH;
+        
+        /// <summary>
+        /// CheckBoxList_SH 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_SH;
         
         /// <summary>
         /// txtWeight 控件。
@@ -147,6 +174,15 @@ namespace NoName.NetShop.BackFlat.Product {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtKeywords;
+        
+        /// <summary>
+        /// txtRelateProduct 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRelateProduct;
         
         /// <summary>
         /// TextBox_Description 控件。

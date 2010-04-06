@@ -121,10 +121,6 @@
         if ($('#<%=txtReducePrice.ClientID %>').val() == '' || !$('#<% =txtReducePrice.ClientID %>').val().isCurrency()) {
             result = false;
             inform($('#<%=txtReducePrice.ClientID %>'), '请输入正确的价格');
-        }
-        if ($('#<%=txtStock.ClientID %>').val() == '' || !$('#<% =txtStock.ClientID %>').val().isInteger()) {
-            result = false;
-            inform($('#<%=txtStock.ClientID %>'), '请输入正确的数字');
         }     
         if ($('#<%=txtScore.ClientID %>').val() == '' || !$('#<% =txtScore.ClientID %>').val().isInteger()) {
             result = false;
@@ -195,8 +191,29 @@
                 <td><asp:TextBox id="txtScore" runat="server" Width="200" Text="0"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
-                <td>库存<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtStock" runat="server" Width="200"></asp:TextBox><span type="inform" class="red"></span></td>
+                <td>库存：</td>
+                <td>
+                    北京：
+                    <asp:CheckBoxList ID="CheckBoxList_BJ" runat="server">
+                        <asp:ListItem Text="有货" Value="1" Selected="True" />
+                        <asp:ListItem Text="无货" Value="0" />
+                    </asp:CheckBoxList>
+                    广州：
+                    <asp:CheckBoxList ID="CheckBoxList_GZ" runat="server">
+                        <asp:ListItem Text="有货" Value="1" Selected="True" />
+                        <asp:ListItem Text="无货" Value="0" />
+                    </asp:CheckBoxList>
+                    呼和浩特：
+                    <asp:CheckBoxList ID="CheckBoxList_HH" runat="server">
+                        <asp:ListItem Text="有货" Value="1" Selected="True" />
+                        <asp:ListItem Text="无货" Value="0" />
+                    </asp:CheckBoxList>
+                    上海：
+                    <asp:CheckBoxList ID="CheckBoxList_SH" runat="server">
+                        <asp:ListItem Text="有货" Value="1" Selected="True" />
+                        <asp:ListItem Text="无货" Value="0" />
+                    </asp:CheckBoxList>
+                </td>
             </tr>
             <tr>
                 <td>重量<span class="red">*</span>：</td>
@@ -209,6 +226,10 @@
             <tr>
                 <td>关键字<span class="red">*</span>：</td>
                 <td><asp:TextBox id="txtKeywords" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span></td>
+            </tr>
+            <tr>
+                <td>关联商品：</td>
+                <td><asp:TextBox id="txtRelateProduct" runat="server" Width="400"></asp:TextBox>(以英文逗号隔开)</td>
             </tr>
             <tr>
                 <td>简介<span class="red">*</span>：</td>

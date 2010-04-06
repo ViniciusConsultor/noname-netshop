@@ -181,7 +181,7 @@ namespace NoName.NetShop.BackFlat.Product
                 if (((CheckBox)GridView1.Rows[i].FindControl("chkItem")).Checked == true)
                 {
                     int ProductID = int.Parse(GridView1.Rows[i].Cells[1].Text);
-                    bll.UpdateStatus(ProductID,ProductStatus.上架);
+                    bll.UpdateStatus(ProductID, ProductStatus.上架);
                 }
             }
             BindData(AspNetPager.CurrentPageIndex);
