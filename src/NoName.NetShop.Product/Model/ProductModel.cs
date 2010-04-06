@@ -36,6 +36,8 @@ namespace NoName.NetShop.Product.Model
         private string _AfterSaleService;
         private string _OfferSet;
         private decimal _Weight;
+        private string _stocktip;
+        private string _relateproducts;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -225,6 +227,16 @@ namespace NoName.NetShop.Product.Model
         {
             get { return _Weight; }
             set { _Weight = value; }
+        }
+        public string StockTip
+        {
+            get { return _stocktip; }
+            set { _stocktip = value; }
+        }
+        public string RelateProducts
+        {
+            get { return _relateproducts; }
+            set { _relateproducts = value; }
         }
 		#endregion Model
 

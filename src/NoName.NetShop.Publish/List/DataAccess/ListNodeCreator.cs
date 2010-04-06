@@ -5,6 +5,7 @@ using NoName.NetShop.Publish.Configuration;
 using System.Xml;
 using System.Data;
 using NoName.Utility;
+using NoName.NetShop.Product.Facade;
 
 namespace NoName.NetShop.Publish.List.DataAccess
 {
@@ -130,8 +131,8 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
                 XmlUtility.AddNewNode(ProductNode, "productid", Convert.ToString(row["productid"]));
                 XmlUtility.AddNewNode(ProductNode, "productname", Convert.ToString(row["productname"]));
-                XmlUtility.AddNewNode(ProductNode, "smallimage", "http://dingding.uncc.cn/upload/productmain/" + Convert.ToString(row["smallimage"]));
-                XmlUtility.AddNewNode(ProductNode, "mediumimage", "http://dingding.uncc.cn/upload/productmain/" + Convert.ToString(row["mediumimage"]));
+                XmlUtility.AddNewNode(ProductNode, "smallimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["smallimage"])));
+                XmlUtility.AddNewNode(ProductNode, "mediumimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["mediumimage"])));
                 XmlUtility.AddNewNode(ProductNode, "tradeprice", Convert.ToString(row["tradeprice"]));
                 XmlUtility.AddNewNode(ProductNode, "merchantprice", Convert.ToString(row["merchantprice"]));
             }

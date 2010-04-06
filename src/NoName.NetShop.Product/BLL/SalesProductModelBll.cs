@@ -37,9 +37,9 @@ namespace NoName.NetShop.Product.BLL
         /// </summary>
         /// <param name="ProductID"></param>
         /// <returns></returns>
-        public bool Exists(int ProductID)
+        public bool Exists(int ProductID,SalesProductType SalesType)
         {
-            return dal.Exists(ProductID,1,0);
+            return dal.Exists(ProductID, (int)SalesType, 0);
         }
 
 		/// <summary>
@@ -135,23 +135,23 @@ namespace NoName.NetShop.Product.BLL
             return dal.GetList(PageSize, PageIndex, strWhere);
         }
 
-        public void SetSalesProduct(int ProductID)
+        public void SetSalesProduct(int ProductID, SalesProductType SalesType)
         {
-            if (!Exists(ProductID, 1, 0))
+            if (!Exists(ProductID, (int)SalesType, 0))
             {
                 Add(new SalesProductModel()
                 {
                     ProductId = ProductID,
-                    SaleType = 1, //hot sales product
-                    SiteId = 0 , //from this site
+                    SaleType = (int)SalesType,
+                    SiteId = 0, //from this site
                     TimeStamp = DateTime.Now
                 });
             }
         }
 
-        public void DesetSalesProduct(int ProductID)
+        public void DesetSalesProduct(int ProductID, SalesProductType SalesType)
         {
-            Delete(ProductID, 1, 0);
+            Delete(ProductID, (int)SalesType, 0);
         }
 
         

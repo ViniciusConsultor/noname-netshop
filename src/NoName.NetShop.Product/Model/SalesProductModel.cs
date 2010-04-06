@@ -46,5 +46,12 @@ namespace NoName.NetShop.Product.Model
 		#endregion Model
 
 	}
+
+    public enum SalesProductType
+    {
+        热销商品 = 1,
+        直降特卖 = 2,
+        鼎鼎推荐 = 3,
+    }
 }
 

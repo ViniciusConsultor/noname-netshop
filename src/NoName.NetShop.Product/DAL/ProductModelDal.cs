@@ -113,6 +113,8 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "aftersaleservice", DbType.AnsiString, model.AfterSaleService);
             dbw.AddInParameter(dbCommand, "offerset", DbType.AnsiString, model.OfferSet);
             dbw.AddInParameter(dbCommand, "weight", DbType.Decimal, model.Weight);
+            dbw.AddInParameter(dbCommand, "StockTip", DbType.AnsiString, model.StockTip);
+            dbw.AddInParameter(dbCommand, "RelateProducts", DbType.Decimal, model.RelateProducts);
 
 			dbw.ExecuteNonQuery(dbCommand);
 		}
@@ -150,6 +152,8 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "aftersaleservice", DbType.AnsiString, model.AfterSaleService);
             dbw.AddInParameter(dbCommand, "offerset", DbType.AnsiString, model.OfferSet);
             dbw.AddInParameter(dbCommand, "weight", DbType.Decimal, model.Weight);
+            dbw.AddInParameter(dbCommand, "StockTip", DbType.AnsiString, model.StockTip);
+            dbw.AddInParameter(dbCommand, "RelateProducts", DbType.Decimal, model.RelateProducts);
 
 
 			dbw.ExecuteNonQuery(dbCommand);
@@ -338,6 +342,8 @@ namespace NoName.NetShop.Product.DAL
             model.AfterSaleService = Convert.ToString(dataReader["AfterSaleService"]);
             model.OfferSet = Convert.ToString(dataReader["OfferSet"]);
             model.Weight = Convert.ToDecimal(dataReader["weight"]);
+            model.StockTip = Convert.ToString(dataReader["stocktip"]);
+            model.RelateProducts = Convert.ToString(dataReader["RelateProducts"]);
 			return model;
 		}
 

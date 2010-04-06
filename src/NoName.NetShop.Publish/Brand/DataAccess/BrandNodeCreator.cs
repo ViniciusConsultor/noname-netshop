@@ -90,11 +90,105 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
                 XmlUtility.AddNewNode(ProductNode, "commentcount", Convert.ToString(13));
             }
 
+            int PageCount = (int)(RecordCount / Config.ListPageSize) + 1;
+
+
+            //分页信息节点
             XmlNode PageInfoNode = XmlUtility.AddNewNode(ProductListNode, "pageinfo", null);
-            XmlUtility.SetAtrributeValue(PageInfoNode, "recordcount", Convert.ToString(RecordCount));
-            XmlUtility.SetAtrributeValue(PageInfoNode, "pageindex", Convert.ToString(Parameter.PageIndex));
+
+            XmlUtility.SetAtrributeValue(PageInfoNode, "recordcount", RecordCount.ToString());
+            XmlUtility.SetAtrributeValue(PageInfoNode, "pagecount", PageCount.ToString());
+            XmlUtility.SetAtrributeValue(PageInfoNode, "currentpage", Parameter.PageIndex.ToString());
+
+
+            if (PageCount <= 11) //小于最大显示数目，全部显示即可
+            {
+                for (int i = 1; i <= PageCount; i++)
+                {
+                    XmlNode PageNode = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                    XmlUtility.SetAtrributeValue(PageNode, "pageindex", i.ToString());
+                    if (i == Parameter.PageIndex) XmlUtility.SetAtrributeValue(PageNode, "isselected", "true");
+                }
+            }
+            else                //大于最大显示数据，需要根据pageindex决定显示页码
+            {
+                XmlNode PageNodeS = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                XmlUtility.SetAtrributeValue(PageNodeS, "pageindex", 1.ToString());
+                if (Parameter.PageIndex == 1) XmlUtility.SetAtrributeValue(PageNodeS, "isselected", "true");
+
+                if (Parameter.PageIndex < 10)
+                {
+                    for (int i = 2; i <= 10; i++)
+                    {
+                        XmlNode PageNode = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                        XmlUtility.SetAtrributeValue(PageNode, "pageindex", i.ToString());
+                        if (i == Parameter.PageIndex) XmlUtility.SetAtrributeValue(PageNode, "isselected", "true");
+                    }
+                    XmlNode PageNodeME = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                    XmlUtility.SetAtrributeValue(PageNodeME, "pageindex", "...");
+                }
+                else
+                {
+                    if (Parameter.PageIndex >= 10 && Parameter.PageIndex <= PageCount - 10)
+                    {
+                        XmlNode PageNodeMS = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                        XmlUtility.SetAtrributeValue(PageNodeMS, "pageindex", "...");
+
+                        for (int i = Parameter.PageIndex - 5; i < Parameter.PageIndex + 5; i++)
+                        {
+                            XmlNode PageNode = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                            XmlUtility.SetAtrributeValue(PageNode, "pageindex", i.ToString());
+                            if (i == Parameter.PageIndex) XmlUtility.SetAtrributeValue(PageNode, "isselected", "true");
+                        }
+
+                        XmlNode PageNodeME = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                        XmlUtility.SetAtrributeValue(PageNodeME, "pageindex", "...");
+                    }
+                    else
+                    {
+                        if (Parameter.PageIndex > PageCount - 10)
+                        {
+                            XmlNode PageNodeMS = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                            XmlUtility.SetAtrributeValue(PageNodeMS, "pageindex", "...");
+
+                            for (int i = PageCount - 10; i <= PageCount - 1; i++)
+                            {
+                                XmlNode PageNode = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                                XmlUtility.SetAtrributeValue(PageNode, "pageindex", i.ToString());
+                                if (i == Parameter.PageIndex) XmlUtility.SetAtrributeValue(PageNode, "isselected", "true");
+                            }
+                        }
+                    }
+                }
+
+                XmlNode PageNodeE = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                XmlUtility.SetAtrributeValue(PageNodeE, "pageindex", PageCount.ToString());
+                if (Parameter.PageIndex == PageCount) XmlUtility.SetAtrributeValue(PageNodeE, "isselected", "true");
+            }
+
+
 
             return ProductListNode;
+        }
+
+        public XmlNode GetSalesProductList()
+        {
+            XmlNode SalesProductListNode = xdoc.CreateElement("salesproducts");
+
+            DataTable dt = dal.GetBrandHotSaleProductList(Parameter.BrandID);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode ProductNode = XmlUtility.AddNewNode(SalesProductListNode, "product", null);
+
+                XmlUtility.AddNewNode(ProductNode, "productid", Convert.ToString(row["productid"]));
+                XmlUtility.AddNewNode(ProductNode, "productname", Convert.ToString(row["productname"]));
+                XmlUtility.AddNewNode(ProductNode, "productimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["smallimage"])));
+                XmlUtility.AddNewNode(ProductNode, "price", Convert.ToDecimal(Convert.ToDecimal(row["MerchantPrice"]) - Convert.ToDecimal(row["reduceprice"])).ToString("00"));
+
+            }
+            
+            return SalesProductListNode;
         }
     }
 }
