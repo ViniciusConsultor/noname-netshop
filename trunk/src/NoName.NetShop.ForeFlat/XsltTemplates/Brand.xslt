@@ -7,6 +7,7 @@
 	<xsl:variable name="CategoryID" select="/brandpage/brandinfo/categoryid"/>
 	<xsl:variable name="OrderType" select="/brandpage/brandinfo/ordertype"/>
 	<xsl:variable name="PageIndex" select="/brandpage/productlist/pageinfo/@pageindex"/>
+	<xsl:variable name="PageCount" select="/brandpage/productlist/pageinfo/@pagecount"/>
 
 	<xsl:template match="/">
 		<html xmlns="http://www.w3.org/1999/xhtml">
@@ -27,6 +28,9 @@
 				<script type="text/javascript" src="/js/mini-Rainy.js">
 					<xsl:text> </xsl:text>
 				</script>
+				<script type="text/javascript" src="/js/publish.brand.js">
+					<xsl:text> </xsl:text>
+				</script>
 			</head>
 			<body>
 				<div class="wrapper">
@@ -37,8 +41,8 @@
 					<!--Position Begin-->
 					<div class="currentPosition">
 						您现在的位置: 
-						<a href="#">首页</a> &gt;&gt; 
-						<a href="#">品牌商城</a> &gt;&gt; 
+						<a href="/">首页</a> &gt;&gt; 
+						<a href="/channel/brand">品牌商城</a> &gt;&gt; 
 						<a href="#">
 							<xsl:value-of select="$BrandName" />
 						</a>
@@ -49,95 +53,10 @@
 					<div class="brandsClass_mainbody newline clearfix">
 						<div class="leftColumn">
 							<xsl:apply-templates select="/brandpage/brandinfo"/>
-							<div class="box2 newline">
-								<ul class="title">
-									<li class="left">
-										<xsl:text> </xsl:text>
-									</li>
-									<li>
-										<span>此类下热销的商品</span>
-									</li>
-									<li class="right">
-										<xsl:text> </xsl:text>
-									</li>
-								</ul>
-								<div class="content noPaddingTop">
-									<ul class="itemList1">
-										<li>
-											<a href="#">
-												<img src="Pictures/thumbnail_s.jpg" />
-												<span class="price">￥188.00</span>
-												<span>伊莱克斯 Electrolux 全自动洗衣机</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="Pictures/thumbnail_s.jpg" />
-												<span class="price">￥188.00</span>
-												<span>伊莱克斯 Electrolux 全自动洗衣机</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="Pictures/thumbnail_s.jpg" />
-												<span class="price">￥188.00</span>
-												<span>伊莱克斯 Electrolux 全自动洗衣机</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="Pictures/thumbnail_s.jpg" />
-												<span class="price">￥188.00</span>
-												<span>伊莱克斯 Electrolux 全自动洗衣机</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-								<ul class="bottom">
-									<li class="left">
-										<xsl:text> </xsl:text>
-									</li>
-									<li class="right">
-										<xsl:text> </xsl:text>
-									</li>
-								</ul>
-							</div>
-
+							<xsl:apply-templates select="/brandpage/salesproducts"/>
 						</div>
 						<div class="rightColumn">
 							<div class="rightColumnContainer">
-								<!--
-								<div class="box7">
-									<div class="title">商品筛选</div>
-									<div class="content">
-										<ul class="productFilter">
-											<li>
-												<span>价格：</span>
-												<a class="on" href="#">全部</a>
-												<a href="#">1-500</a>
-												<a href="#">501-1000</a>
-												<a href="#">1001-1500</a>
-												<a href="#">1501-2000</a>
-												<a href="#">2001-2500</a>
-												<a href="#">2501-3000</a>
-											</li>
-											<li>
-												<span>自动化程度：</span>
-												<a class="on" href="#">全部</a>
-												<a href="#">全自动</a>
-												<a href="#">半自动</a>
-												<a href="#">其它</a>
-											</li>
-											<li>
-												<span>驱动方式：</span>
-												<a class="on" href="#">全部</a>
-												<a href="#">波轮式</a>
-												<a href="#">滚动式</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								-->
 								<div class="box8 newline">
 									<ul class="title">
 										<li class="left">
@@ -288,34 +207,76 @@
 				</xsl:for-each>
 			</ul>
 			<div class="paginationContainer">
-				<div class="line">
-					<xsl:text> </xsl:text>
-				</div>
-				<div class="pagination">
-					<a class="prev" href="#">
+				<xsl:if test="$PageCount > 1">
+					<div class="line">
 						<xsl:text> </xsl:text>
-					</a>
-					<div class="pageNum">
-						<a class="on" href="#">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#">6</a>
-						<a href="#">7</a>
 					</div>
-					<a class="next" href="#">
-						<xsl:text> </xsl:text>
-					</a>
-					<div class="jumpTo">
-						<span>跳转到</span>
-						<input type="text" value="1" />
-						<span>页</span>
+					<div class="pagination">
+						<xsl:if test="$PageIndex != 1">
+							<a type="page" class="prev" style="cursor:pointer">
+								<xsl:text> </xsl:text>
+							</a>
+						</xsl:if>
+						<div class="pageNum">							
+							<xsl:for-each select="pageinfo/page">
+								<a type="page" style="cursor:pointer" page="{pageindex}">
+									<xsl:value-of select="pageindex"/>
+								</a>
+							</xsl:for-each>
+						</div>
+						<xsl:if test="$PageIndex != $PageCount">
+							<a type="page" class="next" style="cursor:pointer">
+								<xsl:text> </xsl:text>
+							</a>
+						</xsl:if>
 					</div>
-				</div>
+				</xsl:if>
 			</div>
 		</div>		
 	</xsl:template>
 	<!-- product list end -->
+
+	<!-- same brand sales product list start -->
+	<xsl:template match="/brandpage/salesproducts">
+		<div class="box2 newline">
+			<ul class="title">
+				<li class="left">
+					<xsl:text> </xsl:text>
+				</li>
+				<li>
+					<span>此品牌下热销的商品</span>
+				</li>
+				<li class="right">
+					<xsl:text> </xsl:text>
+				</li>
+			</ul>
+			<div class="content noPaddingTop">
+				<ul class="itemList1">
+					<xsl:for-each select="product">
+						<li>
+							<a href="/product-{productid}.html">
+								<img src="{productimage}" />
+								<span class="price">
+									￥<xsl:value-of select="price"/>
+								</span>
+								<span>
+									<xsl:value-of select="productname"/>
+								</span>
+							</a>
+						</li>
+					</xsl:for-each>
+				</ul>
+			</div>
+			<ul class="bottom">
+				<li class="left">
+					<xsl:text> </xsl:text>
+				</li>
+				<li class="right">
+					<xsl:text> </xsl:text>
+				</li>
+			</ul>
+		</div>
+	</xsl:template>
+	<!-- same brand sales product list end -->
 
 </xsl:stylesheet>
