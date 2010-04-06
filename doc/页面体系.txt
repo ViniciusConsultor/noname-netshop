@@ -1,0 +1,71 @@
+
+
+          |--购物街----分类页----商品页----[购物流程]
+          |
+          |
+          |
+          |                    |--经典套装--自定义套装商品页面----[购物流程]
+          |                    |
+          |--影音套装---|--推荐套装--推荐套装详情页----[购物流程]
+          |                    |
+          |                    |--按需定制--提交成功
+          |
+          |
+          |
+          |
+          |
+首页 --|--品牌商城----品牌列表----品牌页----品牌分类页----商品页----[购物流程]
+          |                                                                                      |
+          |                                                                                      |---商品问答页面
+          |                                                                                      |---商品评论页面
+          |                                                                                      |---商品话题页面
+          |
+          |
+          |                    |--新闻分类页----新闻页
+          |                    |
+          |                    |
+          |--金榜资讯---|--影音资料馆----新闻分类页----新闻页
+          |                    |
+          |                    |
+          |                    |--影院播报  ----新闻分类页----新闻页
+          |
+          |
+          |
+          |                    
+          |                    |--视听拍卖----拍卖商品列表----拍卖商品详情
+          |                    |
+          |                    |--视听当铺----典当商品列表----典当商品详情
+          |--魔力世界---|
+          |                    |--二手交易----二手商品列表----二手需求商品详情、二手出租商品详情
+          |                    |
+          |                    |--视听租赁----出租商品列表----出租商品详情
+          |
+          |
+          |
+          |
+          |--会员中心----略...(参考会员中心树状列表)
+
+
+CMS发布页面
+
+首页	/
+购物街	/channel/shopping/
+影音套装	/channel/solution/
+品牌商城	/channel/brand/
+金榜资讯	/channel/info/
+魔力世界	/channel/magic/
+影音资料馆	/channel/news/materials.shtml
+影院播报	/channel/news/video.shtml
+视听拍卖	/channel/magicworld/auction.shtml
+视听当铺	/channel/magicworld/pawnshop.shtml
+二手交易	/channel/magicworld/sales.shtml
+视听租赁	/channel/magicworld/deals.shtml
+
+动态发布页面
+
+分类页	/list-{categoryid}.html
+商品页	/product-{productid}.html
+品牌页	  /brand-{brandid}.html
+品牌分类页  /brand-{brandid}-c{categoryid}.html
+新闻分类页  /newslist-{categoryid}.html
+新闻详情页  /news-{newsid}.html
