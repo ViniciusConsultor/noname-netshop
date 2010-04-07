@@ -12,7 +12,7 @@ using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.member.Auction
 {
-    public partial class Edit : System.Web.UI.Page
+    public partial class Edit : AuthBasePage
     {
         public int AuctionID
         {
@@ -30,6 +30,11 @@ namespace NoName.NetShop.ForeFlat.member.Auction
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 if (!String.IsNullOrEmpty(Request.QueryString["productid"])) AuctionID = Convert.ToInt32(Request.QueryString["productid"]);
                 BindData();
             }

@@ -9,7 +9,7 @@ using NoName.NetShop.MagicWorld.BLL;
 
 namespace NoName.NetShop.ForeFlat.member.Auction
 {
-    public partial class List : System.Web.UI.Page
+    public partial class List : AuthBasePage
     {
         private AuctionProductBll bll = new AuctionProductBll();
 
@@ -17,6 +17,11 @@ namespace NoName.NetShop.ForeFlat.member.Auction
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 BindData(1);
             }
         }
@@ -37,10 +42,9 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             BindData(AspNetPager.CurrentPageIndex);
         }
 
-
         private string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
     }
 }

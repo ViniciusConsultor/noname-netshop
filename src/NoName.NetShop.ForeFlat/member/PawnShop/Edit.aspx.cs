@@ -13,7 +13,7 @@ using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.member.PawnShop
 {
-    public partial class Edit : System.Web.UI.Page
+    public partial class Edit : AuthBasePage
     {
         public int PawnProductID
         {
@@ -31,6 +31,11 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 if (!String.IsNullOrEmpty(Request.QueryString["productid"])) PawnProductID = Convert.ToInt32(Request.QueryString["productid"]);
                 BindData();
             }

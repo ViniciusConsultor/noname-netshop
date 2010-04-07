@@ -12,7 +12,7 @@ using NoName.NetShop.MagicWorld.Facade;
 
 namespace NoName.NetShop.ForeFlat.member.Demand
 {
-    public partial class Edit : System.Web.UI.Page
+    public partial class Edit : AuthBasePage
     {
         public int DemandID
         {
@@ -30,6 +30,11 @@ namespace NoName.NetShop.ForeFlat.member.Demand
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 if (!String.IsNullOrEmpty(Request.QueryString["productid"])) DemandID = Convert.ToInt32(Request.QueryString["productid"]);
                 BindData();
             }

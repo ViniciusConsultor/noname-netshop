@@ -9,7 +9,7 @@ using NoName.NetShop.MagicWorld.BLL;
 
 namespace NoName.NetShop.ForeFlat.member.PawnShop
 {
-    public partial class List : System.Web.UI.Page
+    public partial class List : AuthBasePage
     {
         private PawnProductBll bll = new PawnProductBll();
 
@@ -17,6 +17,11 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 BindData(1);
             }
         }
