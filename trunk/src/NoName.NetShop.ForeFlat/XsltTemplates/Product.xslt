@@ -350,10 +350,7 @@
                     <li>
                         <span class="field">库存状态：</span>
                         <span>
-                            <xsl:choose>
-                                <xsl:when test="stock > 0">现货</xsl:when>
-                                <xsl:otherwise><span style="color:red">缺货</span></xsl:otherwise>
-                            </xsl:choose>
+							<xsl:value-of select="stocktip"/>
                         </span>
                     </li>
                     <li class="buttons">
@@ -381,7 +378,8 @@
                 <xsl:value-of select="brief" disable-output-escaping="yes"/>
             </div>
             <div id="specs" style="display:none">
-				<table>
+				<xsl:value-of select="specifications" disable-output-escaping="yes"/>
+				<!--<table>
 					<xsl:for-each select="/productpage/specifications/specification">
 						<tr>
 							<td>
@@ -392,7 +390,7 @@
 							</td>
 						</tr>
 					</xsl:for-each>
-				</table>
+				</table>-->
             </div>
             <div id="packageInclude" style="display:none">
 				<xsl:value-of disable-output-escaping="yes" select="packinglist"/>
