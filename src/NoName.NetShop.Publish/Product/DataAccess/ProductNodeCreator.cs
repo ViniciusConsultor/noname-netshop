@@ -75,6 +75,7 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             XmlUtility.AddNewNode(ProductNode, "actualprice", Convert.ToString(Convert.ToDecimal(row["MerchantPrice"]) - Convert.ToDecimal(row["reduceprice"])));
             XmlUtility.AddNewNode(ProductNode, "tradeprice", Convert.ToString(row["ReducePrice"]));
             XmlUtility.AddNewNode(ProductNode, "stock", Convert.ToString(row["Stock"]));
+            XmlUtility.AddNewNode(ProductNode, "stocktip", Convert.ToString(row["stocktip"]));
             XmlUtility.AddNewNode(ProductNode, "smallimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["SmallImage"])));
             XmlUtility.AddNewNode(ProductNode, "mediumimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["MediumImage"])));
             XmlUtility.AddNewNode(ProductNode, "largeimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["LargeImage"])));
@@ -85,6 +86,7 @@ namespace NoName.NetShop.Publish.Product.DataAccess
             XmlUtility.AddNewNode(ProductNode, "changetime", Convert.ToString(row["ChangeTime"]));
             XmlUtility.AddNewNode(ProductNode, "score", Convert.ToString(row["Score"]));
 
+            XmlUtility.AddCDataNode(ProductNode, "specifications", Convert.ToString(row["specifications"]));
             XmlUtility.AddCDataNode(ProductNode, "packinglist", Convert.ToString(row["packinglist"]));
             XmlUtility.AddCDataNode(ProductNode, "saleservice", Convert.ToString(row["aftersaleservice"]));
             XmlUtility.AddCDataNode(ProductNode, "offerset", Convert.ToString(row["offerset"]));
