@@ -29,18 +29,30 @@ a.linkButton:hover{ color:#FF9900}
 .header ul.navigator{ padding:0; margin:0; float:right; width:630px; padding-top:7px; overflow:hidden;height:40px}
 .header ul.navigator li{ list-style-type:none; float:left; padding-left:10px;}
 .header ul.navigator li a{ display:block; height:40px; background:url(../images/header.gif) no-repeat}
+
 .header ul.navigator li a.home{ background-position:-330px 0; width:90px;}
 .header ul.navigator li a.home:hover{ background-position:-330px -43px;}
+.header ul.navigator li a.homehover{ background-position:-330px -43px;}
+
 .header ul.navigator li a.shopping{ background-position:-440px 0; width:90px;}
 .header ul.navigator li a.shopping:hover{ background-position:-440px -43px;}
+.header ul.navigator li a.shoppinghover{ background-position:-440px -43px;}
+
 .header ul.navigator li a.solution{ background-position:-547px 0; width:100px;}
 .header ul.navigator li a.solution:hover{ background-position:-547px -43px;}
+.header ul.navigator li a.solutionhover{ background-position:-547px -43px;}
+
 .header ul.navigator li a.brands{ background-position:-660px 0; width:100px;}
 .header ul.navigator li a.brands:hover{ background-position:-660px -43px;}
+.header ul.navigator li a.brandshover{ background-position:-660px -43px;}
+
 .header ul.navigator li a.information{ background-position:-774px 0; width:100px;}
 .header ul.navigator li a.information:hover{ background-position:-774px -43px;}
+.header ul.navigator li a.informationhover{ background-position:-774px -43px;}
+
 .header ul.navigator li a.magic{ background-position:-888px 0; width:90px;}
 .header ul.navigator li a.magic:hover{ background-position:-888px -43px;}
+.header ul.navigator li a.magichover{ background-position:-888px -43px;}
 
 .header .panel{ clear:both; width:auto; height:73px; background:url(../images/sprite.gif) 0 -97px repeat-x; margin-top:20px;}
 .header .panel .edge{ background:url(../images/sprite.gif) no-repeat; width:2px; height:73px; overflow:hidden; font-size:0; line-height:0}
