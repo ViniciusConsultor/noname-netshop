@@ -68,6 +68,12 @@ namespace NoName.NetShop.BackFlat.Brand
 
             BrandModel brand = bll.GetModel(BrandID);
 
+            try // delete old brand logo file
+            {
+                File.Delete(CommonImageUpload.GetCommonImagePhysicalPath(brand.BrandLogo));
+            }
+            catch { }
+
             brand.BrandName = txtBrandName.Text;
             brand.Brief = txtBrief.Text;
 

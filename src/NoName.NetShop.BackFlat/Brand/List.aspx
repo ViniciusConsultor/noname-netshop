@@ -15,7 +15,11 @@
         <asp:GridView runat="server" ID="GridView1" CssClass="GridView" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="BrandId" />
-                <asp:BoundField HeaderText="品牌名称" DataField="BrandName" />
+                <asp:TemplateField HeaderText="品牌名称">
+                    <ItemTemplate>
+                        <a href='<%# GetBrandUrl(Convert.ToInt32(Eval("BrandID"))) %>' target="_blank"><%# Eval("BrandName")%></a>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="品牌LOGO">
                     <ItemTemplate>
                         <asp:Image runat="server" ID="imgBrandLogo" ImageUrl='<%# Eval("BrandLogo") %>' />

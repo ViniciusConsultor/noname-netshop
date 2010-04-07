@@ -8,6 +8,7 @@ using NoName.NetShop.Product.BLL;
 using NoName.Utility;
 using System.Data;
 using NoName.NetShop.Common;
+using System.Configuration;
 
 namespace NoName.NetShop.BackFlat.Brand
 {
@@ -108,6 +109,13 @@ namespace NoName.NetShop.BackFlat.Brand
                     ((LinkButton)e.Row.Cells[4].FindControl("deleteBrand")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除：\"" + e.Row.Cells[1].Text.Trim() + "\"吗?')");
                 }
             }
+        }
+
+
+        public string GetBrandUrl(int BrandID)
+        {
+            string BrandUrl = ConfigurationManager.AppSettings["foreFlatRootUrl"] + "brand-{0}.html";
+            return String.Format(BrandUrl,BrandID);
         }
     }
 }

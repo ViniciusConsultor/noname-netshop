@@ -30,7 +30,7 @@
                 <asp:Repeater runat="server" ID="Repeater_BrandList" OnItemCommand="Repeater_BrandList_ItemCommand">
                     <ItemTemplate>
                         <li>
-                            <%# Eval("BrandName") %>
+                            <asp:HyperLink runat="server" ID="Link_BrandPage" NavigateUrl='<%# Eval("brandurl") %>' Text='<%# Eval("BrandName") %>' Target="_blank" />
                             <asp:ImageButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("Brandid") %>' CommandName="d" ImageUrl="/images/window-close.png" OnClientClick="return confirm('确定删除?')" />
                         </li>
                     </ItemTemplate>

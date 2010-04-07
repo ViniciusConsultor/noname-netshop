@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.Product.BLL;
 using System.Data;
 using NoName.Utility;
+using System.Configuration;
 
 namespace NoName.NetShop.BackFlat.Brand.Relation
 {
@@ -43,6 +44,8 @@ namespace NoName.NetShop.BackFlat.Brand.Relation
                 DataTable dt = bll.GetCategoryBrandList(CategoryID);
                 if (dt.Rows.Count > 0)
                 {
+                    dt.Columns.Add("brandurl");
+                    foreach (DataRow row in dt.Rows) row["brandurl"] = String.Format(ConfigurationManager.AppSettings["foreFlatRootUrl"] + "brand-{0}-c{1}.html", row["brandid"], CategoryID);
                     Repeater_BrandList.DataSource = dt;
                     Repeater_BrandList.DataBind();
                     Label_Informer.Text = String.Empty;
