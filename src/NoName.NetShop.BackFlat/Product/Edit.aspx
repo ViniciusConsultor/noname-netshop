@@ -194,25 +194,25 @@
                 <td>库存：</td>
                 <td>
                     北京：
-                    <asp:CheckBoxList ID="CheckBoxList_BJ" runat="server">
+                    <asp:RadioButtonList ID="CheckBoxList_BJ" runat="server">
                         <asp:ListItem Text="有货" Value="1" Selected="True" />
                         <asp:ListItem Text="无货" Value="0" />
-                    </asp:CheckBoxList>
+                    </asp:RadioButtonList>
                     广州：
-                    <asp:CheckBoxList ID="CheckBoxList_GZ" runat="server">
+                    <asp:RadioButtonList ID="CheckBoxList_GZ" runat="server">
                         <asp:ListItem Text="有货" Value="1" Selected="True" />
                         <asp:ListItem Text="无货" Value="0" />
-                    </asp:CheckBoxList>
+                    </asp:RadioButtonList>
                     呼和浩特：
-                    <asp:CheckBoxList ID="CheckBoxList_HH" runat="server">
+                    <asp:RadioButtonList ID="CheckBoxList_HH" runat="server">
                         <asp:ListItem Text="有货" Value="1" Selected="True" />
                         <asp:ListItem Text="无货" Value="0" />
-                    </asp:CheckBoxList>
+                    </asp:RadioButtonList>
                     上海：
-                    <asp:CheckBoxList ID="CheckBoxList_SH" runat="server">
+                    <asp:RadioButtonList ID="CheckBoxList_SH" runat="server">
                         <asp:ListItem Text="有货" Value="1" Selected="True" />
                         <asp:ListItem Text="无货" Value="0" />
-                    </asp:CheckBoxList>
+                    </asp:RadioButtonList>
                 </td>
             </tr>
             <tr>

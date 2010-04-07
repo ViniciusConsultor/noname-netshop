@@ -119,7 +119,7 @@ namespace NoName.NetShop.BackFlat.Product {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_BJ;
+        protected global::System.Web.UI.WebControls.RadioButtonList CheckBoxList_BJ;
         
         /// <summary>
         /// CheckBoxList_GZ 控件。
@@ -128,7 +128,7 @@ namespace NoName.NetShop.BackFlat.Product {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_GZ;
+        protected global::System.Web.UI.WebControls.RadioButtonList CheckBoxList_GZ;
         
         /// <summary>
         /// CheckBoxList_HH 控件。
@@ -137,7 +137,7 @@ namespace NoName.NetShop.BackFlat.Product {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_HH;
+        protected global::System.Web.UI.WebControls.RadioButtonList CheckBoxList_HH;
         
         /// <summary>
         /// CheckBoxList_SH 控件。
@@ -146,7 +146,7 @@ namespace NoName.NetShop.BackFlat.Product {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_SH;
+        protected global::System.Web.UI.WebControls.RadioButtonList CheckBoxList_SH;
         
         /// <summary>
         /// txtWeight 控件。
