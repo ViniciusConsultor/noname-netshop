@@ -13,7 +13,7 @@ using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.member.Secondhand
 {
-    public partial class Add : System.Web.UI.Page
+    public partial class Add : AuthBasePage
     {
         private int CategoryID
         {
@@ -26,6 +26,11 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
                 BindData();
             }
@@ -121,9 +126,10 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             }
         }
 
+
         private string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
     }
 }

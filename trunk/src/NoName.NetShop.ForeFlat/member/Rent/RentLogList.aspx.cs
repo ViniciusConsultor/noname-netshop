@@ -9,13 +9,18 @@ using NoName.Utility;
 
 namespace NoName.NetShop.ForeFlat.member.Rent
 {
-    public partial class RentLogList : Page
+    public partial class RentLogList : AuthBasePage
     {
         private RentLogBll bll = new RentLogBll();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 BindData(1);
             }
         }
@@ -35,9 +40,10 @@ namespace NoName.NetShop.ForeFlat.member.Rent
             BindData(AspNetPager.CurrentPageIndex);
         }
 
+
         private string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
     }
 }

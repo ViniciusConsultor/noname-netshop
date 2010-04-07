@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NoName.NetShop.ForeFlat.member
 {
-    public partial class CateSelect : System.Web.UI.Page
+    public partial class CateSelect : AuthBasePage
     {
         public int IntialisedCategoryID
         {

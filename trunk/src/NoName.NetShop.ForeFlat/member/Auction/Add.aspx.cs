@@ -13,7 +13,7 @@ using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.member.Auction
 {
-    public partial class Add : System.Web.UI.Page
+    public partial class Add : AuthBasePage
     {
         private int CategoryID
         {
@@ -26,6 +26,11 @@ namespace NoName.NetShop.ForeFlat.member.Auction
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
                 BindData();
             }
@@ -97,7 +102,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
                 model.InsertTime = DateTime.Now;
                 model.UpdateTime = DateTime.Now;
 
-                model.UserID = GetUserName();
+                model.UserID = GetUserID();
                 model.TrueName = TextBox_TrueName.Text;
                 model.Phone = TextBox_Phone.Text;
                 model.CellPhone = TextBox_CellPhone.Text;
@@ -117,9 +122,9 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             }
         }
 
-        private string GetUserName()
+        private string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
     }
 }

@@ -12,7 +12,7 @@ using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.member.Secondhand
 {
-    public partial class Edit : System.Web.UI.Page
+    public partial class Edit : AuthBasePage
     {
         public int SecondhandProductID
         {
@@ -30,6 +30,11 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 if (!String.IsNullOrEmpty(Request.QueryString["productid"])) SecondhandProductID = Convert.ToInt32(Request.QueryString["productid"]);
                 BindData();
             }

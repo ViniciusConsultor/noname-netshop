@@ -13,7 +13,7 @@ using NoName.NetShop.MagicWorld.Facade;
 
 namespace NoName.NetShop.ForeFlat.member.Demand
 {
-    public partial class Add : System.Web.UI.Page
+    public partial class Add : AuthBasePage
     {
         private int CategoryID
         {
@@ -26,6 +26,11 @@ namespace NoName.NetShop.ForeFlat.member.Demand
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
                 BindData();
             }
@@ -117,7 +122,7 @@ namespace NoName.NetShop.ForeFlat.member.Demand
 
         private string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
 
 

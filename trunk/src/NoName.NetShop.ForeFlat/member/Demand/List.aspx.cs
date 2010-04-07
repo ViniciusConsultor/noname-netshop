@@ -9,7 +9,7 @@ using NoName.Utility;
 
 namespace NoName.NetShop.ForeFlat.member.Demand
 {
-    public partial class List : System.Web.UI.Page
+    public partial class List : AuthBasePage
     {
         private DemandProductBll bll = new DemandProductBll();
 
@@ -17,6 +17,11 @@ namespace NoName.NetShop.ForeFlat.member.Demand
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 BindData(1);
             }
         }
@@ -37,10 +42,9 @@ namespace NoName.NetShop.ForeFlat.member.Demand
             BindData(AspNetPager.CurrentPageIndex);
         }
 
-
         private string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
     }
 }

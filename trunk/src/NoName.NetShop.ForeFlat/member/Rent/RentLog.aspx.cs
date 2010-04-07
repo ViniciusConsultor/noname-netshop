@@ -7,11 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace NoName.NetShop.ForeFlat.member.Rent
 {
-    public partial class RentLog : System.Web.UI.Page
+    public partial class RentLog : AuthBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (CurrentUser == null)
+            {
+                Response.Redirect("/login.aspx");
+                return;
+            }
         }
     }
 }
