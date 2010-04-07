@@ -59,5 +59,10 @@ namespace NoName.NetShop.Common
             //if (!rooturl.EndsWith("/")) rooturl += "/";
             //return ShortUrl.StartsWith(rooturl) ? ShortUrl : rooturl + ShortUrl;
         }
+
+        public static string GetCommonImagePhysicalPath(string ShopUrl)
+        {
+            return Config.RootPath + (ShopUrl.StartsWith("http://") ? ShopUrl.Replace(Config.UrlPrefix, "").Replace("/", "\\") : ShopUrl.Replace("/", "\\"));
+        }
     }
 }
