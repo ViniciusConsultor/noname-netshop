@@ -75,30 +75,6 @@ namespace NoName.NetShop.Product.BLL
 			return dal.GetModel(BrandId);
 		}
 
-        ///// <summary>
-        ///// 得到一个对象实体，从缓存中。
-        ///// </summary>
-        //public BrandModel GetModelByCache(int BrandId)
-        //{
-			
-        //    string CacheKey = "BrandModelModel-" + BrandId;
-        //    object objModel = LTP.Common.DataCache.GetCache(CacheKey);
-        //    if (objModel == null)
-        //    {
-        //        try
-        //        {
-        //            objModel = dal.GetModel(BrandId);
-        //            if (objModel != null)
-        //            {
-        //                int ModelCache = LTP.Common.ConfigHelper.GetConfigInt("ModelCache");
-        //                LTP.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-        //            }
-        //        }
-        //        catch{}
-        //    }
-        //    return (BrandModel)objModel;
-        //}
-
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
