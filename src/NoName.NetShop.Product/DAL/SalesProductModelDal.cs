@@ -182,6 +182,26 @@ namespace NoName.NetShop.Product.DAL
 		}
 
 
+        public DataTable GetProductList(int PageSize, int PageIndex, SalesProductType SalesType, out int RecordCount)
+        {
+            int PageLowerBound = 0, PageUpperBount = 0;
+            PageLowerBound = (PageIndex - 1) * PageSize;
+            PageUpperBount = PageLowerBound + PageSize;
+
+            string sqlCount = "select count(0) from pdproduct p inner join pdsalesproduct sp on sp.productid = p.productid where saletype={0}";
+            string sqlData = @" select * from 
+                                (
+	                                select row_number() over(order by p.productid desc) as nid,p.*,sp.saletype from pdproduct p 
+	                                inner join pdsalesproduct sp on sp.productid = p.productid
+	                                where saletype={0}
+                                ) as h
+                                where nid>{1} and nid<={2}";
+
+            RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, String.Format(sqlCount, (int)SalesType)));
+            return dbr.ExecuteDataSet(CommandType.Text, String.Format(sqlData, (int)SalesType, PageLowerBound, PageUpperBount)).Tables[0];
+        }
+
+
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>

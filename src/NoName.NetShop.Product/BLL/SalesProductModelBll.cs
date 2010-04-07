@@ -154,6 +154,11 @@ namespace NoName.NetShop.Product.BLL
             Delete(ProductID, (int)SalesType, 0);
         }
 
+        public DataTable GetProductList(int PageSize, int PageIndex, SalesProductType SalesType, out int RecordCount)
+        {
+            return dal.GetProductList(PageSize, PageIndex, SalesType, out RecordCount);
+        }
+
         
 
 

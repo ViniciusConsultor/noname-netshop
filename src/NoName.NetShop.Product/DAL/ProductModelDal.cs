@@ -114,7 +114,7 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "offerset", DbType.AnsiString, model.OfferSet);
             dbw.AddInParameter(dbCommand, "weight", DbType.Decimal, model.Weight);
             dbw.AddInParameter(dbCommand, "StockTip", DbType.AnsiString, model.StockTip);
-            dbw.AddInParameter(dbCommand, "RelateProducts", DbType.Decimal, model.RelateProducts);
+            dbw.AddInParameter(dbCommand, "RelateProducts", DbType.AnsiString, model.RelateProducts);
 
 			dbw.ExecuteNonQuery(dbCommand);
 		}
@@ -153,7 +153,7 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "offerset", DbType.AnsiString, model.OfferSet);
             dbw.AddInParameter(dbCommand, "weight", DbType.Decimal, model.Weight);
             dbw.AddInParameter(dbCommand, "StockTip", DbType.AnsiString, model.StockTip);
-            dbw.AddInParameter(dbCommand, "RelateProducts", DbType.Decimal, model.RelateProducts);
+            dbw.AddInParameter(dbCommand, "RelateProducts", DbType.AnsiString, model.RelateProducts);
 
 
 			dbw.ExecuteNonQuery(dbCommand);
