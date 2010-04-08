@@ -375,8 +375,8 @@ namespace NoName.NetShop.BackFlat.Product
             if (Convert.ToInt32(CheckBoxList_HH.SelectedValue) == 1) StockTip += "呼和浩特有货, ";
             else StockTip += "呼和浩特无货, ";
 
-            if (Convert.ToInt32(CheckBoxList_SH.SelectedValue) == 1) StockTip += "上海有货, ";
-            else StockTip += "上海无货, ";
+            if (Convert.ToInt32(CheckBoxList_SH.SelectedValue) == 1) StockTip += "上海有货,";
+            else StockTip += "上海无货,";
 
             return StockTip.Substring(0, StockTip.Length - 1);
         }

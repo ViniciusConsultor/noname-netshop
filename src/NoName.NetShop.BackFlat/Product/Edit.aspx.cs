@@ -415,7 +415,7 @@ namespace NoName.NetShop.BackFlat.Product
             //添加商品多图
             foreach (string s in Request.Files.AllKeys)
             {
-                if (s.StartsWith("multiImageUpload"))
+                if (s.StartsWith("multiImageUpload") && Request.Files[s].ContentLength > 0)
                 {
                     string[] FileNames;
                     ProductMultiImageRule.SaveProductMultiImage(ProductID, Request.Files[s], out FileNames);
@@ -468,8 +468,8 @@ namespace NoName.NetShop.BackFlat.Product
             if (Convert.ToInt32(CheckBoxList_HH.SelectedValue) == 1) StockTip += "呼和浩特有货, ";
             else StockTip += "呼和浩特无货, ";
 
-            if (Convert.ToInt32(CheckBoxList_SH.SelectedValue) == 1) StockTip += "上海有货, ";
-            else StockTip += "上海无货, ";
+            if (Convert.ToInt32(CheckBoxList_SH.SelectedValue) == 1) StockTip += "上海有货,";
+            else StockTip += "上海无货,";
 
             return StockTip.Substring(0, StockTip.Length - 1);
         }
