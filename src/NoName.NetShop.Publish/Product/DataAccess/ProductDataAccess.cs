@@ -100,5 +100,18 @@ namespace NoName.NetShop.Publish.Product.DataAccess
 
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];            
         }
+
+        public DataTable GetRelatedProduct(string ProductIDs)
+        {
+            if (!String.IsNullOrEmpty(ProductIDs))
+            {
+                string sql = "select * from pdproduct where productid in ({0})";
+                return db.ExecuteDataSet(CommandType.Text, String.Format(sql, ProductIDs)).Tables[0];
+            }
+            else
+            {
+                return new DataTable();
+            }
+        }
     }
 }

@@ -44,11 +44,11 @@ namespace NoName.NetShop.Publish.Product.PageCreator
             rootNode.AppendChild(helper.GetProductQuestionList());
             rootNode.AppendChild(helper.GetProductCommentList());
             rootNode.AppendChild(helper.GetProductTopicList());
-            rootNode.AppendChild(helper.GetProductSpecificationList());
+            //rootNode.AppendChild(helper.GetProductSpecificationList());
             rootNode.AppendChild(helper.GetSameBrandProductList());
             rootNode.AppendChild(helper.GetHotSaleProductList());
 
-            //xdoc.Save(@"d:\dingding_product.xml");
+            xdoc.Save(@"d:\dingding_product.xml");
 
 
             return xdoc;

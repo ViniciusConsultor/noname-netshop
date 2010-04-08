@@ -106,12 +106,22 @@ namespace NoName.NetShop.Publish.Product.DataAccess
                 XmlUtility.AddNewNode(MultiImageNode, "originimage", ProductMultiImageRule.GetMultiImageUrl(Convert.ToString(imageRow["originimage"])));
             }
 
+
+            //相关产品节点
+            XmlNode RelatedProductNode = XmlUtility.AddNewNode(ProductInfoNode, "relatedproducts", null);
+            DataTable RelatedProductTable = dal.GetRelatedProduct(dt.Rows[0]["relateproducts"].ToString());
+            if(RelatedProductTable.Rows.Count>0)
+                foreach (DataRow RelatedProductRow in RelatedProductTable.Rows)
+                {
+                    XmlNode RelatedProduct = XmlUtility.AddNewNode(RelatedProductNode, "product", null);
+
+                    XmlUtility.AddNewNode(RelatedProduct, "productid", Convert.ToString(RelatedProductRow["productid"]));
+                    XmlUtility.AddNewNode(RelatedProduct, "productname", Convert.ToString(RelatedProductRow["productname"]));
+                    XmlUtility.AddNewNode(RelatedProduct, "productnameshort", Convert.ToString(RelatedProductRow["productname"]).Length > 10 ? Convert.ToString(RelatedProductRow["productname"]).Substring(0, 10) + ".." : Convert.ToString(RelatedProductRow["productname"]));
+                    XmlUtility.AddNewNode(RelatedProduct, "price", Convert.ToDecimal(Convert.ToDecimal(RelatedProductRow["MerchantPrice"]) - Convert.ToDecimal(RelatedProductRow["reduceprice"])).ToString("00"));
+                }
+
             return ProductInfoNode;
-
-            //多图节点
-
-
-            //商品属性节点
         }
 
         public XmlNode GetCategoryPathList()

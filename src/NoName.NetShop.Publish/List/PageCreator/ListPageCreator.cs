@@ -44,6 +44,8 @@ namespace NoName.NetShop.Publish.List.PageCreator
             rootNode.AppendChild(helper.GetCategoryProperityList());
             rootNode.AppendChild(helper.GetCategoryList());
             rootNode.AppendChild(helper.GetProductList());
+            rootNode.AppendChild(helper.GetCategoryBrandList());
+            rootNode.AppendChild(helper.GetHotSaleProductList());
 
             //xdoc.Save(@"d:\dingding_category.xml");
             return xdoc;
