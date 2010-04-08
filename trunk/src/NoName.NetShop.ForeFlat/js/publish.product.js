@@ -25,25 +25,25 @@
     });
 
     $('.addToFavorite').click(function() {
-        var productID = $(this).attr();
+        var productID = $(this).attr('productid');
         addFav(productID);
     });
 });
 
 function addFav(productID) {
     $.ajax({
-        url: '/api/CartOpenApi.ashx.ashx',
+        url: '/api/CartOpenApi.ashx',
         type: 'post',
-        data: 'ctype=1&cid=' + productID,
+        data: 'action=addfavorite&ctype=1&cid=' + productID,
         cache: false,
-        dataType: 'text',
+        dataType: 'json',
         error: function() { alert('收藏失败,请稍后重试。'); },
         success: function(data, textStatus) {
-            if (data.result == true) {
+            if (data.Result == true) {
                 alert('收藏成功！');
             }
             else {
-                alert(data.message);
+                alert(data.Message);
             }
         }
     });
