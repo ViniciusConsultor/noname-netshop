@@ -105,6 +105,11 @@
         }
     });
 
+    //添加收藏事件
+    $('.actions a[fav="true"]').click(function() {
+        addFav($(this).attr('productid'));
+    });
+
 
 
     function getPage() {
@@ -197,5 +202,24 @@
         url = RegExp.$1 + RegExp.$2 + RegExp.$4 + parmPart + RegExp.$6;
 
         window.location = url;
+    }
+
+    function addFav(productID) {
+        $.ajax({
+            url: '/api/CartOpenApi.ashx',
+            type: 'post',
+            data: 'action=addfavorite&ctype=1&cid=' + productID,
+            cache: false,
+            dataType: 'json',
+            error: function() { alert('收藏失败,请稍后重试。'); },
+            success: function(data, textStatus) {
+                if (data.Result == true) {
+                    alert('收藏成功！');
+                }
+                else {
+                    alert(data.Message);
+                }
+            }
+        });
     }
 });
