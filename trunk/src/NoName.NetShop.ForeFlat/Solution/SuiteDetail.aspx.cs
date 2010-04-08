@@ -32,7 +32,7 @@ namespace NoName.NetShop.ForeFlat.Solution
 
         private void BindScenceList()
         {
-            Repeater_Sence.DataSource = new ScenceBll().GetModelList("sencetype = 2");
+            Repeater_Sence.DataSource = new ScenceBll().GetModelList("sencetype = 0");
             Repeater_Sence.DataBind();
         }
 
