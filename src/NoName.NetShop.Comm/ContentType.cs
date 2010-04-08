@@ -10,6 +10,7 @@ namespace NoName.NetShop.Common
         Product =1,
         News =2,
         Complaint=3,
-        Maintenance=4
+        Maintenance=4,
+        Solution=5
     }
 }
