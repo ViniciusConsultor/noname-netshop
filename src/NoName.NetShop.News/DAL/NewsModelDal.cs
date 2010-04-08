@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
-using NoName.NetShop.News.Model;//请先添加引用
+using NoName.NetShop.News.Model;
+using NoName.NetShop.Common;//请先添加引用
 
 namespace NoName.NetShop.News.DAL
 {
@@ -14,6 +15,9 @@ namespace NoName.NetShop.News.DAL
 	/// </summary>
 	public class NewsModelDal
 	{
+        private Database dbw = CommDataAccess.DbWriter;
+        private Database dbr = CommDataAccess.DbReader;
+
         public NewsModelDal()
         { }
 		#region  成员方法
@@ -24,8 +28,7 @@ namespace NoName.NetShop.News.DAL
 		public int GetMaxId()
 		{
 			string strsql = "select max(NewsId)+1 from neNews";
-			Database db = DatabaseFactory.CreateDatabase();
-			object obj = db.ExecuteScalar(CommandType.Text, strsql);
+			object obj = dbr.ExecuteScalar(CommandType.Text, strsql);
 			if (obj != null && obj != DBNull.Value)
 			{
 				return int.Parse(obj.ToString());
@@ -38,11 +41,11 @@ namespace NoName.NetShop.News.DAL
 		/// </summary>
 		public bool Exists(int NewsId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_neNews_Exists");
-			db.AddInParameter(dbCommand, "NewsId", DbType.Int32,NewsId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_neNews_Exists");
+			dbr.AddInParameter(dbCommand, "NewsId", DbType.Int32,NewsId);
 			int result;
-			object obj = db.ExecuteScalar(dbCommand);
+			object obj = dbr.ExecuteScalar(dbCommand);
 			int.TryParse(obj.ToString(),out result);
 			if(result==1)
 			{
@@ -59,29 +62,29 @@ namespace NoName.NetShop.News.DAL
 		/// </summary>
 		public void Add(NewsModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_neNews_ADD");
-			db.AddInParameter(dbCommand, "NewsId", DbType.Int32, model.NewsId);
-			db.AddInParameter(dbCommand, "NewsType", DbType.Byte, model.NewsType);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.AddInParameter(dbCommand, "Title", DbType.AnsiString, model.Title);
-			db.AddInParameter(dbCommand, "SubTitle", DbType.AnsiString, model.SubTitle);
-			db.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-			db.AddInParameter(dbCommand, "newsContent", DbType.String, model.Content);
-			db.AddInParameter(dbCommand, "SmallImageUrl", DbType.AnsiString, model.SmallImageUrl);
-			db.AddInParameter(dbCommand, "Author", DbType.AnsiString, model.Author);
-			db.AddInParameter(dbCommand, "newsfrom", DbType.AnsiString, model.From);
-			db.AddInParameter(dbCommand, "VideoUrl", DbType.AnsiString, model.VideoUrl);
-			db.AddInParameter(dbCommand, "ImageUrl", DbType.AnsiString, model.ImageUrl);
-			db.AddInParameter(dbCommand, "ProductId", DbType.AnsiString, model.ProductId);
-			db.AddInParameter(dbCommand, "InsertTime", DbType.DateTime, model.InsertTime);
-			db.AddInParameter(dbCommand, "ModifyTime", DbType.DateTime, model.ModifyTime);
-            db.AddInParameter(dbCommand, "Tags", DbType.AnsiString, model.Tags);
-            db.AddInParameter(dbCommand, "cateid", DbType.Int32, model.CategoryID);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_neNews_ADD");
+			dbw.AddInParameter(dbCommand, "NewsId", DbType.Int32, model.NewsId);
+			dbw.AddInParameter(dbCommand, "NewsType", DbType.Byte, model.NewsType);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.AddInParameter(dbCommand, "Title", DbType.AnsiString, model.Title);
+			dbw.AddInParameter(dbCommand, "SubTitle", DbType.AnsiString, model.SubTitle);
+			dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+			dbw.AddInParameter(dbCommand, "newsContent", DbType.String, model.Content);
+			dbw.AddInParameter(dbCommand, "SmallImageUrl", DbType.AnsiString, model.SmallImageUrl);
+			dbw.AddInParameter(dbCommand, "Author", DbType.AnsiString, model.Author);
+			dbw.AddInParameter(dbCommand, "newsfrom", DbType.AnsiString, model.From);
+			dbw.AddInParameter(dbCommand, "VideoUrl", DbType.AnsiString, model.VideoUrl);
+			dbw.AddInParameter(dbCommand, "ImageUrl", DbType.AnsiString, model.ImageUrl);
+			dbw.AddInParameter(dbCommand, "ProductId", DbType.AnsiString, model.ProductId);
+			dbw.AddInParameter(dbCommand, "InsertTime", DbType.DateTime, model.InsertTime);
+			dbw.AddInParameter(dbCommand, "ModifyTime", DbType.DateTime, model.ModifyTime);
+            dbw.AddInParameter(dbCommand, "Tags", DbType.AnsiString, model.Tags);
+            dbw.AddInParameter(dbCommand, "cateid", DbType.Int32, model.CategoryID);
 
 
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -89,26 +92,26 @@ namespace NoName.NetShop.News.DAL
 		/// </summary>
 		public void Update(NewsModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_neNews_Update");
-			db.AddInParameter(dbCommand, "NewsId", DbType.Int32, model.NewsId);
-			db.AddInParameter(dbCommand, "NewsType", DbType.Byte, model.NewsType);
-			db.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
-			db.AddInParameter(dbCommand, "Title", DbType.AnsiString, model.Title);
-			db.AddInParameter(dbCommand, "SubTitle", DbType.AnsiString, model.SubTitle);
-			db.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
-			db.AddInParameter(dbCommand, "newsContent", DbType.String, model.Content);
-			db.AddInParameter(dbCommand, "SmallImageUrl", DbType.AnsiString, model.SmallImageUrl);
-			db.AddInParameter(dbCommand, "Author", DbType.AnsiString, model.Author);
-			db.AddInParameter(dbCommand, "newsFrom", DbType.AnsiString, model.From);
-			db.AddInParameter(dbCommand, "VideoUrl", DbType.AnsiString, model.VideoUrl);
-			db.AddInParameter(dbCommand, "ImageUrl", DbType.AnsiString, model.ImageUrl);
-			db.AddInParameter(dbCommand, "ProductId", DbType.AnsiString, model.ProductId);
-			db.AddInParameter(dbCommand, "InsertTime", DbType.DateTime, model.InsertTime);
-			db.AddInParameter(dbCommand, "ModifyTime", DbType.DateTime, model.ModifyTime);
-            db.AddInParameter(dbCommand, "Tags", DbType.AnsiString, model.Tags);
-            db.AddInParameter(dbCommand, "cateid", DbType.Int32, model.CategoryID);
-			db.ExecuteNonQuery(dbCommand);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_neNews_Update");
+			dbw.AddInParameter(dbCommand, "NewsId", DbType.Int32, model.NewsId);
+			dbw.AddInParameter(dbCommand, "NewsType", DbType.Byte, model.NewsType);
+			dbw.AddInParameter(dbCommand, "Status", DbType.Byte, model.Status);
+			dbw.AddInParameter(dbCommand, "Title", DbType.AnsiString, model.Title);
+			dbw.AddInParameter(dbCommand, "SubTitle", DbType.AnsiString, model.SubTitle);
+			dbw.AddInParameter(dbCommand, "Brief", DbType.AnsiString, model.Brief);
+			dbw.AddInParameter(dbCommand, "newsContent", DbType.String, model.Content);
+			dbw.AddInParameter(dbCommand, "SmallImageUrl", DbType.AnsiString, model.SmallImageUrl);
+			dbw.AddInParameter(dbCommand, "Author", DbType.AnsiString, model.Author);
+			dbw.AddInParameter(dbCommand, "newsFrom", DbType.AnsiString, model.From);
+			dbw.AddInParameter(dbCommand, "VideoUrl", DbType.AnsiString, model.VideoUrl);
+			dbw.AddInParameter(dbCommand, "ImageUrl", DbType.AnsiString, model.ImageUrl);
+			dbw.AddInParameter(dbCommand, "ProductId", DbType.AnsiString, model.ProductId);
+			dbw.AddInParameter(dbCommand, "InsertTime", DbType.DateTime, model.InsertTime);
+			dbw.AddInParameter(dbCommand, "ModifyTime", DbType.DateTime, model.ModifyTime);
+            dbw.AddInParameter(dbCommand, "Tags", DbType.AnsiString, model.Tags);
+            dbw.AddInParameter(dbCommand, "cateid", DbType.Int32, model.CategoryID);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -116,11 +119,11 @@ namespace NoName.NetShop.News.DAL
 		/// </summary>
 		public void Delete(int NewsId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_neNews_Delete");
-			db.AddInParameter(dbCommand, "NewsId", DbType.Int32,NewsId);
+			
+			DbCommand dbCommand = dbw.GetStoredProcCommand("UP_neNews_Delete");
+			dbw.AddInParameter(dbCommand, "NewsId", DbType.Int32,NewsId);
 
-			db.ExecuteNonQuery(dbCommand);
+			dbw.ExecuteNonQuery(dbCommand);
 		}
 
 		/// <summary>
@@ -128,12 +131,12 @@ namespace NoName.NetShop.News.DAL
 		/// </summary>
 		public NewsModel GetModel(int NewsId)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
-			DbCommand dbCommand = db.GetStoredProcCommand("UP_neNews_GetModel");
-			db.AddInParameter(dbCommand, "NewsId", DbType.Int32,NewsId);
+			
+			DbCommand dbCommand = dbr.GetStoredProcCommand("UP_neNews_GetModel");
+			dbr.AddInParameter(dbCommand, "NewsId", DbType.Int32,NewsId);
 
 			NewsModel model=null;
-			using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+			using (IDataReader dataReader = dbr.ExecuteReader(dbCommand))
 			{
 				if(dataReader.Read())
 				{
@@ -155,8 +158,8 @@ namespace NoName.NetShop.News.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			Database db = DatabaseFactory.CreateDatabase();
-			return db.ExecuteDataSet(CommandType.Text, strSql.ToString());
+			
+			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
         
         /// <summary>
@@ -164,16 +167,16 @@ namespace NoName.NetShop.News.DAL
         /// </summary>
         public DataSet GetList(int PageSize,int PageIndex,string strWhere)
         {
-            Database db = DatabaseFactory.CreateDatabase();
-            DbCommand dbCommand = db.GetStoredProcCommand("UP_GetRecordByPage");
-            db.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "neNews");
-            db.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
-            db.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
-            db.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
-            db.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
-            db.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
-            db.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
-            return db.ExecuteDataSet(dbCommand);
+            
+            DbCommand dbCommand = dbr.GetStoredProcCommand("UP_GetRecordByPage");
+            dbr.AddInParameter(dbCommand, "tblName", DbType.AnsiString, "neNews");
+            dbr.AddInParameter(dbCommand, "fldName", DbType.AnsiString, "ID");
+            dbr.AddInParameter(dbCommand, "PageSize", DbType.Int32, PageSize);
+            dbr.AddInParameter(dbCommand, "PageIndex", DbType.Int32, PageIndex);
+            dbr.AddInParameter(dbCommand, "IsReCount", DbType.Boolean, 0);
+            dbr.AddInParameter(dbCommand, "OrderType", DbType.Boolean, 0);
+            dbr.AddInParameter(dbCommand, "strWhere", DbType.AnsiString, strWhere);
+            return dbr.ExecuteDataSet(dbCommand);
         }
 
         /// <summary>
@@ -189,8 +192,8 @@ namespace NoName.NetShop.News.DAL
 				strSql.Append(" where "+strWhere);
 			}
 			List<NewsModel> list = new List<NewsModel>();
-			Database db = DatabaseFactory.CreateDatabase();
-			using (IDataReader dataReader = db.ExecuteReader(CommandType.Text, strSql.ToString()))
+			
+			using (IDataReader dataReader = dbr.ExecuteReader(CommandType.Text, strSql.ToString()))
 			{
 				while (dataReader.Read())
 				{
@@ -199,6 +202,16 @@ namespace NoName.NetShop.News.DAL
 			}
 			return list;
 		}
+
+        public void SetSplendid(int NewsID,bool IsSplendid)
+        {
+            DbCommand Command = dbw.GetStoredProcCommand("UP_neNews_SetSplendid");
+
+            dbw.AddInParameter(Command,"@NewsID",DbType.Int32,NewsID);
+            dbw.AddInParameter(Command,"@IsSplendid",DbType.Boolean,IsSplendid);
+
+            dbw.ExecuteNonQuery(Command);
+        }
 
 
 		/// <summary>
