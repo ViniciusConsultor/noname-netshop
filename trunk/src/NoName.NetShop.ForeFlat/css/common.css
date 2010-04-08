@@ -170,7 +170,7 @@ a.linkButton:hover{ color:#FF9900}
 .category_non-popMenu{ clear:both}
 .category_non-popMenu a.class{ display:block; clear:both; height:14px; padding:5px 0 5px 10px; background:#DEF0F8; color:#236FA4; font-weight:bold}
 .category_non-popMenu div.subs{ clear:both; padding:5px;}
-.category_non-popMenu div.subs a{ display:block; float:left; width:50px; padding:5px; height:14px;}
+.category_non-popMenu div.subs a{ display:block; float:left; width:60px; padding:5px 1px; height:14px;}
 .category_non-popMenu div.subs a.more{ margin:8px 0 0 0; margin:6px 0 0 0\9; _margin:8px 0 0 0; padding:0; width:34px}
 .category_non-popMenu div.subs span{ display:block; float:left; width:75px; padding:7px 0}
 .category_non-popMenu div.subs span input.checkbox{ width:12px; height:12px; margin:0; padding:0; display:block; float:left; margin-top:1px; margin-top:0px\9;}
@@ -187,10 +187,9 @@ a.linkButton:hover{ color:#FF9900}
 .hotlist ul.listContent:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
 .hotlist ul.listContent li{ float:left; width:100%; list-style-type:none; zoom:1;}
 .hotlist ul.listContent li:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
-.hotlist ul.listContent li a{padding:5px 10px; float:left; display:block; text-align:center;  height:14px; line-height:14px;white-space:nowrap;
-; overflow:hidden}
+.hotlist ul.listContent li a{padding:5px; float:left; display:block; text-align:center;  line-height:14px;}
 .hotlist ul.listContent li a.rank{width:25px;}
-.hotlist ul.listContent li a.name{ width:88px; color:#187FAF; text-align:left; padding:5px 2px;}
+.hotlist ul.listContent li a.name{ width:100px; color:#187FAF; text-align:left; padding:5px 2px;}
 .hotlist ul.listContent li a.price{ width:40px; color:#F00}
 
 
