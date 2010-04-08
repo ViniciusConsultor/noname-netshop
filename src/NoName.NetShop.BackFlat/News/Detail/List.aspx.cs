@@ -55,6 +55,18 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 MessageBox.Show(this,"删除成功！");
                 BindData(AspNetPager.CurrentPageIndex);
             }
+            if (e.CommandName == "ss")
+            {
+                int NewsID = Convert.ToInt32(e.CommandArgument);
+                bll.SetSplendid(NewsID, true);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+            if (e.CommandName == "ds")
+            {
+                int NewsID = Convert.ToInt32(e.CommandArgument);
+                bll.SetSplendid(NewsID, false);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

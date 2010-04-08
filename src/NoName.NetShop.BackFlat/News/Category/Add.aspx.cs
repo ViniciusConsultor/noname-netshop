@@ -50,7 +50,7 @@ namespace NoName.NetShop.BackFlat.News.Category
                 model.IsHide = Convert.ToInt32(DropDownList_IsHide.SelectedValue)==1?true:false;
                 model.ParentID = ParentID;
                 model.ShowOrder = model.CateID;
-                model.Status = Convert.ToInt32(DropDownList_Status.SelectedValue);
+                model.Status = 1;
 
                 bll.Add(model);
 

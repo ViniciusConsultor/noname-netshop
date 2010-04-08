@@ -26,6 +26,12 @@
                         <%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd hh:mm:ss") %>
                     </ItemTemplate>                    
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="">
+                    <ItemTemplate>
+                        <asp:LinkButton runat="server" ID="LinkButton_SetSplendid" CommandArgument='<%# Eval("newsid") %>' CommandName="ss" Text="设为精彩" Visible='<%# !Convert.ToBoolean(Eval("issplendid")) %>' />
+                        <asp:LinkButton runat="server" ID="LinkButton_DesetSplendid" CommandArgument='<%# Eval("newsid") %>' CommandName="ds" Text="取消精彩" Visible='<%# Convert.ToBoolean(Eval("issplendid")) %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:LinkButton runat="server" ID="LinkButton_Delete" CommandArgument='<%# Eval("newsid") %>' CommandName="d" Text="删除" />
