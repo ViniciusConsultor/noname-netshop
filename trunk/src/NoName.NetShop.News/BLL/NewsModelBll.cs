@@ -163,6 +163,11 @@ namespace NoName.NetShop.News.BLL
             return dt;
         }
 
+        public void SetSplendid(int NewsID, bool IsSplendid)
+        {
+            dal.SetSplendid(NewsID, IsSplendid);
+        }
+
 
 		#endregion  成员方法
 	}
