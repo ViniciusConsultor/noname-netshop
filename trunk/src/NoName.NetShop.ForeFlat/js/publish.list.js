@@ -88,7 +88,7 @@
     });
 
     //翻页事件
-    $('.pagination a[type="page"]').click(function() {
+    $('.pagination a[page]').click(function() {
         if ($(this).attr('class') == 'prev') {
             var page = getPage();
             page = page - 1;
