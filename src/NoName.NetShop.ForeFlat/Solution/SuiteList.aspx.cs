@@ -42,7 +42,7 @@ namespace NoName.NetShop.ForeFlat.Solution
                 Literal_SenceName.Text = "所有套装";
             }
 
-            Repeater_Sence.DataSource = new ScenceBll().GetModelList("sencetype = 2");
+            Repeater_Sence.DataSource = new ScenceBll().GetModelList("sencetype = 0");
             Repeater_Sence.DataBind();
         }
            

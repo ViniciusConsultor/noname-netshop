@@ -3,6 +3,7 @@
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="head">
     <link type="text/css" rel="stylesheet" href="/css/solution.css" />
+    <script type="text/javascript" src="/js/solution.suitelist.js"></script>
 </asp:Content>
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
@@ -76,7 +77,7 @@
                                                     <span class="text">购买</span>
                                                     <span class="right"></span>
                                                 </a>
-                                                <a class="button_blue3 inlineBlock" href="#">
+                                                <a class="button_blue3 inlineBlock" style="cursor:pointer" fav="true" suiteid='<%# Eval("suiteid") %>'>
                                                     <span class="left"></span>
                                                     <span class="text">收藏</span>
                                                     <span class="right"></span>
