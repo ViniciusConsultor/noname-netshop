@@ -248,36 +248,42 @@ namespace NoName.NetShop.Product.DAL
 		/// </summary>
 		public CategoryModel ReaderBind(IDataReader dataReader)
 		{
-			CategoryModel model=new CategoryModel();
+            CategoryModel model = new CategoryModel() ;
 			object ojb; 
 			ojb = dataReader["CateId"];
 			if(ojb != null && ojb != DBNull.Value)
 			{
 				model.CateId=(int)ojb;
-			}
+            }
+            ojb = dataReader["CateLevel"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.CateLevel = int.Parse(ojb.ToString());
+            }
 			model.CateName=dataReader["CateName"].ToString();
 			model.CatePath=dataReader["CatePath"].ToString();
-			ojb = dataReader["Status"];
-			if(ojb != null && ojb != DBNull.Value)
-			{
-				model.Status=int.Parse(ojb.ToString());
-			}
-			model.PriceRange=dataReader["PriceRange"].ToString();
-			ojb = dataReader["IsHide"];
-			if(ojb != null && ojb != DBNull.Value)
-			{
-				model.IsHide=(bool)ojb;
-			}
-			ojb = dataReader["CateLevel"];
-			if(ojb != null && ojb != DBNull.Value)
-			{
-                model.CateLevel = int.Parse(ojb.ToString());
-			}
+            ojb = dataReader["IsHide"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.IsHide = (bool)ojb;
+            }
+            ojb = dataReader["parentid"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.ParentID = int.Parse(ojb.ToString());
+            }
+            model.PriceRange = dataReader["PriceRange"].ToString();
+            model.Remark = dataReader["remark"].ToString();
             ojb = dataReader["showorder"];
             if (ojb != null && ojb != DBNull.Value)
             {
                 model.ShowOrder = int.Parse(ojb.ToString());
             }
+			ojb = dataReader["Status"];
+			if(ojb != null && ojb != DBNull.Value)
+			{
+				model.Status=int.Parse(ojb.ToString());
+			}
 			return model;
 		}
 

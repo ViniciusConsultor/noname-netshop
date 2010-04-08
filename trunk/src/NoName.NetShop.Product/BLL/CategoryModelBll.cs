@@ -32,6 +32,11 @@ namespace NoName.NetShop.Product.BLL
 			return dal.Exists(CateId);
 		}
 
+        /// <summary>
+        /// 是否有子分类
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <returns></returns>
         public bool HasChild(int CategoryID)
         {
             return dal.HasChild(CategoryID);
@@ -61,12 +66,20 @@ namespace NoName.NetShop.Product.BLL
 			dal.Delete(CateId);
 		}
 
-
+        /// <summary>
+        /// 删除所有子孙
+        /// </summary>
+        /// <param name="AncestorID"></param>
         public void DeleteOffsprings(int AncestorID)
         {
             dal.DeleteOffsprings(AncestorID);
         }
 
+        /// <summary>
+        /// 获得所有子孙
+        /// </summary>
+        /// <param name="AncestorID"></param>
+        /// <returns></returns>
         public DataTable GetOffsprings(int AncestorID) 
         {
             return dal.GetOffsprings(AncestorID);
@@ -82,39 +95,25 @@ namespace NoName.NetShop.Product.BLL
 		}
 
 
+        /// <summary>
+        /// 得到分类路径
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <returns></returns>
         public string GetCategoryPath(int CategoryID)
         {
             return dal.GetCategoryPath(CategoryID);
         }
 
+        /// <summary>
+        /// 得到分类名字路径
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <returns></returns>
         public string GetCategoryNamePath(int CategoryID)
         {
             return dal.GetCategoryNamePath(CategoryID);
         }
-
-		/// <summary>
-		/// 得到一个对象实体，从缓存中。
-		/// </summary>
-        //public CategoryModel GetModelByCache(int CateId)
-        //{
-			
-        //    string CacheKey = "CategoryModelModel-" + CateId;
-        //    object objModel = LTP.Common.DataCache.GetCache(CacheKey);
-        //    if (objModel == null)
-        //    {
-        //        try
-        //        {
-        //            objModel = dal.GetModel(CateId);
-        //            if (objModel != null)
-        //            {
-        //                int ModelCache = LTP.Common.ConfigHelper.GetConfigInt("ModelCache");
-        //                LTP.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-        //            }
-        //        }
-        //        catch{}
-        //    }
-        //    return (CategoryModel)objModel;
-        //}
 
 		/// <summary>
 		/// 获得数据列表
@@ -123,6 +122,7 @@ namespace NoName.NetShop.Product.BLL
 		{
 			return dal.GetList(strWhere);
 		}
+
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
@@ -185,29 +185,79 @@ namespace NoName.NetShop.Product.BLL
             return dal.GetList(PageSize, PageIndex, strWhere);
         }
 
+        /// <summary>
+        /// 交换两个分类位置
+        /// </summary>
+        /// <param name="InitialCategoryID"></param>
+        /// <param name="ReplacedCategoryID"></param>
+        /// <returns></returns>
         public int SwitchOrder(int InitialCategoryID, int ReplacedCategoryID)
         {
             return dal.SwitchOrder(InitialCategoryID, ReplacedCategoryID);
         }
 
+        /// <summary>
+        /// 得到子分类的数量
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
         public int GetChildCount(int ParentID)
         {
             return dal.GetChildCount(ParentID);
         }
 
+        /// <summary>
+        /// 是否有子分类
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
         public bool HasChildren(int ParentID)
         {
             return GetChildCount(ParentID) > 0; 
         }
 
+        /// <summary>
+        /// 得到自分类的对象列表
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
         public List<CategoryModel> GetSubCategory(int parentId)
         {
             return dal.GetListArray("parentid = " + parentId);
         }
 
+        /// <summary>
+        /// 得到分类名称
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <returns></returns>
         public string GetCategoryName(int CategoryID)
         {
             return dal.GetCategoryName(CategoryID);
+        }
+
+        /// <summary>
+        /// 获得祖先分类（根分类）ID
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <returns></returns>
+        public int GetAncestorID(int CategoryID)
+        {
+            CategoryModel CurrentCategory = GetModel(CategoryID);
+
+            if (CurrentCategory.ParentID == 0)
+            {
+                return CategoryID;
+            }
+            else
+            {
+                while (CurrentCategory.ParentID != 0)
+                {
+                    CurrentCategory = GetModel(CurrentCategory.ParentID);
+                }
+
+                return CurrentCategory.CateId;
+            }
         }
 		#endregion  成员方法
 	}
