@@ -19,6 +19,18 @@
                 $('#product-multi-image-upload-zone').append($('<div><input type="file" id="multiImageUpload'+(count+1)+'" name="multiImageUpload'+(count+1)+'" /><a style="cursor:pointer" onclick="$(this).parent().remove()">删除</a></div>'));
             });
         
+            /*            
+                toolbar: [
+                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+                        '/',
+                        ['Outdent', 'Indent', 'Blockquote'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
+                        ['Styles', 'Format', 'Font', 'FontSize'],
+                        ['TextColor', 'BGColor', 'Maximize']
+                    ],
+            */
             CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
                 height: '400px',
                 width: '700px',
@@ -29,32 +41,12 @@
             CKEDITOR.replace('<%= TextBox_Specification.ClientID %>', {
                 height: '200px',
                 width: '700px',
-                toolbarStartupExpanded: false,
-                toolbar: [
-                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
-                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
-                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
-                        '/',
-                        ['Outdent', 'Indent', 'Blockquote'],
-                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
-                        ['Styles', 'Format', 'Font', 'FontSize'],
-                        ['TextColor', 'BGColor', 'Maximize']
-                    ]
+                toolbarStartupExpanded: false
             });
             CKEDITOR.replace('<%= TextBox_Packing.ClientID %>', {
                 height: '200px',
                 width: '700px',
                 toolbarStartupExpanded: false,
-                toolbar: [
-                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
-                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
-                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
-                        '/',
-                        ['Outdent', 'Indent', 'Blockquote'],
-                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
-                        ['Styles', 'Format', 'Font', 'FontSize'],
-                        ['TextColor', 'BGColor', 'Maximize']
-                    ],
                 ignoreEmptyParagraph :true,
                 forcePasteAsPlainText :false
             });
@@ -62,16 +54,6 @@
                 height: '200px',
                 width: '700px',
                 toolbarStartupExpanded: false,
-                toolbar: [
-                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
-                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
-                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
-                        '/',
-                        ['Outdent', 'Indent', 'Blockquote'],
-                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
-                        ['Styles', 'Format', 'Font', 'FontSize'],
-                        ['TextColor', 'BGColor', 'Maximize']
-                    ],
                 ignoreEmptyParagraph :true,
                 forcePasteAsPlainText :false
             });
@@ -79,16 +61,6 @@
                 height: '200px',
                 width: '700px',
                 toolbarStartupExpanded: false,
-                toolbar: [
-                        ['Source', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
-                        ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
-                        ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
-                        '/',
-                        ['Outdent', 'Indent', 'Blockquote'],
-                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Table', 'JustifyBlock', 'SpecialChar'],
-                        ['Styles', 'Format', 'Font', 'FontSize'],
-                        ['TextColor', 'BGColor', 'Maximize']
-                    ],
                 ignoreEmptyParagraph :true,
                 forcePasteAsPlainText :false
             });
