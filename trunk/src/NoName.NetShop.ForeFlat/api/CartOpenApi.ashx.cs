@@ -170,29 +170,29 @@ namespace NoName.NetShop.ForeFlat
             string code = "";
             string message = "";
 
-            if (context.User.Identity.IsAuthenticated)
+            if (context.User.Identity.IsAuthenticated && ((ShopIdentity)context.User.Identity) !=null)
             {
-                ShopIdentity iden = context.User.Identity as ShopIdentity;
+                //ShopIdentity iden = context.User.Identity as ShopIdentity;
 
-                if (iden != null)
-                {
+                //if (iden != null)
+                //{
                     FavoriteBll fbll = new FavoriteBll();
                     FavoriteModel favModel = new FavoriteModel();
 
                     favModel.ContentId = int.Parse(nv["cid"]);
-                    favModel.UserId = iden.UserId;
+                    favModel.UserId = ((ShopIdentity)context.User.Identity).UserId;
                     favModel.ContentType = (ContentType)int.Parse(nv["ctype"]);
                     favModel.FavoriteName = "";
                     favModel.FavoriteUrl = "";
                     fbll.Add(favModel);
                     result = true;
                     message = "收藏成功";
-                }
-                else
-                {
-                    result = false;
-                    message = "您还没有登录，请先登录！";
-                }
+                //}
+            }
+            else
+            {
+                result = false;
+                message = "您还没有登录，请先登录！";
             }
             return GetJsonResult(result, code, message);
         }
