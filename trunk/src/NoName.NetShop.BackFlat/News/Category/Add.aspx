@@ -16,20 +16,20 @@
                         <td>名称：</td>
                         <td><asp:TextBox ID="TextBox_CategoryName" runat="server"></asp:TextBox></td>
                     </tr>
-                    <tr>
+                   <%--<tr>
                         <td>状态：</td>
                         <td>
                             <asp:DropDownList runat="server" ID="DropDownList_Status">
                                 <asp:ListItem Text="状态1" Value="1" />
                             </asp:DropDownList>
                         </td>
-                    </tr>
+                    </tr>--%>
                     <tr>
                         <td>是否隐藏：</td>
                         <td>
                             <asp:DropDownList runat="server" ID="DropDownList_IsHide">
-                                <asp:ListItem Text="隐藏" Value="1" />
                                 <asp:ListItem Text="显示" Value="0" />
+                                <asp:ListItem Text="隐藏" Value="1" />
                             </asp:DropDownList>
                         </td>
                     </tr>

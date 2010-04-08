@@ -55,7 +55,7 @@ namespace NoName.NetShop.BackFlat.News.Category
             NewsCategoryModel model = bll.GetModel(SelectedID);
 
             TextBox_CategoryName.Text = model.CateName;
-            DropDownList_Status.SelectedValue = model.Status.ToString();
+            
             DropDownList_IsHide.SelectedValue = model.IsHide ? "1" : "0";
 
             NewsCategoryModel parentModel = bll.GetModel(model.ParentID);
@@ -79,7 +79,6 @@ namespace NoName.NetShop.BackFlat.News.Category
 
                 model.CateName = TextBox_CategoryName.Text;
                 model.IsHide = DropDownList_IsHide.SelectedValue == "1" ? true : false;
-                model.Status = Convert.ToInt32(DropDownList_Status.SelectedValue);
 
                 bll.Update(model);
 
