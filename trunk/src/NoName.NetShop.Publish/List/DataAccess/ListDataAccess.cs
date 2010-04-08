@@ -148,6 +148,24 @@ namespace NoName.NetShop.Publish.List.DataAccess
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
+        public DataTable GetCategoryBrand(int CategoryID)
+        {
+            return new BrandCategoryRelationBll().GetCategoryBrandList(CategoryID);
+        }
+
+        public DataTable GetHotSaleProduct(string CategoryPath)
+        {
+            string sql = @" select top 4 * FROM [pdProduct] p
+	                            inner join [pdSalesProduct] sp on sp.productid=p.productid
+                            where 
+	                            sp.saletype=1 and 
+	                            sp.siteid=0 and
+	                            p.catepath like '" + CategoryPath + @"%'
+                            order by sp.timestamp desc";
+
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
         private string GetOrderString(int OrderType)
         {
             string OrderString = String.Empty;

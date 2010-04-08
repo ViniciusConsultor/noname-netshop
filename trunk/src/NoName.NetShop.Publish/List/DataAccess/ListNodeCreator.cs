@@ -6,6 +6,8 @@ using System.Xml;
 using System.Data;
 using NoName.Utility;
 using NoName.NetShop.Product.Facade;
+using NoName.NetShop.Product.BLL;
+using NoName.NetShop.Product.Model;
 
 namespace NoName.NetShop.Publish.List.DataAccess
 {
@@ -83,11 +85,21 @@ namespace NoName.NetShop.Publish.List.DataAccess
         {
             XmlNode CategoryListNode = xdoc.CreateElement("categorylist");
 
-            DataTable RootCategories = dal.GetRootCategoryList();
+            int AncestorID = new CategoryModelBll().GetAncestorID(Parameter.CategoryID);
+
+            XmlNode AncestorInfoNode = XmlUtility.AddNewNode(CategoryListNode, "ancestorinfo", null);
+            CategoryModel AncestorCategory = new CategoryModelBll().GetModel(AncestorID);
+
+            XmlUtility.AddNewNode(AncestorInfoNode, "categoryid", Convert.ToString(AncestorID));
+            XmlUtility.AddNewNode(AncestorInfoNode, "categoryname", AncestorCategory.CateName);
+
+            XmlNode CategoriesNode = XmlUtility.AddNewNode(CategoryListNode, "categories", null);
+
+            DataTable RootCategories = dal.GetCategorySonList(AncestorID);
 
             foreach (DataRow row in RootCategories.Rows)
             {
-                XmlNode FatherNode = XmlUtility.AddNewNode(CategoryListNode,"fathercategory",null);
+                XmlNode FatherNode = XmlUtility.AddNewNode(CategoriesNode, "fathercategory", null);
 
                 XmlUtility.SetAtrributeValue(FatherNode, "categoryid", Convert.ToString(row["cateid"]));
                 XmlUtility.SetAtrributeValue(FatherNode, "categoryname", Convert.ToString(row["catename"]));
@@ -236,6 +248,40 @@ namespace NoName.NetShop.Publish.List.DataAccess
                 }
             }
             return ProperityListNode;
+        }
+
+        public XmlNode GetCategoryBrandList()
+        {
+            XmlNode BrandListNode = xdoc.CreateElement("brandlist");
+
+            foreach(DataRow row in dal.GetCategoryBrand(Parameter.CategoryID).Rows)
+            {
+                XmlNode BrandNode = XmlUtility.AddNewNode(BrandListNode, "brand", null);
+
+                XmlUtility.AddNewNode(BrandNode, "brandid", Convert.ToString(row["brandid"]));
+                XmlUtility.AddNewNode(BrandNode, "brandid", Convert.ToString(row["brandname"]));
+            }
+
+            return BrandListNode;
+        }
+
+        public XmlNode GetHotSaleProductList()
+        {
+            XmlNode HotSaleProductsNode = xdoc.CreateElement("hotsaleproduct");
+
+            DataTable dt = dal.GetHotSaleProduct(new CategoryModelBll().GetCategoryPath(Parameter.CategoryID));
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode ProductNode = XmlUtility.AddNewNode(HotSaleProductsNode, "product", null);
+
+                XmlUtility.AddNewNode(ProductNode, "productid", Convert.ToString(row["productid"]));
+                XmlUtility.AddNewNode(ProductNode, "productname", Convert.ToString(row["productname"]));
+                XmlUtility.AddNewNode(ProductNode, "productimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["smallimage"])));
+                XmlUtility.AddNewNode(ProductNode, "price", Convert.ToDecimal(Convert.ToDecimal(row["MerchantPrice"]) - Convert.ToDecimal(row["reduceprice"])).ToString("00"));
+            }
+
+            return HotSaleProductsNode;
         }
     }
 }

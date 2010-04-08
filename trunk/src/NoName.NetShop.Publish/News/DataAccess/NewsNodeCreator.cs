@@ -84,10 +84,78 @@ namespace NoName.NetShop.Publish.News.DataAccess
                 XmlUtility.AddNewNode(NewsNode, "imageurl", Convert.ToString(row["imageurl"]));
             }
 
-            XmlNode PageNode = XmlUtility.AddNewNode(NewsListNode, "pageinfo", null);
+            //分页信息节点
+            XmlNode PageInfoNode = XmlUtility.AddNewNode(NewsListNode, "pageinfo", null);
 
-            XmlUtility.SetAtrributeValue(PageNode, "recordcount", Convert.ToString(RecordCount));
-            XmlUtility.SetAtrributeValue(PageNode, "pagecount", Convert.ToString(PageCount));
+            XmlUtility.SetAtrributeValue(PageInfoNode, "recordcount", RecordCount.ToString());
+            XmlUtility.SetAtrributeValue(PageInfoNode, "pagecount", PageCount.ToString());
+            XmlUtility.SetAtrributeValue(PageInfoNode, "currentpage", Parameter.PageIndex.ToString());
+
+
+            if (PageCount <= 11) //小于最大显示数目，全部显示即可
+            {
+                for (int i = 1; i <= PageCount; i++)
+                {
+                    XmlNode PageNode = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                    XmlUtility.SetAtrributeValue(PageNode, "pageindex", i.ToString());
+                    if (i == Parameter.PageIndex) XmlUtility.SetAtrributeValue(PageNode, "isselected", "true");
+                }
+            }
+            else                //大于最大显示数据，需要根据pageindex决定显示页码
+            {
+                XmlNode PageNodeS = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                XmlUtility.SetAtrributeValue(PageNodeS, "pageindex", 1.ToString());
+                if (Parameter.PageIndex == 1) XmlUtility.SetAtrributeValue(PageNodeS, "isselected", "true");
+
+                if (Parameter.PageIndex < 10)
+                {
+                    for (int i = 2; i <= 10; i++)
+                    {
+                        XmlNode PageNode = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                        XmlUtility.SetAtrributeValue(PageNode, "pageindex", i.ToString());
+                        if (i == Parameter.PageIndex) XmlUtility.SetAtrributeValue(PageNode, "isselected", "true");
+                    }
+                    XmlNode PageNodeME = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                    XmlUtility.SetAtrributeValue(PageNodeME, "pageindex", "...");
+                }
+                else
+                {
+                    if (Parameter.PageIndex >= 10 && Parameter.PageIndex <= PageCount - 10)
+                    {
+                        XmlNode PageNodeMS = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                        XmlUtility.SetAtrributeValue(PageNodeMS, "pageindex", "...");
+
+                        for (int i = Parameter.PageIndex - 5; i < Parameter.PageIndex + 5; i++)
+                        {
+                            XmlNode PageNode = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                            XmlUtility.SetAtrributeValue(PageNode, "pageindex", i.ToString());
+                            if (i == Parameter.PageIndex) XmlUtility.SetAtrributeValue(PageNode, "isselected", "true");
+                        }
+
+                        XmlNode PageNodeME = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                        XmlUtility.SetAtrributeValue(PageNodeME, "pageindex", "...");
+                    }
+                    else
+                    {
+                        if (Parameter.PageIndex > PageCount - 10)
+                        {
+                            XmlNode PageNodeMS = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                            XmlUtility.SetAtrributeValue(PageNodeMS, "pageindex", "...");
+
+                            for (int i = PageCount - 10; i <= PageCount - 1; i++)
+                            {
+                                XmlNode PageNode = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                                XmlUtility.SetAtrributeValue(PageNode, "pageindex", i.ToString());
+                                if (i == Parameter.PageIndex) XmlUtility.SetAtrributeValue(PageNode, "isselected", "true");
+                            }
+                        }
+                    }
+                }
+
+                XmlNode PageNodeE = XmlUtility.AddNewNode(PageInfoNode, "page", "");
+                XmlUtility.SetAtrributeValue(PageNodeE, "pageindex", PageCount.ToString());
+                if (Parameter.PageIndex == PageCount) XmlUtility.SetAtrributeValue(PageNodeE, "isselected", "true");
+            }
 
             return NewsListNode;
         }
@@ -139,6 +207,44 @@ namespace NoName.NetShop.Publish.News.DataAccess
             }
 
             return CommentListNode;
+        }
+
+        public XmlNode GetRankingNewsList()
+        {
+            XmlNode RankingNewsListNode = xdoc.CreateElement("rankinglist");
+            DataTable dt = dal.GetRankingNewsList(0);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode NewsNode = XmlUtility.AddNewNode(RankingNewsListNode, "news", null);
+
+                XmlUtility.AddNewNode(NewsNode, "newsid", Convert.ToString(row["newsid"]));
+                XmlUtility.AddNewNode(NewsNode, "title", Convert.ToString(row["title"]));
+                XmlUtility.AddNewNode(NewsNode, "brief", Convert.ToString(row["brief"]));
+                XmlUtility.AddNewNode(NewsNode, "imageurl", Convert.ToString(row["imageurl"]));
+            }
+
+            return RankingNewsListNode;
+        }
+
+
+
+        public XmlNode GetSplendidNewsList()
+        {
+            XmlNode SplendidNewsListNode = xdoc.CreateElement("splendidnewslist");
+            DataTable dt = dal.GetSplendidNewsList(0);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode NewsNode = XmlUtility.AddNewNode(SplendidNewsListNode, "news", null);
+
+                XmlUtility.AddNewNode(NewsNode, "newsid", Convert.ToString(row["newsid"]));
+                XmlUtility.AddNewNode(NewsNode, "title", Convert.ToString(row["title"]));
+                XmlUtility.AddNewNode(NewsNode, "brief", Convert.ToString(row["brief"]));
+                XmlUtility.AddNewNode(NewsNode, "imageurl", Convert.ToString(row["imageurl"]));
+            }
+
+            return SplendidNewsListNode;
         }
     }
 }

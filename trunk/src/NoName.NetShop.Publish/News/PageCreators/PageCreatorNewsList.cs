@@ -31,18 +31,14 @@ namespace NoName.NetShop.Publish.News.PageCreators
 
             XmlNode rootNode = xdoc.SelectSingleNode("/newslistpage");
 
+            rootNode.AppendChild(helper.GetHeaderContent());
+            rootNode.AppendChild(helper.GetFooterContent());
             rootNode.AppendChild(helper.GetNewsCategory());
             rootNode.AppendChild(helper.GetNewsList());
-            //rootNode.AppendChild(helper.GetFooterContent());
-            //rootNode.AppendChild(helper.GetShopInfo());
-            //rootNode.AppendChild(helper.GetShopImageInfo());
-            //rootNode.AppendChild(helper.GetProductInfo());
-            //rootNode.AppendChild(helper.GetProductParameter());
-            //rootNode.AppendChild(helper.GetShopClassificationTree());
-            ////rootNode.AppendChild(helper.GetRecommendProducts());
-            //rootNode.AppendChild(helper.GetProductShipFee());
+            rootNode.AppendChild(helper.GetRankingNewsList());
+            rootNode.AppendChild(helper.GetSplendidNewsList());
 
-            //xdoc.Save(@"d:\dingding-" + Parameter.CategoryID + ".xml");
+            //xdoc.Save(@"d:\dingdingnewslist.xml");
             return xdoc;
         }
 

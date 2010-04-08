@@ -139,6 +139,7 @@ namespace NoName.NetShop.Publish.News
                 {
                     parm = new NewsPageParameter();
                     parm.CategoryID = Convert.ToInt32(match.Groups["categoryid"].Value);
+                    parm.PageIndex = 1;
                     if (match.Groups["pageIndex"].Success)
                     {
                         parm.PageIndex = Convert.ToInt32(match.Groups["pageIndex"].Value);

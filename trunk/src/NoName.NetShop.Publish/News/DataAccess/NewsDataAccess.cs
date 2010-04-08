@@ -84,5 +84,17 @@ namespace NoName.NetShop.Publish.News.DataAccess
             CommentBll bll = new CommentBll();
             return bll.GetList(AppType.News, NewsID); 
         }
+
+        public DataTable GetRankingNewsList(int CategoryID)
+        {
+            string sql = "select top 10 * from nenews order by pageview desc";
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];  
+        }
+
+        public DataTable GetSplendidNewsList(int CategoryID)
+        {
+            string sql = "select top 10 * from nenews where issplendid=1";
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
+        }
     }
 }
