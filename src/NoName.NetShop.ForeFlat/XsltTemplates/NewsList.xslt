@@ -2,6 +2,10 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" indent="yes"/>
 
+	<xsl:variable name="CategoryID" select="/newslistpage/categorylist/category[last()]/categoryid"/>
+	<xsl:variable name="CategoryName" select="/newslistpage/categorylist/category[last()]/categoryname"/>
+	<xsl:variable name="PageIndex" select="/newslistpage/newslist/pageinfo/@currentpage"/>
+	<xsl:variable name="PageCount" select="/newslistpage/newslist/pageinfo/@pagecount"/>
 
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,6 +26,9 @@
                 <script type="text/javascript" src="http://dingding.uncc.cn/js/mini-Rainy.js">
                     <xsl:text> </xsl:text>
                 </script>
+				<script type="text/javascript" src="/js/publish.newslist.js">
+					<xsl:text> </xsl:text>
+				</script>
             </head>
             <body>
                 <div class="wrapper">
@@ -70,51 +77,7 @@
                                 </ul>
                                 <div class="content">
                                     <ul class="articleList_1 bullet_2">
-                                        <li>
-                                            <a href="#">开学好礼大放送，DIY放血大促销</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">开学好礼大放送，DIY放血大促销</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">开学好礼大放送，DIY放血大促销</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
+										<xsl:apply-templates select="/newslistpage/rankinglist/news" />
                                     </ul>
                                 </div>
                                 <ul class="bottom">
@@ -140,27 +103,7 @@
                                 </ul>
                                 <div class="content">
                                     <ul class="articleList_1 bullet_2">
-                                        <li>
-                                            <a href="#">开学好礼大放送，DIY放血大促销</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">开学好礼大放送，DIY放血大促销</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
+										<xsl:apply-templates select="/newslistpage/splendidnewslist/news" />
                                     </ul>
                                 </div>
                                 <ul class="bottom">
@@ -193,26 +136,7 @@
                                         </ul>
                                         <div class=" paginationParent">
                                             <div class="pagination">
-                                                <a class="prev" href="#">
-                                                    <xsl:text> </xsl:text>
-                                                </a>
-                                                <div class="pageNum">
-                                                    <a class="on" href="#">1</a>
-                                                    <a href="#">2</a>
-                                                    <a href="#">3</a>
-                                                    <a href="#">4</a>
-                                                    <a href="#">5</a>
-                                                    <a href="#">6</a>
-                                                    <a href="#">7</a>
-                                                </div>
-                                                <a class="next" href="#">
-                                                    <xsl:text> </xsl:text>
-                                                </a>
-                                                <div class="jumpTo">
-                                                    <span>跳转到</span>
-                                                    <input type="text" value="1" />
-                                                    <span>页</span>
-                                                </div>
+												<xsl:apply-templates select="/newslistpage/newslist/pageinfo" />
                                             </div>
                                         </div>
                                     </div>
@@ -248,7 +172,7 @@
 
     <!-- footer start -->
     <xsl:template name="Footer">
-        <xsl:value-of select="/newslistpage/standardheader" disable-output-escaping="yes"/>
+        <xsl:value-of select="/newslistpage/standardfooter" disable-output-escaping="yes"/>
     </xsl:template>
     <!-- footer end -->
 
@@ -310,6 +234,58 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+	<xsl:template match="/newslistpage/newslist/pageinfo">
+		<a type="page" class="prev" style="cursor:pointer">
+			<xsl:if test="$PageIndex != 1">
+				<xsl:attribute name="page">
+					<xsl:value-of select="$PageIndex - 1"/>
+				</xsl:attribute>
+			</xsl:if>
+			<xsl:text> </xsl:text>
+		</a>
+		<div class="pageNum">
+			<xsl:for-each select="page">
+				<a type="page" style="cursor:pointer">
+					<xsl:if test="@pageindex != $PageIndex">
+						<xsl:attribute name="page">
+							<xsl:value-of select="@pageindex"/>
+						</xsl:attribute>
+					</xsl:if>
+					<xsl:if test="@pageindex = $PageIndex">
+						<xsl:attribute name="class">on</xsl:attribute>
+					</xsl:if>
+					<xsl:value-of select="@pageindex"/>
+				</a>
+			</xsl:for-each>
+		</div>
+		<a type="page" class="next" style="cursor:pointer">
+			<xsl:if test="$PageIndex != $PageCount">
+				<xsl:attribute name="page">
+					<xsl:value-of select="$PageIndex + 1"/>
+				</xsl:attribute>
+			</xsl:if>
+		</a>
+	</xsl:template>
     <!-- news list end -->
-    
+
+	<!-- ranking list start -->
+	<xsl:template match="/newslistpage/rankinglist/news">
+		<li>
+			<a href="/news-{newsid}.html">
+				<xsl:value-of select="title"/>
+			</a>
+		</li>
+	</xsl:template>
+	<!-- ranking list end -->
+
+	<!-- hot news list start -->
+	<xsl:template match="/newslistpage/splendidnewslist/news">
+		<li>
+			<a href="/news-{newsid}.html">
+				<xsl:value-of select="title"/>
+			</a>
+		</li>
+	</xsl:template>
+	<!-- hot news list end -->
+	
 </xsl:stylesheet>

@@ -2,11 +2,11 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" indent="yes"/>
 
-    <xsl:variable name="CategoryID" select="listpage/categoryinfo/categoryid"/>
-    <xsl:variable name="CategoryName" select="listpage/categoryinfo/categoryname"/>
-    <xsl:variable name="IsEndCategory" select="listpage/categoryinfo/isendclass"/>
-    <xsl:variable name="PageIndex" select="listpage/productinfo/pageinfo/@currentpage"/>
-	<xsl:variable name="PageCount" select="listpage/productinfo/pageinfo/@pagecount"/>
+    <xsl:variable name="CategoryID" select="/listpage/categoryinfo/categoryid"/>
+    <xsl:variable name="CategoryName" select="/listpage/categoryinfo/categoryname"/>
+    <xsl:variable name="IsEndCategory" select="/listpage/categoryinfo/isendclass"/>
+    <xsl:variable name="PageIndex" select="/listpage/productlist/pageinfo/@currentpage"/>
+	<xsl:variable name="PageCount" select="/listpage/productlist/pageinfo/@pagecount"/>
 
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,30 +47,7 @@
                     <!--MainBody Begin-->
                     <div class="shoppingClass_mainbody newline clearfix">
                         <div class="leftColumn">
-                            <div class="box2 cateBox">
-                                <ul class="title">
-                                    <li class="left">
-                                        <xsl:text> </xsl:text>
-                                    </li>
-                                    <li>
-                                        <span>商品分类</span>
-                                    </li>
-                                    <li class="right">
-                                        <xsl:text> </xsl:text>
-                                    </li>
-                                </ul>
-                                <div class="content">
                                     <xsl:apply-templates select="/listpage/categorylist"/>
-                                </div>
-                                <ul class="bottom">
-                                    <li class="left">
-                                        <xsl:text> </xsl:text>
-                                    </li>
-                                    <li class="right">
-                                        <xsl:text> </xsl:text>
-                                    </li>
-                                </ul>
-                            </div>
 
                             <!--category brands begin-->
                             <div class="box2 newline">
@@ -88,13 +65,7 @@
                                 <div class="content">
                                     <div class="category_non-popMenu clearfix">
                                         <div class="subs clearfix">
-                                            <a href="#">东芝</a>
-                                            <a href="#">日立</a>
-                                            <a href="#">西门子</a>
-                                            <a href="#">联想</a>
-                                            <a href="#">海尔</a>
-                                            <a href="#">富士康</a>
-                                            <a href="#">索尼</a>
+											<xsl:apply-templates select="/listpage/brandlist/brand"/>
                                         </div>
                                     </div>
                                 </div>
@@ -124,34 +95,7 @@
                                 </ul>
                                 <div class="content noPaddingTop">
                                     <ul class="itemList1">
-                                        <li>
-                                            <a href="#">
-                                                <img src="Pictures/thumbnail_s.jpg" />
-                                                <span class="price">￥188.00</span>
-                                                <span>伊莱克斯 Electrolux 全自动洗衣机</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="Pictures/thumbnail_s.jpg" />
-                                                <span class="price">￥188.00</span>
-                                                <span>伊莱克斯 Electrolux 全自动洗衣机</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="Pictures/thumbnail_s.jpg" />
-                                                <span class="price">￥188.00</span>
-                                                <span>伊莱克斯 Electrolux 全自动洗衣机</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="Pictures/thumbnail_s.jpg" />
-                                                <span class="price">￥188.00</span>
-                                                <span>伊莱克斯 Electrolux 全自动洗衣机</span>
-                                            </a>
-                                        </li>
+										<xsl:apply-templates select="/listpage/hotsaleproduct/product"/>
                                     </ul>
                                 </div>
                                 <ul class="bottom">
@@ -298,22 +242,55 @@
 
     <!-- category list start -->
     <xsl:template match="/listpage/categorylist">
-        <div class="category_non-popMenu clearfix">
-            <xsl:for-each select="fathercategory">
-                <a class="class" href="/list-{@categoryid}.html">
-                    <xsl:value-of select="@categoryname"/>
-                    <xsl:if test="soncategory">
-                        <div class="subs clearfix">
-                            <xsl:for-each select="soncategory">
-                                <a href="/list-{@categoryid}.html">
-                                    <xsl:value-of select="@categoryname"/>
-                                </a>
-                            </xsl:for-each>
-                        </div>
-                    </xsl:if>
-                </a>
-            </xsl:for-each>
-        </div>
+		<div class="box2 cateBox">
+			<ul class="title">
+				<li class="left">
+					<xsl:text> </xsl:text>
+				</li>
+				<li>
+					<span>
+						<a href="/list-{categoryid}.html" target="_blank" style="color:white">
+							<xsl:value-of select="ancestorinfo/categoryname"/>
+						</a>
+					</span>
+				</li>
+				<li class="right">
+					<xsl:text> </xsl:text>
+				</li>
+			</ul>
+			<div class="content">
+				<div class="category_non-popMenu clearfix">
+					<xsl:for-each select="categories/fathercategory">
+						<a class="class" href="/list-{@categoryid}.html">
+							<xsl:if test="@categoryid = $CategoryID">
+								<xsl:attribute name="style">color:#ff9900</xsl:attribute>
+							</xsl:if>
+							<xsl:value-of select="@categoryname"/>
+							<xsl:if test="soncategory">
+								<div class="subs clearfix">
+									<xsl:for-each select="soncategory">
+										<a href="/list-{@categoryid}.html">
+											<xsl:if test="@categoryid = $CategoryID">
+												<xsl:attribute name="style">color:#ff9900</xsl:attribute>
+											</xsl:if>
+											<xsl:value-of select="@categoryname"/>
+										</a>
+									</xsl:for-each>
+								</div>
+							</xsl:if>
+						</a>
+					</xsl:for-each>
+				</div>
+			</div>
+			<ul class="bottom">
+				<li class="left">
+					<xsl:text> </xsl:text>
+				</li>
+				<li class="right">
+					<xsl:text> </xsl:text>
+				</li>
+			</ul>
+		</div>    
     </xsl:template>
     <!-- category list start -->
 
@@ -328,7 +305,7 @@
                 <span class="name" title="{productname}">
                     <xsl:value-of select="productname"/>
                 </span>
-                <span class="commentsNum">已有0人评论</span>
+                <span class="commentsNum"></span>
             </a>
             <div class="actions">
                 <a class="button_blue3" href="/product-{productid}.html">
@@ -340,7 +317,7 @@
                         <xsl:text> </xsl:text>
                     </span>
                 </a>
-                <a class="button_blue3" href="#">
+                <a class="button_blue3" fav="true" style="cursor:pointer" productid="{productid}">
                     <span class="left">
                         <xsl:text> </xsl:text>
                     </span>
@@ -361,33 +338,68 @@
             </div>
         </li>
     </xsl:template>
-    <!-- product list start -->
-
 	<xsl:template name="Pagination">
-		<xsl:if test="$PageCount > 1">
-			<div class="line">
-				<xsl:text> </xsl:text>
-			</div>
-			<div class="pagination">
+		<div class="line">
+			<xsl:text> </xsl:text>
+		</div>
+		<div class="pagination">
+			<a type="page" class="prev" style="cursor:pointer">
 				<xsl:if test="$PageIndex != 1">
-					<a type="page" class="prev" style="cursor:pointer">
-						<xsl:text> </xsl:text>
-					</a>
+					<xsl:attribute name="page">
+						<xsl:value-of select="$PageIndex - 1"/>
+					</xsl:attribute>
 				</xsl:if>
-				<div class="pageNum">
-					<xsl:for-each select="listpage/productlist/pageinfo/page">
-						<a type="page" style="cursor:pointer" page="{pageindex}">
-							<xsl:value-of select="pageindex"/>
-						</a>
-					</xsl:for-each>
-				</div>
-				<xsl:if test="$PageIndex != $PageCount">
-					<a type="page" class="next" style="cursor:pointer">
-						<xsl:text> </xsl:text>
+				<xsl:text> </xsl:text>
+			</a>
+			<div class="pageNum">
+				<xsl:for-each select="listpage/productlist/pageinfo/page">
+					<a style="cursor:pointer">
+						<xsl:choose>
+							<xsl:when test="@pageindex != $PageIndex">
+								<xsl:attribute name="page">
+									<xsl:value-of select="@pageindex"/>
+								</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:attribute name="class">on</xsl:attribute>
+							</xsl:otherwise>
+						</xsl:choose>
+						<xsl:value-of select="@pageindex"/>
 					</a>
-				</xsl:if>
+				</xsl:for-each>
 			</div>
-		</xsl:if>
+			<a type="page" class="next" style="cursor:pointer">
+				<xsl:if test="$PageIndex != $PageCount">
+					<xsl:attribute name="page">
+						<xsl:value-of select="$PageIndex + 1"/>
+					</xsl:attribute>
+				</xsl:if>
+			</a>
+		</div>
 	</xsl:template>
+	<!-- product list start -->
 
+	<!-- hot sale product list start -->
+	<xsl:template match="/listpage/hotsaleproduct/product">
+		<li>
+			<a href="/product-{productid}.html" target="_blank">
+				<img src="{productimage}" />
+				<span class="price">
+					￥<xsl:value-of select="price"/>
+				</span>
+				<span>
+					<xsl:value-of select="productname"/>
+				</span>
+			</a>
+		</li>
+	</xsl:template>
+	<!-- hot sale product list end -->
+
+	<!-- brand list start -->
+	<xsl:template match="/listpage/brandlist/brand">
+		<a href="/brand-{brandid}-c{$CategoryID}.html" target="_blank">
+			<xsl:value-of select="brandname"/>
+		</a>	
+	</xsl:template>
+	<!-- brand list end -->
 </xsl:stylesheet>

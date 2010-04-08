@@ -115,104 +115,14 @@
                                     <div class="content">
                                         <xsl:apply-templates select="/productpage/productinfo/product"/>
 
-                                        <!--
-                                        <div class="box7">
-                                            <div class="title">相关服务项目</div>
-                                            <div class="content">
-                                                <p>
-                                                    延保服务 - 延长商品保修期，购物更安心<br/>延保通 笔记本 4001-5000元（保修二年）￥483.00  <a href="#">[详细说明]</a>  <a href="#">[购买]</a>
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="box7">
-                                            <div class="title">相关配件</div>
-                                            <div class="content">
-                                                <ul class="itemList2">
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
                                         <div class="box7">
                                             <div class="title">相关商品</div>
                                             <div class="content">
                                                 <ul class="itemList2">
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" title="惠普14存经济型笔记本电脑包">
-                                                            <img src="images/productPic.gif" />
-                                                            <span>惠普14存经济型笔记本电脑包</span>
-                                                        </a>
-                                                    </li>
+													<xsl:apply-templates select="/productpage/productinfo/relatedproducts/product"/>
                                                 </ul>
                                             </div>
                                         </div>
-                                        -->
 
                                     </div>
                                     <ul class="bottom">
@@ -280,7 +190,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
-                    <xsl:value-of select="$ProductName"/>
+                <xsl:value-of select="$ProductName"/>
             </div>
         </div>
     </xsl:template>
@@ -410,6 +320,19 @@
         </div>
     </xsl:template>
     <!-- product info end -->
+
+	<!-- related product list start -->
+	<xsl:template match="/productpage/productinfo/relatedproducts/product">
+		<li>
+			<a href="/product-{productid}.html" title="{productname}">
+				<img src="{productimage}" />
+				<span>
+					<xsl:value-of select="productname"/>
+				</span>
+			</a>
+		</li>
+	</xsl:template>
+	<!-- related product list end -->
 
     <!-- question list start -->
     <xsl:template match="/productpage/questions">
@@ -574,7 +497,7 @@
     <xsl:template match="/productpage/samebrandproducts/product">
         <li>
             <a href="/product-{productid}.html" title="{productname}">
-                <xsl:value-of select="productnameshort"/>
+                <xsl:value-of select="productname"/>
             </a>
             <span>
                 ￥<xsl:value-of select="price"/>
