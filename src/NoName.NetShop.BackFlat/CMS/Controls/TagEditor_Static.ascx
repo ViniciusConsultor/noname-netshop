@@ -4,6 +4,11 @@
     $(function() {
         CKEDITOR.replace('<%= TextBox_Content.ClientID %>', {
             startupMode: 'source',
+            toolbarStartupExpanded: false
+        });
+    });
+    /*
+    
             toolbar: [
                         ['Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
                         ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
@@ -16,9 +21,7 @@
                         ['Styles', 'Format', 'Font', 'FontSize'],
                         ['TextColor', 'BGColor', 'Maximize']
                     ],
-            toolbarStartupExpanded: false
-        });
-    });
+    */
 </script>
 
 
