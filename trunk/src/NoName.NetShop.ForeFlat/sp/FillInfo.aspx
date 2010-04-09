@@ -96,7 +96,7 @@
                     <div class="title">选择支付方式</div>
                     <div class="content">
                     <asp:RadioButtonList runat="server" ID="rbtlPayMethod" RepeatDirection="Horizontal" CssClass="form_h">
-                    <asp:ListItem Text="在线支付" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="支付宝" Value="1"></asp:ListItem>
                     <asp:ListItem Text="银行转账" Value="2"></asp:ListItem>
                     <asp:ListItem Text="邮局汇款" Value="3"></asp:ListItem>
                     <asp:ListItem Text="货到付款" Value="4"></asp:ListItem>

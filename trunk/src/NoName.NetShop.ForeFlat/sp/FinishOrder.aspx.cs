@@ -32,9 +32,10 @@ namespace NoName.NetShop.ForeFlat.sp
                 if (model != null && String.IsNullOrEmpty(model.PayorderId) && model.PayMethod == PayMethType.支付宝)
                 {
                     string url = "../alipay/StandardPay.aspx?orderId=" + litSavedOrderId.Text;
-                    Response.Write("订单已生成，页面将<a href='" + url + "'>跳转</a>至账户中心！");
+                    Response.Write("订单已生成，页面将<a href='" + url + "'>跳转</a>支付页面！");
                     Response.AddHeader("REFRESH", "3;URL='" + url + "'");
                 }
+                
             }
         }
 
