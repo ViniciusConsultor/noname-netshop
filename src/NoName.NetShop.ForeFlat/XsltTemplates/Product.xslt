@@ -311,7 +311,9 @@
             <div id="service" style="display:none">
 				<xsl:value-of disable-output-escaping="yes" select="saleservice"/>
 			</div>
-            <div id="news" style="display:none">text5</div>
+            <div id="news" style="display:none">
+				<xsl:value-of disable-output-escaping="yes" select="/productpage/productinfo/relatednews/news/newscontent"/>
+            </div>
             <div class="content">
                 <script type="text/javascript">
                     document.write(document.getElementById("description").innerHTML);
