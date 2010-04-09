@@ -62,25 +62,83 @@ function setUrlParameter(p) {
     }
 }
 
+
+if (typeof Poly9 == 'undefined') {
+    var Poly9 = {};
+}
+Poly9.URLParser = function(url) {
+
+    this._fields = {
+        'Username': 4,
+        'Password': 5,
+        'Port': 7,
+        'Protocol': 2,
+        'Host': 6,
+        'Pathname': 8,
+        'URL': 0,
+        'Querystring': 9,
+        'Fragment': 10
+    };
+
+    this._values = {};
+    this._regex = null;
+    this.version = 0.1;
+    this._regex = /^((\w+):\/\/)?((\w+):?(\w+)?@)?([^\/\?:]+):?(\d+)?(\/?[^\?#]+)?\??([^#]+)?#?(\w*)/;
+    for (var f in this._fields) {
+        this['get' + f] = this._makeGetter(f);
+    }
+
+    if (typeof url != 'undefined') {
+        this._parse(url);
+    }
+}
+Poly9.URLParser.prototype.setURL = function(url) {
+    this._parse(url);
+}
+
+Poly9.URLParser.prototype._initValues = function() {
+    for (var f in this._fields) {
+        this._values[f] = '';
+    }
+}
+
+Poly9.URLParser.prototype._parse = function(url) {
+    this._initValues();
+    var r = this._regex.exec(url);
+    if (!r) throw "DPURLParser::_parse -> Invalid URL";
+
+    for (var f in this._fields) if (typeof r[this._fields[f]] != 'undefined') {
+        this._values[f] = r[this._fields[f]];
+    }
+}
+Poly9.URLParser.prototype._makeGetter = function(field) {
+    return function() {
+        return this._values[field];
+    }
+}  
+
 function setCurrentNavigator() {
     var url = window.location.href;
-    /http:(.+)\/(.+)/g.test(url);
-    var lastHalf = RegExp.$2.toString().toLowerCase();
+    ///http:([a-zA-Z0-9\.-]+)\/(.+)/g.test(url);
+
+    var p = new Poly9.URLParser(url);
+
+    var lastHalf = p.getPathname();
     var navifators = $('.navigator li a');
 
-    if (lastHalf.startWith('channel/shopping') > 0) {
+    if (lastHalf.startWith('/channel/shopping')) {
         $(navifators[1]).addClass('shoppinghover');
     }
-    if (lastHalf.startWith('channel/solution') > 0) {
+    if (lastHalf.startWith('/solution/home.aspx')) {
         $(navifators[2]).addClass('solutionhover');
     }
-    if (lastHalf.startWith('channel/brand') > 0) {
+    if (lastHalf.startWith('/channel/brand')) {
         $(navifators[3]).addClass('brandshover');
     }
-    if (lastHalf.startWith('channel/info') > 0) {
+    if (lastHalf.startWith('/channel/info')) {
         $(navifators[4]).addClass('informationhover');
     }
-    if (lastHalf.startWith('channel/magic') > 0) {
+    if (lastHalf.startWith('/channel/magic')) {
         $(navifators[5]).addClass('magichover');
     }
 }
