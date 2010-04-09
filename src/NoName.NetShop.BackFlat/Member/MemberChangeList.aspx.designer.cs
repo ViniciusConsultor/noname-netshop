@@ -11,7 +11,7 @@
 namespace NoName.NetShop.BackFlat.Member {
     
     
-    public partial class MemberList {
+    public partial class MemberChangeList {
         
         /// <summary>
         /// form1 控件。

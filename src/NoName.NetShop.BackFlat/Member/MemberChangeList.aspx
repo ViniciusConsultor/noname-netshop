@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MemberList.aspx.cs" Inherits="NoName.NetShop.BackFlat.Member.MemberList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MemberChangeList.aspx.cs" Inherits="NoName.NetShop.BackFlat.Member.MemberChangeList" %>
 
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 
@@ -41,25 +41,41 @@
     <RowStyle BackColor="White" ForeColor="#333333" />
     <Columns>
         <asp:BoundField DataField="UserId" HeaderText="用户ID" />
-        <asp:BoundField DataField="UserEmail" HeaderText="邮箱地址" />
         <asp:BoundField DataField="UserName"  HeaderText="昵称"/>
-        <asp:BoundField DataField="Status"  HeaderText="状态"/>
+        <asp:BoundField DataField="allscore"  HeaderText="总积分"/>
+        <asp:BoundField DataField="curscore"  HeaderText="当前积分"/>
+        <asp:BoundField DataField="allmoney"  HeaderText="总消费金额"/>
         <asp:TemplateField HeaderText="用户类型">
             <ItemTemplate>
-                <asp:Label ID="lblUserType" runat="server" Text='<%# Eval("UserType") %>'></asp:Label>
+                <asp:Label ID="lblUserType" runat="server"></asp:Label>
             </ItemTemplate>
        </asp:TemplateField>
         <asp:TemplateField HeaderText="用户级别">
             <ItemTemplate>
-                <asp:Label ID="lblUserLevel" runat="server" Text='<%# Bind("UserLevel") %>'></asp:Label>
+                <asp:Label ID="lblUserLevel" runat="server"></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
+        <asp:TemplateField HeaderText="申请用户类型">
+            <ItemTemplate>
+                <asp:Label ID="lblNewUserType" runat="server"></asp:Label>
+            </ItemTemplate>
+       </asp:TemplateField>
+        <asp:TemplateField HeaderText="申请用户级别">
+            <ItemTemplate>
+                <asp:Label ID="lblNewUserLevel" runat="server"></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>  
+        
+        <asp:TemplateField HeaderText="申请变更类型">
+            <ItemTemplate>
+                <asp:Label ID="lblChangeType" runat="server"></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField> 
         <asp:TemplateField HeaderText="操作">
             <ItemTemplate>
-            <asp:LinkButton runat="server" Id="lbtnDelete" CommandName="del" Text="删除" CommandArgument='<%# Eval("userId") %>' ></asp:LinkButton>
             <asp:LinkButton runat="server" Id="lbtnEdit" CommandName="show" Text="查看" CommandArgument='<%# Eval("userId") %>'></asp:LinkButton>
-            <asp:LinkButton runat="server" Id="lbtnLock" CommandName="lock" Text="锁定"  CommandArgument='<%# Eval("userId") %>' Enabled='<%# Eval("status").ToString()=="1" %>'></asp:LinkButton>
-            <asp:LinkButton runat="server" Id="lbtnActive" CommandName="active" Text="激活" CommandArgument='<%# Eval("userId") %>' Enabled='<%# Eval("status").ToString()=="2" %>'></asp:LinkButton>
+            <asp:LinkButton runat="server" Id="lbtnAgree" CommandName="agree" Text="通过" CommandArgument='<%# Eval("userId") %>'></asp:LinkButton>
+            <asp:LinkButton runat="server" Id="lbtnReject" CommandName="reject" Text="驳回" CommandArgument='<%# Eval("userId") %>'></asp:LinkButton>
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>

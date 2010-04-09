@@ -11,7 +11,7 @@ using System.Data;
 
 namespace NoName.NetShop.BackFlat.Member
 {
-    public partial class MemberList : System.Web.UI.Page
+    public partial class MemberScoreList : System.Web.UI.Page
     {
         private SearchPageInfo SearPageInfo
         {
@@ -22,7 +22,7 @@ namespace NoName.NetShop.BackFlat.Member
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "umMember";
-                    spage.FieldNames = "UserId,UserEmail,UserName,Status,LastLogin,UserType,userlevel";
+                    spage.FieldNames = "UserId,UserEmail,UserName,Status,LastLogin,UserType,userlevel,allscore,curscore";
                     spage.PriKeyName = "UserId";
                     spage.StrJoin = "";
                     spage.PageSize = 20;
@@ -49,28 +49,6 @@ namespace NoName.NetShop.BackFlat.Member
             pageNav.CurrentPageIndex = SearPageInfo.PageIndex;
             pageNav.PageSize = SearPageInfo.PageSize;
             pageNav.RecordCount = SearPageInfo.TotalItem;
-        }
-
-        protected void gvList_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            string userId =  e.CommandArgument.ToString();
-            switch (e.CommandName)
-            {
-                case "del":
-                    MemberInfo.SetStatus(userId, MemberStatus.Deleted);
-                    break;
-                case "show":
-                    Response.Redirect("ShowMemberInfo.aspx?userid=" + userId, true);
-                    Response.End();
-                    break;
-                case "lock":
-                    MemberInfo.SetStatus(userId, MemberStatus.Locked);
-                    break;
-                case "active":
-                    MemberInfo.SetStatus(userId, MemberStatus.Formal);
-                    break;
-            }
-            BindList();
         }
 
         protected void pageNav_PageChanged(object src, NoName.Utility.PageChangedEventArgs e)
@@ -135,6 +113,15 @@ namespace NoName.NetShop.BackFlat.Member
                 }
             }
         }
+
+        protected void btnAddScore_Click(object sender, EventArgs e)
+        {
+            string users = Request.Form["selUsers"];
+            MemberInfo.LogScore(users, ScoreType.Other, int.Parse(txtScore.Text), "", "");
+            BindList();
+            
+        }
+
 
 
     }

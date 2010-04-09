@@ -11,7 +11,7 @@ using System.Data;
 
 namespace NoName.NetShop.BackFlat.Member
 {
-    public partial class MemberList : System.Web.UI.Page
+    public partial class MemberChangeList : System.Web.UI.Page
     {
         private SearchPageInfo SearPageInfo
         {
@@ -22,13 +22,13 @@ namespace NoName.NetShop.BackFlat.Member
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "umMember";
-                    spage.FieldNames = "UserId,UserEmail,UserName,Status,LastLogin,UserType,userlevel";
+                    spage.FieldNames = "UserId,UserEmail,UserName,Status,LastLogin,UserType,userlevel,allscore,curscore,allmoney,newUserType,newUserLevel,changetype";
                     spage.PriKeyName = "UserId";
                     spage.StrJoin = "";
                     spage.PageSize = 20;
                     spage.PageIndex = 1;
                     spage.OrderType = "1";
-                    spage.StrWhere = "status<3";
+                    spage.StrWhere = "status<3 and changetype>0";
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
             }
@@ -53,21 +53,18 @@ namespace NoName.NetShop.BackFlat.Member
 
         protected void gvList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            string userId =  e.CommandArgument.ToString();
+            string userId = e.CommandArgument.ToString();
             switch (e.CommandName)
             {
-                case "del":
-                    MemberInfo.SetStatus(userId, MemberStatus.Deleted);
-                    break;
                 case "show":
                     Response.Redirect("ShowMemberInfo.aspx?userid=" + userId, true);
                     Response.End();
                     break;
-                case "lock":
-                    MemberInfo.SetStatus(userId, MemberStatus.Locked);
+                case "agree":
+                    MemberInfo.ConfirmUserChange(userId);
                     break;
-                case "active":
-                    MemberInfo.SetStatus(userId, MemberStatus.Formal);
+                case "reject":
+                    MemberInfo.RejectUserChange(userId);
                     break;
             }
             BindList();
@@ -106,10 +103,18 @@ namespace NoName.NetShop.BackFlat.Member
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 DataRowView row = e.Row.DataItem as DataRowView;
-                MemberType userType =(MemberType)(Convert.ToInt32(row["userType"]));
+                MemberType userType = (MemberType)(Convert.ToInt32(row["userType"]));
                 UserLevel userLevel = (UserLevel)Convert.ToInt32(row["userLevel"]);
+                MemberType newUserType = (MemberType)(row["newuserType"]==DBNull.Value?0 : Convert.ToInt32(row["newuserType"]));
+                UserLevel newUserLevel = (UserLevel)(row["newuserLevel"] == DBNull.Value? 0: Convert.ToInt32(row["newuserLevel"]));
+                int changeType = row["changetype"]==DBNull.Value? 0: Convert.ToInt32(row["changetype"]);
+
                 Label lblUserType = e.Row.FindControl("lblUserType") as Label;
                 Label lblUserLevel = e.Row.FindControl("lblUserLevel") as Label;
+                Label lblNewUserType = e.Row.FindControl("lblNewUserType") as Label;
+                Label lblNewUserLevel = e.Row.FindControl("lblNewUserLevel") as Label;
+                Label lblChangeType = e.Row.FindControl("lblChangeType") as Label;
+
                 switch (userType)
                 {
                     case MemberType.Personal:
@@ -133,6 +138,32 @@ namespace NoName.NetShop.BackFlat.Member
                         lblUserLevel.Text = userLevel.ToString();
                         break;
                 }
+
+                switch (newUserType)
+                {
+                    case MemberType.Personal:
+                        lblNewUserType.Text = "个人会员";
+                        break;
+                    case MemberType.Company:
+                        lblNewUserType.Text = "鼎企会员";
+                        break;
+                    case MemberType.Famly:
+                        lblNewUserType.Text = "鼎宅会员";
+                        break;
+                    case MemberType.School:
+                        lblNewUserType.Text = "鼎校会员";
+                        break;
+                }
+
+                if (newUserLevel != UserLevel.登鼎会员)
+                {
+                    lblNewUserLevel.Text = newUserLevel.ToString();
+                }
+
+                if (changeType == 1)
+                    lblChangeType.Text = "申请会员升级";
+                else if (changeType == 2)
+                    lblChangeType.Text = "申请修改类别";
             }
         }
 
