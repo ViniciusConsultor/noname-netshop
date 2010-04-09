@@ -99,7 +99,7 @@ namespace NoName.NetShop.Solution.DAL
 		}
 
         /// <summary>
-        /// 根据商品单件计算套装总价
+        /// 根据商品单件计算套装总价并设置
         /// </summary>
         /// <param name="suiteId"></param>
         public void SetPriceFromRefrence(int suiteId)
@@ -107,6 +107,19 @@ namespace NoName.NetShop.Solution.DAL
             DbCommand dbCommand = dbw.GetStoredProcCommand("UP_slSuite_SetPriceFromReference");
             dbw.AddInParameter(dbCommand, "SuiteId", DbType.Int32, suiteId);
             dbw.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据商品单件计算套装总价
+        /// </summary>
+        /// <param name="suiteId"></param>
+        /// <returns></returns>
+        public decimal GetPriceFromRefrence(int suiteId)
+        {
+            string sql = "select sum(price * quantity) from slProduct WHERE SuiteId=@SuiteId";
+            DbCommand dbCommand = dbr.GetSqlStringCommand(sql);
+            dbw.AddInParameter(dbCommand, "SuiteId", DbType.Int32, suiteId);
+            return Convert.ToDecimal(dbw.ExecuteScalar(dbCommand));
         }
 
 		/// <summary>
