@@ -35,5 +35,18 @@ namespace NoName.NetShop.Product.BLL
         {
             return dal.GetModel(ProductID);
         }
+
+
+        public void Save(ProductNewsModel model)
+        {
+            if (!Exists(model.ProdutID))
+            {
+                Add(model);
+            }
+            else
+            {
+                Update(model);
+            }
+        }
     }
 }
