@@ -117,7 +117,7 @@ function initialize() {
     $.ajax({
         url: '/handler/solutionhandler.ashx',
         type: 'post',
-        data: 'action=category&sid=' + $.query.get('ids'),
+        data: 'action=category&sid=' + $.query.get('scenceid'),
         cache: false,
         dataType: 'json',
         async: false,
@@ -232,7 +232,7 @@ function showSearchedProduct(categoryID, fatherCategoryID, brandid, productName,
     $.ajax({
         url: '/handler/solutionhandler.ashx',
         type: 'post',
-        data: 'action=product&sid=' + $.query.get('ids') + '&cid=' + categoryID + '&fcid=' + fatherCategoryID + '&brandid=' + brandid + '&pdname=' + productName + '&order=' + OrderType,
+        data: 'action=product&sid=' + $.query.get('scenceid') + '&cid=' + categoryID + '&fcid=' + fatherCategoryID + '&brandid=' + brandid + '&pdname=' + productName + '&order=' + OrderType,
         cache: false,
         async: false,
         dataType: 'json',
