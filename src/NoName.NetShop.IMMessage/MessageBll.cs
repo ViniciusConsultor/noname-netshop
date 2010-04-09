@@ -95,7 +95,7 @@ namespace NoName.NetShop.IMMessage
         {
             string where = "msgtype=2 and userId='" + roleId + "' and usertype=" + userType;
             if (isValidMsg)
-                where += " and expireTime>getdate()";
+                where += " and (expiretime is null or expireTime>getdate())";
             return dal.GetList(where);
         }
 
@@ -109,7 +109,7 @@ namespace NoName.NetShop.IMMessage
         {
             string where = "msgtype=1 and userId='alluser' and usertype=" + userType;
             if (isValidMsg)
-                where += " and expireTime>getdate()";
+                where += " and (expiretime is null or expireTime>getdate())";
             return dal.GetList(where);
         }
 
