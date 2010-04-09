@@ -119,7 +119,8 @@ namespace NoName.NetShop.BackFlat.Product
                 SetStockTip(product.StockTip);
                 txtRelateProduct.Text = product.RelateProducts;
 
-                txtNewsID.Text = new ProductNewsBll().GetModel(product.ProductId).NewsID.ToString();
+                ProductNewsModel newsModel = new ProductNewsBll().GetModel(product.ProductId);
+                txtNewsID.Text = newsModel==null?"":newsModel.NewsID.ToString();
 
                 if (CategoryID != -1)
                 {
