@@ -69,7 +69,7 @@ namespace NoName.NetShop.BackFlat.Solution
                 txtScore.ReadOnly = true;
                 txtSuiteName.Text = smodel.SuiteName;
                 lblScenceId.Text = smodel.ScenceId.ToString();
-                lblPrice.Text = smodel.Price.ToString("F2");
+                txtPrice.Text = smodel.Price.ToString("F2");
 
                 if (!String.IsNullOrEmpty(smodel.SmallImage))
                 {
@@ -90,6 +90,7 @@ namespace NoName.NetShop.BackFlat.Solution
         protected void btnAddProduct_Click(object sender, EventArgs e)
         {
             int productId = int.Parse(txtProductId.Text);
+            int quantity = int.Parse(txtQuantity.Text);
             int suiteId = int.Parse(lblSuiteId.Text);
 
             NoName.NetShop.Product.BLL.ProductModelBll pbll = new NoName.NetShop.Product.BLL.ProductModelBll();
@@ -102,9 +103,8 @@ namespace NoName.NetShop.BackFlat.Solution
                 NoName.NetShop.Solution.Model.SolutionProductModel spmodel = new SolutionProductModel();
                 spmodel.Price = pmodel.MerchantPrice;
                 spmodel.ProductId = pmodel.ProductId;
-                spmodel.Quantity = 1;
+                spmodel.Quantity = quantity;
                 spmodel.SuiteId = suiteId;
-                
                 spbll.Save(spmodel);
                 sbll.SetPriceFromRefrence(suiteId);
             }
@@ -125,12 +125,12 @@ namespace NoName.NetShop.BackFlat.Solution
                 smodel.SuiteId = NoName.NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Product);
                 smodel.ScenceId = ScenceId;
             }
+            smodel.Price = decimal.Parse(txtPrice.Text);
             smodel.Remark = txtRemark.Text.Trim();
             smodel.SuiteName = txtSuiteName.Text.Trim();
             if (!String.IsNullOrEmpty(fulImage.FileName))
             {
                 string[] MainImages;
-
                 if (ProductMainImageRule.SaveProductMainImage(smodel.SuiteId, fulImage.PostedFile, out MainImages))
                 {
                     smodel.SmallImage = MainImages[0];
@@ -152,8 +152,6 @@ namespace NoName.NetShop.BackFlat.Solution
             sbll.SetPriceFromRefrence(suitId);
 
             ShowInfo(suitId);
-
-
         }
     }
 }

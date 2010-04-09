@@ -68,13 +68,13 @@ namespace NoName.NetShop.BackFlat.Solution {
         protected global::System.Web.UI.WebControls.FileUpload fulImage;
         
         /// <summary>
-        /// lblPrice 控件。
+        /// txtPrice 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrice;
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
         
         /// <summary>
         /// txtRemark 控件。
@@ -111,6 +111,15 @@ namespace NoName.NetShop.BackFlat.Solution {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProductId;
+        
+        /// <summary>
+        /// txtQuantity 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
         
         /// <summary>
         /// btnAddProduct 控件。
