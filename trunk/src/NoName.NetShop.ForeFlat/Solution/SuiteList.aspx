@@ -26,7 +26,7 @@
 		  <div class="box2">
           <ul class="title">
                     <li class="left"></li>
-                    <li><span>超值套装</span></li>
+                    <li><span>套装场景</span></li>
                     <li class="right"></li>
                 </ul>
                 <div class="content noPaddingTop">
