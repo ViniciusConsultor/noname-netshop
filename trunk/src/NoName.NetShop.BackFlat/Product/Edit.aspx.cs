@@ -119,6 +119,8 @@ namespace NoName.NetShop.BackFlat.Product
                 SetStockTip(product.StockTip);
                 txtRelateProduct.Text = product.RelateProducts;
 
+                txtNewsID.Text = new ProductNewsBll().GetModel(product.ProductId).NewsID.ToString();
+
                 if (CategoryID != -1)
                 {
                     Label_CategoryNamePath.Text = new CategoryModelBll().GetCategoryNamePath(CategoryID);
@@ -337,6 +339,11 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 strErr += "商品状态选择有误！\\n";
             }
+            int TempNewsID = 0;
+            if (!String.IsNullOrEmpty(txtNewsID.Text) && !int.TryParse(txtNewsID.Text, out TempNewsID))
+            {
+                strErr += "关联资讯ID输入有误";
+            }
 
             if (strErr != "")
             {
@@ -433,6 +440,12 @@ namespace NoName.NetShop.BackFlat.Product
                         new ProductImageModelBll().Add(model);
                     }
                 }
+            }
+
+            //更新关联资讯ID
+            if (TempNewsID != new ProductNewsBll().GetModel(product.ProductId).NewsID)
+            {
+                new ProductNewsBll().Update(new ProductNewsModel() { ProdutID = product.ProductId, NewsID = TempNewsID });
             }
 
             bll.Update(product);
