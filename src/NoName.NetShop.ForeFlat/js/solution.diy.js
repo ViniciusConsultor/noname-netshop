@@ -2,6 +2,7 @@
 var currentFatherCategoryID = 0;
 function StringBuffer() { this.data = []; } StringBuffer.prototype.append = function() { this.data.push(arguments[0]); return this; }; StringBuffer.prototype.toString = function() { return this.data.join(""); }
 
+var pageSize = 5;
 
 $(function() {
     /* initialize category list of the scence */
@@ -240,57 +241,10 @@ function showSearchedProduct(categoryID, fatherCategoryID, brandid, productName,
         error: function() { $('#list-table').html('加载列表错误'); },
         success: function(data) {
             if (data.length > 0) {
-                var html = '<div class="table2">' +
-                           '     <table id="product-list">' +
-                           '       <tr>' +
-                           '         <th class="first"><span>商品图片</span></th>' +
-                           '         <th><span>商品名称</span></th>' +
-                           '         <th><span>商品价格</span></th>' +
-                           '         <th><span>选用</span></th>' +
-                           '       </tr>';
-                $.each(data, function(i, n) {
-                    html += '<tr class="' + (i % 2 == 0 ? "odd" : 'even') + '">' +
-                          '  <td><a href="' + n.url + '" target="_blank"><img src="' + n.image + '" /></a></td>' +
-                          '  <td><a href="' + n.url + '" target="_blank">' + n.productname + '</a></td>' +
-                          '  <td>￥' + n.price + '</td>' +
-                          '  <td><input type="checkbox" productid="' + n.productid + '" categoryid="' + n.categoryid + '" fatherid="' + fatherCategoryID + '" /></td>' +
-                          '</tr>';
-                });
-                html += '<tr class="bottom">' +
-                        '    <td colspan="4">' +
-                        '      <div class="pagination">' +
-                        '      </div>' +
-                        '    </td>' +
-                        '  </tr>' +
-                        '</table>';
+                // make pagination here
 
-                $('#list-table').html(html);
-                // click event for the product checkbox start
-                $('#product-list tr input[type="checkbox"]').click(function() {
-                    var theBox = $(this);
-                    var row = theBox.parent().parent();
-                    var status = theBox.attr('checked');
+                turnPage(data, 1,fatherCategoryID);
 
-                    $('#product-list tr input[type="checkbox"]').each(function() {
-                        if (theBox.attr('productid') != $(this).attr('productid') && theBox.attr('fatherid') == $(this).attr('fatherid') && theBox.attr('categoryid') == $(this).attr('categoryid'))
-                            $(this).attr('checked', false);
-                    });
-
-                    /****注意这里已经不再是分类ID作为主键了，而是父分类和子分类共同作为检索主键****/
-                    var theKey = theBox.attr('fatherid') + '-' + theBox.attr('categoryid');
-                    if (status) {
-                        addProduct(theKey, {
-                            productid: theBox.attr('productid'),
-                            productname: $(row.children('td')[1]).text(),
-                            count: 1,
-                            price: $(row.children('td')[2]).text()
-                        });
-                    }
-                    else {
-                        removeProduct(theKey);
-                    }
-                });
-                // click event for the product checkbox end
             }
             else {
                 $('#list-table').html('<div class="table2"><p>对不起，未找到相关结果。</p/></div>');
@@ -316,14 +270,17 @@ function addProduct(indexKey, productInfo) {
     if (theCateRow.children('td').length == 6) n = 1;
 
     $(theCateRow.children('td')[n + 1]).html('<span title="' + productInfo.productname + '">' + productInfo.productname.substring(0, 7) + '...</span>');
-    $(theCateRow.children('td')[n+2]).html(productInfo.count);
+    $(theCateRow.children('td')[n + 2]).html('<a class="count-add" style="cursor:pointer"> + </a><span>' + productInfo.count + '</span><a class="count-minus" style="cursor:pointer"> - </a>');
     $(theCateRow.children('td')[n+3]).html(productInfo.price);
     $(theCateRow.children('td')[n+4]).html('<a id="delete-' + indexKey + '" class="iconButton delete" style="cursor:pointer"></a>');
 
     $('#delete-' + indexKey).click(function() {
         removeProduct(indexKey);
     });
-
+    
+    $(theCateRow.children('td')[n + 2]).children('.count-add').click(function() { var c = parseInt($(this).next().html()); $(this).next().html(c + 1); });
+    $(theCateRow.children('td')[n + 2]).children('.count-minus').click(function() { var c = parseInt($(this).prev().html()); if ((c - 1) >= 1) $(this).prev().html(c - 1); });
+    
     calculateTotalPrice(true);
 }
 function removeProduct(indexKey) {
@@ -406,11 +363,112 @@ function clearSelect() {
 }
 
 function submitSelect() {
-    var selectedProducts = getSelectedList();
-    var productIDs = '';
+    var submitParmeter = 'pids=';
 
-    for (var i = 0; i < selectedProducts.Count; i++) {    
-        productIDs += selectedProducts.Values()[i].productid+',';
+    $('#selected-product-list tr').each(function(i, o) {
+        if ($(o).children('td').length >= 5) {
+            var n = 0;
+            if ($(o).children('td').length == 6) n = 1;
+
+            if ($(o).attr('productid')) {
+                var productid = $(o).attr('productid');
+                var count = $($(o).children('td')[n + 2]).children('span').html();
+                submitParmeter += productid + '-' + count + ',';
+            }
+
+        }
+    });
+    submitParmeter = submitParmeter.substring(0, submitParmeter.length - 1);
+
+    alert(submitParmeter);
+}
+
+function turnPage(data, pageIndex, fatherCategoryID) {
+    var html = '<div class="table2">' +
+                           '     <table id="product-list">' +
+                           '       <tr>' +
+                           '         <th class="first"><span>商品图片</span></th>' +
+                           '         <th><span>商品名称</span></th>' +
+                           '         <th><span>商品价格</span></th>' +
+                           '         <th><span>选用</span></th>' +
+                           '       </tr>';
+
+
+    var recordCount = (data == null ? 0 : data.length), pageCount = 1;
+    if (recordCount % pageSize != 0) { pageCount = parseInt(recordCount / pageSize) + 1; } else { pageCount = parseInt(recordCount / pageSize); }
+    var itemBegin = (pageIndex - 1) * pageSize, itemEnd = itemBegin + pageSize;
+    if (pageCount == pageIndex) itemEnd = recordCount;
+    
+    
+
+    for (var i = itemBegin; i < itemEnd; i++) {
+
+        html += '<tr class="' + (i % 2 == 0 ? "odd" : 'even') + '">' +
+                  '  <td><a href="' + data[i].url + '" target="_blank"><img src="' + data[i].image + '" /></a></td>' +
+                  '  <td><a href="' + data[i].url + '" target="_blank">' + data[i].productname + '</a></td>' +
+                  '  <td>￥' + data[i].price + '</td>' +
+                  '  <td><input type="checkbox" productid="' + data[i].productid + '" categoryid="' + data[i].categoryid + '" fatherid="' + fatherCategoryID + '" /></td>' +
+                  '</tr>';
     }
-    alert(productIDs.substring(0, productIDs.length - 1));
+
+
+    var paginateHtml = '共' + recordCount + '条' + pageCount + '页';
+
+    if (pageIndex == 1) paginateHtml += '<a class="prev" href="#"></a>';
+    else paginateHtml += '<a class="prev" href="#" page="' + (pageIndex - 1) + '"></a>';
+    paginateHtml += '<div class="pageNum">';
+
+    for (var i = 1; i <= pageCount; i++) {
+        if (pageIndex == i)
+            paginateHtml += '<a class="on" href="#">' + i + '</a>';
+        else
+            paginateHtml += '<a page="' + i + '" href="#">' + i + '</a>';
+    }
+    
+    paginateHtml += '</div>';
+    if (pageIndex == pageCount) paginateHtml += '<a class="next" href="#"></a>';
+    else paginateHtml += '<a class="next" href="#" page="' + (pageIndex + 1) + '"></a>';
+
+
+    html += '<tr class="bottom">' +
+            '    <td colspan="4">' +
+            '      <div class="pagination">' + paginateHtml +
+            '      </div>' +
+            '    </td>' +
+            '  </tr>' +
+            '</table>';
+
+    $('#list-table').html(html);
+
+    // click event for the product checkbox start
+    $('#product-list tr input[type="checkbox"]').click(function() {
+        var theBox = $(this);
+        var row = theBox.parent().parent();
+        var status = theBox.attr('checked');
+
+        $('#product-list tr input[type="checkbox"]').each(function() {
+            if (theBox.attr('productid') != $(this).attr('productid') && theBox.attr('fatherid') == $(this).attr('fatherid') && theBox.attr('categoryid') == $(this).attr('categoryid'))
+                $(this).attr('checked', false);
+        });
+
+        /****注意这里已经不再是分类ID作为主键了，而是父分类和子分类共同作为检索主键****/
+        var theKey = theBox.attr('fatherid') + '-' + theBox.attr('categoryid');
+        if (status) {
+            addProduct(theKey, {
+                productid: theBox.attr('productid'),
+                productname: $(row.children('td')[1]).text(),
+                count: 1,
+                price: $(row.children('td')[2]).text()
+            });
+        }
+        else {
+            removeProduct(theKey);
+        }
+    });
+    // click event for the product checkbox end
+
+    //paginate event
+    $('.pagination a[page]').click(function() {
+        turnPage(data, parseInt($(this).attr('page')), fatherCategoryID);
+    });
 }
