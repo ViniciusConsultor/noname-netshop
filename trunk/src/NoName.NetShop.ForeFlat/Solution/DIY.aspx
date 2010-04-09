@@ -7,7 +7,7 @@
     <script type="text/javascript" src="/js/cookie.js"></script>
     <script type="text/javascript" src="/js/jquery.url.js"></script>
     <script type="text/javascript" src="/js/jquery.query.js"></script>
-    <script type="text/javascript" src="/js/solution.diy4.js"></script>
+    <script type="text/javascript" src="/js/solution.diy.js"></script>
 </asp:Content>
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    

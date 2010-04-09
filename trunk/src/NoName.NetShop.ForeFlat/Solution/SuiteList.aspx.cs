@@ -8,6 +8,7 @@ using NoName.Utility;
 using NoName.NetShop.Solution.Model;
 using NoName.NetShop.Solution.BLL;
 using System.Data;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.ForeFlat.Solution
 {
@@ -59,6 +60,8 @@ namespace NoName.NetShop.ForeFlat.Solution
             {
                 SuiteList = bll.GetList(PageIndex, AspNetPager.PageSize, "", "", out RecordCount);
             }
+
+            foreach (DataRow row in SuiteList.Rows) row["senceimg"] = CommonImageUpload.GetCommonImageFullUrl(row["senceimg"].ToString());
 
             Repeater_Suites.DataSource = SuiteList;
             Repeater_Suites.DataBind();
