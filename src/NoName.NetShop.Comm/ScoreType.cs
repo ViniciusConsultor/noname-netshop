@@ -9,6 +9,7 @@ namespace NoName.NetShop.Common
     {
         Order=1,
         News=2,
-        Gift =3
+        Gift =3,
+        Other =4
     }
 }
