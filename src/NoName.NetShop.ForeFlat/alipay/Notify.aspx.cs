@@ -44,7 +44,6 @@ namespace NoName.NetShop.ForeFlat.alipay
             ap.RefundClose += new AliPay.ProcessNotifyEventHandler(ap_RefundClose);
             ap.RefundSuccess += new AliPay.ProcessNotifyEventHandler(ap_RefundSuccess);
             ap.WaitSellerAgree += new AliPay.ProcessNotifyEventHandler(ap_WaitSellerAgree);
-
             ap.ProcessNotify(this, AlipaySetting.PushUrl, key, v, "utf-8");
         }
         /// <summary>
