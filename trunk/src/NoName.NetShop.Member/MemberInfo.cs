@@ -38,7 +38,7 @@ namespace NoName.NetShop.Member
             string sql = "um_member_logScore";
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
-            db.AddInParameter(dbCommand, "UserId", DbType.String,UserId);
+            db.AddInParameter(dbCommand, "UserIds", DbType.String,UserId);
             db.AddInParameter(dbCommand, "@Score",DbType.Int32,score);
             db.AddInParameter(dbCommand, "@appType",DbType.String,appId);
             db.AddInParameter(dbCommand, "@appId",DbType.String,appId);
@@ -47,24 +47,25 @@ namespace NoName.NetShop.Member
         }
 
         /// <summary>
-        /// 记录用户的积分消费记录
+        /// 记录用户的积分消费记录，可以是多个用户的
         /// </summary>
         /// <param name="appType"></param>
         /// <param name="score"></param>
         /// <param name="appId"></param>
         /// <param name="remark"></param>
-        public static void LogScore(string userId, NoName.NetShop.Common.ScoreType stype, int score, string appId, string remark)
+        public static void LogScore(string userIds, NoName.NetShop.Common.ScoreType stype, int score, string appId, string remark)
         {
             string sql = "um_member_logScore";
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand(sql);
-            db.AddInParameter(dbCommand, "UserId", DbType.String, userId);
+            db.AddInParameter(dbCommand, "@UserIds", DbType.String, userIds);
             db.AddInParameter(dbCommand, "@Score", DbType.Int32, score);
             db.AddInParameter(dbCommand, "@scoreType", DbType.Int16, (int)stype);
             db.AddInParameter(dbCommand, "@appId", DbType.String, appId);
             db.AddInParameter(dbCommand, "@remark", DbType.String, remark);
             db.ExecuteNonQuery(dbCommand);
         }
+
 
         public static MemberInfo GetBaseInfo(string userId)
         {
@@ -217,7 +218,7 @@ namespace NoName.NetShop.Member
 
         public static bool SetStatus(string userId, MemberStatus status)
         {
-            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
             string sql = "update umMember set status=@status,modifytime=getdate() from umMember where userId=@userId";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
@@ -313,6 +314,57 @@ namespace NoName.NetShop.Member
             } return model;
         }
 
-
+        /// <summary>
+        /// 申请修改会员类型
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="userType"></param>
+        public static void ChangeUserType(string userId, MemberType userType)
+        {
+            Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
+            string sql = "update ummember set newusertype=@usertype,ChangeType=2 where userid=@userId";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "userId", DbType.String, userId);
+            db.AddInParameter(dbCommand, "usertype", DbType.Int32, (int)userType);
+            db.ExecuteNonQuery(dbCommand);
+        }
+        /// <summary>
+        /// 申请修改商户级别
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="userLevel"></param>
+        public static void ChangeUserLevel(string userId, UserLevel userLevel)
+        {
+            Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
+            string sql = "update ummember set newuserlevel=@userLevel,ChangeType=1 where userid=@userId";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "userId", DbType.String, userId);
+            db.AddInParameter(dbCommand, "userLevel", DbType.Int32, (int)userLevel);
+            db.ExecuteNonQuery(dbCommand);
+        }
+        /// <summary>
+        /// 确认用户修改
+        /// </summary>
+        /// <param name="userId"></param>
+        public static void ConfirmUserChange(string userId)
+        {
+            Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
+            string sql = "up_umMember_ConfirmChange";
+            DbCommand dbCommand = db.GetStoredProcCommand(sql);
+            db.AddInParameter(dbCommand, "userId", DbType.String, userId);
+            db.ExecuteNonQuery(dbCommand);
+        }
+        /// <summary>
+        /// 拒绝用户申请
+        /// </summary>
+        /// <param name="userId"></param>
+        public static void RejectUserChange(string userId)
+        {
+            Database db = NoName.NetShop.Common.CommDataAccess.DbWriter;
+            string sql = "update ummember set ChangeType=0 where userid=@userId";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "userId", DbType.String, userId);
+            db.ExecuteNonQuery(dbCommand);
+        }
     }
 }
