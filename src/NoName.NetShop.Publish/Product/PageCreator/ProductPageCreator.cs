@@ -48,7 +48,7 @@ namespace NoName.NetShop.Publish.Product.PageCreator
             rootNode.AppendChild(helper.GetSameBrandProductList());
             rootNode.AppendChild(helper.GetHotSaleProductList());
 
-            xdoc.Save(@"d:\dingding_product.xml");
+            //xdoc.Save(@"d:\dingding_product.xml");
 
 
             return xdoc;
