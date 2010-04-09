@@ -244,6 +244,10 @@
                 <td><asp:TextBox id="txtRelateProduct" runat="server" Width="400"></asp:TextBox>(以英文逗号隔开)</td>
             </tr>
             <tr>
+                <td>评测资讯：</td>
+                <td><asp:TextBox id="txtNewsID" runat="server" Width="400"></asp:TextBox></td>
+            </tr>
+            <tr>
                 <td>简介<span class="red">*</span>：</td>
                 <td><asp:TextBox runat="server" TextMode="MultiLine" ID="TextBox_Description" /></td>
             </tr>

@@ -222,6 +222,11 @@ namespace NoName.NetShop.BackFlat.Product
             {
                 strErr += "商品状态选择有误！\\n";
             }
+            int TempNewsID = 0;
+            if (!String.IsNullOrEmpty(txtNewsID.Text) && !int.TryParse(txtNewsID.Text, out TempNewsID))
+            {
+                strErr += "关联资讯ID输入有误";
+            }
 
             if (strErr != "")
             {
@@ -278,6 +283,8 @@ namespace NoName.NetShop.BackFlat.Product
 
                 product.StockTip = GetStockTip();
                 product.RelateProducts = txtRelateProduct.Text.Replace("，",",");
+
+                new ProductNewsBll().Add(new ProductNewsModel() { ProdutID = ProductID, NewsID = TempNewsID });
 
                 bll.Add(product);
 
