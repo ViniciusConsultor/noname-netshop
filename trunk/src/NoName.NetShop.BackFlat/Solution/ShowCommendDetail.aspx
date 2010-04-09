@@ -49,7 +49,7 @@
 		套装总价
 	：</td>
 	<td height="25" width="*" align="left">
-		<asp:Label id="lblPrice" runat="server" Width="200px"></asp:Label>
+		<asp:TextBox id="txtPrice" runat="server" Width="200px"></asp:TextBox>
 	</td></tr>
 	<tr>
 	<td height="25" width="30%" align="right">
@@ -78,6 +78,7 @@
                     <Columns>
                     <asp:BoundField DataField="ProductId" HeaderText="商品Id" />
                     <asp:BoundField DataField="ProductName" HeaderText="商品名称" />
+                    <asp:BoundField DataField="Quantity" HeaderText="商品数量" />
                     <asp:CommandField DeleteText="删除" HeaderText="删除" ShowDeleteButton="true"  />
                     </Columns>
                     </asp:GridView>
@@ -87,6 +88,7 @@
 	<tr>
 	<td height="25" colspan="2"><div align="center">
         <asp:TextBox ID="txtProductId" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
 		<asp:Button ID="btnAddProduct" runat="server" Text="· 添加商品 ·" 
             OnClick="btnAddProduct_Click" ></asp:Button>
 	&nbsp;<asp:Button ID="btnSave" runat="server" Text="· 保存 ·" 
