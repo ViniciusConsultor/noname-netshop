@@ -190,9 +190,9 @@ namespace NoName.NetShop.MagicWorld.Model
     public enum SecondhandProductUsageCondition
     {
         全新 = 1,
-        半年以内 = 2,
-        使用一年 = 3,
-        使用两年 = 4,
-        两年以上 = 5,
+        八成新 = 2,
+        六成新 = 3,
+        四成新 = 4,
+        二成新 = 5,
     }
 }
