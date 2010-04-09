@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.Common;
 using System.Data;
 using NoName.NetShop.ShopFlow;
+using NoName.NetShop.Member;
 
 namespace NoName.NetShop.BackFlat.Order
 {
@@ -21,9 +22,9 @@ namespace NoName.NetShop.BackFlat.Order
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "spOrder";
-                    spage.FieldNames = "UserId,OrderId,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,DerateFee,userid,RecieverName,ChangeTime,PayTime,CreateTime,OrderType";
+                    spage.FieldNames = "sporder.UserId,ummember.usertype,ummember.userlevel,OrderId,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,DerateFee,userid,RecieverName,ChangeTime,PayTime,CreateTime,OrderType";
                     spage.PriKeyName = "OrderId";
-                    spage.StrJoin = "";
+                    spage.StrJoin = "join ummember on sporder.userid=ummember.userid";
                     spage.PageSize = 20;
                     spage.PageIndex = 1;
                     spage.OrderType = "1";
@@ -115,6 +116,36 @@ namespace NoName.NetShop.BackFlat.Order
             SearPageInfo.StrWhere = where;
             SearPageInfo.PageIndex = 1;
             BindList();
+        }
+
+        protected void gvList_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblUserType = e.Row.FindControl("lblUserType") as Label;
+                DataRowView row = e.Row.DataItem as DataRowView;
+                MemberType userType = (MemberType)(row["usertype"] == DBNull.Value ? 0 : Convert.ToInt32(row["usertype"]));
+                UserLevel userLevel = (UserLevel)(row["UserLevel"] == DBNull.Value ? 0 : Convert.ToInt32(row["userlevel"]));
+                switch (userType)
+                {
+                    case MemberType.Personal:
+                        lblUserType.Text = userLevel.ToString();
+                        break;
+                    case MemberType.Company:
+                        lblUserType.Text = "鼎企会员";
+                        break;
+                    case MemberType.Famly:
+                        lblUserType.Text = "鼎宅会员";
+                        break;
+                    case MemberType.School:
+                        lblUserType.Text = "鼎校会员";
+                        break;
+                    default:
+                        lblUserType.Text = userLevel.ToString(); 
+                        break;
+                }
+
+            }
         }
 
     }

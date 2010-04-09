@@ -55,11 +55,17 @@
          onclick="btnSearch_Click" />
         </div>
 
-           <asp:GridView runat="server" ID="gvList" AutoGenerateColumns="false">
+           <asp:GridView runat="server" ID="gvList" AutoGenerateColumns="false" 
+                onrowdatabound="gvList_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="orderid" HeaderText="订单ID" />            
                     <asp:BoundField DataField="userid" HeaderText="订货人" />
                     <asp:BoundField DataField="recievername" HeaderText="收货人" />
+                    <asp:TemplateField HeaderText="会员类型">
+                    <ItemTemplate>
+                    <asp:Label runat="server" ID="lblUserType"></asp:Label>
+                    </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="物流状态">
                         <ItemTemplate>
                             <%# Enum.GetName(typeof(NoName.NetShop.ShopFlow.OrderStatus),Convert.ToInt32(Eval("orderstatus"))) %>
