@@ -2,6 +2,12 @@
 <%@ Register src="../Controls/MagicWorldCategorySelect.ascx" tagname="MagicWorldCategorySelect" tagprefix="uc1" %>
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
+    <style type="text/css">
+    .category-selection{width:90%;}
+    .category-selection th{height:40px;}
+    .category-selection h3{height:40px;padding-top:10px;margin:0;}
+    .category-selection select{width:200px;height:400px;border:none;}
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">

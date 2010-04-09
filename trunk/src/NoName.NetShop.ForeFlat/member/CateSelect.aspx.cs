@@ -24,6 +24,11 @@ namespace NoName.NetShop.ForeFlat.member
         {
             if (!IsPostBack)
             {
+                if (CurrentUser == null)
+                {
+                    Response.Redirect("/login.aspx");
+                    return;
+                }
                 if (!String.IsNullOrEmpty(Request.QueryString["app"])) AppName = Request.QueryString["app"];
                 else throw new Exception("未指明程序名称");
                 if (!String.IsNullOrEmpty(Request.QueryString["cid"])) IntialisedCategoryID = Convert.ToInt32(Request.QueryString["cid"]);

@@ -27,13 +27,13 @@
                             <ItemTemplate>
                                   <tr>
                                     <td><%# Eval("SeProductID")%></td>
-                                    <td><%# Eval("SeProductName")%></td>
+                                    <td><a href="../../Magic/Secondhand.aspx?pid=<%# Eval("SeProductID") %>" target="_blank"><%# Eval("SeProductName")%></a></td>
                                     <td><%# Convert.ToDecimal(Eval("Price")).ToString("0.00") %></td>
                                     <td><%# Eval("Stock")%></td>
                                     <td><%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.SecondhandProductStatus), Eval("status"))%></td>
                                     <td>
                             	        <div class="inlineIconButton">
-                            	        <a title="编辑" class="iconButton edit" href='<%# ((NoName.NetShop.MagicWorld.Model.SecondhandProductStatus)Enum.Parse(typeof(NoName.NetShop.MagicWorld.Model.SecondhandProductStatus), Eval("status").ToString())) == NoName.NetShop.MagicWorld.Model.SecondhandProductStatus.尚未审核 ? "Edit.aspx?productid="+Eval("AuctionId") : "javascript:alert(\"该二手信息已通过审核，禁止编辑\")" %>'></a>
+                            	        <a title="编辑" class="iconButton edit" href='<%# ((NoName.NetShop.MagicWorld.Model.SecondhandProductStatus)Enum.Parse(typeof(NoName.NetShop.MagicWorld.Model.SecondhandProductStatus), Eval("status").ToString())) == NoName.NetShop.MagicWorld.Model.SecondhandProductStatus.尚未审核 ? "Edit.aspx?productid="+Eval("SeProductID") : "javascript:alert(\"该二手信息已通过审核，禁止编辑\")" %>'></a>
                             	        </div>
                                     </td>
                                   </tr>

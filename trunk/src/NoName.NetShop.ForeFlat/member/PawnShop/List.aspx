@@ -29,7 +29,7 @@
                             <ItemTemplate>
                               <tr>
                                 <td><%# Eval("pawnproductid") %></td>
-                                <td><%# Eval("pawnproductname") %></td>
+                                <td><a href="/Magic/PawnProduct.aspx?pid=<%# Eval("pawnproductid") %>" target="_blank"><%# Eval("pawnproductname") %></a></td>
                                 <td><%# Convert.ToDecimal(Eval("pawnprice")).ToString("0.00") %></td>
                                 <td><%# Eval("stock")%></td>
                                 <td><%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd HH:mm:ss")%></td>
