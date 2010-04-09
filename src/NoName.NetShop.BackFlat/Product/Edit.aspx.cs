@@ -444,10 +444,7 @@ namespace NoName.NetShop.BackFlat.Product
             }
 
             //更新关联资讯ID
-            if (TempNewsID != new ProductNewsBll().GetModel(product.ProductId).NewsID)
-            {
-                new ProductNewsBll().Update(new ProductNewsModel() { ProdutID = product.ProductId, NewsID = TempNewsID });
-            }
+            new ProductNewsBll().Save(new ProductNewsModel() { ProdutID = product.ProductId, NewsID = TempNewsID });
 
             bll.Update(product);
         }
