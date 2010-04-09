@@ -33,8 +33,10 @@ namespace NoName.NetShop.ShopFlow
         public string ServerIp { get; set; }
         public string ClientIp { get; set; }
         public string UserId { get; set; }
+        
         public abstract OrderProduct AddToCart(OrderType opType, int productId, int quantity, NameValueCollection paras);
         public abstract OrderProduct AddToCart(OrderType opType, int productId, int quantity, string[] paras);
+
         protected abstract HttpCookie BuildCartCookie();
         public abstract void RevertCartFromCookie();
         public abstract bool Exists();

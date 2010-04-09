@@ -76,15 +76,18 @@ namespace NoName.NetShop.ShopFlow
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             StringBuilder strSql = new StringBuilder();
 
-            strSql.Append("update spOrder set changetime=getdate(),paystatus=@pstatus from spOrder");
             if (pstatus == PayStatus.支付成功)
             {
-                strSql.Append("update spOrder set changetime=getdate(),paytime=getdate(),paystatus=@pstatus from spOrder ");
+                strSql.Append("update spOrder set changetime=getdate(),paytime=getdate(),paystatus=@paystatus from spOrder ");
             }
-            strSql.Append(" where OrderId=@OrderId and paystatus!=@pstatus");
+            else
+            {
+                strSql.Append("update spOrder set changetime=getdate(),paystatus=@paystatus from spOrder");
+            }
+            strSql.Append(" where OrderId=@OrderId and paystatus!=@paystatus");
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
             db.AddInParameter(dbCommand, "OrderId", DbType.AnsiString, orderId);
-            db.AddInParameter(dbCommand, "pstatus", DbType.Int16, (int)pstatus);
+            db.AddInParameter(dbCommand, "paystatus", DbType.Int16, (int)pstatus);
             return db.ExecuteNonQuery(dbCommand) > 0;
         }
 
