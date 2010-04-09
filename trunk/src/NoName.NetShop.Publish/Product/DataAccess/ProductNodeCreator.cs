@@ -116,6 +116,7 @@ namespace NoName.NetShop.Publish.Product.DataAccess
                     XmlNode RelatedProduct = XmlUtility.AddNewNode(RelatedProductNode, "product", null);
 
                     XmlUtility.AddNewNode(RelatedProduct, "productid", Convert.ToString(RelatedProductRow["productid"]));
+                    XmlUtility.AddNewNode(RelatedProduct, "productimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(RelatedProductRow["smallimage"])));
                     XmlUtility.AddNewNode(RelatedProduct, "productname", Convert.ToString(RelatedProductRow["productname"]));
                     XmlUtility.AddNewNode(RelatedProduct, "productnameshort", Convert.ToString(RelatedProductRow["productname"]).Length > 10 ? Convert.ToString(RelatedProductRow["productname"]).Substring(0, 10) + ".." : Convert.ToString(RelatedProductRow["productname"]));
                     XmlUtility.AddNewNode(RelatedProduct, "price", Convert.ToDecimal(Convert.ToDecimal(RelatedProductRow["MerchantPrice"]) - Convert.ToDecimal(RelatedProductRow["reduceprice"])).ToString("00"));
