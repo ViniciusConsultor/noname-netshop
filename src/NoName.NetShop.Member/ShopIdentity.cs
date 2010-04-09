@@ -25,7 +25,7 @@ namespace NoName.NetShop.Member
         public string UserName { get { return userName; } }
         public MemberStatus UserStatus { get { return userStatus; } }
         public MemberType UserType { get { return userType; } }
-        public UserLevel UserLevel { get { return UserLevel; } }
+        public UserLevel UserLevel { get { return userLevel; } }
 
         public ShopIdentity(FormsAuthenticationTicket ticket)
         {
