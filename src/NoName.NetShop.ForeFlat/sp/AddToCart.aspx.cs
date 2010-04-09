@@ -18,46 +18,75 @@ namespace NoName.NetShop.ForeFlat.sp
             //可以在页面加载时设置页面的缓存为“SetNoStore()”，即无缓存 
             Response.Cache.SetNoStore();
 
-            NameValueCollection paras = Request.QueryString;
-
-            
-
-            int  quantity=1;
-            int opval;
-            OrderType opType;
-            // 必须的参数
-            if (!Regex.IsMatch(paras["pid"],@"(\d+,)*(\d+)"))
-            {
-                throw new ShopException("传入的数据有误", true);
-            }
-
-            if (!int.TryParse(paras["opt"], out opval))
-            {
-                opval = 0;
-            }
-            opType = (OrderType)opval;
+            // 购买时传入的参数：
+            // 需要区分的购物车商品类型：
+            // 通用商品购物车：可以修改数量:pids=pid-qua,pid-qua&opt=类型
+            // 积分兑换购物车：没有金额，仅有积分:pids=pid-qua,pid-qua&opt=类型
+            // 推荐套装购物车：套装商品不可以修改，只有一个套装价格，没有单品价格，但所含商品需要展示:suitid=suitid&opt=类型
+            // 经典套装购物车：选中的套装商品不可以修改，价格根据商品价格计算:pids=pid-qua,pid-qua&opt=类型
             SetCurrentShopCart();
 
             if (CurrentShopCart != null)
             {
-                string[] pids = paras["pid"].Split(',');
-                foreach(string pid in pids)
+                if (Regex.IsMatch(ReqParas["pids"], @"(\d+(\-\d+)?,)*(\d+(\-\d+)?)"))
                 {
-                    OrderProduct op = CurrentShopCart.AddToCart( opType, int.Parse(pid), quantity, paras);
-                    if (op != null)
-                    {
-                        CurrentShopCart.ContinueShopUrl = op.ProductUrl;
-                    }
+                    ProcessCommProduct();
                 }
-                if (CurrentShopCart.ProductNum > 0)
+                else if (Regex.IsMatch(ReqParas["suitId"], @"\d+"))
                 {
-                    CurrentShopCart.SaveCartToCookie();
-                    CurrentShopCart.GoFirst();
+                    ProcessSuitCommProduct();
                 }
-                else
+            }
+        }
+
+        private OrderType GetOpType()
+        {
+            int opval;
+            OrderType opType;
+            if (!int.TryParse(ReqParas["opt"], out opval))
+            {
+                opval = 0;
+            }
+            opType = (OrderType)opval;
+            return opType;
+
+        }
+
+        private void ProcessSuitCommProduct()
+        {
+            OrderType opType = GetOpType();
+            int suitId = int.Parse(ReqParas["suitId"]);
+            OrderProduct op = CurrentShopCart.AddToCart(opType, suitId, 1, ReqParas);
+        }
+
+        // 通用商品购物车：可以修改数量:pids=pid-qua,pid-qua&opt=类型
+        private void ProcessCommProduct()
+        {
+            OrderType opType = GetOpType();
+            string[] pids = ReqParas["pids"].Split(',');
+            foreach (string pidstr in pids)
+            {
+                string[] pd = pidstr.Split('-');
+                int pid = int.Parse(pd[0]);
+                int quantity = 1;
+                if (pd.Length == 2)
                 {
-                    Response.Write("此商品暂时无法购买!");
+                    quantity = int.Parse(pd[1]);
                 }
+                OrderProduct op = CurrentShopCart.AddToCart(opType, pid, quantity, ReqParas);
+                if (op != null)
+                {
+                    CurrentShopCart.ContinueShopUrl = op.ProductUrl;
+                }
+            }
+            if (CurrentShopCart.ProductNum > 0)
+            {
+                CurrentShopCart.SaveCartToCookie();
+                CurrentShopCart.GoFirst();
+            }
+            else
+            {
+                Response.Write("此商品暂时无法购买!");
             }
         }
 

@@ -66,8 +66,7 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <a class="linkButton" href="<%# Eval("ProductUrl") %>" target="_blank">漫步者（Edifier）R101T06多媒体音箱
-                                            （黑色）</a>
+                                        <a class="linkButton" href="<%# Eval("ProductUrl") %>" target="_blank"><%# Eval("ProductName") %></a>
                                     </td>
                                     <td>
                                         ￥<%# Convert.ToDecimal(Eval("MerchantPrice")).ToString("F2") %>
