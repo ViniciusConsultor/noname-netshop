@@ -66,19 +66,19 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
         {
             string ErrorMessage = String.Empty;
 
-            if (String.IsNullOrEmpty(TextBox_ProductName.Text)) { ErrorMessage += "简要介绍不能为空\n"; }
-            if (String.IsNullOrEmpty(TextBox_EndTime.Text/* validate */)) { ErrorMessage += "简要介绍不能为空\n"; }
-            if (String.IsNullOrEmpty(TextBox_Price.Text) || !PageValidate.IsDecimal(TextBox_Price.Text)) { ErrorMessage += "典当价格不正确\n"; }
-            if (String.IsNullOrEmpty(TextBox_Brief.Text)) { ErrorMessage += "简要介绍不能为空\n"; }
-            if (String.IsNullOrEmpty(TextBox_TrueName.Text)) { ErrorMessage += "姓名不能为空\n"; }
-            if (String.IsNullOrEmpty(TextBox_Phone.Text) && String.IsNullOrEmpty(TextBox_CellPhone.Text)) { ErrorMessage += "请输入您的电话号码或者手机号码\n"; }
+            if (String.IsNullOrEmpty(TextBox_ProductName.Text)) { ErrorMessage += "产品名称不能为空\\n"; }
+            if (String.IsNullOrEmpty(TextBox_EndTime.Text/* validate */)) { ErrorMessage += "结束时间不能为空\\n"; }
+            if (String.IsNullOrEmpty(TextBox_Price.Text) || !PageValidate.IsDecimal(TextBox_Price.Text)) { ErrorMessage += "典当价格不正确\\n"; }
+            if (String.IsNullOrEmpty(TextBox_Brief.Text)) { ErrorMessage += "简要介绍不能为空\\n"; }
+            if (String.IsNullOrEmpty(TextBox_TrueName.Text)) { ErrorMessage += "姓名不能为空\\n"; }
+            if (String.IsNullOrEmpty(TextBox_Phone.Text) && String.IsNullOrEmpty(TextBox_CellPhone.Text)) { ErrorMessage += "请输入您的电话号码或者手机号码\\n"; }
             else { /* validate */}
-            if (String.IsNullOrEmpty(TextBox_PostCode.Text) || !PageValidate.IsNumber(TextBox_PostCode.Text)) { ErrorMessage += "邮政编码不能为空\n"; }
-            if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "地址不能为空\n"; }
+            if (String.IsNullOrEmpty(TextBox_PostCode.Text) || !PageValidate.IsNumber(TextBox_PostCode.Text)) { ErrorMessage += "邮政编码不能为空\\n"; }
+            if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "地址不能为空\\n"; }
             RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
             if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
             {
-                ErrorMessage += "所在地选择不完整\n";
+                ErrorMessage += "所在地选择不完整\\n";
             }
 
             if (!String.IsNullOrEmpty(ErrorMessage))

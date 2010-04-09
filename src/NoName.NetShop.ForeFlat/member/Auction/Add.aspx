@@ -91,18 +91,22 @@
                     }
                 }
                 /*region*/
-                if ($('#region0').val() == '' || $('#region1').val() == '' || $('#region2').val() == '') {
-                    if ($('#region0').val() == '') {
-                        errorMessage += '<li>请选择省份</li>';
-                    }
-                    if ($('#region1').val() == '') {
-                        errorMessage += '<li>请选择城市</li>';
-                    }
-                    if ($('#region2').val() == '') {
-                        errorMessage += '<li>请选择区县</li>';
-                    }
+                if (!regionValideSelect()) {
+                    errorMessage += '<li>请选择地区</li>';
                     $('#region0').parent().prev().prev().css({ 'color': 'red' });
                 }
+//                if ($('#region0').val() == '' || $('#region1').val() == '' || $('#region2').val() == '') {
+//                    if ($('#region0').val() == '') {
+//                        errorMessage += '<li>请选择省份</li>';
+//                    }
+//                    if ($('#region1').val() == '') {
+//                        errorMessage += '<li>请选择城市</li>';
+//                    }
+//                    if ($('#region2').val() == '') {
+//                        errorMessage += '<li>请选择区县</li>';
+//                    }
+//                    $('#region0').parent().prev().prev().css({ 'color': 'red' });
+//                }
 
 
                 if (errorMessage != '') {
