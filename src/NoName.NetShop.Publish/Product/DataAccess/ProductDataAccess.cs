@@ -113,5 +113,15 @@ namespace NoName.NetShop.Publish.Product.DataAccess
                 return new DataTable();
             }
         }
+
+        public DataTable GetRelatedNewsInfo(int ProductID)
+        {
+            string sql = @" select * from pdproductnews pn
+                                inner join nenews nn on nn.newsid=pn.newsid
+                            where pn.productid={0}";
+            sql = String.Format(sql, ProductID);
+
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
+        }
     }
 }
