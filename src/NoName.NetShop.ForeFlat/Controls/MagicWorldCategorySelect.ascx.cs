@@ -78,6 +78,26 @@ namespace NoName.NetShop.ForeFlat.Controls
                     SelectedCategoryID = Convert.ToInt32(box.SelectedValue);
                     BindCategory(Convert.ToInt32(box.SelectedValue), Level + 1, CategoryPath);
                 }
+                else
+                {
+                    switch (Level)
+                    {
+                        case 1:
+                            ListBox1.Visible = false;
+                            ListBox2.Visible = false;
+                            ListBox3.Visible = false;
+                            break;
+                        case 2:
+                            ListBox2.Visible = false;
+                            ListBox3.Visible = false;
+                            break;
+                        case 3:
+                            ListBox3.Visible = false;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         }
 
