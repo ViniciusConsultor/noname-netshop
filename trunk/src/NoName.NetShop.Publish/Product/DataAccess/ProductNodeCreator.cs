@@ -121,6 +121,17 @@ namespace NoName.NetShop.Publish.Product.DataAccess
                     XmlUtility.AddNewNode(RelatedProduct, "price", Convert.ToDecimal(Convert.ToDecimal(RelatedProductRow["MerchantPrice"]) - Convert.ToDecimal(RelatedProductRow["reduceprice"])).ToString("00"));
                 }
 
+            //关联资讯节点
+            XmlNode RelatedNewsNode = XmlUtility.AddNewNode(ProductInfoNode,"relatednews",null);
+            DataTable RelatedNewsTable = dal.GetRelatedNewsInfo(Parameter.ProductID);
+            if (RelatedNewsTable != null && RelatedNewsTable.Rows.Count > 0)
+            {
+                XmlNode NewsNode = XmlUtility.AddNewNode(RelatedNewsNode, "news", null);
+
+                XmlUtility.AddNewNode(NewsNode, "newsid", RelatedNewsTable.Rows[0]["newsid"].ToString());
+                XmlUtility.AddNewNode(NewsNode, "newscontent", RelatedNewsTable.Rows[0]["newscontent"].ToString());
+            }
+
             return ProductInfoNode;
         }
 
