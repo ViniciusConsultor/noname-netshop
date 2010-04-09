@@ -170,24 +170,19 @@ namespace NoName.NetShop.ForeFlat
             string code = "";
             string message = "";
 
-            if (context.User.Identity.IsAuthenticated && ((ShopIdentity)context.User.Identity) !=null)
+            if (context.User.Identity.IsAuthenticated && ((ShopIdentity)context.User.Identity) != null)
             {
-                //ShopIdentity iden = context.User.Identity as ShopIdentity;
+                FavoriteBll fbll = new FavoriteBll();
+                FavoriteModel favModel = new FavoriteModel();
 
-                //if (iden != null)
-                //{
-                    FavoriteBll fbll = new FavoriteBll();
-                    FavoriteModel favModel = new FavoriteModel();
-
-                    favModel.ContentId = int.Parse(nv["cid"]);
-                    favModel.UserId = ((ShopIdentity)context.User.Identity).UserId;
-                    favModel.ContentType = (ContentType)int.Parse(nv["ctype"]);
-                    favModel.FavoriteName = "";
-                    favModel.FavoriteUrl = "";
-                    fbll.Add(favModel);
-                    result = true;
-                    message = "收藏成功";
-                //}
+                favModel.ContentId = int.Parse(nv["cid"]);
+                favModel.UserId = ((ShopIdentity)context.User.Identity).UserId;
+                favModel.ContentType = (ContentType)int.Parse(nv["ctype"]);
+                favModel.FavoriteName = "";
+                favModel.FavoriteUrl = "";
+                fbll.Add(favModel);
+                result = true;
+                message = "收藏成功";
             }
             else
             {
