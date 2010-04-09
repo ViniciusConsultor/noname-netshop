@@ -50,6 +50,24 @@
   <asp:ListItem Text="退款申请中" Value="2"></asp:ListItem>
   <asp:ListItem Text="已退款" Value="3"></asp:ListItem>
   </asp:DropDownList>
+      &nbsp;用户类型：
+    <asp:DropDownList ID="ddlUserType" runat="server">
+    <asp:ListItem Text="全部会员" Value=""></asp:ListItem>
+    <asp:ListItem Text="个人会员" Value="1"></asp:ListItem>
+    <asp:ListItem Text="企业会员" Value="2"></asp:ListItem>
+    <asp:ListItem Text="家庭会员" Value="3"></asp:ListItem>
+    <asp:ListItem Text="学校会员" Value="4"></asp:ListItem>
+    </asp:DropDownList>
+    &nbsp;用户级别：
+    <asp:DropDownList ID="ddlUserLevel" runat="server">
+    <asp:ListItem Text="全部级别" Value=""></asp:ListItem>
+    <asp:ListItem Text="登鼎会员" Value="0"></asp:ListItem>
+    <asp:ListItem Text="铁鼎会员" Value="1"></asp:ListItem>
+    <asp:ListItem Text="铜鼎会员" Value="2"></asp:ListItem>
+    <asp:ListItem Text="银鼎会员" Value="3"></asp:ListItem>
+    <asp:ListItem Text="金鼎会员" Value="4"></asp:ListItem>
+    <asp:ListItem Text="宝鼎会员" Value="5"></asp:ListItem>
+    </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;
         <asp:Button runat="server" Text="· 查询 ·" ID="btnSearch"
          onclick="btnSearch_Click" />

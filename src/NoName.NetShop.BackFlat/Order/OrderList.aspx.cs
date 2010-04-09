@@ -22,7 +22,7 @@ namespace NoName.NetShop.BackFlat.Order
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "spOrder";
-                    spage.FieldNames = "sporder.UserId,ummember.usertype,ummember.userlevel,OrderId,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,DerateFee,userid,RecieverName,ChangeTime,PayTime,CreateTime,OrderType";
+                    spage.FieldNames = "sporder.UserId,ummember.usertype,ummember.userlevel,OrderId,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,DerateFee,RecieverName,ChangeTime,PayTime,CreateTime,OrderType";
                     spage.PriKeyName = "OrderId";
                     spage.StrJoin = "join ummember on sporder.userid=ummember.userid";
                     spage.PageSize = 20;
@@ -77,7 +77,7 @@ namespace NoName.NetShop.BackFlat.Order
             {
                 if (!String.IsNullOrEmpty(where))
                     where += " and ";
-                where += "userId='" + userId + "'";
+                where += "sporder.userId='" + userId + "'";
             }
             string recievername = NoName.Utility.input.Filter(txtReceiver.Text.Trim());
             if (!String.IsNullOrEmpty(recievername))
@@ -112,6 +112,18 @@ namespace NoName.NetShop.BackFlat.Order
                 if (!String.IsNullOrEmpty(where))
                     where += " and ";
                 where += "paystatus=" + ddlPayStatus.SelectedValue;
+            }
+            if (ddlUserLevel.SelectedValue!="")
+            {
+                if (!String.IsNullOrEmpty(where))
+                    where += " and ";
+                where += "ummember.userlevel=" + ddlUserLevel.SelectedValue;
+            }
+            if (ddlUserType.SelectedValue != "")
+            {
+                if (!String.IsNullOrEmpty(where))
+                    where += " and ";
+                where += "ummember.userType=" + ddlUserType.SelectedValue;
             }
             SearPageInfo.StrWhere = where;
             SearPageInfo.PageIndex = 1;
