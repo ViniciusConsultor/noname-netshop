@@ -42,6 +42,8 @@ namespace NoName.NetShop.BackFlat.CMS.Page.PublicContent
             PublicContentElement element = config.PublicPages[Key];
 
             WriteFile(element.FileName, TextBox_Content.Text);
+
+            Response.Redirect("List.aspx");
         }
 
 

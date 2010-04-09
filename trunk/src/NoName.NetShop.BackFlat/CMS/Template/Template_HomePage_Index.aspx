@@ -5,12 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>首页</title>
+    <title>鼎鼎商城</title>
     <link type="text/css" rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" type="text/css" href="/css/Rainy.css" />
     <script type="text/javascript" src="/js/DingdingJsLib.js"></script>
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/mini-Rainy.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

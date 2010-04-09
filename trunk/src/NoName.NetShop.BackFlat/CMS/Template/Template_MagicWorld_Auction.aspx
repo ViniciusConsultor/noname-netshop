@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/DingdingJsLib.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/mini-Rainy.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

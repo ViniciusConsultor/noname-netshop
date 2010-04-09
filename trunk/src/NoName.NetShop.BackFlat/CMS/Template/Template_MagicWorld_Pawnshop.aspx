@@ -13,6 +13,7 @@
     <script type="text/javascript" src="/js/DingdingJsLib.js"></script>
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/mini-Rainy.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
     <script type="text/javascript">
         if (Rainy.ie) {
             window.attachEvent("onload", this.showMainScene);
