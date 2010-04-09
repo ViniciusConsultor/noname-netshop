@@ -8,17 +8,19 @@
     <link type="text/css" rel="stylesheet" href="~/css/common.css" />
     <link type="text/css" rel="stylesheet" href="~/css/member.css" />
     <link type="text/css" rel="stylesheet" href="~/js/Rainy.css" />
-<link type="text/css" rel="stylesheet" href="css/shopping.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/shopping.css" />
 
     <script type="text/javascript" src="/js/DingdingJsLib.js"></script>
     <script type="text/javascript" src="/js/jquery.js" ></script>
     <script type="text/javascript" src="/js/mini-Rainy.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
     <div class="wrapper">
+    
     <!--Header Begin-->
     <!-- #include file="/common/Header.html" --> 
     <!--Header End-->
