@@ -11,7 +11,7 @@
 namespace NoName.NetShop.BackFlat.Member {
     
     
-    public partial class MemberList {
+    public partial class MemberScoreList {
         
         /// <summary>
         /// form1 控件。
@@ -57,6 +57,24 @@ namespace NoName.NetShop.BackFlat.Member {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button doSearch;
+        
+        /// <summary>
+        /// txtScore 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtScore;
+        
+        /// <summary>
+        /// btnAddScore 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddScore;
         
         /// <summary>
         /// gvList 控件。

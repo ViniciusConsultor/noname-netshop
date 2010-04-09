@@ -89,8 +89,7 @@
 </table>
 <div style="padding-top:10px; padding-bottom:10px">会员扩展信息</div>
 	<asp:PlaceHolder ID="phExtentInfo" runat="server"></asp:PlaceHolder>
-
-    </div>
+</div>
     </form>
 </body>
 </html>
