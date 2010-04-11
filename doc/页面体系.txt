@@ -44,6 +44,10 @@
           |
           |
           |--会员中心----略...(参考会员中心树状列表)
+          |
+          |
+          |
+          |--热卖、直降、推荐商品列表
 
 
 CMS发布页面
@@ -69,3 +73,16 @@ CMS发布页面
 品牌分类页  /brand-{brandid}-c{categoryid}.html
 新闻分类页  /newslist-{categoryid}.html
 新闻详情页  /news-{newsid}.html
+
+动态页面
+
+热卖（直降、推荐）产品列表 /Product/HomeProductList.aspx
+拍卖商品列表	/Magic/AuctionList.aspx
+拍卖商品详情	/Magic/Auction.aspx?pid={auctionid}
+典当商品列表	/Magic/PawnList.aspx
+典当商品详情	/Magic/PawnProduct.aspx?pid={PawnProductID}
+二手商品列表	/Magic/DealList.aspx
+二手需求商品详情	/Magic/Demand.aspx?pid={DemandID}
+二手出租商品详情	/Magic/Secondhand.aspx?pid={SecondhandID}
+出租商品列表	/Magic/RentList.aspx
+出租商品详情	/Magic/Rent.aspx?pid={RentID}
