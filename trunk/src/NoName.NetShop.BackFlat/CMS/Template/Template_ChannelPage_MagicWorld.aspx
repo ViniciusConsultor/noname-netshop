@@ -26,14 +26,14 @@
             <!--MainBody Begin-->
             <div class="magicHome_mainbody clearfix newline">
 		        <div class="leftColumn">
-                    <dd:CMSTag ID="cmsTag4" Description="左1分类导航" TagID="1" runat="server" />
-                    <dd:CMSTag ID="cmsTag5" Description="左2热门交易" TagID="1" runat="server" />
+                    <dd:CMSTag ID="cmsTag4" Description="左1分类导航" TagID="12" runat="server" />
+                    <dd:CMSTag ID="cmsTag5" Description="左2热门交易" TagID="13" runat="server" />
                 </div>
                 <div class="rightColumn">
         	        <div class="rightColumnContainer">
                         <dd:CMSTag ID="cmsTag6" Description="右1拍卖" TagID="1" runat="server" />
-                        <dd:CMSTag ID="cmsTag7" Description="右2典当租赁" TagID="1" runat="server" />
-                        <dd:CMSTag ID="cmsTag8" Description="右3二手交易" TagID="1" runat="server" />                        
+                        <dd:CMSTag ID="cmsTag7" Description="右2典当租赁" TagID="14" runat="server" />
+                        <dd:CMSTag ID="cmsTag8" Description="右3二手交易" TagID="15" runat="server" />                        
                     </div>
                 </div>
             </div>
