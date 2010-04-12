@@ -94,6 +94,33 @@ namespace NoName.NetShop.CMS.Controler
             sw.Close();
         }
 
+        public static void Publish(int PageID,bool IsGenerateCode)
+        {
+            if (IsGenerateCode)
+            {
+                DataTable TagList = TemplateControler.GetTagList(PageID);
+
+                foreach (DataRow TagRow in TagList.Rows)
+                {
+                    string ServerID = TagRow["serverid"].ToString();
+                    int TagID = Convert.ToInt32(TagRow["tagid"]);
+                    string TagTitle = TagRow["tagname"].ToString();
+
+                    string Content = TagControler.GenerateDefaultCode(TagID, null);
+
+                    TagContentModel TagContent = new TagContentModel();
+                    TagContent.PageID = PageID;
+                    TagContent.ServerID = ServerID;
+                    TagContent.TagID = TagID;
+                    TagContent.Content = Content;
+
+                    TagControler.TagContentImport(TagContent);
+                }
+            }
+
+            Publish(PageID); 
+        }
+
 
         public static void GetPageUrl(int PageID, PageCategoryElement PageCategory, out string PreviewUrl, out string FormalUrl)
         {
