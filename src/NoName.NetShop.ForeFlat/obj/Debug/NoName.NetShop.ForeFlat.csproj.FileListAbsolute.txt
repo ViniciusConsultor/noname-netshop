@@ -47,6 +47,14 @@ D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Search.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.SearchIndex.exe
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\Lucene.Net.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Search.pdb
-D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\AjaxControlToolkit.pdb
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\System.Web.Ajax.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\System.Web.Ajax.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.CommonAliPay.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.CommonAliPay.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.CommonAliPay.xml
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.News.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.News.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.CMS.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.CMS.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Publish.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Publish.pdb

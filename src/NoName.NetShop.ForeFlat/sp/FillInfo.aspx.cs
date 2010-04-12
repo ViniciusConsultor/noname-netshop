@@ -60,6 +60,11 @@ namespace NoName.NetShop.ForeFlat.sp
                     CurrentShopCart.ShipFee = ((CommShopCart)CurrentShopCart).CaculateShipFee(CurrentShopCart.ShipMethodId,
                         CurrentShopCart.Address.RegionId);
                 }
+                else if (CurrentShopCart is SuitShopCart)
+                {
+                    CurrentShopCart.ShipFee = ((SuitShopCart)CurrentShopCart).CaculateShipFee(CurrentShopCart.ShipMethodId,
+                        CurrentShopCart.Address.RegionId);
+                }
 
                 string isNeedInvoce = ReqParas["invoice"].Trim();
                 if (isNeedInvoce == "1")

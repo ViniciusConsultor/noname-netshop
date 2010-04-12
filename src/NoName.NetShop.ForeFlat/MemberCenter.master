@@ -29,7 +29,7 @@
                             <a href="/member/ModifyPwd.aspx">修改密码</a>
                         </li>
                         <li>
-                            <a href="#">我的级别</a>
+                            <a href="/member/MyLevel.aspx">我的级别</a>
                         </li>
                     </ul>
                     <div class="groupTitle">我的商城交易</div>
@@ -84,7 +84,7 @@
                             <a href="/member/MyMaintenance.aspx">我的维修</a>
                         </li>
                         <li>
-                            <a href="/member/Complaint.aspx">我的投诉</a>
+                            <a href="/member/MyComplaint.aspx">我的投诉</a>
                         </li>
                     </ul>
                 </div>
