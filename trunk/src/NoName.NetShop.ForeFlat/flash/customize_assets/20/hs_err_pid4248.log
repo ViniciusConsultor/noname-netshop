@@ -1,0 +1,239 @@
+#
+# An unexpected error has been detected by HotSpot Virtual Machine:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x6d739bfb, pid=4248, tid=7420
+#
+# Java VM: Java HotSpot(TM) Client VM (1.5.0_09-b01 mixed mode)
+# Problematic frame:
+# C  0x6d739bfb
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x1085fcb0):  JavaThread "CompilerThread0" daemon [_thread_in_vm, id=7420]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0xc941ca61
+
+Registers:
+EAX=0xc941ca61, EBX=0x000000ac, ECX=0x1a215880, EDX=0x00000001
+ESP=0x113df9e8, EBP=0x113dfa10, ESI=0x1a215880, EDI=0x1453e788
+EIP=0x6d739bfb, EFLAGS=0x00010282
+
+Top of Stack: (sp=0x113df9e8)
+0x113df9e8:   00000001 1453e788 6d7951ef 1453e788
+0x113df9f8:   28c88020 113dfbf4 1085fcb0 0238fb28
+0x113dfa08:   0000000c 00000004 113dfa7c 6d702f81
+0x113dfa18:   10860288 ffffffff 0000011c 00000007
+0x113dfa28:   00000010 00000010 00000000 1085ff18
+0x113dfa38:   1085fe60 ffffffff 28ca7cd0 00000000
+0x113dfa48:   113dfb78 113dfb6c 10871e48 ffffffff
+0x113dfa58:   113dfb34 28c88020 00000758 00000000 
+
+Instructions: (pc=0x6d739bfb)
+0x6d739beb:   f1 57 8b 7c 24 0c 8b 86 f4 00 00 00 85 c0 74 0b
+0x6d739bfb:   3b 38 74 27 8b 40 08 85 c0 75 f5 6a 0c e8 a9 1c 
+
+
+Stack: [0x112e0000,0x113e0000),  sp=0x113df9e8,  free space=1022k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  0x6d739bfb
+C  0x6d702f81
+C  0x6d6da481
+C  0x6d6da718
+C  0x6d6dad88
+C  0x6d7174f3
+C  0x6d717218
+C  0x6d7cf4ac
+C  0x6d7cf47a
+C  [msvcrt.dll+0x2a3b0]
+C  [kernel32.dll+0xb729]
+
+
+Current CompileTask:
+HotSpot Client Compiler:1193   b  org.apache.xerces.util.ParserConfigurationSettings.addRecognizedFeatures([Ljava/lang/String;)V (51 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x10861040 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=7844]
+=>0x1085fcb0 JavaThread "CompilerThread0" daemon [_thread_in_vm, id=7420]
+  0x1086e628 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6732]
+  0x10853628 JavaThread "Finalizer" daemon [_thread_blocked, id=6576]
+  0x10852b10 JavaThread "Reference Handler" daemon [_thread_blocked, id=5780]
+  0x10791090 JavaThread "main" [_thread_blocked, id=1320]
+
+Other Threads:
+  0x1084e9f0 VMThread [id=5372]
+  0x1086e338 WatcherThread [id=6616]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0238fb28/0x00000638] CodeCache_lock - owner thread: 0x1085fcb0
+[0x10790a48/0x00000738] MethodCompileQueue_lock - owner thread: 0x1085fcb0
+
+Heap
+ def new generation   total 1408K, used 837K [0x161d0000, 0x16350000, 0x166b0000)
+  eden space 1280K,  55% used [0x161d0000, 0x16281638, 0x16310000)
+  from space 128K, 100% used [0x16330000, 0x16350000, 0x16350000)
+  to   space 128K,   0% used [0x16310000, 0x16310000, 0x16330000)
+ tenured generation   total 18276K, used 2094K [0x166b0000, 0x17889000, 0x1a1d0000)
+   the space 18276K,  11% used [0x166b0000, 0x168bba98, 0x168bbc00, 0x17889000)
+ compacting perm gen  total 10496K, used 10444K [0x1a1d0000, 0x1ac10000, 0x1e1d0000)
+   the space 10496K,  99% used [0x1a1d0000, 0x1ac032c8, 0x1ac03400, 0x1ac10000)
+No shared spaces configured.
+
+Dynamic libraries:
+0x00400000 - 0x0188c000 	D:\Program Files\Adobe\Adobe Flash CS4\Flash.exe
+0x7c920000 - 0x7c9b6000 	C:\WINDOWS\system32\ntdll.dll
+0x7c800000 - 0x7c91e000 	C:\WINDOWS\system32\kernel32.dll
+0x10000000 - 0x10309000 	D:\Program Files\Adobe\Adobe Flash CS4\amtlib.dll
+0x77f40000 - 0x77fb6000 	C:\WINDOWS\system32\SHLWAPI.dll
+0x77da0000 - 0x77e49000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x77e50000 - 0x77ee2000 	C:\WINDOWS\system32\RPCRT4.dll
+0x77fc0000 - 0x77fd1000 	C:\WINDOWS\system32\Secur32.dll
+0x77ef0000 - 0x77f39000 	C:\WINDOWS\system32\GDI32.dll
+0x77d10000 - 0x77da0000 	C:\WINDOWS\system32\USER32.dll
+0x77be0000 - 0x77c38000 	C:\WINDOWS\system32\msvcrt.dll
+0x5fdd0000 - 0x5fe25000 	C:\WINDOWS\system32\NETAPI32.dll
+0x71a20000 - 0x71a37000 	C:\WINDOWS\system32\WS2_32.dll
+0x71a10000 - 0x71a18000 	C:\WINDOWS\system32\WS2HELP.dll
+0x77180000 - 0x77283000 	C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.5512_x-ww_35d4ce83\COMCTL32.dll
+0x4a410000 - 0x4a469000 	C:\WINDOWS\system32\WINHTTP.dll
+0x76320000 - 0x76367000 	C:\WINDOWS\system32\comdlg32.dll
+0x7d590000 - 0x7dd84000 	C:\WINDOWS\system32\SHELL32.dll
+0x77bd0000 - 0x77bd8000 	C:\WINDOWS\system32\VERSION.dll
+0x76b10000 - 0x76b3a000 	C:\WINDOWS\system32\WINMM.dll
+0x73ac0000 - 0x73ad7000 	C:\WINDOWS\system32\AVIFIL32.dll
+0x76990000 - 0x76acd000 	C:\WINDOWS\system32\ole32.dll
+0x77bb0000 - 0x77bc5000 	C:\WINDOWS\system32\MSACM32.dll
+0x73b40000 - 0x73b60000 	C:\WINDOWS\system32\MSVFW32.dll
+0x76bc0000 - 0x76bcb000 	C:\WINDOWS\system32\PSAPI.DLL
+0x76300000 - 0x7631d000 	C:\WINDOWS\system32\IMM32.dll
+0x12000000 - 0x121cb000 	D:\Program Files\Adobe\Adobe Flash CS4\xerces-c_2_6.dll
+0x78130000 - 0x781cb000 	C:\WINDOWS\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.4053_x-ww_e6967989\MSVCR80.dll
+0x32100000 - 0x321b4000 	D:\Program Files\Adobe\Adobe Flash CS4\Workspace.dll
+0x4ae90000 - 0x4b03b000 	C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6001.22319_x-ww_f0b4c2df\gdiplus.dll
+0x01890000 - 0x019ce000 	D:\Program Files\Adobe\Adobe Flash CS4\dvacore.dll
+0x770f0000 - 0x7717b000 	C:\WINDOWS\system32\OLEAUT32.dll
+0x7c420000 - 0x7c4a7000 	C:\WINDOWS\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.4053_x-ww_e6967989\MSVCP80.dll
+0x019d0000 - 0x01c04000 	D:\Program Files\Adobe\Adobe Flash CS4\dvaui.dll
+0x01c10000 - 0x01d4c000 	D:\Program Files\Adobe\Adobe Flash CS4\AdobeOwl.dll
+0x782e0000 - 0x783ef000 	C:\WINDOWS\WinSxS\x86_Microsoft.VC80.MFC_1fc8b3b9a1e18e3b_8.0.50727.4053_x-ww_b77cec8e\MFC80U.DLL
+0x762f0000 - 0x762f5000 	C:\WINDOWS\system32\MSIMG32.dll
+0x01d50000 - 0x01d63000 	D:\Program Files\Adobe\Adobe Flash CS4\AlcidDLL.dll
+0x01d70000 - 0x01d7e000 	D:\Program Files\Adobe\Adobe Flash CS4\ahclient.dll
+0x01d90000 - 0x01d9d000 	D:\Program Files\Adobe\Adobe Flash CS4\CrashReporter.dll
+0x68d60000 - 0x68e01000 	C:\WINDOWS\system32\dbghelp.dll
+0x01db0000 - 0x01dbf000 	D:\Program Files\Adobe\Adobe Flash CS4\LogUtils.dll
+0x01dd0000 - 0x01de8000 	D:\Program Files\Adobe\Adobe Flash CS4\LogTransport.dll
+0x01e00000 - 0x01e1a000 	D:\Program Files\Adobe\Adobe Flash CS4\LogSession.dll
+0x01e30000 - 0x01e46000 	D:\Program Files\Adobe\Adobe Flash CS4\LogTransport2.dll
+0x76060000 - 0x761b6000 	C:\WINDOWS\system32\SETUPAPI.dll
+0x3e410000 - 0x3e4f6000 	C:\WINDOWS\system32\WININET.dll
+0x01e60000 - 0x01e69000 	C:\WINDOWS\system32\Normaliz.dll
+0x43ce0000 - 0x43e12000 	C:\WINDOWS\system32\urlmon.dll
+0x3eab0000 - 0x3ec98000 	C:\WINDOWS\system32\iertutil.dll
+0x62c20000 - 0x62c29000 	C:\WINDOWS\system32\LPK.DLL
+0x73fa0000 - 0x7400b000 	C:\WINDOWS\system32\USP10.dll
+0x5d360000 - 0x5d36a000 	C:\WINDOWS\WinSxS\x86_Microsoft.VC80.MFCLOC_1fc8b3b9a1e18e3b_8.0.50727.4053_x-ww_0ccc058c\MFC80CHS.DLL
+0x02c10000 - 0x02cad000 	D:\Program Files\Adobe\Adobe Flash CS4\amtservices.dll
+0x02cd0000 - 0x02d07000 	D:\Program Files\Adobe\Adobe Flash CS4\adobe_caps.dll
+0x5adc0000 - 0x5adf7000 	C:\WINDOWS\system32\uxtheme.dll
+0x74680000 - 0x746cc000 	C:\WINDOWS\system32\MSCTF.dll
+0x76cb0000 - 0x76cd0000 	C:\WINDOWS\system32\NTMARTA.DLL
+0x71b70000 - 0x71b83000 	C:\WINDOWS\system32\SAMLIB.dll
+0x76f30000 - 0x76f5c000 	C:\WINDOWS\system32\WLDAP32.dll
+0x02ed0000 - 0x02ef0000 	D:\Program Files\Adobe\Adobe Flash CS4\asneu.dll
+0x03000000 - 0x04267000 	D:\Program Files\Adobe\Adobe Flash CS4\en\Configuration\FlashResources.dll
+0x72f70000 - 0x72f96000 	C:\WINDOWS\system32\WINSPOOL.DRV
+0x74be0000 - 0x74c0c000 	C:\WINDOWS\system32\OLEACC.dll
+0x75ff0000 - 0x76055000 	C:\WINDOWS\system32\MSVCP60.dll
+0x73640000 - 0x7366e000 	C:\WINDOWS\system32\msctfime.ime
+0x30000000 - 0x3056e000 	D:\Program Files\Adobe\Adobe Flash CS4\Common\Configuration\authplay.dll
+0x765e0000 - 0x76673000 	C:\WINDOWS\system32\CRYPT32.dll
+0x76db0000 - 0x76dc2000 	C:\WINDOWS\system32\MSASN1.dll
+0x73aa0000 - 0x73ab5000 	C:\WINDOWS\system32\mscms.dll
+0x76fa0000 - 0x7701f000 	C:\WINDOWS\system32\CLBCATQ.DLL
+0x77020000 - 0x770ba000 	C:\WINDOWS\system32\COMRes.dll
+0x74cf0000 - 0x74d81000 	C:\WINDOWS\system32\mlang.dll
+0x72c90000 - 0x72c99000 	C:\WINDOWS\system32\wdmaud.drv
+0x76c00000 - 0x76c2e000 	C:\WINDOWS\system32\WINTRUST.dll
+0x76c60000 - 0x76c88000 	C:\WINDOWS\system32\IMAGEHLP.dll
+0x72c80000 - 0x72c88000 	C:\WINDOWS\system32\msacm32.drv
+0x77ba0000 - 0x77ba7000 	C:\WINDOWS\system32\midimap.dll
+0x759d0000 - 0x75a7f000 	C:\WINDOWS\system32\USERENV.dll
+0x767c0000 - 0x767e8000 	C:\WINDOWS\system32\schannel.dll
+0x05930000 - 0x05986000 	D:\Program Files\Adobe\Adobe Flash CS4\PlugPlug.dll
+0x05990000 - 0x059da000 	D:\Program Files\Adobe\Adobe Flash CS4\BIB.dll
+0x059e0000 - 0x05a8a000 	D:\Program Files\Adobe\Adobe Flash CS4\AXEDOMCore.dll
+0x05bb0000 - 0x05bf4000 	C:\Program Files\Common Files\Adobe\CS4ServiceManager\CSI-Launcher.dll
+0x76960000 - 0x76984000 	C:\WINDOWS\system32\ntshrui.dll
+0x76af0000 - 0x76b01000 	C:\WINDOWS\system32\ATL.DLL
+0x060b0000 - 0x065f9000 	C:\WINDOWS\system32\xpsp2res.dll
+0x06800000 - 0x06841000 	D:\Program Files\Adobe\Adobe Flash CS4\BIBUtils.dll
+0x06850000 - 0x06941000 	D:\Program Files\Adobe\Adobe Flash CS4\ACE.dll
+0x06a50000 - 0x07023000 	D:\Program Files\Adobe\Adobe Flash CS4\AGM.dll
+0x07030000 - 0x07082000 	D:\Program Files\Adobe\Adobe Flash CS4\ARE.dll
+0x070a0000 - 0x074d6000 	D:\Program Files\Adobe\Adobe Flash CS4\MPS.dll
+0x07500000 - 0x077ae000 	D:\Program Files\Adobe\Adobe Flash CS4\CoolType.dll
+0x73b90000 - 0x73b9b000 	C:\WINDOWS\system32\ATMLIB.dll
+0x077d0000 - 0x078b3000 	D:\Program Files\Adobe\Adobe Flash CS4\FileInfo.dll
+0x078d0000 - 0x0793d000 	D:\Program Files\Adobe\Adobe Flash CS4\AdobeXMP.dll
+0x74d90000 - 0x74dfd000 	C:\WINDOWS\system32\Riched20.DLL
+0x07980000 - 0x07a8a000 	D:\Program Files\Adobe\Adobe Flash CS4\PDFPort.dll
+0x07aa0000 - 0x08067000 	D:\Program Files\Adobe\Adobe Flash CS4\AdobePDFL.dll
+0x08080000 - 0x08127000 	D:\Program Files\Adobe\Adobe Flash CS4\JP2KLib.dll
+0x71a90000 - 0x71aa2000 	C:\WINDOWS\system32\MPR.dll
+0x08140000 - 0x0816e000 	D:\Program Files\Adobe\Adobe Flash CS4\AXE8SharedExpat.dll
+0x09600000 - 0x0964f000 	D:\Program Files\Adobe\Adobe Flash CS4\Common\Configuration\External Libraries\EnvBrush.dll
+0x09650000 - 0x096b4000 	D:\Program Files\Adobe\Adobe Flash CS4\Common\Configuration\External Libraries\EnvCollision.dll
+0x096d0000 - 0x096e7000 	D:\Program Files\Adobe\Adobe Flash CS4\Common\Configuration\External Libraries\EnvPointGrid.dll
+0x09700000 - 0x097b8000 	D:\Program Files\Adobe\Adobe Flash CS4\Common\Configuration\External Libraries\FlashIK.dll
+0x097e0000 - 0x0982b000 	D:\Program Files\Adobe\Adobe Flash CS4\Common\Configuration\External Libraries\FLBridge.dll
+0x09850000 - 0x09867000 	D:\Program Files\Adobe\Adobe Flash CS4\Common\Configuration\External Libraries\FLfile.dll
+0x09890000 - 0x098d9000 	D:\Program Files\Adobe\Adobe Flash CS4\en\Configuration\External Libraries\FLAir1_1.dll
+0x73b30000 - 0x73b36000 	C:\WINDOWS\system32\dciman32.dll
+0x0f880000 - 0x0fb03000 	D:\Program Files\Adobe\Adobe Flash CS4\AdobeLM_libFNP.dll
+0x76d30000 - 0x76d48000 	C:\WINDOWS\system32\iphlpapi.dll
+0x71ee0000 - 0x71ee8000 	C:\WINDOWS\system32\snmpapi.dll
+0x68000000 - 0x68036000 	C:\WINDOWS\system32\rsaenh.dll
+0x751f0000 - 0x75227000 	C:\WINDOWS\system32\wbem\wbemcomn.dll
+0x719c0000 - 0x719fe000 	C:\WINDOWS\System32\mswsock.dll
+0x76ef0000 - 0x76f17000 	C:\WINDOWS\system32\DNSAPI.dll
+0x76f80000 - 0x76f88000 	C:\WINDOWS\System32\winrnr.dll
+0x76f90000 - 0x76f96000 	C:\WINDOWS\system32\rasadhlp.dll
+0x60fd0000 - 0x61025000 	C:\WINDOWS\system32\hnetcfg.dll
+0x71a00000 - 0x71a08000 	C:\WINDOWS\System32\wshtcpip.dll
+0x755f0000 - 0x75666000 	C:\WINDOWS\system32\wbem\fastprox.dll
+0x76770000 - 0x76784000 	C:\WINDOWS\system32\NTDSAPI.dll
+0x76eb0000 - 0x76eec000 	C:\WINDOWS\system32\RASAPI32.DLL
+0x76e60000 - 0x76e72000 	C:\WINDOWS\system32\rasman.dll
+0x76e80000 - 0x76eaf000 	C:\WINDOWS\system32\TAPI32.dll
+0x76e50000 - 0x76e5e000 	C:\WINDOWS\system32\rtutils.dll
+0x77c40000 - 0x77c65000 	C:\WINDOWS\system32\msv1_0.dll
+
+VM Arguments:
+jvm_args: -Djava.library.path=D:\Program Files\Adobe\Adobe Flash CS4\JVM\bin -Djava.Home=D:\Program Files\Adobe\Adobe Flash CS4\JVM -Xbootclasspath/a:; -Djava.awt.headless=true
+java_command: <unknown>
+Launcher Type: generic
+
+Environment Variables:
+PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;d:\Program Files\Samsung\Samsung PC Studio 3;D:\Program Files\MySQL\MySQL Server 5.0\bin;D:\Program Files\TortoiseSVN\bin;C:\Program Files;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;d:\Program Files\StormIII\Codec;d:\Program Files\StormIII;D:\Program Files\IDM Computer Solutions\UltraEdit\
+USERNAME=rainy
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 15 Stepping 6, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows XP Build 2600 Service Pack 3
+
+CPU:total 2 (cores per cpu 2, threads per core 1) family 6 model 15 stepping 6, cmov, cx8, fxsr, mmx, sse, sse2
+
+Memory: 4k page, physical 2095208k(1214056k free), swap 4194303k(3863308k free)
+
+vm_info: Java HotSpot(TM) Client VM (1.5.0_09-b01) for windows-x86, built on Sep  7 2006 13:59:31 by "java_re" with MS VC++ 6.0
+
