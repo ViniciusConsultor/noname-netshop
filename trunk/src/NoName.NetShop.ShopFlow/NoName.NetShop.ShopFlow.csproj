@@ -112,6 +112,7 @@
     <Compile Include="SpCartKeyHelper.cs" />
     <Compile Include="GiftShopCart.cs" />
     <Compile Include="SuitShopCart.cs" />
+    <Compile Include="SuitOrderProduct.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -128,6 +129,10 @@
     <ProjectReference Include="..\NoName.NetShop.Member\NoName.NetShop.Member.csproj">
       <Project>{94CA0650-A9A9-4778-A74A-6516D36A4D19}</Project>
       <Name>NoName.NetShop.Member</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoName.NetShop.Solution\NoName.NetShop.Solution.csproj">
+      <Project>{FC5D2F43-5581-4456-BFE2-BEB12B83DBCA}</Project>
+      <Name>NoName.NetShop.Solution</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
