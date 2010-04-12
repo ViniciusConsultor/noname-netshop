@@ -168,6 +168,22 @@ namespace NoName.NetShop.News.BLL
             dal.SetSplendid(NewsID, IsSplendid);
         }
 
+        public DataTable GetTopViewedNews(int TopNumber)
+        {
+            return dal.GetTopViewedNews(TopNumber);
+        }
+
+        public DataTable GetTopSplendidNews(int TopNumber)
+        {
+            return dal.GetTopSplendidNews(TopNumber);
+        }
+
+
+        public DataTable GetTopCategoryNews(int TopNumber, int CategoryID) 
+        {
+            return dal.GetTopCategoryNews(TopNumber, CategoryID);
+        }
+
 
 		#endregion  成员方法
 	}

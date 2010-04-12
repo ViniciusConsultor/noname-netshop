@@ -209,9 +209,33 @@ namespace NoName.NetShop.News.DAL
 
             dbw.AddInParameter(Command,"@NewsID",DbType.Int32,NewsID);
             dbw.AddInParameter(Command,"@IsSplendid",DbType.Boolean,IsSplendid);
+            dbw.AddInParameter(Command, "@ModifyTime", DbType.DateTime, DateTime.Now);
 
             dbw.ExecuteNonQuery(Command);
         }
+        
+        public DataTable GetTopViewedNews(int TopNumber)
+        {
+            string sql = "select top {0} * from [nenews] order by [pageview] desc";
+            sql = String.Format(sql, TopNumber);
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
+        public DataTable GetTopSplendidNews(int TopNumber)
+        {
+            string sql = "select top {0} * from [nenews] where [issplendid]=1 order by [modifytime] desc";
+            sql = String.Format(sql, TopNumber);
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
+        public DataTable GetTopCategoryNews(int TopNumber, int CategoryID)
+        {
+            string sql = "select top {0} * from [nenews] where dbo.GetNewsCategoryPath(cateid)+'/%' like dbo.GetNewsCategoryPath({1})+'/%' order by [newsis] desc";
+            sql = String.Format(sql, TopNumber, CategoryID);
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
+       
 
 
 		/// <summary>
