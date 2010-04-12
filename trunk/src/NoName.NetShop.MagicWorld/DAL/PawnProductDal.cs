@@ -111,6 +111,14 @@ namespace NoName.NetShop.MagicWorld.DAL
             return model;
         }
 
+        public DataTable GetNewestList(int TopCount,PawnProductStatus Status)
+        {
+            string sql = "select top {0} * from mwpawnproduct where status={1} order by pawnproductid desc";
+            sql = String.Format(sql,TopCount,(int)Status);
+            return dbr.ExecuteDataSet(CommandType.Text,sql).Tables[0];
+        }
+
+
         private PawnProductModel BindModel(DataRow row)
         {
             PawnProductModel model = new PawnProductModel()

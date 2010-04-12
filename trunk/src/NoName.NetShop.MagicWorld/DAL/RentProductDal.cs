@@ -105,6 +105,13 @@ namespace NoName.NetShop.MagicWorld.DAL
             return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
         }
 
+        public DataTable GetNewestList(int TopCount)
+        {
+            string sql = "select top {0} * from mwrentproduct where status=0 order by rentid desc";
+            sql = String.Format(sql,TopCount);
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
         private RentProductModel GetModel(DataRow row)
         {
             RentProductModel model = new RentProductModel();
