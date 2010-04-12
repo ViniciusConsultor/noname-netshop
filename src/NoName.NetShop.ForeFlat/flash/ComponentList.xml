@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuiteList>
+	<actionPage>/solution/diy.aspx</actionPage>
+	<sceneIdParamName>sceneid</sceneIdParamName>
+	<selectedComIdParamName>ids</selectedComIdParamName>
+	<Suite>
+		<ScenePic id="23">
+			<picUrl>/flash/customize_assets/1/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="11">
+				<componentName>银幕</componentName>
+				<picUrl>/flash/customize_assets/1/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>217,120</coordinate>
+			</Component>
+			<Component id="12">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/1/projector.swf</picUrl>
+				<description>产品相关说明,投影机投影机投影机投影机投影机投影机。</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+			<Component id="13">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/1/player.swf</picUrl>
+				<description>#1</description>
+				<coordinate>243,346</coordinate>
+			</Component>
+			<Component id="14">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/1/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>328,332</coordinate>
+			</Component>
+			<Component id="15">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/1/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>187,147</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="2">
+			<picUrl>/flash/customize_assets/2/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="21">
+				<componentName>银幕</componentName>
+				<picUrl>/flash/customize_assets/2/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>66,104</coordinate>
+			</Component>
+			<Component id="22">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/2/projector.swf</picUrl>
+				<description>产品相关说明,投影机投影机投影机投影机投影机投影机。</description>
+				<coordinate>0,28</coordinate>
+			</Component>
+			<Component id="23">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/2/amplifier.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>143,275</coordinate>
+			</Component>
+			<Component id="24">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/2/player.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>66,293</coordinate>
+			</Component>
+			<Component id="25">
+				<componentName>卡拉OK</componentName>
+				<picUrl>/flash/customize_assets/2/karaoke.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>372,265</coordinate>
+			</Component>
+			<Component id="26">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/2/sounder.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>28,164</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="3">
+			<picUrl>/flash/customize_assets/3/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="31">
+				<componentName>灯光</componentName>
+				<picUrl>/flash/customize_assets/3/light.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>29,133</coordinate>
+			</Component>
+			<Component id="32">
+				<componentName>银幕</componentName>
+				<picUrl>/flash/customize_assets/3/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>47,63</coordinate>
+			</Component>
+			<Component id="33">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/3/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>53,21</coordinate>
+			</Component>
+			<Component id="34">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/3/player.png</picUrl>
+				<description>#1</description>
+				<coordinate>97,257</coordinate>
+			</Component>
+			<Component id="35">
+				<componentName>游戏机</componentName>
+				<picUrl>/flash/customize_assets/3/gameMachine.swf</picUrl>
+				<description>#1</description>
+				<coordinate>94,248</coordinate>
+			</Component>
+			<Component id="36">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/3/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>41,257</coordinate>
+			</Component>
+			<Component id="37">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/3/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>4,196</coordinate>
+			</Component>
+			<Component id="38">
+				<componentName>卡拉OK</componentName>
+				<picUrl>/flash/customize_assets/3/karaoke.swf</picUrl>
+				<description>#1</description>
+				<coordinate>208,205</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="4">
+			<picUrl>/flash/customize_assets/4/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="41">
+				<componentName>灯光</componentName>
+				<picUrl>/flash/customize_assets/4/light.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>38,18</coordinate>
+			</Component>
+			<Component id="42">
+				<componentName>银幕</componentName>
+				<picUrl>/flash/customize_assets/4/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>182,180</coordinate>
+			</Component>
+			<Component id="43">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/4/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>165,0</coordinate>
+			</Component>
+			<Component id="44">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/4/player.png</picUrl>
+				<description>#1</description>
+				<coordinate>402,260</coordinate>
+			</Component>
+			<Component id="45">
+				<componentName>游戏机</componentName>
+				<picUrl>/flash/customize_assets/4/gameMachine.png</picUrl>
+				<description>#1</description>
+				<coordinate>321,290</coordinate>
+			</Component>
+			<Component id="46">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/4/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>77,256</coordinate>
+			</Component>
+			<Component id="47">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/4/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>86,187</coordinate>
+			</Component>
+			<Component id="48">
+				<componentName>卡拉OK</componentName>
+				<picUrl>/flash/customize_assets/4/karaoke.swf</picUrl>
+				<description>#1</description>
+				<coordinate>52,281</coordinate>
+			</Component>
+			<Component id="49">
+				<componentName>沙发</componentName>
+				<picUrl>/flash/customize_assets/4/sofa.png</picUrl>
+				<description>#1</description>
+				<coordinate>62,314</coordinate>
+			</Component>
+			<Component id="410">
+				<componentName>控制器</componentName>
+				<picUrl>/flash/customize_assets/4/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,283</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="5">
+			<picUrl>/flash/customize_assets/5/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="51">
+				<componentName>银幕</componentName>
+				<picUrl>/flash/customize_assets/5/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>248,143</coordinate>
+			</Component>
+			<Component id="52">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/5/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>233,17</coordinate>
+			</Component>
+			<Component id="53">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/5/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>274,242</coordinate>
+			</Component>
+			<Component id="54">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/5/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>85,144</coordinate>
+			</Component>
+			<Component id="55">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/5/mic.swf</picUrl>
+				<description>#1</description>
+				<coordinate>162,194</coordinate>
+			</Component>
+			<Component id="56">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/5/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>189,231</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="6">
+			<picUrl>/flash/customize_assets/6/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="61">
+				<componentName>电子白板</componentName>
+				<picUrl>/flash/customize_assets/6/screen.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>89,126</coordinate>
+			</Component>
+			<Component id="62">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/6/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>85,0</coordinate>
+			</Component>
+			<Component id="63">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/6/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>11,205</coordinate>
+			</Component>
+			<Component id="64">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/6/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>14,84</coordinate>
+			</Component>
+			<Component id="65">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/6/mic.swf</picUrl>
+				<description>#1</description>
+				<coordinate>121,163</coordinate>
+			</Component>
+			<Component id="66">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/6/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>354,199</coordinate>
+			</Component>
+			<Component id="67">
+				<componentName>中控器</componentName>
+				<picUrl>/flash/customize_assets/6/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,302</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="7">
+			<picUrl>/flash/customize_assets/7/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="71">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/7/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>271,237</coordinate>
+			</Component>
+			<Component id="72">
+				<componentName>投影幕</componentName>
+				<picUrl>/flash/customize_assets/7/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>159,143</coordinate>
+			</Component>
+			<Component id="73">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/7/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>159,14</coordinate>
+			</Component>
+			<Component id="74">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/7/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>106,143</coordinate>
+			</Component>
+			<Component id="75">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/7/mic.swf</picUrl>
+				<description>#1</description>
+				<coordinate>147,226</coordinate>
+			</Component>
+			<Component id="76">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/7/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>301,311</coordinate>
+			</Component>
+			<Component id="77">
+				<componentName>中控器</componentName>
+				<picUrl>/flash/customize_assets/7/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,302</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="8">
+			<picUrl>/flash/customize_assets/8/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="81">
+				<componentName>投影幕</componentName>
+				<picUrl>/flash/customize_assets/8/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>71,103</coordinate>
+			</Component>
+			<Component id="82">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/8/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>80,39</coordinate>
+			</Component>
+			<Component id="83">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/8/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>276,201</coordinate>
+			</Component>
+			<Component id="84">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/8/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>231,146</coordinate>
+			</Component>
+			<Component id="85">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/8/mic.png</picUrl>
+				<description>#1</description>
+				<coordinate>166,191</coordinate>
+			</Component>
+			<Component id="86">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/8/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>184,201</coordinate>
+			</Component>
+			<Component id="87">
+				<componentName>中控器</componentName>
+				<picUrl>/flash/customize_assets/8/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,302</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="9">
+			<picUrl>/flash/customize_assets/9/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="91">
+				<componentName>电子白板</componentName>
+				<picUrl>/flash/customize_assets/9/screen.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>166,88</coordinate>
+			</Component>
+			<Component id="92">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/9/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>174,0</coordinate>
+			</Component>
+			<Component id="93">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/9/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>352,206</coordinate>
+			</Component>
+			<Component id="94">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/9/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>53,59</coordinate>
+			</Component>
+			<Component id="95">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/9/mic.png</picUrl>
+				<description>#1</description>
+				<coordinate>398,192</coordinate>
+			</Component>
+			<Component id="96">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/9/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>421,185</coordinate>
+			</Component>
+			<Component id="97">
+				<componentName>激光教鞭</componentName>
+				<picUrl>/flash/customize_assets/9/laser.png</picUrl>
+				<description>#1</description>
+				<coordinate>305,241</coordinate>
+			</Component>
+			<Component id="98">
+				<componentName>中控器</componentName>
+				<picUrl>/flash/customize_assets/9/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,302</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="10">
+			<picUrl>/flash/customize_assets/10/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="101">
+				<componentName>电子白板</componentName>
+				<picUrl>/flash/customize_assets/10/screen.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>164,138</coordinate>
+			</Component>
+			<Component id="102">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/10/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>161,0</coordinate>
+			</Component>
+			<Component id="103">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/10/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>368,193</coordinate>
+			</Component>
+			<Component id="104">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/10/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>73,97</coordinate>
+			</Component>
+			<Component id="105">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/10/mic.png</picUrl>
+				<description>#1</description>
+				<coordinate>328,164</coordinate>
+			</Component>
+			<Component id="106">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/10/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>345,185</coordinate>
+			</Component>
+			<Component id="107">
+				<componentName>讲台</componentName>
+				<picUrl>/flash/customize_assets/10/platform.png</picUrl>
+				<description>#1</description>
+				<coordinate>320,206</coordinate>
+			</Component>
+			<Component id="108">
+				<componentName>激光教鞭</componentName>
+				<picUrl>/flash/customize_assets/10/laser.png</picUrl>
+				<description>#1</description>
+				<coordinate>264,302</coordinate>
+			</Component>
+			<Component id="109">
+				<componentName>中控器</componentName>
+				<picUrl>/flash/customize_assets/10/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,302</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="11">
+			<picUrl>/flash/customize_assets/11/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="111">
+				<componentName>电子白板</componentName>
+				<picUrl>/flash/customize_assets/11/screen.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>133,138</coordinate>
+			</Component>
+			<Component id="112">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/11/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>119,0</coordinate>
+			</Component>
+			<Component id="113">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/11/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>370,256</coordinate>
+			</Component>
+			<Component id="114">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/11/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>22,105</coordinate>
+			</Component>
+			<Component id="115">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/11/mic.png</picUrl>
+				<description>#1</description>
+				<coordinate>250,213</coordinate>
+			</Component>
+			<Component id="116">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/11/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>292,224</coordinate>
+			</Component>
+			<Component id="117">
+				<componentName>讲台</componentName>
+				<picUrl>/flash/customize_assets/11/platform.png</picUrl>
+				<description>#1</description>
+				<coordinate>251,247</coordinate>
+			</Component>
+			<Component id="118">
+				<componentName>激光教鞭</componentName>
+				<picUrl>/flash/customize_assets/11/laser.png</picUrl>
+				<description>#1</description>
+				<coordinate>300,378</coordinate>
+			</Component>
+			<Component id="119">
+				<componentName>中控器</componentName>
+				<picUrl>/flash/customize_assets/11/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,302</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="12">
+			<picUrl>/flash/customize_assets/12/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="121">
+				<componentName>电子白板</componentName>
+				<picUrl>/flash/customize_assets/12/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>164,111</coordinate>
+			</Component>
+			<Component id="122">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/12/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>176,0</coordinate>
+			</Component>
+			<Component id="123">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/12/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>443,239</coordinate>
+			</Component>
+			<Component id="124">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/12/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>30,71</coordinate>
+			</Component>
+			<Component id="125">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/12/mic.png</picUrl>
+				<description>#1</description>
+				<coordinate>108,221</coordinate>
+			</Component>
+			<Component id="126">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/12/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>132,221</coordinate>
+			</Component>
+			<Component id="127">
+				<componentName>激光教鞭</componentName>
+				<picUrl>/flash/customize_assets/12/laser.png</picUrl>
+				<description>#1</description>
+				<coordinate>170,328</coordinate>
+			</Component>
+			<Component id="128">
+				<componentName>中控器</componentName>
+				<picUrl>/flash/customize_assets/12/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,287</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="13">
+			<picUrl>/flash/customize_assets/13/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="131">
+				<componentName>投影幕</componentName>
+				<picUrl>/flash/customize_assets/13/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>373,116</coordinate>
+			</Component>
+			<Component id="132">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/13/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>104,16</coordinate>
+			</Component>
+			<Component id="133">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/13/player.png</picUrl>
+				<description>#1</description>
+				<coordinate>457,250</coordinate>
+			</Component>
+			<Component id="134">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/13/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>456,288</coordinate>
+			</Component>
+			<Component id="135">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/13/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>331,148</coordinate>
+			</Component>
+			<Component id="136">
+				<componentName>卡拉OK</componentName>
+				<picUrl>/flash/customize_assets/13/karaoke.png</picUrl>
+				<description>#1</description>
+				<coordinate>373,234</coordinate>
+			</Component>
+			<Component id="137">
+				<componentName>控制器</componentName>
+				<picUrl>/flash/customize_assets/13/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,283</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="14">
+			<picUrl>/flash/customize_assets/14/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="141">
+				<componentName>投影幕</componentName>
+				<picUrl>/flash/customize_assets/14/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>249,184</coordinate>
+			</Component>
+			<Component id="142">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/14/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>237,35</coordinate>
+			</Component>
+			<Component id="143">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/14/player.png</picUrl>
+				<description>#1</description>
+				<coordinate>441,286</coordinate>
+			</Component>
+			<Component id="144">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/14/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>438,294</coordinate>
+			</Component>
+			<Component id="145">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/14/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>214,183</coordinate>
+			</Component>
+			<Component id="146">
+				<componentName>卡拉OK</componentName>
+				<picUrl>/flash/customize_assets/14/karaoke.swf</picUrl>
+				<description>#1</description>
+				<coordinate>406,236</coordinate>
+			</Component>
+			<Component id="147">
+				<componentName>背景音乐</componentName>
+				<picUrl>/flash/customize_assets/14/bgsound.swf</picUrl>
+				<description>#1</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="15">
+			<picUrl>/flash/customize_assets/15/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="151">
+				<componentName>灯光</componentName>
+				<picUrl>/flash/customize_assets/15/light.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+			<Component id="152">
+				<componentName>投影幕</componentName>
+				<picUrl>/flash/customize_assets/15/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>0,70</coordinate>
+			</Component>
+			<Component id="153">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/15/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>0,26</coordinate>
+			</Component>
+			<Component id="154">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/15/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>3,236</coordinate>
+			</Component>
+			<Component id="155">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/15/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>55,259</coordinate>
+			</Component>
+			<Component id="156">
+				<componentName>卡拉OK</componentName>
+				<picUrl>/flash/customize_assets/15/karaoke.swf</picUrl>
+				<description>#1</description>
+				<coordinate>251,229</coordinate>
+			</Component>
+			<Component id="157">
+				<componentName>中控器</componentName>
+				<picUrl>/flash/customize_assets/15/controller.swf</picUrl>
+				<description>#1</description>
+				<coordinate>2,283</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="16">
+			<picUrl>/flash/customize_assets/16/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="161">
+				<componentName>投影幕</componentName>
+				<picUrl>/flash/customize_assets/16/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>316,155</coordinate>
+			</Component>
+			<Component id="162">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/16/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>275,36</coordinate>
+			</Component>
+			<Component id="163">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/16/player.png</picUrl>
+				<description>#1</description>
+				<coordinate>352,249</coordinate>
+			</Component>
+			<Component id="164">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/16/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>297,249</coordinate>
+			</Component>
+			<Component id="165">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/16/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>270,134</coordinate>
+			</Component>
+			<Component id="166">
+				<componentName>背景音乐</componentName>
+				<picUrl>/flash/customize_assets/16/bgsound.swf</picUrl>
+				<description>#1</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="17">
+			<picUrl>/flash/customize_assets/17/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="171">
+				<componentName>投影拼接</componentName>
+				<picUrl>/flash/customize_assets/17/projector.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>0,34</coordinate>
+			</Component>
+			<Component id="172">
+				<componentName>背景音乐</componentName>
+				<picUrl>/flash/customize_assets/17/bgsound.swf</picUrl>
+				<description>#1</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="18">
+			<picUrl>/flash/customize_assets/18/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="181">
+				<componentName>投影幕</componentName>
+				<picUrl>/flash/customize_assets/18/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>236,129</coordinate>
+			</Component>
+			<Component id="182">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/18/projector.swf</picUrl>
+				<description>#1</description>
+				<coordinate>220,82</coordinate>
+			</Component>
+			<Component id="183">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/18/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>46,202</coordinate>
+			</Component>
+			<Component id="184">
+				<componentName>背景音乐</componentName>
+				<picUrl>/flash/customize_assets/18/bgsound.swf</picUrl>
+				<description>#1</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="19">
+			<picUrl>/flash/customize_assets/19/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="191">
+				<componentName>投影拼接</componentName>
+				<picUrl>/flash/customize_assets/19/projector.png</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>33,103</coordinate>
+			</Component>
+			<Component id="192">
+				<componentName>电脑</componentName>
+				<picUrl>/flash/customize_assets/19/computer.png</picUrl>
+				<description>#1</description>
+				<coordinate>51,201</coordinate>
+			</Component>
+			<Component id="193">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/19/sounder.png</picUrl>
+				<description>#1</description>
+				<coordinate>7,167</coordinate>
+			</Component>
+			<Component id="194">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/19/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>431,238</coordinate>
+			</Component>
+			<Component id="195">
+				<componentName>话筒</componentName>
+				<picUrl>/flash/customize_assets/19/mic.png</picUrl>
+				<description>#1</description>
+				<coordinate>134,200</coordinate>
+			</Component>
+			<Component id="196">
+				<componentName>背景音乐</componentName>
+				<picUrl>/flash/customize_assets/19/bgsound.swf</picUrl>
+				<description>#1</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+	<Suite>
+		<ScenePic id="20">
+			<picUrl>/flash/customize_assets/20/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="201">
+				<componentName>投影幕</componentName>
+				<picUrl>/flash/customize_assets/20/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>169,168</coordinate>
+			</Component>
+			<Component id="202">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/20/projector.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>175,29</coordinate>
+			</Component>
+			<Component id="203">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/20/player.png</picUrl>
+				<description>#1</description>
+				<coordinate>220,284</coordinate>
+			</Component>
+			<Component id="204">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/20/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>143,214</coordinate>
+			</Component>
+			<Component id="205">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/20/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>169,280</coordinate>
+			</Component>
+			<Component id="206">
+				<componentName>卡拉OK</componentName>
+				<picUrl>/flash/customize_assets/20/karaoke.swf</picUrl>
+				<description>#1</description>
+				<coordinate>21,262</coordinate>
+			</Component>
+			<Component id="207">
+				<componentName>背景音乐</componentName>
+				<picUrl>/flash/customize_assets/20/bgsound.swf</picUrl>
+				<description>#1</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+		</Components>
+	</Suite>
+</SuiteList>
