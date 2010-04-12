@@ -98,6 +98,18 @@
     <Compile Include="DataAccess\TagDataAccess.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_A.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_B.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_C.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_D.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_F1.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_F3.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_F5.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_G.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_H.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_I.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_J.cs" />
+    <Compile Include="DataAccess\TagDataProviders\TagDataProvider_L.cs" />
     <Compile Include="FileManage\FileManager.cs" />
     <Compile Include="FileManage\FileSystemObject.cs" />
     <Compile Include="Model\PageModel.cs" />
@@ -114,13 +126,18 @@
       <Project>{29A4BE47-9ADF-443F-913D-6CCEAD2DD752}</Project>
       <Name>NoName.NetShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NoName.NetShop.MagicWorld\NoName.NetShop.MagicWorld.csproj">
+      <Project>{71EBF181-74BC-4876-9BB4-1FBB0A524398}</Project>
+      <Name>NoName.NetShop.MagicWorld</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoName.NetShop.News\NoName.NetShop.News.csproj">
+      <Project>{6B1F4013-2FBB-4521-A36E-A0247FE0ED92}</Project>
+      <Name>NoName.NetShop.News</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NoName.Utility\NoName.Utility.csproj">
       <Project>{E0634851-F221-461E-9C14-F71011119CC6}</Project>
       <Name>NoName.Utility</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataAccess\TagDataProviders\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
