@@ -5,6 +5,7 @@
     <link type="text/css" rel="stylesheet" href="/css/solution.css" />
     <script src="/js/customizeHome.js" type="text/javascript"></script>
     <script src="/js/AC_RunActiveContent.js" type="text/javascript"></script>
+    <script src="/js/solution.home.js" type="text/javascript"></script>
 </asp:Content>
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
