@@ -120,6 +120,26 @@ namespace NoName.NetShop.MagicWorld.DAL
             return Convert.ToInt32(dbr.ExecuteScalar(Command)) == 1;
         }
 
+        public DataTable GetTopHotList(int TopNumber)
+        {
+            string sql = "select top {0} * from mwsecondhandproduct order by pageview desc";
+            sql = String.Format(sql,TopNumber);
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
+        public DataTable GetNewestList(int TopNumber)
+        {
+            string sql = @"select top {0} * from
+                            (
+                                select top {1} seproductid as pid,seproductname as pname,price,mediumimage,inserttime,1 as ptype from mwSecondhandProduct order by seproductid desc
+                                union
+                                select top {2} demandid as pid,demandname as pname,price,mediumimage,inserttime,2 as ptype from mwDemand order by demandid desc
+                            ) as sp
+                            order by inserttime desc";
+            sql = String.Format(sql, TopNumber, TopNumber * 2, TopNumber * 2);
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
 
         private SecondhandProductModel BindModel(DataRow row)
         {

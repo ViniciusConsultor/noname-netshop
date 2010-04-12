@@ -70,5 +70,15 @@ namespace NoName.NetShop.MagicWorld.BLL
 
             return dt;
         }
+
+        public DataTable GetTopHotList(int TopNumber)
+        {
+            return dal.GetTopHotList(TopNumber);
+        }
+
+        public DataTable GetNewestList(int TopNumber)
+        {
+            return dal.GetNewestList(TopNumber);
+        }
     }
 }

@@ -58,5 +58,10 @@ namespace NoName.NetShop.MagicWorld.BLL
 
             return dt;
         }
+
+        public DataTable GetNewestList(int TopCount, PawnProductStatus Status)
+        {
+            return dal.GetNewestList(TopCount,Status);
+        }
     }
 }

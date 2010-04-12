@@ -36,5 +36,10 @@ namespace NoName.NetShop.MagicWorld.BLL
         {
             return dal.GetList(PageIndex, PageSize, Condition,Order, out RecordCount);
         }
+
+        public DataTable GetNewestList(int TopCount)
+        {
+            return dal.GetNewestList(TopCount);
+        }
     }
 }
