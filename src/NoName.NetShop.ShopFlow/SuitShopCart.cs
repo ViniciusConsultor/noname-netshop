@@ -8,18 +8,21 @@ using System.Data.Common;
 using NoName.NetShop.Common;
 using System.Data;
 using NoName.NetShop.Member;
+using NoName.NetShop.Solution.BLL;
+using NoName.NetShop.Solution.Model;
 
 namespace NoName.NetShop.ShopFlow
 {
     public class SuitShopCart:ShopCart
     {
+        private int _score;
+        public int SuitId { get; set; }
+
         public SuitShopCart(string key)
         {
             this.SetSteps(key);
             RevertCartFromCookie();
         }
-
-
 
         /// <summary>
         /// 把购物车数据转为HttpCookie，用于在客户端持久存储购物车数据
@@ -29,18 +32,7 @@ namespace NoName.NetShop.ShopFlow
         /// <returns></returns>
         protected override HttpCookie BuildCartCookie()
         {
-            StringBuilder sb = new StringBuilder(100);
-            foreach (OrderProduct op in this.OrderProducts)
-            {
-                if (sb.Length > 0)
-                    sb.Append(";");
-                sb.AppendFormat(op.BuildCookieValue());
-            }
-            HttpCookie cookie = new HttpCookie(this.Key);
-            cookie.Value = sb.ToString();
-            cookie.HttpOnly = false;
-            cookie.Expires = DateTime.Now.AddHours(2);
-            return cookie;
+            return null;
         }
 
 
@@ -50,36 +42,6 @@ namespace NoName.NetShop.ShopFlow
         /// </summary>
         public override void RevertCartFromCookie()
         {
-            HttpCookie cookie = HttpContext.Current.Request.Cookies[this.Key];
-            if (cookie != null && !String.IsNullOrEmpty(cookie.Value))
-            {
-                string cartinfo = cookie.Value;
-                string[] ops = cartinfo.Split(';');
-                for (int i = 0; i < ops.Length; i++)
-                {
-                    string[] opinfo = ops[i].Split('@');
-                    if (!String.IsNullOrEmpty(opinfo[0]))
-                    {
-                        string[] pq = opinfo[0].Split('-');
-
-                        int productId = int.Parse(pq[0]);
-                        OrderType optype = (OrderType)(int.Parse(pq[1]));
-                        int quantity = int.Parse(pq[2]);
-
-                        string[] para = null;
-
-                        if (opinfo.Length == 2)
-                        {
-                            para = opinfo[1].Split('-');
-                        }
-                        else
-                        {
-                            para = new string[0];
-                        }
-                        this.AddToCart(optype, productId, quantity, para);
-                    }
-                }
-            }
         }
 
         public override OrderProduct AddToCart(OrderType opType, int productId, int quantity, string[] paras)
@@ -90,37 +52,47 @@ namespace NoName.NetShop.ShopFlow
 
         public override OrderProduct AddToCart(OrderType opType, int productId, int quantity, NameValueCollection paras)
         {
+            SuitId = productId;
             int typecode;
             if (int.TryParse(paras["typecode"],out typecode))
             {
                 typecode =0;
             }
 
-            OrderProduct op = OrderProducts.Find(c => c.ProductID == productId && c.TypeCode == typecode);
-            if (op == null)
+            NoName.NetShop.Solution.BLL.SuiteBll sbll = new SuiteBll();
+            SolutionProductBll spbll = new SolutionProductBll();
+
+            SuiteModel smodel = sbll.GetModel(SuitId);
+
+            List<SolutionProductModel> list = spbll.GetModelList(SuitId);
+
+            this.OrderProducts.Clear();
+            foreach (SolutionProductModel model in list)
             {
-                op = OrderProductFactory.Instance().CreateOrderProduct(productId, quantity, opType, paras);
+                OrderProduct op = OrderProductFactory.Instance().CreateOrderProduct(model.ProductId, model.Quantity, opType, paras);
                 op.Key = this.Key + "_op" + this.GetSerial();
                 op.Container = this;
-                this.ContinueShopUrl = op.ProductUrl;
-
                 if (op != null)
                 {
                     OrderProducts.Add(op);
                 }
             }
-            else
-            {
-                op.SetQuantiy(op.Quantity + quantity);
-            }
-            return op;
+            this.DerateFee = this.ProductSum - smodel.Price;
+            _score = smodel.Score;
+
+            return null;
+       }
+
+        public new int TotalScore
+        {
+            get { return _score; }
         }
 
 
 
         internal override string SaveOrderInfo()
         {
-            string sql = "orders_Save_Comm";
+            string sql = "orders_Save_Suit";
             DbCommand comm = CommDataAccess.DbWriter.GetStoredProcCommand(sql);
 
             if (!String.IsNullOrEmpty(this.OrderId) && this.Exists())
@@ -158,6 +130,7 @@ namespace NoName.NetShop.ShopFlow
 
                 CommDataAccess.DbWriter.AddInParameter(comm, "AddressDetial", DbType.String, Address.AddressDetail);
                 CommDataAccess.DbWriter.AddInParameter(comm, "PostalCode", DbType.String, Address.Postalcode);
+                CommDataAccess.DbWriter.AddInParameter(comm, "SuitId", DbType.Int32, this.SuitId);
                 CommDataAccess.DbWriter.ExecuteNonQuery(comm);
                 return this.OrderId;
             }
@@ -221,7 +194,6 @@ namespace NoName.NetShop.ShopFlow
             }
             return result;
         }
-
 
     }
 }

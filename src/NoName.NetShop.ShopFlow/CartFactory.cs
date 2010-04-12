@@ -51,5 +51,10 @@ namespace NoName.NetShop.ShopFlow
             return GetCart(key) as CommShopCart;
         }
 
+        public SuitShopCart GetSuitShopCart(string key)
+        {
+            return GetCart(key) as SuitShopCart;
+        }
+
     }
 }

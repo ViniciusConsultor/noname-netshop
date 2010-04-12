@@ -8,7 +8,6 @@ namespace NoName.NetShop.ShopFlow
     {
         Common =0,
         Gift=1,
-        DemandSuit=2,
-        ClassSuit=3
+        Suit=2
     }
 }

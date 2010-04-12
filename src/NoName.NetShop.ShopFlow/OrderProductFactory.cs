@@ -76,6 +76,9 @@ namespace NoName.NetShop.ShopFlow
                 case OrderType.Gift:
                     bll = new GiftOrderProduct();
                     break;
+                case OrderType.Suit:
+                    bll = new SuitOrderProduct();
+                    break;
             }
             return bll;
         }
