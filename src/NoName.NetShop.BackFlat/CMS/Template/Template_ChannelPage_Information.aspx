@@ -26,17 +26,17 @@
             <!--MainBody Begin-->
             <div class="newsHome_mainbody clearfix newline">
 		        <div class="leftColumn">
-                    <dd:CMSTag ID="cmsTag4" Description="左1分类导航" TagID="1" runat="server" />
-                    <dd:CMSTag ID="cmsTag5" Description="左2资讯排行榜" TagID="1" runat="server" />
-                    <dd:CMSTag ID="cmsTag6" Description="左3精彩资讯导读" TagID="1" runat="server" />
+                    <dd:CMSTag ID="cmsTag4" Description="左1分类导航" TagID="4" runat="server" />
+                    <dd:CMSTag ID="cmsTag5" Description="左2资讯排行榜" TagID="5" runat="server" />
+                    <dd:CMSTag ID="cmsTag6" Description="左3精彩资讯导读" TagID="6" runat="server" />
                 </div>
                 <div class="rightColumn">
         	        <div class="rightColumnContainer">
-                        <dd:CMSTag ID="cmsTag7" Description="右1精彩资讯导读" TagID="1" runat="server" />
-                        <dd:CMSTag ID="cmsTag8" Description="右2精彩资讯导读" TagID="1" runat="server" />
-                        <dd:CMSTag ID="cmsTag9" Description="右3精彩资讯导读" TagID="1" runat="server" />
-                        <dd:CMSTag ID="cmsTag10" Description="右4精彩资讯导读" TagID="1" runat="server" />
-                        <dd:CMSTag ID="cmsTag11" Description="右5精彩资讯导读" TagID="1" runat="server" />                        
+                        <dd:CMSTag ID="cmsTag7" Description="右1产品要闻高端观察" TagID="7" runat="server" />
+                        <dd:CMSTag ID="cmsTag8" Description="右2评述评测特别关注" TagID="8" runat="server" />
+                        <dd:CMSTag ID="cmsTag9" Description="右3影音趋势影音指南" TagID="9" runat="server" />
+                        <dd:CMSTag ID="cmsTag10" Description="右4影院播报" TagID="11" runat="server" />
+                        <dd:CMSTag ID="cmsTag11" Description="右5碟海品鉴影音资料" TagID="10" runat="server" />                        
                     </div>
                 </div>
             </div>
