@@ -28,15 +28,26 @@ namespace NoName.NetShop.ForeFlat.sp
 
             if (CurrentShopCart != null)
             {
-                if (Regex.IsMatch(ReqParas["pids"], @"(\d+(\-\d+)?,)*(\d+(\-\d+)?)"))
+                if (!String.IsNullOrEmpty(ReqParas["pid"])&& Regex.IsMatch(ReqParas["pid"], @"(\d+(\-\d+)?,)*(\d+(\-\d+)?)"))
                 {
                     ProcessCommProduct();
                 }
-                else if (Regex.IsMatch(ReqParas["suitId"], @"\d+"))
+                else if (!String.IsNullOrEmpty(ReqParas["suitId"]) && Regex.IsMatch(ReqParas["suitId"], @"\d+"))
                 {
                     ProcessSuitCommProduct();
                 }
             }
+
+            if (CurrentShopCart.ProductNum > 0)
+            {
+                CurrentShopCart.SaveCartToCookie();
+                CurrentShopCart.GoFirst();
+            }
+            else
+            {
+                Response.Write("此商品暂时无法购买!");
+            }
+
         }
 
         private OrderType GetOpType()
@@ -49,7 +60,6 @@ namespace NoName.NetShop.ForeFlat.sp
             }
             opType = (OrderType)opval;
             return opType;
-
         }
 
         private void ProcessSuitCommProduct()
@@ -63,7 +73,7 @@ namespace NoName.NetShop.ForeFlat.sp
         private void ProcessCommProduct()
         {
             OrderType opType = GetOpType();
-            string[] pids = ReqParas["pids"].Split(',');
+            string[] pids = ReqParas["pid"].Split(',');
             foreach (string pidstr in pids)
             {
                 string[] pd = pidstr.Split('-');
@@ -78,15 +88,6 @@ namespace NoName.NetShop.ForeFlat.sp
                 {
                     CurrentShopCart.ContinueShopUrl = op.ProductUrl;
                 }
-            }
-            if (CurrentShopCart.ProductNum > 0)
-            {
-                CurrentShopCart.SaveCartToCookie();
-                CurrentShopCart.GoFirst();
-            }
-            else
-            {
-                Response.Write("此商品暂时无法购买!");
             }
         }
 
