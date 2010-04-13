@@ -45,6 +45,13 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             AuctionProductModel model = bll.GetModel(AuctionID);
             MagicCategoryBll cateBll = new MagicCategoryBll();
 
+            if (model.Status != (int)AuctionProductStatus.尚未审核)
+            {
+                MessageBox.Show(this, "该商品已被审核，禁止编辑！");
+                Response.Redirect("List.aspx");
+                return;
+            }
+
             CategoryID = model.CategoryID;
             if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
 
@@ -60,7 +67,9 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             TextBox_CellPhone.Text = model.CellPhone;
             TextBox_PostCode.Text = model.PostCode;
             TextBox_Address.Text = model.Address;
-            ucRegion.PresetRegionInfo(RegionInfo.GetRegionPathByName(model.Region.Split(' ')[model.Region.Split(' ').Length-1]));
+
+            string[] LastRegion = model.Region.Split(' ');
+            ucRegion.PresetRegionInfo(RegionInfo.GetRegionPathByName(LastRegion[String.IsNullOrEmpty(LastRegion[2]) ? 1 : 2]));
         }
 
 
@@ -80,7 +89,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             if (String.IsNullOrEmpty(TextBox_PostCode.Text) || !PageValidate.IsNumber(TextBox_PostCode.Text)) { ErrorMessage += "邮政编码不能为空\\n"; }
             if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "地址不能为空\\n"; }
             RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
-            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City))
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
             {
                 ErrorMessage += "所在地选择不完整\\n";
             }
