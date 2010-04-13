@@ -8,6 +8,7 @@ using NoName.Utility;
 using NoName.NetShop.MagicWorld.BLL;
 using System.Data;
 using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Demand
 {
@@ -41,30 +42,35 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Demand
                 bll.Delete(ProductID);
                 BindData(AspNetPager.CurrentPageIndex);
                 MessageBox.Show(this, "删除成功！");
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "p")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)DemandProductStatus.审核通过);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "u")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)DemandProductStatus.审核未通过);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "f")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)DemandProductStatus.冻结);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "m")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)DemandProductStatus.审核未通过);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
         }
 

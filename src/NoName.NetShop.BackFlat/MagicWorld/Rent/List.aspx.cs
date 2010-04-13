@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 {
@@ -42,6 +43,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
             {
                 int RentID = Convert.ToInt32(e.CommandArgument);
                 bll.Delete(RentID);
+                PageControler.Publish(7, true);
             }
  
         }

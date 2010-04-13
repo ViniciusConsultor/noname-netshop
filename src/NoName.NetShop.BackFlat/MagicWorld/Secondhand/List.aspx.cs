@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.CMS.Controler;
 
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Secondhand
@@ -47,30 +48,35 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Secondhand
                 bll.Delete(ProductID);
                 BindData(AspNetPager.CurrentPageIndex);
                 MessageBox.Show(this, "删除成功！");
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "p")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)SecondhandProductStatus.审核通过);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "u")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)SecondhandProductStatus.审核未通过);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "f")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)SecondhandProductStatus.冻结);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "m")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)SecondhandProductStatus.审核未通过);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
         }
 
