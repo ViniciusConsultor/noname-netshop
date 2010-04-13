@@ -8,6 +8,7 @@ using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.Utility;
 using NoName.NetShop.MagicWorld.Facade;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 {
@@ -97,7 +98,8 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 
             bll.Update(rent);
 
-            MessageBox.Show(this,"更新成功！");
+            MessageBox.Show(this, "更新成功！");
+            PageControler.Publish(7, true);
         }
     }
 }

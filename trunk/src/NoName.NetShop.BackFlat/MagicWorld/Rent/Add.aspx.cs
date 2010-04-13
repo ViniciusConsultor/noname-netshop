@@ -9,6 +9,7 @@ using NoName.NetShop.MagicWorld.BLL;
 using NoName.Utility;
 using NoName.NetShop.Common;
 using NoName.NetShop.MagicWorld.Facade;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 {
@@ -83,11 +84,12 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
                 new RentProductBll().Add(model);
 
                 MessageBox.Show(this, "添加成功！");
+                PageControler.Publish(7, true);
             }
             else
             {
                 MessageBox.Show(this, "图片上传失败！");
-            } 
+            }
         }
 
 

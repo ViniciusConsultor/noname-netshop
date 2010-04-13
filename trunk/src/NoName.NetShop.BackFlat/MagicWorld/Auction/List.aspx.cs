@@ -8,6 +8,7 @@ using NoName.Utility;
 using NoName.NetShop.Product.BLL;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Auction
 {
@@ -48,12 +49,14 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Auction
                 bll.Delete(ProductID);
                 BindData(AspNetPager.CurrentPageIndex);
                 MessageBox.Show(this, "删除成功！");
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "p")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)AuctionProductStatus.审核通过);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "u")
             {
@@ -66,12 +69,14 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Auction
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)AuctionProductStatus.冻结);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "m")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.UpdateStatus(ProductID, (int)AuctionProductStatus.审核通过);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
         }
 

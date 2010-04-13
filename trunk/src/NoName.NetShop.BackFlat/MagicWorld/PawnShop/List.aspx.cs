@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
 {
@@ -47,18 +48,21 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
                 bll.Delete(ProductID);
                 BindData(AspNetPager.CurrentPageIndex);
                 MessageBox.Show(this, "删除成功！");
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "f")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.ChangeStatus(ProductID, (int)PawnProductStatus.冻结);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
             if (e.CommandName.ToLower() == "m")
             {
                 int ProductID = Convert.ToInt32(e.CommandArgument);
                 bll.ChangeStatus(ProductID, (int)PawnProductStatus.尚未收当);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(7, true);
             }
 
         }
