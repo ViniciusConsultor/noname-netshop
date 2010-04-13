@@ -27,6 +27,9 @@
                 <script type="text/javascript" src="/js/publish.newsdetail.js">
                     <xsl:text> </xsl:text>
                 </script>
+                <script type="text/javascript" src="/flash/mediaplayer/swfobject.js">
+                    <xsl:text> </xsl:text>
+                </script>
             </head>
             <body>
                 <div class="wrapper">
@@ -287,6 +290,18 @@
             </span>
         </h2>
         <div class="articleContent">
+            <xsl:if test="videourl != ''">
+                <div align="center" id="videoContainer">
+                    <xsl:text> </xsl:text>                     
+                </div>
+                <script type="text/javascript">
+                    var s1 = new SWFObject("/flash/mediaplayer/player.swf", "ply", "400", "300", "9", "#FFFFFF");
+                    s1.addParam("allowfullscreen","true");
+                    s1.addParam("allowscriptaccess","always");
+                    s1.addParam("flashvars", "file=<xsl:value-of select="videourl"/>&amp;image=<xsl:value-of select="imageurl"/>");
+                    s1.write("videoContainer");
+                </script>
+            </xsl:if>
             <xsl:value-of select="newscontent" disable-output-escaping="yes"/>
         </div>
     </xsl:template>
