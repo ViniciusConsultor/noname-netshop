@@ -14,6 +14,7 @@ using NoName.NetShop.News.BLL;
 using NoName.NetShop.News.Model;
 using NoName.Utility;
 using NoName.NetShop.News.Facade;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.News.Detail
 {
