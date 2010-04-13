@@ -4,12 +4,6 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
-    <!--Position Begin-->
-    <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">提交成功</a>
-    </div>
-    <!--Position End-->
-    
     <!--MainBody Begin-->
     <div class="magicCommonComplete_mainbody clearfix newline">
     	<div class="box1">
