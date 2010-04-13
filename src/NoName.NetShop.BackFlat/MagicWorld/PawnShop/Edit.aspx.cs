@@ -91,7 +91,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
             model.Status = (int)PawnProductStatus.已收当;
 
             bll.Update(model);
-            MessageBox.Show(this, "修改成功！");
+            Response.Redirect("List.aspx");
 
         }
     }

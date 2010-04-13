@@ -27,7 +27,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(AspNetPager.PageSize, PageIndex, String.Empty, out RecordCount);
+            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, String.Empty, out RecordCount);
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
