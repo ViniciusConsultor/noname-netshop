@@ -134,6 +134,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
             }
 
             bll.Update(model);
+            PageControler.Publish(6, true);
             Response.Redirect("List.aspx");
         }
     }

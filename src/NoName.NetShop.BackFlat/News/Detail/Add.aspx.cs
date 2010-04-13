@@ -15,6 +15,7 @@ using NoName.NetShop.News.Model;
 using NoName.Utility;
 using NoName.NetShop.Common;
 using NoName.NetShop.News.Facade;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.News.Detail
 {
@@ -112,6 +113,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
             }
 
             bll.Add(model);
+            PageControler.Publish(6, true);
             Response.Redirect("List.aspx");
         }
     }
