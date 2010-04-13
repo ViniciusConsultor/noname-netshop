@@ -5,6 +5,11 @@
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
 </asp:Content>
+
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; <a href="/member/PawnShop/List.aspx">我的典藏</a>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
 
             	<div class="box1">
@@ -36,7 +41,7 @@
                                 <td><%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.PawnProductStatus), Eval("status")) %></td>
                                 <td>
                             	    <div class="inlineIconButton">
-                            	        <a title="编辑" class="iconButton edit" href='<%# ((NoName.NetShop.MagicWorld.Model.PawnProductStatus)Enum.Parse(typeof(NoName.NetShop.MagicWorld.Model.PawnProductStatus), Eval("status").ToString())) == NoName.NetShop.MagicWorld.Model.PawnProductStatus.尚未收当 ? "Edit.aspx?productid="+Eval("AuctionId") : "javascript:alert(\"该商品已收当，禁止编辑\")" %>'></a>
+                            	        <a title="编辑" class="iconButton edit" href='<%# ((NoName.NetShop.MagicWorld.Model.PawnProductStatus)Enum.Parse(typeof(NoName.NetShop.MagicWorld.Model.PawnProductStatus), Eval("status").ToString())) == NoName.NetShop.MagicWorld.Model.PawnProductStatus.尚未收当 ? "Edit.aspx?productid="+Eval("pawnproductid") : "javascript:alert(\"该商品已收当，禁止编辑\")" %>'></a>
                             	    </div>
                                 </td>
                               </tr>

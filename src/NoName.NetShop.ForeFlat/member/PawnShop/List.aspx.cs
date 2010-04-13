@@ -30,7 +30,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            Repeater_PawnList.DataSource = bll.GetList(AspNetPager.PageSize, PageIndex, String.Empty, out RecordCount);
+            Repeater_PawnList.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, " and userid = '" + GetUserID() + "'", out RecordCount);
             Repeater_PawnList.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
@@ -43,5 +43,9 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
             BindData(AspNetPager.CurrentPageIndex);
         }
 
+        private string GetUserID()
+        {
+            return CurrentUser.UserId;
+        }
     }
 }

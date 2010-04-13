@@ -3,7 +3,11 @@
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="head">
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
+    <link type="text/css" rel="stylesheet" href="/css/jquery-ui.css" />
+    
     <script type="text/javascript" src="/js/validate.js"></script>
+    <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
+    <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
     <script type="text/javascript">
         $(function() {
             InitRegions();
@@ -71,18 +75,18 @@
                     errorMessage += '<li>请选择地区</li>';
                     $('#region0').parent().prev().prev().css({ 'color': 'red' });
                 }
-//                if ($('#region0').val() == '' || $('#region1').val() == '' || $('#region2').val() == '') {
-//                    if ($('#region0').val() == '') {
-//                        errorMessage += '<li>请选择省份</li>';
-//                    }
-//                    if ($('#region1').val() == '') {
-//                        errorMessage += '<li>请选择城市</li>';
-//                    }
-//                    if ($('#region2').val() == '') {
-//                        errorMessage += '<li>请选择区县</li>';
-//                    }
-//                    $('#region0').parent().prev().prev().css({ 'color': 'red' });
-//                }
+                //                if ($('#region0').val() == '' || $('#region1').val() == '' || $('#region2').val() == '') {
+                //                    if ($('#region0').val() == '') {
+                //                        errorMessage += '<li>请选择省份</li>';
+                //                    }
+                //                    if ($('#region1').val() == '') {
+                //                        errorMessage += '<li>请选择城市</li>';
+                //                    }
+                //                    if ($('#region2').val() == '') {
+                //                        errorMessage += '<li>请选择区县</li>';
+                //                    }
+                //                    $('#region0').parent().prev().prev().css({ 'color': 'red' });
+                //                }
 
                 if (errorMessage != '') {
                     $('#error-inform').html(errorMessage).show('fast');
@@ -90,6 +94,7 @@
                 }
                 else return true;
             });
+            $('#<%=TextBox_EndTime.ClientID %>').datepicker({dateFormat: 'yy-mm-dd'});
         });
         
     </script>
@@ -98,15 +103,7 @@
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="cpMain">
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">魔力世界</a> &gt;&gt; <a href="#">二手交易</a> &gt;&gt; <a href="#">典当商品</a>
-        <div class="magicSubNav">
-            <div class="magicButtonTab">
-                <a class="button_blue" href="#">视听租赁</a>
-                <a class="button_blue" href="#">二手交易</a>
-                <a class="button_blue2" href="#">视听当铺</a>
-                <a class="button_blue" href="#">视听拍卖</a>
-            </div>
-        </div>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; <a href="/member/PawnShop/List.aspx">我的典藏</a> &gt;&gt; <a href="#">修改当品</a>
     </div>
     <!--Position End-->
     
