@@ -10,7 +10,7 @@
     function regionValideSelect() {
         var result = true;
         $("#region").find("select").each(function() {
-        if ($(this).attr("required") == "true" && ($(this).val() == null || $(this).val() == "")) {
+            if ($(this).css('display')!='none'&&$(this).attr("required") == "true" && ($(this).val() == null || $(this).val() == "")) {
                 result = false;
                 return result;
             }
