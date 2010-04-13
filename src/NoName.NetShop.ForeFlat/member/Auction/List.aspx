@@ -3,6 +3,10 @@
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
 </asp:Content>
+
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; <a href="/member/Auction/List.aspx">我的拍卖</a>
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
     
             	<div class="box1">
@@ -33,8 +37,8 @@
                                 <td><a target="_blank" href='<%# "/Magic/Auction.aspx?pid="+Eval("AuctionId") %>'><%# Eval("ProductName")%></a></td>
                                 <td><%# Convert.ToDecimal(Eval("StartPrice")).ToString("0.00") %></td>
                                 <td><%# Convert.ToDecimal(Eval("CurPrice")).ToString("0.00") %></td>
-                                <td><%# Convert.ToDateTime(Eval("StartTime")).ToString("yyyy-MM-dd HH:mm:ss")%></td>
-                                <td><%# Convert.ToDateTime(Eval("EndTime")).ToString("yyyy-MM-dd HH:mm:ss")%></td>
+                                <td><%# Convert.ToDateTime(Eval("StartTime")).ToString("yyyy-MM-dd")%></td>
+                                <td><%# Convert.ToDateTime(Eval("EndTime")).ToString("yyyy-MM-dd")%></td>
                                 <td><%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.AuctionProductStatus), Eval("status")) %></td>
                                 <td>
                         	        <div class="inlineIconButton">
