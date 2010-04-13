@@ -44,6 +44,18 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
         {
             SecondhandProductModel model = bll.GetModel(SecondhandProductID);
 
+            if (model.Status != (int)SecondhandProductStatus.尚未审核)
+            {
+                MessageBox.Show(this,"该商品已被审核，禁止编辑！");
+                Response.Redirect("List.aspx");
+                return;
+            }
+
+            DropDown_Usage.DataSource = DataTableUtil.GetEnumKeyValue(typeof(SecondhandProductUsageCondition));
+            DropDown_Usage.DataTextField = "key";
+            DropDown_Usage.DataValueField = "value";
+            DropDown_Usage.DataBind();
+
             CategoryID = model.CateID;
             if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
 
@@ -59,6 +71,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             TextBox_PostCode.Text = model.PostCode;
             TextBox_Address.Text = model.Address;
             ucRegion.PresetRegionInfo(RegionInfo.GetRegionPathByName(model.Region.Split(' ')[model.Region.Split(' ').Length-1]));
+
         }
 
 
@@ -77,7 +90,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "请输入您的地址\\n"; }
 
             RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
-            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City))
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
             {
                 ErrorMessage += "所在地选择不完整\\n";
             }

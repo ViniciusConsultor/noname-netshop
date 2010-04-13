@@ -29,7 +29,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            Repeater_SecondhandList.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, String.Empty, out RecordCount);
+            Repeater_SecondhandList.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, " and userid = '" + GetUserID() + "'", out RecordCount);
             Repeater_SecondhandList.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
@@ -42,5 +42,9 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             BindData(AspNetPager.CurrentPageIndex);
         }
 
+        private string GetUserID()
+        {
+            return CurrentUser.UserId;
+        }
     }
 }
