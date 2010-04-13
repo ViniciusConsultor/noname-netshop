@@ -15,6 +15,11 @@ namespace NoName.NetShop.BackFlat.Brand
     public partial class List : System.Web.UI.Page
     {
         private BrandModelBll bll = new BrandModelBll();
+        private string SearchCondition
+        {
+            get { if (ViewState["SearchCondition"] != null) return ViewState["SearchCondition"].ToString(); else return String.Empty; }
+            set { ViewState["SearchCondition"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +32,7 @@ namespace NoName.NetShop.BackFlat.Brand
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            DataTable dt = bll.GetList(PageIndex,AspNetPager.PageSize, "",out RecordCount).Tables[0];
+            DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, SearchCondition, out RecordCount).Tables[0];
 
             foreach (DataRow row in dt.Rows) row["brandlogo"] = CommonImageUpload.GetCommonImageFullUrl(row["brandlogo"].ToString());
 
@@ -64,6 +69,28 @@ namespace NoName.NetShop.BackFlat.Brand
             }
 
             BindData(AspNetPager.CurrentPageIndex);
+        }
+
+        protected void Button_Search_Click(object sender, EventArgs e)
+        {
+            SearchCondition = String.Empty;
+            if (String.IsNullOrEmpty(TextBox_BrandName.Text))
+            {
+                MessageBox.Show(this, "请输入检索词");
+                return;
+            }
+            else
+            {
+                SearchCondition += " and brandname like '%" + TextBox_BrandName.Text + "%'";
+                BindData(1);
+            }
+        }
+
+        protected void Link_Back_Click(object sender, EventArgs e)
+        {
+            SearchCondition = String.Empty;
+            TextBox_BrandName.Text = String.Empty;
+            BindData(1); 
         }
 
         private int GetSwitchDownBrandID(int OriginBrandID)
