@@ -19,16 +19,22 @@ namespace NoName.NetShop.MagicWorld.DAL
         {
             DbCommand Command = dbw.GetStoredProcCommand("UP_mwRentLog_Add");
 
-            dbw.AddInParameter(Command,"@RentorderID",DbType.Int32,model.RentLogID);
-            dbw.AddInParameter(Command,"@RentID",DbType.Int32,model.RentID);
-            dbw.AddInParameter(Command,"@UserID",DbType.String,model.UserID);
-            dbw.AddInParameter(Command,"@PaySum",DbType.Decimal,model.PaySum);
+            dbw.AddInParameter(Command, "@RentorderID", DbType.Int32, model.RentLogID);
+            dbw.AddInParameter(Command, "@RentID", DbType.Int32, model.RentID);
+            dbw.AddInParameter(Command, "@UserID", DbType.String, model.UserID);
+            dbw.AddInParameter(Command, "@PaySum", DbType.Decimal, model.PaySum);
             dbw.AddInParameter(Command, "@rentmonths", DbType.Int32, model.RentMonths);
             dbw.AddInParameter(Command, "@ApplyInfo", DbType.String, model.ApplyInfo);
-            dbw.AddInParameter(Command,"@ApplyTime",DbType.DateTime,model.ApplyTime);
-            dbw.AddInParameter(Command,"@StartTime",DbType.DateTime,model.StartTime);
-            dbw.AddInParameter(Command,"@EndTime",DbType.DateTime,model.EndTime);
-            dbw.AddInParameter(Command,"@Status",DbType.Int16,model.Status);
+            dbw.AddInParameter(Command, "@ApplyTime", DbType.DateTime, model.ApplyTime);
+            dbw.AddInParameter(Command, "@StartTime", DbType.DateTime, model.StartTime);
+            dbw.AddInParameter(Command, "@EndTime", DbType.DateTime, model.EndTime);
+            dbw.AddInParameter(Command, "@Status", DbType.Int16, model.Status);
+            dbw.AddInParameter(Command, "@truename", DbType.String, model.Truename);
+            dbw.AddInParameter(Command, "@phone", DbType.String, model.Phone);
+            dbw.AddInParameter(Command, "@cellphone", DbType.String, model.Cellphone);
+            dbw.AddInParameter(Command, "@postcode", DbType.String, model.Postcode);
+            dbw.AddInParameter(Command, "@region", DbType.String, model.Region);
+            dbw.AddInParameter(Command, "@address", DbType.String, model.Address);
 
             dbw.ExecuteNonQuery(Command);
         }
@@ -46,16 +52,22 @@ namespace NoName.NetShop.MagicWorld.DAL
         {
             DbCommand Command = dbw.GetStoredProcCommand("UP_mwRentLog_Update");
 
-            dbw.AddInParameter(Command,"@RentorderID",DbType.Int32,model.RentLogID);
-            dbw.AddInParameter(Command,"@RentID",DbType.Int32,model.RentID);
-            dbw.AddInParameter(Command,"@UserID",DbType.String,model.UserID);
-            dbw.AddInParameter(Command,"@PaySum",DbType.Decimal,model.PaySum);
+            dbw.AddInParameter(Command, "@RentorderID", DbType.Int32, model.RentLogID);
+            dbw.AddInParameter(Command, "@RentID", DbType.Int32, model.RentID);
+            dbw.AddInParameter(Command, "@UserID", DbType.String, model.UserID);
+            dbw.AddInParameter(Command, "@PaySum", DbType.Decimal, model.PaySum);
             dbw.AddInParameter(Command, "@ApplyInfo", DbType.String, model.ApplyInfo);
             dbw.AddInParameter(Command, "@rentmonths", DbType.Int32, model.RentMonths);
-            dbw.AddInParameter(Command,"@ApplyTime",DbType.DateTime,model.ApplyTime);
-            dbw.AddInParameter(Command,"@StartTime",DbType.DateTime,model.StartTime);
-            dbw.AddInParameter(Command,"@EndTime",DbType.DateTime,model.EndTime);
-            dbw.AddInParameter(Command,"@Status",DbType.Int16,model.Status);
+            dbw.AddInParameter(Command, "@ApplyTime", DbType.DateTime, model.ApplyTime);
+            dbw.AddInParameter(Command, "@StartTime", DbType.DateTime, model.StartTime);
+            dbw.AddInParameter(Command, "@EndTime", DbType.DateTime, model.EndTime);
+            dbw.AddInParameter(Command, "@Status", DbType.Int16, model.Status);
+            dbw.AddInParameter(Command, "@truename", DbType.String, model.Truename);
+            dbw.AddInParameter(Command, "@phone", DbType.String, model.Phone);
+            dbw.AddInParameter(Command, "@cellphone", DbType.String, model.Cellphone);
+            dbw.AddInParameter(Command, "@postcode", DbType.String, model.Postcode);
+            dbw.AddInParameter(Command, "@region", DbType.String, model.Region);
+            dbw.AddInParameter(Command, "@address", DbType.String, model.Address);
 
             dbw.ExecuteNonQuery(Command);
         }
@@ -163,15 +175,16 @@ namespace NoName.NetShop.MagicWorld.DAL
             model.Status = Convert.ToInt16(row["status"]);
             model.UserID = Convert.ToString(row["userid"]);
             model.RentMonths = Convert.ToInt32(row["rentmonths"]);
+            model.Truename = Convert.ToString(row["truename"]);
+            model.Phone = Convert.ToString(row["phone"]);
+            model.Cellphone = Convert.ToString(row["cellphone"]);
+            model.Postcode = Convert.ToString(row["postcode"]);
+            model.Region = Convert.ToString(row["region"]);
+            model.Address = Convert.ToString(row["address"]);
 
             return model;
         }
 
-    //[UP_mwRentLog_GetListByUser]
-    //@UserID varchar(64)
-
-    //    [UP_mwRentLog_GetListByProduct]
-    //@RentID int
 
 
     }
