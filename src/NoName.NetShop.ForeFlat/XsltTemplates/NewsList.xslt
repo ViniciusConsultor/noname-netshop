@@ -191,7 +191,7 @@
     <!-- news list start -->
     <xsl:template match="/newslistpage/newslist/list/news">
         <xsl:choose>
-            <xsl:when test="imageurl != ''">
+            <xsl:when test="imageurl != '' or videourl != ''">
                 <li class="widthThumb">
                     <a href="/news-{newsid}.html">
                         <img src="{imageurl}" />
