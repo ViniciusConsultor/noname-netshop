@@ -153,7 +153,7 @@ namespace NoName.NetShop.MagicWorld.BLL
             SearchPageInfo info = new SearchPageInfo();
 
             info.FieldNames = "*";
-            info.OrderType = "";
+            info.OrderType = " auctionid desc";
             info.PageIndex = PageIndex;
             info.PageSize = PageSize;
             info.PriKeyName = "auctionid";

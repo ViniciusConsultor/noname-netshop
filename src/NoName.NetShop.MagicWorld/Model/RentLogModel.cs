@@ -17,6 +17,12 @@ namespace NoName.NetShop.MagicWorld.Model
         private DateTime _StartTime;
         private DateTime _EndTime;
         private int _Status;
+        private string _truename;
+        private string _phone;
+        private string _cellphone;
+        private string _postcode;
+        private string _region;
+        private string _address;
 
 
         public int RentLogID
@@ -68,6 +74,36 @@ namespace NoName.NetShop.MagicWorld.Model
         {
             get { return _Status; }
             set { _Status=value;}
+        }
+        public string Truename
+        {
+            get { return _truename; }
+            set { _truename = value; }
+        }
+        public string Phone
+        {
+            get { return _phone; }
+            set { _phone = value; }
+        }
+        public string Cellphone
+        {
+            get { return _cellphone; }
+            set { _cellphone = value; }
+        }
+        public string Postcode
+        {
+            get { return _postcode; }
+            set { _postcode = value; }
+        }
+        public string Region
+        {
+            get { return _region; }
+            set { _region = value; }
+        }
+        public string Address
+        {
+            get { return _address; }
+            set { _address = value; }
         }
     }
 
