@@ -15,7 +15,6 @@ $(function() {
     *     when the selected category has subcategory, show the subcategories and define the same click event handler function
     */
     $('#equipment-category a[hassub]').click(function() {
-
         currentFatherCategoryID = $(this).attr('fatherid');
         currentCategoryID = $(this).attr('categoryid');
 
