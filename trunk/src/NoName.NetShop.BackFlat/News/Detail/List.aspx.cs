@@ -12,6 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using NoName.Utility;
 using NoName.NetShop.News.BLL;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.BackFlat.News.Detail
 {
@@ -52,20 +53,22 @@ namespace NoName.NetShop.BackFlat.News.Detail
             {
                 int NewsID = Convert.ToInt32(e.CommandArgument);
                 bll.Delete(NewsID);
-                MessageBox.Show(this,"删除成功！");
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(6, true);
             }
             if (e.CommandName == "ss")
             {
                 int NewsID = Convert.ToInt32(e.CommandArgument);
                 bll.SetSplendid(NewsID, true);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(6, true);
             }
             if (e.CommandName == "ds")
             {
                 int NewsID = Convert.ToInt32(e.CommandArgument);
                 bll.SetSplendid(NewsID, false);
                 BindData(AspNetPager.CurrentPageIndex);
+                PageControler.Publish(6, true);
             }
         }
 
