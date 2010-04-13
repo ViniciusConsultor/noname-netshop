@@ -61,7 +61,12 @@ namespace NoName.NetShop.ForeFlat.Solution
                 SuiteList = bll.GetList(PageIndex, AspNetPager.PageSize, "", "", out RecordCount);
             }
 
-            foreach (DataRow row in SuiteList.Rows) row["senceimg"] = CommonImageUpload.GetCommonImageFullUrl(row["senceimg"].ToString());
+            foreach (DataRow row in SuiteList.Rows)
+            {
+                row["smallimage"] = CommonImageUpload.GetCommonImageFullUrl(row["smallimage"].ToString());
+                row["mediumimage"] = CommonImageUpload.GetCommonImageFullUrl(row["mediumimage"].ToString());
+                row["largeimage"] = CommonImageUpload.GetCommonImageFullUrl(row["largeimage"].ToString());
+            }
 
             Repeater_Suites.DataSource = SuiteList;
             Repeater_Suites.DataBind();

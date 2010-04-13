@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.Solution.Model;
 using NoName.NetShop.Solution.BLL;
 using System.Data;
+using NoName.NetShop.Product.Facade;
 
 namespace NoName.NetShop.ForeFlat.Solution
 {
@@ -45,6 +46,7 @@ namespace NoName.NetShop.ForeFlat.Solution
 
             foreach (DataRow row in dt.Rows)
             {
+                row["mediumimage"] = ProductMainImageRule.GetMainImageUrl(row["mediumimage"].ToString());
                 sumPrice += Convert.ToDecimal(row["price"]);
                 sumMarketPrice += Convert.ToDecimal(row["tradeprice"]);
             }
