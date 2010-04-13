@@ -113,7 +113,7 @@
                         <li class="left"></li>
                         <li><span>新开价</span></li>
                         <li class="right"></li>
-                        <li class="more"><a class="more1" href="#"></a></li>
+                        <li class="more"></li>
                     </ul>
                     <div class="content">
                     	<ul class="itemList4">
@@ -163,7 +163,7 @@
                         <li class="left"></li>
                         <li><span>竞价中</span></li>
                         <li class="right"></li>
-                        <li class="more"><a class="more1" href="#"></a></li>
+                        <li class="more"></li>
                     </ul>
                     <div class="content">
                     	<ul class="itemList4">
@@ -213,7 +213,7 @@
                         <li class="left"></li>
                         <li><span>已落槌</span></li>
                         <li class="right"></li>
-                        <li class="more"><a class="more1" href="#"></a></li>
+                        <li class="more"></li>
                     </ul>
                     <div class="content">
                     	<ul class="itemList4">
