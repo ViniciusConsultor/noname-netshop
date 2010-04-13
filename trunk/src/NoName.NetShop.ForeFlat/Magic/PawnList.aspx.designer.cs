@@ -12,5 +12,23 @@ namespace NoName.NetShop.ForeFlat.Magic {
     
     
     public partial class PawnList {
+        
+        /// <summary>
+        /// Repeater_PawnProduct 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater_PawnProduct;
+        
+        /// <summary>
+        /// AspNetPager_Sales 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::NoName.Utility.AspNetPager AspNetPager_Sales;
     }
 }

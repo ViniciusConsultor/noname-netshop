@@ -14,13 +14,13 @@ namespace NoName.NetShop.ForeFlat.Magic {
     public partial class RentApply {
         
         /// <summary>
-        /// Literal_Message 控件。
+        /// Div_ApplyContent 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_Message;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div_ApplyContent;
         
         /// <summary>
         /// DropDown_RentTime 控件。
@@ -32,13 +32,58 @@ namespace NoName.NetShop.ForeFlat.Magic {
         protected global::System.Web.UI.WebControls.DropDownList DropDown_RentTime;
         
         /// <summary>
-        /// TextBox_RentInfo 控件。
+        /// TextBox_TrueName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_RentInfo;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_TrueName;
+        
+        /// <summary>
+        /// TextBox_Phone 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Phone;
+        
+        /// <summary>
+        /// TextBox_CellPhone 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_CellPhone;
+        
+        /// <summary>
+        /// TextBox_PostCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_PostCode;
+        
+        /// <summary>
+        /// ucRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::NoName.NetShop.ForeFlat.UC.RegionSelect ucRegion;
+        
+        /// <summary>
+        /// TextBox_Address 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Address;
         
         /// <summary>
         /// Button_Add 控件。
@@ -47,6 +92,6 @@ namespace NoName.NetShop.ForeFlat.Magic {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Add;
+        protected global::System.Web.UI.WebControls.LinkButton Button_Add;
     }
 }
