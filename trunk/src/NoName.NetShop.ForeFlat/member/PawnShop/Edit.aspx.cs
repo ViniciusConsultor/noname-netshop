@@ -46,6 +46,13 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
             PawnProductModel model = bll.GetModel(PawnProductID);
             MagicCategoryBll cateBll = new MagicCategoryBll();
 
+            if (model.Status != (int)PawnProductStatus.尚未收当)
+            {
+                MessageBox.Show(this, "该商品已被审核，禁止编辑！");
+                Response.Redirect("List.aspx");
+                return;
+            }
+
             CategoryID = model.CateID;
             if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
 
@@ -76,7 +83,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
             if (String.IsNullOrEmpty(TextBox_PostCode.Text) || !PageValidate.IsNumber(TextBox_PostCode.Text)) { ErrorMessage += "邮政编码不能为空\\n"; }
             if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "地址不能为空\\n"; }
             RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
-            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City))
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
             {
                 ErrorMessage += "所在地选择不完整\\n";
             }
