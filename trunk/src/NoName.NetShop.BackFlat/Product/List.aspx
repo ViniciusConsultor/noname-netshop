@@ -8,8 +8,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css"/>
+    
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script src="/js/ui.core.js" type="text/javascript"></script>
     <script src="/js/ui.datepicker.js" type="text/javascript"></script>
@@ -27,8 +28,10 @@
                 });
             });
 
-            $('#<%=TextBox3.ClientID %>').datepicker();
-            $('#<%=TextBox4.ClientID %>').datepicker();
+            $('#<%=TextBox3.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#<%=TextBox4.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#<%=TextBoxSearch_StartTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#<%=TextBoxSearch_EndTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
         });
 
         function validate() {
