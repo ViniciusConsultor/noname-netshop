@@ -29,7 +29,7 @@ namespace NoName.NetShop.ForeFlat.member.Demand
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            Repeater_DemandList.DataSource = bll.GetList(AspNetPager.PageSize, PageIndex, " and userid = '" + GetUserID() + "'", out RecordCount);
+            Repeater_DemandList.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, " and userid = '" + GetUserID() + "'", out RecordCount);
             Repeater_DemandList.DataBind();
 
             AspNetPager.RecordCount = RecordCount;

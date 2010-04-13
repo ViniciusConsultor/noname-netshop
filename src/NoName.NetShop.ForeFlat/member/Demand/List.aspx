@@ -3,6 +3,9 @@
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="headerContent">
 </asp:Content>
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; <a href="/member/Demand/List.aspx">我的需求</a>
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
             <div class="box1">
                 <ul class="title">
@@ -27,11 +30,11 @@
                                         <td><%# Eval("demandid")%></td>
                                         <td><a target="_blank" href='<%# "/Magic/Demand.aspx?pid="+Eval("demandid") %>'><%# Eval("demandname")%></a></td>
                                         <td><%# Convert.ToDecimal(Eval("Price")).ToString("0.00") %></td>
-                                        <td><%# Convert.ToDateTime(Eval("expirationtime")).ToString("yyyy-MM-dd HH:mm:ss")%></td>
+                                        <td><%# Convert.ToDateTime(Eval("expirationtime")).ToString("yyyy-MM-dd")%></td>
                                         <td><%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.DemandProductStatus), Eval("status")) %></td>
                                         <td>
                             	            <div class="inlineIconButton">
-                            	                <a title="编辑" class="iconButton edit" href='<%# ((NoName.NetShop.MagicWorld.Model.DemandProductStatus)Enum.Parse(typeof(NoName.NetShop.MagicWorld.Model.DemandProductStatus), Eval("status").ToString())) == NoName.NetShop.MagicWorld.Model.DemandProductStatus.尚未审核 ? "Edit.aspx?productid="+Eval("AuctionId") : "javascript:alert(\"该需求信息已通过审核，禁止编辑\")" %>'></a>
+                            	                <a title="编辑" class="iconButton edit" href='<%# ((NoName.NetShop.MagicWorld.Model.DemandProductStatus)Enum.Parse(typeof(NoName.NetShop.MagicWorld.Model.DemandProductStatus), Eval("status").ToString())) == NoName.NetShop.MagicWorld.Model.DemandProductStatus.尚未审核 ? "Edit.aspx?productid="+Eval("demandid") : "javascript:alert(\"该需求信息已通过审核，禁止编辑\")" %>'></a>
                             	            </div>
                                         </td>
                                       </tr>
@@ -40,7 +43,7 @@
                           <tr>
                             <td colspan="6">
                             	<div class="floatLeft">
-                                	<a class="button_blue3 inlineBlock" href="../CateSelect.aspx?app=Auction">
+                                	<a class="button_blue3 inlineBlock" href="../CateSelect.aspx?app=Demand">
                                         <span class="left"></span>
                                         <span class="text">添加需求信息</span>
                                         <span class="right"></span>
