@@ -4,6 +4,10 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
+<<<<<<< .mine
+    
+=======
+>>>>>>> .r920
     <!--MainBody Begin-->
     <div class="magicCommonComplete_mainbody clearfix newline">
     	<div class="box1">
