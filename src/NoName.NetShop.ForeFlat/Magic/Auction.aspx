@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Auction.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.Magic.Auction" %>
+
 <asp:Content ID="ContentHeader" ContentPlaceHolderID="head" runat="server">
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
     <script src="../js/magicworld.auction.js" type="text/javascript"></script>
@@ -7,13 +8,13 @@
 <asp:Content ID="ContentBody" ContentPlaceHolderID="cpMain" runat="server">
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">魔力世界</a> &gt;&gt; <a href="#">视听拍卖</a> &gt;&gt; <a href="#">拍卖品详情</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/magic">魔力世界</a> &gt;&gt; <a href="/Magic/AuctionHome.aspx">视听拍卖</a> &gt;&gt; <a href="#">拍品详细</a>
         <div class="magicSubNav">
             <div class="magicButtonTab">
-                <a class="button_blue" href="#">视听租赁</a>
-                <a class="button_blue" href="#">二手交易</a>
-                <a class="button_blue" href="#">视听当铺</a>
-                <a class="button_blue2" href="#">视听拍卖</a>
+                <a class="button_blue" href="/Magic/RentHome.aspx">视听租赁</a>
+                <a class="button_blue" href="/Magic/DealHome.aspx">二手交易</a>
+                <a class="button_blue" href="/Magic/PawnShop.aspx">视听当铺</a>
+                <a class="button_blue2" href="/Magic/AuctionHome.aspx">视听拍卖</a>
             </div>
         </div>
     </div>

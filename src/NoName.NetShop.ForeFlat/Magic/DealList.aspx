@@ -11,13 +11,13 @@
     
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">魔力世界</a> &gt;&gt; <a href="#">二手交易</a> &gt;&gt; <a href="#">今日更新</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/magic">魔力世界</a> &gt;&gt; <a href="/Magic/DealHome.aspx">二手交易</a> &gt;&gt; <a href="#">所有交易</a>
         <div class="magicSubNav">
             <div class="magicButtonTab">
-                <a class="button_blue" href="#">视听租赁</a>
-                <a class="button_blue2" href="#">二手交易</a>
-                <a class="button_blue" href="#">视听当铺</a>
-                <a class="button_blue" href="#">视听拍卖</a>
+                <a class="button_blue" href="/Magic/RentHome.aspx">视听租赁</a>
+                <a class="button_blue2" href="/Magic/DealHome.aspx">二手交易</a>
+                <a class="button_blue" href="/Magic/PawnShop.aspx">视听当铺</a>
+                <a class="button_blue" href="/Magic/AuctionHome.aspx">视听拍卖</a>
             </div>
         </div>
     </div>
@@ -52,22 +52,6 @@
                                 ShowPrevNext="True" SubmitButtonClass="buttom" 
                                 NumericButtonTextFormatString=''>
                             </cc1:AspNetPager>
-                            <!--
-                            <a class="prev" href="#"></a>
-                            <div class="pageNum">
-                                <a class="on" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">7</a>
-                            </div>
-                            <a class="next" href="#"></a>
-                            <div class="jumpTo">
-                                <span>跳转到</span><input type="text" value="1" /><span>页</span>
-                            </div>
-                            -->
                         </div>
                     </div>
                     <div class="submitButton">

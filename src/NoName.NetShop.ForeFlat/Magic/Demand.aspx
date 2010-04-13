@@ -8,13 +8,13 @@
 <asp:Content ID="ContentBody" ContentPlaceHolderID="cpMain" runat="server">    
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">魔力世界</a> &gt;&gt; <a href="#">二手交易</a> &gt;&gt; <a href="#">求购详细信息</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/magic">魔力世界</a> &gt;&gt; <a href="/Magic/DealHome.aspx">二手交易</a> &gt;&gt; <a href="#">求购详细信息</a>
         <div class="magicSubNav">
             <div class="magicButtonTab">
-                <a class="button_blue" href="#">视听租赁</a>
-                <a class="button_blue2" href="#">二手交易</a>
-                <a class="button_blue" href="#">视听当铺</a>
-                <a class="button_blue" href="#">视听拍卖</a>
+                <a class="button_blue" href="/Magic/RentHome.aspx">视听租赁</a>
+                <a class="button_blue2" href="/Magic/DealHome.aspx">二手交易</a>
+                <a class="button_blue" href="/Magic/PawnShop.aspx">视听当铺</a>
+                <a class="button_blue" href="/Magic/AuctionHome.aspx">视听拍卖</a>
             </div>
         </div>
     </div>
