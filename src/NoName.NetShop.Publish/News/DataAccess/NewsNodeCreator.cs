@@ -6,6 +6,7 @@ using NoName.NetShop.Publish.Configuration;
 using System.Xml;
 using System.Data;
 using NoName.Utility;
+using NoName.NetShop.News.Facade;
 
 namespace NoName.NetShop.Publish.News.DataAccess
 {
@@ -181,8 +182,8 @@ namespace NoName.NetShop.Publish.News.DataAccess
                 XmlUtility.AddNewNode(NewsDetailNode, "smallimageurl", Convert.ToString(row["smallimageurl"]));
                 XmlUtility.AddNewNode(NewsDetailNode, "author", Convert.ToString(row["author"]));
                 XmlUtility.AddNewNode(NewsDetailNode, "newsfrom", Convert.ToString(row["newsfrom"]));
-                XmlUtility.AddNewNode(NewsDetailNode, "videourl", Convert.ToString(row["videourl"]));
-                XmlUtility.AddNewNode(NewsDetailNode, "imageurl", Convert.ToString(row["imageurl"]));
+                XmlUtility.AddNewNode(NewsDetailNode, "videourl", NewsVideoRule.GetVideoUrl(Convert.ToString(row["videourl"])));
+                XmlUtility.AddNewNode(NewsDetailNode, "imageurl", NewsImageRule.GetImageUrl(Convert.ToString(row["imageurl"])));
                 XmlUtility.AddNewNode(NewsDetailNode, "productid", Convert.ToString(row["productid"]));
                 XmlUtility.AddNewNode(NewsDetailNode, "inserttime", Convert.ToDateTime(row["inserttime"]).ToString("yyyy-MM-dd hh:mm:ss"));
                 XmlUtility.AddNewNode(NewsDetailNode, "tags", Convert.ToString(row["tags"]));
