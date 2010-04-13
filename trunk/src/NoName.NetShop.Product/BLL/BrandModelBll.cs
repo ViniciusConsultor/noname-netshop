@@ -140,7 +140,7 @@ namespace NoName.NetShop.Product.BLL
             info.PageSize = PageSize;
             info.PriKeyName = "brandid";
             info.StrJoin = "";
-            info.StrWhere = "";
+            info.StrWhere = " 1=1 " + Condition;
             info.TableName = "pdbrand";
             info.TotalFieldStr = "";
 
