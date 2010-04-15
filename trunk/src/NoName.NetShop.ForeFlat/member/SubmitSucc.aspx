@@ -4,10 +4,6 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
-<<<<<<< .mine
-    
-=======
->>>>>>> .r920
     <!--MainBody Begin-->
     <div class="magicCommonComplete_mainbody clearfix newline">
     	<div class="box1">
@@ -31,12 +27,12 @@
                         </li>
                     </ul>
                     <div class="otherChannel">
-                    	<a href="#">首页</a>
-                        <a href="#">购物街</a>
-                        <a href="#">品牌商城</a>
-                        <a href="#">视听咨询</a>
-                        <a href="#">解决方案</a>
-                        <a href="#">魔力世界</a>                        
+                    	<a href="/">首页</a>
+                        <a href="/channel/shopping">购物街</a>
+                        <a href="/channel/brand">品牌商城</a>
+                        <a href="/channel/info">视听资讯</a>
+                        <a href="/solution/home.aspx">解决方案</a>
+                        <a href="/channel/magic">魔力世界</a>                        
                     </div>
                 </div>
             </div>
