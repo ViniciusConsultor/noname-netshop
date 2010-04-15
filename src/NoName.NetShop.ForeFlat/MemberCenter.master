@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">我的鼎鼎</a> &gt;&gt; <a href="#">我的鼎券</a>
+        <asp:ContentPlaceHolder ID="topContent" runat="server" />
     </div>
     <!--Position End-->
     
@@ -51,13 +51,16 @@
                             <a href="/member/Secondhand/List.aspx">我的二手</a>
                         </li>
                         <li>
+                            <a href="/member/Demand/List.aspx">我的需求</a>
+                        </li>
+                        <li>
                             <a href="/member/PawnShop/List.aspx">我的典藏</a>
                         </li>
                         <li>
                             <a href="#">我的团购</a>
                         </li>
                         <li>
-                            <a href="#">我的租赁</a>
+                            <a href="/member/Rent/RentLogList.aspx">我的租赁</a>
                         </li>
                     </ul>
                     <div class="groupTitle">我的鼎券积分</div>
@@ -96,10 +99,7 @@
         </div>
         <div class="rightColumn">
         	<div class="rightColumnContainer">
-        <asp:ContentPlaceHolder ID="rightContent" runat="server">
-        
-        </asp:ContentPlaceHolder>
-
+                <asp:ContentPlaceHolder ID="rightContent" runat="server" />
             </div>
         </div>
     </div>
