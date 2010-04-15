@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.Utility;
+using System.Data;
 
 namespace NoName.NetShop.ForeFlat.member.Rent
 {
@@ -28,8 +29,12 @@ namespace NoName.NetShop.ForeFlat.member.Rent
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetListOfUser(PageIndex, AspNetPager.PageSize, GetUserID(),out RecordCount);
-            GridView1.DataBind();
+            DataTable dt = bll.GetListOfUser(PageIndex, AspNetPager.PageSize, GetUserID(), out RecordCount);
+
+
+
+            Repeater_LogList.DataSource = dt;
+            Repeater_LogList.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
         }
