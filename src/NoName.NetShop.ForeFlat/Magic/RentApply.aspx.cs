@@ -50,7 +50,7 @@ namespace NoName.NetShop.ForeFlat.Magic
 
             if (log != null)
             {
-                Div_ApplyContent.InnerHtml = "对不起，您已经申请过了，请返回用户中心查看。";
+                Div_ApplyContent.InnerHtml = "对不起，您已经申请过了，请返回<a href=\"/member/rent/rentloglist.aspx\">用户中心</a>查看。";
                 Button_Add.Enabled = false;
             }
         }
