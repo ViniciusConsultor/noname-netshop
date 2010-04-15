@@ -58,7 +58,7 @@
 						<div class="rightColumn">
 							<div class="rightColumnContainer">
 								<div class="box7">
-									<div class="title">商品筛选</div>
+									<div class="title">分类筛选</div>
 									<div class="content">
 										<ul class="productFilter">
 											<li>
