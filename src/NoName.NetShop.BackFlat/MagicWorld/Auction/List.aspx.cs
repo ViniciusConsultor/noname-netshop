@@ -9,6 +9,7 @@ using NoName.NetShop.Product.BLL;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.CMS.Controler;
+using System.Data;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Auction
 {
@@ -27,10 +28,20 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Auction
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(PageIndex,AspNetPager.PageSize, String.Empty, out RecordCount);
+            string ForeFlatRootUrl = System.Configuration.ConfigurationManager.AppSettings["foreFlatRootUrl"];
+            ForeFlatRootUrl = ForeFlatRootUrl.EndsWith("/") ? ForeFlatRootUrl : ForeFlatRootUrl + "/";
+
+            DataTable dt = bll.GetList(PageIndex,AspNetPager.PageSize, String.Empty, out RecordCount);
+
+            dt.Columns.Add("foreurl");
+            foreach (DataRow row in dt.Rows)
+                row["foreurl"] = String.Format("{0}magic/auction.aspx?pid={1}", ForeFlatRootUrl, row["AuctionId"]);
+
+            GridView1.DataSource = dt;
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
+
         }
 
 

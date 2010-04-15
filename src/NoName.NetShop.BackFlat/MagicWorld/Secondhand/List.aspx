@@ -15,7 +15,7 @@
                     <asp:BoundField HeaderText="商品ID" DataField="SeProductID" />
                     <asp:TemplateField  HeaderText="商品名称">
                         <ItemTemplate>
-                            <%# Eval("SeProductName")%>
+                            <a href="<%# Eval("foreurl") %>" target="_blank"><%# Eval("SeProductName")%></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="价格">

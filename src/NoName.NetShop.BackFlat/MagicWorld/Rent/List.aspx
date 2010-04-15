@@ -14,7 +14,11 @@
             <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField HeaderText="商品ID" DataField="rentid" />
-                    <asp:BoundField HeaderText="商品名称" DataField="rentname" />
+                    <asp:TemplateField HeaderText="商品名称">
+                        <ItemTemplate>
+                            <a href="<%# Eval("foreurl") %>" target="_blank"><%# Eval("rentname") %></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="创建时间">
                         <ItemTemplate>
                             <%# Convert.ToDateTime(Eval("createtime")).ToString("yyyy-MM-dd HH:mm:ss") %>
