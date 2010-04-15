@@ -40,7 +40,7 @@ namespace NoName.NetShop.News.Facade
 
         public static string GetImageUrl(string ImageShortUrl)
         {
-            return Config.UrlRoot + ImageShortUrl;
+            return String.IsNullOrEmpty(ImageShortUrl) ? String.Empty : Config.UrlRoot + ImageShortUrl;
         }
     }
 }

@@ -43,7 +43,7 @@ namespace NoName.NetShop.News.Facade
 
         public static string GetVideoUrl(string VideoShortUrl)
         {
-            return Config.UrlRoot + VideoShortUrl;
+            return String.IsNullOrEmpty(VideoShortUrl) ? String.Empty : Config.UrlRoot + VideoShortUrl;
         }
     }
 }
