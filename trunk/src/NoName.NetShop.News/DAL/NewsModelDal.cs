@@ -230,7 +230,7 @@ namespace NoName.NetShop.News.DAL
 
         public DataTable GetTopCategoryNews(int TopNumber, int CategoryID)
         {
-            string sql = "select top {0} * from [nenews] where dbo.GetNewsCategoryPath(cateid)+'/%' like dbo.GetNewsCategoryPath({1})+'/%' order by [newsis] desc";
+            string sql = "select top {0} * from [nenews] where dbo.GetNewsCategoryPath(cateid)+'/%' like dbo.GetNewsCategoryPath({1})+'/%' order by [newsid] desc";
             sql = String.Format(sql, TopNumber, CategoryID);
             return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
