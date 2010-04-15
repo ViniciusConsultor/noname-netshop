@@ -106,15 +106,20 @@ namespace NoName.NetShop.CMS.Controler
                     int TagID = Convert.ToInt32(TagRow["tagid"]);
                     string TagTitle = TagRow["tagname"].ToString();
 
-                    string Content = TagControler.GenerateDefaultCode(TagID, null);
+                    TagModel Tag = TagControler.GetModel(TagID);
 
-                    TagContentModel TagContent = new TagContentModel();
-                    TagContent.PageID = PageID;
-                    TagContent.ServerID = ServerID;
-                    TagContent.TagID = TagID;
-                    TagContent.Content = Content;
+                    if (Tag.TagType == 2)
+                    {
+                        string Content = TagControler.GenerateDefaultCode(TagID, null);
 
-                    TagControler.TagContentImport(TagContent);
+                        TagContentModel TagContent = new TagContentModel();
+                        TagContent.PageID = PageID;
+                        TagContent.ServerID = ServerID;
+                        TagContent.TagID = TagID;
+                        TagContent.Content = Content;
+
+                        TagControler.TagContentImport(TagContent);
+                    }
                 }
             }
 
