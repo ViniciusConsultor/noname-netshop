@@ -8,6 +8,7 @@ using NoName.Utility;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.CMS.Controler;
+using System.Data;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
 {
@@ -27,7 +28,17 @@ namespace NoName.NetShop.BackFlat.MagicWorld.PawnShop
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, String.Empty, out RecordCount);
+            string ForeFlatRootUrl = System.Configuration.ConfigurationManager.AppSettings["foreFlatRootUrl"];
+            ForeFlatRootUrl = ForeFlatRootUrl.EndsWith("/") ? ForeFlatRootUrl : ForeFlatRootUrl + "/";
+
+            DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, String.Empty, out RecordCount);
+
+            dt.Columns.Add("foreurl");
+            foreach (DataRow row in dt.Rows)
+                row["foreurl"] = String.Format("{0}magic/pawnproduct.aspx?pid={1}", ForeFlatRootUrl, row["pawnproductid"]);         
+
+
+            GridView1.DataSource = dt;
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;

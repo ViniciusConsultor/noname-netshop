@@ -15,7 +15,7 @@
                     <asp:BoundField HeaderText="当品ID" DataField="pawnproductid" />
                     <asp:TemplateField HeaderText="名称">
                         <ItemTemplate>
-                            <%# Eval("pawnproductname") %>
+                            <a href="<%# Eval("foreurl") %>" target="_blank"><%# Eval("pawnproductname") %></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="收当价格">

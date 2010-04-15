@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.MagicWorld.BLL;
 using NoName.NetShop.CMS.Controler;
+using System.Data;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 {
@@ -24,7 +25,16 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
         private void BindData(int PageIndex) 
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, "","", out RecordCount);
+            string ForeFlatRootUrl = System.Configuration.ConfigurationManager.AppSettings["foreFlatRootUrl"];
+            ForeFlatRootUrl = ForeFlatRootUrl.EndsWith("/") ? ForeFlatRootUrl : ForeFlatRootUrl + "/";
+
+            DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, "","", out RecordCount);
+
+            dt.Columns.Add("foreurl");
+            foreach (DataRow row in dt.Rows)
+                row["foreurl"] = String.Format("{0}magic/rent.aspx?pid={1}", ForeFlatRootUrl, row["rentid"]);        
+            
+            GridView1.DataSource = dt;
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
@@ -55,7 +65,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
                 if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
                 {
                     LinkButton DeleteButton = (LinkButton)e.Row.Cells[5].FindControl("Button_Delete");
-                    string ScriptString = String.Format("javascript:return confirm('你确认要删除：\"{0}\"吗?')", e.Row.Cells[1].Text.Trim());
+                    string ScriptString = "javascript:return confirm('确认删除?')";
                     DeleteButton.Attributes.Add("onclick", ScriptString);
                 }
             }

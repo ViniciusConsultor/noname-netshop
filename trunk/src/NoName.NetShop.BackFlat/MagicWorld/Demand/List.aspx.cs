@@ -26,7 +26,14 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Demand
         private void BindData(int PageIndex)
         {
             int RecordConut = 0;
+            string ForeFlatRootUrl = System.Configuration.ConfigurationManager.AppSettings["foreFlatRootUrl"];
+            ForeFlatRootUrl = ForeFlatRootUrl.EndsWith("/") ? ForeFlatRootUrl : ForeFlatRootUrl + "/";
+
             DataTable dt = bll.GetList(PageIndex, AspNetPager.PageSize, String.Empty, out RecordConut);
+
+            dt.Columns.Add("foreurl");
+            foreach (DataRow row in dt.Rows)
+                row["foreurl"] = String.Format("{0}magic/demand.aspx?pid={1}", ForeFlatRootUrl, row["demandid"]);            
 
             GridView1.DataSource = dt;
             GridView1.DataBind();

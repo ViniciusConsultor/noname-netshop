@@ -15,8 +15,12 @@
                     <asp:BoundField HeaderText="拍品ID" DataField="AuctionId" />
                     <asp:TemplateField HeaderText="名称">
                         <ItemTemplate>
-                            <%# Eval("ProductName")%>
-                            <a href='<%# "LogList.aspx?auctionid="+Eval("AuctionId") %>'>查看竞价记录</a>
+                            <a href='<%# Eval("foreurl") %>' target="_blank"><%# Eval("ProductName")%></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="竞价记录">
+                        <ItemTemplate>
+                            <a href='<%# "LogList.aspx?auctionid="+Eval("AuctionId") %>'>竞价记录</a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="用户名" DataField="Userid" />

@@ -13,7 +13,11 @@
             <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" >
                 <Columns>
                     <asp:BoundField HeaderText="ID" DataField="demandid" />
-                    <asp:BoundField HeaderText="产品名称" DataField="demandname" />
+                    <asp:TemplateField HeaderText="产品名称">
+                        <ItemTemplate>
+                            <a href="<%# Eval("foreurl") %>" target="_blank"><%# Eval("demandname")%></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField HeaderText="价格" DataField="price" />
                     <asp:BoundField HeaderText="数量" DataField="count" />
                     <asp:BoundField HeaderText="新旧程度" DataField="usagecondition" />
