@@ -25,7 +25,6 @@ namespace NoName.NetShop.Publish.News.DataAccess
             xdoc = document;
         }
 
-
         public XmlNode GetHeaderContent()
         {
             CommonConfig common = CommonConfig.Instance();
@@ -48,6 +47,21 @@ namespace NoName.NetShop.Publish.News.DataAccess
             FooterNode.AppendChild((XmlNode)CData);
 
             return FooterNode;
+        }
+
+        public XmlNode GetCategoryPathList()
+        {
+            XmlNode CategoryPathListNode = xdoc.CreateElement("categorypathlist");
+
+            foreach(DataRow row in dal.GetCategoryPathList(Parameter.CategoryPath).Rows)
+            {
+                XmlNode CategoryNode = XmlUtility.AddNewNode(CategoryPathListNode, "category", null);
+
+                XmlUtility.AddNewNode(CategoryNode, "categoryid", row["cateid"].ToString());
+                XmlUtility.AddNewNode(CategoryNode, "categoryname", row["catename"].ToString());
+            }
+            
+            return CategoryPathListNode;
         }
 
         public XmlNode GetNewsCategory()
@@ -82,7 +96,7 @@ namespace NoName.NetShop.Publish.News.DataAccess
                 XmlUtility.AddNewNode(NewsNode, "newsid", Convert.ToString(row["newsid"]));
                 XmlUtility.AddNewNode(NewsNode, "title", Convert.ToString(row["title"]));
                 XmlUtility.AddNewNode(NewsNode, "brief", Convert.ToString(row["brief"]));
-                XmlUtility.AddNewNode(NewsNode, "imageurl", Convert.ToString(row["imageurl"]));
+                XmlUtility.AddNewNode(NewsNode, "imageurl", NewsImageRule.GetImageUrl(Convert.ToString(row["imageurl"])));
             }
 
             //分页信息节点
@@ -91,8 +105,7 @@ namespace NoName.NetShop.Publish.News.DataAccess
             XmlUtility.SetAtrributeValue(PageInfoNode, "recordcount", RecordCount.ToString());
             XmlUtility.SetAtrributeValue(PageInfoNode, "pagecount", PageCount.ToString());
             XmlUtility.SetAtrributeValue(PageInfoNode, "currentpage", Parameter.PageIndex.ToString());
-
-
+            
             if (PageCount <= 11) //小于最大显示数目，全部显示即可
             {
                 for (int i = 1; i <= PageCount; i++)
@@ -179,7 +192,7 @@ namespace NoName.NetShop.Publish.News.DataAccess
                 XmlUtility.AddNewNode(NewsDetailNode, "catename", Convert.ToString(row["catename"]));
                 XmlUtility.AddCDataNode(NewsDetailNode, "brief", Convert.ToString(row["brief"]));
                 XmlUtility.AddCDataNode(NewsDetailNode, "newscontent", Convert.ToString(row["newscontent"]));
-                XmlUtility.AddNewNode(NewsDetailNode, "smallimageurl", Convert.ToString(row["smallimageurl"]));
+                XmlUtility.AddNewNode(NewsDetailNode, "smallimageurl", NewsImageRule.GetImageUrl(Convert.ToString(row["smallimageurl"])));
                 XmlUtility.AddNewNode(NewsDetailNode, "author", Convert.ToString(row["author"]));
                 XmlUtility.AddNewNode(NewsDetailNode, "newsfrom", Convert.ToString(row["newsfrom"]));
                 XmlUtility.AddNewNode(NewsDetailNode, "videourl", NewsVideoRule.GetVideoUrl(Convert.ToString(row["videourl"])));
@@ -222,7 +235,7 @@ namespace NoName.NetShop.Publish.News.DataAccess
                 XmlUtility.AddNewNode(NewsNode, "newsid", Convert.ToString(row["newsid"]));
                 XmlUtility.AddNewNode(NewsNode, "title", Convert.ToString(row["title"]));
                 XmlUtility.AddNewNode(NewsNode, "brief", Convert.ToString(row["brief"]));
-                XmlUtility.AddNewNode(NewsNode, "imageurl", Convert.ToString(row["imageurl"]));
+                XmlUtility.AddNewNode(NewsNode, "imageurl", NewsImageRule.GetImageUrl(Convert.ToString(row["imageurl"])));
             }
 
             return RankingNewsListNode;
@@ -242,7 +255,7 @@ namespace NoName.NetShop.Publish.News.DataAccess
                 XmlUtility.AddNewNode(NewsNode, "newsid", Convert.ToString(row["newsid"]));
                 XmlUtility.AddNewNode(NewsNode, "title", Convert.ToString(row["title"]));
                 XmlUtility.AddNewNode(NewsNode, "brief", Convert.ToString(row["brief"]));
-                XmlUtility.AddNewNode(NewsNode, "imageurl", Convert.ToString(row["imageurl"]));
+                XmlUtility.AddNewNode(NewsNode, "imageurl", NewsImageRule.GetImageUrl(Convert.ToString(row["imageurl"])));
             }
 
             return SplendidNewsListNode;

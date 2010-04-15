@@ -34,6 +34,7 @@ namespace NoName.NetShop.Publish.News.PageCreators
             rootNode.AppendChild(helper.GetHeaderContent());
             rootNode.AppendChild(helper.GetFooterContent());
             rootNode.AppendChild(helper.GetNewsCategory());
+            rootNode.AppendChild(helper.GetCategoryPathList());
             rootNode.AppendChild(helper.GetNewsList());
             rootNode.AppendChild(helper.GetRankingNewsList());
             rootNode.AppendChild(helper.GetSplendidNewsList());

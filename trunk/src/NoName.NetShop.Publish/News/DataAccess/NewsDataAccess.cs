@@ -96,5 +96,15 @@ namespace NoName.NetShop.Publish.News.DataAccess
             string sql = "select top 10 * from nenews where issplendid=1";
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
         }
+
+        public DataTable GetCategoryPathList(string CategoryPath)
+        {
+            //string CategoryPath = Convert.ToString(db.ExecuteScalar(CommandType.Text, "select dbo.GetNewsCategoryPath(" + CategoryID + ")")); //GetNewsCategoryInfo(CategoryID).Rows[0]["catepath"].ToString();
+
+            string sql = "select * from necategory where cateid in ({0}) order by catelevel";
+            sql = String.Format(sql, CategoryPath.Replace("/", ","));
+
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
+        }
     }
 }

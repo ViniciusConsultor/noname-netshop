@@ -190,5 +190,22 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
             
             return SalesProductListNode;
         }
+
+        public XmlNode GetBrandCategoryList()
+        {
+            XmlNode BrandCategoryListNode = xdoc.CreateElement("brandcategory");
+
+            DataTable dt = dal.GetBrandCategoryList(Parameter.BrandID);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                XmlNode CategoryNode = XmlUtility.AddNewNode(BrandCategoryListNode, "category", null);
+
+                XmlUtility.AddNewNode(CategoryNode, "categoryid", row["cateid"].ToString());
+                XmlUtility.AddNewNode(CategoryNode, "categoryname", row["catename"].ToString());
+            }
+
+            return BrandCategoryListNode;
+        }
     }
 }
