@@ -39,7 +39,12 @@
 
                     <!--Position Begin-->
                     <div class="currentPosition">
-                        您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">视听资讯</a> &gt;&gt; <a href="#">产品要闻</a> &gt;&gt; <a href="#">正文</a>
+                        您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/info">视听资讯</a>
+						<xsl:for-each select="/newspage/categorypathlist/category">
+							<xsl:text> </xsl:text>&gt;&gt; <a href="/newslist-{categoryid}.html">
+								<xsl:value-of select="categoryname"/>
+							</a>							
+						</xsl:for-each>
                     </div>
                     <!--Position End-->
 
@@ -78,34 +83,7 @@
                                 </ul>
                                 <div class="content">
                                     <ul class="articleList_1 bullet_2">
-                                        <li>
-                                            <a href="#">开学好礼大放送，DIY放血大促销</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">开学好礼大放送，DIY放血大促销</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">欧米茄手表3折</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">初春必败男装 全场2折起</a>
-                                        </li>
-
+										<xsl:apply-templates select="/newspage/rankinglist/news" />
                                     </ul>
                                 </div>
                                 <ul class="bottom">
@@ -245,7 +223,6 @@
                 </div>
             </body>
         </html>
-
     </xsl:template>
 
 
@@ -257,7 +234,7 @@
 
     <!-- footer start -->
     <xsl:template name="Footer">
-        <xsl:value-of select="/newspage/standardheader" disable-output-escaping="yes"/>
+        <xsl:value-of select="/newspage/standardfooter" disable-output-escaping="yes"/>
     </xsl:template>
     <!-- footer end -->
 
@@ -324,5 +301,15 @@
         </tr>
     </xsl:template>
     <!-- news comment list end -->
+
+	<!-- ranking list start -->
+	<xsl:template match="/newspage/rankinglist/news">
+		<li>
+			<a href="/news-{newsid}.html">
+				<xsl:value-of select="title"/>
+			</a>
+		</li>
+	</xsl:template>
+	<!-- ranking list end -->
 
 </xsl:stylesheet>

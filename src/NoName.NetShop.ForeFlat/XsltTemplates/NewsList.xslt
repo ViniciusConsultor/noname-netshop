@@ -38,7 +38,12 @@
 
                     <!--Position Begin-->
                     <div class="currentPosition">
-                        您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="#">视听资讯栏目公共页面</a>
+						您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/info">视听资讯</a>
+						<xsl:for-each select="/newslistpage/categorypathlist/category">
+							<xsl:text> </xsl:text>&gt;&gt; <a href="/newslist-{categoryid}.html">
+								<xsl:value-of select="categoryname"/>
+							</a>
+						</xsl:for-each>
                     </div>
                     <!--Position End-->
 

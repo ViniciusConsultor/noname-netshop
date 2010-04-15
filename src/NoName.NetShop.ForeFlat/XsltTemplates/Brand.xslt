@@ -57,6 +57,25 @@
 						</div>
 						<div class="rightColumn">
 							<div class="rightColumnContainer">
+								<div class="box7">
+									<div class="title">商品筛选</div>
+									<div class="content">
+										<ul class="productFilter">
+											<li>
+												<span>分类：</span>
+												<a href="/brand-{$BrandID}.html">
+													<xsl:if test="$CategoryID = 0">
+														<xsl:attribute name="class">
+															on
+														</xsl:attribute>
+													</xsl:if>
+													全部
+												</a>
+												<xsl:apply-templates select="/brandpage/brandcategory/category"/>
+											</li>
+										</ul>
+									</div>
+								</div>
 								<div class="box8 newline">
 									<ul class="title">
 										<li class="left">
@@ -278,5 +297,17 @@
 		</div>
 	</xsl:template>
 	<!-- same brand sales product list end -->
+
+
+	<xsl:template match="/brandpage/brandcategory/category">			
+		<a href="/brand-{$BrandID}-c{categoryid}.html">
+			<xsl:if test="$CategoryID = categoryid">
+				<xsl:attribute name="class">
+					on
+				</xsl:attribute>		
+			</xsl:if>
+			<xsl:value-of select="categoryname"/>
+		</a>
+	</xsl:template>
 
 </xsl:stylesheet>
