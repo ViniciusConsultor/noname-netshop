@@ -34,8 +34,10 @@ namespace NoName.NetShop.Publish.News.PageCreators
             rootNode.AppendChild(helper.GetHeaderContent());
             rootNode.AppendChild(helper.GetFooterContent());
             rootNode.AppendChild(helper.GetNewsCategory());
+            rootNode.AppendChild(helper.GetCategoryPathList());
             rootNode.AppendChild(helper.GetNewsDetail());
             rootNode.AppendChild(helper.GetNewsCommentList());
+            rootNode.AppendChild(helper.GetRankingNewsList());
 
             //xdoc.Save(@"d:\dingding-news-" + Parameter.NewsID + ".xml");
             return xdoc;

@@ -43,6 +43,7 @@ namespace NoName.NetShop.Publish.Brand.PageCreator
             rootNode.AppendChild(helper.GetFooterContent());
             rootNode.AppendChild(helper.GetBrandInfo());
             rootNode.AppendChild(helper.GetProductList());
+            rootNode.AppendChild(helper.GetBrandCategoryList());
 
 
             //xdoc.Save(@"d:\dingding_brand.xml");

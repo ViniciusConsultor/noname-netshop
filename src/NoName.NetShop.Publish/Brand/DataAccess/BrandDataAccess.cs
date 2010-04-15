@@ -71,5 +71,15 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
         }
 
+        public DataTable GetBrandCategoryList(int BrandID)
+        {
+            string sql = @"select bc.cateid,c.catename from pdbrandcategoryrelation bc
+	                            inner join pdcategory c on c.cateid=bc.cateid
+                            where c.catelevel=3 and bc.brandid={0}";
+            sql = String.Format(sql, BrandID);
+
+            return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
+        }
+
     }
 }
