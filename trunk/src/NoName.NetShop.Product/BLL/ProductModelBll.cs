@@ -64,8 +64,7 @@ namespace NoName.NetShop.Product.BLL
 		/// 删除一条数据
 		/// </summary>
 		public void Delete(int ProductId)
-		{
-			
+		{			
 			dal.Delete(ProductId);
 		}
 
