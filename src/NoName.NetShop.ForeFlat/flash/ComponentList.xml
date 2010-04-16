@@ -1,8 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SuiteList>
 	<actionPage>/solution/diy.aspx</actionPage>
-	<sceneIdParamName>scenceid</sceneIdParamName>
+	<sceneIdParamName>sceneid</sceneIdParamName>
 	<selectedComIdParamName>ids</selectedComIdParamName>
+	<Suite>
+		<ScenePic id="1">
+			<picUrl>/flash/customize_assets/1/scene.jpg</picUrl>
+		</ScenePic>
+		<Components>
+			<Component id="11">
+				<componentName>银幕</componentName>
+				<picUrl>/flash/customize_assets/1/screen.swf</picUrl>
+				<description>产品相关说明</description>
+				<coordinate>217,120</coordinate>
+			</Component>
+			<Component id="12">
+				<componentName>投影机</componentName>
+				<picUrl>/flash/customize_assets/1/projector.swf</picUrl>
+				<description>产品相关说明,投影机投影机投影机投影机投影机投影机。</description>
+				<coordinate>0,0</coordinate>
+			</Component>
+			<Component id="13">
+				<componentName>播放机</componentName>
+				<picUrl>/flash/customize_assets/1/player.swf</picUrl>
+				<description>#1</description>
+				<coordinate>243,346</coordinate>
+			</Component>
+			<Component id="14">
+				<componentName>功放</componentName>
+				<picUrl>/flash/customize_assets/1/amplifier.png</picUrl>
+				<description>#1</description>
+				<coordinate>328,332</coordinate>
+			</Component>
+			<Component id="15">
+				<componentName>音响</componentName>
+				<picUrl>/flash/customize_assets/1/sounder.swf</picUrl>
+				<description>#1</description>
+				<coordinate>187,147</coordinate>
+			</Component>
+		</Components>
+	</Suite>
 	<Suite>
 		<ScenePic id="2">
 			<picUrl>/flash/customize_assets/2/scene.jpg</picUrl>
@@ -43,43 +80,6 @@
 				<picUrl>/flash/customize_assets/2/sounder.swf</picUrl>
 				<description>产品相关说明</description>
 				<coordinate>28,164</coordinate>
-			</Component>
-		</Components>
-	</Suite>
-	<Suite>
-		<ScenePic id="23">
-			<picUrl>/flash/customize_assets/1/scene.jpg</picUrl>
-		</ScenePic>
-		<Components>
-			<Component id="11">
-				<componentName>银幕</componentName>
-				<picUrl>/flash/customize_assets/1/screen.swf</picUrl>
-				<description>产品相关说明</description>
-				<coordinate>217,120</coordinate>
-			</Component>
-			<Component id="12">
-				<componentName>投影机</componentName>
-				<picUrl>/flash/customize_assets/1/projector.swf</picUrl>
-				<description>产品相关说明,投影机投影机投影机投影机投影机投影机。</description>
-				<coordinate>0,0</coordinate>
-			</Component>
-			<Component id="13">
-				<componentName>播放机</componentName>
-				<picUrl>/flash/customize_assets/1/player.swf</picUrl>
-				<description>#1</description>
-				<coordinate>243,346</coordinate>
-			</Component>
-			<Component id="14">
-				<componentName>功放</componentName>
-				<picUrl>/flash/customize_assets/1/amplifier.png</picUrl>
-				<description>#1</description>
-				<coordinate>328,332</coordinate>
-			</Component>
-			<Component id="15">
-				<componentName>音响</componentName>
-				<picUrl>/flash/customize_assets/1/sounder.swf</picUrl>
-				<description>#1</description>
-				<coordinate>187,147</coordinate>
 			</Component>
 		</Components>
 	</Suite>
