@@ -10,6 +10,8 @@ using System.Data;
 using NoName.NetShop.Product.Model;
 using System.Web.UI.HtmlControls;
 using System.Configuration;
+using NoName.NetShop.Search.Config;
+using NoName.NetShop.Search.DataIndexer;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -31,6 +33,7 @@ namespace NoName.NetShop.BackFlat.Product
             set { ViewState["InitialCategoryID"] = value; }
         }
         private ProductModelBll bll = new ProductModelBll();
+        private SearchSection Config = (SearchSection)ConfigurationManager.GetSection("searches");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -122,6 +125,9 @@ namespace NoName.NetShop.BackFlat.Product
                 bll.Delete(ProductID);
                 MessageBox.Show(this, "删除成功"); 
                 BindData(AspNetPager.CurrentPageIndex);
+
+                DataIndexerProduct SearchIndexer = new DataIndexerProduct(Config.Searches["product"]);
+                SearchIndexer.DeleteSingleIndex(ProductID);
             }
             if (e.CommandName.ToLower() == "s1")
             {

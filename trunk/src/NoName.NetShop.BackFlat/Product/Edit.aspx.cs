@@ -12,6 +12,9 @@ using System.Web.UI.HtmlControls;
 using System.Data;
 using System.Collections;
 using NoName.NetShop.Common;
+using NoName.NetShop.Search.DataIndexer;
+using System.Configuration;
+using NoName.NetShop.Search.Config;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -35,6 +38,7 @@ namespace NoName.NetShop.BackFlat.Product
         private ProductModelBll bll = new ProductModelBll();
         private CategoryParaModelBll pBll = new CategoryParaModelBll();
         private ProductParaModelBll pvBll = new ProductParaModelBll();
+        private SearchSection Config = (SearchSection)ConfigurationManager.GetSection("searches");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -447,6 +451,24 @@ namespace NoName.NetShop.BackFlat.Product
             new ProductNewsBll().Save(new ProductNewsModel() { ProdutID = product.ProductId, NewsID = TempNewsID });
 
             bll.Update(product);
+
+            //重建索引
+            DataIndexerProduct SearchIndexer = new DataIndexerProduct(Config.Searches["product"]);
+            SearchIndexer.DeleteSingleIndex(product.ProductId);
+            SearchIndexer.CreateSingleIndex(new Search.Entities.ProductModel()
+            {
+                EntityIdentity = product.ProductId,
+                CategoryID = product.CateId,
+                CategoryPath = product.CatePath,
+                CreateTime = product.InsertTime,
+                Description = product.Brief,
+                Keywords = product.Keywords,
+                Price = product.MerchantPrice,
+                ProcessType = NoName.NetShop.Search.Entities.EntityProcessType.insert,
+                ProductImage = product.MediumImage,
+                ProductName = product.ProductName,
+                UpdateTime = product.ChangeTime
+            });
         }
 
 
