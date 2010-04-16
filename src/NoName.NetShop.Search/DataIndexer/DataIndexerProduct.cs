@@ -52,7 +52,6 @@ namespace NoName.NetShop.Search.DataIndexer
 
         public void DeleteIndex(List<ISearchEntity> DeleteEntities)
         {
-
             IndexReader reader = IndexReader.Open(ConfigElement.IndexDirectory);
 
             foreach (ISearchEntity IndexEntity in DeleteEntities)
@@ -64,7 +63,32 @@ namespace NoName.NetShop.Search.DataIndexer
             reader.Close();
         }
 
-        private void DeleteSingleIndex(int ProductID)
+        public void CreateSingleIndex(ISearchEntity IndexEntity)
+        {
+            Analyzer analyzer = new StandardAnalyzer();
+            IndexWriter writer = new IndexWriter(ConfigElement.IndexDirectory, analyzer, false);
+
+            ProductModel product = (ProductModel)IndexEntity;
+
+            Document doc = new Document();
+
+            doc.Add(new Field("productid", Convert.ToString(product.EntityIdentity), Field.Store.YES, Field.Index.UN_TOKENIZED));
+            doc.Add(new Field("productname", Convert.ToString(product.ProductName), Field.Store.YES, Field.Index.TOKENIZED));
+            doc.Add(new Field("cateid", Convert.ToString(product.CategoryID), Field.Store.YES, Field.Index.UN_TOKENIZED));
+            doc.Add(new Field("catepath", Convert.ToString(product.CategoryPath), Field.Store.YES, Field.Index.UN_TOKENIZED));
+            doc.Add(new Field("keywords", Convert.ToString(product.Keywords), Field.Store.YES, Field.Index.TOKENIZED));
+            doc.Add(new Field("description", Convert.ToString(product.Description), Field.Store.YES, Field.Index.TOKENIZED));
+            doc.Add(new Field("price", Convert.ToString(product.Price), Field.Store.YES, Field.Index.UN_TOKENIZED));
+            doc.Add(new Field("createtime", Convert.ToString(product.CreateTime), Field.Store.YES, Field.Index.UN_TOKENIZED));
+            doc.Add(new Field("updatetime", Convert.ToString(product.UpdateTime), Field.Store.YES, Field.Index.UN_TOKENIZED));
+            doc.Add(new Field("mainimage", Convert.ToString(product.ProductImage), Field.Store.YES, Field.Index.UN_TOKENIZED));
+
+            writer.AddDocument(doc);
+            writer.Optimize();
+            writer.Close(); 
+        }
+
+        public void DeleteSingleIndex(int ProductID)
         {
             IndexReader reader = IndexReader.Open(ConfigElement.IndexDirectory);
             int Count = reader.DeleteDocuments(new Term("productid", ProductID.ToString()));
