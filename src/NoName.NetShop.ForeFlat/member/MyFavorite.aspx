@@ -44,7 +44,7 @@
                                     <td><%#Eval("InsertTime","{0:yyyy-MM-dd HH:mm}")%></td>
                                     <td>
                                     	<a href='<%#Eval("FavoriteUrl") %>' class="iconButton viewMessage"></a>
-                                        <asp:LinkButton ID="LinkButton1"  runat="server" CommandName="delete" CommandArgument='<%# Eval("favId") %>' CssClass="iconButton delete"></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1"  runat="server" CommandName="delete" CommandArgument='<%# Eval("FavoriteId") %>' CssClass="iconButton delete"></asp:LinkButton>
                                     </td>
                                   </tr>
                                   </AlternatingItemTemplate>
