@@ -24,51 +24,13 @@
 			</ul>
 			<div class="content noPaddingContentBox">
 				<ul class="newsNavigator">
-					<li>
-						<a class="m1" href="#">
-							<span></span>
-						</a>
-					</li>
-					<li>
-						<a class="m2" href="#">
-							<span></span>
-						</a>
-					</li>
-					<li>
-						<a class="m3" href="#">
-							<span></span>
-						</a>
-					</li>
-					<li>
-						<a class="m4" href="#">
-							<span></span>
-						</a>
-					</li>
-					<li>
-						<a class="m5" href="#">
-							<span></span>
-						</a>
-					</li>
-					<li>
-						<a class="m6" href="#">
-							<span></span>
-						</a>
-					</li>
-					<li>
-						<a class="m7" href="#">
-							<span></span>
-						</a>
-					</li>
-					<li>
-						<a class="m8" href="#">
-							<span></span>
-						</a>
-					</li>
-					<li>
-						<a class="m9" href="#">
-							<span></span>
-						</a>
-					</li>
+					<xsl:for-each select="/tag/category">
+						<li>
+							<a href="/list-{categoryid}.html">
+								<xsl:value-of select="categoryname"/>
+							</a>
+						</li>
+					</xsl:for-each>
 				</ul>
 			</div>
 		</div>
