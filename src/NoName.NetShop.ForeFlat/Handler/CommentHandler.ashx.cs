@@ -30,7 +30,7 @@ namespace NoName.NetShop.ForeFlat.Handler
             AddComment(context,AppCode, TargetID, Content,ValidateCode);
         }
 
-        public void AddComment(HttpContext CurrentContext,int AppCode, int TargetID, string Content,string ValidateCode)
+        public void AddComment(HttpContext CurrentContext, int AppCode, int TargetID, string Content, string ValidateCode)
         {
             string AppName = String.Empty;
             switch (AppCode)
@@ -54,49 +54,47 @@ namespace NoName.NetShop.ForeFlat.Handler
                     AppName = AppType.MagicWorld;
                     break;
                 default:
-                    break; 
+                    break;
             }
 
-            try
+            if (CurrentUser == null)
             {
-                if (new ValidateHelper().Validate(ValidateCode,true))
-                {
-                    CommentBll bll = new CommentBll();
-
-
-                    CommentModel Comment = new CommentModel();
-
-                    Comment.CommentID = CommDataHelper.GetNewSerialNum(AppName);
-                    Comment.AppType = AppName;
-                    Comment.Content = Content;
-                    Comment.CreateTime = DateTime.Now;
-                    Comment.TargetID = TargetID;
-                    Comment.UserID = GetUserID();
-
-                    bll.Add(Comment);
-
-                    CurrentContext.Response.Write(FormatResult(true, "添加成功"));
-                }
-                else
-                {
-                    CurrentContext.Response.Write(FormatResult(false, "添加失败，验证码错误"));
-                }
+                CurrentContext.Response.Write(FormatResult(false, "请登录后评论！"));
+                return;
             }
-            catch(Exception e)
+            if (new ValidateHelper().Validate(ValidateCode, true))
             {
-                CurrentContext.Response.Write(FormatResult(false, "添加失败，内部程序错误"));
+                CommentBll bll = new CommentBll();
+
+
+                CommentModel Comment = new CommentModel();
+
+                Comment.CommentID = CommDataHelper.GetNewSerialNum(AppName);
+                Comment.AppType = AppName;
+                Comment.Content = Content;
+                Comment.CreateTime = DateTime.Now;
+                Comment.TargetID = TargetID;
+                Comment.UserID = GetUserID();
+
+                bll.Add(Comment);
+
+                CurrentContext.Response.Write(FormatResult(true, "添加成功"));
+            }
+            else
+            {
+                CurrentContext.Response.Write(FormatResult(false, "添加失败，验证码错误"));
             }
         }
 
         public string FormatResult(bool Result, string Reason)
         {
-            string Json = "{result:{0},msg='{1}'}";
-            return String.Format(Json, Result, Reason);
+            string Json = "result:'{0}',msg:'{1}'";
+            return "{" + String.Format(Json, Result.ToString().ToLower(), Reason) + "}";
         }
 
         public string GetUserID()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
 
         public bool IsReusable
