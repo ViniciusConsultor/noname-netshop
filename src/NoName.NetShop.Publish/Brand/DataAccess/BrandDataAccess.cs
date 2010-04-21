@@ -33,7 +33,7 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
             if (CategoryID != 0)
             {
                 string CategoryPath = Convert.ToString(db.ExecuteScalar(CommandType.Text, "select catepath from pdcategory where cateid=" + CategoryID));
-                ConditionString += " and catepath+'/' like '" + CategoryPath + "/%'"; 
+                ConditionString += " and catepath+'/' like '" + CategoryPath + "%'"; 
             }
             switch (OrderType)
             {
@@ -73,7 +73,7 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
 
         public DataTable GetBrandCategoryList(int BrandID)
         {
-            string sql = @"select bc.cateid,c.catename from pdbrandcategoryrelation bc
+            string sql = @"select distinct bc.cateid,c.catename from pdbrandcategoryrelation bc
 	                            inner join pdcategory c on c.cateid=bc.cateid
                             where c.catelevel=3 and bc.brandid={0}";
             sql = String.Format(sql, BrandID);
