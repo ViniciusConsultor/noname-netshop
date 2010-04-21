@@ -5,13 +5,13 @@
     <link type="text/css" rel="stylesheet" href="/css/solution.css" />
     <script src="/js/customizeHome.js" type="text/javascript"></script>
     <script src="/js/AC_RunActiveContent.js" type="text/javascript"></script>
-    <script src="/js/solution.home.js" type="text/javascript"></script>
+    <script src="/js/jquery.query.js" type="text/javascript"></script>
 </asp:Content>
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">解决方案</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/solution">解决方案</a>
         <div class="solutionSubNav">
             <div class="solutionButtonTab">
                 <a class="button_blue" href="/solution/Demand.aspx">按需制定</a>
@@ -32,41 +32,101 @@
                     <li class="right"></li>
                 </ul>
                 <div id="suiteList" style="display:none">
-                    <ul class="articleList_1 bullet_2">
-                        <li>
-                            <a href="javascript:void(0)" onclick="selectSuite(this,0)" class="bold">入门家庭影院</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" onclick="selectSuite(this,1)">多媒体教学</a>
-                        </li>
-                        <li>
-                            <a  href="javascript:void(0)" onclick="selectSuite(this,2)">家庭影院</a>
-                        </li>
-                        <li>
-                            <a href="#">影音娱乐</a>
-                        </li>
-                        <li>
-                            <a href="#">影音游戏</a>
-                        </li>
-                        <li>
-                            <a href="#">影音互动</a>
-                        </li>
-                        <li>
-                            <a href="#">影音展示</a>
-                        </li>
-                        <li>
-                            <a href="#">影音无线传输</a>
-                        </li>
-                        <li>
-                            <a href="#">影像拼接</a>
-                        </li>
-                        <li>
-                            <a href="#">智能影音</a>
-                        </li>
-                        <li>
-                            <a href="#">背景音乐</a>
-                        </li>
-                    </ul>
+                    <div class="box9 expanded">
+                    	<div class="title" onclick="expandGroup(this)">私人影院</div>
+                        <div class="content">
+                            <ul class="articleList_1 bullet_2">
+                                <li>
+                                    <a id="suite0" href="javascript:void(0)" onclick="selectSuite(this,0)">入门家庭影院</a>
+                                </li>
+                                <li>
+                                    <a id="suite1" href="javascript:void(0)" onclick="selectSuite(this,1)">客厅家庭影院</a>
+                                </li>
+                                <li>
+                                    <a id="suite2"  href="javascript:void(0)" onclick="selectSuite(this,2)">标准家庭影院</a>
+                                </li>
+                                <li>
+                                    <a id="suite3"  href="javascript:void(0)" onclick="selectSuite(this,3)">顶级家庭影院</a>
+                                </li>
+                            </ul>
+                   		</div>
+                    </div>
+                    <div class="box9 newline collapsed">
+                    	<div class="title" onclick="expandGroup(this)">办公会议</div>
+                        <div class="content">
+                            <ul class="articleList_1 bullet_2">
+                                <li>
+                                    <a id="suite4" href="javascript:void(0)" onclick="selectSuite(this,4)">小型会议室</a>
+                                </li>
+                                <li>
+                                    <a id="suite5" href="javascript:void(0)" onclick="selectSuite(this,5)">中型会议室</a>
+                                </li>
+                                <li>
+                                    <a id="suite6"  href="javascript:void(0)" onclick="selectSuite(this,6)">大型会议室</a>
+                                </li>
+                                <li>
+                                    <a id="suite7"  href="javascript:void(0)" onclick="selectSuite(this,7)">大型报告厅</a>
+                                </li>
+                            </ul>
+                   		</div>
+                    </div>
+                    <div class="box9 newline collapsed">
+                    	<div class="title" onclick="expandGroup(this)">教学培训</div>
+                        <div class="content">
+                            <ul class="articleList_1 bullet_2">
+                                <li>
+                                    <a id="suite8" href="javascript:void(0)" onclick="selectSuite(this,8)">40人教室</a>
+                                </li>
+                                <li>
+                                    <a id="suite9" href="javascript:void(0)" onclick="selectSuite(this,9)">60人教室</a>
+                                </li>
+                                <li>
+                                    <a id="suite10"  href="javascript:void(0)" onclick="selectSuite(this,10)">90人教室</a>
+                                </li>
+                                <li>
+                                    <a  id="suite11" href="javascript:void(0)" onclick="selectSuite(this,11)">120人报告厅</a>
+                                </li>
+                            </ul>
+                   		</div>
+                    </div>
+                    <div class="box9 newline collapsed">
+                    	<div class="title" onclick="expandGroup(this)">休闲娱乐</div>
+                        <div class="content">
+                            <ul class="articleList_1 bullet_2">
+                                <li>
+                                    <a id="suite12" href="javascript:void(0)" onclick="selectSuite(this,12)">星级客房</a>
+                                </li>
+                                <li>
+                                    <a id="suite13" href="javascript:void(0)" onclick="selectSuite(this,13)">餐饮休闲</a>
+                                </li>
+                                <li>
+                                    <a id="suite14"  href="javascript:void(0)" onclick="selectSuite(this,14)">KTV包房</a>
+                                </li>
+                                <li>
+                                    <a id="suite15" href="javascript:void(0)" onclick="selectSuite(this,15)">养生会所</a>
+                                </li>
+                            </ul>
+                   		</div>
+                    </div>
+                    <div class="box9 newline collapsed">
+                    	<div class="title" onclick="expandGroup(this)">公共展示</div>
+                        <div class="content">
+                            <ul class="articleList_1 bullet_2">
+                                <li>
+                                    <a id="suite16" href="javascript:void(0)" onclick="selectSuite(this,16)">信息发布</a>
+                                </li>
+                                <li>
+                                    <a id="suite17" href="javascript:void(0)" onclick="selectSuite(this,17)">公共展示</a>
+                                </li>
+                                <li>
+                                    <a id="suite18"  href="javascript:void(0)" onclick="selectSuite(this,18)">大屏监控</a>
+                                </li>
+                                <li>
+                                    <a id="suite19"  href="javascript:void(0)" onclick="selectSuite(this,19)">活动中心</a>
+                                </li>
+                            </ul>
+                   		</div>
+                    </div>
                 </div>
                 <div class="content suiteListContainer" id="suiteListContainer">
 					<div>套装列表加载中...</div>
