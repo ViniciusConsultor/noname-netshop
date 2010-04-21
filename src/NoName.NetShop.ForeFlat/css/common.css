@@ -29,30 +29,18 @@ a.linkButton:hover{ color:#FF9900}
 .header ul.navigator{ padding:0; margin:0; float:right; width:630px; padding-top:7px; overflow:hidden;height:40px}
 .header ul.navigator li{ list-style-type:none; float:left; padding-left:10px;}
 .header ul.navigator li a{ display:block; height:40px; background:url(../images/header.gif) no-repeat}
-
 .header ul.navigator li a.home{ background-position:-330px 0; width:90px;}
 .header ul.navigator li a.home:hover{ background-position:-330px -43px;}
-.header ul.navigator li a.homehover{ background-position:-330px -43px;}
-
 .header ul.navigator li a.shopping{ background-position:-440px 0; width:90px;}
 .header ul.navigator li a.shopping:hover{ background-position:-440px -43px;}
-.header ul.navigator li a.shoppinghover{ background-position:-440px -43px;}
-
 .header ul.navigator li a.solution{ background-position:-547px 0; width:100px;}
 .header ul.navigator li a.solution:hover{ background-position:-547px -43px;}
-.header ul.navigator li a.solutionhover{ background-position:-547px -43px;}
-
 .header ul.navigator li a.brands{ background-position:-660px 0; width:100px;}
 .header ul.navigator li a.brands:hover{ background-position:-660px -43px;}
-.header ul.navigator li a.brandshover{ background-position:-660px -43px;}
-
 .header ul.navigator li a.information{ background-position:-774px 0; width:100px;}
 .header ul.navigator li a.information:hover{ background-position:-774px -43px;}
-.header ul.navigator li a.informationhover{ background-position:-774px -43px;}
-
 .header ul.navigator li a.magic{ background-position:-888px 0; width:90px;}
 .header ul.navigator li a.magic:hover{ background-position:-888px -43px;}
-.header ul.navigator li a.magichover{ background-position:-888px -43px;}
 
 .header .panel{ clear:both; width:auto; height:73px; background:url(../images/sprite.gif) 0 -97px repeat-x; margin-top:20px;}
 .header .panel .edge{ background:url(../images/sprite.gif) no-repeat; width:2px; height:73px; overflow:hidden; font-size:0; line-height:0}
@@ -170,7 +158,7 @@ a.linkButton:hover{ color:#FF9900}
 .category_non-popMenu{ clear:both}
 .category_non-popMenu a.class{ display:block; clear:both; height:14px; padding:5px 0 5px 10px; background:#DEF0F8; color:#236FA4; font-weight:bold}
 .category_non-popMenu div.subs{ clear:both; padding:5px;}
-.category_non-popMenu div.subs a{ display:block; float:left; width:60px; padding:5px 1px; height:14px;}
+.category_non-popMenu div.subs a{ display:block; float:left; width:50px; padding:5px; height:14px;}
 .category_non-popMenu div.subs a.more{ margin:8px 0 0 0; margin:6px 0 0 0\9; _margin:8px 0 0 0; padding:0; width:34px}
 .category_non-popMenu div.subs span{ display:block; float:left; width:75px; padding:7px 0}
 .category_non-popMenu div.subs span input.checkbox{ width:12px; height:12px; margin:0; padding:0; display:block; float:left; margin-top:1px; margin-top:0px\9;}
@@ -187,20 +175,21 @@ a.linkButton:hover{ color:#FF9900}
 .hotlist ul.listContent:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
 .hotlist ul.listContent li{ float:left; width:100%; list-style-type:none; zoom:1;}
 .hotlist ul.listContent li:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
-.hotlist ul.listContent li a{padding:5px; float:left; display:block; text-align:center;  line-height:14px;}
+.hotlist ul.listContent li a{padding:5px 10px; float:left; display:block; text-align:center;  height:14px; line-height:14px;white-space:nowrap;
+; overflow:hidden}
 .hotlist ul.listContent li a.rank{width:25px;}
-.hotlist ul.listContent li a.name{ width:100px; color:#187FAF; text-align:left; padding:5px 2px;}
+.hotlist ul.listContent li a.name{ width:88px; color:#187FAF; text-align:left; padding:5px 2px;}
 .hotlist ul.listContent li a.price{ width:40px; color:#F00}
 
 
 ul.thumbnailList_1{ clear:both; margin:0; padding:10px; zoom:1;}
 ul.thumbnailList_1:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
 ul.thumbnailList_1 li{ list-style-type:none; width:160px; overflow:hidden; float:left; text-align:center; padding:5px 0;}
-ul.thumbnailList_1 li a{ clear:both;}
+ul.thumbnailList_1 li a{ clear:both; cursor:pointer}
 ul.thumbnailList_1 li a img{ display:block; width:120px; height:90px; clear:both; border:none; margin:0 auto}
 ul.thumbnailList_1 li a span{display:block; clear:both; padding-top:6px; height:14px; overflow:hidden}
 ul.thumbnailList_1 li a span.price{ color:#0087C8; font-weight:bold; }
-ul.thumbnailList_1 li a span.name{ color:#333 }
+ul.thumbnailList_1 li a span.name{ color:#333; height:42px; }
 
 ul.directions{ padding:0 10px; margin:0;}
 ul.directions li{ list-style-type:none; float:left; width:150px; background:url(../images/sprite.gif) right -1114px no-repeat; min-height:120px; _height:120px; padding:0 18px;}
