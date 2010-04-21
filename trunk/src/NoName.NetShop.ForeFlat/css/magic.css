@@ -255,7 +255,7 @@
 
 ul.magicNavigator{ margin:0; padding:0}
 ul.magicNavigator li{ list-style-type:none; float:left; width:100%}
-ul.magicNavigator li a{ height:25px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
+ul.magicNavigator li a{ height:20px; padding:5px 0 0 22px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
 ul.magicNavigator li a:hover{ background-position:0 -1898px;}
 ul.magicNavigator li a span{ height:25px; display:block; clear:both; background:url(../images/magicNavigator.gif) no-repeat}
 
