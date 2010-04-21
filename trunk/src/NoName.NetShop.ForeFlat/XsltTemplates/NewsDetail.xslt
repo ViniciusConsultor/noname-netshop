@@ -12,16 +12,16 @@
                 <title>
 					<xsl:value-of select="$NewsTitle"/>-鼎鼎商城
                 </title>
-                <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/common.css" />
-                <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/news.css" />
-                <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/Rainy.css" />
-                <script type="text/javascript" src="http://dingding.uncc.cn/js/DingdingJsLib.js">
+                <link type="text/css" rel="stylesheet" href="/css/common.css" />
+                <link type="text/css" rel="stylesheet" href="/css/news.css" />
+                <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
+                <script type="text/javascript" src="/js/DingdingJsLib.js">
                     <xsl:text> </xsl:text>
                 </script>
-                <script type="text/javascript" src="http://dingding.uncc.cn/js/jquery.js">
+                <script type="text/javascript" src="/js/jquery.js">
                     <xsl:text> </xsl:text>
                 </script>
-                <script type="text/javascript" src="http://dingding.uncc.cn/js/mini-Rainy.js">
+                <script type="text/javascript" src="/js/mini-Rainy.js">
                     <xsl:text> </xsl:text>
                 </script>
                 <script type="text/javascript" src="/js/publish.newsdetail.js">
@@ -198,6 +198,8 @@
                                             <textarea id="comment-text">
                                                 <xsl:text> </xsl:text>
                                             </textarea>
+                                            <input type="text" id="comment-validate" />
+                                            <img src="../ValiateCode.aspx" onclick="this.src='../ValiateCode.aspx?_='+new Date().getUTCMilliseconds()" />
                                             <a style="cursor:button" newsid="{$NewsID}" id="comment-button" class="button_blue">发表</a>
                                         </div>
 
@@ -241,10 +243,8 @@
     <!-- category list start -->
     <xsl:template match="/newspage/categorylist/category">
         <li>
-            <a class="m1" href="/newslist-{categoryid}.html">
-                <span>
+            <a href="/newslist-{categoryid}.html">
                     <xsl:value-of select="categoryname"/>
-                </span>
             </a>
         </li>
     </xsl:template>
