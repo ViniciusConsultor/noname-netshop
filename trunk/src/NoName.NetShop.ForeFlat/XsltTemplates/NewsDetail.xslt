@@ -116,8 +116,8 @@
                                     <div class="content">
                                         <xsl:apply-templates select="/newspage/newsdetail"/>
 
-                                        <div class="vote">
-                                            <h1>您觉得本网建设的如何？</h1>
+                                        <div class="vote" id="evaluation-list">
+                                            <h1>您觉得该条新闻如何？</h1>
                                             <ul>
                                                 <li>
                                                     <span class="option">很好</span>
@@ -183,7 +183,7 @@
                                             </ul>
                                         </div>
 
-                                        <div class="table4">
+                                        <div class="table4" id="comment-list">
                                             <table>
                                                 <tr>
                                                     <th>用户名</th>
@@ -199,7 +199,7 @@
                                                 <xsl:text> </xsl:text>
                                             </textarea>
                                             <input type="text" id="comment-validate" />
-                                            <img src="../ValiateCode.aspx" onclick="this.src='../ValiateCode.aspx?_='+new Date().getUTCMilliseconds()" />
+                                            <img id="comment-vimage" src="../ValiateCode.aspx" onclick="this.src='../ValiateCode.aspx?_='+new Date().getUTCMilliseconds()" />
                                             <a style="cursor:button" newsid="{$NewsID}" id="comment-button" class="button_blue">发表</a>
                                         </div>
 
@@ -216,6 +216,7 @@
                             </div>
                         </div>
                     </div>
+					<input type="hidden" value="{$NewsID}" id="news-identity"/>
                     <!--MainBody End-->
 
                     <!--Footer Begin-->
