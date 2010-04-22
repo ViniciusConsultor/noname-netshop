@@ -61,13 +61,29 @@ namespace NoName.NetShop.Solution.Model
 			get{return _mediumimage;}
 		}
 		/// <summary>
-		/// 
+		/// 实际价格
 		/// </summary>
 		public decimal Price
 		{
 			set{ _price=value;}
 			get{return _price;}
 		}
+        /// <summary>
+        /// 减免价格
+        /// </summary>
+        public decimal DerateFee
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 初始价格
+        /// </summary>
+        public decimal ProductFee
+        {
+            get;
+            set;
+        }
 		/// <summary>
 		/// 套装描述
 		/// </summary>
