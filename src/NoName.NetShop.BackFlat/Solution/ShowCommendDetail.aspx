@@ -46,10 +46,17 @@
 	</td></tr>
 	<tr>
 	<td height="25" width="30%" align="right">
-		套装总价
+		商品总价
 	：</td>
 	<td height="25" width="*" align="left">
-		<asp:TextBox id="txtPrice" runat="server" Width="200px"></asp:TextBox>
+		<asp:Label id="lblPrice" runat="server" ></asp:Label>
+	</td></tr>
+	<tr>
+	<td height="25" width="30%" align="right">
+		优惠费用
+	：</td>
+	<td height="25" width="*" align="left">
+		<asp:TextBox id="txtDerate" runat="server" Width="200px"></asp:TextBox>
 	</td></tr>
 	<tr>
 	<td height="25" width="30%" align="right">

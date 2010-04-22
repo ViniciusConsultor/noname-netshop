@@ -11,7 +11,9 @@
     <script type="text/javascript" src="/js/jquery.timers.js"></script>
 <link href="css/themes/base/ui.all.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+<script src="js/date.js" type="text/javascript"></script>
 
+    
 </head>
 <body style="margin: 0 0 0 0">
 <div id="dialog" title="站内信" style="display:none">
@@ -50,7 +52,7 @@ function showMessage(msgId) {
         dataType: "json",
         success: function(data) {
         if (data) {
-                var msg = "<div>" + data.Subject + "（发送时间：" + data.InsertTime + "）</div>";
+                var msg = "<div>" + data.Subject + "（发送时间：" + parseDate(data.InsertTime) + "）</div>";
                 msg += "<div>" + data.Content + "</div>";
                 $("#dialog").find("p").html(msg);
                 $("#dialog").dialog({ autoOpen: false }).dialog("open");
@@ -58,7 +60,14 @@ function showMessage(msgId) {
         }
     });
     return true;
-}         
+}  
+
+function parseDate(inputstr){
+    var reg = /\\d+/
+    reg.exec(inputstr);
+    var td = new Date(RegExp.$1);
+    return td;
+}      
     </script>
 
     <table style="height: 100%" cellspacing="0" cellpadding="0" width="100%" border="0">

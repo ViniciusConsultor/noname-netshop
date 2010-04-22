@@ -25,6 +25,13 @@
 	<td>支付状态</td>
 	<td><asp:Label ID="lblPayStatus" runat="server"></asp:Label></td>
 </tr>	
+	<tr>
+	<td>订单类型</td>
+	<td><asp:Label ID="lblOrderType" runat="server"></asp:Label>
+	</td>
+	<td></td>
+	<td></td>
+</tr>	
 <tr>
 	<td>订单生成时间</td>
 	<td><asp:Label ID="lblCreateTime" runat="server"></asp:Label>

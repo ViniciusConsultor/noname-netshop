@@ -50,6 +50,12 @@
   <asp:ListItem Text="退款申请中" Value="2"></asp:ListItem>
   <asp:ListItem Text="已退款" Value="3"></asp:ListItem>
   </asp:DropDownList>
+      &nbsp;订单类型：
+    <asp:DropDownList ID="ddlOrderType" runat="server">
+    <asp:ListItem Text="全部类型" Value=""></asp:ListItem>
+    <asp:ListItem Text="普通订单" Value="1"></asp:ListItem>
+    <asp:ListItem Text="套装订单" Value="2"></asp:ListItem>
+    </asp:DropDownList>
       &nbsp;用户类型：
     <asp:DropDownList ID="ddlUserType" runat="server">
     <asp:ListItem Text="全部会员" Value=""></asp:ListItem>
@@ -82,6 +88,11 @@
                     <asp:TemplateField HeaderText="会员类型">
                     <ItemTemplate>
                     <asp:Label runat="server" ID="lblUserType"></asp:Label>
+                    </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="是否套装">
+                    <ItemTemplate>
+                    <%# Eval("suitId").ToString()=="0"?"否":"是" %>
                     </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="物流状态">
