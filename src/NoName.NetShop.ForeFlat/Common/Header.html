@@ -2,11 +2,12 @@
     <div class="header">
         <div class="top clearfix">
             <div class="logo"></div>
-            <ul class="toplink bullet_1">
-                <li class="slogan">您好，欢迎您来到鼎鼎商城！</li>
-                <li><a href="/Login.aspx?ReturnUrl=%2fsp%2faddtocart.aspx%3fpid%3d271&pid">请登录</a></li>
-                <li><a href="/Login.aspx?ReturnUrl=%2fsp%2faddtocart.aspx%3fpid%3d271&pid">免费注册0</a></li>
-                <li><a href="#">帮助中心</a></li>
+            <ul class="toplink bullet_1" id="iden">
+<script type="text/javascript" src="/js/noname.identtity.js"></script>
+<script type="text/javascript">
+    var iden = new Identity();
+    iden.Show($("#iden"));
+</script>
             </ul>
             <ul class="navigator">
                 <li><a class="home" href="/"></a></li>

@@ -38,6 +38,8 @@ namespace NoName.NetShop.ForeFlat.sp
             panNoData.Visible = false;
             gvList.DataSource = CurrentShopCart.OrderProducts;
             gvList.DataBind();
+            //litPaysum.Text = String.Format("商品金额：{0} - 优惠金额：{1}= 订单金额：{2}",
+            //    CurrentShopCart.ProductSum, CurrentShopCart.DerateFee, CurrentShopCart.TotalSum);
             if (CurrentShopCart.OrderProducts.Count == 0)
             {
                 panNoData.Visible = true;

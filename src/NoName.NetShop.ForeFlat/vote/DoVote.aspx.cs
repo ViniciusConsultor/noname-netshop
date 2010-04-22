@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 namespace NoName.NetShop.ForeFlat.vote
 {
@@ -20,7 +21,19 @@ namespace NoName.NetShop.ForeFlat.vote
             NoName.NetShop.Vote.Model.VoteTopic vmodel = vbll.GetModel(voteId);
             string voteIp = Request.UserHostAddress;
             string remark = ReqParas["remark"];
-            string items = ReqParas["itemId"];
+            List<string> itemIds = new List<string>();
+            foreach (string key in ReqParas.Keys)
+            {
+                if (Regex.IsMatch(key, @"^gid\d+$"))
+                {
+                    if (!String.IsNullOrEmpty(ReqParas[key]))
+                    {
+                        itemIds.Add(ReqParas[key]);
+                    }
+                }
+            }
+
+            string items = String.Join(",", itemIds.ToArray());
             string userId = String.Empty;
             if (vmodel.IsRegUser)
             {

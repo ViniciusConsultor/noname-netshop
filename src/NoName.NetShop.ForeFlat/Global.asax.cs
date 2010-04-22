@@ -40,14 +40,19 @@ namespace NoName.NetShop.ForeFlat
             if (user.Identity.IsAuthenticated
                 && user.Identity.AuthenticationType == "Forms")
             {
+                try
+                {
+                    FormsIdentity formIdentity = user.Identity as FormsIdentity;
+                    ShopIdentity identity = new ShopIdentity(formIdentity.Ticket);
 
-                FormsIdentity formIdentity = user.Identity as FormsIdentity;
-                ShopIdentity identity = new ShopIdentity(formIdentity.Ticket);
+                    ShopPrincipal principal = new ShopPrincipal(identity);
+                    HttpContext.Current.User = principal;
+                    Thread.CurrentPrincipal = principal;
+                }
+                catch
+                {
 
-                ShopPrincipal principal = new ShopPrincipal(identity);
-                HttpContext.Current.User = principal;
-
-                Thread.CurrentPrincipal = principal;
+                }
             }
         }
 

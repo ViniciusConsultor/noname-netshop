@@ -10,16 +10,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+
+    <script src="js/jquery.js" type="text/javascript"></script>
 </head>
 <body>
     <form id="form1" runat="server">
-    
     <div>
+    <span id="abc"></span>
+<script type="text/javascript" src="js/noname.identtity.js"></script>
+<script type="text/javascript">
+    var iden = new Identity();
+    iden.Show($("#abc"));
+</script>
 
-        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-        </asp:ToolkitScriptManager>
-       
-        <cc1:Editor ID="Editor1" runat="server"  />
+    <span id="vote"></span>
+<script type="text/javascript" src="js/noname.vote.js"></script>
+<script type="text/javascript">
+    var vote = new VoteInfo();
+    vote.Show($("#vote"),1);
+</script>
     </div>
     </form>
 </body>
