@@ -62,7 +62,9 @@ namespace NoName.NetShop.Solution.DAL
 			dbw.AddInParameter(dbCommand, "Price", DbType.Decimal, model.Price);
 			dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
 			dbw.AddInParameter(dbCommand, "Score", DbType.Int32, model.Score);
-			dbw.ExecuteNonQuery(dbCommand);
+            dbw.AddInParameter(dbCommand, "DerateFee", DbType.Decimal, model.DerateFee);
+            dbw.AddInParameter(dbCommand, "ProductFee", DbType.Decimal, model.ProductFee);
+            dbw.ExecuteNonQuery(dbCommand);
 		}
 
 
@@ -128,7 +130,7 @@ namespace NoName.NetShop.Solution.DAL
 		public List<SuiteModel> GetListArray(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-            strSql.Append("select SuiteId,ScenceId,SuiteName,LargeImage,SmallImage,MediumImage,Price,Remark,Score ");
+            strSql.Append("select SuiteId,ScenceId,SuiteName,LargeImage,SmallImage,MediumImage,Price,Remark,Score,deratefee,ProductFee ");
 			strSql.Append(" FROM slSuite ");
 			if(strWhere.Trim()!="")
 			{
@@ -196,7 +198,17 @@ namespace NoName.NetShop.Solution.DAL
 			{
 				model.Score=Convert.ToInt32(ojb);
 			}
-			return model;
+            ojb = dataReader["deratefee"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.DerateFee = Convert.ToDecimal(ojb);
+            }
+            ojb = dataReader["ProductFee"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.ProductFee = Convert.ToDecimal(ojb);
+            }
+            return model;
 		}
 
 		#endregion  成员方法
