@@ -1,115 +1,55 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="NoName.NetShop.BackFlat._Default" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="NoName.NetShop.BackFlat.Default" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>∂¶∂¶Õ¯µÍπ‹¿ÌœµÕ≥</title>
-    <link href="/css/css.css" type="text/css" rel="stylesheet" />
-    <link href="/css/style.css" type="text/css" rel="stylesheet" />
-
-    <script src="js/jquery.js" type="text/javascript"></script>
-
-    <script type="text/javascript" src="/js/jquery.timers.js"></script>
-<link href="css/themes/base/ui.all.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
-<script src="js/date.js" type="text/javascript"></script>
-
-    
-</head>
-<body style="margin: 0 0 0 0">
-<div id="dialog" title="’æƒ⁄–≈" style="display:none">
-	<p>
-	</p>
-</div>
-    <script language="javascript" type="text/javascript">
-function switchbar(){
-if (switchPoint.innerText==3){
-switchPoint.innerText=4
-document.all("frm").style.display="none"
-}else{
-switchPoint.innerText=3
-document.all("frm").style.display=""
-} 
-}
-
-$(document).everyTime(5000, 'controlled', function() {
-$.getJSON("/commapi/ImMessage.ashx", { "action": "getmsglist", "rand": Math.floor(Math.random() * 1000) }, function(json) {
-    if (json != null) {
-        $("#msgs").empty();
-            $(json).each(function(index, message) {
-            // $("#msgs").append("<a href='/message/ShowMessage.aspx?msgid=" + message.msgid + "' target='mainFrame'>" + message.subject + "</a>&nbsp;");
-            $("#msgs").append("<a onclick='return showMessage(" + message.msgid + ")'>" + message.subject + "</a>&nbsp;");
-            });
-        }
-    });
-});
-
-$.ui.dialog.defaults.bgiframe = true;
-function showMessage(msgId) {
-    $.ajax({
-        type: "POST",
-        url: "/commapi/ImMessage.ashx",
-        data: "action=getmessage&msgId=" + msgId,
-        dataType: "json",
-        success: function(data) {
-        if (data) {
-                var msg = "<div>" + data.Subject + "£®∑¢ÀÕ ±º‰£∫" + parseDate(data.InsertTime) + "£©</div>";
-                msg += "<div>" + data.Content + "</div>";
-                $("#dialog").find("p").html(msg);
-                $("#dialog").dialog({ autoOpen: false }).dialog("open");
+    <title></title>
+    <script type="text/javascript">
+        var Ka = navigator.userAgent.toLowerCase();
+        var isOpera = Ka.indexOf("opera") != -1;
+        var isIE = Ka.indexOf("msie") != -1 && (document.all && !isOpera);
+        function clickGroup(obj) {
+            obj.blur();
+            var optionsNode = obj.parentNode.getElementsByTagName("ul")[0];
+            if (optionsNode.style.display !== "none") {
+                optionsNode.style.display = "none";
+            } else {
+                optionsNode.style.display = "block";
             }
         }
-    });
-    return true;
-}  
 
-function parseDate(inputstr){
-    var reg = /\\d+/
-    reg.exec(inputstr);
-    var td = new Date(RegExp.$1);
-    return td;
-}      
+        if (isIE) {
+            window.attachEvent("onresize", resetIframeSize);
+        } else {
+            window.addEventListener("resize", resetIframeSize, false);
+        }
+
+        function resetIframeSize() {
+            document.getElementById("mainPage").height = document.getElementById("sidebar").clientHeight - 35;
+        }
+
     </script>
-
-    <table style="height: 100%" cellspacing="0" cellpadding="0" width="100%" border="0">
-        <tr>
-            <td id="frm" style="height: 443px;">
-                <iframe style="z-index: 2; width: 200px; height: 100%" name="rijcm" src="left.aspx"
-                    frameborder="0"></iframe>
-            </td>
-            <td width="10" style="height: 443px; background-color: #4397c5">
-                <table height="100%" cellspacing="0" cellpadding="0" border="0">
-                    <tbody>
-                        <tr>
-                            <td style="height: 100%" onclick="switchbar()">
-                                <font style="font-size: 9pt; cursor: hand; color: white; font-family: Webdings"><span
-                                    id="switchPoint">3</span> </font>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-            <td width="100%" style="height: 443px">
-                <div>
-                    <table width="99%" align="center" cellpadding="3" cellspacing="0" border="0">
-                        <tr class="head">
-                            <td height="25">
-                                <span style="float: left;">œµÕ≥π´∏Ê£∫</span>
-                                <marquee direction="left" id="msgs" onmouseover="this.stop()" onmouseout="this.start()" >πˆ∂Ø–≈œ¢</marquee>
-                            </td>
-                            <td style="width: 200px; text-align: right">
-
-                                <script type="text/javascript">
-                                    var d = new Date();
-                                    document.write("ΩÒÃÏ «£∫" + d.getYear() + "ƒÍ" + (d.getMonth() + 1) + "‘¬" + d.getDate() + "»’");
-                                </script>
-
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <iframe id="mainFrame" style="z-index: 1; width: 100%; height: 96%" name="mainFrame"
-                    src="Welcome.aspx" frameborder="0" scrolling="yes"></iframe>
-            </td>
-        </tr>
-    </table>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="left" id="sidebar">
+        <div class="header">
+            <div class="links">
+                <a href="#">ÁÆ°ÁêÜÈ¶ñÈ°µ</a> | 
+                <asp:LinkButton runat="server" ID="Button_LogOut" Text="ÈÄÄÂá∫ÁÆ°ÁêÜ" OnClick="Button_LogOut_Click" />
+            </div>
+        </div>
+        <%=menu%>
+    </div>
+    <div class="right">
+        <div class="header" id="currentPostion"></div>
+        <div class="main">
+            <iframe id="mainPage" name="mainPage" width="100%" src="Welcome.aspx" scrolling="auto" frameborder="0" onload="resetIframeSize()"></iframe>
+        </div>
+    </div>
+    </form>
 </body>
 </html>
