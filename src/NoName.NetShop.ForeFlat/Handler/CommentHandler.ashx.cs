@@ -88,8 +88,8 @@ namespace NoName.NetShop.ForeFlat.Handler
 
         public string FormatResult(bool Result, string Reason)
         {
-            string Json = "result:'{0}',msg:'{1}'";
-            return "{" + String.Format(Json, Result.ToString().ToLower(), Reason) + "}";
+            string Json = "\"result\":\"{0}\",\"message\":\"{1}\"";
+            return "({" + String.Format(Json, Result.ToString().ToLower(), Reason) + "})";
         }
 
         public string GetUserID()
