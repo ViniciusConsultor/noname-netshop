@@ -38,6 +38,7 @@ namespace NoName.NetShop.ShopFlow
         private string _recievercounty;
         private string _payorderId;
         private bool _isTotalFeeAdjust;
+        public int SuitId { get; set; }
 
         /// <summary>
         /// 
