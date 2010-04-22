@@ -60,14 +60,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\NewsCategoryModelBll.cs" />
+    <Compile Include="BLL\NewsEvaluationModelBll.cs" />
     <Compile Include="BLL\NewsModelBll.cs" />
     <Compile Include="Config\NewsImageSection.cs" />
     <Compile Include="Config\NewsVideoSection.cs" />
     <Compile Include="DAL\NewsCategoryModelDal.cs" />
+    <Compile Include="DAL\NewsEvaluationModelDal.cs" />
     <Compile Include="DAL\NewsModelDal.cs" />
     <Compile Include="Facade\NewsImageRule.cs" />
     <Compile Include="Facade\NewsVideoRule.cs" />
     <Compile Include="Model\NewsCategoryModel.cs" />
+    <Compile Include="Model\NewsEvaluationModel.cs" />
     <Compile Include="Model\NewsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
