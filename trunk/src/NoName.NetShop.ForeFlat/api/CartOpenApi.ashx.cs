@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using System.IO;
 using NoName.NetShop.IMMessage;
 using System.Web.Script.Serialization;
+using NoName.NetShop.Search.Entities;
+using System.Configuration;
 
 namespace NoName.NetShop.ForeFlat
 {
@@ -67,10 +69,120 @@ namespace NoName.NetShop.ForeFlat
                 case "getshipfee":
                     result = GetShipFee(context);
                     break;
+                case "getindentity":
+                    result = GetIdentity(context);
+                    break;
+                case "getvote": // 获得投票信息
+                    result = GetVoteInfo(context);
+                    break;
             }
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(prefix + result);
+        }
+
+        private string GetVoteInfo(HttpContext context)
+        {
+            NameValueCollection nv = GetParas(context);
+            int voiteId = int.Parse(nv["voteid"]);
+            Vote.BLL.VoteTopic vtbll = new NoName.NetShop.Vote.BLL.VoteTopic();
+            Vote.BLL.VoteItemGroup vgbll = new NoName.NetShop.Vote.BLL.VoteItemGroup();
+            Vote.BLL.VoteItem vibll = new NoName.NetShop.Vote.BLL.VoteItem();
+
+            StringBuilder sb = new StringBuilder(200);
+            JsonWriter jw = new JsonWriter(new StringWriter(sb));
+
+            Vote.Model.VoteTopic vtmodel = vtbll.GetModel(voiteId);
+            List<Vote.Model.VoteItemGroup> vgmodels = vgbll.GetModelList(voiteId);
+            List<Vote.Model.VoteItem> vimodels = vibll.GetItemsOfVote(voiteId);
+
+            if (vtmodel != null && vtmodel.StartTime < DateTime.Now && vtmodel.EndTime > DateTime.Now
+                && vtmodel.Status == true)
+            {
+                jw.WriteStartObject();
+                jw.WritePropertyName("voteid");
+                jw.WriteValue(vtmodel.VoteId);
+                jw.WritePropertyName("topic");
+                jw.WriteValue(vtmodel.Topic);
+                jw.WritePropertyName("votenum");
+                jw.WriteValue(vtmodel.VoteUserNum);
+                jw.WritePropertyName("ismulti");
+                jw.WriteValue(vtmodel.IsMulti);
+                jw.WritePropertyName("groupcount");
+                jw.WriteValue(vgmodels.Count);
+                if (vgmodels.Count > 0)
+                {
+                    jw.WritePropertyName("groups");
+                    jw.WriteStartArray();
+                    foreach(Vote.Model.VoteItemGroup vgmodel in vgmodels)
+                    {
+                        jw.WriteStartObject();
+                        jw.WritePropertyName("subject");
+                        jw.WriteValue(vgmodel.Subject);
+                        jw.WritePropertyName("groupid");
+                        jw.WriteValue(vgmodel.ItemGroupId);
+                        jw.WritePropertyName("items");
+                        jw.WriteStartArray();
+                        foreach (Vote.Model.VoteItem vitem in vimodels.Where(s => s.ItemGroupId == vgmodel.ItemGroupId))
+                        {
+                            jw.WriteStartObject();
+                            jw.WritePropertyName("itemid");
+                            jw.WriteValue(vitem.ItemId);
+                            jw.WritePropertyName("subject");
+                            jw.WriteValue(vitem.ItemContent);
+                            jw.WritePropertyName("count");
+                            jw.WriteValue(vitem.VoteCount);
+                            jw.WritePropertyName("percent");
+                            jw.WriteValue(vitem.Percent);
+                            jw.WriteEndObject();
+                        }
+
+                        jw.WriteEndArray();
+
+                        jw.WriteEndObject();
+                    }
+                    jw.WriteEndArray();
+                }
+                jw.WriteEndObject();
+                jw.Close();
+            }
+            return sb.ToString();
+        }
+        
+        /// <summary>
+        /// 获取用户身份
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        private string GetIdentity(HttpContext context)
+        {
+            NameValueCollection nv = GetParas(context);
+            string result = String.Empty;
+            StringBuilder sb = new StringBuilder(200);
+            JsonWriter jw = new JsonWriter(new StringWriter(sb));
+
+            if (context.User.Identity.IsAuthenticated)
+            {
+                ShopIdentity iden = context.User.Identity as ShopIdentity;
+                if (iden != null)
+                {
+                    //JavaScriptSerializer jss = new JavaScriptSerializer();
+                    //result = jss.Serialize(iden);
+                    jw.WriteStartObject();
+                    jw.WritePropertyName("userId");
+                    jw.WriteValue(iden.UserId);
+                    jw.WritePropertyName("userName");
+                    jw.WriteValue(iden.UserName);
+                    jw.WritePropertyName("userEmail");
+                    jw.WriteValue(iden.UserEmail);
+                    jw.WritePropertyName("userType");
+                    jw.WriteValue(iden.UserType.ToString());
+                    jw.WritePropertyName("userLevel");
+                    jw.WriteValue(iden.UserLevel.ToString());
+                    jw.WriteEndObject();
+                }
+            }
+            return sb.ToString();
         }
 
         private string GetShipFee(HttpContext context)
@@ -178,8 +290,22 @@ namespace NoName.NetShop.ForeFlat
                 favModel.ContentId = int.Parse(nv["cid"]);
                 favModel.UserId = ((ShopIdentity)context.User.Identity).UserId;
                 favModel.ContentType = (ContentType)int.Parse(nv["ctype"]);
-                favModel.FavoriteName = "";
-                favModel.FavoriteUrl = "";
+
+                switch (favModel.ContentType)
+                {
+                    case ContentType.Product:
+                        NoName.NetShop.Product.BLL.ProductModelBll pbll = new NoName.NetShop.Product.BLL.ProductModelBll();
+                        NoName.NetShop.Product.Model.ProductModel pmodel = pbll.GetModel(favModel.ContentId);
+                        favModel.FavoriteName = pmodel.ProductName;
+                        favModel.FavoriteUrl = pmodel.ProductUrl;
+                        break;
+                    case ContentType.Solution:
+                        NoName.NetShop.Solution.BLL.SuiteBll sbll = new NoName.NetShop.Solution.BLL.SuiteBll();
+                        NoName.NetShop.Solution.Model.SuiteModel smodel = sbll.GetModel(favModel.ContentId);
+                        favModel.FavoriteName = smodel.SuiteName;
+                        favModel.FavoriteUrl = ConfigurationManager.AppSettings["siteurl"] + "/solution/suitedetail.aspx?suite=" + smodel.SuiteId;
+                        break;
+                }
                 fbll.Add(favModel);
                 result = true;
                 message = "收藏成功";
@@ -240,9 +366,14 @@ namespace NoName.NetShop.ForeFlat
 
         private ShopCart GetCart(HttpContext context)
         {
-            string cartkey = String.IsNullOrEmpty(context.Request.QueryString["cartkey"])
-                ? "commcart" : context.Request.QueryString["cartkey"].ToLower();
-            return CartFactory.Instance().GetShopCart(cartkey);
+            ShopCart cart = context.Session["CurrentShopCart"] as ShopCart;
+            if (cart == null)
+            {
+                string cartkey = String.IsNullOrEmpty(context.Request.QueryString["cartkey"])
+                    ? "commcart" : context.Request.QueryString["cartkey"].ToLower();
+                cart = CartFactory.Instance().GetShopCart(cartkey);
+            }
+            return cart;
         }
 
         public bool IsReusable

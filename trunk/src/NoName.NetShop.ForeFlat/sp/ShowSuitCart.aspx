@@ -62,8 +62,8 @@
                             <FooterTemplate>
                                 <tr class="bottom">
                                     <td colspan="5">
-                                        合计金额：￥<span id='<%= CurrentShopCart.Key + "-sum" %>'><%=CurrentShopCart.ProductSum %></span>
-            元
+                                        合计金额：￥<%=String.Format("商品金额：{0} - 优惠金额：{1}= 订单金额：{2}",
+                CurrentShopCart.ProductSum, CurrentShopCart.DerateFee, CurrentShopCart.TotalSum)%>元
                                     </td>
                                 </tr>
                             </FooterTemplate>
