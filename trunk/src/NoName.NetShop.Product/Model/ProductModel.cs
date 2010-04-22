@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 namespace NoName.NetShop.Product.Model
 {
 	/// <summary>
@@ -238,6 +239,12 @@ namespace NoName.NetShop.Product.Model
             get { return _relateproducts; }
             set { _relateproducts = value; }
         }
+
+        public string ProductUrl
+        {
+            get { return ConfigurationManager.AppSettings["siteurl"] + "/product-" + _productid + ".html"; }
+        }
+
 		#endregion Model
 
 	}
