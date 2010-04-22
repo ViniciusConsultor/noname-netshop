@@ -18,7 +18,7 @@
                         alert('发表成功！');
                         window.location.reload();
                     }
-                    else alert(data.msg);
+                    else alert(data.message);
                 }
             });
         }
