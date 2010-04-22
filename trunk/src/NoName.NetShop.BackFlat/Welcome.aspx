@@ -20,7 +20,7 @@
     <TR>
       <TD height="2" align="center"></TD></TR>
   </table>
-  <table width="101%" border="0" cellpadding="0" cellspacing="0">
+  <table width="99%" border="0" cellpadding="0" cellspacing="0">
 	  <tr><td height="220"></td></tr>
 	  <tr><td align="center" style="font-size:14px;"><b> 欢迎使用鼎鼎商城管理系统！</b></td></tr>
 	      <tr>
