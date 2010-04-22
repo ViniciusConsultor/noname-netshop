@@ -11,6 +11,7 @@ using NoName.NetShop.Search;
 using NoName.NetShop.Search.Searchers;
 using NoName.Utility;
 using System.Text;
+using NoName.NetShop.CMS.Controler;
 
 namespace NoName.NetShop.ForeFlat.Search
 {
@@ -46,6 +47,7 @@ namespace NoName.NetShop.ForeFlat.Search
             if (String.IsNullOrEmpty(SearchWord)) throw new ArgumentNullException();
 
             BindData();
+            DivLeft.InnerHtml = GetLeftHtmlCode();
 
             //GridView1.DataSource = ProductSearchResult;
             //GridView1.DataBind();
@@ -61,6 +63,8 @@ namespace NoName.NetShop.ForeFlat.Search
 
             Repeater_ProductList.DataSource = SearchResult;
             Repeater_ProductList.DataBind();
+
+            
 
             Pagination.InnerHtml = GetPaginateHtml(PageCount);
         }
@@ -131,6 +135,17 @@ namespace NoName.NetShop.ForeFlat.Search
                 HtmlCode+="<a class=\"next\"></a>";
             else
                 HtmlCode += "<a class=\"next\" style=\"cursor:pointer\" page=\"" + (PageIndex + 1) + "\"></a>";
+
+            return HtmlCode;
+        }
+
+
+        private string GetLeftHtmlCode()
+        {
+            string HtmlCode = String.Empty;
+
+            HtmlCode += TagControler.TagContentGet(1, 1, "cmsTag3");
+            HtmlCode += TagControler.TagContentGet(1, 1, "cmsTag4");
 
             return HtmlCode;
         }

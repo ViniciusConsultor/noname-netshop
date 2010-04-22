@@ -190,6 +190,7 @@ ul.thumbnailList_1 li a img{ display:block; width:120px; height:90px; clear:both
 ul.thumbnailList_1 li a span{display:block; clear:both; padding-top:6px; height:14px; overflow:hidden}
 ul.thumbnailList_1 li a span.price{ color:#0087C8; font-weight:bold; }
 ul.thumbnailList_1 li a span.name{ color:#333; height:42px; }
+ul.thumbnailList_1 li a span.name:hover{ text-decoration:underline;}
 
 ul.directions{ padding:0 10px; margin:0;}
 ul.directions li{ list-style-type:none; float:left; width:150px; background:url(../images/sprite.gif) right -1114px no-repeat; min-height:120px; _height:120px; padding:0 18px;}
