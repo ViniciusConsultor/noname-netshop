@@ -63,11 +63,17 @@ namespace NoName.NetShop.BackFlat.qa
             string where = String.Empty;
 
             string userId = NoName.Utility.input.Filter(txtUserId.Text.Trim());
-            if (userId != "")
+            if (!String.IsNullOrEmpty(userId))
             {
                 if (!String.IsNullOrEmpty(where))
                     where += " and ";
                 where += "userId='" + userId + "'";
+            }
+            if (!String.IsNullOrEmpty(ddlQuestionType.SelectedValue))
+            {
+                if (!String.IsNullOrEmpty(where))
+                    where += " and ";
+                where += "ContentType=" + ddlQuestionType.SelectedValue;
             }
             SearPageInfo.StrWhere = where;
             SearPageInfo.PageIndex = 1;
@@ -97,7 +103,6 @@ namespace NoName.NetShop.BackFlat.qa
                 }
             }
         }
-
 
 
     }

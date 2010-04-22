@@ -13,6 +13,13 @@
         <div>
         问题ID：<asp:TextBox runat="server" ID="txtUserId"></asp:TextBox>
         &nbsp; 
+        问题类型：<asp:DropDownList runat="server" ID="ddlQuestionType">
+        <asp:ListItem Text="所有类型" Value=""></asp:ListItem>
+        <asp:ListItem Text="商品提问" Value="1"></asp:ListItem>
+        <asp:ListItem Text="资讯提问" Value="2"></asp:ListItem>
+        <asp:ListItem Text="投诉" Value="3"></asp:ListItem>
+        <asp:ListItem Text="维修申请" Value="4"></asp:ListItem>
+        </asp:DropDownList>
         <asp:Button runat="server" Text="· 查询 ·" ID="btnSearch"
          onclick="btnSearch_Click" />&nbsp; &nbsp; 
         </div>

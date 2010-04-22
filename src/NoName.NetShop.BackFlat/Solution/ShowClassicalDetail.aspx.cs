@@ -151,7 +151,7 @@ namespace NoName.NetShop.BackFlat.Solution
 
 
             CategoryParaModelBll cpbll = new CategoryParaModelBll();
-            List<CategoryParaModel> plist = cpbll.GetModelList("status=1 and paratype=0 and cateid=" + cateId);
+            List<CategoryParaModel> plist = cpbll.GetModelList("status=1 and paratype=1 and cateid=" + cateId);
             rpItems.DataSource = plist;
             rpItems.DataBind();
         }
@@ -192,10 +192,8 @@ namespace NoName.NetShop.BackFlat.Solution
             }
 
             scbll.Save(scmodel);
-
             SaveCateConditions();
-
-
+            Response.Redirect("ShowClassicalScence.aspx?scenceId=" + scenceId);
         }
 
         private void SaveCateConditions()

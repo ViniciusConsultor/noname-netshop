@@ -118,6 +118,7 @@ namespace NoName.NetShop.BackFlat.Member
         {
             string users = Request.Form["selUsers"];
             MemberInfo.LogScore(users, ScoreType.Other, int.Parse(txtScore.Text), "", "");
+            txtScore.Text = "";
             BindList();
             
         }

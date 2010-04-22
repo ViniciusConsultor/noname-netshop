@@ -57,12 +57,17 @@ namespace NoName.NetShop.BackFlat.Solution
             {
                 btnAddProduct.Visible = false;
                 txtProductId.Visible = false;
+                txtQuantity.Visible = false;
+                txtScore.Text = "0";
+                lblPrice.Text = "0";
+                txtDerate.Text = "0";
                 lblScenceId.Text = ScenceId.ToString();
             }
             else
             {
                 btnAddProduct.Visible = true;
                 txtProductId.Visible = true;
+                txtQuantity.Visible = true;
                 lblSuiteId.Text = smodel.SuiteId.ToString();
                 txtRemark.Text = smodel.Remark;
                 txtScore.Text = smodel.Score.ToString();
@@ -127,7 +132,12 @@ namespace NoName.NetShop.BackFlat.Solution
                 smodel.SuiteId = NoName.NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Product);
                 smodel.ScenceId = ScenceId;
             }
-            smodel.ProductFee = decimal.Parse(lblPrice.Text);
+            decimal price;
+            if (!decimal.TryParse(lblPrice.Text,out price))
+            {
+                price = 0m;
+            }
+            smodel.ProductFee = price;
             smodel.DerateFee = decimal.Parse(txtDerate.Text);
             smodel.Price = smodel.ProductFee - smodel.DerateFee;
             smodel.Remark = txtRemark.Text.Trim();
