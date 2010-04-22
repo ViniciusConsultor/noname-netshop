@@ -17,7 +17,7 @@ namespace NoName.NetShop.ShopFlow
         {
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,payorderId,IsTotalFeeAdjust  from spOrder ");
+            strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,payorderId,IsTotalFeeAdjust,suitId from spOrder ");
             strSql.Append(" where OrderId=@OrderId ");
 
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
@@ -40,7 +40,7 @@ namespace NoName.NetShop.ShopFlow
         {
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,payorderId,IsTotalFeeAdjust from spOrder ");
+            strSql.Append("select UserId,DerateFee,RecieverName,RecieverEmail,RecieverPhone,Postalcode,RecieverCity,RecieverProvince,AddressDetial,ChangeTime,PayTime,OrderId,CreateTime,OrderType,ServerIp,ClientIp,InvoiceTitle,IsNeedInvoice,UserNotes,RecieverCountry,RecieverCounty,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,payorderId,IsTotalFeeAdjust,suitId from spOrder ");
             strSql.Append(" where OrderId=@OrderId and userId=@userId");
 
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
@@ -209,6 +209,11 @@ namespace NoName.NetShop.ShopFlow
             if (ojb != null && ojb != DBNull.Value)
             {
                 model.IsTotalFeeAdjust = (bool)ojb;
+            }
+            ojb = dataReader["suitId"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.SuitId = Convert.ToInt32(ojb);
             }
             return model;
         }
