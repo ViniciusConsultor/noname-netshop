@@ -22,7 +22,7 @@ namespace NoName.NetShop.BackFlat.Order
                     SearchPageInfo spage = new SearchPageInfo();
                     ViewState["SearchPageInfo"] = spage;
                     spage.TableName = "spOrder";
-                    spage.FieldNames = "sporder.UserId,ummember.usertype,ummember.userlevel,OrderId,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,DerateFee,RecieverName,ChangeTime,PayTime,CreateTime,OrderType";
+                    spage.FieldNames = "sporder.UserId,ummember.usertype,ummember.userlevel,OrderId,OrderStatus,PayMethod,ShipMethod,PayStatus,Paysum,ShipFee,ProductFee,DerateFee,RecieverName,ChangeTime,PayTime,CreateTime,OrderType,SuitId";
                     spage.PriKeyName = "OrderId";
                     spage.StrJoin = "join ummember on sporder.userid=ummember.userid";
                     spage.PageSize = 20;
@@ -125,6 +125,17 @@ namespace NoName.NetShop.BackFlat.Order
                     where += " and ";
                 where += "ummember.userType=" + ddlUserType.SelectedValue;
             }
+            if (ddlOrderType.SelectedValue != "")
+            {
+                if (!String.IsNullOrEmpty(where))
+                    where += " and ";
+                if (ddlOrderType.SelectedValue == "1") // 普通订单
+                    where += "SuitId=0";
+                else
+                    where +="suitId>0";
+            }
+
+
             SearPageInfo.StrWhere = where;
             SearPageInfo.PageIndex = 1;
             BindList();

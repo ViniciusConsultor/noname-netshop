@@ -69,7 +69,9 @@ namespace NoName.NetShop.BackFlat.Solution
                 txtScore.ReadOnly = true;
                 txtSuiteName.Text = smodel.SuiteName;
                 lblScenceId.Text = smodel.ScenceId.ToString();
-                txtPrice.Text = smodel.Price.ToString("F2");
+
+                lblPrice.Text = smodel.ProductFee.ToString("F2");
+                txtDerate.Text = smodel.DerateFee.ToString("F2");
 
                 if (!String.IsNullOrEmpty(smodel.SmallImage))
                 {
@@ -125,7 +127,9 @@ namespace NoName.NetShop.BackFlat.Solution
                 smodel.SuiteId = NoName.NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Product);
                 smodel.ScenceId = ScenceId;
             }
-            smodel.Price = decimal.Parse(txtPrice.Text);
+            smodel.ProductFee = decimal.Parse(lblPrice.Text);
+            smodel.DerateFee = decimal.Parse(txtDerate.Text);
+            smodel.Price = smodel.ProductFee - smodel.DerateFee;
             smodel.Remark = txtRemark.Text.Trim();
             smodel.SuiteName = txtSuiteName.Text.Trim();
             if (!String.IsNullOrEmpty(fulImage.FileName))

@@ -49,6 +49,11 @@ namespace NoName.NetShop.BackFlat.Order
                     lblReceName.Text = order.RecieverName;
                     lblEmail.Text = order.RecieverEmail;
 
+                    if (order.SuitId == 0)
+                        lblOrderType.Text = "普通订单";
+                    else
+                        lblOrderType.Text = "套装订单(套装id为：" + order.SuitId + ")";
+
                     ShowActions(order);
                 }
         }
