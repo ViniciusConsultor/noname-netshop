@@ -8,40 +8,8 @@
 <asp:Content ContentPlaceHolderID="cpMain" runat="server" ID="Body">
     <!--MainBody Begin-->
     <div class="shoppingClass_mainbody newline clearfix">
-		<div class="leftColumn">
-        	<div class="box2 cateBox">
-                <ul class="title">
-                    <li class="left"></li>
-                    <li><span>商品分类</span></li>
-                    <li class="right"></li>
-                </ul>
-                <div class="content">
-					<div class="category_non-popMenu clearfix">
-                        <a class="class" href="#">大屏显示</a>
-                        <div class="subs clearfix">
-                            <a href="#">投影机</a>
-                            <a href="#">背投</a>
-                            <a href="#">LED拼接</a>
-                            <a href="#">入门</a>
-                            <a href="#">客厅</a>
-                            <a href="#">整房</a>
-                        </div>
-                        <a class="class" href="#">大屏显示</a>
-                        <div class="subs clearfix">
-                            <a href="#">投影机</a>
-                            <a href="#">背投</a>
-                            <a href="#">LED拼接</a>
-                            <a href="#">入门</a>
-                            <a href="#">客厅</a>
-                            <a href="#">整房</a>
-                        </div>
-                    </div>
-                </div>
-                <ul class="bottom">
-                   <li class="left"></li>
-                   <li class="right"></li>
-                </ul>
-            </div>            
+        <div class="leftColumn" id="DivLeft" runat="server">
+                        
         </div>
         <div class="rightColumn">
         	<div class="rightColumnContainer">        	
