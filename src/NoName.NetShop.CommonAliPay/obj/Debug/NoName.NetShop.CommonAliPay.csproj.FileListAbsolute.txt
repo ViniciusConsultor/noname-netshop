@@ -1,0 +1,7 @@
+D:\Projects\netshopsvn\src\NoName.NetShop.CommonAliPay\bin\Debug\NoName.NetShop.CommonAliPay.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.CommonAliPay\bin\Debug\NoName.NetShop.CommonAliPay.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.CommonAliPay\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\netshopsvn\src\NoName.NetShop.CommonAliPay\obj\Debug\NoName.NetShop.CommonAliPay.dll
+D:\Projects\netshopsvn\src\NoName.NetShop.CommonAliPay\obj\Debug\NoName.NetShop.CommonAliPay.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.CommonAliPay\bin\Debug\NoName.NetShop.CommonAliPay.dll.config
+D:\Projects\netshopsvn\src\NoName.NetShop.CommonAliPay\bin\Debug\NoName.NetShop.CommonAliPay.xml
