@@ -159,6 +159,12 @@ namespace NoName.NetShop.Product.BLL
             return dal.GetProductList(PageSize, PageIndex, SalesType, out RecordCount);
         }
 
+
+        public DataSet GetListForShoppingProcedure()
+        {
+            return dal.GetListForShoppingProcedure();
+        }
+
         
 
 

@@ -201,6 +201,12 @@ namespace NoName.NetShop.Product.DAL
             return dbr.ExecuteDataSet(CommandType.Text, String.Format(sqlData, (int)SalesType, PageLowerBound, PageUpperBount)).Tables[0];
         }
 
+        public DataSet GetListForShoppingProcedure()
+        {
+            DbCommand Command = dbr.GetStoredProcCommand("UP_pdSalesProduct_GetForSP");
+            return dbr.ExecuteDataSet(Command);
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据
