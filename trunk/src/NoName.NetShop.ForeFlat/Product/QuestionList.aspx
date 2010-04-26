@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QuestionList.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.Product.QuestionList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QuestionList.aspx.cs" MasterPageFile="~/Site.Master" ValidateRequest="false" Inherits="NoName.NetShop.ForeFlat.Product.QuestionList" %>
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head"></asp:Content>

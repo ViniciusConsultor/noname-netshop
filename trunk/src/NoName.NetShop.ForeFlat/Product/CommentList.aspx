@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CommentList.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.Product.CommentList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CommentList.aspx.cs" MasterPageFile="~/Site.Master" ValidateRequest="false" Inherits="NoName.NetShop.ForeFlat.Product.CommentList" %>
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="head"></asp:Content>
