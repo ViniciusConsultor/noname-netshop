@@ -216,6 +216,9 @@
                 if (data.Result == true) {
                     alert('收藏成功！');
                 }
+                else if (data.Message.indexOf('登录') > 0) {
+                    window.open('/login.aspx?returnurl=' + encodeURIComponent('/member/dofavorate.aspx?ctype=1&cid=' + productID));
+                }
                 else {
                     alert(data.Message);
                 }
