@@ -1,4 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MemberCenter.master" AutoEventWireup="true" CodeBehind="ModifyPwd.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.ModifyPwd" %>
+
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; 
+    	<a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; 
+    	<a href="#">修改密码</a>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
         	<div class="rightColumnContainer">
             	<div class="box1">

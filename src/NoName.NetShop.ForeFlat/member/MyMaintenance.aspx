@@ -2,6 +2,14 @@
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headerContent" runat="server">
 </asp:Content>
+
+
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; 
+    	<a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; 
+    	<a href="#">我的维修申请</a>
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="rightContent" runat="server">
     <div class="rightColumnContainer">
         <div class="box1">

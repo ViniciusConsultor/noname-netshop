@@ -4,6 +4,15 @@
     Namespace="System.Web.DynamicData" TagPrefix="cc2" %>
 
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
+
+
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; 
+    	<a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; 
+    	<a href="#">我的站内信</a>
+</asp:Content>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
 <link href="../css/themes/base/ui.all.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
