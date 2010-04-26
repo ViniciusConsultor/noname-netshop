@@ -1,4 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MemberCenter.master" AutoEventWireup="true" CodeBehind="Complaint.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.Complaint" %>
+
+
+
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; 
+    	<a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; 
+    	<a href="/member/MyComplaint.aspx">我的投诉</a> &gt;&gt; 
+    	<a href="#">提交投诉</a>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
         	<div class="rightColumnContainer">
             	<div class="box1 noPadding">

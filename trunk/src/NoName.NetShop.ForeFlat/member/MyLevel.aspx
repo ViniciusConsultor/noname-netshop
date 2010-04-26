@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MemberCenter.master" AutoEventWireup="true" CodeBehind="MyLevel.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.MyLevel" %>
 <%@ Import Namespace="NoName.NetShop.Member" %>
+
+
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; 
+    	<a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; 
+    	<a href="#">我的级别</a>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
             <div class="rightColumnContainer">
             	<div class="box1">

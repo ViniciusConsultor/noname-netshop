@@ -10,6 +10,12 @@
     </style>
 </asp:Content>
 
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="topContent">    
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; 
+    	<a href="/member/myorders.aspx">我的鼎鼎</a> &gt;&gt; 
+    	<a href="#">选择分类</a>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
         <uc1:MagicWorldCategorySelect ID="MagicWorldCategorySelect1" runat="server" />
         <asp:Button runat="server" CssClass="category-select" ID="Button_OK" OnClick="Button_OK_Click" Text="确  定" />
