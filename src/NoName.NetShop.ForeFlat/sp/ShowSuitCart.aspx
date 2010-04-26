@@ -96,80 +96,53 @@
             </ul>
         </div>
         <div class="box7 newline">
-            <div class="title">
-                直降特卖</div>
+            <div class="title">直降特卖</div>
             <div class="content">
                 <ul class="itemList3">
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
+                    <asp:Repeater runat="server" ID="Repeater_Reduce">
+                        <ItemTemplate>
+                            <li>
+                                <a href="/product-<%# Eval("productid") %>.html" title="<%# Eval("productname") %>">
+                                    <img src="<%# Eval("mediumimage") %>" />
+                                    <span><%# Eval("productname")%></span> 
+                                </a>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </ul>
             </div>
         </div>
         <div class="box7 newline">
-            <div class="title">
-                鼎鼎推荐</div>
+            <div class="title">鼎鼎推荐</div>
             <div class="content">
                 <ul class="itemList3">
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
+                    <asp:Repeater runat="server" ID="Repeater_Recommend">
+                        <ItemTemplate>
+                            <li>
+                                <a href="/product-<%# Eval("productid") %>.html" title="<%# Eval("productname") %>">
+                                    <img src="<%# Eval("mediumimage") %>" />
+                                    <span><%# Eval("productname")%></span> 
+                                </a>
+                            </li>                            
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </ul>
             </div>
         </div>
         <div class="box7 newline">
-            <div class="title">
-                热卖榜单</div>
+            <div class="title">热卖榜单</div>
             <div class="content">
                 <ul class="itemList3">
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
-                    <li><a href="#" title="惠普14存经济型笔记本电脑包">
-                        <img src="pictures/productPic.gif" />
-                        <span>惠普14存经济型笔记本电脑包</span> </a></li>
+                    <asp:Repeater runat="server" ID="Repeater_HotSale">
+                        <ItemTemplate>
+                            <li>
+                                <a href="/product-<%# Eval("productid") %>.html" title="<%# Eval("productname") %>">
+                                    <img src="<%# Eval("mediumimage") %>" />
+                                    <span><%# Eval("productname")%></span> 
+                                </a>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </ul>
             </div>
         </div>
