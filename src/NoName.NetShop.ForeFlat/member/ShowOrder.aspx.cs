@@ -98,7 +98,7 @@ namespace NoName.NetShop.ForeFlat.member
 
             if (order.PayMethod == PayMethType.支付宝)
             {
-                if (order.PayStatus == PayStatus.等待付款 && String.IsNullOrEmpty(order.PayorderId))
+                if (order.PayStatus == PayStatus.等待付款)
                 {
                     btnGoPay.Visible = true;
                 }
