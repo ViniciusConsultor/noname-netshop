@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.ShopFlow;
+using System.Data;
+using NoName.NetShop.Product.BLL;
+using NoName.NetShop.Product.Facade;
 
 namespace NoName.NetShop.ForeFlat.sp
 {
@@ -28,6 +31,7 @@ namespace NoName.NetShop.ForeFlat.sp
                 if (!IsPostBack)
                 {
                     BindCartData();
+                    BindSalesData();
                 } 
             }
 
@@ -49,6 +53,22 @@ namespace NoName.NetShop.ForeFlat.sp
             {
                 panNoData.Visible = false;
             }
+        }
+
+        private void BindSalesData()
+        {
+            DataSet ds = new SalesProductModelBll().GetListForShoppingProcedure();
+
+            foreach (DataTable dt in ds.Tables)
+                foreach (DataRow row in dt.Rows)
+                    row["mediumimage"] = ProductMainImageRule.GetMainImageUrl(row["mediumimage"].ToString());
+
+            Repeater_Reduce.DataSource = ds.Tables[0];
+            Repeater_Reduce.DataBind();
+            Repeater_Recommend.DataSource = ds.Tables[1];
+            Repeater_Recommend.DataBind();
+            Repeater_HotSale.DataSource = ds.Tables[2];
+            Repeater_HotSale.DataBind();
         }
 
         protected void gvList_ItemCommand(object source, RepeaterCommandEventArgs e)
