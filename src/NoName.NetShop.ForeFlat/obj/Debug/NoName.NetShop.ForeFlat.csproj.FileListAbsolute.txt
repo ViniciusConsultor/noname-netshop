@@ -58,3 +58,4 @@ D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.CMS.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.CMS.pdb
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Publish.dll
 D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\NoName.NetShop.Publish.pdb
+D:\Projects\netshopsvn\src\NoName.NetShop.ForeFlat\bin\Lucene.Net.pdb
