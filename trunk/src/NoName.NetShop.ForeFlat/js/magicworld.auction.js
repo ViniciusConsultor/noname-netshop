@@ -23,4 +23,8 @@
             });
         }
     });
+
+    $('#add-prices .button_blue').click(function() {
+        return confirm("确认竞拍？");
+    });
 });
