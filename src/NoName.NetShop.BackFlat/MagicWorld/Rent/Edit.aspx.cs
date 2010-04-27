@@ -98,8 +98,8 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 
             bll.Update(rent);
 
-            MessageBox.Show(this, "更新成功！");
             PageControler.Publish(7, true);
+            Response.Redirect("List.aspx");
         }
     }
 }
