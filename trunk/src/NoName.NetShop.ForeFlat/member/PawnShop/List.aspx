@@ -25,7 +25,6 @@
                             <th><span>当品ID</span></th>
                             <th><span>名称</span></th>
                             <th><span>价格</span></th>
-                            <th><span>数量</span></th>
                             <th><span>创建时间</span></th>
                             <th><span>状态</span></th>
                             <th><span>操作</span></th>
@@ -36,7 +35,6 @@
                                 <td><%# Eval("pawnproductid") %></td>
                                 <td><a href="/Magic/PawnProduct.aspx?pid=<%# Eval("pawnproductid") %>" target="_blank"><%# Eval("pawnproductname") %></a></td>
                                 <td><%# Convert.ToDecimal(Eval("pawnprice")).ToString("0.00") %></td>
-                                <td><%# Eval("stock")%></td>
                                 <td><%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd HH:mm:ss")%></td>
                                 <td><%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.PawnProductStatus), Eval("status")) %></td>
                                 <td>
