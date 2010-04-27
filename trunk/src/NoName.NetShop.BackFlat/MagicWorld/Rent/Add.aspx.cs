@@ -83,8 +83,9 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 
                 new RentProductBll().Add(model);
 
-                MessageBox.Show(this, "添加成功！");
                 PageControler.Publish(7, true);
+
+                Response.Redirect("List.aspx");
             }
             else
             {
