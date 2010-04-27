@@ -95,7 +95,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
                 model.MediumImage = ProductImages[1];
                 model.StartPrice = Convert.ToDecimal(TextBox_StartPrice.Text);
                 model.CurPrice = model.StartPrice;
-                model.AddPrices = TextBox_AddPrices.Text.Replace('，',',');
+                model.AddPrices = TextBox_AddPrices.Text.Replace('，', ',').EndsWith(",") ? TextBox_AddPrices.Text.Replace('，', ',').Substring(0, TextBox_AddPrices.Text.Length - 1) : TextBox_AddPrices.Text.Replace('，', ',');
                 model.StartTime = Convert.ToDateTime(TextBox_StartTime.Text);
                 model.EndTime = Convert.ToDateTime(TextBox_EndTime.Text);
                 model.Brief = TextBox_Brief.Text;
