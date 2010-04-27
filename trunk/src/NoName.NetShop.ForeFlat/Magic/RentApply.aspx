@@ -3,6 +3,12 @@
 
 <asp:Content ID="ContentHeader" ContentPlaceHolderID="head" runat="server">
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
+    <script type="text/javascript">
+        $(function() {
+            InitRegions();
+        });
+        
+    </script>
 </asp:Content>
 
 <asp:Content ID="ContentBody" ContentPlaceHolderID="cpMain" runat="server">
