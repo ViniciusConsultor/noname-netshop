@@ -58,7 +58,7 @@ namespace NoName.NetShop.ForeFlat.Magic
         protected void Button_Add_Click(object sender, EventArgs e)
         {
             Rent();
-            MessageBox.Show(this, "申请已提交，请到用户中心查看"); 
+            MessageBox.ShowAndRedirect(this, "申请已提交，请到用户中心查看", "/member/Rent/RentLogList.aspx"); 
         }
 
         private void Rent()

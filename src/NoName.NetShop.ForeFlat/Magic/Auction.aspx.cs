@@ -13,7 +13,7 @@ using NoName.NetShop.Comment;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
-    public partial class Auction : System.Web.UI.Page
+    public partial class Auction : AuthBasePage
     {
         public int AuctionID
         {
@@ -72,30 +72,38 @@ namespace NoName.NetShop.ForeFlat.Magic
         {
             if (e.CommandName == "b")
             {
-                decimal BidPrice = Convert.ToInt32(e.CommandArgument);
-                AuctionProductModel model = bll.GetModel(AuctionID);
+                if (CurrentUser != null)
+                {
 
-                decimal CurrentPrice = model.CurPrice + BidPrice;
+                    decimal BidPrice = Convert.ToInt32(e.CommandArgument);
+                    AuctionProductModel model = bll.GetModel(AuctionID);
 
-                AuctionLogModel LogModel = new AuctionLogModel();
-                LogModel.LogID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
-                LogModel.AuctionID = AuctionID;
-                LogModel.AuctionTime = DateTime.Now;
-                LogModel.AutionPrice = CurrentPrice;
-                LogModel.UserName = GetUserName();
+                    decimal CurrentPrice = model.CurPrice + BidPrice;
 
-                LogBll.Add(LogModel);
+                    AuctionLogModel LogModel = new AuctionLogModel();
+                    LogModel.LogID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
+                    LogModel.AuctionID = AuctionID;
+                    LogModel.AuctionTime = DateTime.Now;
+                    LogModel.AutionPrice = CurrentPrice;
+                    LogModel.UserName = GetUserName();
 
-                model.CurPrice = CurrentPrice;
-                bll.Update(model);
+                    LogBll.Add(LogModel);
 
-                Response.Redirect(Request.RawUrl);
+                    model.CurPrice = CurrentPrice;
+                    bll.Update(model);
+
+                    Response.Redirect(Request.RawUrl);
+                }
+                else
+                {
+                    Response.Redirect("/Login.aspx?returnurl=" + Server.UrlPathEncode(Request.RawUrl));
+                }
             }
         }
 
         private string GetUserName()
         {
-            return "zhangfeng";
+            return CurrentUser.UserId;
         }
     }
 }
