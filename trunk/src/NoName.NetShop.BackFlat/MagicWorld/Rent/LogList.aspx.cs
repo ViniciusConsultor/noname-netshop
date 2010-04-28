@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.Utility;
 using NoName.NetShop.MagicWorld.BLL;
+using NoName.NetShop.MagicWorld.Model;
+using System.Data;
 
 namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 {
@@ -31,7 +33,10 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
             if (RentID != -1)
             {
                 int RecordCount = 0;
-                GridView1.DataSource = bll.GetListOfProduct(PageIndex, AspNetPager.PageSize, RentID, out RecordCount);
+
+                DataTable dt = bll.GetListOfProduct(PageIndex, AspNetPager.PageSize, RentID, out RecordCount);
+                if (dt.Rows.Count > 0) Div_Notify.Visible = false;
+                GridView1.DataSource = dt;
                 GridView1.DataBind();
 
                 AspNetPager.RecordCount = RecordCount;
@@ -40,7 +45,15 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
 
         protected void GridView1_RowCommand(object sender,GridViewCommandEventArgs e)
         {
+            if (e.CommandName == "p")
+            {
+                RentProductBll pBll = new RentProductBll();
+                RentLogModel log = bll.GetModel(Convert.ToInt32(e.CommandArgument));
+                               
 
+                pBll.UpdateStatus(log.RentID, (int)RentProductStatus.已出租);
+                bll.UpdateStatus(log.RentLogID, (int)RentLogStatus.已确认);
+            }
         }
         
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e) 

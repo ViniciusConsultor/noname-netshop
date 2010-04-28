@@ -26,7 +26,12 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="商品状态">
                         <ItemTemplate>
-                            <%# Eval("status") %>
+                            <%# Enum.GetName(typeof(NoName.NetShop.MagicWorld.Model.RentProductStatus), Eval("status")) %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="申请数">
+                        <ItemTemplate>
+                            <%# GetRentProductApplyCount(Convert.ToInt32(Eval("rentid"))).ToString() %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="申请记录">
@@ -46,7 +51,7 @@
         <div>
             <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="12"
                 UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页'
-                LastPageText='末页' NextPageText='下一页'
+                LastPageText='末页' NextPageText='下一页' OnPageChanged="AspNetPager_PageChanged"
                 PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
                 ShowPrevNext="True" SubmitButtonClass="buttom" 
                 NumericButtonTextFormatString=''>
