@@ -152,48 +152,6 @@ namespace NoName.NetShop.ShopFlow
             return result;
         }
 
-        private decimal GetExpressShipFee()
-        {
-            return GetExpressShipFee(this.Address.UserId, this.Address.RegionId, this.ProductSum);
-        }
-
-        private decimal GetExpressShipFee(string userId,int regionId,decimal productFee)
-        {
-            string sql = "UP_unExpressInfo_GetShipFee";
-
-            DbCommand comm = CommDataAccess.DbReader.GetStoredProcCommand(sql);
-            CommDataAccess.DbReader.AddInParameter(comm, "userId", DbType.String, userId);
-            CommDataAccess.DbReader.AddInParameter(comm, "RegionId", DbType.Int32, regionId);
-            CommDataAccess.DbReader.AddInParameter(comm, "productfee", DbType.Decimal, productFee);
-            CommDataAccess.DbReader.AddOutParameter(comm, "ShipFee", DbType.Decimal, 8);
-
-            CommDataAccess.DbReader.ExecuteNonQuery(comm);
-            object result = CommDataAccess.DbReader.GetParameterValue(comm, "ShipFee");
-            return Convert.ToDecimal(result);
-        }
-
-        public decimal CaculateShipFee(int shipId,int regionId)
-        {
-            decimal result = 0m;
-            switch (shipId)
-            {
-                case 1: // 自提
-                    result = 0m;
-                    break;
-                case 2: // EMS
-                    result = 22 + (TotalWeight<= 500? 0: (Math.Ceiling(TotalWeight / 500) - 1) * 20);
-                    break;
-                case 3: // 中铁快运
-                    result = 40 + (TotalWeight <= 6000 ? 0 : (Math.Ceiling(TotalWeight / 1000) - 6) * 2.8m);
-                    break;
-                case 4: // 快递
-                    result = GetExpressShipFee(this.UserId,regionId,ProductSum);
-                    if (result == -1)
-                        goto case 2;
-                    break;
-            }
-            return result;
-        }
 
     }
 }

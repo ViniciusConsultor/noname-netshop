@@ -146,6 +146,10 @@ namespace NoName.NetShop.ShopFlow
             return result;
         }
 
+        public override decimal CaculateShipFee(int shipId, int regionId)
+        {
+            return 0m;
+        }
 
     }
 }
