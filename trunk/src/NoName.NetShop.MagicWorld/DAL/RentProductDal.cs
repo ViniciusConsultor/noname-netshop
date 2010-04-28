@@ -70,6 +70,12 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.ExecuteNonQuery(Command);
         }
 
+        public void UpdateStatus(int RentID, int Status)
+        {
+            string sql = "update mwRentProduct set status = {0} where rentid={1}";
+            dbw.ExecuteNonQuery(CommandType.Text, String.Format(sql, Status, RentID));
+        }
+
         public RentProductModel GetModel(int RentID)
         {
             DbCommand Command = dbr.GetStoredProcCommand("UP_mwRentProduct_Get");

@@ -41,6 +41,11 @@ namespace NoName.NetShop.MagicWorld.BLL
             return dal.GetModel(RentLogID);
         }
 
+        public int GetLogCount(int RentID)
+        {
+            return dal.GetLogCount(RentID);
+        }
+
         public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
         {
             return dal.GetList(PageIndex, PageSize, Condition, out RecordCount);

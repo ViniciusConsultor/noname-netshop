@@ -99,4 +99,10 @@ namespace NoName.NetShop.MagicWorld.Model
             set { _UpdateTime=value; }
         }
     }
+
+    public enum RentProductStatus
+    {
+        申请中=1,
+        已出租=2,
+    }
 }
