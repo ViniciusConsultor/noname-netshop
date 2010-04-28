@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using NoName.NetShop.Member;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.ForeFlat
 {
@@ -30,10 +31,19 @@ namespace NoName.NetShop.ForeFlat
             string userId = txtUserId.Text.Trim();
             string password = txtPassword.Text;
 
+            string vcode = txtValidCode.Text;
+            ValidateHelper vhelper = new ValidateHelper();
+            if (!vhelper.Validate(vcode, true))
+            {
+                lblPrompt.Text = "验证码错误";
+                return;
+            }
+
+
             if (MemberInfo.Login(userId, password, Request.UserHostAddress))
             {
                 MemberInfo mmodel = MemberInfo.GetBaseInfo(userId);
-                string userData = String.Format("{0}:{1}:{2}:{3}:{4}", mmodel.UserEmail, mmodel.UserName, (int)mmodel.Status, (int)mmodel.UserType,(int)mmodel.UserLevel);
+                string userData = String.Format("{0}:{1}:{2}:{3}:{4}", mmodel.UserEmail, mmodel.UserName, (int)mmodel.Status, (int)mmodel.UserType, (int)mmodel.UserLevel);
 
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
                   userId,
@@ -51,6 +61,11 @@ namespace NoName.NetShop.ForeFlat
                 // Redirect back to original URL.
                 Response.Redirect(FormsAuthentication.GetRedirectUrl(userId, true));
 
+            }
+            else
+            {
+                lblPrompt.Text = "请检查登陆账号和口令是否正确";
+                
             }
         }
     }

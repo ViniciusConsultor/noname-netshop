@@ -1,5 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="NoName.NetShop.ForeFlat.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<script type="text/javascript">
+    function reloadimg() {
+        $("#imgcode").attr("src", $("#imgcode").attr("src") + "?" + Math.random());
+    }
+
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
   
@@ -22,7 +28,15 @@
                 	<span class="field">密　码：</span>
                     <asp:TextBox runat="server" ID="txtPassword" CssClass="textField1" TextMode="Password"></asp:TextBox>
                 </li>
-                <li class="submit">
+                 <li>
+                	<span class="field">验证码：</span>
+                    <asp:TextBox runat="server" ID="txtValidCode" CssClass="textField1" Width="60px"></asp:TextBox>
+                    <img id="imgcode" alt="验证码" src="ValiateCode.aspx" onclick="reloadimg()" style="cursor: hand;" title="看不清楚，换一张" />
+                </li>
+                <li>
+                <span class="field"></span><asp:Label ForeColor="Red" id="lblPrompt" runat="server" EnableViewState="false"></asp:Label>
+                </li>
+               <li class="submit">
                     <asp:Button ID="btnLogin" runat="server" Text="登　录" CssClass="button_blue2" 
                         onclick="btnLogin_Click" />
                 </li>
