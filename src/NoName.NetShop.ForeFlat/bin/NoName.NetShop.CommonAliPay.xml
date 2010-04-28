@@ -4,6 +4,46 @@
         <name>NoName.NetShop.CommonAliPay</name>
     </assembly>
     <members>
+        <member name="T:NoName.NetShop.CommonAliPay.Result.CommonAliPayBaseException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.TradeStatus">
+            <summary>
+            订单交易状态枚举
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_BUYER_PAY">
+            <summary>
+            交易创建
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_SELLER_SEND_GOODS">
+            <summary>
+            买家付款成功
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_BUYER_CONFIRM_GOODS">
+            <summary>
+            卖家发货成功
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.TRADE_FINISHED">
+            <summary>
+            交易成功结束
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.TRADE_CLOSED">
+            <summary>
+            交易关闭
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.MODIFY_TRADEBASE_TOTALFEE">
+            <summary>
+            修改交易价格
+            </summary>
+        </member>
         <member name="T:NoName.NetShop.CommonAliPay.StandardGoods">
             <summary>
             交易参数，默认编码改为了Utf－8
@@ -170,59 +210,44 @@
             <param name="logisticsFee"></param>
             <param name="logisticsPayment"></param>
         </member>
-        <member name="T:NoName.NetShop.CommonAliPay.NotifyEventArgs">
+        <member name="T:NoName.NetShop.CommonAliPay.LogisticsStatus">
             <summary>
-            交易通知信息，包含了虚拟和实物两种信息
+            支付宝物流状态
             </summary>
         </member>
-        <member name="P:NoName.NetShop.CommonAliPay.NotifyEventArgs.Notify_Type">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.INITIAL_STATUS">
             <summary>
-            
+            初始状态
             </summary>
         </member>
-        <member name="T:NoName.NetShop.CommonAliPay.LogisticsPayment">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_LOGISTICS_FETCH_GOODS">
             <summary>
-            物流支付类型
+            等待物流取货
             </summary>
         </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsPayment.SELLER_PAY">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_LOGISTICS_SEND_GOODS">
             <summary>
-            卖家支付,由卖家支付物流费用（费用不用计算到总价内）
+            等待物流发货
             </summary>
         </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsPayment.BUYER_PAY">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.LOGISTICS_SENDING">
             <summary>
-            买家支付,买家支付物流费用（费用需要计算到总价内）
+            物流发货中
             </summary>
         </member>
-        <member name="T:Log4net">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_RECEIVER_CONFIRM_GOODS">
             <summary>
-            配置Log4net
+            等待收货人确讣收货
             </summary>
         </member>
-        <member name="T:NoName.NetShop.CommonAliPay.Result.CommonAliPayBaseException">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.GOODS_RECEIVED">
             <summary>
-            
+            货物收到了
             </summary>
         </member>
-        <member name="T:NoName.NetShop.CommonAliPay.RefundStatus">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.LOGISTICS_FAILURE">
             <summary>
-            退款状态枚举
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.WAIT_SELLER_AGREE">
-            <summary>
-            买家申请退款
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.REFUND_SUCCESS">
-            <summary>
-            退款成功
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.REFUND_CLOSED">
-            <summary>
-            退款关闭
+            物流失败
             </summary>
         </member>
         <member name="T:NoName.NetShop.CommonAliPay.AliPay">
@@ -445,41 +470,6 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="T:NoName.NetShop.CommonAliPay.TradeStatus">
-            <summary>
-            订单交易状态枚举
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_BUYER_PAY">
-            <summary>
-            交易创建
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_SELLER_SEND_GOODS">
-            <summary>
-            买家付款成功
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.WAIT_BUYER_CONFIRM_GOODS">
-            <summary>
-            卖家发货成功
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.TRADE_FINISHED">
-            <summary>
-            交易成功结束
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.TRADE_CLOSED">
-            <summary>
-            交易关闭
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.TradeStatus.MODIFY_TRADEBASE_TOTALFEE">
-            <summary>
-            修改交易价格
-            </summary>
-        </member>
         <member name="F:NoName.NetShop.CommonAliPay.PayServiceType.create_direct_pay_by_user">
             <summary>
             即时到账交易
@@ -500,72 +490,39 @@
             通知验证
             </summary>
         </member>
-        <member name="T:NoName.NetShop.CommonAliPay.Verify">
+        <member name="T:NoName.NetShop.CommonAliPay.LogisticsPayment">
             <summary>
-            Verify object for NHibernate mapped table 'Verify'.
+            物流支付类型
             </summary>
         </member>
-        <member name="M:NoName.NetShop.CommonAliPay.Verify.#ctor(System.String,System.String,System.String)">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsPayment.SELLER_PAY">
             <summary>
-            验证接口参数
-            </summary>
-            <param name="service">接口名称notify_verify</param>
-            <param name="partner">合作伙伴在支付宝的用户ID</param>
-            <param name="notifyId">支付宝发送的通知ID</param>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.POST">
-            <summary>
-            平邮
+            卖家支付,由卖家支付物流费用（费用不用计算到总价内）
             </summary>
         </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.EMS">
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsPayment.BUYER_PAY">
             <summary>
-            EMS
+            买家支付,买家支付物流费用（费用需要计算到总价内）
             </summary>
         </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.EXPRESS">
+        <member name="T:NoName.NetShop.CommonAliPay.RefundStatus">
             <summary>
-            其他快递
+            退款状态枚举
             </summary>
         </member>
-        <member name="T:NoName.NetShop.CommonAliPay.LogisticsStatus">
+        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.WAIT_SELLER_AGREE">
             <summary>
-            支付宝物流状态
+            买家申请退款
             </summary>
         </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.INITIAL_STATUS">
+        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.REFUND_SUCCESS">
             <summary>
-            初始状态
+            退款成功
             </summary>
         </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_LOGISTICS_FETCH_GOODS">
+        <member name="F:NoName.NetShop.CommonAliPay.RefundStatus.REFUND_CLOSED">
             <summary>
-            等待物流取货
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_LOGISTICS_SEND_GOODS">
-            <summary>
-            等待物流发货
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.LOGISTICS_SENDING">
-            <summary>
-            物流发货中
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.WAIT_RECEIVER_CONFIRM_GOODS">
-            <summary>
-            等待收货人确讣收货
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.GOODS_RECEIVED">
-            <summary>
-            货物收到了
-            </summary>
-        </member>
-        <member name="F:NoName.NetShop.CommonAliPay.LogisticsStatus.LOGISTICS_FAILURE">
-            <summary>
-            物流失败
+            退款关闭
             </summary>
         </member>
         <member name="T:NoName.NetShop.CommonAliPay.ErrorStatus">
@@ -711,6 +668,49 @@
         <member name="F:NoName.NetShop.CommonAliPay.ErrorStatus.ILLEGAL_CHARSET">
             <summary>
             字符集不合法
+            </summary>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.Verify">
+            <summary>
+            Verify object for NHibernate mapped table 'Verify'.
+            </summary>
+        </member>
+        <member name="M:NoName.NetShop.CommonAliPay.Verify.#ctor(System.String,System.String,System.String)">
+            <summary>
+            验证接口参数
+            </summary>
+            <param name="service">接口名称notify_verify</param>
+            <param name="partner">合作伙伴在支付宝的用户ID</param>
+            <param name="notifyId">支付宝发送的通知ID</param>
+        </member>
+        <member name="T:NoName.NetShop.CommonAliPay.NotifyEventArgs">
+            <summary>
+            交易通知信息，包含了虚拟和实物两种信息
+            </summary>
+        </member>
+        <member name="P:NoName.NetShop.CommonAliPay.NotifyEventArgs.Notify_Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Log4net">
+            <summary>
+            配置Log4net
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.POST">
+            <summary>
+            平邮
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.EMS">
+            <summary>
+            EMS
+            </summary>
+        </member>
+        <member name="F:NoName.NetShop.CommonAliPay.LogisticsType.EXPRESS">
+            <summary>
+            其他快递
             </summary>
         </member>
     </members>

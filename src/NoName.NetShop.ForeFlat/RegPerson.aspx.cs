@@ -54,12 +54,13 @@ namespace NoName.NetShop.ForeFlat
                     panReg.Visible = false;
                     panRegOk.Visible = true;
 
-                    lblResult.Text = "亲爱的" + userName + "，您已成功注册鼎鼎会员，欢迎继续进行其他操作";
+                    ClientAlert("亲爱的" + userName + "，您已成功注册鼎鼎会员，欢迎继续进行其他操作");
+                    FormsAuthentication.RedirectToLoginPage();
 
-                    if (!String.IsNullOrEmpty(Request.QueryString["returnUrl"]))
-                    {
-                        Response.AddHeader("REFRESH", "3;URL='" + Request.QueryString["returnUrl"] + "'");
-                    }
+                    //if (!String.IsNullOrEmpty(Request.QueryString["returnUrl"]))
+                    //{
+                    //    Response.AddHeader("REFRESH", "3;URL='" + Request.QueryString["returnUrl"] + "'");
+                    //}
                 }
                 else
                 {

@@ -28,7 +28,7 @@ namespace NoName.NetShop.ForeFlat.member
 
         private void ShowUserInfo()
         {
-            MemberInfo model = MemberInfo.GetFullInfo(CurrentUser.UserId,CurrentUser.UserType);
+            MemberInfo model = MemberInfo.GetFullInfo(CurrentUser.UserId);
 
             this.lbluserId.Text = model.UserId.ToString();
             this.lblUserEmail.Text = model.UserEmail;
