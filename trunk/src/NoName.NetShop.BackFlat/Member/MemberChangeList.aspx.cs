@@ -8,6 +8,7 @@ using NoName.NetShop.Common;
 using NoName.NetShop.Member.Model;
 using NoName.NetShop.Member;
 using System.Data;
+using NoName.NetShop.IMMessage;
 
 namespace NoName.NetShop.BackFlat.Member
 {
@@ -54,6 +55,7 @@ namespace NoName.NetShop.BackFlat.Member
         protected void gvList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string userId = e.CommandArgument.ToString();
+            string userEmail = MemberInfo.GetBaseInfo(userId).UserEmail;
             switch (e.CommandName)
             {
                 case "show":
@@ -62,9 +64,13 @@ namespace NoName.NetShop.BackFlat.Member
                     break;
                 case "agree":
                     MemberInfo.ConfirmUserChange(userId);
+                    NotifyHelper.SendMessage(userId, "您的身份转换申请已审核通过", "您的身份转换申请已审核通过");
+                    NotifyHelper.SendMail(userEmail, "您的身份转换申请已审核通过", "您的身份转换申请已审核通过");
                     break;
                 case "reject":
                     MemberInfo.RejectUserChange(userId);
+                    NotifyHelper.SendMessage(userId, "您的身份转换申请被拒绝", "您的身份转换申请被拒绝");
+                    NotifyHelper.SendMail(userEmail, "您的身份转换申请被拒绝", "您的身份转换申请被拒绝");
                     break;
             }
             BindList();

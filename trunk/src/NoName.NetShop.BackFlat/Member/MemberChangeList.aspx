@@ -36,7 +36,7 @@
 <asp:gridview runat="server" ID="gvList" AutoGenerateColumns="False" BackColor="White" 
             BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" 
             GridLines="Horizontal" AllowSorting="True" 
-            onrowcommand="gvList_RowCommand" Width="96%" 
+            onrowcommand="gvList_RowCommand" Width="96%" DataKeyNames="UserId,UserEmail"
             onrowdatabound="gvList_RowDataBound" >
     <RowStyle BackColor="White" ForeColor="#333333" />
     <Columns>
