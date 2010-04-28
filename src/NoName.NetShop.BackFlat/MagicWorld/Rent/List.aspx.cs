@@ -70,5 +70,11 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
                 }
             }
         }
+
+        public int GetRentProductApplyCount(int RentID)
+        {
+            RentLogBll logBll = new RentLogBll();
+            return logBll.GetLogCount(RentID);
+        }
     }
 }

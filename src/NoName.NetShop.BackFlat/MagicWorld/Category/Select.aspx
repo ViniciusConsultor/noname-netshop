@@ -7,6 +7,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .category-selection{width:90%;}
+        .category-selection th{height:40px;}
+        .category-selection h3{height:40px;padding-top:10px;margin:0;}
+        .category-selection select{width:200px;height:400px;border:none;}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">

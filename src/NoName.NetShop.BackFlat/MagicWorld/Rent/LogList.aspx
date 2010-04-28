@@ -9,6 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div runat="server" id="Div_Notify">暂无申请记录</div>
         <div>
             <asp:GridView runat="server" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false">
                 <Columns>

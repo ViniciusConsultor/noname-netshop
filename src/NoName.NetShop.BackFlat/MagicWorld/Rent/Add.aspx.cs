@@ -79,7 +79,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Rent
                 model.CategoryPath = Hidden_CategoryPath.Value;
                 model.CreateTime = DateTime.Now;
                 model.UpdateTime = DateTime.Now;
-                model.Status = 0;
+                model.Status = (int)RentProductStatus.申请中;
 
                 new RentProductBll().Add(model);
 
