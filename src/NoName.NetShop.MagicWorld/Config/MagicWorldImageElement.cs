@@ -14,14 +14,14 @@ namespace NoName.NetShop.MagicWorld.Config
             get { return (string)base["key"]; }
         }
         [ConfigurationProperty("width", IsRequired = true)]
-        public string Width
+        public int Width
         {
-            get { return (string)base["width"]; }
+            get { return (int)base["width"]; }
         }
         [ConfigurationProperty("height", IsRequired = true)]
-        public string Height
+        public int Height
         {
-            get { return (string)base["height"]; }
+            get { return (int)base["height"]; }
         }
         [ConfigurationProperty("suffix", IsRequired = true)]
         public string Suffix
