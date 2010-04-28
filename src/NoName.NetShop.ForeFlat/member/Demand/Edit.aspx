@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Edit.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.Demand.Edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" ValidateRequest="false" CodeBehind="Edit.aspx.cs" Inherits="NoName.NetShop.ForeFlat.member.Demand.Edit" %>
 <%@ Register src="/uc/RegionSelect.ascx" tagname="RegionSelect" tagprefix="uc1" %>
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="head">
@@ -8,10 +8,18 @@
     <script type="text/javascript" src="/js/validate.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="/controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/controls/ckfinder/ckfinder.js"></script>
     <script type="text/javascript">
         $(function() {
             InitRegions();
 
+            var editor = CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
+                height: '300px',
+                width: '500px'
+            });
+            CKFinder.SetupCKEditor(editor, '/controls/ckfinder/');
+            
             $('#<%= Button_Edit.ClientID %>').click(function() {
                 $('#error-inform').hide('fast');
                 $('.field').css({ 'color': '#000' });
@@ -99,7 +107,7 @@
                 else return true;
             });
 
-            $('#<%= TextBox_ExpireTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#<%= TextBox_ExpireTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd', minDate: new Date().getDate() });
         });
     </script>
 </asp:Content>

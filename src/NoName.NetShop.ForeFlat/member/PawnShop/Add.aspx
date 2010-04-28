@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Add.aspx.cs" MasterPageFile="~/Site.master" Inherits="NoName.NetShop.ForeFlat.member.PawnShop.Add" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Add.aspx.cs" MasterPageFile="~/Site.master" ValidateRequest="false" Inherits="NoName.NetShop.ForeFlat.member.PawnShop.Add" %>
 <%@ Register src="/uc/RegionSelect.ascx" tagname="RegionSelect" tagprefix="uc1" %>
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="head">
@@ -8,9 +8,18 @@
     <script type="text/javascript" src="/js/validate.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="/controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/controls/ckfinder/ckfinder.js"></script>
     <script type="text/javascript">
         $(function() {
             InitRegions();
+
+            var editor = CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
+                height: '300px',
+                width: '420px',
+                toolbar:'Basic'
+            });
+            CKFinder.SetupCKEditor(editor, '/controls/ckfinder/');
 
             $('#<%= Button_Add.ClientID %>').click(function() {
                 $('#error-inform').hide('fast');
@@ -80,14 +89,14 @@
                     errorMessage += '<li>请选择地区</li>';
                     $('#region0').parent().prev().prev().css({ 'color': 'red' });
                 }
-                
+
                 if (errorMessage != '') {
                     $('#error-inform').html(errorMessage).show('fast');
                     return false;
                 }
                 else return true;
             });
-            $('#<%=TextBox_EndTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#<%=TextBox_EndTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd', minDate: new Date().getDate() });
         });
         
     </script>

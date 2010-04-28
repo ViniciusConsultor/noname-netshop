@@ -13,10 +13,18 @@
     <script type="text/javascript" src="/js/validate.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="/controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/controls/ckfinder/ckfinder.js"></script>
     <script type="text/javascript">
         $(function() {
             InitRegions();
 
+            var editor = CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
+                height: '300px',
+                width: '420px',
+                toolbar: 'Basic'
+            });
+            CKFinder.SetupCKEditor(editor, '/controls/ckfinder/');
 
             $('#<%= Button_Add.ClientID %>').click(function() {
                 debugger;
@@ -104,9 +112,9 @@
                 }
                 else return true;
             });
-            
-            $('#<%= TextBox_StartTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
-            $('#<%= TextBox_EndTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
+
+            $('#<%= TextBox_StartTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd', minDate: new Date().getDate() });
+            $('#<%= TextBox_EndTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd', minDate: new Date().getDate() });
 
         });
 

@@ -4,9 +4,18 @@
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="head">
     <link type="text/css" rel="stylesheet" href="/css/magic.css" />
     <script type="text/javascript" src="/js/validate.js"></script>
+    <script type="text/javascript" src="/controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/controls/ckfinder/ckfinder.js"></script>
     <script type="text/javascript">
         $(function() {
             InitRegions();
+
+            var editor = CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
+                height: '300px',
+                width: '500px',
+                toolbar: 'Basic'
+            });
+            CKFinder.SetupCKEditor(editor, '/controls/ckfinder/'); 
 
             $('#<%= Button_Add.ClientID %>').click(function() {
                 $('#error-inform').hide('fast');

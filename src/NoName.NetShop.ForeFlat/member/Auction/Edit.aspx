@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" MasterPageFile="~/Site.Master" Inherits="NoName.NetShop.ForeFlat.member.Auction.Edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" MasterPageFile="~/Site.Master" ValidateRequest="false" Inherits="NoName.NetShop.ForeFlat.member.Auction.Edit" %>
 <%@ Register src="/uc/RegionSelect.ascx" tagname="RegionSelect" tagprefix="uc1" %>
 
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="head">
@@ -17,6 +17,15 @@
     <script type="text/javascript">
         $(function() {
             InitRegions();
+
+
+            var editor = CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
+                height: '300px',
+                width: '500px',
+                toolbar: 'Basic'
+            });
+            CKFinder.SetupCKEditor(editor, '/Controls/ckfinder/'); 
+
 
             $('#<%= Button_Edit.ClientID %>').click(function() {
                 $('#error-inform').hide('fast');
@@ -101,8 +110,8 @@
                 else return true;
             });
 
-            $('#<%= TextBox_StartTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
-            $('#<%= TextBox_EndTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd' });
+            $('#<%= TextBox_StartTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd', minDate: new Date().getDate() });
+            $('#<%= TextBox_EndTime.ClientID %>').datepicker({ dateFormat: 'yy-mm-dd', minDate: new Date().getDate() });
 
         });
 
