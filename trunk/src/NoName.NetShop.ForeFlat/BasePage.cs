@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Collections.Specialized;
+using NoName.NetShop.Member;
+using System.Web.Security;
 
 namespace NoName.NetShop.ForeFlat
 {
@@ -52,6 +54,7 @@ namespace NoName.NetShop.ForeFlat
                 ClientScript.RegisterStartupScript(this.GetType(), "clientAlert", String.Format(CLIENT_ALERT, message.Replace("'", "\"")));
             }
         }
+
     }
 
 }

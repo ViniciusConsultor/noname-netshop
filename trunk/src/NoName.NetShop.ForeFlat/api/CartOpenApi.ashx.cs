@@ -161,6 +161,7 @@ namespace NoName.NetShop.ForeFlat
             StringBuilder sb = new StringBuilder(200);
             JsonWriter jw = new JsonWriter(new StringWriter(sb));
 
+            jw.WriteStartObject();
             if (context.User.Identity.IsAuthenticated)
             {
                 ShopIdentity iden = context.User.Identity as ShopIdentity;
@@ -168,7 +169,8 @@ namespace NoName.NetShop.ForeFlat
                 {
                     //JavaScriptSerializer jss = new JavaScriptSerializer();
                     //result = jss.Serialize(iden);
-                    jw.WriteStartObject();
+                    jw.WritePropertyName("result");
+                    jw.WriteValue("true");
                     jw.WritePropertyName("userId");
                     jw.WriteValue(iden.UserId);
                     jw.WritePropertyName("userName");
@@ -179,15 +181,25 @@ namespace NoName.NetShop.ForeFlat
                     jw.WriteValue(iden.UserType.ToString());
                     jw.WritePropertyName("userLevel");
                     jw.WriteValue(iden.UserLevel.ToString());
-                    jw.WriteEndObject();
+                }
+                else
+                {
+                    jw.WritePropertyName("result");
+                    jw.WriteValue("false");
                 }
             }
+            else
+            {
+                jw.WritePropertyName("result");
+                jw.WriteValue("false");
+            }
+            jw.WriteEndObject();
             return sb.ToString();
         }
 
         private string GetShipFee(HttpContext context)
         {
-            CommShopCart cart = GetCart(context) as CommShopCart;
+            ShopCart cart = GetCart(context);
             string result = String.Empty;
             if (cart != null)
             {
@@ -201,7 +213,7 @@ namespace NoName.NetShop.ForeFlat
                 {
                     regionId = 0;
                 }
-                decimal shipFee = cart.CaculateShipFee(shipId, regionId);
+                decimal shipFee= cart.CaculateShipFee(shipId, regionId);
                 cart.ShipFee = shipFee;
 
                 result = String.Format("订单金额：商品费用：￥{0:0.00} + 配送费：￥{1:0.00} - 优惠费用：￥{2:0.00} = ￥{3:0.00}",
@@ -331,7 +343,7 @@ namespace NoName.NetShop.ForeFlat
             string email = nv["email"];
             return MemberInfo.UserEmailExists(email) ? "true" : "false";
         }
-
+         
         private string ValidateSign(HttpContext context)
         {
             string result = String.Empty;

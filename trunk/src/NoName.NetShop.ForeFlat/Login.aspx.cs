@@ -15,10 +15,11 @@ namespace NoName.NetShop.ForeFlat
         {
             if (!IsPostBack)
             {
-                string optype = Request.QueryString["loginop"];
+                string optype = Request.QueryString["op"];
                 if (optype == "2")
                 {
                     FormsAuthentication.SignOut();
+                    Response.Redirect(FormsAuthentication.LoginUrl);
                 }
             }
 
