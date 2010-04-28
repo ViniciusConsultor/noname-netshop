@@ -38,7 +38,7 @@ namespace NoName.NetShop.IMMessage
             model.MsgId = 0;
             model.MsgType = 0;
             model.UserId = to;
-            model.SenderId = "system";
+            model.SenderId = "鼎鼎商城";
             model.Subject = subject;
             model.Content = content;
             model.UserType = 0; // 默认为前台用户
