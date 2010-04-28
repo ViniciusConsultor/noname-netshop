@@ -78,18 +78,40 @@ namespace NoName.NetShop.BackFlat.Controls
                     SelectedCategoryID = Convert.ToInt32(box.SelectedValue);
                     BindCategory(Convert.ToInt32(box.SelectedValue), Level + 1, CategoryPath);
                 }
+                else
+                {
+                    switch (Level)
+                    {
+                        case 1:
+                            ListBox1.Visible = false;
+                            ListBox2.Visible = false;
+                            ListBox3.Visible = false;
+                            break;
+                        case 2:
+                            ListBox2.Visible = false;
+                            ListBox3.Visible = false;
+                            break;
+                        case 3:
+                            ListBox3.Visible = false;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         }
 
         protected void ListBox1_SelectChanged(object sender, EventArgs e)
         {
             int CategoryID = Convert.ToInt32(ListBox1.SelectedValue);
+            SelectedCategoryID = CategoryID;
             BindCategory(CategoryID, 2, null);
         }
 
         protected void ListBox2_SelectChanged(object sender, EventArgs e)
         {
             int CategoryID = Convert.ToInt32(ListBox2.SelectedValue);
+            SelectedCategoryID = CategoryID;
             BindCategory(CategoryID, 3, null);
         }
 
