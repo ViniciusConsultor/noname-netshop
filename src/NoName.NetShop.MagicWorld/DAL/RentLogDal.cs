@@ -79,6 +79,12 @@ namespace NoName.NetShop.MagicWorld.DAL
             dbw.ExecuteNonQuery(CommandType.Text, sql);
         }
 
+        public int GetLogCount(int RentID)
+        {
+            string sql = "select count(0) from [mwRentLog] where [rentid]={0}";
+            return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, String.Format(sql, RentID)));
+        }
+
         public RentLogModel GetModel(int RentID, string UserID)
         {
             string sql = "SELECT * FROM [mwRentLog] WHERE [rentid]={0} AND [userid]='{1}'";

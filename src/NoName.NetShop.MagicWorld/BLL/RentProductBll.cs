@@ -27,6 +27,11 @@ namespace NoName.NetShop.MagicWorld.BLL
             dal.Update(model);
         }
 
+        public void UpdateStatus(int RentID, int Status)
+        {
+            dal.UpdateStatus(RentID, Status);
+        }
+
         public RentProductModel GetModel(int RentID)
         {
             return dal.GetModel(RentID);
