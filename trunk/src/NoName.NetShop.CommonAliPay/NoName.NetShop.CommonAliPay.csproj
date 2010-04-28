@@ -51,7 +51,7 @@
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\sellCard_new\CommonAliPay\CommonAliPay\bin\Debug\log4net.dll</HintPath>
+      <HintPath>..\NoName.NetShop.ForeFlat\bin\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
