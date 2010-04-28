@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MagicWorldCategorySelect.ascx.cs" Inherits="NoName.NetShop.ForeFlat.Controls.MagicWorldCategorySelect" %>
+
 <table class="category-selection">
     <tr>
         <th colspan="3"><h3>请选择分类：</h3></th>
