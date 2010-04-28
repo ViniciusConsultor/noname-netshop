@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Collections;
 using System.IO;
 using System.Web;
+using NoName.Utility;
 
 namespace NoName.NetShop.MagicWorld.Facade
 {
@@ -42,11 +43,25 @@ namespace NoName.NetShop.MagicWorld.Facade
 
             if (config.AllowedFormat.ToLower().Contains(FileSuffix.ToLower()) && config.MaxSize * 1024 >= OriginalFile.ContentLength)
             {
-                foreach (string FileName in FileNames)
+                ImageHelper ih = new ImageHelper();
+
+                ih.LoadImage(OriginalFile.InputStream);
+
+                for (int i = 2; i >= 0; i--)
                 {
-                    //缩小图片为设置尺寸注意图片尺寸与名称对应
-                    OriginalFile.SaveAs(config.PathRoot + FileName);
+                    if (config.ImageSets[i].Width > 0 && config.ImageSets[i].Height > 0)
+                    {
+                        ih.ScaleImageByFixSize(config.ImageSets[i].Width, config.ImageSets[i].Height, true);
+                    }
+                    ih.SaveImage(config.PathRoot + FileNames[i]);
                 }
+
+                ih.Dispose();
+                //foreach (string FileName in FileNames)
+                //{
+                //    //缩小图片为设置尺寸注意图片尺寸与名称对应
+                //    OriginalFile.SaveAs(config.PathRoot + FileName);
+                //}
 
                 ProcessResult = true;
             }
