@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="submitButton">
-                    	<a class="button_blue3" href="#">
+                    	<a class="button_blue3" href="../member/Secondhand/Add.aspx">
                             <span class="left"></span>
                             <span class="text">发布出售信息</span>
                             <span class="right"></span>
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="submitButton">
-                    	<a class="button_blue3" href="#">
+                    	<a class="button_blue3" href="../member/Demand/Add.aspx">
                             <span class="left"></span>
                             <span class="text">发布求购信息</span>
                             <span class="right"></span>

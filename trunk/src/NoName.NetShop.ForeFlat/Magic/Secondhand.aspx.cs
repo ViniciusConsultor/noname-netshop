@@ -47,6 +47,11 @@ namespace NoName.NetShop.ForeFlat.Magic
             Literal_Condition.Text = Enum.GetName(typeof(SecondhandProductUsageCondition), model.UsageCondition);
             Literal_Description.Text = model.Brief;
 
+
+            Literal_Nick.Text = model.UserID;
+            Literal_Phone.Text = String.IsNullOrEmpty(model.Phone) ? model.CellPhone : model.Phone;
+            Literal_Province.Text = String.IsNullOrEmpty(model.Region) ? String.Empty : model.Region.Split(' ')[0];
+
             Repeater_Comment.DataSource = CmtBll.GetList(AppType.MagicWorld, SecondhandProductID);
             Repeater_Comment.DataBind();
         }
