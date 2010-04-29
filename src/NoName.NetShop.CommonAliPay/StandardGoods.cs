@@ -58,7 +58,6 @@ namespace NoName.NetShop.CommonAliPay
             this._logisticsFee = logisticsFee;
             this._logisticsPayment = logisticsPayment;
             this._paymentType = paymentType;
-
         }
         /// <summary>
         /// 
