@@ -662,7 +662,28 @@ namespace NoName.NetShop.CommonAliPay
                 }
             }
             return sortedList;
-
+/*/https://www.alipay.com/cooperate/gateway.do?
+            _input_charset
+             body
+            logistics_fee
+                logistics_fee_ 
+ * logistics_payment= 
+ * logistics_payment_1
+ * logistics_type
+ * logistics_type_1
+ * notify_url
+ * out_trade_no=10012203000001
+ * partner=2088202913438402
+ * payment_type
+ * price
+ * &quantity=1
+ * &return_url=http%3a%2f%2fdingding.uncc.cn%2falipay%2fShowPayReturn.aspx
+ * &seller_email=dingding360%40yahoo.cn
+ * &service=trade_create_by_buyer
+ * &show_url=http%3a%2f%2fdingding.uncc.cn%2f
+ * &subject=test+product&sign=2235faf7ce3423bacc915e1494283e7f
+ * &sign_type=MD5
+ */
         }
 
 

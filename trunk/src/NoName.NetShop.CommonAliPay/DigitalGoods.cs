@@ -35,6 +35,9 @@ namespace NoName.NetShop.CommonAliPay
 		protected string _buyerMsg;
 		#endregion
 
+
+
+
 		#region Constructors
 
 		public DigitalGoods() { }
