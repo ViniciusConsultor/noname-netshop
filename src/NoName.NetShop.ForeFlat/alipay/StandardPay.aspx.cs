@@ -30,12 +30,16 @@ namespace NoName.NetShop.ForeFlat.alipay
             int quantity = (from s in items select s.Quantity).Sum();
             string paymethod = (model.ShipMethod == ShipMethodType.EMS?"EMS":"Express");
 
+            subject = "test";
+            quantity = 1;
+            string agent =null;
+            string body = null;
             AliPay ap = new AliPay();
-            StandardGoods bp = new StandardGoods(PayServiceType.trade_create_by_buyer.Key, AlipaySetting.Partner, 
-                AlipaySetting.Key, 
-                AlipaySetting.SignType,
-                subject, model.OrderId, model.Paysum, quantity, AlipaySetting.SellerEmail, AlipaySetting.SellerId,
-                paymethod, model.ShipFee, LogisticsPayment.BUYER_PAY.Key, "1");
+            StandardGoods bp = new StandardGoods(PayServiceType.trade_create_by_buyer.Key, AlipaySetting.Partner, AlipaySetting.NotifyUrl,AlipaySetting.ReturnUrl,
+                agent,AlipaySetting.EncodeType,AlipaySetting.Key,AlipaySetting.SignType,subject,body,model.OrderId,
+                model.Paysum, quantity, null,AlipaySetting.SellerEmail, null,null,null,null,
+                "POST", model.ShipFee, LogisticsPayment.BUYER_PAY.Key, "1");
+
             bp.Notify_Url = AlipaySetting.NotifyUrl;
             bp.Return_Url = AlipaySetting.ReturnUrl;
             ap.CreateStandardTrade(AlipaySetting.PushUrl, bp, this);
