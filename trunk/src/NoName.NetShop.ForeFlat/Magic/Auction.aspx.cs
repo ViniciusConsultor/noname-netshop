@@ -10,6 +10,7 @@ using NoName.NetShop.MagicWorld.Facade;
 using System.Data;
 using NoName.NetShop.Common;
 using NoName.NetShop.Comment;
+using NoName.Utility;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
@@ -66,7 +67,12 @@ namespace NoName.NetShop.ForeFlat.Magic
 
             Repeater_Comment.DataSource = CmtBll.GetList(AppType.MagicWorld, AuctionID);
             Repeater_Comment.DataBind();
+
+
+            Repeater_Other.DataSource = bll.GetRelatedProductList(model.CategoryID);
+            Repeater_Other.DataBind();
         }
+
 
         protected void Repeater_AddPrices_ItemCommand(object sender, RepeaterCommandEventArgs e)
         {
@@ -74,9 +80,16 @@ namespace NoName.NetShop.ForeFlat.Magic
             {
                 if (CurrentUser != null)
                 {
+                    AuctionLogModel LastAuction = LogBll.GetLastAuction(AuctionID);
+                    if (LastAuction != null && LastAuction.UserName == CurrentUser.UserId)
+                    {
+                        MessageBox.Show(this, "尚无竞拍者的出价高于您");
+                        return;
+                    }
 
                     decimal BidPrice = Convert.ToInt32(e.CommandArgument);
                     AuctionProductModel model = bll.GetModel(AuctionID);
+
 
                     decimal CurrentPrice = model.CurPrice + BidPrice;
 
