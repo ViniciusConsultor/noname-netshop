@@ -55,9 +55,7 @@ namespace NoName.NetShop.BackFlat.Solution
             SuiteModel smodel = sbll.GetModel(suiteId);
             if (smodel == null)
             {
-                btnAddProduct.Visible = false;
-                txtProductId.Visible = false;
-                txtQuantity.Visible = false;
+                panAddProduct.Visible = false;
                 txtScore.Text = "0";
                 lblPrice.Text = "0";
                 txtDerate.Text = "0";
@@ -65,9 +63,7 @@ namespace NoName.NetShop.BackFlat.Solution
             }
             else
             {
-                btnAddProduct.Visible = true;
-                txtProductId.Visible = true;
-                txtQuantity.Visible = true;
+                panAddProduct.Visible = true;
                 lblSuiteId.Text = smodel.SuiteId.ToString();
                 txtRemark.Text = smodel.Remark;
                 txtScore.Text = smodel.Score.ToString();
