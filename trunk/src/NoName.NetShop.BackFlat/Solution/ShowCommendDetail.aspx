@@ -94,10 +94,12 @@
                     
 	<tr>
 	<td height="25" colspan="2"><div align="center">
-        <asp:TextBox ID="txtProductId" runat="server"></asp:TextBox>
-        <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
+	<asp:Panel runat="server" ID="panAddProduct">
+        <asp:Label ID="lblProductId" runat="server">商品ID：</asp:Label><asp:TextBox ID="txtProductId" runat="server"></asp:TextBox>
+        <asp:Label ID="lblQuantity" runat="server">商品数量：</asp:Label><asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
 		<asp:Button ID="btnAddProduct" runat="server" Text="· 添加商品 ·" 
             OnClick="btnAddProduct_Click" ></asp:Button>
+       </asp:Panel> 
 	&nbsp;<asp:Button ID="btnSave" runat="server" Text="· 保存 ·" 
             OnClick="btnSave_Click" ></asp:Button>
 	</div></td></tr>
