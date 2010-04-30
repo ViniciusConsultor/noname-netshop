@@ -31,69 +31,31 @@
                 </ul>
                 <div class="content">
                     <ul class="itemList5">
-                        <li>
-                            <a href="#">
-                                <img src="pictures/productPic.gif" />
-                            </a>
-                            <div class="infoContainer">
-                                <ul class="info">
-                                    <li>
-                                        <span class="name"><a href="#">留声机_新开价</a></span>
-                                    </li>
-                                    <li>
-                                        <span class="field">当前价格:</span>
-                                        <span class="important">68元</span>
-                                    </li>
-                                    <li>
-                                        <span class="field">结束时间:</span>
-                                        <span class="important">09-09-06</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="pictures/productPic.gif" />
-                            </a>
-                            <div class="infoContainer">
-                                <ul class="info">
-                                    <li>
-                                        <span class="name"><a href="#">留声机_新开价</a></span>
-                                    </li>
-                                    <li>
-                                        <span class="field">当前价格:</span>
-                                        <span class="important">68元</span>
-                                    </li>
-                                    <li>
-                                        <span class="field">结束时间:</span>
-                                        <span class="important">09-09-06</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="pictures/productPic.gif" />
-                            </a>
-                            <div class="infoContainer">
-                                <ul class="info">
-                                    <li>
-                                        <span class="name"><a href="#">留声机_新开价</a></span>
-                                    </li>
-                                    <li>
-                                        <span class="field">当前价格:</span>
-                                        <span class="important">68元</span>
-                                    </li>
-                                    <li>
-                                        <span class="field">结束时间:</span>
-                                        <span class="important">09-09-06</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
-                        </li>
+                        <asp:Repeater runat="server" ID="Repeater_Other">
+                            <ItemTemplate>
+                                <li>
+                                    <a href="Auction.aspx?pid=<%# Eval("AuctionID") %>">
+                                        <img src="<%# NoName.NetShop.MagicWorld.Facade.MagicWorldImageRule.GetMainImageUrl(Eval("mediumimage").ToString()) %>" />
+                                    </a>
+                                    <div class="infoContainer">
+                                        <ul class="info">
+                                            <li>                                            
+                                                <span class="name"><a href="Auction.aspx?pid=<%# Eval("AuctionID") %>"><%# Eval("productname") %></a></span>
+                                            </li>
+                                            <li>
+                                                <span class="field">当前价格:</span>
+                                                <span class="important"><%# Convert.ToDecimal(Eval("curprice")).ToString("0.00") %>元</span>
+                                            </li>
+                                            <li>
+                                                <span class="field">结束时间:</span>
+                                                <span class="important"><%# Convert.ToDateTime(Eval("endtime")).ToString("MM-dd") %></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <span class="description"><%# Eval("brief").ToString().Length > 100 ? Eval("brief").ToString().Substring(0, 100) + "..." : Eval("brief").ToString() %></span>
+                                </li>                                
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                 </div>
                 <ul class="bottom">

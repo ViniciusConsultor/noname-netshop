@@ -6,7 +6,7 @@
     .category-selection{width:90%;}
     .category-selection th{height:40px;}
     .category-selection h3{height:40px;padding-top:10px;margin:0;}
-    .category-selection select{width:200px;height:400px;border:none;}
+    .category-selection select{width:200px;height:400px;}
     </style>
 </asp:Content>
 

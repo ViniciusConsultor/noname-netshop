@@ -8,6 +8,7 @@ using NoName.NetShop.MagicWorld.BLL;
 using NoName.Utility;
 using System.Data;
 using NoName.NetShop.MagicWorld.Facade;
+using NoName.NetShop.MagicWorld.Model;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
@@ -27,7 +28,7 @@ namespace NoName.NetShop.ForeFlat.Magic
             int RecordCount = 0;
 
             DataTable newRents = bll.GetList(1, 5, ""," createtime desc", out RecordCount);
-            DataTable rentings = bll.GetList(PageIndex, AspNetPager.PageSize, " and status=0", " createtime desc", out RecordCount);
+            DataTable rentings = bll.GetList(PageIndex, AspNetPager.PageSize, " and status="+(int)RentProductStatus.申请中, " createtime desc", out RecordCount);
 
             foreach (DataRow row in newRents.Rows) { row["smallimage"] = MagicWorldImageRule.GetMainImageUrl(row["smallimage"].ToString()); row["mediumimage"] = MagicWorldImageRule.GetMainImageUrl(row["mediumimage"].ToString()); }
             foreach (DataRow row in rentings.Rows) { row["smallimage"] = MagicWorldImageRule.GetMainImageUrl(row["smallimage"].ToString()); row["mediumimage"] = MagicWorldImageRule.GetMainImageUrl(row["mediumimage"].ToString()); }
@@ -37,6 +38,8 @@ namespace NoName.NetShop.ForeFlat.Magic
 
             Repeater_Rentings.DataSource = rentings;
             Repeater_Rentings.DataBind();
+
+            AspNetPager.RecordCount = RecordCount;
         }
 
         protected void AspNetPager_PageChanged(object src, PageChangedEventArgs e)
