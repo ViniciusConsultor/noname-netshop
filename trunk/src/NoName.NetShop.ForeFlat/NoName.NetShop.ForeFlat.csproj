@@ -99,13 +99,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="alipay\DigitalTrade.aspx.cs">
-      <DependentUpon>DigitalTrade.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="alipay\DigitalTrade.aspx.designer.cs">
-      <DependentUpon>DigitalTrade.aspx</DependentUpon>
-    </Compile>
     <Compile Include="alipay\Notify.aspx.cs">
       <DependentUpon>Notify.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -517,22 +510,6 @@
     <Compile Include="News\Video.aspx.designer.cs">
       <DependentUpon>Video.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pay\MyAliPay.cs" />
-    <Compile Include="pay\Alipay_Notify.aspx.cs">
-      <DependentUpon>Alipay_Notify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pay\Alipay_Return.aspx.cs">
-      <DependentUpon>Alipay_Return.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pay\GoPay.aspx.cs">
-      <DependentUpon>GoPay.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pay\GoPay.aspx.designer.cs">
-      <DependentUpon>GoPay.aspx</DependentUpon>
-    </Compile>
     <Compile Include="pd\PdComparison.aspx.cs">
       <DependentUpon>PdComparison.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -891,7 +868,6 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="alipay\DigitalTrade.aspx" />
     <Content Include="alipay\Notify.aspx" />
     <Content Include="alipay\ShowPayReturn.aspx" />
     <Content Include="alipay\StandardPay.aspx" />
@@ -992,10 +968,6 @@
     <Content Include="member\MyQuestion.aspx" />
     <Content Include="News\Materials.aspx" />
     <Content Include="News\Video.aspx" />
-    <Content Include="pay\Alipay_Notify.aspx" />
-    <Content Include="pay\Alipay_Return.aspx" />
-    <Content Include="pay\GoPay.aspx" />
-    <Content Include="pay\readme.txt" />
     <Content Include="pd\PdComparison.aspx" />
     <Content Include="Product\CommentList.aspx" />
     <Content Include="Product\HomeProductList.aspx" />
