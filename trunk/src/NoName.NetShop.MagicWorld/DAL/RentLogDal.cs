@@ -136,7 +136,7 @@ namespace NoName.NetShop.MagicWorld.DAL
                                 where l.rentid={0}";
             RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, String.Format(sqlCount, RentID)));
 
-            string sqlData = @"select * from
+            string sqlData = @" select * from
                                     (select row_number() over(order by l.applytime desc) as nid,
                                             l.*,p.rentname
                                         from [mwRentLog] l

@@ -118,6 +118,32 @@ namespace NoName.NetShop.MagicWorld.DAL
 			return list;
 		}
 
+        public AuctionLogModel GetLastAuction(int AuctionID)
+        {
+            string sql = "select top 1 * from mwauctionlog where auctionid = @auctionid order by auctiontime desc";
+
+            DbCommand Command = dbr.GetSqlStringCommand(sql);
+
+            dbr.AddInParameter(Command, "@auctionid", DbType.Int32, AuctionID);
+
+            DataTable dt = dbr.ExecuteDataSet(Command).Tables[0];
+            AuctionLogModel model = null;
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                model = new AuctionLogModel()
+                {
+                    AuctionID = Convert.ToInt32(row["auctionid"]),
+                    AuctionTime = Convert.ToDateTime(row["AuctionTime"]),
+                    AutionPrice = Convert.ToDecimal(row["AutionPrice"]),
+                    LogID = Convert.ToInt32(row["logid"]),
+                    UserName = row["username"].ToString()
+                };
+            }
+            return model;
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据
