@@ -201,6 +201,17 @@ namespace NoName.NetShop.MagicWorld.DAL
 			return list;
 		}
 
+        public DataTable GetRelatedProductList(int CateogryID)
+        {
+            string sql = "select top 3 * from mwauctionproduct where cateid=@cateid order by auctionid desc";
+
+            DbCommand Command = dbr.GetSqlStringCommand(sql);
+            dbr.AddInParameter(Command, "@cateid", DbType.Int32, CateogryID);
+
+            return dbr.ExecuteDataSet(Command).Tables[0];
+        }
+
+
 		/// <summary>
 		/// 对象实体绑定数据
 		/// </summary>

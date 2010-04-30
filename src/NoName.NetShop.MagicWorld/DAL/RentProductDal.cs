@@ -100,11 +100,11 @@ namespace NoName.NetShop.MagicWorld.DAL
             PageLowerBound = (PageIndex - 1) * PageSize;
             PageUpperBount = PageLowerBound + PageSize;
 
-            string sqlCount = @"select count(0) from [mwRentProduct]";
+            string sqlCount = @"select count(0) from [mwRentProduct] where status=" + (int)RentProductStatus.申请中;
             string sqlData = @" select * from
-                                (select row_number() over (order by createtime desc) as id,* from [mwRentProduct])
+                                (select row_number() over (order by createtime desc) as id,* from [mwRentProduct] where 1=1 "+ Condition + @")
                                 as sp
-                                where id > " + PageLowerBound + " and id<" + PageUpperBount + " " + Condition + (String.IsNullOrEmpty(Order) ? String.Empty : " order by " + Order);
+                                where id > " + PageLowerBound + " and id<=" + PageUpperBount + (String.IsNullOrEmpty(Order) ? String.Empty : " order by " + Order);
 
             RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text,sqlCount));
 

@@ -78,6 +78,12 @@ namespace NoName.NetShop.MagicWorld.BLL
 		{
 			return dal.GetList(strWhere);
 		}
+
+        public DataTable GetRelatedProductList(int CategoryID)
+        {
+            return dal.GetRelatedProductList(CategoryID);
+        }
+
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
