@@ -86,3 +86,9 @@ CMS发布页面
 二手出租商品详情	/Magic/Secondhand.aspx?pid={SecondhandID}
 出租商品列表	/Magic/RentList.aspx
 出租商品详情	/Magic/Rent.aspx?pid={RentID}
+
+
+帮助页面
+1：/help/delivering.shtml
+2：/help/FAQ.shtml
+3：/help/purchase.shtml
