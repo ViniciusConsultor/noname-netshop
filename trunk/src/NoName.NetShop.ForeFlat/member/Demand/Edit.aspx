@@ -16,9 +16,13 @@
 
             var editor = CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
                 height: '300px',
-                width: '500px'
+                width: '500px',
+                toolbar: [
+                            ['Cut', 'Copy', 'Paste'],
+                            ['Undo', 'Redo'],
+                            ['Bold', 'Italic', 'TextColor','Link','Unlink','Anchor']
+                        ]
             });
-            CKFinder.SetupCKEditor(editor, '/controls/ckfinder/');
             
             $('#<%= Button_Edit.ClientID %>').click(function() {
                 $('#error-inform').hide('fast');

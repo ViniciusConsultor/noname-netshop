@@ -276,9 +276,9 @@ function addProduct(indexKey, productInfo) {
     $('#delete-' + indexKey).click(function() {
         removeProduct(indexKey);
     });
-    
-    $(theCateRow.children('td')[n + 2]).children('.count-add').click(function() { var c = parseInt($(this).next().html()); $(this).next().html(c + 1); });
-    $(theCateRow.children('td')[n + 2]).children('.count-minus').click(function() { var c = parseInt($(this).prev().html()); if ((c - 1) >= 1) $(this).prev().html(c - 1); });
+
+    $(theCateRow.children('td')[n + 2]).children('.count-add').click(function() { var c = parseInt($(this).next().html()); $(this).next().html(c + 1); calculateTotalPrice(true); });
+    $(theCateRow.children('td')[n + 2]).children('.count-minus').click(function() { var c = parseInt($(this).prev().html()); if ((c - 1) >= 1) $(this).prev().html(c - 1); calculateTotalPrice(true); });
     
     calculateTotalPrice(true);
 }
@@ -346,7 +346,7 @@ function calculateTotalPrice(isAdd) {
         if ($(this).children('td').length == 6) n = 1;
 
         if ($(this).children('td').length >= 5 && $($(this).children('td')[n + 1]).html() != '') {
-            currentPriceSum += parseFloat($($(this).children('td')[n+3]).html().replace('￥', ''));
+            currentPriceSum += parseFloat($($(this).children('td')[n + 3]).html().replace('￥', '')) * parseFloat($($(this).children('td')[n + 2]).children('span').html());
         }
     });
 
@@ -362,7 +362,7 @@ function clearSelect() {
 }
 
 function submitSelect() {
-    var submitParmeter = 'pids=';
+    var submitParmeter = 'pid=';
 
     $('#selected-product-list tr').each(function(i, o) {
         if ($(o).children('td').length >= 5) {
@@ -374,12 +374,11 @@ function submitSelect() {
                 var count = $($(o).children('td')[n + 2]).children('span').html();
                 submitParmeter += productid + '-' + count + ',';
             }
-
         }
     });
     submitParmeter = submitParmeter.substring(0, submitParmeter.length - 1);
 
-    alert(submitParmeter);
+    window.open('/sp/addtocart.aspx?' + submitParmeter);
 }
 
 function turnPage(data, pageIndex, fatherCategoryID) {
