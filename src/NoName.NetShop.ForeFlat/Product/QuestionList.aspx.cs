@@ -77,7 +77,7 @@ namespace NoName.NetShop.ForeFlat.Product
         protected void Button_Question_Click(object sender, EventArgs e)
         {
             //验证用户，如果未登录则提示登录
-            if (String.IsNullOrEmpty(TextBox_QuestionContent.Text))
+            if (String.IsNullOrEmpty(TextBox_QuestionContent.Text.Trim()))
             {
                 MessageBox.Show(this, "输入问题内容");
                 return;
@@ -86,7 +86,7 @@ namespace NoName.NetShop.ForeFlat.Product
             QuestionModel model = new QuestionModel();
 
             model.QuestionId = CommDataHelper.GetNewSerialNum(AppType.Other);
-            model.Content = TextBox_QuestionContent.Text;
+            model.Content = TextBox_QuestionContent.Text.Trim();
             model.ContentId = ProductID;
             model.ContentType = NoName.NetShop.Common.ContentType.Product;
             model.InsertTime = DateTime.Now;
