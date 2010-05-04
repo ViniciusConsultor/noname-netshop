@@ -44,7 +44,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink runat="server" NavigateUrl='<%# "edit.aspx?brandid="+Eval("BrandId") %>' Text="编辑"></asp:HyperLink>
+                            <asp:HyperLink runat="server" NavigateUrl='<%# "edit.aspx?brandid="+Eval("BrandId")+"&pageid="+ AspNetPager.CurrentPageIndex %>' Text="编辑"></asp:HyperLink>
                             <asp:LinkButton runat="server" ID="deleteBrand" CommandArgument='<%# Eval("BrandId") %>' CommandName="d" Text="删除" />
                         </ItemTemplate>
                     </asp:TemplateField>
