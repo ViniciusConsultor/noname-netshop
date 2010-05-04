@@ -20,6 +20,7 @@ namespace NoName.NetShop.Product.Model
         private int _parentid;
         private string _remark;
         private int _showorder;
+        private string _SearchPriceRange;
 
 		/// <summary>
 		/// 
@@ -96,6 +97,11 @@ namespace NoName.NetShop.Product.Model
         public string PinYinName
         {
             get { return ChineseToPinYin.Convert(_catename); }
+        }
+        public string SearchPriceRange
+        {
+            get { return _SearchPriceRange; }
+            set { _SearchPriceRange = value; }
         }
 
 		#endregion Model

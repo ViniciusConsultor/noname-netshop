@@ -74,6 +74,7 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "Remark", DbType.AnsiString, model.Remark);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
             dbw.AddInParameter(dbCommand, "pinyinname", DbType.String, model.PinYinName);
+            dbw.AddInParameter(dbCommand, "SearchPriceRange", DbType.String, model.SearchPriceRange);
 
 
 			dbw.ExecuteNonQuery(dbCommand);
@@ -93,6 +94,7 @@ namespace NoName.NetShop.Product.DAL
             dbw.AddInParameter(dbCommand, "CateLevel", DbType.Byte, model.CateLevel);
             dbw.AddInParameter(dbCommand, "showorder", DbType.Int32, model.ShowOrder);
             dbw.AddInParameter(dbCommand, "pinyinname", DbType.String, model.PinYinName);
+            dbw.AddInParameter(dbCommand, "SearchPriceRange", DbType.String, model.SearchPriceRange);
 
 			dbw.ExecuteNonQuery(dbCommand);
 		}
@@ -283,7 +285,13 @@ namespace NoName.NetShop.Product.DAL
 			if(ojb != null && ojb != DBNull.Value)
 			{
 				model.Status=int.Parse(ojb.ToString());
-			}
+            }
+            ojb = dataReader["SearchPriceRange"];
+            if (ojb != null && ojb != DBNull.Value)
+            {
+                model.SearchPriceRange = ojb.ToString();
+            }
+
 			return model;
 		}
 
