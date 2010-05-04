@@ -8,6 +8,7 @@ using NoName.NetShop.Common;
 using System.Collections;
 using NoName.NetShop.Product.Model;
 using NoName.NetShop.Product.BLL;
+using System.Data.Common;
 
 namespace NoName.NetShop.Publish.List.DataAccess
 {
@@ -24,7 +25,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
         public DataRow GetCategoryInfo(int CategoryID)
         {
-            string sql = "select c1.cateid,c1.catename,c1.catepath,c2.catepath as fatherpath from pdcategory c1 left join pdcategory c2 on c1.parentid=c2.cateid where c1.cateid={0}";
+            string sql = "select c1.cateid,c1.catename,c1.catepath,c1.searchpricerange,c2.catepath as fatherpath from pdcategory c1 left join pdcategory c2 on c1.parentid=c2.cateid where c1.cateid={0}";
             sql = String.Format(sql, CategoryID);
 
             DataRow row = null;
@@ -33,9 +34,10 @@ namespace NoName.NetShop.Publish.List.DataAccess
             return row;
         }
 
-        public DataTable GetProductList(int CategoryID, int PageIndex,int OrderType,Hashtable Parameters, out int RecordCount, out int PageCount)
+        public DataTable GetProductList(int CategoryID, int PageIndex,int BrandID,decimal[] PriceRange,int OrderType,Hashtable Parameters, out int RecordCount, out int PageCount)
         {
-            string where = String.Empty; 
+            string where = String.Empty;
+
             int i = 0;
 
             if(Parameters!=null)
@@ -46,6 +48,10 @@ namespace NoName.NetShop.Publish.List.DataAccess
                     else where += String.Format(" and (pdproductpara.paraid = {0} and pdproductpara.paravalue like '%{1}%') ", key, para.ParaValues.Split(',')[Convert.ToInt32(Parameters[key])]);
                     i++;
                 }
+            if (BrandID != 0)
+                where += " and pdproduct.brandid=" + BrandID;
+            if (PriceRange!=null && PriceRange.Length == 2)
+                where += String.Format(" and pdproduct.merchantprice >= {0} and pdproduct.merchantprice <= {1}", PriceRange[0], PriceRange[1]);
 
             string CategoryPath = Convert.ToString(GetCategoryInfo(CategoryID)["catepath"]);
             where += String.Format(" and pdproduct.catepath like '{0}%'", CategoryPath);
@@ -70,13 +76,20 @@ namespace NoName.NetShop.Publish.List.DataAccess
             return dt;
         }
 
-        public DataTable GetProductList(int CategoryID, int PageIndex, int OrderType, out int RecordCount, out int PageCount)
+        public DataTable GetProductList(int CategoryID, int PageIndex, int BrandID, decimal[] PriceRange, int OrderType, out int RecordCount, out int PageCount)
         {
             SearchPageInfo pageinfo = new SearchPageInfo();
 
             string CategoryPath = Convert.ToString(GetCategoryInfo(CategoryID)["catepath"]);
 
             string where = String.Format(" catepath like '{0}%'", CategoryPath);
+            where += " and status = " + (int)ProductStatus.上架;
+
+            if (BrandID != 0)
+                where += " and pdproduct.brandid=" + BrandID;
+            if (PriceRange != null && PriceRange.Length == 2)
+                where += String.Format(" and pdproduct.merchantprice >= {0} and pdproduct.merchantprice <= {1}", PriceRange[0], PriceRange[1]);
+
 
             pageinfo.FieldNames = "[ProductId],[ProductName],[ProductCode],[CatePath],[CateId],[TradePrice],[MerchantPrice],[ReducePrice],[Stock],[SmallImage],[MediumImage],[LargeImage],[Keywords],[Brief],[PageView],[InsertTime],[ChangeTime],[Status],[SortValue],[Score]";
             pageinfo.OrderType = "SortValue asc";
@@ -96,8 +109,6 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
             return dt;
         }
-
-
 
         public DataTable GetCategoryPathList(int CategoryID)
         {
@@ -164,6 +175,17 @@ namespace NoName.NetShop.Publish.List.DataAccess
                             order by sp.timestamp desc";
 
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
+
+        public DataTable GetBrandList(int CategoryID)
+        {
+            string sql = @" select distinct b.brandid,b.brandname from pdbrandcategoryrelation br
+                                inner join pdbrand b on br.brandid = b.brandid
+                            where br.cateid=@cateid";
+
+            DbCommand Command = db.GetSqlStringCommand(sql);
+            db.AddInParameter(Command, "@cateid", DbType.Int32, CategoryID);
+            return db.ExecuteDataSet(Command).Tables[0];
         }
 
         private string GetOrderString(int OrderType)

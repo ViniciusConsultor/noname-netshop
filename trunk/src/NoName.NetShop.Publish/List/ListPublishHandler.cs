@@ -125,7 +125,7 @@ namespace NoName.NetShop.Publish.List
         {
             ListPageParameter parm = null;
 
-            string pattern = @"list(_|-)+(?<cfid>\d+)((_|-)+(?<pageIndex>\d+))?((_|-)+o(?<order>\d+))?((_|-)+v(?<properity>.+)e)?";
+            string pattern = @"list(_|-)+(?<cfid>\d+)((_|-)+(?<pageIndex>\d+))?((_|-)+b(?<brand>\d+))?((_|-)+r(?<price>\d+~\d+))?((_|-)+o(?<order>\d+))?((_|-)+v(?<properity>.+)e)?";
 
             Match match = Regex.Match(Url, pattern);
 
@@ -135,11 +135,18 @@ namespace NoName.NetShop.Publish.List
                 parm.Properities = null;
                 parm.OrderValue = 0;
                 parm.CategoryID = int.Parse(match.Groups["cfid"].Value);
+                parm.BrandID = 0;
+                parm.PriceRange = null;
 
                 if (match.Groups["pageIndex"].Success)
                     parm.PageIndex = int.Parse(match.Groups["pageIndex"].Value);
                 if (match.Groups["order"].Success)
                     parm.OrderValue = int.Parse(match.Groups["order"].Value);
+                if (match.Groups["brand"].Success)
+                    parm.BrandID = int.Parse(match.Groups["brand"].Value);
+                if (match.Groups["price"].Success)
+                    parm.PriceRange = new decimal[2] { decimal.Parse(match.Groups["price"].Value.Split('~')[0]), decimal.Parse(match.Groups["price"].Value.Split('~')[1]) };
+
                 if (match.Groups["properity"].Success)
                 {
                     parm.Properities = new Hashtable();
@@ -161,6 +168,8 @@ namespace NoName.NetShop.Publish.List
         private int _CategoryID;
         private int _PageIndex;
         private int _OrderValue;
+        private int _BrandID;
+        private decimal[] _PriceRange;
         private Hashtable _Properities;
         
 
@@ -184,5 +193,16 @@ namespace NoName.NetShop.Publish.List
             get { return _Properities; }
             set { _Properities = value; }
         }
+        public int BrandID
+        {
+            get { return _BrandID; }
+            set { _BrandID = value; }
+        }
+        public decimal[] PriceRange
+        {
+            get { return _PriceRange; }
+            set { _PriceRange = value; }
+        }
+        
     }
 }
