@@ -6,7 +6,7 @@
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="cpMain">    
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="#">购物街</a> &gt;&gt; <a href="#">查看产品评论</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/shopping">购物街</a> &gt;&gt; <a href="#">查看产品评论</a>
     </div>
     <!--Position End-->
     
