@@ -30,7 +30,7 @@
             });
 
             $('#<%= Button_Add.ClientID %>').click(function() {
-                debugger;
+
                 $('#error-inform').hide('fast');
                 $('.field').css({ 'color': '#000' });
                 var errorMessage = ''; var obj = null;
@@ -66,7 +66,7 @@
                     obj.prev().css({ 'color': 'red' });
                 }
                 obj = $('#<%= TextBox_Brief.ClientID %>');
-                if (obj.val() == '') {
+                if (editor.getData() == '') {
                     errorMessage += '<li>请输入产品简要描述</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
