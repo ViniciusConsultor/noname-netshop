@@ -45,7 +45,6 @@ namespace NoName.NetShop.SearchIndex
                 {
                     Document d = hits.Doc(i);
                     Console.WriteLine(d.Get("productname"));
-
                 }
             }
             else
