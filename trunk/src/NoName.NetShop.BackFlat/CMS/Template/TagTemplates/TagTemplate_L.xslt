@@ -47,8 +47,12 @@
 									</span>
 									<span class="name" title="{pname}">
                                         <xsl:choose>
-                                            <xsl:when test="ptype = 1">[出售] </xsl:when>
-                                            <xsl:otherwise>[求购] </xsl:otherwise>
+                                            <xsl:when test="ptype = 1">
+                                                <span style="color:red">[出售] </span>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <span style="color:#207720">[求购] </span> 
+                                            </xsl:otherwise>
                                         </xsl:choose>
 										<xsl:value-of select="pname"/>
 									</span>
