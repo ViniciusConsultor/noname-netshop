@@ -208,11 +208,11 @@ function showBrandInfo(fatherCategoryID, categoryID) {
         cache: false,
         dataType: 'json',
         async: false,
-        beforeSend: function() { alert('brand loading'); },
-        error: function() { alert('brand error'); },
+        beforeSend: function() {  },
+        error: function() {  },
         success: function(data) {
             $.each(data, function(i, n) {
-                var script = '<select id="brand">';
+                var script = '品牌：<select id="brand">';
                 script += '<option value="' + n.brandid + '">' + n.brandname + '</option>';
                 script += '</select>';
                 $('#brand-list').html(script);
@@ -227,7 +227,7 @@ function showBrandInfo(fatherCategoryID, categoryID) {
 
 
 
-function showSearchedProduct(categoryID, fatherCategoryID, brandid, productName,OrderType) {
+function showSearchedProduct(categoryID, fatherCategoryID, brandid, productName, OrderType) {
     $.ajax({
         url: '/handler/solutionhandler.ashx',
         type: 'post',
@@ -241,7 +241,7 @@ function showSearchedProduct(categoryID, fatherCategoryID, brandid, productName,
             if (data.length > 0) {
                 // make pagination here
 
-                turnPage(data, 1,fatherCategoryID);
+                turnPage(data, 1, fatherCategoryID);
 
             }
             else {
@@ -263,14 +263,14 @@ function addProduct(indexKey, productInfo) {
 
     //return;
 
-    theCateRow.attr('productid', productInfo.productid);    
+    theCateRow.attr('productid', productInfo.productid);
     var n = 0;
     if (theCateRow.children('td').length == 6) n = 1;
 
     $(theCateRow.children('td')[n + 1]).html('<span title="' + productInfo.productname + '">' + productInfo.productname.substring(0, 7) + '...</span>');
     $(theCateRow.children('td')[n + 2]).html('<a class="count-add" style="cursor:pointer"> + </a><span>' + productInfo.count + '</span><a class="count-minus" style="cursor:pointer"> - </a>');
-    $(theCateRow.children('td')[n+3]).html(productInfo.price);
-    $(theCateRow.children('td')[n+4]).html('<a id="delete-' + indexKey + '" class="iconButton delete" style="cursor:pointer"></a>');
+    $(theCateRow.children('td')[n + 3]).html(productInfo.price);
+    $(theCateRow.children('td')[n + 4]).html('<a id="delete-' + indexKey + '" class="iconButton delete" style="cursor:pointer"></a>');
 
     $('#delete-' + indexKey).click(function() {
         removeProduct(indexKey);
@@ -278,7 +278,7 @@ function addProduct(indexKey, productInfo) {
 
     $(theCateRow.children('td')[n + 2]).children('.count-add').click(function() { var c = parseInt($(this).next().html()); $(this).next().html(c + 1); calculateTotalPrice(true); });
     $(theCateRow.children('td')[n + 2]).children('.count-minus').click(function() { var c = parseInt($(this).prev().html()); if ((c - 1) >= 1) $(this).prev().html(c - 1); calculateTotalPrice(true); });
-    
+
     calculateTotalPrice(true);
 }
 function removeProduct(indexKey) {
@@ -292,11 +292,11 @@ function removeProduct(indexKey) {
     theCateRow.removeAttr('productid');
     var n = 0;
     if (theCateRow.children('td').length == 6) n = 1;
-    
-    $(theCateRow.children('td')[n+1]).html('');
-    $(theCateRow.children('td')[n+2]).html('');
-    $(theCateRow.children('td')[n+3]).html('');
-    $(theCateRow.children('td')[n+4]).html('');
+
+    $(theCateRow.children('td')[n + 1]).html('');
+    $(theCateRow.children('td')[n + 2]).html('');
+    $(theCateRow.children('td')[n + 3]).html('');
+    $(theCateRow.children('td')[n + 4]).html('');
 
     $('#product-list tr input[categoryid="' + indexKey.split('-')[1] + '"][fatherid="' + indexKey.split('-')[0] + '"]').attr('checked', false);
     calculateTotalPrice(false);
@@ -377,7 +377,7 @@ function submitSelect() {
     });
     submitParmeter = submitParmeter.substring(0, submitParmeter.length - 1);
 
-    window.open('/sp/addtocart.aspx?' + submitParmeter);
+    window.location = '/sp/addtocart.aspx?' + submitParmeter;
 }
 
 function turnPage(data, pageIndex, fatherCategoryID) {
@@ -395,8 +395,8 @@ function turnPage(data, pageIndex, fatherCategoryID) {
     if (recordCount % pageSize != 0) { pageCount = parseInt(recordCount / pageSize) + 1; } else { pageCount = parseInt(recordCount / pageSize); }
     var itemBegin = (pageIndex - 1) * pageSize, itemEnd = itemBegin + pageSize;
     if (pageCount == pageIndex) itemEnd = recordCount;
-    
-    
+
+
 
     for (var i = itemBegin; i < itemEnd; i++) {
 
@@ -421,7 +421,7 @@ function turnPage(data, pageIndex, fatherCategoryID) {
         else
             paginateHtml += '<a page="' + i + '" href="#">' + i + '</a>';
     }
-    
+
     paginateHtml += '</div>';
     if (pageIndex == pageCount) paginateHtml += '<a class="next" href="#"></a>';
     else paginateHtml += '<a class="next" href="#" page="' + (pageIndex + 1) + '"></a>';
