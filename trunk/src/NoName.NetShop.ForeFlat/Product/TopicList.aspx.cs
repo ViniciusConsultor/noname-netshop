@@ -78,8 +78,8 @@ namespace NoName.NetShop.ForeFlat.Product
         protected void Button_Submit_Click(object sender,EventArgs e)
         {
             string ErrorMessage = String.Empty;
-            if (String.IsNullOrEmpty(TextBox_TopicTitle.Text)) ErrorMessage += "主题标题不能为空；";
-            if (String.IsNullOrEmpty(TextBox_TopicContent.Text)) ErrorMessage += "主题内容不能为空";
+            if (String.IsNullOrEmpty(TextBox_TopicTitle.Text.Trim())) ErrorMessage += "主题标题不能为空；";
+            if (String.IsNullOrEmpty(TextBox_TopicContent.Text.Trim())) ErrorMessage += "主题内容不能为空";
             if (!String.IsNullOrEmpty(ErrorMessage))
             {
                 MessageBox.Show(this, ErrorMessage);
@@ -89,8 +89,8 @@ namespace NoName.NetShop.ForeFlat.Product
             TopicModel model = new TopicModel();
 
             model.TopicId = CommDataHelper.GetNewSerialNum(AppType.Other);
-            model.Title = TextBox_TopicTitle.Text;
-            model.Content = TextBox_TopicContent.Text;
+            model.Title = TextBox_TopicTitle.Text.Trim();
+            model.Content = TextBox_TopicContent.Text.Trim();
             model.UserId = GetUserID();
             model.InsertTime = DateTime.Now;
 

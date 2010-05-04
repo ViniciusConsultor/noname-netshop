@@ -77,7 +77,7 @@ namespace NoName.NetShop.ForeFlat.Product
         protected void Button_Comment_Click(object sender, EventArgs e)
         {
             //验证用户，如果未登录则提示登录
-            if (String.IsNullOrEmpty(TextBox_CommentContent.Text))
+            if (String.IsNullOrEmpty(TextBox_CommentContent.Text.Trim()))
             {
                 MessageBox.Show(this,"请输入评论内容");
                 return;
@@ -93,7 +93,7 @@ namespace NoName.NetShop.ForeFlat.Product
 
             model.AppType = AppType.Product;
             model.CommentID = CommDataHelper.GetNewSerialNum(AppType.Product);
-            model.Content = TextBox_CommentContent.Text;
+            model.Content = TextBox_CommentContent.Text.Trim();
             model.CreateTime = DateTime.Now;
             model.TargetID = ProductID;
             model.UserID = GetUserID();
