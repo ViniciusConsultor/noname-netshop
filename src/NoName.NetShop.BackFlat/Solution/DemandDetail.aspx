@@ -20,7 +20,9 @@
             </tr>
             <tr>
                 <td>场地图片：</td>
-                <td><asp:Image runat="server" ID="Literal_FieldImage" /></td>
+                <td runat="server" id="fieldImages">
+                    
+                </td>
             </tr>
             <tr>
                 <td>效果要求：</td>
