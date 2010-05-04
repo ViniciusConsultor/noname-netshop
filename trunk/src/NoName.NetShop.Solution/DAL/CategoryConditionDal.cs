@@ -68,11 +68,11 @@ namespace NoName.NetShop.Solution.DAL
             {
                 sql = @"select * from pdProduct
                             inner join pdProductPara on pdProductPara.productid=pdProduct.productid
-                        where 1=1 and " + ConditionString + @" order by " + "pdproduct." + (OrderType == 1 ? "merchantprice asc" : " merchantprice desc");
+                        where 1=1 and " + ConditionString + @" order by " + "pdproduct." + (OrderType == 2 ? "merchantprice asc" : " merchantprice desc");
             }
             else
             {
-                sql = @"select * from pdProduct where 1=1 and " + ConditionString + " order by " + (OrderType == 1 ? "merchantprice asc" : " merchantprice desc");
+                sql = @"select * from pdProduct where 1=1 and " + ConditionString + " order by " + (OrderType == 2 ? "merchantprice asc" : " merchantprice desc");
             }
 
             return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
