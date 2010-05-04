@@ -15,10 +15,10 @@
                 <title>
 					<xsl:value-of select="$CategoryName"/>-鼎鼎商城
                 </title>
-                <link type="text/css" rel="stylesheet" href="css/common.css" />
-                <link type="text/css" rel="stylesheet" href="css/shopping.css" />
-                <link type="text/css" rel="stylesheet" href="css/Rainy.css" />
-                <script type="text/javascript" src="js/DingdingJsLib.js">
+                <link type="text/css" rel="stylesheet" href="/css/common.css" />
+                <link type="text/css" rel="stylesheet" href="/css/shopping.css" />
+                <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
+                <script type="text/javascript" src="/js/DingdingJsLib.js">
                     <xsl:text> </xsl:text>
                 </script>
                 <script type="text/javascript" src="/js/jquery.js">
@@ -119,6 +119,8 @@
 										</div>
 										<div class="content">
 											<ul class="productFilter">
+                                                <xsl:call-template name="BrandList"/>
+                                                <xsl:call-template name="PriceRange"/>
 												<xsl:apply-templates select="/listpage/properitylist/prop"/>
 											</ul>
 										</div>
@@ -225,6 +227,32 @@
     <!-- position end -->
 
     <!-- properity filter start -->
+    <xsl:template name="BrandList">
+            <li class="properity">
+                <span>
+                    品牌：
+                </span>
+                <a style="cursor:pointer" brand="-1">全部</a>
+                <xsl:for-each select="/listpage/brandlist/brand">
+                    <a style="cursor:pointer" brand="{brandid}">
+                        <xsl:value-of select="brandname"/>
+                    </a>
+                </xsl:for-each>
+            </li>
+    </xsl:template>
+    <xsl:template name="PriceRange">
+            <li class="properity">
+                <span>
+                    价格区间：
+                </span>
+                <a style="cursor:pointer" range="-1">全部</a>
+                <xsl:for-each select="/listpage/categoryinfo/priceranges/range">
+                    <a style="cursor:pointer" range="{.}">
+                        <xsl:value-of select="."/>
+                    </a>
+                </xsl:for-each>
+            </li>
+    </xsl:template>
     <xsl:template match="/listpage/properitylist/prop">
         <li class="properity" propid="{propid}">
             <span>

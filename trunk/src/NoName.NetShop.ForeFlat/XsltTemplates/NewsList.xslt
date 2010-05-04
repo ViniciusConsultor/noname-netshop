@@ -15,7 +15,7 @@
 					<xsl:value-of select="/newslistpage/categorylist/category[last()]/categoryname"/>-鼎鼎商城
                 </title>
                 <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/common.css" />
-                <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/news.css" />
+                <link type="text/css" rel="stylesheet" href="/css/news.css" />
                 <link type="text/css" rel="stylesheet" href="http://dingding.uncc.cn/css/Rainy.css" />
                 <script type="text/javascript" src="http://dingding.uncc.cn/js/DingdingJsLib.js">
                     <xsl:text> </xsl:text>
