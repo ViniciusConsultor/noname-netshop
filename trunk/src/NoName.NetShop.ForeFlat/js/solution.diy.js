@@ -189,10 +189,10 @@ function initialize() {
                 currentCategoryID = $(this).attr('categoryid');
 
                 showBrandInfo(currentFatherCategoryID, currentCategoryID);
-                showSearchedProduct(currentCategoryID, currentFatherCategoryID, 0, '',1);
+                showSearchedProduct(currentCategoryID, currentFatherCategoryID, 0, '', 1);
             });
             showBrandInfo(currentCategoryID, 0);
-            showSearchedProduct(0, currentCategoryID, 0, '',1);
+            showSearchedProduct(0, currentCategoryID, 0, '', 1);
             /*set the primary values end*/
         }
     });
@@ -204,14 +204,13 @@ function showBrandInfo(fatherCategoryID, categoryID) {
     $.ajax({
         url: '/handler/solutionhandler.ashx',
         type: 'post',
-        data: 'action=brand&cid=' + parseInt(categoryID) == 0 ? fatherCategoryID : categoryID,
+        data: 'action=brand&cid=' + (parseInt(categoryID) == 0 ? fatherCategoryID : categoryID),
         cache: false,
         dataType: 'json',
         async: false,
-        beforeSend: function() { },
-        error: function() { },
+        beforeSend: function() { alert('brand loading'); },
+        error: function() { alert('brand error'); },
         success: function(data) {
-            //alert(data.length);
             $.each(data, function(i, n) {
                 var script = '<select id="brand">';
                 script += '<option value="' + n.brandid + '">' + n.brandname + '</option>';
@@ -219,7 +218,7 @@ function showBrandInfo(fatherCategoryID, categoryID) {
                 $('#brand-list').html(script);
 
                 $('#brand').change(function() {
-                    showSearchedProduct(categoryID, fatherCategoryID, $(this).val(), '',1);
+                    showSearchedProduct(categoryID, fatherCategoryID, $(this).val(), '', 1);
                 });
             });
         }
