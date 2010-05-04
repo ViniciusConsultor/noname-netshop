@@ -20,11 +20,17 @@ namespace NoName.NetShop.BackFlat.Brand
             get { if (ViewState["BrandID"] != null) return Convert.ToInt32(ViewState["BrandID"]); else return 0; }
             set { ViewState["BrandID"] = value; }
         }
+        private int CurrentPageIndex
+        {
+            get { if (ViewState["CurrentPageIndex"] != null) return Convert.ToInt32(ViewState["CurrentPageIndex"]); else return 1; }
+            set { ViewState["CurrentPageIndex"] = value; }
+        }
         private BrandModelBll bll = new BrandModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(Request.QueryString["brandid"])) BrandID = Convert.ToInt32(Request.QueryString["brandid"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["pageid"])) CurrentPageIndex = Convert.ToInt32(Request.QueryString["pageid"]);
             if (!IsPostBack)
             {
                 BindData();
@@ -46,6 +52,7 @@ namespace NoName.NetShop.BackFlat.Brand
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             SaveData();
+            Response.Redirect("List.aspx?page=" + CurrentPageIndex);
         }
 
         private void SaveData()
@@ -83,7 +90,6 @@ namespace NoName.NetShop.BackFlat.Brand
             }
 
             bll.Update(brand);
-            Response.Redirect("List.aspx");
         }
 
 
