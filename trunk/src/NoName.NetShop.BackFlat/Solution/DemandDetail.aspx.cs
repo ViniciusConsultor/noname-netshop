@@ -34,7 +34,6 @@ namespace NoName.NetShop.BackFlat.Solution
 
             Literal_Demand.Text = model.DemandDetail;
             Literal_Field.Text = model.FieldSituation;
-            Literal_FieldImage.ImageUrl = model.FieldPhotoes;
             Literal_Effect.Text = model.EffectSituation;
             Literal_Budget.Text = model.Budget.ToString("0.00");
             Literal_Contact.Text = model.Contactor;
@@ -44,6 +43,18 @@ namespace NoName.NetShop.BackFlat.Solution
             Literal_Address.Text = model.Address;
             Literal_CreateTime.Text = model.CreateTime.ToString("yyyy-MM-dd HH:mm:ss");
             Literal1_Status.Text = Enum.GetName(typeof(SolutionDemandStatus),model.Status);
+
+            if (model.FieldPhotoes.Contains(","))
+            {
+                foreach (string s in model.FieldPhotoes.Split(','))
+                {
+                    fieldImages.InnerHtml += String.Format("<img src=\"{0}\"/>",CommonImageUpload.GetCommonImageFullUrl(s));
+                }
+            }
+            else
+            {
+                fieldImages.InnerHtml += String.Format("<img src=\"{0}\"/>", CommonImageUpload.GetCommonImageFullUrl(model.FieldPhotoes));
+            }
         }
     }
 }
