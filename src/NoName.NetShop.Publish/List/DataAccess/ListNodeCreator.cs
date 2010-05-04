@@ -58,7 +58,11 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
             XmlUtility.AddNewNode(CategoryInfoNode, "categoryid", Convert.ToString(row["cateid"]));
             XmlUtility.AddNewNode(CategoryInfoNode, "categoryname", Convert.ToString(row["catename"]));
-            XmlUtility.AddNewNode(CategoryInfoNode, "isendclass", (!(dal.GetCategorySonList(Parameter.CategoryID).Rows.Count > 0)).ToString()); 
+            XmlUtility.AddNewNode(CategoryInfoNode, "isendclass", (!(dal.GetCategorySonList(Parameter.CategoryID).Rows.Count > 0)).ToString());
+            XmlNode SearchPriceRangeNode = XmlUtility.AddNewNode(CategoryInfoNode,"priceranges", null);
+
+            foreach (string r in Convert.ToString(row["SearchPriceRange"]).Split(','))
+                XmlUtility.AddNewNode(SearchPriceRangeNode, "range", r);
 
             return CategoryInfoNode;
         }
@@ -129,9 +133,9 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
             DataTable dt;
             if (Parameter.Properities == null)
-                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex,Parameter.OrderValue, out RecordCount, out PageCount);
+                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex,Parameter.BrandID,Parameter.PriceRange,Parameter.OrderValue, out RecordCount, out PageCount);
             else
-                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex, Parameter.OrderValue, Parameter.Properities, out RecordCount, out PageCount);
+                dt = dal.GetProductList(Parameter.CategoryID, Parameter.PageIndex,Parameter.BrandID,Parameter.PriceRange, Parameter.OrderValue, Parameter.Properities, out RecordCount, out PageCount);
 
             //商品列表节点
             XmlNode ProductsNode = XmlUtility.AddNewNode(ProductListNode, "products", null);
@@ -259,7 +263,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
                 XmlNode BrandNode = XmlUtility.AddNewNode(BrandListNode, "brand", null);
 
                 XmlUtility.AddNewNode(BrandNode, "brandid", Convert.ToString(row["brandid"]));
-                XmlUtility.AddNewNode(BrandNode, "brandid", Convert.ToString(row["brandname"]));
+                XmlUtility.AddNewNode(BrandNode, "brandname", Convert.ToString(row["brandname"]));
             }
 
             return BrandListNode;
@@ -283,5 +287,6 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
             return HotSaleProductsNode;
         }
+
     }
 }

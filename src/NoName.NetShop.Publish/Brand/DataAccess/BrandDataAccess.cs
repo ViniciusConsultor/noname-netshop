@@ -73,9 +73,9 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
 
         public DataTable GetBrandCategoryList(int BrandID)
         {
-            string sql = @"select distinct bc.cateid,c.catename from pdbrandcategoryrelation bc
+            string sql = @" select distinct bc.cateid,c.catename from pdbrandcategoryrelation bc
 	                            inner join pdcategory c on c.cateid=bc.cateid
-                            where c.catelevel=3 and bc.brandid={0} and dbo.CategoryExistsProduct(c.cateid)=1";
+                            where c.catelevel=3 and bc.brandid={0} and dbo.BrandCategoryExistsProduct(bc.brandid,c.cateid)=1";
             sql = String.Format(sql, BrandID);
 
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
