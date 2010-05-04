@@ -12,7 +12,7 @@
         <div class="magicSubNav">
             <div class="magicButtonTab">
                 <a class="button_blue" href="/Magic/RentHome.aspx">视听租赁</a>
-                <a class="button_blue" href="/Magic/DealHome.aspx">二手交易</a>
+                <a class="button_blue" href="/Magic/DealList.aspx">二手交易</a>
                 <a class="button_blue" href="/Magic/PawnShop.aspx">视听当铺</a>
                 <a class="button_blue2" href="/Magic/AuctionHome.aspx">视听拍卖</a>
             </div>

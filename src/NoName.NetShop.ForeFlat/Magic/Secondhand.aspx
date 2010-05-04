@@ -64,6 +64,7 @@
                                             <div class="content">
                                             	<ul>
                                                 	<li>昵称：<asp:Literal runat="server" ID="Literal_Nick" /></li>
+                                                	<li>等级：<asp:Literal runat="server" ID="Literal_Level" /></li>
                                                     <li>所在地：<asp:Literal runat="server" ID="Literal_Province" /></li>
                                                     <li>联系电话：<asp:Literal runat="server" ID="Literal_Phone" /></li>
                                                 </ul>
