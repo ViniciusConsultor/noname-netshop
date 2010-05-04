@@ -25,7 +25,7 @@ $(function() {
         var word = $('#search-word').val();
 
         if (word != '') {
-            window.open('/search/productsearch.aspx?c=' + category + '&w=' + word);
+            window.open('/search/productsearch.aspx?c=' + category + '&w=' + escape(word));
         }
         else {
             alert('请输入检索词');
