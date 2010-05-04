@@ -22,9 +22,12 @@
             var editor = CKEDITOR.replace('<%= TextBox_Brief.ClientID %>', {
                 height: '300px',
                 width: '420px',
-                toolbar: 'Basic'
+                toolbar: [
+                            ['Cut', 'Copy', 'Paste'],
+                            ['Undo', 'Redo'],
+                            ['Bold', 'Italic', 'TextColor','Link','Unlink','Anchor']
+                        ]
             });
-            CKFinder.SetupCKEditor(editor, '/controls/ckfinder/');
 
             $('#<%= Button_Add.ClientID %>').click(function() {
                 debugger;

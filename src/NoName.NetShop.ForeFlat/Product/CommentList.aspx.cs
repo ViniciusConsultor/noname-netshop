@@ -11,6 +11,7 @@ using NoName.Utility;
 using System.Data;
 using NoName.NetShop.Common;
 using NoName.NetShop.Product.Facade;
+using NoName.NetShop.Member;
 
 
 namespace NoName.NetShop.ForeFlat.Product
@@ -79,6 +80,12 @@ namespace NoName.NetShop.ForeFlat.Product
             if (String.IsNullOrEmpty(TextBox_CommentContent.Text))
             {
                 MessageBox.Show(this,"请输入评论内容");
+                return;
+            }
+            //验证是否已经购买此商品，否则不允许评论
+            else if (!MemberInfo.ExistsOrderProduct(GetUserID(), ProductID))
+            {
+                MessageBox.Show(this, "您尚未购买此商品！");
                 return;
             }
 

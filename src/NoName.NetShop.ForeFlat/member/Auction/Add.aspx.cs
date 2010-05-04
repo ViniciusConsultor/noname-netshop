@@ -24,6 +24,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //CKFinder.SetupCKEditor(editor, '/controls/ckfinder/')
             if (!IsPostBack)
             {
                 if (CurrentUser == null)
