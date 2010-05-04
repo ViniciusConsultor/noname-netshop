@@ -61,7 +61,7 @@
                 }
 
                 obj = $('#<%= TextBox_Brief.ClientID %>');
-                if (obj.val() == '') {
+                if (editor.getData() == '') {
                     errorMessage += '<li>请输入产品简要描述</li>';
                     obj.prev().css({ 'color': 'red' });
                 }

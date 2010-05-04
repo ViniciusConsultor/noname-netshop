@@ -50,7 +50,7 @@
                     obj.prev().css({ 'color': 'red' });
                 }
                 obj = $('#<%= TextBox_Brief.ClientID %>');
-                if (obj.val() == '') {
+                if (editor.getData() == '') {
                     errorMessage += '<li>请输入产品简介</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
