@@ -8,6 +8,13 @@
         $(function() {
             InitRegions();
 
+            var photoCount = 0;
+            appendPhotoField();
+            $('#photo-field-add').click(function() {
+                    appendPhotoField();
+            });
+
+
             $('#<%= Button_Add.ClientID %>').click(function() {
                 $('#error-inform').hide('fast');
                 $('.field').css({ 'color': '#000' });
@@ -19,10 +26,10 @@
                     obj.prev().css({ 'color': 'red' });
                 }
 
-                obj = $('#<%= FileUpload_FieldImage.ClientID %>');
+                obj = $('#photo-field-0');
                 if (obj.val() == '') {
                     errorMessage += '<li>请选择场地图片</li>';
-                    obj.prev().css({ 'color': 'red' });
+                    $('#productPictures span').css({ 'color': 'red' });
                 }
 
                 obj = $('#<%= TextBox_Field.ClientID %>');
@@ -48,7 +55,7 @@
                     errorMessage += '<li>请输入联系人姓名</li>';
                     obj.prev().css({ 'color': 'red' });
                 }
-                
+
                 obj = $('#<%= TextBox_Phone.ClientID %>');
                 if (obj.val() == '' || !obj.val().isTelephone()) {
                     errorMessage += '<li>请输入正确的电话号码</li>';
@@ -58,7 +65,7 @@
                 obj = $('#<%= TextBox_PostCode.ClientID %>');
                 if (obj.val() == '' || !obj.val().isPostalCode()) {
                     errorMessage += '<li>请输入正确的邮政编码</li>';
-                    $('#<%= TextBox_Phone.ClientID %>').prev().css({ 'color': 'red' });
+                    obj.prev().css({ 'color': 'red' });
                 }
 
                 obj = $('#<%= TextBox_Address.ClientID %>');
@@ -91,7 +98,20 @@
                 }
                 else return true;
             });
+
+            function appendPhotoField() {
+                if ($('#productPictures input').length <= 4) {
+                    var obj = $('<div id="photo-field-wrapper-' + photoCount + '"><input type="file" id="photo-field-' + photoCount + '" name="photo-field-' + photoCount + '" /> ' + (photoCount > 0 ? '[<a style="cursor:pointer" id="photo-field-delete-' + photoCount + '">删除</a>]' : '') + '</div>');
+                    $('#productPictures').append(obj);
+                    obj.find('a').click(function() {
+                        obj.remove();
+                    });
+                    photoCount++;
+                }
+            }
         });
+        
+        
     </script>    
 </asp:Content>
 
@@ -135,8 +155,7 @@
                                 <asp:TextBox runat="server" ID="TextBox_DemandDetail" CssClass="textarea3" TextMode="MultiLine" />
                             </li>
                             <li id="productPictures">
-                                <span class="field">2.请上传相关场地的照片</span>
-                                <asp:FileUpload runat="server" id="FileUpload_FieldImage" />
+                                <span class="field">2.请上传相关场地的照片 [<a style="cursor:pointer" id="photo-field-add">添加</a>]</span>
                             </li>
                             <li>
                                 <span class="field">3.您的场地情况</span>
