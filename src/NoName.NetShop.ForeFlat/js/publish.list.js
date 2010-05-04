@@ -42,6 +42,17 @@
 
     //page
 
+    //brand
+    //    var currentBrandID = getBrandID();
+    //    $('.properity a[brand]').each(function(i, o) {
+    //        if (parseInt(o.attr('brand')) == currentBrandID) {
+    //        }
+    //    });
+
+    //pricerange
+    //    var currentPriceRange = getPriceRange();
+    //    $('.properity a[range]').each(function(i, o) {
+    //    });
 
 
     /* initialize end */
@@ -72,9 +83,21 @@
         setOrder(sortValue);
     });
 
+    //品牌事件
+    $('.properity a[brand]').click(function() {
+        $(this).attr('class', 'on');
+        var brandid = $(this).attr('brand');
+        setBrandID(brandid);
+    });
+    //价格区间事件
+    $('.properity a[range]').click(function() {
+        $(this).attr('class', 'on');
+        var priceRange = $(this).attr('range');
+        setPriceRange(priceRange);
+    });
+
     //属性事件
-    $('.properity a').click(function() {
-        debugger;
+    $('.properity a[propvid]').click(function() {
         var propID = parseInt($(this).parent().children('a[propid]').attr('propid'));
         var propValueID = parseInt($(this).attr('propvid'));
 
@@ -114,43 +137,83 @@
 
     function getPage() {
         var url = window.location.href;
-        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
 
         if (RegExp.$3 == '') return 1;
         else return parseInt(RegExp.$3.replace('-', ''));
     }
     function setPage(page) {
         var url = window.location.href;
-        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
 
         var pageString = '-' + page;
-        url = RegExp.$1 + RegExp.$2 + pageString + RegExp.$5 + RegExp.$6;
+        url = RegExp.$1 + RegExp.$2 + pageString + RegExp.$4 + RegExp.$5 + RegExp.$6 + RegExp.$7 + RegExp.$8;
         window.location.href = url;
     }
 
     function getOrder() {
         var url = window.location.href;
-        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
 
-        if (RegExp.$4 == '') return 1;
+        if (RegExp.$6 == '') return 1;
         else return parseInt(RegExp.$4.replace('-o', ''));
     }
     function setOrder(order) {
         var url = window.location.href;
-        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
 
         //alert('1:' + RegExp.$1 + '\n2:' + RegExp.$2 + '\n3:' + RegExp.$3 + '\n4:' + RegExp.$4 + '\n5:' + RegExp.$5 + '\n6:' + RegExp.$6);
         //1 : url prefix
         //2 : /list-117 (category)
         //3 : -1 (page)
-        //4 : -o1 (order)
-        //5 : -v178-2,168-1e
-        //6 : .list
+        //4 : -b2 (brand)
+        //5 : -r11~12 (price)
+        //6 : -o1 (order)
+        //7 : -v178-2,168-1e
+        //8 : .list
         //url = RegExp.$1 + RegExp.$2 + RegExp.$4 + RegExp.$5 + RegExp.$6;
 
         var orderString = order == 1 ? '' : '-o' + order;
-        url = RegExp.$1 + RegExp.$2 + orderString + RegExp.$5 + RegExp.$6;
+        url = RegExp.$1 + RegExp.$2 + RegExp.$4 + RegExp.$5 + orderString + RegExp.$7 + RegExp.$8;
         window.location.href = url;
+    }
+
+    function getBrandID() {
+        var url = window.location.href;
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+        //alert('1:' + RegExp.$1 + '\n2:' + RegExp.$2 + '\n3:' + RegExp.$3 + '\n4:' + RegExp.$4 + '\n5:' + RegExp.$5 + '\n6:' + RegExp.$6 + '\n7:' + RegExp.$7 + '\n8:' + RegExp.$8 + '\n9:' + RegExp.$9);
+        if (RegExp.$4 == '') return -1;
+        else return parseInt(RegExp.$4.replace('-b', ''));
+    }
+    function setBrandID(brandID) {
+        var url = window.location.href;
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+
+        var brandString = '';
+        if (brandID != 0) {
+            brandString = '-b' + brandID;
+        }
+
+        url = RegExp.$1 + RegExp.$2 + brandString + RegExp.$5 + RegExp.$6 + RegExp.$7 + RegExp.$8;
+    }
+
+    function getPriceRange() {
+        var url = window.location.href;
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+
+        if (RegExp.$5 == '') return -1;
+        else return RegExp.$4.replace('-r', '');
+    }
+    function setPriceRange(range) {
+        var url = window.location.href;
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+
+        var rangeString = '';
+        if (range != '-1') {
+            rangeString = '-r' + range;
+        }
+
+        url = RegExp.$1 + RegExp.$2 + RegExp.$4 + rangeString + RegExp.$6 + RegExp.$7 + RegExp.$8;
     }
 
     function getListUrlParameter() {
