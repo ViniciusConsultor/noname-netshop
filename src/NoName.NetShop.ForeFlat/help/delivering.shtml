@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>帮助中心</title>
+    <link type="text/css" rel="stylesheet" href="/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="/css/helpCenter.css" />
+    <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
+    <script type="text/javascript" src="/js/DingdingJsLib.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/mini-Rainy.js"></script>
+</head>
+<body>
+    <!--Header Begin-->
+    <!-- #include file="/common/Header.html" -->
+    <!--Header End-->
+    
+    <!--Position Begin-->
+    <div class="currentPosition">
+    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">帮助中心</a> &gt;&gt; <a href="#">支付方式</a> &gt;&gt; <a href="#">货到付款运费及送货范围</a>
+    </div>
+    <!--Position End-->
+    
+    <!--MainBody Begin-->
+    <div class="member_mainbody newline clearfix">
+		<div class="leftColumn">
+        	<div class="box2">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>帮助中心</span></li>
+                    <li class="right"></li>
+                </ul>
+                <div class="content">
+                	<div class="groupTitle">新手上路</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">网上订购</a>
+                        </li>
+                        <li>
+                            <a href="#">电话订购</a>
+                        </li>
+                        <li>
+                            <a href="#">在线订购</a>
+                        </li>
+                        <li>
+                            <a href="#">缺货说明</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">配送方式</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">资费标准</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">如何交款</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">付款方式</a>
+                        </li>
+                        <li>
+                            <a href="#">付款单招领</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">售后服务</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">退换货原则</a>
+                        </li>
+                        <li>
+                            <a href="#">退换货处理</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">需要帮助</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">忘记了密码</a>
+                        </li>
+                        <li>
+                            <a href="#">常见问题</a>
+                        </li>
+                        <li>
+                            <a href="#">联系客服</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="bottom">
+                   <li class="left"></li>
+                   <li class="right"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rightColumn">
+        	<div class="rightColumnContainer">
+            	<div class="box1">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>常见问题</span></li>
+                    <li class="right"></li>
+                </ul>
+                <div class="content">
+                	<div class="section">
+                    	<p>支持货到付款地区: <a href="#location1">北京市</a> <a href="#location2">上海市</a> <a href="#location3">广州市</a> <a href="#location4">广东省</a> <a href="#location5">天津市</a> <a href="#location6">苏州市</a></p>
+                    </div>
+                    <div class="groupTitle" id="location1">北京市</div>
+                    <div class="section">
+                    	<p>运    费：一律收取固定运费 5 元，钻石会员购物金额满50元（含）以上免运费，金牌会员购物金额满 200   元（含）以上免运费，银牌（含）以下级别的会员购物满400 元（含）以上免运费。 <br />
+                    	  送货范围：北京全境十八区县无缝隙覆盖 <br />
+                   	    支付形式：现金（五环内、上地、西三旗、回龙观、天通苑、管庄&lt;仅朝阳路沿线&gt;、亦庄、古城地铁沿线&lt;2公里内&gt;、大兴西红门、通州城区同时支持支票和POS机刷卡）</p>
+                  	</div>
+                    <div class="groupTitle" id="location2">上海市</div>
+                    <div class="section">
+                    	<p>运    费：一律收取固定运费 5 元，钻石会员购物金额满50元（含）以上免运费，金牌会员购物金额满 200   元（含）以上免运费，银牌（含）以下级别的会员购物满400 元（含）以上免运费。 <br />
+                    	  送货范围：北京全境十八区县无缝隙覆盖 <br />
+                   	    支付形式：现金（五环内、上地、西三旗、回龙观、天通苑、管庄&lt;仅朝阳路沿线&gt;、亦庄、古城地铁沿线&lt;2公里内&gt;、大兴西红门、通州城区同时支持支票和POS机刷卡）</p>
+                  	</div>
+                    <div class="groupTitle" id="location3">广州市</div>
+                    <div class="section">
+                    	<p>运    费：一律收取固定运费 5 元，钻石会员购物金额满50元（含）以上免运费，金牌会员购物金额满 200   元（含）以上免运费，银牌（含）以下级别的会员购物满400 元（含）以上免运费。 <br />
+                    	  送货范围：北京全境十八区县无缝隙覆盖 <br />
+                   	    支付形式：现金（五环内、上地、西三旗、回龙观、天通苑、管庄&lt;仅朝阳路沿线&gt;、亦庄、古城地铁沿线&lt;2公里内&gt;、大兴西红门、通州城区同时支持支票和POS机刷卡）</p>
+                  	</div>
+                    <div class="groupTitle" id="location4">广东省</div>
+                    <div class="section">
+                    	<p>运    费：一律收取固定运费 5 元，钻石会员购物金额满50元（含）以上免运费，金牌会员购物金额满 200   元（含）以上免运费，银牌（含）以下级别的会员购物满400 元（含）以上免运费。 <br />
+                    	  送货范围：北京全境十八区县无缝隙覆盖 <br />
+                   	    支付形式：现金（五环内、上地、西三旗、回龙观、天通苑、管庄&lt;仅朝阳路沿线&gt;、亦庄、古城地铁沿线&lt;2公里内&gt;、大兴西红门、通州城区同时支持支票和POS机刷卡）</p>
+                  	</div>
+                    <div class="groupTitle" id="location5">天津市</div>
+                    <div class="section">
+                    	<p>运    费：一律收取固定运费 5 元，钻石会员购物金额满50元（含）以上免运费，金牌会员购物金额满 200   元（含）以上免运费，银牌（含）以下级别的会员购物满400 元（含）以上免运费。 <br />
+                    	  送货范围：北京全境十八区县无缝隙覆盖 <br />
+                   	    支付形式：现金（五环内、上地、西三旗、回龙观、天通苑、管庄&lt;仅朝阳路沿线&gt;、亦庄、古城地铁沿线&lt;2公里内&gt;、大兴西红门、通州城区同时支持支票和POS机刷卡）</p>
+                  	</div>
+                    <div class="groupTitle" id="location6">苏州市</div>
+                    <div class="section">
+                    	<p>运    费：一律收取固定运费 5 元，钻石会员购物金额满50元（含）以上免运费，金牌会员购物金额满 200   元（含）以上免运费，银牌（含）以下级别的会员购物满400 元（含）以上免运费。 <br />
+                    	  送货范围：北京全境十八区县无缝隙覆盖 <br />
+                   	    支付形式：现金（五环内、上地、西三旗、回龙观、天通苑、管庄&lt;仅朝阳路沿线&gt;、亦庄、古城地铁沿线&lt;2公里内&gt;、大兴西红门、通州城区同时支持支票和POS机刷卡）</p>
+                  	</div>
+                </div>
+                <ul class="bottom">
+                   <li class="left"></li>
+                   <li class="right"></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--MainBody End-->
+    
+    <!--Footer Begin-->
+    <!-- #include file="/common/Footer.html" -->
+    <!--Footer End-->
+</body>
+</html>
