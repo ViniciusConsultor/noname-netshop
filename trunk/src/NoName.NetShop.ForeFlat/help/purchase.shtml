@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>帮助中心</title>
+    <link type="text/css" rel="stylesheet" href="/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="/css/helpCenter.css" />
+    <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
+    <script type="text/javascript" src="/js/DingdingJsLib.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/mini-Rainy.js"></script>
+</head>
+<body>    
+    <!--Header Begin-->
+    <!-- #include file="/common/Header.html" -->
+    <!--Header End-->
+    
+    <!--Position Begin-->
+    <div class="currentPosition">
+    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">帮助中心</a> &gt;&gt; <a href="#">新手上路</a> &gt;&gt; <a href="#">网上订购</a>
+    </div>
+    <!--Position End-->
+    
+    <!--MainBody Begin-->
+    <div class="member_mainbody newline clearfix">
+		<div class="leftColumn">
+        	<div class="box2">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>帮助中心</span></li>
+                    <li class="right"></li>
+                </ul>
+                <div class="content">
+                	<div class="groupTitle">新手上路</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#" class="bold">网上订购</a>
+                        </li>
+                        <li>
+                            <a href="#">电话订购</a>
+                        </li>
+                        <li>
+                            <a href="#">在线订购</a>
+                        </li>
+                        <li>
+                            <a href="#">缺货说明</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">配送方式</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">资费标准</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">如何交款</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">付款方式</a>
+                        </li>
+                        <li>
+                            <a href="#">付款单招领</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">售后服务</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">退换货原则</a>
+                        </li>
+                        <li>
+                            <a href="#">退换货处理</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">需要帮助</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">忘记了密码</a>
+                        </li>
+                        <li>
+                            <a href="#">常见问题</a>
+                        </li>
+                        <li>
+                            <a href="#">联系客服</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="bottom">
+                   <li class="left"></li>
+                   <li class="right"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rightColumn">
+        	<div class="rightColumnContainer">
+            	<div class="box1">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>网上订购流程</span></li>
+                    <li class="right"></li>
+                </ul>
+                <div class="content">
+                    <div class="groupTitle">步骤一</div>
+                    <div class="section">
+                    	<p>
+                        	浏览要购买的商品，点击“购买”商品会自动添加到购物车里。如果需要更改商品数量，需在商品所在栏目后的商品数量框中输入购买数量，点击“更改”按钮即可更改商品数量；选好商品后点击“下一步”，进行详细填写，收货人信息、付款方式、发票信息、配送方式等信息。如有备注信息，请在下方的“备注信息”中留言，留言不得超过15字。确认无误后点击“提交订单”，生成新订单并显示订单编号。可进入“我的鼎鼎”--→“订单中心”查看订单详细信息。
+                        </p>
+                    </div>
+                    <div class="groupTitle">步骤二</div>
+                    <div class="section">
+                    	<p>
+                        	浏览要购买的商品，点击“购买”商品会自动添加到购物车里。如果需要更改商品数量，需在商品所在栏目后的商品数量框中输入购买数量，点击“更改”按钮即可更改商品数量；选好商品后点击“下一步”，进行详细填写，收货人信息、付款方式、发票信息、配送方式等信息。如有备注信息，请在下方的“备注信息”中留言，留言不得超过15字。确认无误后点击“提交订单”，生成新订单并显示订单编号。可进入“我的鼎鼎”--→“订单中心”查看订单详细信息。
+                        </p>
+                    </div>
+                    <div class="groupTitle">步骤三</div>
+                    <div class="section">
+                    	<p>
+                        	浏览要购买的商品，点击“购买”商品会自动添加到购物车里。如果需要更改商品数量，需在商品所在栏目后的商品数量框中输入购买数量，点击“更改”按钮即可更改商品数量；选好商品后点击“下一步”，进行详细填写，收货人信息、付款方式、发票信息、配送方式等信息。如有备注信息，请在下方的“备注信息”中留言，留言不得超过15字。确认无误后点击“提交订单”，生成新订单并显示订单编号。可进入“我的鼎鼎”--→“订单中心”查看订单详细信息。
+                        </p>
+                    </div>
+                    <div class="groupTitle">步骤四</div>
+                    <div class="section">
+                    	<p>
+                        	浏览要购买的商品，点击“购买”商品会自动添加到购物车里。如果需要更改商品数量，需在商品所在栏目后的商品数量框中输入购买数量，点击“更改”按钮即可更改商品数量；选好商品后点击“下一步”，进行详细填写，收货人信息、付款方式、发票信息、配送方式等信息。如有备注信息，请在下方的“备注信息”中留言，留言不得超过15字。确认无误后点击“提交订单”，生成新订单并显示订单编号。可进入“我的鼎鼎”--→“订单中心”查看订单详细信息。
+                        </p>
+                    </div>
+                </div>
+                <ul class="bottom">
+                   <li class="left"></li>
+                   <li class="right"></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--MainBody End-->
+    
+    
+    <!--Footer Begin-->
+    <!-- #include file="/common/Footer.html" -->
+    <!--Footer End-->
+</body>
+</html>

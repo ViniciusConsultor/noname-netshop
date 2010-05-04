@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>帮助中心</title>
+    <link type="text/css" rel="stylesheet" href="/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="/css/helpCenter.css" />
+    <link type="text/css" rel="stylesheet" href="/css/Rainy.css" />
+    <script type="text/javascript" src="/js/DingdingJsLib.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/mini-Rainy.js"></script>
+</head>
+<body>
+    <!--Header Begin-->
+    <!-- #include file="/common/Header.html" -->
+    <!--Header End-->
+
+    <!--Position Begin-->
+    <div class="currentPosition">
+    	您现在的位置: <a href="#">首页</a> &gt;&gt; <a href="#">帮助中心</a> &gt;&gt; <a href="#">需要帮助</a> &gt;&gt; <a href="#">常见问题</a>
+    </div>
+    <!--Position End-->
+    
+    <!--MainBody Begin-->
+    <div class="member_mainbody newline clearfix">
+		<div class="leftColumn">
+        	<div class="box2">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>帮助中心</span></li>
+                    <li class="right"></li>
+                </ul>
+                <div class="content">
+                	<div class="groupTitle">新手上路</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">网上订购</a>
+                        </li>
+                        <li>
+                            <a href="#">电话订购</a>
+                        </li>
+                        <li>
+                            <a href="#">在线订购</a>
+                        </li>
+                        <li>
+                            <a href="#">缺货说明</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">配送方式</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">资费标准</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">如何交款</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">付款方式</a>
+                        </li>
+                        <li>
+                            <a href="#">付款单招领</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">售后服务</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">退换货原则</a>
+                        </li>
+                        <li>
+                            <a href="#">退换货处理</a>
+                        </li>
+                    </ul>
+                    <div class="groupTitle">需要帮助</div>
+                    <ul class="articleList_1 bullet_2">
+                        <li>
+                            <a href="#">忘记了密码</a>
+                        </li>
+                        <li>
+                            <a href="#" class="bold">常见问题</a>
+                        </li>
+                        <li>
+                            <a href="#">联系客服</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="bottom">
+                   <li class="left"></li>
+                   <li class="right"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rightColumn">
+        	<div class="rightColumnContainer">
+            	<div class="box1">
+                <ul class="title">
+                    <li class="left"></li>
+                    <li><span>常见问题</span></li>
+                    <li class="right"></li>
+                </ul>
+                <div class="content">
+                    <div class="groupTitle">问：无货商品什么时候能到货？ </div>
+                    <div class="section">
+                    	<p>
+                        	答：无货商品的到货时间根据配货情况而不同，无法准确估计，但您可以使用“到货通知”功能，一旦商品有货，我们会通过电子邮件等方式通知您。
+                        </p>
+                    </div>
+                    <div class="groupTitle">问：下单后何时可以收到货？</div>
+                    <div class="section">
+                    	<p>
+                        	答：在商品有现货的情况下，北京、上海、广州客户，下单后一般24小时内可收到货（郊区县配送时间可能会更长一些）；
+其它地区用户，将根据您的收货地址及所选择的配送方式而不同，一般到货时间在1-7天（极偏远地区配送时间可能会更长一些）；
+如果商品处于预订或在途状态，那么还应加上调配货时间。
+                        </p>
+                    </div>
+                    <div class="groupTitle">问：快递费是多少？ </div>
+                    <div class="section">
+                    	<p>
+                        	答：京东快递运费按三类地区划分收取，一区（北京、上海、广州）收取运费5元，二区收取运费6元，三区收取运费15元。
+                        </p>
+                    </div>
+                    <div class="groupTitle">问：在线支付支持哪些银行卡？支持大额支付吗？</div>
+                    <div class="section">
+                    	<p>
+                        	答：我们为您提供几乎全部银行的银行卡及信用卡在线支付，只要您开通了“网上支付”功能，即可进行在线支付，无需手续费，实时到帐，方便快捷。
+如您订单金额较大，可以使用快钱支付中的招行、工行、建行、农行、广发进行一次性大额支付（一万元以下）。
+                        </p>
+                    </div>
+                    <div class="groupTitle">问：无货商品什么时候能到货？ </div>
+                    <div class="section">
+                    	<p>
+                        	答：无货商品的到货时间根据配货情况而不同，无法准确估计，但您可以使用“到货通知”功能，一旦商品有货，我们会通过电子邮件等方式通知您。
+                        </p>
+                    </div>
+                    <div class="groupTitle">问：上门提货、货到付款支持刷卡吗？ 周末可以自提吗？</div>
+                    <div class="section">
+                    	<p>
+                        	答：可以，您下单时可以选择“尽快送货”、“工作日送货”、“周末送货”等时间类型，并选择是否提前电话确认。
+另外，您还可以在订单备注里填写更具体的需求，我们会尽量满足您的要求。
+                        </p>
+                    </div>
+                </div>
+                <ul class="bottom">
+                   <li class="left"></li>
+                   <li class="right"></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--MainBody End-->
+    
+    <!--Footer Begin-->
+    <!-- #include file="/common/Footer.html" -->
+    <!--Footer End-->
+</body>
+</html>
