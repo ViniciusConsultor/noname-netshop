@@ -9,6 +9,7 @@ using NoName.NetShop.MagicWorld.Model;
 using NoName.NetShop.MagicWorld.Facade;
 using NoName.NetShop.Comment;
 using NoName.NetShop.Common;
+using NoName.NetShop.Member;
 
 namespace NoName.NetShop.ForeFlat.Magic
 {
@@ -36,6 +37,7 @@ namespace NoName.NetShop.ForeFlat.Magic
         private void BindData() 
         {
             SecondhandProductModel model = bll.GetModel(SecondhandProductID);
+            MemberInfo user = MemberInfo.GetFullInfo(model.UserID);
 
             Image_Small.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.SmallImage);
             Image_Large.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage);
@@ -47,8 +49,8 @@ namespace NoName.NetShop.ForeFlat.Magic
             Literal_Condition.Text = Enum.GetName(typeof(SecondhandProductUsageCondition), model.UsageCondition);
             Literal_Description.Text = model.Brief;
 
-
-            Literal_Nick.Text = model.UserID;
+            Literal_Nick.Text = user.UserId;
+            Literal_Level.Text = user.UserLevel.ToString();
             Literal_Phone.Text = String.IsNullOrEmpty(model.Phone) ? model.CellPhone : model.Phone;
             Literal_Province.Text = String.IsNullOrEmpty(model.Region) ? String.Empty : model.Region.Split(' ')[0];
 
