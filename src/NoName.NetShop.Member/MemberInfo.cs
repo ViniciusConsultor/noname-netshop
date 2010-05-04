@@ -259,6 +259,22 @@ namespace NoName.NetShop.Member
             return (result == 1);
         }
 
+        public static bool ExistsOrderProduct(string UserID,int ProductID)
+        {
+            string sql = @" select top 1 o.orderid from spOrder o
+                                inner join sporderitem oi on o.orderid=oi.orderid
+                            where userid=@userid and oi.productid=@productid and o.paystatus=3";
+
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+
+            DbCommand Command = db.GetSqlStringCommand(sql);
+
+            db.AddInParameter(Command, "@userid", DbType.String, UserID);
+            db.AddInParameter(Command, "@productid", DbType.Int32, ProductID);
+
+            return db.ExecuteDataSet(Command).Tables[0].Rows.Count > 0;
+        }
+
 
         /// <summary>
         /// 对象实体绑定数据
