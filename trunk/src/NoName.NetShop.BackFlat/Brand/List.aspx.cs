@@ -20,12 +20,18 @@ namespace NoName.NetShop.BackFlat.Brand
             get { if (ViewState["SearchCondition"] != null) return ViewState["SearchCondition"].ToString(); else return String.Empty; }
             set { ViewState["SearchCondition"] = value; }
         }
+        private int InitialPageIndex
+        {
+            get { if (ViewState["InitialPageIndex"] != null) return Convert.ToInt32(ViewState["InitialPageIndex"]); else return 1; }
+            set { ViewState["InitialPageIndex"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) 
+            if (!IsPostBack)
             {
-                BindData(1);
+                if (!String.IsNullOrEmpty(Request.QueryString["page"])) InitialPageIndex = Convert.ToInt32(Request.QueryString["page"]);
+                BindData(InitialPageIndex);
             }
         }
 

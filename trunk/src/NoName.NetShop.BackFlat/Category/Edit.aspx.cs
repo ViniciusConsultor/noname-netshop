@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NoName.NetShop.Product.BLL;
 using NoName.NetShop.Product.Model;
 using System.Data;
+using NoName.Utility;
 
 namespace NoName.NetShop.BackFlat.Category
 {
@@ -37,6 +38,7 @@ namespace NoName.NetShop.BackFlat.Category
             //txtPriceRange.Text = model.PriceRange;
             chkIsHide.Checked = model.IsHide;
             //CategorySelect1.InitialCategory = model.CateId;
+            txtSearchPriceRange.Text = model.SearchPriceRange;
 
 
             DataTable dt = new DataTable();
@@ -60,12 +62,29 @@ namespace NoName.NetShop.BackFlat.Category
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            string strErr = "";
+            if (this.txtCateName.Text.Trim() == "")
+            {
+                strErr += "分类名称不能为空！\\n";
+            }
+            if (this.txtSearchPriceRange.Text.Trim() == "")
+            {
+                strErr += "分类搜索价格区间不能为空！\\n";
+            }
+
+            if (strErr != "")
+            {
+                MessageBox.Show(this, strErr);
+                return;
+            }
+
             CategoryModel model = bll.GetModel(CategoryID);
 
             model.CateName = txtCateName.Text;
             model.Status = int.Parse(drpStatus.SelectedValue);
             //model.PriceRange = txtPriceRange.Text;
             model.IsHide = chkIsHide.Checked;
+            model.SearchPriceRange = txtSearchPriceRange.Text;
 
             bll.Update(model);
 

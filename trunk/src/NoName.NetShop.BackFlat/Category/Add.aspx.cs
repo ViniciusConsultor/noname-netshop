@@ -65,9 +65,13 @@ namespace NoName.NetShop.BackFlat.Category
 		protected void btnAdd_Click(object sender, EventArgs e)
         {
             string strErr = "";
-            if (this.txtCateName.Text == "")
+            if (this.txtCateName.Text.Trim() == "")
             {
                 strErr += "分类名称不能为空！\\n";
+            }
+            if (this.txtSearchPriceRange.Text.Trim() == "")
+            {
+                strErr += "分类搜索价格区间不能为空！\\n";
             }
 
             if (strErr != "")
@@ -88,6 +92,7 @@ namespace NoName.NetShop.BackFlat.Category
             model.Status = Status;
             model.IsHide = IsHide;
             model.ShowOrder = model.CateId;
+            model.SearchPriceRange = txtSearchPriceRange.Text;
 
             if (ParentID != 0)
             {
