@@ -46,6 +46,10 @@
 										报价：￥<xsl:value-of select="price"/>
 									</span>
 									<span class="name" title="{pname}">
+                                        <xsl:choose>
+                                            <xsl:when test="ptype = 1">[出售] </xsl:when>
+                                            <xsl:otherwise>[求购] </xsl:otherwise>
+                                        </xsl:choose>
 										<xsl:value-of select="pname"/>
 									</span>
 									<span class="commentsNum"></span>

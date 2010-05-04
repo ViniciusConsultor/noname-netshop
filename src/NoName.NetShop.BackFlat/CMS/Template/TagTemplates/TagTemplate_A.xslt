@@ -26,7 +26,7 @@
 				<ul class="newsNavigator">
 					<xsl:for-each select="/tag/category">
 						<li>
-							<a href="/list-{categoryid}.html">
+							<a href="/newslist-{categoryid}.html">
 								<xsl:value-of select="categoryname"/>
 							</a>
 						</li>
