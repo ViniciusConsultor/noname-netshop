@@ -29,7 +29,7 @@ namespace NoName.NetShop.ForeFlat.member
                     spage.PageSize = 20;
                     spage.PageIndex = 1;
                     spage.OrderType = "1";
-                    spage.StrWhere = String.Empty;
+                    spage.StrWhere = "userId='" + CurrentUser.UserId + "'";
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
             }

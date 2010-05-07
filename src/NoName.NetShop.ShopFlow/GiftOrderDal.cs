@@ -121,6 +121,7 @@ namespace NoName.NetShop.ShopFlow
             strSql.Append("update spGiftOrder set changetime=getdate(),orderStatus=@ostatus from spGiftOrder ");
             strSql.Append(" where OrderId=@OrderId ");
 
+
             DbCommand dbCommand = db.GetSqlStringCommand(strSql.ToString());
             db.AddInParameter(dbCommand, "OrderId", DbType.AnsiString, orderId);
             db.AddInParameter(dbCommand, "ostatus", DbType.Int16, (int)ostatus);

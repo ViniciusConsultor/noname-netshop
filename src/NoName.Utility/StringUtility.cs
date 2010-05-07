@@ -179,6 +179,26 @@ namespace NoName.Utility
             return System.Text.RegularExpressions.Regex.Replace(HTMLStr, "<[^>]*>", "");
         }
 
+        public static string ByteToHex(byte[] byteArray)
+        {
+            string outString = "";
+
+            foreach (Byte b in byteArray)
+                outString += b.ToString("X2");
+            return outString;
+        }
+
+        //
+        // HexToByte
+        //    Converts a hexadecimal string to a byte array.
+        //
+        public static byte[] HexToByte(string hexString)
+        {
+            byte[] returnBytes = new byte[hexString.Length / 2];
+            for (int i = 0; i < returnBytes.Length; i++)
+                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            return returnBytes;
+        }
 
     }
 }

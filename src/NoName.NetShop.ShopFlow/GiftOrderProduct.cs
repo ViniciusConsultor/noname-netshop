@@ -5,6 +5,7 @@ using System.Text;
 using NoName.NetShop.Common;
 using System.Data.Common;
 using System.Data;
+using System.Configuration;
 
 namespace NoName.NetShop.ShopFlow
 {
@@ -61,7 +62,7 @@ namespace NoName.NetShop.ShopFlow
             GiftOrderProduct op = new GiftOrderProduct();
             op.ProductID = Convert.ToInt32(reader["productId"]);
             op.ProductName = reader["productName"].ToString();
-            op.ProductUrl = String.Empty;
+            op.ProductUrl = ConfigurationManager.AppSettings["foreFlatRootUrl"] + "/gift/GiftDetail.aspx?productId=" + op.ProductID;
             op.ProductImg = reader["SmallImage"].ToString();
             op.CatePath = String.Empty;
             op.TradePrice = 0m;

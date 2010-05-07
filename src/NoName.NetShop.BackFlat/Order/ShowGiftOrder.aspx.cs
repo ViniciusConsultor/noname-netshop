@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.ShopFlow;
+using NoName.NetShop.Member;
 
 namespace NoName.NetShop.BackFlat.Order
 {
@@ -146,6 +147,8 @@ namespace NoName.NetShop.BackFlat.Order
                 obll.ChangeOrderStatus(order.OrderId, OrderStatus.交易失败);
                 lbll.Add(order.OrderId, txtActionRemark.Text.Trim(), OrderStatus.交易失败.ToString(),
                     Context.User.Identity.Name);
+
+                MemberInfo.LogScore(order.UserId, NoName.NetShop.Common.ScoreType.Gift, order.TotalScore, order.OrderId, "订单失败，归还积分");
             }
             ShowOrderInfo(lblOrderId.Text);
         }

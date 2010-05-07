@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.Common", "No
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.SearchIndex", "NoName.NetShop.SearchIndex\NoName.NetShop.SearchIndex.csproj", "{9174CA78-8C26-4EC9-B327-F8A4D9D66495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.Manager", "NoName.NetShop.Manager\NoName.NetShop.Manager.csproj", "{1C730CBD-A281-42BF-88C8-A62A95075CAA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.Member", "NoName.NetShop.Member\NoName.NetShop.Member.csproj", "{94CA0650-A9A9-4778-A74A-6516D36A4D19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.ForeFlat", "NoName.NetShop.ForeFlat\NoName.NetShop.ForeFlat.csproj", "{6173CE29-5A4A-4E5B-B471-8F54D84560D0}"
@@ -31,13 +29,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.Comment", "N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.IMMessage", "NoName.NetShop.IMMessage\NoName.NetShop.IMMessage.csproj", "{44BE5878-2751-44BE-872F-3033F560324A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.Controls", "NoName.Controls\NoName.Controls.csproj", "{F5BD6203-B38C-4738-BD2E-0C4468796D51}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.QuestionAnswer", "NoName.NetShop.QuestionAnswer\NoName.NetShop.QuestionAnswer.csproj", "{85B7038B-2BD7-4703-8060-7C05C7C05280}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.Vote", "NoName.NetShop.Vote\NoName.NetShop.Vote.csproj", "{041966F9-B3F1-4A07-8501-5EF8B650EAFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.Solution", "NoName.NetShop.Solution\NoName.NetShop.Solution.csproj", "{FC5D2F43-5581-4456-BFE2-BEB12B83DBCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.Search", "NoName.NetShop.Search\NoName.NetShop.Search.csproj", "{64669ACC-13C6-4F64-A7EF-D2137419BB93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.Publish", "NoName.NetShop.Publish\NoName.NetShop.Publish.csproj", "{352B33B7-FF04-4D6D-8C39-7CD9BA973671}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoName.NetShop.CommonAliPay", "NoName.NetShop.CommonAliPay\NoName.NetShop.CommonAliPay.csproj", "{DC0C57F8-B5FB-4201-ABD9-4AED54BA3DD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +73,6 @@ Global
 		{9174CA78-8C26-4EC9-B327-F8A4D9D66495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9174CA78-8C26-4EC9-B327-F8A4D9D66495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9174CA78-8C26-4EC9-B327-F8A4D9D66495}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C730CBD-A281-42BF-88C8-A62A95075CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C730CBD-A281-42BF-88C8-A62A95075CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C730CBD-A281-42BF-88C8-A62A95075CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C730CBD-A281-42BF-88C8-A62A95075CAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94CA0650-A9A9-4778-A74A-6516D36A4D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94CA0650-A9A9-4778-A74A-6516D36A4D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94CA0650-A9A9-4778-A74A-6516D36A4D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -105,14 +101,6 @@ Global
 		{44BE5878-2751-44BE-872F-3033F560324A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44BE5878-2751-44BE-872F-3033F560324A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44BE5878-2751-44BE-872F-3033F560324A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5BD6203-B38C-4738-BD2E-0C4468796D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5BD6203-B38C-4738-BD2E-0C4468796D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5BD6203-B38C-4738-BD2E-0C4468796D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5BD6203-B38C-4738-BD2E-0C4468796D51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85B7038B-2BD7-4703-8060-7C05C7C05280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85B7038B-2BD7-4703-8060-7C05C7C05280}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85B7038B-2BD7-4703-8060-7C05C7C05280}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85B7038B-2BD7-4703-8060-7C05C7C05280}.Release|Any CPU.Build.0 = Release|Any CPU
 		{041966F9-B3F1-4A07-8501-5EF8B650EAFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{041966F9-B3F1-4A07-8501-5EF8B650EAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{041966F9-B3F1-4A07-8501-5EF8B650EAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -121,6 +109,18 @@ Global
 		{FC5D2F43-5581-4456-BFE2-BEB12B83DBCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC5D2F43-5581-4456-BFE2-BEB12B83DBCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC5D2F43-5581-4456-BFE2-BEB12B83DBCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64669ACC-13C6-4F64-A7EF-D2137419BB93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64669ACC-13C6-4F64-A7EF-D2137419BB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64669ACC-13C6-4F64-A7EF-D2137419BB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64669ACC-13C6-4F64-A7EF-D2137419BB93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352B33B7-FF04-4D6D-8C39-7CD9BA973671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352B33B7-FF04-4D6D-8C39-7CD9BA973671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352B33B7-FF04-4D6D-8C39-7CD9BA973671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352B33B7-FF04-4D6D-8C39-7CD9BA973671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC0C57F8-B5FB-4201-ABD9-4AED54BA3DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0C57F8-B5FB-4201-ABD9-4AED54BA3DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC0C57F8-B5FB-4201-ABD9-4AED54BA3DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0C57F8-B5FB-4201-ABD9-4AED54BA3DD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

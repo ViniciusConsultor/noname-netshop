@@ -176,6 +176,14 @@ namespace NoName.NetShop.ShopFlow
             set { _addressdetial = value; }
             get { return _addressdetial; }
         }
+
+        public string FullAddress
+        {
+            get
+            {
+                return String.Format("{0}{1}{2}{3}", _recieverprovince, _recievercity, _recievercounty, _addressdetial);
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -279,7 +287,8 @@ namespace NoName.NetShop.ShopFlow
             set { _isTotalFeeAdjust = value; }
             get { return _isTotalFeeAdjust; }
         }
-        
+
+      
         #endregion Model
 
     }

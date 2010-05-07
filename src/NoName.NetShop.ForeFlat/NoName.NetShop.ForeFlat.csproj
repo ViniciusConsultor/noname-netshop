@@ -171,6 +171,10 @@
       <DependentUpon>CommentHandler.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Handler\NewsHandler.ashx.cs">
+      <DependentUpon>NewsHandler.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Handler\SolutionHandler.ashx.cs">
       <DependentUpon>SolutionHandler.ashx</DependentUpon>
     </Compile>
@@ -811,6 +815,10 @@
       <Project>{94CA0650-A9A9-4778-A74A-6516D36A4D19}</Project>
       <Name>NoName.NetShop.Member</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NoName.NetShop.News\NoName.NetShop.News.csproj">
+      <Project>{6B1F4013-2FBB-4521-A36E-A0247FE0ED92}</Project>
+      <Name>NoName.NetShop.News</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NoName.NetShop.Product\NoName.NetShop.Product.csproj">
       <Project>{9D56D4A2-A88C-4354-AABB-02F33E688238}</Project>
       <Name>NoName.NetShop.Product</Name>
@@ -940,10 +948,14 @@
     <Content Include="Handler\CommentHandler.ashx" />
     <None Include="flash\customize_assets\1\projector.fla" />
     <Content Include="Handler\SolutionHandler.ashx" />
+    <Content Include="Handler\NewsHandler.ashx" />
     <None Include="images\Thumbs.db" />
     <None Include="Search\index\product\segments.gen" />
     <None Include="Search\index\product\segments_3" />
     <None Include="Search\index\product\_0.cfs" />
+    <Content Include="help\delivering.shtml" />
+    <Content Include="help\FAQ.shtml" />
+    <Content Include="help\purchase.shtml" />
     <Content Include="js\AC_RunActiveContent.js" />
     <Content Include="js\cookie.js" />
     <Content Include="js\customizeHome.js" />

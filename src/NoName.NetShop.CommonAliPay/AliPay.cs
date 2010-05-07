@@ -462,13 +462,16 @@ namespace NoName.NetShop.CommonAliPay
             if (VerifyNotify(verifyUrl, verify))  //验证成功
             {
                 NotifyEventArgs dn = new NotifyEventArgs();
-                dn = ParseNotify(page.Request.Form, dn);//构造事件参数
-                SortedList<string, string> sortedList = GetParam(dn);
+                dn = ParseNotify(GetReqParas(page), dn);//构造事件参数
+
+
+                //SortedList<string, string> sortedList = GetParam(dn);
+                SortedList<string, string> sortedList = GetParamFromReqPara(GetReqParas(page));
+
                 string param = GetUrlParam(sortedList, false);
 #if (DEBUG)
                 Log4net.log.Error(param + "param");
 #endif
-
 
                 string sign = GetMd5Sign(encode, param + key);
                 if (sign == dn.Sign)//验证签名
@@ -530,6 +533,9 @@ namespace NoName.NetShop.CommonAliPay
 
                     page.Response.Write("fail");
                     throw new CommonAliPayBaseException("支付宝通知签名验证失败", 102);
+ #if (DEBUG)
+                    Log4net.log.Error("支付宝通知签名验证失败");
+#endif
                 }
 
             }
@@ -545,6 +551,19 @@ namespace NoName.NetShop.CommonAliPay
 
         #endregion
         #region private
+        private NameValueCollection GetReqParas(Page page)
+        {
+
+            if (page.Request.RequestType == "GET")
+            {
+                return page.Request.QueryString;
+            }
+            else
+            {
+                return page.Request.Form;
+            }
+        }
+
         /// <summary>
         /// 通知验证接口
         /// </summary>
@@ -583,9 +602,7 @@ namespace NoName.NetShop.CommonAliPay
                 {
                     if (pi.PropertyType == typeof(string))
                     {
-
                         pi.SetValue(obj, v, null);
-
                     }
                     else if (pi.PropertyType == typeof(int?))
                     {
@@ -650,7 +667,6 @@ namespace NoName.NetShop.CommonAliPay
             SortedList<string, string> sortedList = new SortedList<string, string>(StringComparer.CurrentCultureIgnoreCase);
             foreach (PropertyInfo pi in propertyInfos)
             {
-
                 if (pi.GetValue(obj, null) != null)
                 {
                     if (pi.Name == "Sign" || pi.Name == "Sign_Type")
@@ -658,34 +674,25 @@ namespace NoName.NetShop.CommonAliPay
                         continue;
                     }
                     sortedList.Add(pi.Name.ToLower(), pi.GetValue(obj, null).ToString());
-
                 }
             }
             return sortedList;
-/*/https://www.alipay.com/cooperate/gateway.do?
-            _input_charset
-             body
-            logistics_fee
-                logistics_fee_ 
- * logistics_payment= 
- * logistics_payment_1
- * logistics_type
- * logistics_type_1
- * notify_url
- * out_trade_no=10012203000001
- * partner=2088202913438402
- * payment_type
- * price
- * &quantity=1
- * &return_url=http%3a%2f%2fdingding.uncc.cn%2falipay%2fShowPayReturn.aspx
- * &seller_email=dingding360%40yahoo.cn
- * &service=trade_create_by_buyer
- * &show_url=http%3a%2f%2fdingding.uncc.cn%2f
- * &subject=test+product&sign=2235faf7ce3423bacc915e1494283e7f
- * &sign_type=MD5
- */
         }
 
+        private SortedList<string, string> GetParamFromReqPara(NameValueCollection nv)
+        {
+
+            SortedList<string, string> sortedList = new SortedList<string, string>(StringComparer.CurrentCultureIgnoreCase);
+            foreach (string key in nv.AllKeys)
+            {
+                if (key.ToLower() == "sign" || key.ToLower() == "sign_type")
+                {
+                    continue;
+                }
+                sortedList.Add(key, nv[key]);
+            }
+            return sortedList;
+        }
 
 
         /// <summary>
@@ -697,8 +704,10 @@ namespace NoName.NetShop.CommonAliPay
 
         private string GetUrlParam(SortedList<string, string> sortedList, bool isEncode)
         {
+
             StringBuilder param = new StringBuilder();
             StringBuilder encodeParam = new StringBuilder();
+            
             if (isEncode == false)
             {
 

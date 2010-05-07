@@ -126,13 +126,8 @@ public partial class Alipay_Notify : System.Web.UI.Page
 
         // Get names of all forms into a string array.
         String[] requestarr = coll.AllKeys;
- 
-       
-
-        //进行排序；
-        string[] Sortedstr = BubbleSort(requestarr);
-
-      
+         //进行排序；
+       string[] Sortedstr = BubbleSort(requestarr);
 
         //构造待md5摘要字符串 ；
         string prestr = "";
@@ -149,13 +144,10 @@ public partial class Alipay_Notify : System.Web.UI.Page
                     prestr = prestr + Sortedstr[i] + "=" + Request.Form[Sortedstr[i]] + "&";
                 }
             }
-
         }
         prestr = prestr + key;
 
         string mysign = GetMD5(prestr);
-
-
         string sign = Request.Form["sign"];
        
 
