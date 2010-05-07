@@ -20,7 +20,7 @@ namespace NoName.NetShop.BackFlat.Brand
             get { if (ViewState["SearchCondition"] != null) return ViewState["SearchCondition"].ToString(); else return String.Empty; }
             set { ViewState["SearchCondition"] = value; }
         }
-        private int InitialPageIndex
+        public int InitialPageIndex
         {
             get { if (ViewState["InitialPageIndex"] != null) return Convert.ToInt32(ViewState["InitialPageIndex"]); else return 1; }
             set { ViewState["InitialPageIndex"] = value; }
@@ -45,12 +45,14 @@ namespace NoName.NetShop.BackFlat.Brand
             GridView1.DataSource = dt;
             GridView1.DataBind();
             AspNetPager.RecordCount = RecordCount;
+            AspNetPager.CurrentPageIndex = PageIndex;
         }
 
         protected void AspNetPager_PageChanged(object src, PageChangedEventArgs e)
         {
             AspNetPager.CurrentPageIndex = e.NewPageIndex;
-            BindData(AspNetPager.CurrentPageIndex);
+            InitialPageIndex = AspNetPager.CurrentPageIndex;
+            BindData(InitialPageIndex);
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
