@@ -70,8 +70,8 @@
 
 
 ul.newsNavigator{ margin:0; padding:0}
-ul.newsNavigator li{ list-style-type:none; float:left; width:100%}
-ul.newsNavigator li a{ height:20px; padding:5px 0 0 22px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
+ul.newsNavigator li{ list-style-type:none; float:left; width:100%;cursor:pointer;}
+ul.newsNavigator li a{ height:20px; padding:5px 0 0 22px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x;cursor:pointer;}
 ul.newsNavigator li a:hover{ background-position:0 -1898px;}
 ul.newsNavigator li a span{ height:25px; display:block; clear:both; }
 
