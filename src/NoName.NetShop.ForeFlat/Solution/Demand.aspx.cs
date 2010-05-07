@@ -22,7 +22,7 @@ namespace NoName.NetShop.ForeFlat.Solution
         {
             if (CurrentUser == null)
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/Login.aspx?returnurl=" + Server.UrlPathEncode(Request.RawUrl));
             }
         }
 

@@ -8,6 +8,7 @@ using NoName.NetShop.Solution.Model;
 using NoName.NetShop.Solution.BLL;
 using System.Data;
 using NoName.NetShop.Product.Facade;
+using NoName.Utility;
 
 namespace NoName.NetShop.ForeFlat.Solution
 {
@@ -61,6 +62,13 @@ namespace NoName.NetShop.ForeFlat.Solution
         protected void Button_Buy_Click(object sender, EventArgs e)
         {
             DataTable dt = bll.GetList(SuiteID);
+
+            if (dt.Rows.Count <= 0)
+            {
+                MessageBox.Show(this,"该套装下尚无商品，暂时无法购买！");
+                return;
+            }
+
             string productIDs = String.Empty;
             foreach (DataRow row in dt.Rows) productIDs += row["productid"].ToString() + ",";
 
