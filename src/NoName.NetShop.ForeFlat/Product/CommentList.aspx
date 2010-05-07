@@ -62,7 +62,7 @@
                                                 <div class="userInfo">
                                                     <span class="user"><%# Eval("userid") %></span>
                                                     <span></span>
-                                                    <span class="date"><%# Convert.ToDateTime(Eval("createtime")).ToString("yyyy-MM-dd") %></span>
+                                                    <span class="date"> <%# Convert.ToDateTime(Eval("createtime")).ToString("yyyy-MM-dd") %> </span>
                                                 </div>
                                                 <div class="commentContent">
                                                     <%# Eval("content") %>
