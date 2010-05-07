@@ -24,13 +24,14 @@ namespace NoName.NetShop.ForeFlat.alipay
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            log.Info(Request.Url.AbsoluteUri);
             LogRequestInfo(this.ReqParas);
 
             string key = AlipaySetting.Key; //填写自己的key
             string partner = AlipaySetting.Partner;//填写自己的Partner
 
             AliPay ap = new AliPay();
-            string notifyid = Request.Form["notify_id"];
+            string notifyid = ReqParas["notify_id"];
             Verify v = new Verify("notify_verify", partner, notifyid);
             ap.TradeClosed += new AliPay.ProcessNotifyEventHandler(ap_TradeClosed);
             ap.TradeFinished += new AliPay.ProcessNotifyEventHandler(ap_TradeFinished);
@@ -53,6 +54,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_WaitSellerAgree(object sender, NotifyEventArgs e)
         {
+            log.Info("买家申请退款，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -67,6 +69,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_RefundSuccess(object sender, NotifyEventArgs e)
         {
+            log.Info("退款成功，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -81,6 +84,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_RefundClose(object sender, NotifyEventArgs e)
         {
+            log.Info("退款关闭，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -96,6 +100,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_ModifyTradeBaseTotalFee(object sender, NotifyEventArgs e)
         {
+            log.Info("修改交易价格，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -115,6 +120,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_WaitSysPaySeller(object sender, NotifyEventArgs e)
         {
+            log.Info("买家确认收到货，等待支付宝打款给卖家，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -130,6 +136,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_WaitSysConfirmPay(object sender, NotifyEventArgs e)
         {
+            log.Info("确认买家付款中，请勿操作，订单号为：" + e.Out_Trade_No);
         }
         /// <summary>
         /// 交易已创建，等待卖家确认
@@ -138,6 +145,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_WaitSellerConfirmTrade(object sender, NotifyEventArgs e)
         {
+            log.Info("交易已创建，等待卖家确认，订单号为：" + e.Out_Trade_No);
         }
         /// <summary>
         /// 等待买家确认收货中
@@ -146,6 +154,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_WaitBuyerConfirmGoods(object sender, NotifyEventArgs e)
         {
+            log.Info("等待买家确认收货中，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -161,6 +170,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_TradeFinished(object sender, NotifyEventArgs e)
         {
+            log.Info("交易成功结束，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -177,6 +187,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_TradeClosed(object sender, NotifyEventArgs e)
         {
+            log.Info("交易中途关闭（未完成），订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -192,6 +203,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         void ap_WaitBuyerPay(object sender, NotifyEventArgs e)
         {
+            log.Info("交易创建，等待买家付款，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
@@ -209,6 +221,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         private void ap_WaitSellerSendGoods(object sender, NotifyEventArgs e)
         {
+            log.Info("买家付款成功，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {

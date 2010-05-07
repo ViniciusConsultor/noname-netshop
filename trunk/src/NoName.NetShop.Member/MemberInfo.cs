@@ -7,6 +7,7 @@ using System.Data.Common;
 using System.Data;
 using NoName.NetShop.Common;
 using System.Web.Security;
+using System.Data.SqlTypes;
 
 namespace NoName.NetShop.Member
 {
@@ -25,6 +26,9 @@ namespace NoName.NetShop.Member
         public MemberType UserType{get;set;}
         public MemberStatus Status{get;set;}
         public UserLevel UserLevel { get; set; }
+        public Guid SecKey { get; set; }
+        public string SecPassword { get; set; }
+
 
         /// <summary>
         /// 记录用户的积分消费记录
@@ -146,6 +150,9 @@ namespace NoName.NetShop.Member
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetStoredProcCommand("UP_umMember_ADD");
             string md5pass = FormsAuthentication.HashPasswordForStoringInConfigFile(Password, "MD5");
+            string key = System.Configuration.ConfigurationManager.AppSettings["usersec"];
+            string secpass = NoName.Utility.TripleDesUtil.EncryptString(Password,key);
+
             db.AddInParameter(dbCommand, "userId", DbType.String, UserId);
             db.AddInParameter(dbCommand, "userName", DbType.AnsiString, UserName);
             db.AddInParameter(dbCommand, "UserEmail", DbType.AnsiString, UserEmail);
@@ -156,6 +163,8 @@ namespace NoName.NetShop.Member
             db.AddInParameter(dbCommand, "status", DbType.Byte, (int)Status);
             db.AddInParameter(dbCommand,"@LoginIp",DbType.String,LoginIp);
             db.AddInParameter(dbCommand, "@UserLevel", DbType.Int32, (int)UserLevel);
+            db.AddInParameter(dbCommand, "SecPassword",DbType.String,SecPassword);
+
             db.AddParameter(dbCommand, "returnvalue", DbType.Int32, ParameterDirection.ReturnValue, null, DataRowVersion.Default, null);
             db.ExecuteNonQuery(dbCommand);
             int retval = (int)db.GetParameterValue(dbCommand, "returnvalue");
@@ -192,14 +201,17 @@ namespace NoName.NetShop.Member
 
         public static bool ChangePassword(string userId, string oldpass, string newpass)
         {
-            string md5old = FormsAuthentication.HashPasswordForStoringInConfigFile(oldpass, "MD5"); ;
-            string md5new = FormsAuthentication.HashPasswordForStoringInConfigFile(newpass, "MD5"); ;
-            string sql = "update umMember set password=@newpass,modifytime=getdate() from umMember where userId=@userId and password=@oldpass";
+            string md5old = FormsAuthentication.HashPasswordForStoringInConfigFile(oldpass, "MD5"); 
+            string md5new = FormsAuthentication.HashPasswordForStoringInConfigFile(newpass, "MD5");
+            string key = System.Configuration.ConfigurationManager.AppSettings["usersec"];
+            string secpass = NoName.Utility.TripleDesUtil.EncryptString(newpass, key);
+            string sql = "update umMember set password=@newpass,modifytime=getdate(),secpassword=@secpassword from umMember where userId=@userId and password=@oldpass";
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "oldpass", DbType.String, md5old);
             db.AddInParameter(dbCommand, "newpass", DbType.String, md5new);
+            db.AddInParameter(dbCommand, "secpassword", DbType.String, secpass);
             int result = db.ExecuteNonQuery(dbCommand);
             return (result == 1);
         }
@@ -207,13 +219,39 @@ namespace NoName.NetShop.Member
         public static bool ResetPassword(string userId, string newpass)
         {
             string md5str = FormsAuthentication.HashPasswordForStoringInConfigFile(newpass, "MD5");
-            string sql = "update umMember set password=@newpass from umMember where userId=@userId";
+            string key = System.Configuration.ConfigurationManager.AppSettings["usersec"];
+            string secpass = NoName.Utility.TripleDesUtil.EncryptString(newpass, key);
+
+
+            string sql = "update umMember set password=@newpass,secpassword=@secpassword,modifytime=getdate() from umMember where userId=@userId";
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "userId", DbType.String, userId);
             db.AddInParameter(dbCommand, "newpass", DbType.String, md5str);
+            db.AddInParameter(dbCommand, "secpassword", DbType.String, secpass);
             int result = db.ExecuteNonQuery(dbCommand);
             return result == 1;
+        }
+
+        public static string GetPassword(string userId, string email)
+        {
+            string key = System.Configuration.ConfigurationManager.AppSettings["usersec"];
+            string sql = "select secpassword from umMember where userId=@userId and  userEmail=@userEmail";
+            Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "userId", DbType.String, userId);
+            db.AddInParameter(dbCommand, "userEmail", DbType.String, email);
+            object obj = db.ExecuteScalar(dbCommand);
+            string result = String.Empty;
+            if (obj != DBNull.Value && obj.ToString() != "")
+            {
+                result = NoName.Utility.TripleDesUtil.DecryptString(obj.ToString(), key);
+            }
+            else
+            {
+                throw new ShopException("获取密码失败");
+            }
+            return result;
         }
 
         public static bool SetStatus(string userId, MemberStatus status)
@@ -327,7 +365,10 @@ namespace NoName.NetShop.Member
             if (ojb != null && ojb != DBNull.Value)
             {
                 model.UserLevel = (UserLevel)(Convert.ToInt32(ojb));
-            } return model;
+            }
+            model.SecPassword = dataReader["SecPassword"].ToString();
+           
+            return model;
         }
 
         /// <summary>

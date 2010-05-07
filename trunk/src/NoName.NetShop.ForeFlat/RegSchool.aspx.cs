@@ -66,11 +66,28 @@ namespace NoName.NetShop.ForeFlat
                     panReg.Visible = false;
                     panRegOk.Visible = true;
 
-                    lblResult.Text = "亲爱的" + userName + "，您已成功注册鼎校会员，会员资格会在审核后以邮件的方式进行通知。";
+                    ClientAlert("亲爱的" + userName + "，您已成功注册鼎鼎会员，欢迎继续进行其他操作");
+
+                    string userData = String.Format("{0}:{1}:{2}:{3}:{4}", memberModel.UserEmail, memberModel.UserName, (int)memberModel.Status, (int)memberModel.UserType, (int)memberModel.UserLevel);
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
+                      userId,
+                      DateTime.Now,
+                      DateTime.Now.AddMinutes(30), true,
+                      userData,
+                      FormsAuthentication.FormsCookiePath);
+
+                    string encTicket = FormsAuthentication.Encrypt(ticket);
+
+                    Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
 
                     if (!String.IsNullOrEmpty(Request.QueryString["returnUrl"]))
                     {
-                        Response.AddHeader("REFRESH", "3;URL='" + Request.QueryString["returnUrl"] + "'");
+                        //Response.AddHeader("REFRESH", "3;URL='" + Request.QueryString["returnUrl"] + "'");
+                        Response.Redirect(Request.QueryString["returnUrl"], true);
+                    }
+                    else
+                    {
+                        Response.Redirect("~/member/myProfile.aspx", true);
                     }
                 }
                 else

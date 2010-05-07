@@ -581,3 +581,9 @@ namespace NoName.NetShop.CommonAliPay
 
 	#endregion
 }
+
+//discount=0.00
+//&notify_time=2010-05-07 17:55:03
+//&seller_id=2088202913438402
+//&sign_type=MD5
+//&sign=e4474ae4089d0f331f96bfc3d91eed9d

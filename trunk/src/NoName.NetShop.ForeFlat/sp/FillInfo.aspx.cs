@@ -69,7 +69,7 @@ namespace NoName.NetShop.ForeFlat.sp
                 string isNeedInvoce = ReqParas["invoice"].Trim();
                 if (isNeedInvoce == "1")
                 {
-                    CurrentShopCart.Invoice = "invoiceTitle";
+                    CurrentShopCart.Invoice = ReqParas["invoiceTitle"].Trim();
                 }
                 else
                 {
