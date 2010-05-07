@@ -102,6 +102,10 @@
             result = false;
             inform($('#<%=txtKeywords.ClientID %>'), '请输入关键字');
         }        
+        if($('#<%= txtNewsID.ClientID %>').val() != '' && !$('#<%= txtNewsID.ClientID %>').val().isInteger()){
+            result = false;
+            inform($('#<%=txtNewsID.ClientID %>'), '请输入正确的新闻评测ID');
+        }
         if ($('#<%= txtWeight.ClientID %>').val() == '' || !$('#<% =txtWeight.ClientID %>').val().isCurrency()) {
             result = false;
             inform($('#<%=txtWeight.ClientID %>'), '请输入正确的重量');            
