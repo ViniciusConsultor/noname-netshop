@@ -138,8 +138,8 @@ function initialize() {
                 var rowStyle = i % 2 != 0 ? 'odd' : 'even';
 
                 html1.append('  <tr class="' + rowStyle + '" fatherid="' + n.categoryid + '" categoryid="' + (n.subcates.length > 0 ? n.subcates[0].categoryid : 0) + '">');
-                html1.append('      <td' + (n.subcates.length > 0 ? ' rowspan="' + n.subcates.length + '"' : '') + '>' + n.categoryname + '</td>');
-                html1.append('      <td>' + (n.subcates.length > 0 ? n.subcates[0].categoryname : '') + '</td>');
+                html1.append('      <td' + (n.subcates.length > 0 ? ' rowspan="' + n.subcates.length + '"' : ' style="border-right:0"') + '>' + n.categoryname + '</td>');
+                html1.append('      <td ' + (n.subcates.length > 0 ? '' : 'style="border-left:0;"') + '>' + (n.subcates.length > 0 ? n.subcates[0].categoryname : '') + '</td>');
                 html1.append('      <td></td>');
                 html1.append('      <td></td>');
                 html1.append('      <td></td>');
@@ -208,18 +208,20 @@ function showBrandInfo(fatherCategoryID, categoryID) {
         cache: false,
         dataType: 'json',
         async: false,
-        beforeSend: function() {  },
-        error: function() {  },
+        beforeSend: function() { },
+        error: function() { },
         success: function(data) {
+        var script = '品牌：<select id="brand">';
+            
             $.each(data, function(i, n) {
-                var script = '品牌：<select id="brand">';
                 script += '<option value="' + n.brandid + '">' + n.brandname + '</option>';
-                script += '</select>';
-                $('#brand-list').html(script);
+            });
+            
+            script += '</select>';
+            $('#brand-list').html(script);
 
-                $('#brand').change(function() {
-                    showSearchedProduct(categoryID, fatherCategoryID, $(this).val(), '', 1);
-                });
+            $('#brand').change(function() {
+                showSearchedProduct(categoryID, fatherCategoryID, $(this).val(), '', 1);
             });
         }
     })
