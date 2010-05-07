@@ -229,7 +229,7 @@ namespace NoName.NetShop.BackFlat.Product
             int TempNewsID = 0;
             if (!String.IsNullOrEmpty(txtNewsID.Text) && !int.TryParse(txtNewsID.Text, out TempNewsID))
             {
-                strErr += "关联资讯ID输入有误";
+                strErr += "关联资讯ID输入有误！\\n";
             }
 
             if (strErr != "")
