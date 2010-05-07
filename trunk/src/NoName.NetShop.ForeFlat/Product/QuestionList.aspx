@@ -58,12 +58,12 @@
                                         <div class="question">
                                             <span class="user"><%# Eval("userid") %>：</span>
                                             <span><%# Eval("content") %></span>
-                                            <span class="date"><%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %></span>
+                                            <span class="date"> <%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %> </span>
                                         </div>
                                         <div class="answer" style='<%# Eval("answercontent").ToString()==""?"display:none":"display:block" %>'>
                                             <span class="answerer">鼎视回答：</span>
                                             <span><%# Eval("answercontent") %></span>
-                                            <span class="date"><%# Eval("answertime").ToString()==""?"":Convert.ToDateTime(Eval("answertime")).ToString("yyyy-MM-dd")%></span>
+                                            <span class="date"> <%# Eval("answertime").ToString()==""?"":Convert.ToDateTime(Eval("answertime")).ToString("yyyy-MM-dd")%> </span>
                                         </div>
                                     </li>
                                 </ItemTemplate>
