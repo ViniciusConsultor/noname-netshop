@@ -40,8 +40,23 @@ function resetComponents(){
 
 function expandGroup(obj){
 	for(var i=0;i<obj.parentNode.parentNode.getElementsByTagName("div").length;i++){
-		//alert(obj.parentNode.parentNode.getElementsByTagName("div")[i].className)
-		obj.parentNode.parentNode.getElementsByTagName("div")[i].className=obj.parentNode.parentNode.getElementsByTagName("div")[i].className.replace("expanded","collapsed")
+		obj.parentNode.parentNode.getElementsByTagName("div")[i].className=obj.parentNode.parentNode.getElementsByTagName("div")[i].className.replace("expanded","collapsed");
 	}
 	obj.parentNode.className=obj.parentNode.className.replace("collapsed","expanded");
+}
+
+function loadDefaultSuite(){
+	var defaultId = getQueryString("defaultSolution")?getQueryString("defaultSolution"):0;
+	if(!document.getElementById("suite"+defaultId)){
+		defaultId = "0";
+	}
+	var currentBox = document.getElementById("suite"+defaultId).parentNode.parentNode.parentNode.parentNode;
+	expandGroup(getElementsByClassName(currentBox,"title")[0]);
+	selectSuite(document.getElementById("suite"+defaultId),defaultId);
+}
+
+function getQueryString(name){ 
+	var reg = new RegExp("(^|\\?|&)"+ name +"=([^&]*)(\\s|&|$)", "i");
+	if (reg.test(location.href)) return unescape(RegExp.$2.replace(/\+/g, " "));
+	return "";
 }
