@@ -17,6 +17,8 @@
 <link href="../css/themes/base/ui.all.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery-1.3.min.js" type="text/javascript"></script>
 <script src="../js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+<script src="../js/date.js" type="text/javascript"></script>
+    
 <div id="dialog" title="站内信" style="display:none">
 	<p>
 	</p>
@@ -31,7 +33,10 @@
             dataType: "json",
             success: function(data) {
                 if (data) {
-                    var msg = "<div>" + data.Subject + "（发送时间：" + data.InsertTime + "）</div>";
+                    var inserttime = eval('new' + data.InsertTime.replace(/\//g, ' '));
+                    datastr = inserttime.pattern('yyyy-MM-dd HH:mm');
+
+                    var msg = "<div>" + data.Subject + "（发送时间：" + datastr + "）</div>";
                     msg += "<div>" + data.Content + "</div>";
                     $("#dialog").find("p").html(msg);
                     $("#dialog").dialog({ autoOpen: false }).dialog("open");
