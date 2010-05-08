@@ -67,6 +67,7 @@ namespace NoName.NetShop.ForeFlat
                     panRegOk.Visible = true;
 
                     ClientAlert("亲爱的" + userName + "，您已成功注册鼎鼎会员，欢迎继续进行其他操作");
+                    IMMessage.NotifyHelper.SendMessage(userId, "欢迎您注册为鼎鼎会员", "欢迎您注册为鼎鼎会员");
 
                     string userData = String.Format("{0}:{1}:{2}:{3}:{4}", memberModel.UserEmail, memberModel.UserName, (int)memberModel.Status, (int)memberModel.UserType, (int)memberModel.UserLevel);
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,

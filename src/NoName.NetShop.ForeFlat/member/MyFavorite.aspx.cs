@@ -48,7 +48,7 @@ namespace NoName.NetShop.ForeFlat.member
             DataSet ds = NoName.NetShop.Common.CommDataHelper.GetDataFromMultiTablesByPage(SearPageInfo);
             rpList.DataSource = ds.Tables[0];
             rpList.DataBind();
-            pageNav.CurrentPageIndex = SearPageInfo.PageIndex - 1;
+            pageNav.CurrentPageIndex = SearPageInfo.PageIndex;
             pageNav.PageSize = SearPageInfo.PageSize;
             pageNav.RecordCount = SearPageInfo.TotalItem;
 

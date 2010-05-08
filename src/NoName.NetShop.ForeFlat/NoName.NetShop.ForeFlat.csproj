@@ -960,6 +960,7 @@
     <Content Include="js\cookie.js" />
     <Content Include="js\customizeHome.js" />
     <Content Include="js\hashtable.js" />
+    <Content Include="js\jquery-1.3.min.js" />
     <Content Include="js\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="js\list.js" />
     <Content Include="js\magicworld.auction.js" />

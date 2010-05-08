@@ -45,7 +45,8 @@ namespace NoName.NetShop.ForeFlat.sp
             }
             else
             {
-                Response.Write("此商品暂时无法购买!");
+                string script = "<script type='text/javascript'>alert('此商品暂时无法购买');window.go(-1);</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "clientAlert", script);
             }
 
         }
