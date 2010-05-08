@@ -301,7 +301,7 @@ namespace NoName.NetShop.Member
         {
             string sql = @" select top 1 o.orderid from spOrder o
                                 inner join sporderitem oi on o.orderid=oi.orderid
-                            where userid=@userid and oi.productid=@productid and o.paystatus=3";
+                            where userid=@userid and oi.productid=@productid and o.paystatus=1";
 
             Database db = NoName.NetShop.Common.CommDataAccess.DbReader;
 
