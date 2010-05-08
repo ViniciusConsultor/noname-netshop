@@ -150,6 +150,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gift\GiftDetail.aspx.cs">
       <DependentUpon>GiftDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -938,6 +945,7 @@
     <Content Include="css\themes\ui-lightness\ui.slider.css" />
     <Content Include="css\themes\ui-lightness\ui.tabs.css" />
     <Content Include="css\themes\ui-lightness\ui.theme.css" />
+    <Content Include="Error.aspx" />
     <Content Include="flash\ComponentList.xml" />
     <Content Include="flash\CustomizeSuite.swf" />
     <Content Include="flash\customize_assets\1\amplifier.png" />

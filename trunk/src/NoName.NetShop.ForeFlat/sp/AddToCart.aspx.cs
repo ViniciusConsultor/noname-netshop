@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using NoName.NetShop.ShopFlow;
 using System.Text.RegularExpressions;
 using NoName.NetShop.Common;
+using System.Web.Configuration;
 
 namespace NoName.NetShop.ForeFlat.sp
 {
@@ -45,8 +46,10 @@ namespace NoName.NetShop.ForeFlat.sp
             }
             else
             {
-                string script = "<script type='text/javascript'>alert('此商品暂时无法购买');window.go(-1);</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "clientAlert", script);
+                //string script = "<script type='text/javascript'>alert('此商品暂时无法购买');window.go(-1);</script>";
+                //ClientScript.RegisterStartupScript(this.GetType(), "clientAlert", script);
+                Response.Write("此商品暂时无法购买");
+                Response.AddHeader("REFRESH", "3;URL='http://dingding.uncc.cn/'");
             }
 
         }
@@ -87,7 +90,8 @@ namespace NoName.NetShop.ForeFlat.sp
                 OrderProduct op = CurrentShopCart.AddToCart(opType, pid, quantity, ReqParas);
                 if (op != null)
                 {
-                    CurrentShopCart.ContinueShopUrl = op.ProductUrl;
+                    //CurrentShopCart.ContinueShopUrl = op.ProductUrl;
+                    CurrentShopCart.ContinueShopUrl = WebConfigurationManager.AppSettings["foreFlatRootUrl"];
                 }
             }
         }
