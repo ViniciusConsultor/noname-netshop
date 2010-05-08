@@ -51,7 +51,7 @@ namespace NoName.NetShop.ForeFlat.member
             rpLogs.DataBind();
             panNoResult.Visible = ds.Tables[0].Rows.Count == 0;
 
-            pageNav.CurrentPageIndex = SearPageInfo.PageIndex - 1;
+            pageNav.CurrentPageIndex = SearPageInfo.PageIndex;
             pageNav.PageSize = SearPageInfo.PageSize;
             pageNav.RecordCount = SearPageInfo.TotalItem;
 

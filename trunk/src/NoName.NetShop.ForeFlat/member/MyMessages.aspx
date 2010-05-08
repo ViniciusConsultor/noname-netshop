@@ -15,6 +15,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="rightContent" runat="server">
 <link href="../css/themes/base/ui.all.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.3.min.js" type="text/javascript"></script>
 <script src="../js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
 <div id="dialog" title="Õ¾ÄÚÐÅ" style="display:none">
 	<p>
