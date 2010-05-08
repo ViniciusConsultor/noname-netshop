@@ -193,7 +193,8 @@ namespace NoName.NetShop.BackFlat.Solution
 
             scbll.Save(scmodel);
             SaveCateConditions();
-            Response.Redirect("ShowClassicalScence.aspx?scenceId=" + scenceId);
+            Response.Redirect("ShowClassicalScence.aspx?id=" + scenceId,true);
+                               
         }
 
         private void SaveCateConditions()
