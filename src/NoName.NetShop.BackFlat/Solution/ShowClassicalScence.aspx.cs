@@ -27,7 +27,7 @@ namespace NoName.NetShop.BackFlat.Solution
         {
             if (!IsPostBack)
             {
-                ScenceId = int.Parse(Request.QueryString["id"]);
+                ScenceId = int.Parse(Request.QueryString["scenceId"]);
                 BindList();
             }
         }
