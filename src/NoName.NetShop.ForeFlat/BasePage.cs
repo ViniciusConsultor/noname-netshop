@@ -5,12 +5,14 @@ using System.Web;
 using System.Collections.Specialized;
 using NoName.NetShop.Member;
 using System.Web.Security;
+using log4net;
 
 namespace NoName.NetShop.ForeFlat
 {
     public class BasePage : System.Web.UI.Page
     {
         NameValueCollection _reqParas = null;
+        private static ILog baselog = LogManager.GetLogger("BasePage");
         
         private static readonly string REDIRECT_BY_WINDOW_LOCATION = @"<script type='text/javascript'>window.location='{0}';</script>";
         private static readonly string CLIENT_ALERT = @"<script type='text/javascript'>alert('{0}');</script>";
@@ -54,7 +56,6 @@ namespace NoName.NetShop.ForeFlat
                 ClientScript.RegisterStartupScript(this.GetType(), "clientAlert", String.Format(CLIENT_ALERT, message.Replace("'", "\"")));
             }
         }
-
 
     }
 

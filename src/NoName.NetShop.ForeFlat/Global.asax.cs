@@ -58,7 +58,7 @@ namespace NoName.NetShop.ForeFlat
 
         protected void Application_Error(object sender, EventArgs e)
         {
-
+            Server.Transfer("~/Error.aspx", false); //延迟出错处理，到errorpage.aspx中处理
         }
 
         protected void Session_End(object sender, EventArgs e)
