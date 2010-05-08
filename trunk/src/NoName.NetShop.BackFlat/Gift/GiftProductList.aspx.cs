@@ -46,7 +46,7 @@ namespace NoName.NetShop.BackFlat.Gift
             DataSet ds = NoName.NetShop.Common.CommDataHelper.GetDataFromMultiTablesByPage(SearPageInfo);
             gvList.DataSource = ds.Tables[0];
             gvList.DataBind();
-            pageNav.CurrentPageIndex = SearPageInfo.PageIndex - 1;
+            pageNav.CurrentPageIndex = SearPageInfo.PageIndex;
             pageNav.PageSize = SearPageInfo.PageSize;
             pageNav.RecordCount = SearPageInfo.TotalItem;
         }

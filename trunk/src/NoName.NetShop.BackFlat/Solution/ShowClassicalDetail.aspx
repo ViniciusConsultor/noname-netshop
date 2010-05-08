@@ -65,7 +65,8 @@
 		价格区间（元）
 	：</td>
 	<td height="25" width="*" align="left">
-		从<asp:TextBox id="txtMinPrice" runat="server" Width="30px"></asp:TextBox>
+		从<asp:TextBox id="txtMinPrice" runat="server" Width="30px" Text="0"></asp:TextBox>
+		
 		到
 		<asp:TextBox id="txtMaxPrice" runat="server" Width="30px"></asp:TextBox>
 	</td>

@@ -21,10 +21,6 @@ namespace NoName.NetShop.BackFlat.message
                 ShowMsgType();
                 ShowUsers();
             }
-            else
-            {
-                Thread.Sleep(1000);
-            }
         }
 
 
@@ -48,7 +44,11 @@ namespace NoName.NetShop.BackFlat.message
                     model.Content = content;
                     model.UserType = int.Parse(rblUserType.SelectedValue);
                     mbll.Add(model);
+
+                    item.Selected = false;
                 }
+                    txtContent.Text = "";
+                    txtSubject.Text = "";
             }
             NoName.Utility.MessageBox.Show(this, "发送成功");
         }
