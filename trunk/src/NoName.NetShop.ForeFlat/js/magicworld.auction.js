@@ -16,6 +16,8 @@
                 success: function(data, textStatus) {
                     if (data.result.toString() == 'true') {
                         alert('发表成功！');
+                        $('#comment-content').val('');
+                        $('#comment-validate').val('');
                         window.location.reload();
                     }
                     else alert(data.message);
