@@ -24,7 +24,7 @@ namespace NoName.NetShop.BackFlat
         protected void Application_Error(object sender, EventArgs e)
         {
             // 發生未處理錯誤時執行的程式碼
-            // Server.Transfer("~/Error.aspx", false); //延迟出错处理，到errorpage.aspx中处理
+           Server.Transfer("~/Error.aspx", false); //延迟出错处理，到errorpage.aspx中处理
         }
 
        

@@ -91,7 +91,9 @@
     <td>内容：</td>
     <td><asp:TextBox runat="server"  ID="txtContent" TextMode="MultiLine"></asp:TextBox></td>
     </tr>    
-    </tbody>
+    <tr>
+    <td colspan="2"><asp:Label runat="server" ID="lblResult" EnableViewState="false" ForeColor="Red"></asp:Label></td>
+    </tr>     </tbody>
     <tfoot>
 <tr><td colspan="2">
 <asp:Button runat="server" ID="btnSave" Text="发布" onclick="btnSave_Click" />

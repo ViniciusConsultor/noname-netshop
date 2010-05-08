@@ -50,7 +50,7 @@ namespace NoName.NetShop.BackFlat.message
                     txtContent.Text = "";
                     txtSubject.Text = "";
             }
-            NoName.Utility.MessageBox.Show(this, "发送成功");
+                    lblResult.Text = "消息发送成功";
         }
 
         protected void rblMsgType_SelectedIndexChanged(object sender, EventArgs e)
