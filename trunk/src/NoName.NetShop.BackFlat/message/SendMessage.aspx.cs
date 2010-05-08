@@ -49,6 +49,7 @@ namespace NoName.NetShop.BackFlat.message
                 }
                     txtContent.Text = "";
                     txtSubject.Text = "";
+                    txtExpireTime.Text = "";
             }
                     lblResult.Text = "消息发送成功";
         }
