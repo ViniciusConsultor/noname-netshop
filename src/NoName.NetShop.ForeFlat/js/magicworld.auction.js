@@ -18,6 +18,7 @@
                         alert('发表成功！');
                         $('#comment-content').val('');
                         $('#comment-validate').val('');
+                        $('#comment-validate-image').attr('src', '/ValiateCode.aspx?_=' + new Date().getUTCMilliseconds());
                         window.location.reload();
                     }
                     else alert(data.message);

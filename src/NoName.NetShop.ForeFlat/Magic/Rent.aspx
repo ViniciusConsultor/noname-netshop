@@ -98,7 +98,7 @@
                             <div class="title">我来说几句</div>
                             <textarea id="comment-content"></textarea>
                             <input type="text" id="comment-validate" />
-                            <img src="../ValiateCode.aspx" onclick="this.src='../ValiateCode.aspx?_='+new Date().getUTCMilliseconds()" />
+                            <img id="comment-validate-image" src="../ValiateCode.aspx" onclick="this.src='../ValiateCode.aspx?_='+new Date().getUTCMilliseconds()" />
                             <a id="comment-button" style="cursor:pointer" rentid='<%= RentID %>' class="button_blue">发表</a>
                         </div>
                     </div>

@@ -59,7 +59,17 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             if (String.IsNullOrEmpty(TextBox_ProductName.Text)) { ErrorMessage += "产品名称不能为空\\n"; }
             if (String.IsNullOrEmpty(FileUpload_ProductImage.FileName)) { ErrorMessage += "产品图片不能为空\\n"; }
             if (String.IsNullOrEmpty(TextBox_StartPrice.Text) || !PageValidate.IsDecimal(TextBox_StartPrice.Text)) { ErrorMessage += "起始价格不正确\\n"; }
-            if (String.IsNullOrEmpty(TextBox_AddPrices.Text)) { ErrorMessage += "每次加价不能为空\\n"; }
+            if (String.IsNullOrEmpty(TextBox_AddPrices.Text)) 
+            { 
+                ErrorMessage += "每次加价不能为空\\n"; 
+            }
+            else
+            {
+                if (TextBox_AddPrices.Text.Replace('，', ',').Split(',').Length > 7) 
+                {
+                    ErrorMessage += "最多只能输入7个加价\\n";
+                }
+            }
             if (String.IsNullOrEmpty(TextBox_StartTime.Text)/* validate */) { ErrorMessage += "开始时间不能为空\\n"; }
             if (String.IsNullOrEmpty(TextBox_EndTime.Text)/* validate */) { ErrorMessage += "结束时间不能为空\\n"; }
             if (String.IsNullOrEmpty(TextBox_Brief.Text)) { ErrorMessage += "简要介绍不能为空\\n"; }
