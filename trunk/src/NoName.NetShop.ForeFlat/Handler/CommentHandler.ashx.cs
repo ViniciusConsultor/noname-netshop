@@ -6,6 +6,7 @@ using System.Web.Services;
 using NoName.NetShop.Comment;
 using System.Web.SessionState;
 using NoName.NetShop.Common;
+using NoName.Utility;
 
 namespace NoName.NetShop.ForeFlat.Handler
 {
@@ -71,7 +72,7 @@ namespace NoName.NetShop.ForeFlat.Handler
 
                 Comment.CommentID = CommDataHelper.GetNewSerialNum(AppName);
                 Comment.AppType = AppName;
-                Comment.Content = Content;
+                Comment.Content = StringUtility.RemoveHtmlTags(Content);
                 Comment.CreateTime = DateTime.Now;
                 Comment.TargetID = TargetID;
                 Comment.UserID = GetUserID();

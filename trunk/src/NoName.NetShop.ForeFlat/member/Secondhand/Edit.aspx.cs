@@ -79,7 +79,6 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
         {
             string ErrorMessage = String.Empty;
             if (String.IsNullOrEmpty(TextBox_ProductName.Text)) { ErrorMessage += "产品名称不能为空\\n"; }
-            if (String.IsNullOrEmpty(FileUpload_ProductImage.FileName)) { ErrorMessage += "产品图片不能为空\\n"; }
             if (String.IsNullOrEmpty(TextBox_Price.Text) || !PageValidate.IsDecimal(TextBox_Price.Text)) { ErrorMessage += "请输入正确的产品价格\\n"; }
             if (String.IsNullOrEmpty(TextBox_Count.Text) || !PageValidate.IsNumber(TextBox_Count.Text)) { ErrorMessage += "请输入正确的产品数量\\n"; }
             if (String.IsNullOrEmpty(TextBox_Brief.Text)) { ErrorMessage += "请输入产品简介\\n"; }

@@ -25,7 +25,7 @@
                 toolbar: [
                             ['Cut', 'Copy', 'Paste'],
                             ['Undo', 'Redo'],
-                            ['Bold', 'Italic', 'TextColor','Link','Unlink','Anchor']
+                            ['Bold', 'Italic', 'TextColor', 'Link', 'Unlink', 'Anchor']
                         ]
             });
 
@@ -54,6 +54,12 @@
                 if (obj.val() == '') {
                     errorMessage += '<li>请输入每次加价</li>';
                     obj.prev().css({ 'color': 'red' });
+                }
+                else {
+                    if (obj.val().split(',').length > 7) {
+                        errorMessage += '<li>最多只能输入7个加价</li>';
+                        obj.prev().css({ 'color': 'red' });
+                    }
                 }
                 obj = $('#<%= TextBox_StartTime.ClientID %>');
                 if (obj.val() == '') {
