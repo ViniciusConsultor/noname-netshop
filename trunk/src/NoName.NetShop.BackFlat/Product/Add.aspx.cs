@@ -156,18 +156,18 @@ namespace NoName.NetShop.BackFlat.Product
         
         protected void btnAddGoOn_Click(object sender, EventArgs e)
         {
-            AddProduct();
-            Response.Redirect(Request.RawUrl);
+            int re = AddProduct();
+            if (re == 0) Response.Redirect(Request.RawUrl);
         }
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            AddProduct();
+            int re = AddProduct();
             MessageBox.Show(this,"添加成功！");
         }
         protected void btnAddGoList_Click(object sender, EventArgs e)
         {
-            AddProduct();
-            Response.Redirect("List.aspx");
+            int re = AddProduct();
+            if (re == 0) Response.Redirect("List.aspx");
         }
 
         protected void Button_Exists_Click(object sender, EventArgs e)
@@ -183,8 +183,9 @@ namespace NoName.NetShop.BackFlat.Product
         }
 
 
-        private void AddProduct()
+        private int AddProduct()
         {
+            int rtnValue = 0;
             string strErr = "";
             if (this.txtProductName.Text == "")
             {
@@ -235,13 +236,15 @@ namespace NoName.NetShop.BackFlat.Product
             if (strErr != "")
             {
                 MessageBox.Show(this, strErr);
-                return;
+                rtnValue = 1;
+                return rtnValue;
             }
 
             if (bll.Exists(txtProductName.Text))
             {
-                MessageBox.Show(this,"对不起，该商品名称已存在，无法添加同名商品");
-                return;
+                MessageBox.Show(this, "对不起，该商品名称已存在，无法添加同名商品");
+                rtnValue = 1;
+                return rtnValue;
             }
 
             string[] MainImages;
@@ -365,10 +368,14 @@ namespace NoName.NetShop.BackFlat.Product
                     ProductName = product.ProductName,
                     UpdateTime = product.ChangeTime
                 });
+
+                return rtnValue;
             }
             else
             {
                 MessageBox.Show(this, "图片上传失败，请检查！");
+                rtnValue = 1;
+                return rtnValue;
             }
 
         }

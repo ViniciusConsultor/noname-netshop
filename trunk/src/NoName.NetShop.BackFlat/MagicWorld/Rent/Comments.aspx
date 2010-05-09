@@ -26,7 +26,7 @@
         </asp:GridView>
     </div>
     <div>
-        <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="12"
+        <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="12" OnPageChanged="AspNetPager_PageChanged"
             UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页' LastPageText='末页'
             NextPageText='下一页' PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
             ShowPrevNext="True" SubmitButtonClass="buttom" NumericButtonTextFormatString=''>
