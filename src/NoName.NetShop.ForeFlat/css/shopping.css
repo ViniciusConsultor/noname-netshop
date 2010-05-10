@@ -13,12 +13,18 @@
 .shoppingClass_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
 .shoppingClass_mainbody .rightColumn{ float:none; margin-left:224px; _margin-left:221px;}
 .shoppingClass_mainbody .rightColumn .rightColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
+
+.shoppingClass_mainbody div.sortByPrice{ display:blocl; float:left; position:relative}
+.shoppingClass_mainbody ul.priceSortOptions{ position:absolute; top:23px; left:3px; margin:0; padding:0; border:1px solid #CCC; background:#FFF; width:48px; display:none}
+.shoppingClass_mainbody ul.priceSortOptions li{ width:100%; float:left;}
+.shoppingClass_mainbody ul.priceSortOptions li a{ display:block; height:15px; padding:4px!important; clear:both!important; float:none!important}
+.shoppingClass_mainbody ul.priceSortOptions li a:hover{ background:#9CF; color:#333}
 /*Shopping_Class End*/
 
 /*Shopping_ProductDetail Begin*/
 .productDetail_mainbody{ clear:both}
-.productDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
-.productDetail_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.productDetail_mainbody .rightColumn{ float:left; width:220px; _margin-right:-3px;}
+.productDetail_mainbody .mainColumn{ float:none; margin-left:224px; _margin-left:221px;}
 .productDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
 
 .productDetail_mainbody .mainColumn .productGeneralProperties .properties ul li{ padding-bottom:24px;}
