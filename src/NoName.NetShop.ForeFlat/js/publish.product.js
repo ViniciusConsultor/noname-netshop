@@ -1,5 +1,8 @@
 ﻿$(function() {
 
+    addBrowsed();
+    showBrowsed();
+
     $('#comment-button').click(function() {
         var content = $('#comment-text').val();
         var productID = $(this).attr('productid');
@@ -50,4 +53,52 @@ function addFav(productID) {
             }
         }
     });
+}
+
+function addBrowsed() {
+    var browsedProducts = new Array();
+    var cookieStr = $.cookie('browsedproducts');
+    if (cookieStr != null && cookieStr != '') {
+        for (i = 0; i < cookieStr.split(';').length - 1; i++) {
+            if (cookieStr.split(';')[i].split(',')[0] != product.productid) {
+                var op = new Object();
+                op.productid = cookieStr.split(';')[i].split(',')[0];
+                op.productname = cookieStr.split(';')[i].split(',')[1];
+                op.image = cookieStr.split(';')[i].split(',')[2];
+
+                browsedProducts.push(op);
+            }
+        }
+    }
+    if (product != null)
+        browsedProducts.unshift(product);
+    var newCookieStr = '';
+    for (a = 0; a < browsedProducts.length; a++) {
+        newCookieStr += browsedProducts[a].productid + ',' + browsedProducts[a].productname + ',' + browsedProducts[a].image + ';';
+    }
+    $.cookie('browsedproducts', newCookieStr);
+}
+
+function showBrowsed() {
+    var browsedProducts = new Array();
+
+    var cookieStr = $.cookie('browsedproducts');
+
+    if (cookieStr != null && cookieStr != '') {
+        for (i = 0; i < (cookieStr.split(';').length - 1 > 8 ? 8 : cookieStr.split(';').length - 1); i++) {
+            var op = new Object();
+            op.productid = cookieStr.split(';')[i].split(',')[0];
+            op.productname = cookieStr.split(';')[i].split(',')[1];
+            op.image = cookieStr.split(';')[i].split(',')[2];
+
+            browsedProducts.push(op);
+        }
+    }
+
+    var browsedProductHtml = '';
+
+    for (i = 0; i < browsedProducts.length; i++) {
+        browsedProductHtml += '<li><a href="/product-' + browsedProducts[i].productid + '.html"><img src="' + browsedProducts[i].image + '" /><span>' + browsedProducts[i].productname + '</span></a></li>';
+    }
+    $('#browsed-products').html(browsedProductHtml);
 }
