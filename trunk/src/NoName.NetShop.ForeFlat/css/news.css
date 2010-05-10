@@ -43,8 +43,8 @@
 
 /*NewsArticleDetail Begin*/
 .newsArticleDetail_mainbody{ clear:both}
-.newsArticleDetail_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
-.newsArticleDetail_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.newsArticleDetail_mainbody .rightColumn{ float:left; width:220px; _margin-right:-3px;}
+.newsArticleDetail_mainbody .mainColumn{ float:none; margin-left:224px; _margin-left:221px;}
 .newsArticleDetail_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
 .newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content h1{ font-size:14px; font-weight:bold; clear:both; text-align:center; margin:0; padding:15px;}
 .newsArticleDetail_mainbody .mainColumn .mainColumnContainer .box1 .content h2{ font-size:12px; font-weight:normal; clear:both; text-align:center; padding:5px; border-bottom:1px dotted #B5D0EC; margin:0}
@@ -70,10 +70,10 @@
 
 
 ul.newsNavigator{ margin:0; padding:0}
-ul.newsNavigator li{ list-style-type:none; float:left; width:100%;cursor:pointer;}
-ul.newsNavigator li a{ height:20px; padding:5px 0 0 22px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x;cursor:pointer;}
+ul.newsNavigator li{ list-style-type:none; float:left; width:100%}
+ul.newsNavigator li a{ height:20px; padding:5px 0 0 22px; display:block; clear:both; background:url(../images/sprite.gif) 0 -1868px repeat-x}
 ul.newsNavigator li a:hover{ background-position:0 -1898px;}
-ul.newsNavigator li a span{ height:25px; display:block; clear:both; }
+ul.newsNavigator li a span{ height:25px; display:block; clear:both; background:url(../images/newsNavigator.gif) no-repeat}
 
 ul.newsNavigator li a.m1 span{ background-position:15px 7px;}
 ul.newsNavigator li a.m2 span{ background-position:15px -18px;}

@@ -26,28 +26,34 @@ a.linkButton:hover{ color:#FF9900}
 .header ul.toplink li{ list-style-type:none; float:left; padding-right:5px;}
 .header ul.toplink li.slogan{ color:#999999;*padding-top:1px;}
 
-.header ul.navigator{ padding:0; margin:0; float:right; width:630px; padding-top:7px; overflow:hidden;height:40px}
-.header ul.navigator li{ list-style-type:none; float:left; padding-left:10px;}
-.header ul.navigator li a{ display:block; height:40px; background:url(../images/header.gif) no-repeat}
-.header ul.navigator li a.home{ background-position:-330px 0; width:90px;}
-.header ul.navigator li a.home:hover{ background-position:-330px -43px;}
-.header ul.navigator li a.shopping{ background-position:-440px 0; width:90px;}
-.header ul.navigator li a.shopping:hover{ background-position:-440px -43px;}
-.header ul.navigator li a.solution{ background-position:-547px 0; width:100px;}
-.header ul.navigator li a.solution:hover{ background-position:-547px -43px;}
-.header ul.navigator li a.brands{ background-position:-660px 0; width:100px;}
-.header ul.navigator li a.brands:hover{ background-position:-660px -43px;}
-.header ul.navigator li a.information{ background-position:-774px 0; width:100px;}
-.header ul.navigator li a.information:hover{ background-position:-774px -43px;}
-.header ul.navigator li a.magic{ background-position:-888px 0; width:90px;}
-.header ul.navigator li a.magic:hover{ background-position:-888px -43px;}
+.header ul.navigator{ padding:0; margin:0; float:right; width:630px; padding-top:7px; overflow:hidden;height:44px}
+.header ul.navigator li{ list-style-type:none; float:left; padding-left:5px;}
+.header ul.navigator li a{ display:block; height:44px; background:url(../images/header.gif) no-repeat}
+.header ul.navigator li a.home{ background-position:-323px 0; width:98px;}
+.header ul.navigator li a.home:hover{ background-position:-323px -43px;}
+.header ul.navigator li a.home_on,.header ul.navigator li a.home_on:hover{ background-position:-323px -98px;}
+.header ul.navigator li a.shopping{ background-position:-433px 0; width:98px;}
+.header ul.navigator li a.shopping:hover{ background-position:-433px -43px;}
+.header ul.navigator li a.shopping_on,.header ul.navigator li a.shopping_on:hover{ background-position:-433px -98px;}
+.header ul.navigator li a.solution{ background-position:-543px 0; width:98px;}
+.header ul.navigator li a.solution:hover{ background-position:-543px -43px;}
+.header ul.navigator li a.solution_on,.header ul.navigator li a.solution_on:hover{ background-position:-543px -98px;}
+.header ul.navigator li a.brands{ background-position:-653px 0; width:98px;}
+.header ul.navigator li a.brands:hover{ background-position:-653px -43px;}
+.header ul.navigator li a.brands_on,.header ul.navigator li a.brands_on:hover{ background-position:-653px -98px;}
+.header ul.navigator li a.information{ background-position:-771px 0; width:102px;}
+.header ul.navigator li a.information:hover{ background-position:-771px -43px;}
+.header ul.navigator li a.information_on,.header ul.navigator li a.information_on:hover{ background-position:-771px -98px;}
+.header ul.navigator li a.magic{ background-position:-883px 0; width:102px;}
+.header ul.navigator li a.magic:hover{ background-position:-883px -43px;}
+.header ul.navigator li a.magic_on,.header ul.navigator li a.magic_on:hover{ background-position:-883px -98px;}
 
-.header .panel{ clear:both; width:auto; height:73px; background:url(../images/sprite.gif) 0 -97px repeat-x; margin-top:20px;}
-.header .panel .edge{ background:url(../images/sprite.gif) no-repeat; width:2px; height:73px; overflow:hidden; font-size:0; line-height:0}
+.header .panel{ clear:both; width:auto; height:39px; background:url(../images/sprite.gif) 0 -97px repeat-x; margin-top:12px;}
+.header .panel .edge{ background:url(../images/sprite.gif) no-repeat; width:2px; height:39px; overflow:hidden; font-size:0; line-height:0}
 .header .panel .left{ float:left; background-position:0 -21px; }
 .header .panel .right{ float:right; background-position:-18px -21px;}
-.header .panel .middle{ float:none; margin:0px 10px 0 15px; padding:8px 0 0 0; text-align:left; background:url(../images/tel.gif) right 13px no-repeat;}
-.header .panel .middle ul.searchbar{ margin:0; padding:0; width:80%; height:28px;}
+.header .panel .middle{ float:none; margin:0px 10px 0 15px; padding:8px 0 0 0; text-align:left; /*background:url(../images/tel.gif) right 13px no-repeat;*/}
+.header .panel .middle ul.searchbar{ margin:0; padding:0; height:28px; float:left}
 .header .panel .middle ul.searchbar li{ float:left; list-style-type:none}
 .header .panel .middle ul.searchbar li.label{ font-weight:bold; color:#FFF; padding-top:5px; padding-right:3px;}
 .header .panel .middle ul.searchbar li.selectBox{ text-align:left}
@@ -69,14 +75,14 @@ a.linkButton:hover{ color:#FF9900}
 .header .panel .middle ul.searchbar li.selectBox .list a:hover{ background:#003399; color:#FFFFFF}
 /*selectbox on top*/
 
-.header .panel .middle .hotKeyWords{ float:left; width:500px; height:14px; padding-top:12px; overflow:hidden}
+.header .panel .middle .hotKeyWords{ float:right; width:500px; height:14px; padding-top:4px; overflow:hidden; text-align:right}
 .header .panel .middle .hotKeyWords span{ color:#FFF}
 .header .panel .middle .hotKeyWords span.label{ font-weight:bold}
 .header .panel .middle .hotKeyWords span.words{}
 .header .panel .middle .hotKeyWords span.words a{ margin-right:9px; color:#FFF; text-decoration:none}
 .header .panel .middle .hotKeyWords span.words a:hover{ color:#CCC; text-decoration:underline}
 
-.header .panel .middle ul.userLink{ margin:8px 0 0 0; padding:0; float:right; height:23px; padding:0; background:#5E9FC7}
+.header .panel .middle ul.userLink{ margin:8px 0 0 0; padding:0; float:right; height:23px; padding:0; background:#5E9FC7; display:none}
 .header .panel .middle ul.userLink li{ list-style-type:none; float:left; height:14px; margin-top:5px; padding:0 5px;}
 .header .panel .middle ul.userLink li a{ display:block; padding-left:15px; background:url(../images/sprite.gif) 0 -320px no-repeat; color:#FFF;}
 /*hack begin*/
@@ -190,7 +196,6 @@ ul.thumbnailList_1 li a img{ display:block; width:120px; height:90px; clear:both
 ul.thumbnailList_1 li a span{display:block; clear:both; padding-top:6px; height:14px; overflow:hidden}
 ul.thumbnailList_1 li a span.price{ color:#0087C8; font-weight:bold; }
 ul.thumbnailList_1 li a span.name{ color:#333; height:42px; }
-ul.thumbnailList_1 li a span.name:hover{ text-decoration:underline;}
 
 ul.directions{ padding:0 10px; margin:0;}
 ul.directions li{ list-style-type:none; float:left; width:150px; background:url(../images/sprite.gif) right -1114px no-repeat; min-height:120px; _height:120px; padding:0 18px;}
@@ -392,7 +397,7 @@ ul.tip2 li.middle span{ display:block; height:21px; background:#CCC; font-weight
 .box8 ul.title li.heading span.text{ display:block; float:left; height:14px; padding:6px 10px 0 15px; padding:8px 10px 0 20px\9; _padding:7px 10px 0 20px; color:#FFF; font-weight:bold; background:url(../images/sprite.gif) -2px -411px no-repeat;}
 .box8 ul.title li.heading span.arrow{ display:block; float:left; height:26px; width:20px; padding:0; color:#FFF; font-weight:bold; background:url(../images/sprite.gif) 0 -1646px no-repeat; color:#236FA4;}
 
-.box8 ul.title li.sort{ float:right}
+.box8 ul.title li.sort{ float:right;}
 .box8 ul.title li.sort span{ display:block; float:left; padding:6px 5px 0 5px; padding:8px 5px 0 5px\9; _padding:7px 5px 0 5px;}
 .box8 ul.title li.sort a{ display:block; float:left; padding:6px 5px 0 5px; padding:8px 5px 0 5px\9; _padding:7px 5px 0 5px;}
 .box8 ul.title li.sort a.on{ background:#FFE861 url(../images/sprite.gif) 0 -1679px repeat-x; border:1px solid #FFCC01; padding:3px 5px 2px 5px; padding:5px 5px 0 5px\9; _padding:4px 5px 0 5px; margin-top:3px; cursor:default}
@@ -674,6 +679,14 @@ ul.itemList7{ clear:both; padding:0; margin:0; zoom:1}
 ul.itemList7:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
 ul.itemList7 li{ list-style-type:none; width:100%; float:left; padding:10px 0; border-bottom:1px dotted #B5D0EC; line-height:200%}
 ul.itemList7 li span{ display:block; clear:both}
+
+ul.itemList8{ clear:both; padding:0; margin:0}
+ul.itemList8 li{ clear:both; list-style-type:none; border-bottom:#B4CFEC 1px dotted; padding:10px 0; zoom:1}
+ul.itemList8 li:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
+ul.itemList8 li a img{ width:50px; height:38px; padding:1px; border:1px solid #B4CFEC; float:left}
+ul.itemList8 li a span{ display:block; float:none; padding:3px 0 0 5px; margin-left:65px; line-height:17px;}
+ul.itemList8 li a:hover img{ background:#FF0; border-color:#F90}
+ul.itemList8 li a:hover span.price{ color:#FC0}
 
 ul.questions{ clear:both; margin:0; padding:0}
 ul.questions li{ clear:both; padding:10px; list-style-type:none;}
