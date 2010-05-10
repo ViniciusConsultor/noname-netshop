@@ -90,5 +90,6 @@ namespace NoName.NetShop.CMS.Model
         MagicWorld=3,
         SalesPage=4,
         News=5,
+        HelpCenter=6,
     }
 }
