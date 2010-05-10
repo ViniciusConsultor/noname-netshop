@@ -24,6 +24,16 @@
                 <script type="text/javascript" src="/js/mini-rainy.js">
                     <xsl:text> </xsl:text>
                 </script>
+                <script type="text/javascript" src="/js/cookie.js">
+                    <xsl:text> </xsl:text>
+                </script>
+                <script type="text/javascript">
+                        var product = {
+                            productid:<xsl:value-of select="$ProductID"/>,
+                            productname :'<xsl:value-of select="$ProductName"/>',
+                            image : '<xsl:value-of select="/productpage/productinfo/product/smallimage"/>'
+                        }
+                </script>
                 <script type="text/javascript" src="/js/publish.product.js">
                     <xsl:text> </xsl:text>
                 </script>
@@ -94,6 +104,24 @@
                                     <li class="right">
                                         <xsl:text> </xsl:text>
                                     </li>
+                                </ul>
+                            </div>
+
+                            <div class="box2">
+                                <ul class="title">
+                                    <li class="left"></li>
+                                    <li>
+                                        <span>最近浏览过的商品</span>
+                                    </li>
+                                    <li class="right"></li>
+                                </ul>
+                                <div class="content noPaddingTop">
+                                    <ul class="itemList8" id="browsed-products">
+                                    </ul>
+                                </div>
+                                <ul class="bottom">
+                                    <li class="left"></li>
+                                    <li class="right"></li>
                                 </ul>
                             </div>
 
