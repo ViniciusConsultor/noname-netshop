@@ -11,8 +11,30 @@
             var photoCount = 0;
             appendPhotoField();
             $('#photo-field-add').click(function() {
-                    appendPhotoField();
+                appendPhotoField();
             });
+
+            var demandPromote = '您的具体使用场地和其它相关说明？';
+            var fieldPromote = '如：房屋长度、宽度、高度，门窗位置，墙体材质，屋顶材质，装修情况等等。';
+            var effectPromote = '如：要求画面大小？画质的要求（分辨率）？音效的具体要求？等等';
+
+            $('#<%= TextBox_DemandDetail.ClientID %>').val(demandPromote).css('color', '#eee').focus(function() {
+                if ($(this).val() == demandPromote) $(this).val('').css('color', 'black');
+            }).blur(function() {
+                if ($(this).val() == '') $(this).val(demandPromote).css('color', '#eee');
+            });
+            $('#<%= TextBox_Field.ClientID %>').val(fieldPromote).css('color', '#eee').focus(function() {
+                if ($(this).val() == fieldPromote) $(this).val('').css('color', 'black');
+            }).blur(function() {
+                if ($(this).val() == '') $(this).val(fieldPromote).css('color', '#eee');
+            });
+            $('#<%= TextBox_Effect.ClientID %>').val(effectPromote).css('color', '#eee').focus(function() {
+                if ($(this).val() == effectPromote) $(this).val('').css('color', 'black');
+            }).blur(function() {
+                if ($(this).val() == '') $(this).val(effectPromote).css('color', '#eee');
+            });
+
+
 
 
             $('#<%= Button_Add.ClientID %>').click(function() {

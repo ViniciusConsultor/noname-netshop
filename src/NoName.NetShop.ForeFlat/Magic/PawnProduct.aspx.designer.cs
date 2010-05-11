@@ -32,6 +32,33 @@ namespace NoName.NetShop.ForeFlat.Magic {
         protected global::System.Web.UI.WebControls.Image Image_Medium;
         
         /// <summary>
+        /// Literal_UserID2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_UserID2;
+        
+        /// <summary>
+        /// Literal_Phone 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_Phone;
+        
+        /// <summary>
+        /// Literal_Address 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_Address;
+        
+        /// <summary>
         /// Literal_ProductName 控件。
         /// </summary>
         /// <remarks>

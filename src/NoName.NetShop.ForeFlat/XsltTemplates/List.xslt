@@ -188,6 +188,18 @@
                     <!--Footer End-->
 
                 </div>
+
+                <div class="comparisonWindow" id="comparisonWindow" style="width:220px;">
+                    <xsl:text> </xsl:text>
+                </div>
+                <script type="text/javascript">
+                    window.onscroll=window.onload=window.onresize=function(){
+                    var comparisonWindow = document.getElementById("comparisonWindow");
+                    var scrollTop = document.documentElement.scrollTop;
+                    var middleCoordinateY = parseInt((document.documentElement.clientHeight - comparisonWindow.clientHeight)/2);
+                    comparisonWindow.style.top = (scrollTop + middleCoordinateY) + "px";
+                    }
+                </script>
             </body>
         </html>
     </xsl:template>
@@ -354,7 +366,7 @@
                         <xsl:text> </xsl:text>
                     </span>
                 </a>
-                <a class="button_blue3" href="/product-{productid}.html">
+                <a class="button_blue3" comp="true" productid="{productid}" productname="{productname}" category="{categoryid}" image="{smallimage}" href="javascript:void(0)">
                     <span class="left">
                         <xsl:text> </xsl:text>
                     </span>

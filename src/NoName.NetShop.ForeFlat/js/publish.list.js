@@ -133,6 +133,16 @@
         addFav($(this).attr('productid'));
     });
 
+    //商品对比事件
+    $('a.button_blue3[comp]').click(function() {
+        addCompare({
+            productid: $(this).attr('productid'),
+            productname: $(this).attr('productname'),
+            categoryid: $(this).attr('category'),
+            image: $(this).attr('image')
+        });
+    });
+
 
 
     function getPage() {
@@ -287,5 +297,92 @@
                 }
             }
         });
+    }
+
+    var comparingProducts = new Hashtable();
+
+    function addCompare(p) {
+
+        var topLayer = $('#comparisonWindow');
+
+        if (topLayer.attr('category')) {
+            if (topLayer.attr('category') == p.categoryid) {
+                if (comparingProducts.Count < 3) {
+                    comparingProducts.Add(p.productid, p);
+                    renderCompareHtml();
+                }
+                else {
+                    alert('最多只能比较3件商品');
+                }
+            }
+            else {
+                alert('只能比较同类产品！');
+            }
+        }
+        else {
+            topLayer.attr('category', p.categoryid);
+            comparingProducts.Add(p.productid, p);
+            renderCompareHtml();
+        }
+
+        function remove(productid) {
+            comparingProducts.Remove(productid);
+            renderCompareHtml();
+        }
+
+        function removeAll() {
+            comparingProducts = new Hashtable();
+
+            topLayer.html('');
+        }
+
+
+        function renderCompareHtml() {
+            var compareHtml = '';
+
+            if (comparingProducts.Count > 0) {
+                compareHtml += '<div class="box10">';
+                compareHtml += '    <div class="title">';
+                compareHtml += '        <span style="float:left">产品比较</span>';
+                compareHtml += '        <a href="javascript:void(0)" style="float:right; margin-right:5px;" id="productCompareClose">[关闭]</a>';
+                compareHtml += '    </div>';
+                compareHtml += '    <div class="content">';
+                compareHtml += '        <ul class="itemList8" id="productCompareList">';
+                for (var cmp = 0; cmp < comparingProducts.Count; cmp++) {
+                    var key = comparingProducts.Keys()[cmp];
+                    var theValue = comparingProducts.GetValue(key);
+                    compareHtml += '            <li>';
+                    compareHtml += '                <a href="/product-' + key + '.html">';
+                    compareHtml += '                    <img src="' + theValue.image + '" />';
+                    compareHtml += '                    <span>' + theValue.productname + '</span>';
+                    compareHtml += '                </a>';
+                    compareHtml += '                <a class="remove" href="javascript:void(0);" productid=' + key + '>';
+                    compareHtml += '                    <span>[移除]</span>';
+                    compareHtml += '                </a>';
+                    compareHtml += '            </li>';
+                }
+                compareHtml += '        </ul>';
+                compareHtml += '    </div>';
+                compareHtml += '    <div><a href="javascript:void(0);" id="productCompareGo"> <b>对比</b> </a></div>';
+                compareHtml += '</div>';
+
+                topLayer.html(compareHtml);
+
+                $('#productCompareList .remove').click(function() {
+                    remove($(this).attr('productid'));
+                });
+                $('#productCompareClose').click(function() {
+                    removeAll();
+                });
+                $('#productCompareGo').click(function() {
+                    var pids = '';
+                    $.each(comparingProducts.Keys(), function(i, n) { pids += comparingProducts.Keys()[i] + ','; });
+                    window.open('/product/productcompare.aspx?pid=' + pids.substring(0, pids.length - 1));
+                });
+            }
+            else {
+                topLayer.html('');
+            }
+        }
     }
 });
