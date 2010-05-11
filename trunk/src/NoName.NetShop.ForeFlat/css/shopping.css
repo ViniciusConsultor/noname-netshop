@@ -115,3 +115,6 @@
 /*Shopping_Comparison Begin*/
 .Comparison_mainbody{ clear:both}
 /*Shopping_Comparison End*/
+
+
+.comparisonWindow{ position:absolute; right:10px;}
