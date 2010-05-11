@@ -431,7 +431,7 @@ ul.tip2 li.middle span{ display:block; height:21px; background:#CCC; font-weight
 .box9 .title{ clear:both; height:14px; padding:5px 0 5px 10px; background:#DEF0F8; color:#236FA4; font-weight:bold}
 .box9 .content{ padding:10px; border:1px solid #DEF0F8; border-top:none; min-height:0!important;_height:0!important; background:#F7FAFD!important}
 
-.box10{ clear:both; padding:1px; border:1px solid #B5D0EC}
+.box10{ clear:both; padding:1px; border:1px solid #B5D0EC; background:#FFF}
 .box10 .title{ height:22px; padding:8px 0 0 10px; color:#333; font-weight:bold; text-align:left;background:transparent url(../images/sprite.gif) repeat-x scroll 0 -1318px;}
 .box10 .title span{ background:transparent url(../images/sprite.gif) no-repeat -8px -1986px; background-position:-8px -1987px\9; padding:0 0 0 22px!important;}
 .box10 .content{ padding:10px!important; clear:both; border:none; text-align:left}
@@ -687,6 +687,8 @@ ul.itemList8 li a img{ width:50px; height:38px; padding:1px; border:1px solid #B
 ul.itemList8 li a span{ display:block; float:none; padding:3px 0 0 5px; margin-left:65px; line-height:17px;}
 ul.itemList8 li a:hover img{ background:#FF0; border-color:#F90}
 ul.itemList8 li a:hover span.price{ color:#FC0}
+ul.itemList8 li a.remove span{ color:#06C}
+ul.itemList8 li a.remove:hover span{ color:#06C; text-decoration:underline}
 
 ul.questions{ clear:both; margin:0; padding:0}
 ul.questions li{ clear:both; padding:10px; list-style-type:none;}

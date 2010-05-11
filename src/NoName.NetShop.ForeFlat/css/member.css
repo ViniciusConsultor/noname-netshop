@@ -39,3 +39,26 @@
 .login_mainbody .infoBox ul li{ list-style-type:none; padding:8px 0;}
 .login_mainbody .infoBox ul li span{ display:block; line-height:200%}
 .login_mainbody .infoBox ul li span.title{ background:url(../images/sprite.gif) no-repeat -8px -1794px; font-size:14px; font-weight:bold; padding-left:16px; background-position: -8px -1796px\9; _background-position: -8px -1795px;}
+
+.forgotPassword_mainbody{ clear:both;}
+.forgotPassword_mainbody .box1 .content{padding:20px 100px}
+.forgotPassword_mainbody .box1 .content ul.form{ padding:20px 100px;}
+.forgotPassword_mainbody ul.form li .verifyCode{display:block; clear:both; padding-left:85px; padding-top:10px; text-align:left}
+.forgotPassword_mainbody ul.form li .verifyCode img{border:none; width:130px; height:53px; display:block; float:left}
+.forgotPassword_mainbody ul.form li .verifyCode a{ color:#006699; text-decoration:underline; display:block; float:left; padding:38px 0 0 10px;}
+
+/*reset password Complete Begin*/
+.forgotPasswordComplete_mainbody{ clear:both}
+.forgotPasswordComplete_mainbody .box1 .content{ padding:40px 100px;}
+.forgotPasswordComplete_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(../images/cart_navigation4.jpg) center top no-repeat; }
+.forgotPasswordComplete_mainbody .otherChannel{ text-align:center; clear:both; padding:20px 0;}
+.forgotPasswordComplete_mainbody .otherChannel a{ text-decoration:underline; padding:0 10px;}
+/*reset password Complete End*/
+
+/*reset password error Begin*/
+.forgotPasswordError_mainbody{ clear:both}
+.forgotPasswordError_mainbody .box1 .content{ padding:40px 100px;}
+.forgotPasswordError_mainbody .shoppingNavigation4{ clear:both; height:50px; background:url(../images/cart_navigation4.jpg) center top no-repeat; }
+.forgotPasswordError_mainbody .otherChannel{ text-align:center; clear:both; padding:20px 0;}
+.forgotPasswordError_mainbody .otherChannel a{ text-decoration:underline; padding:0 10px;}
+/*reset password error End*/
