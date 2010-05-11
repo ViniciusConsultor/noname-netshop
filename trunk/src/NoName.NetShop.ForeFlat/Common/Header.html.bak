@@ -2,19 +2,15 @@
     <div class="header">
         <div class="top clearfix">
             <div class="logo"></div>
-            <ul class="toplink bullet_1">
-                <li class="slogan"></li>
-                <li><a href="/login.aspx">请登录</a></li>
-                <li><a href="/RegPerson.aspx">免费注册</a></li>
-                <li><a href="/help/index.shtml">帮助中心</a></li>
-                <li><a href="/member/myorders.aspx">我的账户</a></li>
-                <li><a href="/sp/ShowCart.aspx">购物车</a></li>
-                <li><a href="#">团购</a></li>
-                <li><a href="/member/MyMessages.aspx">站内信</a></li>
-                <li><a href="/gift/GiftList.aspx">礼品兑换</a></li>
+            <ul class="toplink bullet_1" id="iden">
+<script type="text/javascript" src="/js/noname.identtity.js"></script>
+<script type="text/javascript">
+    var iden = new Identity();
+    iden.Show($("#iden"));
+</script>
             </ul>
             <ul class="navigator">
-                <li><a class="home home_on" href="#"></a></li>
+                <li><a class="home" href="/"></a></li>
                 <li><a class="shopping" href="/channel/shopping"></a></li>
                 <li><a class="solution" href="/solution/home.aspx"></a></li>
                 <li><a class="brands" href="/channel/brand"></a></li>
@@ -25,7 +21,7 @@
         <div class="panel">
             <div class="edge left"></div>
             <div class="edge right"></div>
-            <div class="middle">
+            <div class="middle clearfix">
                 <ul class="searchbar clearfix">
                     <li class="label">分类搜索：</li>
                     <li class="selectBox">
@@ -35,7 +31,7 @@
                         mybox.boxName="categoriesBox";
                         mybox.fire="click";
                         mybox.name="categories";
-                        mybox.id="categories";
+                        mybox.id = "search-category";
                         mybox.width=120;
                         mybox.listMaxHeight=300;
                         mybox.selectedClass="currentOption";
@@ -76,6 +72,15 @@
                         <a href="#">投影</a>
                     </span>
                 </div>
+                <ul class="userLink">
+                    <li class="left"></li>
+                    <li><a href="/member/myorders.aspx">我的账户</a></li>
+                    <li><a href="/sp/ShowCart.aspx">购物车</a></li>
+                    <li><a href="#">团购</a></li>
+                    <li><a href="/member/MyMessages.aspx">站内信</a></li>
+                    <li><a href="/gift/GiftList.aspx">礼品兑换</a></li>
+                    <li class="right"></li>
+                </ul>
             </div>
         </div>
     </div>
