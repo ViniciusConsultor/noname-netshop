@@ -151,6 +151,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
                 XmlUtility.AddNewNode(ProductNode, "mediumimage", ProductMainImageRule.GetMainImageUrl(Convert.ToString(row["mediumimage"])));
                 XmlUtility.AddNewNode(ProductNode, "tradeprice", Convert.ToString(row["tradeprice"]));
                 XmlUtility.AddNewNode(ProductNode, "merchantprice", Convert.ToString(row["merchantprice"]));
+                XmlUtility.AddNewNode(ProductNode, "categoryid", Convert.ToString(row["cateid"]));
             }
 
             //分页信息节点
