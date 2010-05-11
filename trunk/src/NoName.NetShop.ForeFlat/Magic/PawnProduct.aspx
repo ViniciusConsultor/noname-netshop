@@ -36,7 +36,32 @@
                                 <div class="zoomInArea">
                                     <asp:Image runat="server" ID="Image_Medium" />
                                 </div>
+                            </div>                            
+                            <div style="display:none" id="confirmationContent">
+                                <ul class="form" style="padding:40px 20px 0 20px;">
+                                	<li>
+                                    	<span class="field">联系人</span>
+                                        <asp:Literal runat="server" ID="Literal_UserID2" />
+                                    </li>
+                                    <li>
+                                    	<span class="field">电　话</span>
+                                        <asp:Literal runat="server" ID="Literal_Phone" />
+                                    </li><li>
+                                    	<span class="field">地　址</span>
+                                        <asp:Literal runat="server" ID="Literal_Address" />
+                                    </li>
+                                </ul>
                             </div>
+                            <script type="text/javascript">
+                                var pawnShopRules = new Rainy.popupWindow({
+                                    id: "purchaseConfirmation",
+                                    width: 320,
+                                    height: 200,
+                                    cls: "",
+                                    title: "请按照如下信息联系卖家",
+                                    content: document.getElementById("confirmationContent").innerHTML
+                                });
+							</script>
                             <div class="properties">
                                 <ul>
                                     <li>
@@ -46,10 +71,10 @@
                                         <span class="field ddPriceField">价　　格：</span><span class="ddPrice">￥<asp:Literal runat="server" ID="Literal_Price" /></span>
                                     </li>
                                     <li>
-                                        <span class="field">来　　源：</span><span><a href="#"><asp:Literal runat="server" ID="Literal_UserID" /></a>(典藏品)</span>
+                                        <span class="field">来　　源：</span><span><a href="javascript:void(0)" onclick="pawnShopRules.render()"><asp:Literal runat="server" ID="Literal_UserID" /></a>(典藏品)</span>
                                     </li>
                                     <li class="buttons">
-                                        <a class="purchase" href="#"></a>
+                                        <a class="purchase" href="javascript:void(0)" onclick="pawnShopRules.render()"></a>
                                     </li>
                                 </ul>
                             </div>
