@@ -269,6 +269,34 @@
     <Compile Include="CMS\Page\ChannelPage\Publish.aspx.designer.cs">
       <DependentUpon>Publish.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CMS\Page\HelpCenter\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMS\Page\HelpCenter\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMS\Page\HelpCenter\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMS\Page\HelpCenter\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMS\Page\HelpCenter\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMS\Page\HelpCenter\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMS\Page\HelpCenter\Publish.aspx.cs">
+      <DependentUpon>Publish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMS\Page\HelpCenter\Publish.aspx.designer.cs">
+      <DependentUpon>Publish.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CMS\Page\HomePage\Publish.aspx.cs">
       <DependentUpon>Publish.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1051,6 +1079,10 @@
     <Content Include="CMS\FileManage\Add.aspx" />
     <Content Include="CMS\FileManage\List.aspx" />
     <Content Include="CMS\Handler\TagContentHandler.ashx" />
+    <Content Include="CMS\Page\HelpCenter\Add.aspx" />
+    <Content Include="CMS\Page\HelpCenter\Edit.aspx" />
+    <Content Include="CMS\Page\HelpCenter\List.aspx" />
+    <Content Include="CMS\Page\HelpCenter\Publish.aspx" />
     <Content Include="CMS\Page\News\Add.aspx" />
     <Content Include="CMS\Page\News\Edit.aspx" />
     <Content Include="CMS\Page\News\List.aspx" />
