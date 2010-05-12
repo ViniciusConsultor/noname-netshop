@@ -16,7 +16,7 @@ namespace NoName.NetShop.IMMessage
 
             MailMessage msg = new MailMessage();
             msg.To.Add(new MailAddress(to));
-            msg.CC.Add((string)smtpcfg["cc"]);
+            //msg.CC.Add((string)smtpcfg["cc"]);
             msg.From = new MailAddress((string)smtpcfg["from"], (string)smtpcfg["fromname"]);
             msg.Body = content;
             msg.IsBodyHtml = true;
