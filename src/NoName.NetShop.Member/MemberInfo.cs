@@ -163,7 +163,7 @@ namespace NoName.NetShop.Member
             db.AddInParameter(dbCommand, "status", DbType.Byte, (int)Status);
             db.AddInParameter(dbCommand,"@LoginIp",DbType.String,LoginIp);
             db.AddInParameter(dbCommand, "@UserLevel", DbType.Int32, (int)UserLevel);
-            db.AddInParameter(dbCommand, "SecPassword",DbType.String,SecPassword);
+            db.AddInParameter(dbCommand, "SecPassword", DbType.String, secpass);
 
             db.AddParameter(dbCommand, "returnvalue", DbType.Int32, ParameterDirection.ReturnValue, null, DataRowVersion.Default, null);
             db.ExecuteNonQuery(dbCommand);
