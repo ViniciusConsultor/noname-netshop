@@ -30,10 +30,8 @@
                         </li>
                         <li class="sort">
                         	<span>请选择排序方式</span>
-                            <a class="on" href="#">销量</a>
-                            <a href="#">价格</a>
-                            <a href="#">上架时间</a>
-                            <a href="#">浏览量</a>
+                            <a href="#" value="1,2">价格</a>
+                            <a href="#" value="3,4">上架时间</a>
                         </li>
                     </ul>
                     <div class="content">
