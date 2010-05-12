@@ -16,7 +16,7 @@ namespace NoName.NetShop.ForeFlat.Product
 {
     public partial class TopicList : AuthBasePage
     {
-        private int ProductID
+        public int ProductID
         {
             get { if (ViewState["ProductID"] != null) return Convert.ToInt32(ViewState["ProductID"]); else return -1; }
             set { ViewState["ProductID"] = value; }
