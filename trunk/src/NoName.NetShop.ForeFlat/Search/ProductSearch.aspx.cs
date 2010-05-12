@@ -33,6 +33,11 @@ namespace NoName.NetShop.ForeFlat.Search
             get { if (ViewState["PageIndex"] != null) return Convert.ToInt32(ViewState["PageIndex"]); else return 1; }
             set { ViewState["PageIndex"] = value; }
         }
+        private int SortValue
+        {
+            get { if (ViewState["SortValue"] != null) return Convert.ToInt32(ViewState["SortValue"]); else return 1; }
+            set { ViewState["SortValue"] = value; }
+        }
         private int PageSize
         {
             get { return Convert.ToInt32(ConfigurationManager.AppSettings["pageSize"]); }
@@ -40,9 +45,10 @@ namespace NoName.NetShop.ForeFlat.Search
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!String.IsNullOrEmpty(Request.QueryString["w"])) SearchWord = Request.QueryString["w"];
+            if (!String.IsNullOrEmpty(Request.QueryString["w"])) SearchWord = Request.QueryString["w"];
             if (!String.IsNullOrEmpty(Request.QueryString["c"])) SearchCategory = Convert.ToInt32(Request.QueryString["c"]);
             if (!String.IsNullOrEmpty(Request.QueryString["p"])) PageIndex = Convert.ToInt32(Request.QueryString["p"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["o"])) SortValue = Convert.ToInt32(Request.QueryString["o"]);
 
             if (String.IsNullOrEmpty(SearchWord)) throw new ArgumentNullException();
 
@@ -59,7 +65,7 @@ namespace NoName.NetShop.ForeFlat.Search
 
             List<ProductModel> SearchResult = GetSearchResult(out MatchCount, out PageCount);
 
-            Literal_SearchInfo.Text = String.Format("以{0}为检索词，共搜索到{1}条数据，共{2}页", SearchWord, MatchCount, PageCount);
+            Literal_SearchInfo.Text = String.Format("以\"{0}\"为检索词，共搜索到{1}条数据，共{2}页", SearchWord, MatchCount, PageCount);
 
             Repeater_ProductList.DataSource = SearchResult;
             Repeater_ProductList.DataBind();
@@ -77,16 +83,15 @@ namespace NoName.NetShop.ForeFlat.Search
                 PageIndex = PageIndex,
                 PageSize = PageSize,
                 QueryString = SearchWord,
-                Category = SearchCategory
+                Category = SearchCategory,
+                sortType = GetSortType()
             };
 
             Searcher s = new ProductSearcher(InputInfo);
             List<ISearchEntity> RawResult = s.GetSearchResult(out MatchCount);
 
-
             //在这里排序
-
-
+            if (IsOrderDesc()) RawResult.Reverse();
 
             List<ProductModel> SearchResult = new List<ProductModel>();
             int PageLowerBound = (InputInfo.PageIndex - 1) * PageSize;
@@ -95,7 +100,7 @@ namespace NoName.NetShop.ForeFlat.Search
 
             for (int i = 0; i < RawResult.Count; i++)
             {
-                if (i > PageLowerBound && i <= PageUpperBound)
+                if (i >= PageLowerBound && i <= PageUpperBound)
                 {
                     SearchResult.Add((ProductModel)RawResult[i]);
                 }
@@ -148,6 +153,26 @@ namespace NoName.NetShop.ForeFlat.Search
             HtmlCode += TagControler.TagContentGet(1, 1, "cmsTag4");
 
             return HtmlCode;
+        }
+
+        private SortType GetSortType()
+        {
+            switch (SortValue)
+            {
+                case 0:
+                    return SortType.None;
+                case 1:
+                    return SortType.Price;
+                case 3:
+                    return SortType.UpdateTime;
+                default:
+                    return SortType.None;
+            }
+        }
+
+        private bool IsOrderDesc()
+        {
+            return SortValue > 0 && SortValue % 2 == 0;
         }
     }
 }
