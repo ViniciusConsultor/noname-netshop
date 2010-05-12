@@ -35,7 +35,7 @@ namespace NoName.NetShop.Search.Searchers
             bQuery.Add(queryName, BooleanClause.Occur.MUST);
             if (searchInfo.Category != 0) bQuery.Add(queryCategory, BooleanClause.Occur.MUST);
 
-            Hits hits = searcher.Search(bQuery);
+            Hits hits = searcher.Search(bQuery, GetSort());
 
             List<ISearchEntity> ResultList = new List<ISearchEntity>();
 
@@ -61,6 +61,21 @@ namespace NoName.NetShop.Search.Searchers
 
             MatchCount = hits.Length();
             return ResultList;
+        }
+
+        private Sort GetSort()
+        {
+            switch (searchInfo.sortType)
+            {
+                case SortType.None:
+                    return Sort.RELEVANCE;
+                case SortType.Price:
+                    return new Sort(new SortField("price"));
+                case SortType.UpdateTime:
+                    return new Sort(new SortField("updatetime"));
+                default:
+                    return Sort.RELEVANCE;
+            }
         }
     }
 }
