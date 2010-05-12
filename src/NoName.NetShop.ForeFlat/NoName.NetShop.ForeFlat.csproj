@@ -157,6 +157,13 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gift\GiftDetail.aspx.cs">
       <DependentUpon>GiftDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -199,6 +206,13 @@
     <Compile Include="Magic\Auction.aspx.designer.cs">
       <DependentUpon>Auction.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Magic\AuctionHome.aspx.cs">
+      <DependentUpon>AuctionHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Magic\AuctionHome.aspx.designer.cs">
+      <DependentUpon>AuctionHome.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Magic\AuctionList.aspx.cs">
       <DependentUpon>AuctionList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -234,6 +248,13 @@
     <Compile Include="Magic\PawnProduct.aspx.designer.cs">
       <DependentUpon>PawnProduct.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Magic\PawnShop.aspx.cs">
+      <DependentUpon>PawnShop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Magic\PawnShop.aspx.designer.cs">
+      <DependentUpon>PawnShop.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Magic\Rent.aspx.cs">
       <DependentUpon>Rent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,6 +268,13 @@
     </Compile>
     <Compile Include="Magic\RentApply.aspx.designer.cs">
       <DependentUpon>RentApply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Magic\RentHome.aspx.cs">
+      <DependentUpon>RentHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Magic\RentHome.aspx.designer.cs">
+      <DependentUpon>RentHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="Magic\RentList.aspx.cs">
       <DependentUpon>RentList.aspx</DependentUpon>
@@ -521,13 +549,6 @@
     <Compile Include="News\Video.aspx.designer.cs">
       <DependentUpon>Video.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pd\PdComparison.aspx.cs">
-      <DependentUpon>PdComparison.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pd\PdComparison.aspx.designer.cs">
-      <DependentUpon>PdComparison.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Product\CommentList.aspx.cs">
       <DependentUpon>CommentList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -541,6 +562,13 @@
     </Compile>
     <Compile Include="Product\HomeProductList.aspx.designer.cs">
       <DependentUpon>HomeProductList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProductCompare.aspx.cs">
+      <DependentUpon>ProductCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Product\ProductCompare.aspx.designer.cs">
+      <DependentUpon>ProductCompare.aspx</DependentUpon>
     </Compile>
     <Compile Include="Product\QuestionList.aspx.cs">
       <DependentUpon>QuestionList.aspx</DependentUpon>
@@ -953,6 +981,7 @@
     <Content Include="flash\customize_assets\1\projector.swf" />
     <Content Include="flash\customize_assets\1\scene.jpg" />
     <Content Include="flash\customize_assets\1\screen.png" />
+    <Content Include="ForgotPassword.aspx" />
     <Content Include="Handler\CommentHandler.ashx" />
     <None Include="flash\customize_assets\1\projector.fla" />
     <Content Include="Handler\SolutionHandler.ashx" />
@@ -994,14 +1023,17 @@
     <Content Include="js\solution.suitedetail.js" />
     <Content Include="js\solution.suitelist.js" />
     <Content Include="js\validate.js" />
+    <Content Include="Magic\AuctionHome.aspx" />
+    <Content Include="Magic\PawnShop.aspx" />
+    <Content Include="Magic\RentHome.aspx" />
     <Content Include="member\MyComplaint.aspx" />
     <Content Include="member\MyMaintenance.aspx" />
     <Content Include="member\MyQuestion.aspx" />
     <Content Include="News\Materials.aspx" />
     <Content Include="News\Video.aspx" />
-    <Content Include="pd\PdComparison.aspx" />
     <Content Include="Product\CommentList.aspx" />
     <Content Include="Product\HomeProductList.aspx" />
+    <Content Include="Product\ProductCompare.aspx" />
     <Content Include="Product\QuestionList.aspx" />
     <Content Include="Product\TopicList.aspx" />
     <Content Include="Search\Web.config" />

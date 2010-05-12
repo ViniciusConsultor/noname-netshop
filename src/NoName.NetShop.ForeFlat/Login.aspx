@@ -41,7 +41,7 @@
                         onclick="btnLogin_Click" />
                 </li>
                 <li class="links">
-                	<span>忘记密码? <a href="ResetPassword.aspx">点击这里</a>
+                	<span>忘记密码? <a href="ForgotPassword.aspx">点击这里</a>
                     还不是鼎鼎会员? 立即注册成为（<a href="RegPerson.aspx">个人会员</a>、
                     <a href="RegCompany.aspx">企业会员</a>、
                     <a href="RegFamly.aspx">家庭会员</a>、
