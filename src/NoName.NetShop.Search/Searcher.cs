@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using NoName.NetShop.Search.Config;
 using NoName.NetShop.Search.Entities;
+using Lucene.Net.Search;
 
 namespace NoName.NetShop.Search
 {
@@ -22,5 +23,13 @@ namespace NoName.NetShop.Search
         public string QueryString { get; set; }
         public SearchElement ConfigElement { get; set; }
         public int Category { get; set; }
+        public SortType sortType { get; set; }
+    }
+
+    public enum SortType
+    {
+        None = 0,
+        Price = 1,
+        UpdateTime = 2
     }
 }
