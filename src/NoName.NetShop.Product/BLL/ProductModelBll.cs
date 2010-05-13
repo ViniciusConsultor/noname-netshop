@@ -203,6 +203,14 @@ namespace NoName.NetShop.Product.BLL
             dal.UpdateStatus(ProductID, status);
         }
 
+
+        public void UpdateProductMainImage(int ProductID, string[] ProductImages)
+        {
+            dal.UpdateProductMainImage(ProductID,ProductImages);
+        }
+
+        
+
 		#endregion  成员方法
 	}
 }
