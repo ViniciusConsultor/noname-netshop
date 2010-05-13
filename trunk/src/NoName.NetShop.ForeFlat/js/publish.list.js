@@ -16,10 +16,10 @@
         $('.sort a[field="sales"]').attr('class', 'on').attr('type', 0);
     }
     else if (orderType == 5) {
-        $('.sort a[field="price"]').attr('class', 'on').attr('type', 1);
+        $('.sort a[field="price"]').attr('class', 'on');
     }
     else if (orderType == 6) {
-        $('.sort a[field="price"]').attr('class', 'on').attr('type', 0);
+        $('.sort a[field="price"]').attr('class', 'on');
     }
     else if (orderType == 7) {
         $('.sort a[field="hit"]').attr('class', 'on').attr('type', 1);
@@ -59,22 +59,29 @@
 
 
     //排序事件
-    $('.sort a').click(function() {
-        $('.sort a').removeAttr('class');
+    $('.sort a[style]').click(function() {
+        $('.sort a[style]').removeAttr('class');
         $(this).attr('class', 'on');
         var field = $(this).attr('field');
         var type = $(this).attr('type');
 
         var sortValue = 0;
 
-        if (field == 'changetime')
+        if (field == 'changetime') {
             sortValue = parseInt(type) == 0 ? 1 : 2;
-        else if (field == 'sales')
+            $(this).attr('type', parseInt(type) == 0 ? '1' : '0');
+        }
+        else if (field == 'sales') {
             sortValue = parseInt(type) == 0 ? 3 : 4;
-        else if (field == 'price')
+            $(this).attr('type', parseInt(type) == 0 ? '1' : '0');
+        }
+        else if (field == 'price') {
             sortValue = parseInt(type) == 0 ? 5 : 6;
-        else if (field == 'hit')
+        }
+        else if (field == 'hit') {
             sortValue = parseInt(type) == 0 ? 7 : 8;
+            $(this).attr('type', parseInt(type) == 0 ? '1' : '0');
+        }
         else
             sortValue = 1;
 

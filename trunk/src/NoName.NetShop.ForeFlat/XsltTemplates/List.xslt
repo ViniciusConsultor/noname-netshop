@@ -155,7 +155,17 @@
                                             <span>请选择排序方式</span>
 											<a class="on" style="cursor:pointer;" field="changetime" type="0">上架时间</a>
                                             <a style="cursor:pointer;" field="sales" type="0">销量</a>
-                                            <a style="cursor:pointer;" field="price" type="0">价格</a>
+                                            <div class="sortByPrice" onmouseover="showPriceSortDropdownList(this)" onmouseout="hidePriceSortDropdownList(this)">
+                                                <a href="#" field="price">价格</a>
+                                                <ul class="priceSortOptions" id="priceSortOptions">
+                                                    <li>
+                                                        <a style="cursor:pointer;" field="price" type="0">低 - 高</a>
+                                                    </li>
+                                                    <li>
+                                                        <a style="cursor:pointer;" field="price" type="1">高 - 低</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <a style="cursor:pointer;" field="hit" type="0">浏览量</a>
                                         </li>
                                     </ul>
