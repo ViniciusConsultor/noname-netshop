@@ -73,6 +73,7 @@ namespace NoName.NetShop.Search.Searchers
                     return new Sort(new SortField("price"));
                 case SortType.UpdateTime:
                     return new Sort(new SortField("updatetime"));
+                //在这里添加其他排序字段
                 default:
                     return Sort.RELEVANCE;
             }

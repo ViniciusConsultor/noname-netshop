@@ -29,7 +29,9 @@ namespace NoName.NetShop.Search
     public enum SortType
     {
         None = 0,
-        Price = 1,
-        UpdateTime = 2
+        UpdateTime = 1,
+        Sales = 2,
+        Price = 3,
+        Views = 4
     }
 }
