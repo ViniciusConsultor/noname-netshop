@@ -260,3 +260,17 @@ function getNextsibling(n)
    }
   return x;
   }
+  
+  
+function showPriceSortDropdownList(obj){
+	clearTimeout(obj.hideTimer);
+	var dropdownList = document.getElementById("priceSortOptions");
+	dropdownList.style.display = "block";
+}
+
+function hidePriceSortDropdownList(obj){
+	obj.hideTimer = setTimeout(function(){
+		var dropdownList = document.getElementById("priceSortOptions");
+		dropdownList.style.display = "none";
+	},100);
+}
