@@ -116,3 +116,4 @@ function setCurrentNavigator() {
         $(navifators[5]).addClass('magichover');
     }
 }
+
