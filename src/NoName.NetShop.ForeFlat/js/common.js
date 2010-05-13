@@ -100,20 +100,23 @@ function setCurrentNavigator() {
     var lastHalf = p.getPathname();
     var navifators = $('.navigator li a');
 
+    if (lastHalf == '/') {
+        $(navifators[1]).addClass('home_on');
+    }
     if (lastHalf.startWith('/channel/shopping')) {
-        $(navifators[1]).addClass('shoppinghover');
+        $(navifators[1]).addClass('shopping_on');
     }
     if (lastHalf.startWith('/solution/home.aspx')) {
-        $(navifators[2]).addClass('solutionhover');
+        $(navifators[2]).addClass('solution_on');
     }
     if (lastHalf.startWith('/channel/brand')) {
-        $(navifators[3]).addClass('brandshover');
+        $(navifators[3]).addClass('brands_on');
     }
     if (lastHalf.startWith('/channel/info')) {
-        $(navifators[4]).addClass('informationhover');
+        $(navifators[4]).addClass('information_on');
     }
     if (lastHalf.startWith('/channel/magic')) {
-        $(navifators[5]).addClass('magichover');
+        $(navifators[5]).addClass('magic_on');
     }
 }
 
