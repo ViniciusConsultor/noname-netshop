@@ -1,7 +1,7 @@
 ﻿$(function() {
     /* initialize */
     //order
-    var orderType = getOrder();
+var orderType = getOrder();
     $('.sort a').removeAttr('class');
     if (orderType == 1) {
         $('.sort a[field="changetime"]').attr('class', 'on').attr('type', 1);
@@ -16,10 +16,10 @@
         $('.sort a[field="sales"]').attr('class', 'on').attr('type', 0);
     }
     else if (orderType == 5) {
-        $('.sort a[field="price"]').attr('class', 'on');
+        $('.sort a[field="price"][href]').attr('class', 'on');
     }
     else if (orderType == 6) {
-        $('.sort a[field="price"]').attr('class', 'on');
+        $('.sort a[field="price"][href]').attr('class', 'on');
     }
     else if (orderType == 7) {
         $('.sort a[field="hit"]').attr('class', 'on').attr('type', 1);
@@ -171,9 +171,11 @@
     function getOrder() {
         var url = window.location.href;
         /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+        //alert('1:' + RegExp.$1 + '\n2:' + RegExp.$2 + '\n3:' + RegExp.$3 + '\n4:' + RegExp.$4 + '\n5:' + RegExp.$5 + '\n6:' + RegExp.$6 + '\n7:' + RegExp.$7 + '\n8:' + RegExp.$8 + '\n9:' + RegExp.$9);
+
 
         if (RegExp.$6 == '') return 1;
-        else return parseInt(RegExp.$4.replace('-o', ''));
+        else return parseInt(RegExp.$6.replace('-o', ''));
     }
     function setOrder(order) {
         var url = window.location.href;
@@ -219,7 +221,7 @@
         /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
 
         if (RegExp.$5 == '') return -1;
-        else return RegExp.$4.replace('-r', '');
+        else return RegExp.$5.replace('-r', '');
     }
     function setPriceRange(range) {
         var url = window.location.href;
@@ -255,7 +257,7 @@
     }
     function setListUrlParameter(parameterTable) {
         var url = window.location.href;
-        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+        /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
 
         var parmPart = '';
         if (parameterTable.Count == 1) {
@@ -279,7 +281,8 @@
             parmPart = '-v' + parmPart.substring(0, parmPart.lastIndexOf(',')) + 'e';
         }
 
-        url = RegExp.$1 + RegExp.$2 + RegExp.$4 + parmPart + RegExp.$6;
+        url = RegExp.$1 + RegExp.$2 + RegExp.$4 + RegExp.$5 + RegExp.$6 + parmPart + RegExp.$8;
+        //url = RegExp.$1 + RegExp.$2 + RegExp.$4 + parmPart + RegExp.$6;
 
         window.location = url;
     }
@@ -297,7 +300,7 @@
                     alert('收藏成功！');
                 }
                 else if (data.Message.indexOf('登录') > 0) {
-                    window.open('/login.aspx?returnurl=' + encodeURIComponent('/member/dofavorate.aspx?ctype=1&cid=' + productID));
+                    window.open('/login.aspx?returnurl=' + encodeURIComponent('/member/dofavorite.aspx?ctype=1&cid=' + productID));
                 }
                 else {
                     alert(data.Message);

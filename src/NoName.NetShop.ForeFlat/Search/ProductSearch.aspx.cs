@@ -54,9 +54,6 @@ namespace NoName.NetShop.ForeFlat.Search
 
             BindData();
             DivLeft.InnerHtml = GetLeftHtmlCode();
-
-            //GridView1.DataSource = ProductSearchResult;
-            //GridView1.DataBind();
         }
 
         private void BindData()
@@ -162,9 +159,13 @@ namespace NoName.NetShop.ForeFlat.Search
                 case 0:
                     return SortType.None;
                 case 1:
-                    return SortType.Price;
-                case 3:
                     return SortType.UpdateTime;
+                case 3:
+                    return SortType.Sales;
+                case 5:
+                    return SortType.Price;
+                case 7:
+                    return SortType.Views;
                 default:
                     return SortType.None;
             }
