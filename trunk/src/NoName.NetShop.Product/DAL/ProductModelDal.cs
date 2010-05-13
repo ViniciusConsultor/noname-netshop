@@ -177,6 +177,19 @@ namespace NoName.NetShop.Product.DAL
             dbw.ExecuteNonQuery(CommandType.Text, sql);
         }
 
+        public void UpdateProductMainImage(int ProductID, string[] ProductImages)
+        {
+            string sql = "update pdproduct set smallimage=@smallimage,mediumimage=@mediumimage,largeimage=@largeimage where productid=@productid";
+            DbCommand Command = dbw.GetSqlStringCommand(sql);
+
+            dbw.AddInParameter(Command, "@smallimage", DbType.String, ProductImages[0]);
+            dbw.AddInParameter(Command, "@mediumimage", DbType.String, ProductImages[1]);
+            dbw.AddInParameter(Command, "@largeimage", DbType.String, ProductImages[2]);
+            dbw.AddInParameter(Command, "@productid", DbType.Int32, ProductID);
+
+            dbw.ExecuteNonQuery(Command);
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>

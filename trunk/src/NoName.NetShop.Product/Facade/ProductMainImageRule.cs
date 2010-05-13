@@ -64,6 +64,36 @@ namespace NoName.NetShop.Product.Facade
             return ProcessResult;
         }
 
+
+        public static bool SaveProductMainImage(int ProductID, FileInfo OriginalFile, out string[] FileNames)
+        {
+            string FileSuffix = Path.GetExtension(OriginalFile.FullName).Substring(1);
+            bool ProcessResult = false;
+            FileNames = GetMainImageName(ProductID, FileSuffix);
+
+            if (config.AllowedFormat.ToLower().Contains(FileSuffix.ToLower()) && config.MaxSize * 1024 >= OriginalFile.Length)
+            {
+                ImageHelper ih = new ImageHelper();
+
+                ih.LoadImage(new FileStream(OriginalFile.FullName, FileMode.Open));
+
+                for (int i = 2; i >= 0; i--)
+                {
+                    if (config.ImageTypes[i].Width > 0 && config.ImageTypes[i].Height > 0)
+                    {
+                        ih.ScaleImageByFixSize(config.ImageTypes[i].Width, config.ImageTypes[i].Height, true);
+                    }
+                    ih.SaveImage(config.PathRoot + FileNames[i]);
+                }
+
+                ih.Dispose();
+
+                ProcessResult = true;
+            }
+
+            return ProcessResult;
+        }
+
         public static ProductModel GetMainImageUrl(ProductModel Product)
         {
             Product.SmallImage = config.UrlRoot + Product.SmallImage;
