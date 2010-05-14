@@ -230,10 +230,10 @@
             <div class="productImage">
                 <xsl:for-each select="multiimages/image">
                     <div id="productThumb{position() - 1}" style="display:none">
-                        <img src="{smallimage}" />
+                        <img src="{originimage}" />
                         <div class="targetArea"></div>
                         <div class="zoomInArea">
-                            <img src="{largeimage}" />
+                            <img src="{originimage}" />
                         </div>
                     </div>                    
                 </xsl:for-each>                
