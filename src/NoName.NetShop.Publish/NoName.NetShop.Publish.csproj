@@ -87,6 +87,7 @@
     <Compile Include="PublishException.cs" />
     <Compile Include="PublishHanlder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublishLogInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NoName.NetShop.Comment\NoName.NetShop.Comment.csproj">
