@@ -12,6 +12,7 @@ using NoName.NetShop.Search.Searchers;
 using NoName.Utility;
 using System.Text;
 using NoName.NetShop.CMS.Controler;
+using log4net;
 
 namespace NoName.NetShop.ForeFlat.Search
 {
@@ -42,6 +43,7 @@ namespace NoName.NetShop.ForeFlat.Search
         {
             get { return Convert.ToInt32(ConfigurationManager.AppSettings["pageSize"]); }
         }
+        private ILog Logger = Common.Loggers.SearchLogger;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -86,6 +88,8 @@ namespace NoName.NetShop.ForeFlat.Search
 
             Searcher s = new ProductSearcher(InputInfo);
             List<ISearchEntity> RawResult = s.GetSearchResult(out MatchCount);
+
+            Logger.Info(String.Format("{0}\t{1}\t{2}\t{3}\t{4}", SearchWord, SearchCategory, SortValue, PageIndex, MatchCount));
 
             //在这里排序
             if (IsOrderDesc()) RawResult.Reverse();
