@@ -35,7 +35,7 @@ namespace NoName.NetShop.BackFlat.Brand.Relation
 
         private void BindData()
         {
-            DataTable dt = bbll.GetList(" brandid not in (SELECT distinct brandid FROM pdbrandcategoryrelation where cateid=" + CategoryID + ")").Tables[0];
+            DataTable dt = bbll.GetList(" brandid not in (SELECT distinct brandid FROM pdbrandcategoryrelation where cateid=" + CategoryID + ")", " brandname").Tables[0];
             Repeater_Brand.DataSource = dt;
             Repeater_Brand.DataBind();
         }

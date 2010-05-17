@@ -246,10 +246,11 @@ namespace NoName.NetShop.BackFlat.Product
                 rtnValue = 1;
                 return rtnValue;
             }
+            CategoryModel cate = new CategoryModelBll().GetModel(Convert.ToInt32(txtCategoryID.Value));
 
             string[] MainImages;
 
-            if (ProductMainImageRule.SaveProductMainImage(ProductID, fulImage.PostedFile, out MainImages))
+            if (ProductMainImageRule.SaveProductMainImage(ProductID, cate.CatePath, fulImage.PostedFile, out MainImages))
             {
                 ProductModel product = new ProductModel();
 
@@ -257,7 +258,6 @@ namespace NoName.NetShop.BackFlat.Product
                 product.ProductCode = String.IsNullOrEmpty(txtProductCode.Text) ? ProductID.ToString() : txtProductCode.Text;
                 product.ProductName = txtProductName.Text;
 
-                CategoryModel cate = new CategoryModelBll().GetModel(Convert.ToInt32(txtCategoryID.Value));
 
                 product.CateId = cate.CateId;
                 product.CatePath = cate.CatePath;
@@ -335,7 +335,7 @@ namespace NoName.NetShop.BackFlat.Product
                     if (s.StartsWith("multiImageUpload") && Request.Files[s].ContentLength>0)
                     {
                         string[] FileNames;
-                        ProductMultiImageRule.SaveProductMultiImage(ProductID, Request.Files[s], out FileNames);
+                        ProductMultiImageRule.SaveProductMultiImage(ProductID,cate.CatePath, Request.Files[s], out FileNames);
 
                         if (FileNames != null)
                         {

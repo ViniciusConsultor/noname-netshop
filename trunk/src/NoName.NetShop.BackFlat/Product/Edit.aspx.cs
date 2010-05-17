@@ -384,7 +384,7 @@ namespace NoName.NetShop.BackFlat.Product
             if (fulImage.FileName != String.Empty)
             {
                 string[] MainImages;
-                ProductMainImageRule.SaveProductMainImage(ProductID, fulImage.PostedFile, out MainImages);
+                ProductMainImageRule.SaveProductMainImage(ProductID, product.CatePath, fulImage.PostedFile, out MainImages);
                 product.SmallImage = MainImages[0];
                 product.MediumImage = MainImages[1];
                 product.LargeImage = MainImages[2];
@@ -430,7 +430,7 @@ namespace NoName.NetShop.BackFlat.Product
                 if (s.StartsWith("multiImageUpload") && Request.Files[s].ContentLength > 0)
                 {
                     string[] FileNames;
-                    ProductMultiImageRule.SaveProductMultiImage(ProductID, Request.Files[s], out FileNames);
+                    ProductMultiImageRule.SaveProductMultiImage(ProductID,product.CatePath, Request.Files[s], out FileNames);
 
                     if (FileNames != null)
                     {
