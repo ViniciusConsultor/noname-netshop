@@ -133,7 +133,7 @@ namespace NoName.NetShop.Product.DAL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public DataSet GetList(string strWhere)
+		public DataSet GetList(string strWhere,string strOrder)
 		{
             StringBuilder strSql = new StringBuilder();
 			strSql.Append("select BrandId,BrandName,CateId,CatePath,BrandLogo,Brief ");
@@ -142,6 +142,10 @@ namespace NoName.NetShop.Product.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
+            if (strOrder.Trim() != "")
+            {
+                strSql.Append(" order by " + strOrder);
+            }
 			return dbr.ExecuteDataSet(CommandType.Text, strSql.ToString());
 		}
 
