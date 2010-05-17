@@ -24,7 +24,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize,"n.*", AppType.News, "inner join nenews n on c.targetid=n.newsid", out RecordCount);
+            GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize,"n.*", AppType.News, " inner join nenews n on c.targetid=n.newsid", out RecordCount);
             GridView1.DataBind();
 
             AspNetPager.RecordCount = RecordCount; 
