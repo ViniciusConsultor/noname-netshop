@@ -67,7 +67,10 @@ namespace NoName.NetShop.BackFlat.qa
                 amodel = abll.GetModel(int.Parse(this.lblAnswerId.Text));
             }
             amodel.Content = this.txtAContent.Text.Trim();
-            amodel.Title = this.txtAContent.Text.Trim();
+            amodel.Title = this.txtATitle.Text.Trim();
+            txtAContent.Text = "";
+            txtATitle.Text = "";
+
             abll.Save(amodel);
             BindAnswers();
         }

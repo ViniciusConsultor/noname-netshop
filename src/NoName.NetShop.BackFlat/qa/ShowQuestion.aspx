@@ -103,7 +103,7 @@
                     <tr>
                         <td height="25" colspan="2">
                             <div align="center">
-                                <asp:Button ID="btnSave" runat="server" Text="· 保存 ·" OnClick="btnSave_Click"></asp:Button>
+                                <asp:Button ID="btnSave" runat="server" Text="· 回复 ·" OnClick="btnSave_Click"></asp:Button>
                             </div>
                         </td>
                     </tr>
