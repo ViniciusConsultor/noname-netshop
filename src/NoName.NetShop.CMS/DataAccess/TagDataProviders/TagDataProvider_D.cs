@@ -41,7 +41,7 @@ namespace NoName.NetShop.CMS.DataAccess.TagDataProviders
                 XmlNode NewsNode = XmlUtility.AddNewNode(NewsListNode1, "news", null);
 
                 XmlUtility.AddNewNode(NewsNode, "newsid", row["newsid"].ToString());
-                XmlUtility.AddNewNode(NewsNode, "title", row["title"].ToString());
+                XmlUtility.AddNewNode(NewsNode, "title", row["title"].ToString().Length > 17 ? row["title"].ToString().Substring(0, 16) + "..." : row["title"].ToString());
                 XmlUtility.AddNewNode(NewsNode, "image", NewsImageRule.GetImageUrl(row["imageurl"].ToString()));
                 XmlUtility.AddNewNode(NewsNode, "video", NewsVideoRule.GetVideoUrl(row["videourl"].ToString()));
             }
@@ -66,7 +66,7 @@ namespace NoName.NetShop.CMS.DataAccess.TagDataProviders
                 XmlNode NewsNode = XmlUtility.AddNewNode(NewsListNode2, "news", null);
 
                 XmlUtility.AddNewNode(NewsNode, "newsid", row["newsid"].ToString());
-                XmlUtility.AddNewNode(NewsNode, "title", row["title"].ToString());
+                XmlUtility.AddNewNode(NewsNode, "title", row["title"].ToString().Length > 17 ? row["title"].ToString().Substring(0, 16) + "..." : row["title"].ToString());
                 XmlUtility.AddNewNode(NewsNode, "image", NewsImageRule.GetImageUrl(row["imageurl"].ToString()));
                 XmlUtility.AddNewNode(NewsNode, "video", NewsVideoRule.GetVideoUrl(row["videourl"].ToString()));
             }
