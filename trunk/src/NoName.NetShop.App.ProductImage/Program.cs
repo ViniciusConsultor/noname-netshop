@@ -25,21 +25,37 @@ namespace NoName.NetShop.App.ProductImage
 
         static void Main(string[] args)
         {
-            string sql = "select productid,productphoto,productphoto01,productphoto02,productphoto03 from my_products where productid in (230,231,232,233,234,241,243,244,246,247)";
+            //string sql = "select productid,productphoto,productphoto01,productphoto02,productphoto03 from my_products where productid in (230,231,232,233,234,241,243,244,246,247)";
+            string sql = "select productid,productphoto,productphoto01,productphoto02,productphoto03 from my_products";
 
             IDataReader reader = db.ExecuteReader(CommandType.Text, sql);
 
             while (reader.Read())
             {
-                Console.WriteLine(reader["productid"]);
-                int ProductID = Convert.ToInt32(reader["productid"]);
-
-                AddProductMainImage(ProductID, reader["productphoto"].ToString());
-
-                for (int i = 1; i <= 3; i++)
+                try
                 {
-                    string key = "productphoto0" + i;
-                    AddProductMultiImage(ProductID, reader[key].ToString());
+                    Console.WriteLine(reader["productid"]);
+                    int ProductID = Convert.ToInt32(reader["productid"]);
+
+                    string CatePath = GetProductCategoryPath(ProductID);
+                    if (!String.IsNullOrEmpty(CatePath))
+                    {
+                        AddProductMainImage(ProductID, CatePath, reader["productphoto"].ToString());
+
+                        for (int i = 1; i <= 3; i++)
+                        {
+                            string key = "productphoto0" + i;
+                            AddProductMultiImage(ProductID, CatePath, reader[key].ToString());
+                        }
+
+                        UpdateImageFlag(ProductID);
+                        Console.WriteLine("succ!");
+                    }
+                }
+                catch
+                {
+                    continue;
+                    Console.WriteLine("fail!");
                 }
             }
 
@@ -48,24 +64,25 @@ namespace NoName.NetShop.App.ProductImage
 
 
 
-        private static void AddProductMainImage(int ProductID, string ImageRelativeURL)
+        private static void AddProductMainImage(int ProductID, string CatePath, string ImageRelativeURL)
         {
             string ImageFullURL = UrlPrefix + ImageRelativeURL;
             FileInfo ImageFile = DownloadImage(ImageFullURL);
+            if (!ImageFile.Directory.Exists) Directory.CreateDirectory(ImageFile.Directory.FullName);
             string[] MainImages;
+            ProductMainImageRule.SaveProductMainImage(ProductID, CatePath, ImageFile, out MainImages);
 
-            ProductMainImageRule.SaveProductMainImage(ProductID, ImageFile, out MainImages);
-
-            pbll.UpdateProductMainImage(ProductID,MainImages);
+            pbll.UpdateProductMainImage(ProductID, MainImages);
         }
 
-        private static void AddProductMultiImage(int ProductID, string ImageRelativeURL)
+        private static void AddProductMultiImage(int ProductID, string CatePath, string ImageRelativeURL)
         {
             string ImageFullURL = UrlPrefix + ImageRelativeURL;
             FileInfo ImageFile = DownloadImage(ImageFullURL);
+            if (!ImageFile.Directory.Exists) Directory.CreateDirectory(ImageFile.Directory.FullName);
             string[] MultiImages;
 
-            ProductMultiImageRule.SaveProductMultiImage(ProductID, ImageFile, out MultiImages);
+            ProductMultiImageRule.SaveProductMultiImage(ProductID, CatePath, ImageFile, out MultiImages);
 
             ProductImageModel model = new ProductImageModel();
 
@@ -76,7 +93,7 @@ namespace NoName.NetShop.App.ProductImage
             model.SmallImage = MultiImages[0];
             model.Title = String.Empty;
 
-            imgBll.Add(model); 
+            imgBll.Add(model);
         }
 
         private static FileInfo DownloadImage(string ImageURL)
@@ -87,6 +104,19 @@ namespace NoName.NetShop.App.ProductImage
             client.DownloadFile(ImageURL, FileName);
 
             return new FileInfo(FileName);
+        }
+
+        private static void UpdateImageFlag(int ProductID)
+        {
+            string sql = "update my_products set imageflag=1 where productid="+ProductID;
+            db.ExecuteNonQuery(CommandType.Text,sql);
+        }
+
+        private static string GetProductCategoryPath(int ProductID)
+        {
+            string sql = "select catepath from pdproduct where productid="+ProductID;
+
+            return Convert.ToString(db.ExecuteScalar(CommandType.Text, sql));
         }
     }
 }
