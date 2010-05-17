@@ -16,24 +16,24 @@ namespace NoName.NetShop.Product.Facade
     {
         private static ProductMultiImageSection config = (ProductMultiImageSection)ConfigurationManager.GetSection("productImage/productMultiImage");
 
-        public static string[] GetMultiImageName(int ProductID, string FileSuffix)
+        public static string[] GetMultiImageName(int ProductID, string CategoryPath, string FileSuffix)
         {
             ArrayList MultiImageFileNames = new ArrayList();
             string guid = Guid.NewGuid().ToString();
 
             foreach (ProductMultiImageElement ImageType in config.ImageTypes)
             {
-                MultiImageFileNames.Add(string.Format(config.Rule, ProductID, ImageType.Suffix,guid, FileSuffix));
+                MultiImageFileNames.Add(string.Format(config.Rule,CategoryPath, ProductID, ImageType.Suffix,guid, FileSuffix));
             }
 
             return (string[])MultiImageFileNames.ToArray(typeof(string));
         }
 
-        public static bool SaveProductMultiImage(int ProductID, HttpPostedFile OriginalFile, out string[] FileNames)
+        public static bool SaveProductMultiImage(int ProductID, string CategoryPath, HttpPostedFile OriginalFile, out string[] FileNames)
         {
             string FileSuffix = Path.GetExtension(OriginalFile.FileName).Substring(1);
             bool ProcessResult = false;
-            FileNames = GetMultiImageName(ProductID, FileSuffix);
+            FileNames = GetMultiImageName(ProductID, CategoryPath, FileSuffix);
 
             if (config.AllowedFormat.ToLower().Contains(FileSuffix.ToLower()) && config.MaxSize * 1024 >= OriginalFile.ContentLength)
             {
@@ -47,7 +47,10 @@ namespace NoName.NetShop.Product.Facade
                     {
                         ih.ScaleImageByFixSize(config.ImageTypes[i].Width, config.ImageTypes[i].Height, true);
                     }
-                    ih.SaveImage(config.PathRoot + FileNames[i]);
+                    FileInfo tempFile = new FileInfo(config.PathRoot + FileNames[i].Replace("/", "\\"));
+                    if (!tempFile.Directory.Exists) tempFile.Directory.Create();
+
+                    ih.SaveImage(tempFile.FullName);
                 }
 
                 ih.Dispose();
@@ -58,11 +61,11 @@ namespace NoName.NetShop.Product.Facade
             return ProcessResult;
         }
 
-        public static bool SaveProductMultiImage(int ProductID, FileInfo OriginalFile, out string[] FileNames)
+        public static bool SaveProductMultiImage(int ProductID, string CategoryPath, FileInfo OriginalFile, out string[] FileNames)
         {
             string FileSuffix = Path.GetExtension(OriginalFile.FullName).Substring(1);
             bool ProcessResult = false;
-            FileNames = GetMultiImageName(ProductID, FileSuffix);
+            FileNames = GetMultiImageName(ProductID, CategoryPath, FileSuffix);
 
             if (config.AllowedFormat.ToLower().Contains(FileSuffix.ToLower()) && config.MaxSize * 1024 >= OriginalFile.Length)
             {
@@ -76,7 +79,10 @@ namespace NoName.NetShop.Product.Facade
                     {
                         ih.ScaleImageByFixSize(config.ImageTypes[i].Width, config.ImageTypes[i].Height, true);
                     }
-                    ih.SaveImage(config.PathRoot + FileNames[i]);
+                    FileInfo tempFile = new FileInfo(config.PathRoot + FileNames[i].Replace("/", "\\"));
+                    if (!tempFile.Directory.Exists) tempFile.Directory.Create();
+
+                    ih.SaveImage(tempFile.FullName);
                 }
 
                 ih.Dispose();
