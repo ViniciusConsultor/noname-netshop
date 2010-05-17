@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 using NoName.NetShop.Member;
 using NoName.NetShop.Common;
+using System.Web.Configuration;
 
 namespace NoName.NetShop.ForeFlat
 {
@@ -20,7 +21,8 @@ namespace NoName.NetShop.ForeFlat
                 if (optype == "2")
                 {
                     FormsAuthentication.SignOut();
-                    Response.Redirect(FormsAuthentication.LoginUrl);
+                    //Response.Redirect(FormsAuthentication.LoginUrl);
+                    Response.Redirect(WebConfigurationManager.AppSettings["foreFlatRootUrl"]);
                 }
             }
 
