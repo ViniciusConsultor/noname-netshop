@@ -68,7 +68,7 @@ namespace NoName.NetShop.CMS.DataAccess
             PageLowerBound = (PageIndex - 1) * PageSize;
             PageUpperBount = PageLowerBound + PageSize;
 
-            string sqlCount = String.Format("select * from cmspage where category={0}", (int)pageCate);
+            string sqlCount = String.Format("select count(0) from cmspage where category={0}", (int)pageCate);
             string sqlData = @" select * from (select row_number() over(order by pageid desc) as nid,* from cmspage where category={0}) as sp
                                 where sp.nid>{1} and sp.nid<={2}";
 
