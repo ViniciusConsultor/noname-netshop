@@ -89,7 +89,7 @@ namespace NoName.NetShop.BackFlat.Gift
             if (fulImage.HasFile)
             {
                 string[] MainImages;
-                if (ProductMainImageRule.SaveProductMainImage(model.ProductId, fulImage.PostedFile, out MainImages))
+                if (ProductMainImageRule.SaveProductMainImage(model.ProductId, "gift/", fulImage.PostedFile, out MainImages))
                 {
                     model.SmallImage = MainImages[0];
                     model.MediumImage = MainImages[1];

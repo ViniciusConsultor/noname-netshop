@@ -141,7 +141,7 @@ namespace NoName.NetShop.BackFlat.Solution
             if (!String.IsNullOrEmpty(fulImage.FileName))
             {
                 string[] MainImages;
-                if (ProductMainImageRule.SaveProductMainImage(smodel.SuiteId, fulImage.PostedFile, out MainImages))
+                if (ProductMainImageRule.SaveProductMainImage(smodel.SuiteId,"suite/", fulImage.PostedFile, out MainImages))
                 {
                     smodel.SmallImage = MainImages[0];
                     smodel.MediumImage = MainImages[1];

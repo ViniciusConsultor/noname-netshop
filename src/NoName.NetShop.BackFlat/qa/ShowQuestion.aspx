@@ -8,8 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
+    <div>    
             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                 <thead>
                     <tr>
@@ -35,6 +34,7 @@
                                 OnClick="btnDelete_Click"></asp:Button>
                         </td>
                     </tr>
+                    <!--
                     <tr>
                         <td height="25" width="30%" align="right">
                             标题 ：
@@ -43,6 +43,7 @@
                             <asp:Label ID="lblQTitle" runat="server" ></asp:Label>
                         </td>
                     </tr>
+                    -->
                     <tr>
                         <td height="25" width="30%" align="right">
                             内容 ：
