@@ -85,8 +85,8 @@ namespace NoName.NetShop.Comment
             string sqlCount = @"select count(0) from qacomment c " + JoinStr + " where  apptype='" + AppType + "'";
 
             string sqlData = @"select * from 
-	                            (select row_number() OVER(ORDER BY c.createtime desc) as nid,c.*," + TableFields + @" from qacomment c " + JoinStr + @") as sp
-	                            where sp.apptype='" + AppType + "' and sp.nid>" + PageLowerBound + " and sp.nid <= " + PageUpperBount;
+	                            (select row_number() OVER(ORDER BY c.createtime desc) as nid,c.*," + TableFields + @" from qacomment c " + JoinStr + @" where c.apptype='" + AppType + @"') as sp
+	                            where sp.nid>" + PageLowerBound + " and sp.nid <= " + PageUpperBount;
 
 
             RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sqlCount));
