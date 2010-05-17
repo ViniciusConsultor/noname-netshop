@@ -78,16 +78,16 @@ namespace NoName.NetShop.Product.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public DataSet GetList(string strWhere)
+		public DataSet GetList(string strWhere,string strOrder)
 		{
-			return dal.GetList(strWhere);
+			return dal.GetList(strWhere,strOrder);
 		}
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
 		public List<BrandModel> GetModelList(string strWhere)
 		{
-			DataSet ds = dal.GetList(strWhere);
+            DataSet ds = dal.GetList(strWhere, String.Empty);
 			List<BrandModel> modelList = new List<BrandModel>();
 			int rowsCount = ds.Tables[0].Rows.Count;
 			if (rowsCount > 0)
@@ -119,7 +119,7 @@ namespace NoName.NetShop.Product.BLL
 		/// </summary>
 		public DataSet GetAllList()
 		{
-			return GetList("");
+			return GetList("","");
 		}
 
 		/// <summary>
