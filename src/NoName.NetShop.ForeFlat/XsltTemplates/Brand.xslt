@@ -6,7 +6,7 @@
 	<xsl:variable name="BrandName" select="/brandpage/brandinfo/brandname"/>
 	<xsl:variable name="CategoryID" select="/brandpage/brandinfo/categoryid"/>
 	<xsl:variable name="OrderType" select="/brandpage/brandinfo/ordertype"/>
-	<xsl:variable name="PageIndex" select="/brandpage/productlist/pageinfo/@pageindex"/>
+	<xsl:variable name="PageIndex" select="/brandpage/productlist/pageinfo/@currentpage"/>
 	<xsl:variable name="PageCount" select="/brandpage/productlist/pageinfo/@pagecount"/>
 
 	<xsl:template match="/">
@@ -26,6 +26,9 @@
 					<xsl:text> </xsl:text>
 				</script>
 				<script type="text/javascript" src="/js/mini-Rainy.js">
+					<xsl:text> </xsl:text>
+				</script>
+				<script type="text/javascript" src="/js/hashtable.js">
 					<xsl:text> </xsl:text>
 				</script>
 				<script type="text/javascript" src="/js/publish.brand.js">
@@ -185,42 +188,42 @@
 				<xsl:for-each select="products/product">
 					<li>
 						<a href="/product-{productid}.html" title="{productname}">
-							<img src="Pictures/productPic.gif" />
-							<span class="price">鼎城报价：￥<xsl:value-of select="price"/>
+							<img src="{mediumimage}" />
+							<span class="price">鼎鼎价：￥<xsl:value-of select="price"/>
 						</span>
 							<span class="name" title="{productname}">
 								<xsl:value-of select="productname"/>
 							</span>
-							<span class="commentsNum">已有<xsl:value-of select="commentcount"/>人评论</span>
+							<!--<span class="commentsNum">已有<xsl:value-of select="commentcount"/>人评论</span>-->
 						</a>
 						<div class="actions">
-							<a class="button_blue3" href="/product-{productid}.html">
-								<span class="left">
-									<xsl:text> </xsl:text>
-								</span>
-								<span class="text">购买</span>
-								<span class="right">
-									<xsl:text> </xsl:text>
-								</span>
-							</a>
-							<a class="button_blue3" href="#">
-								<span class="left">
-									<xsl:text> </xsl:text>
-								</span>
-								<span class="text">收藏</span>
-								<span class="right">
-									<xsl:text> </xsl:text>
-								</span>
-							</a>
-							<a class="button_blue3" href="#">
-								<span class="left">
-									<xsl:text> </xsl:text>
-								</span>
-								<span class="text">对比</span>
-								<span class="right">
-									<xsl:text> </xsl:text>
-								</span>
-							</a>
+                            <a class="button_blue3" href="/sp/addtocart.aspx?pid={productid}">
+                                <span class="left">
+                                    <xsl:text> </xsl:text>
+                                </span>
+                                <span class="text">购买</span>
+                                <span class="right">
+                                    <xsl:text> </xsl:text>
+                                </span>
+                            </a>
+                            <a class="button_blue3" fav="true" style="cursor:pointer" productid="{productid}">
+                                <span class="left">
+                                    <xsl:text> </xsl:text>
+                                </span>
+                                <span class="text">收藏</span>
+                                <span class="right">
+                                    <xsl:text> </xsl:text>
+                                </span>
+                            </a>
+                            <a class="button_blue3" comp="true" productid="{productid}" productname="{productname}" category="{categoryid}" image="{smallimage}" href="javascript:void(0)">
+                                <span class="left">
+                                    <xsl:text> </xsl:text>
+                                </span>
+                                <span class="text">对比</span>
+                                <span class="right">
+                                    <xsl:text> </xsl:text>
+                                </span>
+                            </a>
 						</div>
 					</li>
 				</xsl:for-each>
@@ -231,23 +234,38 @@
 						<xsl:text> </xsl:text>
 					</div>
 					<div class="pagination">
-						<xsl:if test="$PageIndex != 1">
-							<a type="page" class="prev" style="cursor:pointer">
-								<xsl:text> </xsl:text>
-							</a>
-						</xsl:if>
+						<a class="prev" style="cursor:pointer">
+			                <xsl:if test="$PageIndex != 1">
+				                <xsl:attribute name="page">
+					                <xsl:value-of select="$PageIndex - 1"/>
+				                </xsl:attribute>
+			                </xsl:if>
+			                <xsl:text> </xsl:text>
+						</a>
 						<div class="pageNum">							
 							<xsl:for-each select="pageinfo/page">
-								<a type="page" style="cursor:pointer" page="{pageindex}">
-									<xsl:value-of select="pageindex"/>
-								</a>
+					            <a style="cursor:pointer">
+						            <xsl:choose>
+							            <xsl:when test="@pageindex != $PageIndex">
+								            <xsl:attribute name="page">
+									            <xsl:value-of select="@pageindex"/>
+								            </xsl:attribute>
+							            </xsl:when>
+							            <xsl:otherwise>
+								            <xsl:attribute name="class">on</xsl:attribute>
+							            </xsl:otherwise>
+						            </xsl:choose>
+						            <xsl:value-of select="@pageindex"/>
+					            </a>
 							</xsl:for-each>
 						</div>
-						<xsl:if test="$PageIndex != $PageCount">
-							<a type="page" class="next" style="cursor:pointer">
-								<xsl:text> </xsl:text>
-							</a>
-						</xsl:if>
+						<a type="page" class="next" style="cursor:pointer">
+			                <xsl:if test="$PageIndex != $PageCount">
+				                <xsl:attribute name="page">
+					                <xsl:value-of select="$PageIndex + 1"/>
+				                </xsl:attribute>
+			                </xsl:if>
+						</a>
 					</div>
 				</xsl:if>
 			</div>

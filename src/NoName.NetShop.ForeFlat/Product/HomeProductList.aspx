@@ -51,7 +51,7 @@
                                         <li>
                                             <a href='/product-<%# Eval("productid") %>.html' title='<%# Eval("ProductName") %>'>
                                                 <img src="Pictures/productPic.gif" />
-                                                <span class="price">鼎城报价：￥<%# Eval("price") %></span>
+                                                <span class="price">鼎鼎价：￥<%# Eval("price") %></span>
                                                 <span class="name" title='<%# Eval("ProductName") %>'><%# Eval("ProductName") %></span>
                                                 <span class="commentsNum"></span>
                                             </a>

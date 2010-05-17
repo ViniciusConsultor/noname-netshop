@@ -22,6 +22,10 @@
                         alert('发表成功！');
                         loadComment();
                     }
+                    else if (data.message.indexOf('登录') > 0) {
+                        alert(data.message);
+                        window.location = '/login.aspx?returnurl=' + window.location.href;
+                    }
                     else alert(data.message);
                 }
             });
@@ -114,6 +118,10 @@ function addEvaluation(newsID, evaluation) {
             if (data.result.toString() == 'true') {
                 alert('提交成功！');
                 loadEvaluation();
+            }
+            else if (data.message.indexOf('登录') > 0) {
+                alert(data.message);
+                window.location = '/login.aspx?returnurl=' + window.location.href;
             }
             else alert(data.message);
         }

@@ -18,20 +18,20 @@
             var fieldPromote = '如：房屋长度、宽度、高度，门窗位置，墙体材质，屋顶材质，装修情况等等。';
             var effectPromote = '如：要求画面大小？画质的要求（分辨率）？音效的具体要求？等等';
 
-            $('#<%= TextBox_DemandDetail.ClientID %>').val(demandPromote).css('color', '#eee').focus(function() {
+            $('#<%= TextBox_DemandDetail.ClientID %>').val(demandPromote).css('color', 'gray').focus(function() {
                 if ($(this).val() == demandPromote) $(this).val('').css('color', 'black');
             }).blur(function() {
-                if ($(this).val() == '') $(this).val(demandPromote).css('color', '#eee');
+                if ($(this).val() == '') $(this).val(demandPromote).css('color', 'gray');
             });
-            $('#<%= TextBox_Field.ClientID %>').val(fieldPromote).css('color', '#eee').focus(function() {
+            $('#<%= TextBox_Field.ClientID %>').val(fieldPromote).css('color', 'gray').focus(function() {
                 if ($(this).val() == fieldPromote) $(this).val('').css('color', 'black');
             }).blur(function() {
-                if ($(this).val() == '') $(this).val(fieldPromote).css('color', '#eee');
+                if ($(this).val() == '') $(this).val(fieldPromote).css('color', 'gray');
             });
-            $('#<%= TextBox_Effect.ClientID %>').val(effectPromote).css('color', '#eee').focus(function() {
+            $('#<%= TextBox_Effect.ClientID %>').val(effectPromote).css('color', 'gray').focus(function() {
                 if ($(this).val() == effectPromote) $(this).val('').css('color', 'black');
             }).blur(function() {
-                if ($(this).val() == '') $(this).val(effectPromote).css('color', '#eee');
+                if ($(this).val() == '') $(this).val(effectPromote).css('color', 'gray');
             });
 
 

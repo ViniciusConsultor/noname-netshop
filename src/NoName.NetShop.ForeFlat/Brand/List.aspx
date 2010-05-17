@@ -18,7 +18,7 @@
         <div class="box1">
             <ul class="title">
                 <li class="left"></li>
-                <li><span>影像电器品牌区</span></li>
+                <li><span><asp:Literal runat="server" ID="Literal_CateName" /></span></li>
                 <li class="right"></li>
             </ul>
             <div class="content">
@@ -37,10 +37,10 @@
                     </ul>
                     <div class="paginationContainer">
                         <cc1:AspNetPager CssClass="pagerclass" ID="AspNetPager" runat="server" PageSize="16"
-                            UrlPageIndexName="" AlwaysShow="true" ImagePath="/" FirstPageText='首页' ShowInputBox="Always"
+                            UrlPageIndexName="" AlwaysShow="false" ImagePath="/" FirstPageText='首页'
                             LastPageText='末页' NextPageText='下一页' OnPageChanged="AspNetPager_PageChanged"
-                            PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8" 
-                            ShowPrevNext="True" SubmitButtonClass="buttom" ShowPageIndex="true"
+                            PrevPageText='上一页' NumericButtonCount="8"
+                            ShowPrevNext="True" ShowPageIndex="true"
                             NumericButtonTextFormatString=''>
                         </cc1:AspNetPager>
                     </div>

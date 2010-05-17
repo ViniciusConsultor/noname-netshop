@@ -55,12 +55,12 @@
                                         <li>
                                             <a href='/product-<%# Eval("entityidentity") %>.html' title='<%# Eval("productname") %>' target="_blank">
                                                 <img src='<%# NoName.NetShop.Product.Facade.ProductMainImageRule.GetMainImageUrl(Eval("productimage").ToString()) %>' />
-                                                <span class="price">鼎城报价：￥<%# Eval("price") %></span>
+                                                <span class="price">鼎鼎价：￥<%# Eval("price") %></span>
                                                 <span class="name" title='<%# Eval("productname") %>'><%# Eval("productname") %></span>
                                                 <span class="commentsNum"></span>
                                             </a>
                                             <div class="actions">
-                                                <a class="button_blue3" href="/product-<%# Eval("entityidentity") %>.html" target="_blank">
+                                                <a class="button_blue3" href="/sp/addtocart.aspx?pid=<%# Eval("entityidentity") %>" target="_blank">
                                                     <span class="left"></span>
                                                     <span class="text">购买</span>
                                                     <span class="right"></span>
