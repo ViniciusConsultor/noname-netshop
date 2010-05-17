@@ -1,7 +1,7 @@
 ﻿$(function() {
     /* initialize */
     //order
-var orderType = getOrder();
+    var orderType = getOrder();
     $('.sort a').removeAttr('class');
     if (orderType == 1) {
         $('.sort a[field="changetime"]').attr('class', 'on').attr('type', 1);

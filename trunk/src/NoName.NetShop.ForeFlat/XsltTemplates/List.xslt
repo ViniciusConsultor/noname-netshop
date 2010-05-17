@@ -347,10 +347,10 @@
     <!-- product list start -->
     <xsl:template match="/listpage/productlist/products/product">
         <li>
-            <a href="/product-{productid}.html" title="{productname}">
+            <a href="/sp/addtocart.aspx?pid={productid}" title="{productname}">
                 <img src="{mediumimage}" />
                 <span class="price">
-                    鼎城报价：￥<xsl:value-of select="merchantprice"/>
+                    鼎鼎价：￥<xsl:value-of select="merchantprice"/>
                 </span>
                 <span class="name" title="{productname}">
                     <xsl:value-of select="productname"/>
