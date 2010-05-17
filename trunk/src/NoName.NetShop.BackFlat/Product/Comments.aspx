@@ -13,7 +13,7 @@
         <asp:GridView runat="server" ID="GridView1" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
             <Columns>
                 <asp:BoundField HeaderText="评论ID" DataField="commentid" />
-                <asp:BoundField HeaderText="产品名称" DataField="title" />
+                <asp:BoundField HeaderText="产品名称" DataField="productname" />
                 <asp:BoundField HeaderText="用户名" DataField="userid" />
                 <asp:BoundField HeaderText="内容" DataField="content" />
                 <asp:TemplateField HeaderText="">
