@@ -74,6 +74,16 @@ namespace NoName.NetShop.ForeFlat.Product
         }
 
 
+        protected void Repeater_Question_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView row = e.Item.DataItem as DataRowView;
+            Repeater rpSubList = e.Item.FindControl("rpSubList") as Repeater;
+            AnswerBll abll = new AnswerBll();
+
+            rpSubList.DataSource = abll.GetModelOfQuestion(Convert.ToInt32(row["QuestionId"]));
+            rpSubList.DataBind();
+        }
+
         protected void Button_Question_Click(object sender, EventArgs e)
         {
             //验证用户，如果未登录则提示登录

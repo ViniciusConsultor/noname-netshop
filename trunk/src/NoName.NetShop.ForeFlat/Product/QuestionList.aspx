@@ -52,7 +52,7 @@
                     <div class="title">该商品的全部相关咨询</div>
                     <div class="content">
                         <ul class="questions">
-                            <asp:Repeater runat="server" ID="Repeater_Question">
+                            <asp:Repeater runat="server" ID="Repeater_Question" OnItemDataBound="Repeater_Question_ItemDataBound">
                                 <ItemTemplate>
                                     <li class="odd">
                                         <div class="question">
@@ -60,11 +60,16 @@
                                             <span><%# Eval("content") %></span>
                                             <span class="date"> <%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %> </span>
                                         </div>
-                                        <div class="answer" style='<%# Eval("answercontent").ToString()==""?"display:none":"display:block" %>'>
-                                            <span class="answerer">鼎视回答：</span>
-                                            <span><%# Eval("answercontent") %></span>
-                                            <span class="date"> <%# Eval("answertime").ToString()==""?"":Convert.ToDateTime(Eval("answertime")).ToString("yyyy-MM-dd")%> </span>
-                                        </div>
+                              <div class="answer">
+                                <asp:Repeater runat="server" ID="rpSubList">
+                                <ItemTemplate>
+                                    <span class="answerer">鼎视回答：</span>
+                                    <span><%#Eval("Content") %></span>
+                                    <span class="date"><%#Eval("AnswerTime","{0:yyyy-MM-dd HH:mm}") %></span>
+                                </ItemTemplate>
+                                </asp:Repeater>
+                                </div>
+                                        
                                     </li>
                                 </ItemTemplate>
                                 <AlternatingItemTemplate>
@@ -74,12 +79,15 @@
                                             <span><%# Eval("content") %></span>
                                             <span class="date"><%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %></span>
                                         </div>
-                                        <div class="answer" style='<%# Eval("answercontent").ToString()==""?"display:none":"display:block" %>'>
-                                            <span class="answerer">鼎视回答：</span>
-                                            <span><%# Eval("answercontent") %></span>
-                                            <span class="date"><%# Eval("answertime").ToString()==""?"":Convert.ToDateTime(Eval("answertime")).ToString("yyyy-MM-dd")%></span>
-                                        </div>
-                                    </li>
+                              <div class="answer">
+                                <asp:Repeater runat="server" ID="rpSubList">
+                                <ItemTemplate>
+                                    <span class="answerer">鼎视回答：</span>
+                                    <span><%#Eval("Content") %></span>
+                                    <span class="date"><%#Eval("AnswerTime","{0:yyyy-MM-dd HH:mm}") %></span>
+                                </ItemTemplate>
+                                </asp:Repeater>
+                                </div>                                    </li>
                                 </AlternatingItemTemplate>
                             </asp:Repeater>
                         </ul>

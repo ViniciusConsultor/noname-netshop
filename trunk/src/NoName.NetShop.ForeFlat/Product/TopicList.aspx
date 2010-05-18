@@ -62,7 +62,7 @@
                               <asp:Repeater runat="server" ID="Repeater_TopicList">
                                 <ItemTemplate>
                                   <tr>
-                                    <td><a href="../qa/ShowTopic.aspx?pid=<%# ProductID %>"><%# Eval("title") %></a><span> <%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %></span></td>
+                                    <td><a href='ShowTopic.aspx?topicid=<%# Eval("TopicId") %>'><%# Eval("title") %></a><span> <%# Convert.ToDateTime(Eval("inserttime")).ToString("yyyy-MM-dd") %></span></td>
                                     <td><%# Eval("replynum") %></td>
                                     <td><span><%# Eval("userid") %></span></td>
                                   </tr>
