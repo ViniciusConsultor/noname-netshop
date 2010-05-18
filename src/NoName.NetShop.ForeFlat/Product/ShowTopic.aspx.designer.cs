@@ -8,126 +8,144 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoName.NetShop.ForeFlat.Product {
+namespace NoName.NetShop.ForeFlat.qa {
     
     
-    public partial class QuestionList {
+    public partial class ShowTopic {
         
         /// <summary>
-        /// Literal_ProductName1 控件。
+        /// litTopProductName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_ProductName1;
+        protected global::System.Web.UI.WebControls.Literal litTopProductName;
         
         /// <summary>
-        /// Image_SmallImage 控件。
+        /// imgProductM 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image_SmallImage;
+        protected global::System.Web.UI.WebControls.Image imgProductM;
         
         /// <summary>
-        /// Image_LargeImage 控件。
+        /// imgProductL 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image_LargeImage;
+        protected global::System.Web.UI.WebControls.Image imgProductL;
         
         /// <summary>
-        /// Literal_ProductName2 控件。
+        /// litProductName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_ProductName2;
+        protected global::System.Web.UI.WebControls.Literal litProductName;
         
         /// <summary>
-        /// Literal_ProductID 控件。
+        /// litProductId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_ProductID;
+        protected global::System.Web.UI.WebControls.Literal litProductId;
         
         /// <summary>
-        /// Literal_TradePrice 控件。
+        /// litTradePrice 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_TradePrice;
+        protected global::System.Web.UI.WebControls.Literal litTradePrice;
         
         /// <summary>
-        /// Literal_MerchantPrice 控件。
+        /// litMerchantPrice 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_MerchantPrice;
+        protected global::System.Web.UI.WebControls.Literal litMerchantPrice;
         
         /// <summary>
-        /// HyperLink_Buy 控件。
+        /// litStock 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_Buy;
+        protected global::System.Web.UI.WebControls.Literal litStock;
         
         /// <summary>
-        /// HyperLink_Favorite 控件。
+        /// litTitle 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_Favorite;
+        protected global::System.Web.UI.WebControls.Literal litTitle;
         
         /// <summary>
-        /// Repeater_Question 控件。
+        /// gvList 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater_Question;
+        protected global::System.Web.UI.WebControls.Repeater gvList;
         
         /// <summary>
-        /// AspNetPager 控件。
+        /// pageNav 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::NoName.Utility.AspNetPager AspNetPager;
+        protected global::NoName.Utility.AspNetPager pageNav;
         
         /// <summary>
-        /// TextBox_QuestionContent 控件。
+        /// hidTopicId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_QuestionContent;
+        protected global::System.Web.UI.WebControls.HiddenField hidTopicId;
         
         /// <summary>
-        /// Button_Question 控件。
+        /// txtTile 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Button_Question;
+        protected global::System.Web.UI.WebControls.TextBox txtTile;
+        
+        /// <summary>
+        /// txtContent 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContent;
+        
+        /// <summary>
+        /// btnDoQuestion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDoQuestion;
     }
 }
