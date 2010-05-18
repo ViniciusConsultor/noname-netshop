@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
 using System.Data;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Comment
 {
@@ -21,8 +22,11 @@ namespace NoName.NetShop.Comment
 		/// </summary>
         public void Add(NoName.NetShop.Comment.ReplyModel model)
 		{
-			Database db = DatabaseFactory.CreateDatabase();
+            Database db = CommDataAccess.DbWriter;
 			DbCommand dbCommand = db.GetStoredProcCommand("UP_qaReply_ADD");
+            if (model.ReplyId == 0)
+                model.ReplyId = NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Other);
+
 			db.AddInParameter(dbCommand, "TopicId", DbType.Int32, model.TopicId);
 			db.AddInParameter(dbCommand, "ReplyId", DbType.Int32, model.ReplyId);
 			db.AddInParameter(dbCommand, "Title", DbType.AnsiString, model.Title);

@@ -16,7 +16,7 @@ namespace NoName.NetShop.Comment
 		/// </summary>
         public void Add(NoName.NetShop.Comment.TopicModel model)
 		{
-            Database db = CommDataAccess.DbReader;
+            Database db = CommDataAccess.DbWriter;
             if (model.TopicId == 0)
                 model.TopicId = NetShop.Common.CommDataHelper.GetNewSerialNum(AppType.Other);
 
