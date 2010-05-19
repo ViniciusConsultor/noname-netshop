@@ -107,8 +107,6 @@
         showNextRegion();
     }
 
-    var preset = null; // 需要跟categoryInfo正好对应，不包括顶部的入口区域
-    $(document).ready(InitRegions);
     
 </script>
 <span id="region">

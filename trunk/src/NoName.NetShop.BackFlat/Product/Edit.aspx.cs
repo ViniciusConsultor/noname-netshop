@@ -404,7 +404,7 @@ namespace NoName.NetShop.BackFlat.Product
                     para.ProductId = product.ProductId;
                     para.ParaValue = ParameterValue;
 
-                    pvBll.Update(para);
+                    pvBll.Save(para);
                 }
             }
             //更新基本属性
@@ -421,7 +421,7 @@ namespace NoName.NetShop.BackFlat.Product
                     para.ProductId = product.ProductId;
                     para.ParaValue = ParameterValue;
 
-                    pvBll.Update(para);
+                    pvBll.Save(para);
                 }
             }
             //添加商品多图
