@@ -27,7 +27,7 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
 
         public DataTable GetBrandProductList(int PageIndex, int BrandID, int CategoryID, int OrderType, out int RecordCount)
         {
-            string OrderString = " sortvalue desc";
+            string OrderString = GetOrderString(OrderType);
             string ConditionString = "brandid="+BrandID;
 
             if (CategoryID != 0)
@@ -35,18 +35,6 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
                 string CategoryPath = Convert.ToString(db.ExecuteScalar(CommandType.Text, "select catepath from pdcategory where cateid=" + CategoryID));
                 ConditionString += " and catepath+'/' like '" + CategoryPath + "%'"; 
             }
-            switch (OrderType)
-            {
-                case 2:
-                    OrderString = " merchantprice asc ";
-                    break;
-                case 3:
-                    OrderString = " changetime desc ";
-                    break;
-                default:
-                    break;
-            }
-
 
             int PageLowerBound = (PageIndex - 1) * Config.ListPageSize;
             int PageUpperBount = PageLowerBound + Config.ListPageSize;
@@ -79,6 +67,42 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
             sql = String.Format(sql, BrandID);
 
             return db.ExecuteDataSet(CommandType.Text, sql).Tables[0]; 
+        }
+
+
+        private string GetOrderString(int OrderType)
+        {
+            string OrderString = String.Empty;
+            switch (OrderType)
+            {
+                case 1:
+                    OrderString = " changetime desc";
+                    break;
+                case 2:
+                    OrderString = " changetime asc";
+                    break;
+                case 3:
+                    OrderString = " pageview asc";
+                    break;
+                case 4:
+                    OrderString = " pageview desc";
+                    break;
+                case 5:
+                    OrderString = " merchantprice asc";
+                    break;
+                case 6:
+                    OrderString = " merchantprice desc";
+                    break;
+                case 7:
+                    OrderString = " pageview asc";
+                    break;
+                case 8:
+                    OrderString = " pageview desc";
+                    break;
+                default:
+                    break;
+            }
+            return OrderString;
         }
 
     }

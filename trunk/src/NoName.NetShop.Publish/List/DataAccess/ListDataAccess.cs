@@ -200,19 +200,19 @@ namespace NoName.NetShop.Publish.List.DataAccess
                     OrderString = " changetime asc";
                     break;
                 case 3:
-                    OrderString = " pageview desc";
+                    OrderString = " pageview asc";
                     break;
                 case 4:
                     OrderString = " pageview desc";
                     break;
                 case 5:
-                    OrderString = " merchantprice desc";
+                    OrderString = " merchantprice asc";
                     break;
                 case 6:
                     OrderString = " merchantprice desc";
                     break;
                 case 7:
-                    OrderString = " pageview desc";
+                    OrderString = " pageview asc";
                     break;
                 case 8:
                     OrderString = " pageview desc";
