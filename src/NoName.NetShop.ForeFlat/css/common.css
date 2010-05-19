@@ -24,6 +24,7 @@ a.linkButton:hover{ color:#FF9900}
 .header .logo{ width:170px; height:56px; float:left; background:url(../images/logo.gif) no-repeat 0 0; margin:18px 0 0 26px; _display:inline}
 .header ul.toplink{ padding:0; margin:0; float:right; padding-top:13px}
 .header ul.toplink li{ list-style-type:none; float:left; padding-right:5px;}
+.header ul.toplink li.separator{ margin-right:60px;}
 .header ul.toplink li.slogan{ color:#999999;*padding-top:1px;}
 
 .header ul.navigator{ padding:0; margin:0; float:right; width:630px; padding-top:7px; overflow:hidden;height:44px}
@@ -48,12 +49,12 @@ a.linkButton:hover{ color:#FF9900}
 .header ul.navigator li a.magic:hover{ background-position:-883px -43px;}
 .header ul.navigator li a.magic_on,.header ul.navigator li a.magic_on:hover{ background-position:-883px -98px;}
 
-.header .panel{ clear:both; width:auto; height:39px; background:url(../images/sprite.gif) 0 -97px repeat-x; margin-top:12px;}
+.header .panel{ clear:both; width:auto; height:75px; background:url(../images/sprite.gif) 0 -97px repeat-x; margin-top:12px;}
 .header .panel .edge{ background:url(../images/sprite.gif) no-repeat; width:2px; height:39px; overflow:hidden; font-size:0; line-height:0}
 .header .panel .left{ float:left; background-position:0 -21px; }
 .header .panel .right{ float:right; background-position:-18px -21px;}
-.header .panel .middle{ float:none; margin:0px 10px 0 15px; padding:8px 0 0 0; text-align:left; /*background:url(../images/tel.gif) right 13px no-repeat;*/}
-.header .panel .middle ul.searchbar{ margin:0; padding:0; height:28px; float:left}
+.header .panel .middle{ float:none; margin:0px 10px 0 15px; padding:8px 0 0 0; text-align:left; background:url(../images/tel.gif) right 13px no-repeat; height:67px;}
+.header .panel .middle ul.searchbar{ margin:0; padding:18px 0 0 0; height:28px; width:80%; float:left}
 .header .panel .middle ul.searchbar li{ float:left; list-style-type:none}
 .header .panel .middle ul.searchbar li.label{ font-weight:bold; color:#FFF; padding-top:5px; padding-right:3px;}
 .header .panel .middle ul.searchbar li.selectBox{ text-align:left}
@@ -75,7 +76,7 @@ a.linkButton:hover{ color:#FF9900}
 .header .panel .middle ul.searchbar li.selectBox .list a:hover{ background:#003399; color:#FFFFFF}
 /*selectbox on top*/
 
-.header .panel .middle .hotKeyWords{ float:right; width:500px; height:14px; padding-top:4px; overflow:hidden; text-align:right}
+.header .panel .middle .hotKeyWords{ float:left; width:500px; height:14px; padding-top:4px; overflow:hidden; text-align:left}
 .header .panel .middle .hotKeyWords span{ color:#FFF}
 .header .panel .middle .hotKeyWords span.label{ font-weight:bold}
 .header .panel .middle .hotKeyWords span.words{}
@@ -163,8 +164,8 @@ a.linkButton:hover{ color:#FF9900}
 .cateBox div.content .category_non-popMenu{ padding:0 0 0 10px;}
 .category_non-popMenu{ clear:both}
 .category_non-popMenu a.class{ display:block; clear:both; height:14px; padding:5px 0 5px 10px; background:#DEF0F8; color:#236FA4; font-weight:bold}
-.category_non-popMenu div.subs{ clear:both; padding:5px;}
-.category_non-popMenu div.subs a{ display:block; float:left; width:50px; padding:5px; height:14px;}
+.category_non-popMenu div.subs{ clear:both; padding:5px 0;}
+.category_non-popMenu div.subs a{ display:block; float:left; width:60px; padding:5px 2px; height:14px;}
 .category_non-popMenu div.subs a.more{ margin:8px 0 0 0; margin:6px 0 0 0\9; _margin:8px 0 0 0; padding:0; width:34px}
 .category_non-popMenu div.subs span{ display:block; float:left; width:75px; padding:7px 0}
 .category_non-popMenu div.subs span input.checkbox{ width:12px; height:12px; margin:0; padding:0; display:block; float:left; margin-top:1px; margin-top:0px\9;}
