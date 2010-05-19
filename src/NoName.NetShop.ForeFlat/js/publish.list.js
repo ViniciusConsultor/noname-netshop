@@ -32,6 +32,11 @@
     }
 
     //properity
+    $('li.properity').each(function() {
+        $(this).find('a[brand="-1"]').attr('class', 'on');
+        $(this).find('a[range="-1"]').attr('class', 'on');
+        $(this).find('a[propvid="-1"]').attr('class', 'on');
+    });
     var initialTable = getListUrlParameter();
     //alert(initialTable.Count);
     for (var i = 0; i < initialTable.Count; i++) {

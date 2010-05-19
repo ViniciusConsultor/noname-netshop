@@ -117,16 +117,22 @@ function setPage(page) {
 
 function getOrder() {
     var url = window.location.href;
-    /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+    /(.+)(\/brand[-_]+\d+)([-_]+\d+)?([-_]+c\d+)?([-_]+o\d+)?(.+)/g.test(url);
+    
     //alert('1:' + RegExp.$1 + '\n2:' + RegExp.$2 + '\n3:' + RegExp.$3 + '\n4:' + RegExp.$4 + '\n5:' + RegExp.$5 + '\n6:' + RegExp.$6 + '\n7:' + RegExp.$7 + '\n8:' + RegExp.$8 + '\n9:' + RegExp.$9);
+    //1:http://localhost:81
+    //2:/brnad-28
+    //3:-2
+    //4:-c1
+    //5:-o2
+    //6:.brand
 
-
-    if (RegExp.$6 == '') return 1;
-    else return parseInt(RegExp.$6.replace('-o', ''));
+    if (RegExp.$5 == '') return 1;
+    else return parseInt(RegExp.$5.replace('-o', ''));
 }
 function setOrder(order) {
     var url = window.location.href;
-    /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+    /(.+)(\/brand[-_]+\d+)([-_]+\d+)?([-_]+c\d+)?([-_]+o\d+)?(.+)/g.test(url);
 
     //alert('1:' + RegExp.$1 + '\n2:' + RegExp.$2 + '\n3:' + RegExp.$3 + '\n4:' + RegExp.$4 + '\n5:' + RegExp.$5 + '\n6:' + RegExp.$6);
     //1 : url prefix
@@ -140,117 +146,117 @@ function setOrder(order) {
     //url = RegExp.$1 + RegExp.$2 + RegExp.$4 + RegExp.$5 + RegExp.$6;
 
     var orderString = order == 1 ? '' : '-o' + order;
-    url = RegExp.$1 + RegExp.$2 + RegExp.$4 + RegExp.$5 + orderString + RegExp.$7 + RegExp.$8;
+
+    url = RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4 + orderString + RegExp.$6;
     window.location.href = url;
 }
 
 
-    function addFav(productID) {
-        $.ajax({
-            url: '/api/CartOpenApi.ashx',
-            type: 'post',
-            data: 'action=addfavorite&ctype=1&cid=' + productID,
-            cache: false,
-            dataType: 'json',
-            error: function() { alert('收藏失败,请稍后重试。'); },
-            success: function(data, textStatus) {
-                if (data.Result == true) {
-                    alert('收藏成功！');
-                }
-                else if (data.Message.indexOf('登录') > 0) {
-                    window.open('/login.aspx?returnurl=' + encodeURIComponent('/member/dofavorite.aspx?ctype=1&cid=' + productID));
-                }
-                else {
-                    alert(data.Message);
-                }
+function addFav(productID) {
+    $.ajax({
+        url: '/api/CartOpenApi.ashx',
+        type: 'post',
+        data: 'action=addfavorite&ctype=1&cid=' + productID,
+        cache: false,
+        dataType: 'json',
+        error: function() { alert('收藏失败,请稍后重试。'); },
+        success: function(data, textStatus) {
+            if (data.Result == true) {
+                alert('收藏成功！');
             }
-        });
-    }
-
-    var comparingProducts = new Hashtable();
-
-    function addCompare(p) {
-
-        var topLayer = $('#comparisonWindow');
-
-        if (topLayer.attr('category')) {
-            if (topLayer.attr('category') == p.categoryid) {
-                if (comparingProducts.Count < 3) {
-                    comparingProducts.Add(p.productid, p);
-                    renderCompareHtml();
-                }
-                else {
-                    alert('最多只能比较3件商品');
-                }
+            else if (data.Message.indexOf('登录') > 0) {
+                window.open('/login.aspx?returnurl=' + encodeURIComponent('/member/dofavorite.aspx?ctype=1&cid=' + productID));
             }
             else {
-                alert('只能比较同类产品！');
+                alert(data.Message);
+            }
+        }
+    });
+}
+
+var comparingProducts = new Hashtable();
+
+function addCompare(p) {
+
+    var topLayer = $('#comparisonWindow');
+
+    if (topLayer.attr('category')) {
+        if (topLayer.attr('category') == p.categoryid) {
+            if (comparingProducts.Count < 3) {
+                comparingProducts.Add(p.productid, p);
+                renderCompareHtml();
+            }
+            else {
+                alert('最多只能比较3件商品');
             }
         }
         else {
-            topLayer.attr('category', p.categoryid);
-            comparingProducts.Add(p.productid, p);
-            renderCompareHtml();
-        }
-
-        function remove(productid) {
-            comparingProducts.Remove(productid);
-            renderCompareHtml();
-        }
-
-        function removeAll() {
-            comparingProducts = new Hashtable();
-
-            topLayer.html('');
-        }
-
-
-        function renderCompareHtml() {
-            var compareHtml = '';
-
-            if (comparingProducts.Count > 0) {
-                compareHtml += '<div class="box10">';
-                compareHtml += '    <div class="title">';
-                compareHtml += '        <span style="float:left">产品比较</span>';
-                compareHtml += '        <a href="javascript:void(0)" style="float:right; margin-right:5px;" id="productCompareClose">[关闭]</a>';
-                compareHtml += '    </div>';
-                compareHtml += '    <div class="content">';
-                compareHtml += '        <ul class="itemList8" id="productCompareList">';
-                for (var cmp = 0; cmp < comparingProducts.Count; cmp++) {
-                    var key = comparingProducts.Keys()[cmp];
-                    var theValue = comparingProducts.GetValue(key);
-                    compareHtml += '            <li>';
-                    compareHtml += '                <a href="/product-' + key + '.html">';
-                    compareHtml += '                    <img src="' + theValue.image + '" />';
-                    compareHtml += '                    <span>' + theValue.productname + '</span>';
-                    compareHtml += '                </a>';
-                    compareHtml += '                <a class="remove" href="javascript:void(0);" productid=' + key + '>';
-                    compareHtml += '                    <span>[移除]</span>';
-                    compareHtml += '                </a>';
-                    compareHtml += '            </li>';
-                }
-                compareHtml += '        </ul>';
-                compareHtml += '    </div>';
-                compareHtml += '    <div><a href="javascript:void(0);" id="productCompareGo"> <b>对比</b> </a></div>';
-                compareHtml += '</div>';
-
-                topLayer.html(compareHtml);
-
-                $('#productCompareList .remove').click(function() {
-                    remove($(this).attr('productid'));
-                });
-                $('#productCompareClose').click(function() {
-                    removeAll();
-                });
-                $('#productCompareGo').click(function() {
-                    var pids = '';
-                    $.each(comparingProducts.Keys(), function(i, n) { pids += comparingProducts.Keys()[i] + ','; });
-                    window.open('/product/productcompare.aspx?pid=' + pids.substring(0, pids.length - 1));
-                });
-            }
-            else {
-                topLayer.html('');
-            }
+            alert('只能比较同类产品！');
         }
     }
-    
+    else {
+        topLayer.attr('category', p.categoryid);
+        comparingProducts.Add(p.productid, p);
+        renderCompareHtml();
+    }
+
+    function remove(productid) {
+        comparingProducts.Remove(productid);
+        renderCompareHtml();
+    }
+
+    function removeAll() {
+        comparingProducts = new Hashtable();
+
+        topLayer.html('');
+    }
+
+
+    function renderCompareHtml() {
+        var compareHtml = '';
+
+        if (comparingProducts.Count > 0) {
+            compareHtml += '<div class="box10">';
+            compareHtml += '    <div class="title">';
+            compareHtml += '        <span style="float:left">产品比较</span>';
+            compareHtml += '        <a href="javascript:void(0)" style="float:right; margin-right:5px;" id="productCompareClose">[关闭]</a>';
+            compareHtml += '    </div>';
+            compareHtml += '    <div class="content">';
+            compareHtml += '        <ul class="itemList8" id="productCompareList">';
+            for (var cmp = 0; cmp < comparingProducts.Count; cmp++) {
+                var key = comparingProducts.Keys()[cmp];
+                var theValue = comparingProducts.GetValue(key);
+                compareHtml += '            <li>';
+                compareHtml += '                <a href="/product-' + key + '.html">';
+                compareHtml += '                    <img src="' + theValue.image + '" />';
+                compareHtml += '                    <span>' + theValue.productname + '</span>';
+                compareHtml += '                </a>';
+                compareHtml += '                <a class="remove" href="javascript:void(0);" productid=' + key + '>';
+                compareHtml += '                    <span>[移除]</span>';
+                compareHtml += '                </a>';
+                compareHtml += '            </li>';
+            }
+            compareHtml += '        </ul>';
+            compareHtml += '    </div>';
+            compareHtml += '    <div><a href="javascript:void(0);" id="productCompareGo"> <b>对比</b> </a></div>';
+            compareHtml += '</div>';
+
+            topLayer.html(compareHtml);
+
+            $('#productCompareList .remove').click(function() {
+                remove($(this).attr('productid'));
+            });
+            $('#productCompareClose').click(function() {
+                removeAll();
+            });
+            $('#productCompareGo').click(function() {
+                var pids = '';
+                $.each(comparingProducts.Keys(), function(i, n) { pids += comparingProducts.Keys()[i] + ','; });
+                window.open('/product/productcompare.aspx?pid=' + pids.substring(0, pids.length - 1));
+            });
+        }
+        else {
+            topLayer.html('');
+        }
+    }
+}

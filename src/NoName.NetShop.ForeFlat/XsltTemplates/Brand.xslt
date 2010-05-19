@@ -17,6 +17,7 @@
 					<xsl:value-of select="$BrandName" />-鼎鼎商城
 				</title>
 				<link type="text/css" rel="stylesheet" href="/css/common.css" />
+				<link type="text/css" rel="stylesheet" href="/css/shopping.css" />
 				<link type="text/css" rel="stylesheet" href="/css/brands.css" />
 				<link rel="stylesheet" type="text/css" href="/css/Rainy.css" />
 				<script type="text/javascript" src="/js/DingdingJsLib.js">
@@ -104,10 +105,20 @@
 										</li>
 										<li class="sort">
 											<span>请选择排序方式</span>
-											<a class="on" href="#">销量</a>
-											<a href="#">价格</a>
-											<a href="#">上架时间</a>
-											<a href="#">浏览量</a>
+											<a class="on" style="cursor:pointer;" field="changetime" type="0">上架时间</a>
+											<a style="cursor:pointer;" field="sales" type="0">销量</a>
+											<div class="sortByPrice" onmouseover="showPriceSortDropdownList(this)" onmouseout="hidePriceSortDropdownList(this)">
+												<a href="#" field="price">价格</a>
+												<ul class="priceSortOptions" id="priceSortOptions">
+													<li>
+														<a style="cursor:pointer;" field="price" type="0">低 - 高</a>
+													</li>
+													<li>
+														<a style="cursor:pointer;" field="price" type="1">高 - 低</a>
+													</li>
+												</ul>
+											</div>
+											<a style="cursor:pointer;" field="hit" type="0">浏览量</a>
 										</li>
 									</ul>
 									<div class="content">
@@ -131,6 +142,18 @@
 					<xsl:call-template name="Footer" />
 					<!--Footer End-->
 				</div>
+
+				<div class="comparisonWindow" id="comparisonWindow" style="width:220px;">
+					<xsl:text> </xsl:text>
+				</div>
+				<script type="text/javascript">
+					window.onscroll=window.onload=window.onresize=function(){
+					var comparisonWindow = document.getElementById("comparisonWindow");
+					var scrollTop = document.documentElement.scrollTop;
+					var middleCoordinateY = parseInt((document.documentElement.clientHeight - comparisonWindow.clientHeight)/2);
+					comparisonWindow.style.top = (scrollTop + middleCoordinateY) + "px";
+					}
+				</script>
 			</body>
 		</html>
 	</xsl:template>
