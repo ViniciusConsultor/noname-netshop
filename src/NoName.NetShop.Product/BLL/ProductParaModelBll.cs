@@ -48,6 +48,18 @@ namespace NoName.NetShop.Product.BLL
 			dal.Update(model);
 		}
 
+        public void Save(ProductParaModel model)
+        {
+            if (!Exists(model.ProductId, model.ParaId))
+            {
+                Add(model);
+            }
+            else
+            {
+                Update(model);
+            }
+        }
+
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
