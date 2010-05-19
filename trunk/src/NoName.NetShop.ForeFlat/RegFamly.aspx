@@ -65,6 +65,15 @@
             }
         });
 
+        $('#chkUserProtocol').click(function() {
+            if ($(this).attr('checked') == true) {
+                $('#<%= btnRegister.ClientID %>').removeAttr('checked');
+            }
+            else {
+                $('#<%= btnRegister.ClientID %>').attr('checked', 'true');
+            }
+        });
+
     }); 
     
     </script>
@@ -130,8 +139,11 @@
                 <li><span class="field">身份证：</span>
                     <asp:TextBox ID="txtIdCard" runat="server" CssClass="textField1"></asp:TextBox>
                     <span class="tip"></span> </li>
+                <li>
+                    <input type="checkbox" id="chkUserProtocol" /> 我同意<a href="/help/UserProrocol.shtml">《鼎鼎商城用户协议》</a>
+                </li>
                 <li class="submit">
-                    <asp:Button runat="server" ID="btnRegister" Text="注　册" CssClass="button_blue2" OnClick="btnRegister_Click" />
+                    <asp:Button runat="server" ID="btnRegister" Text="注　册" Enabled="false" CssClass="button_blue2" OnClick="btnRegister_Click" />
                 </li>
             </ul>
         </asp:Panel>
