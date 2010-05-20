@@ -9,6 +9,7 @@ using System.Configuration;
 using NoName.NetShop.Publish.News.PageCreators;
 using System.Text.RegularExpressions;
 using System.Data;
+using System.IO;
 
 namespace NoName.NetShop.Publish.News
 {
@@ -72,7 +73,15 @@ namespace NoName.NetShop.Publish.News
 
         public bool ValidatePageFile()
         {
-            return false;
+            try
+            {
+                File.Delete(PageFileName);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void CreatePageFile()
