@@ -100,17 +100,17 @@
 
 function getPage() {
     var url = window.location.href;
-    /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
+    /(.+)(\/brand[-_]+\d+)([-_]+\d+)?([-_]+c\d+)?([-_]+o\d+)?(.+)/g.test(url);
 
     if (RegExp.$3 == '') return 1;
     else return parseInt(RegExp.$3.replace('-', ''));
 }
 function setPage(page) {
     var url = window.location.href;
-    /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
-
+    /(.+)(\/brand[-_]+\d+)([-_]+\d+)?([-_]+c\d+)?([-_]+o\d+)?(.+)/g.test(url);
+    
     var pageString = '-' + page;
-    url = RegExp.$1 + RegExp.$2 + pageString + RegExp.$4 + RegExp.$5 + RegExp.$6 + RegExp.$7 + RegExp.$8;
+    url = RegExp.$1 + RegExp.$2 + pageString + RegExp.$4 + RegExp.$5 + RegExp.$6;
     window.location.href = url;
 }
 
