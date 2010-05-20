@@ -238,7 +238,7 @@
                                     <xsl:text> </xsl:text>
                                 </span>
                             </a>
-                            <a class="button_blue3" comp="true" productid="{productid}" productname="{productname}" category="{categoryid}" image="{smallimage}" href="javascript:void(0)">
+                            <a class="button_blue3" comp="true" productid="{productid}" productname="{productname}" category="{categoryid}" image="{mediumimage}" href="javascript:void(0)">
                                 <span class="left">
                                     <xsl:text> </xsl:text>
                                 </span>

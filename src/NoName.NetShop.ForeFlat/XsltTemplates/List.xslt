@@ -66,6 +66,7 @@
                                     <div class="category_non-popMenu clearfix">
                                         <div class="subs clearfix">
 											<xsl:apply-templates select="/listpage/brandlist/brand"/>
+											<xsl:text> </xsl:text>
                                         </div>
                                     </div>
                                 </div>
