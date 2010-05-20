@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Data;
 using System.Configuration;
 using NoName.NetShop.Publish.Product.PageCreator;
+using System.IO;
 
 namespace NoName.NetShop.Publish.Product
 {
@@ -77,7 +78,15 @@ namespace NoName.NetShop.Publish.Product
 
         public bool DeletePageFile()
         {
-            throw new NotImplementedException();
+            try
+            {
+                File.Delete(PageFileName);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 
