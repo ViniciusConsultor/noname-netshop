@@ -88,18 +88,16 @@ namespace NoName.NetShop.Publish.List
         public bool ValidatePageFile()
         {
             bool IsValidate = false;
-            //FileInfo ListFile = new FileInfo(PageFileName);
+            FileInfo ListFile = new FileInfo(PageFileName);
 
-            //if (ListFile.Exists && ListFile.LastWriteTime.AddMinutes(config.CacheTime) > DateTime.Now)
-            //    IsValidate = true;
+            if (ListFile.Exists && ListFile.LastWriteTime.AddMinutes(config.CacheTime) > DateTime.Now)
+                IsValidate = true;
 
-            //CommonConfig common = CommonConfig.Instance();            
+            CommonConfig common = CommonConfig.Instance();
 
-            //FileInfo ListFile = new FileInfo(PageFileName);
+            IsValidate = ListFile.Exists;
 
-            //IsValidate = ListFile.Exists;
-
-            //IsValidate = IsValidate && (common.IsStandardHeaderChanged(new FileInfo(config.MallHeader), config.PageValidateTempXml) && common.IsStandardFooterChanged(new FileInfo(config.MallFooter), config.PageValidateTempXml));
+            IsValidate = IsValidate && (common.IsStandardHeaderChanged(new FileInfo(config.HeaderFile), config.PageValidateTempXml) && common.IsStandardFooterChanged(new FileInfo(config.FooterFile), config.PageValidateTempXml));
 
             return IsValidate;
         }
