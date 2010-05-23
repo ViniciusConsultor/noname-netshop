@@ -359,7 +359,7 @@
                 <span class="commentsNum"></span>
             </a>
             <div class="actions">
-                <a class="button_blue3" href="/product-{productid}.html">
+                <a class="button_blue3" href="/sp/addtocart.aspx?pid={productid}">
                     <span class="left">
                         <xsl:text> </xsl:text>
                     </span>
