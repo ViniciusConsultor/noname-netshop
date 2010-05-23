@@ -1,5 +1,0 @@
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.GroupShopping\bin\Debug\NoName.NetShop.GroupShopping.dll
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.GroupShopping\bin\Debug\NoName.NetShop.GroupShopping.pdb
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.GroupShopping\obj\Debug\ResolveAssemblyReference.cache
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.GroupShopping\obj\Debug\NoName.NetShop.GroupShopping.dll
-G:\Personal\ZhangFeng\NetShop\src\NoName.NetShop.GroupShopping\obj\Debug\NoName.NetShop.GroupShopping.pdb
