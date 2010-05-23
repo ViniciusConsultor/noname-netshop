@@ -228,6 +228,8 @@ namespace NoName.Utility
             switch (strExt)
             {
                 case ".jpg":
+                    imgFormat = ImageFormat.Jpeg;
+                    break;
                 case ".jpeg":
                     imgFormat = ImageFormat.Jpeg;
                     break;
