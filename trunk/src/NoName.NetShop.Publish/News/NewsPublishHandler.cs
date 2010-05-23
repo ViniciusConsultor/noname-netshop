@@ -73,15 +73,7 @@ namespace NoName.NetShop.Publish.News
 
         public bool ValidatePageFile()
         {
-            try
-            {
-                File.Delete(PageFileName);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
 
         public void CreatePageFile()
@@ -101,7 +93,15 @@ namespace NoName.NetShop.Publish.News
 
         public bool DeletePageFile()
         {
-            throw new NotImplementedException();
+            try
+            {
+                File.Delete(PageFileName);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private NewsPageParameter GetParameter(string Url)
