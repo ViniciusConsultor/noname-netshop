@@ -23,7 +23,7 @@ a.linkButton:hover{ color:#FF9900}
 .header .top{ clear:both}
 .header .logo{ width:170px; height:56px; float:left; background:url(../images/logo.gif) no-repeat 0 0; margin:18px 0 0 26px; _display:inline}
 .header ul.toplink{ padding:0; margin:0; float:right; padding-top:13px}
-.header ul.toplink li{ list-style-type:none; float:left; padding-right:5px;}
+.header ul.toplink li{ list-style-type:none; float:left; padding-right:2px;}
 .header ul.toplink li.separator{ margin-right:60px;}
 .header ul.toplink li.slogan{ color:#999999;*padding-top:1px;}
 
