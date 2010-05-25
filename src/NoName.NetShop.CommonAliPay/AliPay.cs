@@ -520,7 +520,7 @@ namespace NoName.NetShop.CommonAliPay
                             OnRefundSuccess(dn);
                             break;
                         case "WAIT_SELLER_AGREE":
-                            OnRefundSuccess(dn);
+                            OnWaitSellerAgree(dn);
                             break;
                     }
 
