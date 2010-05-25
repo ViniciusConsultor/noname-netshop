@@ -58,8 +58,10 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangePayStatus(e.Out_Trade_No, PayStatus.退款申请中);
-                lbll.Add(e.Out_Trade_No, e.Trade_Status + " " + e.Refund_Status, PayStatus.退款申请中.ToString(), "alipay");
+                if (obll.ChangePayStatus(e.Out_Trade_No, PayStatus.退款申请中))
+                {
+                    lbll.Add(e.Out_Trade_No, e.Trade_Status + " " + e.Refund_Status, PayStatus.退款申请中.ToString(), "alipay");
+                }
             }
         }
         /// <summary>
@@ -73,8 +75,10 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangePayStatus(e.Out_Trade_No, PayStatus.退款完成);
-                lbll.Add(e.Out_Trade_No, e.Trade_Status + " " + e.Refund_Status, PayStatus.退款完成.ToString(), "alipay");
+                if (obll.ChangePayStatus(e.Out_Trade_No, PayStatus.退款完成))
+                {
+                    lbll.Add(e.Out_Trade_No, e.Trade_Status + " " + e.Refund_Status, PayStatus.退款完成.ToString(), "alipay");
+                }
             }
         }
         /// <summary>
@@ -88,9 +92,11 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangePayStatus(e.Out_Trade_No, PayStatus.支付成功);
-                string remark = "退款关闭，订单重置为支付成功，" + e.Trade_Status + " " + e.Refund_Status;
-                lbll.Add(e.Out_Trade_No,remark , PayStatus.支付成功.ToString(), "alipay");
+                if (obll.ChangePayStatus(e.Out_Trade_No, PayStatus.支付成功))
+                {
+                    string remark = "退款关闭，订单重置为支付成功，" + e.Trade_Status + " " + e.Refund_Status;
+                    lbll.Add(e.Out_Trade_No, remark, PayStatus.支付成功.ToString(), "alipay");
+                }
             }
         }
         /// <summary>
@@ -106,10 +112,12 @@ namespace NoName.NetShop.ForeFlat.alipay
             {
                 if (e.Is_Total_Fee_Adjust == "T")
                 {
-                    obll.ModifyTotalFee(e.Out_Trade_No, e.Total_Fee ?? 0);
-                    string remark = String.Format("修改订单金额，修改前总价为：{0},修改后的的总价为：{1}，相关状态为：{2}",
-                        omodel.Paysum, e.Total_Fee, e.Trade_Status + " " + e.Refund_Status);
-                    lbll.Add(e.Out_Trade_No, remark, "议价", "alipay");
+                    if (obll.ModifyTotalFee(e.Out_Trade_No, e.Total_Fee ?? 0))
+                    {
+                        string remark = String.Format("修改订单金额，修改前总价为：{0},修改后的的总价为：{1}，相关状态为：{2}",
+                            omodel.Paysum, e.Total_Fee, e.Trade_Status + " " + e.Refund_Status);
+                        lbll.Add(e.Out_Trade_No, remark, "议价", "alipay");
+                    }
                 }
             }
         }
@@ -124,9 +132,11 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.买家确认);
-                string remark = e.Trade_Status + " " + e.Refund_Status;
-                lbll.Add(e.Out_Trade_No, remark, OrderStatus.买家确认.ToString(), "alipay");
+                if (obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.买家确认))
+                {
+                    string remark = e.Trade_Status + " " + e.Refund_Status;
+                    lbll.Add(e.Out_Trade_No, remark, OrderStatus.买家确认.ToString(), "alipay");
+                }
             }
         }
         /// <summary>
@@ -158,9 +168,11 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.买家确认);
-                string remark = e.Trade_Status + " " + e.Refund_Status;
-                lbll.Add(e.Out_Trade_No, remark, OrderStatus.买家确认.ToString(), "alipay");
+                if (obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.买家确认))
+                {
+                    string remark = e.Trade_Status + " " + e.Refund_Status;
+                    lbll.Add(e.Out_Trade_No, remark, OrderStatus.买家确认.ToString(), "alipay");
+                }
             }
         }
         /// <summary>
@@ -174,9 +186,11 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.交易完成);
-                string remark = e.Trade_Status + " " + e.Refund_Status;
-                lbll.Add(e.Out_Trade_No, remark, OrderStatus.交易完成.ToString(), "alipay");
+                if (obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.交易完成))
+                {
+                    string remark = e.Trade_Status + " " + e.Refund_Status;
+                    lbll.Add(e.Out_Trade_No, remark, OrderStatus.交易完成.ToString(), "alipay");
+                }
             }
         }
 
@@ -191,9 +205,11 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.交易关闭);
-                string remark = e.Trade_Status + " " + e.Refund_Status;
-                lbll.Add(e.Out_Trade_No, remark, OrderStatus.交易关闭.ToString(), "alipay");
+                if (obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.交易关闭))
+                {
+                    string remark = e.Trade_Status + " " + e.Refund_Status;
+                    lbll.Add(e.Out_Trade_No, remark, OrderStatus.交易关闭.ToString(), "alipay");
+                }
             }
         }
         /// <summary>
@@ -207,10 +223,11 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.已创建);
-                obll.SetPayOrderId(e.Out_Trade_No, e.Trade_No);
-                string remark = e.Trade_Status + " " + e.Refund_Status;
-                lbll.Add(e.Out_Trade_No, remark, OrderStatus.已创建.ToString(), "alipay");
+                if (obll.ChangeOrderStatus(e.Out_Trade_No, OrderStatus.已创建) && obll.SetPayOrderId(e.Out_Trade_No, e.Trade_No))
+                {
+                    string remark = e.Trade_Status + " " + e.Refund_Status;
+                    lbll.Add(e.Out_Trade_No, remark, OrderStatus.已创建.ToString(), "alipay");
+                }
             }
         }
 
@@ -225,9 +242,11 @@ namespace NoName.NetShop.ForeFlat.alipay
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
-                obll.ChangePayStatus(e.Out_Trade_No, PayStatus.支付成功);
-                string remark = e.Trade_Status + " " + e.Refund_Status;
-                lbll.Add(e.Out_Trade_No, remark, OrderStatus.交易关闭.ToString(), "alipay");
+                if (obll.ChangePayStatus(e.Out_Trade_No, PayStatus.支付成功))
+                {
+                    string remark = e.Trade_Status + " " + e.Refund_Status;
+                    lbll.Add(e.Out_Trade_No, remark, OrderStatus.交易关闭.ToString(), "alipay");
+                }
             }
         }
 
