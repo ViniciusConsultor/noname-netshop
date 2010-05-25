@@ -221,7 +221,7 @@ namespace NoName.NetShop.ForeFlat.alipay
         /// <param name="e"></param>
         private void ap_WaitSellerSendGoods(object sender, NotifyEventArgs e)
         {
-            log.Info("买家付款成功，订单号为：" + e.Out_Trade_No);
+            log.Info("买家付款成功，等待卖家发货，订单号为：" + e.Out_Trade_No);
             CommOrderModel omodel = obll.GetModel(e.Out_Trade_No);
             if (omodel.PayMethod == PayMethType.支付宝)
             {
