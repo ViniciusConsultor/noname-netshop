@@ -86,6 +86,7 @@
     }
 
     function InitRegions() {
+    debugger;
         var regiontop = $('<input type="hidden" id="' + topregion.name + '" name="' + topregion.name + '" value="' + topregion.topid + '" />');
         $("#region").append(regiontop);
         for (var i = 0; i < regionInfo.length; i++) {
