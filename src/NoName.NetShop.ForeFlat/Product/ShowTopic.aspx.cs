@@ -8,8 +8,9 @@ using NoName.NetShop.Common;
 using System.Data;
 using NoName.NetShop.Comment;
 using NoName.Utility;
+using NoName.NetShop.Product.Facade;
 
-namespace NoName.NetShop.ForeFlat.qa
+namespace NoName.NetShop.ForeFlat.Product
 {
     public partial class ShowTopic : AuthBasePage
     {
@@ -106,8 +107,8 @@ namespace NoName.NetShop.ForeFlat.qa
             this.litTradePrice.Text = pmodel.TradePrice.ToString("F2");
             this.litProductId.Text = pmodel.ProductId.ToString();
             this.litStock.Text = pmodel.Stock > 0 ? "库存充足" : "暂时缺货";
-            this.imgProductL.ImageUrl = pmodel.MediumImage;
-            this.imgProductM.ImageUrl = pmodel.LargeImage;
+            this.imgProductL.ImageUrl = ProductMainImageRule.GetMainImageUrl(pmodel.MediumImage);
+            this.imgProductM.ImageUrl = ProductMainImageRule.GetMainImageUrl(pmodel.LargeImage);
         }
 
         private void ShowReplyInfo()

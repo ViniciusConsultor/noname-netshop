@@ -42,22 +42,25 @@
     for (var i = 0; i < initialTable.Count; i++) {
         var prop = initialTable.Keys()[i];
         var propValue = initialTable.GetValue(prop);
+        $('.properity[propid=' + prop + ']').children('a[propvid]').each(function(i, o) { $(o).removeAttr('class'); });
         $('.properity[propid=' + prop + ']').children('a[propvid=' + propValue + ']').attr('class', 'on');
     }
 
     //page
 
     //brand
-    //    var currentBrandID = getBrandID();
-    //    $('.properity a[brand]').each(function(i, o) {
-    //        if (parseInt(o.attr('brand')) == currentBrandID) {
-    //        }
-    //    });
+    var currentBrandID = getBrandID();
+    $('.properity a[brand]').each(function(i, o) {
+        $(o).removeAttr('class');
+        if (parseInt($(o).attr('brand')) == currentBrandID) $(o).attr('class', 'on');
+    });
 
     //pricerange
-    //    var currentPriceRange = getPriceRange();
-    //    $('.properity a[range]').each(function(i, o) {
-    //    });
+    var currentPriceRange = getPriceRange();
+    $('.properity a[range]').each(function(i, o) {
+        $(o).removeAttr('class');
+        if ($(o).attr('range') == currentPriceRange) $(o).attr('class', 'on');
+    });
 
 
     /* initialize end */
@@ -219,6 +222,7 @@
         }
 
         url = RegExp.$1 + RegExp.$2 + brandString + RegExp.$5 + RegExp.$6 + RegExp.$7 + RegExp.$8;
+        window.location = url;
     }
 
     function getPriceRange() {
@@ -238,6 +242,7 @@
         }
 
         url = RegExp.$1 + RegExp.$2 + RegExp.$4 + rangeString + RegExp.$6 + RegExp.$7 + RegExp.$8;
+        window.location = url;
     }
 
     function getListUrlParameter() {
