@@ -17,13 +17,9 @@
     <script src="/js/validate.js" type="text/javascript"></script>
     
     <script type="text/javascript">
-        var categoryInfo = [{ "name": "category1", "title": "全部", "required": "true" },
-                { "name": "category2", "title": "全部", "required": "true" },
-                { "name": "category3", "title": "全部", "required": "false"}];
-                
         $(function() {
-
             InitRegions();
+
             $('#select-all').click(function() {
                 var checked = $(this).attr('checked');
                 $('#<%= GridView1.ClientID %>').find('input[type=checkbox]').each(function() {
@@ -38,7 +34,6 @@
         });
 
         function validate() {
-            debugger;
             var result = false;
             var errorMessage = '';
             if ($('#<%= CheckBox1.ClientID %>').attr('checked')) {
