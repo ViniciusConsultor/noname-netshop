@@ -243,7 +243,7 @@ namespace NoName.NetShop.BackFlat.Product
 
                 if (IsPostBack)
                 {
-                    SelectedCategoryID = CategorySelect1.GetSelectedCategoryInfo(out IsEnd);
+                    SelectedCategoryID = CategorySelect1.GetSelectedRegionInfo().CateId;
                     if (SelectedCategoryID == -1)
                     {
                         MessageBox.Show(this, "请至少选择一个分类");
@@ -262,7 +262,7 @@ namespace NoName.NetShop.BackFlat.Product
 
                     if (!CheckBox1.Checked) CheckBox1.Checked = true;
                     CategoryPath = CategoryPath.Substring(0, CategoryPath.LastIndexOf("/"));
-                    CategorySelect1.PresetCategoryInfo(CategoryPath);
+                    CategorySelect1.PresetRegionInfo(CategoryPath);
                 }
             }
 
