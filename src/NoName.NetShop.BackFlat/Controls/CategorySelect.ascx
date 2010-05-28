@@ -78,7 +78,6 @@
                 });
                 if (typeof (preset) == "undefined" || preset == null) return;
                 if (preset && preset.length >= nextIndex) {
-                    alert(preset + '::' + nextIndex);
                     nextRegion.find("option[value='" + preset[nextIndex] + "']").attr("selected", "selected");
                     if (nextRegion.val() != null) {
                         showNextRegion(nextIndex);
