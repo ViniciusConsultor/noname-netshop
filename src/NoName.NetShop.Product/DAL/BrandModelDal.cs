@@ -66,6 +66,25 @@ namespace NoName.NetShop.Product.DAL
             return Convert.ToInt32(dbr.ExecuteScalar(Command)) > 0;
         }
 
+        public bool RawExists(string BrandName,out BrandModel model)
+        {
+            DbCommand Command = dbr.GetSqlStringCommand("select top 1 * from pdbrand where brandname like @brandname");
+
+            dbr.AddInParameter(Command,"@brandname",DbType.String, "%" + BrandName + "%");
+
+            DataTable dt = dbr.ExecuteDataSet(Command).Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                model = GetModel(dt.Rows[0]);
+                return true;
+            }
+            else
+            {
+                model = null;
+                return false;
+            }
+        }
+
 		/// <summary>
 		///  增加一条数据
 		/// </summary>
@@ -223,7 +242,21 @@ namespace NoName.NetShop.Product.DAL
 			model.Brief=dataReader["Brief"].ToString();
             model.ShowOrder = int.Parse(dataReader["showorder"].ToString());
 			return model;
-		}
+        }
+        private BrandModel GetModel(DataRow row)
+        {
+            BrandModel model = new BrandModel();
+
+            model.BrandId = int.Parse(row["BrandId"].ToString());
+            model.BrandName = row["BrandName"].ToString();
+            model.CateId = int.Parse(row["CateId"].ToString());
+            model.CatePath = row["CatePath"].ToString();
+            model.BrandLogo = row["BrandLogo"].ToString();
+            model.Brief = row["Brief"].ToString();
+            model.ShowOrder = int.Parse(row["showorder"].ToString());
+
+            return model;
+        }
 
 		#endregion  成员方法
 	}
