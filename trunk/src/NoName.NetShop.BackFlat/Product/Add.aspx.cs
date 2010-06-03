@@ -353,21 +353,25 @@ namespace NoName.NetShop.BackFlat.Product
                 }
 
                 //创建索引
-                DataIndexerProduct SearchIndexer = new DataIndexerProduct(Config.Searches["product"]);
-                SearchIndexer.CreateSingleIndex(new Search.Entities.ProductModel() 
+                try
                 {
-                    EntityIdentity = product.ProductId,
-                    CategoryID = product.CateId,
-                    CategoryPath = product.CatePath,
-                    CreateTime = product.InsertTime,
-                    Description = product.Brief,
-                    Keywords = product.Keywords,
-                    Price = product.MerchantPrice,
-                    ProcessType = NoName.NetShop.Search.Entities.EntityProcessType.insert,
-                    ProductImage = product.MediumImage,
-                    ProductName = product.ProductName,
-                    UpdateTime = product.ChangeTime
-                });
+                    DataIndexerProduct SearchIndexer = new DataIndexerProduct(Config.Searches["product"]);
+                    SearchIndexer.CreateSingleIndex(new Search.Entities.ProductModel()
+                    {
+                        EntityIdentity = product.ProductId,
+                        CategoryID = product.CateId,
+                        CategoryPath = product.CatePath,
+                        CreateTime = product.InsertTime,
+                        Description = product.Brief,
+                        Keywords = product.Keywords,
+                        Price = product.MerchantPrice,
+                        ProcessType = NoName.NetShop.Search.Entities.EntityProcessType.insert,
+                        ProductImage = product.MediumImage,
+                        ProductName = product.ProductName,
+                        UpdateTime = product.ChangeTime
+                    });
+                }
+                catch { }
 
                 return rtnValue;
             }

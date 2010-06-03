@@ -12,6 +12,8 @@ using System.Web.UI.HtmlControls;
 using System.Configuration;
 using NoName.NetShop.Search.Config;
 using NoName.NetShop.Search.DataIndexer;
+using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace NoName.NetShop.BackFlat.Product
 {
@@ -19,8 +21,8 @@ namespace NoName.NetShop.BackFlat.Product
     {
         private string SearchCondition
         {
-            get { if (ViewState["SearchCondition"] != null) return ViewState["SearchCondition"].ToString(); else return String.Empty; }
-            set { ViewState["SearchCondition"]=value; }
+            get { if (Session["product-SearchCondition"] != null) return (string)Session["product-SearchCondition"]; else return null; }
+            set { Session["product-SearchCondition"] = value; }
         }
         public int InitialPageIndex
         {
@@ -44,12 +46,14 @@ namespace NoName.NetShop.BackFlat.Product
                 BindData(InitialPageIndex);
                 BindDropDownData();
             }
+            Response.Write(Session["product-SearchCondition"]==null?"":Session["product-SearchCondition"].ToString());
         }
 
         //大类>>小类，商品点击量|购买量    批量操作上下架
         private void BindData(int PageIndex)
         {
-            ConstructSearchCondition();
+            if (SearchCondition != ConstructSearchCondition())
+                SearchCondition = ConstructSearchCondition();
 
             //Response.Write(SearchCondition);
             int RecordCount=0;
@@ -89,6 +93,8 @@ namespace NoName.NetShop.BackFlat.Product
 
             AspNetPager.RecordCount = RecordCount;
             AspNetPager.CurrentPageIndex = PageIndex;
+
+            InitializeSerchCondition();
         }
 
         private void BindDropDownData()
@@ -232,14 +238,16 @@ namespace NoName.NetShop.BackFlat.Product
                 BindData(1);
         }
 
-        private void ConstructSearchCondition()
+        private string ConstructSearchCondition()
         {
-            SearchCondition = String.Empty;
+            string condition = String.Empty;
             //构建搜索条件
             if (CheckBox1.Checked || InitialCategoryID!=-1)
             {
+                #region s1
                 bool IsEnd;
                 int SelectedCategoryID = 0;
+                string s1 = String.Empty;
 
                 if (IsPostBack)
                 {
@@ -247,7 +255,7 @@ namespace NoName.NetShop.BackFlat.Product
                     if (SelectedCategoryID == -1)
                     {
                         MessageBox.Show(this, "请至少选择一个分类");
-                        return; 
+                        return String.Empty; 
                     }
                 }
                 else
@@ -258,42 +266,54 @@ namespace NoName.NetShop.BackFlat.Product
                 if (SelectedCategoryID != -1)
                 {
                     string CategoryPath = new CategoryModelBll().GetModel(SelectedCategoryID).CatePath;
-                    SearchCondition += " and catepath like '" + CategoryPath + "%'";
+                    s1=" and catepath like '" + CategoryPath + "%'";
+                    condition += s1;
+                    //SearchCondition.Add("s1",s1);
 
                     if (!CheckBox1.Checked) CheckBox1.Checked = true;
                     CategoryPath = CategoryPath.Substring(0, CategoryPath.LastIndexOf("/"));
                     CategorySelect1.PresetRegionInfo(CategoryPath);
                 }
+                #endregion
             }
 
             if (CheckBox2.Checked)
             {
+                #region s2
+                string s2 = String.Empty;
                 if (!String.IsNullOrEmpty(TextBox1.Text) && PageValidate.IsNumber(TextBox1.Text))
                 {
-                    SearchCondition += " and productid=" + TextBox1.Text;
+                    s2 = " and productid=" + TextBox1.Text;
+                    condition += s2;
+                    //SearchCondition.Add("s2",s2);
                 }
                 else
                 {
                     MessageBox.Show(this, "请输入正确的产品ID");
-                    return;
+                    return String.Empty;
                 }
+                #endregion
             }
             if (CheckBox3.Checked)
             {
+                #region s3
+                string s3 = String.Empty;
                 int Status = Convert.ToInt32(drpStatus.SelectedValue);
-                SearchCondition += " and status='" + Status + "'";
-
+                s3 = " and status='" + Status + "'";
+                condition += s3;
+                #endregion
             }
             if (CheckBox4.Checked)
             {
+
                 if (!String.IsNullOrEmpty(TextBox2.Text))
                 {
-                    SearchCondition += " and productname like '%" + TextBox2.Text + "%'";
+                    condition += " and productname like '%" + TextBox2.Text + "%'";
                 }
                 else
                 {
                     MessageBox.Show(this, "请输入产品名称");
-                    return;
+                    return String.Empty;
                 }
             }
             if (CheckBox5.Checked)
@@ -302,31 +322,31 @@ namespace NoName.NetShop.BackFlat.Product
                 {
                     DateTime start = Convert.ToDateTime(TextBox3.Text);
                     DateTime end = Convert.ToDateTime(TextBox4.Text);
-                    SearchCondition += String.Format(" and InsertTime >= '{0}' and InsertTime <= '{1}'", start, end);
+                    condition += String.Format(" and InsertTime >= '{0}' and InsertTime <= '{1}'", start, end);
                 }
                 else
                 {
                     MessageBox.Show(this, "请输入正确的日期");
-                    return;
+                    return String.Empty;
                 }
             }
             if (CheckBox6.Checked)
             {
                 if (!String.IsNullOrEmpty(TextBoxSearch_ScoreStart.Text) && !String.IsNullOrEmpty(TextBoxSearch_ScoreEnd.Text))
-                    SearchCondition += String.Format(" and score between {0} and {1}", TextBoxSearch_ScoreStart.Text, TextBoxSearch_ScoreEnd.Text);
+                    condition += String.Format(" and score between {0} and {1}", TextBoxSearch_ScoreStart.Text, TextBoxSearch_ScoreEnd.Text);
                 else
                 {
                     MessageBox.Show(this, "请输入正确的积分");
-                    return;
+                    return String.Empty;
                 }
             }
             if (CheckBox7.Checked)
             {
                 int StockStatus = Convert.ToInt32(DropDownList_Stock.SelectedValue);
                 if (StockStatus == 0)
-                    SearchCondition += " and stock=0";
+                    condition += " and stock=0";
                 else
-                    SearchCondition += " and stock>0";
+                    condition += " and stock>0";
             }
             if (CheckBox8.Checked)
             {
@@ -334,12 +354,121 @@ namespace NoName.NetShop.BackFlat.Product
                 {
                     DateTime start = Convert.ToDateTime(TextBoxSearch_StartTime.Text);
                     DateTime end = Convert.ToDateTime(TextBoxSearch_EndTime.Text);
-                    SearchCondition += String.Format(" and changetime >= '{0}' and changetime <= '{1}'", start, end);
+                    condition += String.Format(" and changetime >= '{0}' and changetime <= '{1}'", start, end);
                 }
                 else
                 {
                     MessageBox.Show(this, "请输入正确的日期");
-                    return;
+                    return String.Empty;
+                }
+            }
+            if (CheckBox9.Checked)
+            {
+                BrandModel model ;
+
+                if (!String.IsNullOrEmpty(TextBoxSearch_Brand.Text.Trim()) && new BrandModelBll().RawExists(TextBoxSearch_Brand.Text.Trim(),out model))
+                {
+                    condition += String.Format(" and brandid = " + model.BrandId);
+                }
+                else
+                {
+                    MessageBox.Show(this,"未输入或未查找到您输入的品牌");
+                    return String.Empty;
+                }
+            }
+
+            return condition;
+        }
+
+        private void InitializeSerchCondition()
+        {
+            if (SearchCondition.Contains("catepath like"))
+            {
+                CheckBox1.Checked = true;
+                Match m = Regex.Match(SearchCondition, @"and catepath like '(?<catepath>.+)%'");
+                if (m.Success)
+                    CategorySelect1.PresetRegionInfo(m.Groups["catepath"].ToString());
+            }
+
+            if (SearchCondition.Contains("productid="))
+            {
+                CheckBox2.Checked = true;
+                Match m = Regex.Match(SearchCondition, @"and productid=(?<pid>\d+)");
+                if (m.Success)
+                    TextBox1.Text = m.Groups["pid"].ToString();
+            }
+
+            if (SearchCondition.Contains("status="))
+            {
+                CheckBox3.Checked = true;
+                Match m = Regex.Match(SearchCondition,@"and status='(?<status>\d+)'");
+                if (m.Success)
+                    drpStatus.SelectedValue = m.Groups["status"].ToString();
+            }
+
+            if (SearchCondition.Contains("productname like"))
+            {
+                CheckBox4.Checked = true;
+                Match m = Regex.Match(SearchCondition, @"and productname like '%(?<pname>.+)%'");
+                if (m.Success)
+                    TextBox2.Text = m.Groups["pname"].ToString();
+            }
+
+            if (SearchCondition.Contains("InsertTime"))
+            {
+                CheckBox5.Checked = true;
+                Match m = Regex.Match(SearchCondition, @"and InsertTime >= '(?<st>.+)' and InsertTime <= '(?<et>.+)'");
+                if (m.Success)
+                {
+                    TextBox3.Text = Convert.ToDateTime(m.Groups["st"]).ToString("yyyy-MM-dd");
+                    TextBox4.Text = Convert.ToDateTime(m.Groups["et"]).ToString("yyyy-MM-dd");
+                }
+            }
+
+            if (SearchCondition.Contains("score between"))
+            {                
+                CheckBox6.Checked = true;
+                Match m = Regex.Match(SearchCondition, @"and score between (?<ss>.+) and (?<se>.+)");
+                if (m.Success)
+                {
+                    TextBoxSearch_ScoreStart.Text = m.Groups["ss"].ToString();
+                    TextBoxSearch_ScoreEnd.Text = m.Groups["se"].ToString();
+                }
+            }
+
+            if (SearchCondition.Contains("stock"))
+            {
+                CheckBox7.Checked = true;
+                Match m = Regex.Match(SearchCondition, @"stock(?<stock>=|\>)(\d+)");
+                if (m.Success)
+                {
+                    DropDownList_Stock.SelectedValue = m.Groups["stock"].ToString() == "=" ? "0" : "1";
+                }
+            }
+
+            if (SearchCondition.Contains("changetime"))
+            {
+                CheckBox8.Checked = true;
+                DateTime start = Convert.ToDateTime(TextBoxSearch_StartTime.Text);
+                DateTime end = Convert.ToDateTime(TextBoxSearch_EndTime.Text);
+                SearchCondition += String.Format(" and changetime >= '{0}' and changetime <= '{1}'", start, end);
+
+                Match m = Regex.Match(SearchCondition, @"changetime >= '(?<cs>\.+)' and changetime <= '(?<ce>\.+)'");
+                if (m.Success)
+                {
+                    TextBoxSearch_StartTime.Text=Convert.ToDateTime(m.Groups["cs"]).ToString("yyyy-MM-dd");
+                    TextBoxSearch_EndTime.Text = Convert.ToDateTime(m.Groups["ce"]).ToString("yyyy-MM-dd");
+                }
+            }
+
+            if (SearchCondition.Contains("brandid"))
+            {
+                CheckBox9.Checked = true; 
+                Match m = Regex.Match(SearchCondition, @"and brandid = (?<bid>\d+)");
+                if (m.Success)
+                {
+                    BrandModel b = new BrandModelBll().GetModel(Convert.ToInt32(m.Groups["bid"]));
+                    TextBoxSearch_Brand.Text = b.BrandName;
                 }
             }
         }

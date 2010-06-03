@@ -21,9 +21,10 @@
 	        <td height="25" width="30%" align="right">搜索价格区间<span class="red">*</span>：</td>
 	        <td height="25" width="*" align="left">
 		        <asp:TextBox id="txtSearchPriceRange" runat="server" Width="200px"></asp:TextBox>
+		        <span>格式：0~100,101~200,201~300</span>
 	        </td>
 	    </tr>
-	    <tr>
+	    <tr style="display:none;">
 	        <td height="25" width="30%" align="right">状态<span class="red">*</span>：</td>
 	        <td height="25" width="*" align="left">
 	            <asp:DropDownList runat="server" ID="drpStatus" ></asp:DropDownList>

@@ -238,11 +238,13 @@ namespace NoName.NetShop.BackFlat.Product
             SaveData();
 
             Response.Redirect("List.aspx?page=" + CurrentPageIndex);
+            //MessageBox.ResponseScript(this, "history.back(-2);");
         }
 
         protected void btnReturn_Click(object sender, EventArgs e)
         {
             Response.Redirect("List.aspx?page=" + CurrentPageIndex);
+            //MessageBox.ResponseScript(this,"history.back(-2);");
         }
 
         protected void GridView_MultiImage_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -452,23 +454,28 @@ namespace NoName.NetShop.BackFlat.Product
 
             bll.Update(product);
 
+            
             //重建索引
-            DataIndexerProduct SearchIndexer = new DataIndexerProduct(Config.Searches["product"]);
-            SearchIndexer.DeleteSingleIndex(product.ProductId);
-            SearchIndexer.CreateSingleIndex(new Search.Entities.ProductModel()
+            try
             {
-                EntityIdentity = product.ProductId,
-                CategoryID = product.CateId,
-                CategoryPath = product.CatePath,
-                CreateTime = product.InsertTime,
-                Description = product.Brief,
-                Keywords = product.Keywords,
-                Price = product.MerchantPrice,
-                ProcessType = NoName.NetShop.Search.Entities.EntityProcessType.insert,
-                ProductImage = product.MediumImage,
-                ProductName = product.ProductName,
-                UpdateTime = product.ChangeTime
-            });
+                DataIndexerProduct SearchIndexer = new DataIndexerProduct(Config.Searches["product"]);
+                SearchIndexer.DeleteSingleIndex(product.ProductId);
+                SearchIndexer.CreateSingleIndex(new Search.Entities.ProductModel()
+                {
+                    EntityIdentity = product.ProductId,
+                    CategoryID = product.CateId,
+                    CategoryPath = product.CatePath,
+                    CreateTime = product.InsertTime,
+                    Description = product.Brief,
+                    Keywords = product.Keywords,
+                    Price = product.MerchantPrice,
+                    ProcessType = NoName.NetShop.Search.Entities.EntityProcessType.insert,
+                    ProductImage = product.MediumImage,
+                    ProductName = product.ProductName,
+                    UpdateTime = product.ChangeTime
+                });
+            }
+            catch { }
         }
 
 
