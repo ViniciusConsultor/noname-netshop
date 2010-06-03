@@ -19,7 +19,7 @@ function addFav(suiteID) {
                 alert('收藏成功！');
             }
             else if (data.Message.indexOf('登录') > 0) {
-                window.open('/login.aspx?returnurl=' + encodeURIComponent('/member/dofavorate.aspx?ctype=1&cid=' + productID));
+                window.open('/login.aspx?returnurl=' + encodeURIComponent('/member/dofavorite.aspx?ctype=1&cid=' + suiteID));
             }
             else {
                 alert(data.Message);
