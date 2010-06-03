@@ -16,5 +16,6 @@ namespace NoName.NetShop.Common
         public readonly static string Message = "07";
         public readonly static string Other = "08";
         public readonly static string Solution = "09";
+        public readonly static string GroupShopping = "10";
     }
 }
