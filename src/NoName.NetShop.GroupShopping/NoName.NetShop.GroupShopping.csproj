@@ -44,9 +44,11 @@
       <HintPath>..\NoName.NetShop.BackFlat\bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -59,8 +61,12 @@
   <ItemGroup>
     <Compile Include="BLL\GroupApplyBll.cs" />
     <Compile Include="BLL\GroupProductBll.cs" />
+    <Compile Include="Config\GroupShoppingImageElement.cs" />
+    <Compile Include="Config\GroupShoppingImageElementCollection.cs" />
+    <Compile Include="Config\GroupShoppingImageSection.cs" />
     <Compile Include="DAL\GroupApplyDal.cs" />
     <Compile Include="DAL\GroupProductDal.cs" />
+    <Compile Include="Facade\GroupShoppingImageRule.cs" />
     <Compile Include="Model\GroupApplyModel.cs" />
     <Compile Include="Model\GroupProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +75,10 @@
     <ProjectReference Include="..\NoName.NetShop.Comm\NoName.NetShop.Common.csproj">
       <Project>{29A4BE47-9ADF-443F-913D-6CCEAD2DD752}</Project>
       <Name>NoName.NetShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoName.Utility\NoName.Utility.csproj">
+      <Project>{E0634851-F221-461E-9C14-F71011119CC6}</Project>
+      <Name>NoName.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

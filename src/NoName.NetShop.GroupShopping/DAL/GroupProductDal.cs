@@ -34,9 +34,11 @@ namespace NoName.NetShop.GroupShopping.DAL
             
             dbw.AddInParameter(Command,"@ProductID",DbType.Int32,model.ProductID);
             dbw.AddInParameter(Command,"@ProductName",DbType.String,model.ProductName);
-            dbw.AddInParameter(Command,"@ProductCode",DbType.String,model.ProductCode);
+            dbw.AddInParameter(Command, "@ProductCode", DbType.String, model.ProductCode);
+            dbw.AddInParameter(Command, "@MarketPrice", DbType.Decimal, model.MarketPrice);
             dbw.AddInParameter(Command,"@GroupPrice",DbType.Decimal,model.GroupPrice);
-            dbw.AddInParameter(Command,"@PrePaidPrice",DbType.Decimal,model.PrePaidPrice);
+            dbw.AddInParameter(Command, "@PrePaidPrice", DbType.Decimal, model.PrePaidPrice);
+            dbw.AddInParameter(Command, "@succedline", DbType.Int32, model.SuccedLine);
             dbw.AddInParameter(Command,"@SmallImage",DbType.String,model.SmallImage);
             dbw.AddInParameter(Command,"@MediumImage",DbType.String,model.MediumImage);
             dbw.AddInParameter(Command,"@LargeImage",DbType.String,model.LargeImage);
@@ -46,6 +48,7 @@ namespace NoName.NetShop.GroupShopping.DAL
             dbw.AddInParameter(Command,"@ChangeTime",DbType.DateTime,model.ChangeTime);
             dbw.AddInParameter(Command,"@Status",DbType.Int16,model.Status);
             dbw.AddInParameter(Command, "@ProductType", DbType.Int16, model.ProductType);
+            dbw.AddInParameter(Command, "@isrecommend", DbType.Boolean, model.IsRecommend);
 
             dbw.ExecuteNonQuery(Command);
         }
@@ -57,8 +60,10 @@ namespace NoName.NetShop.GroupShopping.DAL
             dbw.AddInParameter(Command, "@ProductID", DbType.Int32, model.ProductID);
             dbw.AddInParameter(Command, "@ProductName", DbType.String, model.ProductName);
             dbw.AddInParameter(Command, "@ProductCode", DbType.String, model.ProductCode);
+            dbw.AddInParameter(Command, "@MarketPrice", DbType.Decimal, model.MarketPrice);
             dbw.AddInParameter(Command, "@GroupPrice", DbType.Decimal, model.GroupPrice);
             dbw.AddInParameter(Command, "@PrePaidPrice", DbType.Decimal, model.PrePaidPrice);
+            dbw.AddInParameter(Command, "@succedline", DbType.Int32, model.SuccedLine);
             dbw.AddInParameter(Command, "@SmallImage", DbType.String, model.SmallImage);
             dbw.AddInParameter(Command, "@MediumImage", DbType.String, model.MediumImage);
             dbw.AddInParameter(Command, "@LargeImage", DbType.String, model.LargeImage);
@@ -68,6 +73,7 @@ namespace NoName.NetShop.GroupShopping.DAL
             dbw.AddInParameter(Command, "@ChangeTime", DbType.DateTime, model.ChangeTime);
             dbw.AddInParameter(Command, "@Status", DbType.Int16, model.Status);
             dbw.AddInParameter(Command, "@ProductType", DbType.Int16, model.ProductType);
+            dbw.AddInParameter(Command, "@isrecommend", DbType.Boolean, model.IsRecommend);
 
             dbw.ExecuteNonQuery(Command);
         }
@@ -101,6 +107,23 @@ namespace NoName.NetShop.GroupShopping.DAL
             return dbr.ExecuteDataSet(Command).Tables[0];
         }
 
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        {
+            int PageLowerBound = 0, PageUpperBount = 0;
+            PageLowerBound = (PageIndex - 1) * PageSize;
+            PageUpperBount = PageLowerBound + PageSize;
+
+            string sqlCount = "select count(0) from gsproduct where 1=1 " + Condition;
+            string sqlData = @" select * from 
+                                (
+                                    select row_number() over(order by productid desc) as id,* from gsproduct where 1=1 "+Condition+@"
+                                ) as sp
+                                where sp.id>" + PageLowerBound + " and sp.id<=" + PageUpperBount;
+
+            RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text,sqlCount));
+            return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
+        }
+
         public List<GroupProductModel> GetIList()
         {
             List<GroupProductModel> List = new List<GroupProductModel>();
@@ -111,6 +134,24 @@ namespace NoName.NetShop.GroupShopping.DAL
             }
 
             return List;
+        }
+
+        public void SetRecommend(int ProductID, bool IsRecommend)
+        {
+            DbCommand Command = dbw.GetSqlStringCommand("update [gsproduct] set [isrecommend] = @isrecommend");
+
+            dbw.AddInParameter(Command, "@isrecommend", DbType.Boolean, IsRecommend);
+
+            dbw.ExecuteNonQuery(Command);
+        }
+
+        public void Freeze(int ProductID,int Status)
+        {
+            DbCommand Command = dbw.GetSqlStringCommand("update [gsproduct] set [status] = @status");
+
+            dbw.AddInParameter(Command, "@status", DbType.Int16, Status);
+
+            dbw.ExecuteNonQuery(Command);
         }
 
         private GroupProductModel GetModel(DataRow row)
@@ -131,6 +172,9 @@ namespace NoName.NetShop.GroupShopping.DAL
             model.LargeImage = Convert.ToString(row["LargeImage"]);
             model.ProductType = Convert.ToInt16(row["ProductType"]);
             model.Status = Convert.ToInt16(row["Status"]);
+            model.MarketPrice = Convert.ToDecimal(row["MarketPrice"]);
+            model.SuccedLine = Convert.ToInt32(row["SuccedLine"]);
+            model.IsRecommend = Convert.ToBoolean(row["IsRecommend"]);
 
             return model;
         }

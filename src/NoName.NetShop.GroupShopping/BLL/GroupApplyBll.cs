@@ -46,5 +46,10 @@ namespace NoName.NetShop.GroupShopping.BLL
         {
             return GetIList(ProductID);
         }
+
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        {
+            return dal.GetList(PageIndex, PageSize, Condition, out RecordCount);
+        }
     }
 }

@@ -103,6 +103,24 @@ namespace NoName.NetShop.GroupShopping.DAL
             return List;
         }
 
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        {
+            int PageLowerBound = 0, PageUpperBound = 0;
+            PageLowerBound = (PageIndex - 1) * PageSize;
+            PageUpperBound = PageLowerBound + PageSize;
+
+            string sqlCount = "select * from gsApply where 1=1 " + Condition;
+            string sqlData = @" select * from 
+                                (
+                                    select row_number() over(order by groupapplyid desc) as id,* from gsapply where 1=1 " + Condition + @"
+                                ) as sp
+                                where id>" + PageLowerBound + " and id<=" + PageUpperBound;
+
+
+            RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sqlCount));
+            return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
+        }
+
         private GroupApplyModel GetModel(DataRow row)
         {
             GroupApplyModel model = new GroupApplyModel();

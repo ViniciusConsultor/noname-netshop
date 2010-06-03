@@ -32,6 +32,16 @@ namespace NoName.NetShop.GroupShopping.BLL
             dal.Delete(ProductID);
         }
 
+        public void SetRecommend(int ProductID, bool IsRecommend)
+        {
+            dal.SetRecommend(ProductID,IsRecommend);
+        }
+
+        public void Freeze(int ProductID, int Status)
+        {
+            dal.Freeze(ProductID, Status);
+        }
+
         public GroupProductModel GetModel(int ProductID)
         {
             return dal.GetModel(ProductID);
@@ -42,9 +52,15 @@ namespace NoName.NetShop.GroupShopping.BLL
             return dal.GetList();
         }
 
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        {
+            return dal.GetList(PageIndex, PageSize, Condition, out RecordCount);
+        }
+
         public List<GroupProductModel> GetIList()
         {
             return dal.GetIList();
         }
+
     }
 }
