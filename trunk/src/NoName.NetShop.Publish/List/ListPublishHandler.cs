@@ -67,10 +67,13 @@ namespace NoName.NetShop.Publish.List
                         ProperityString += ProperityString.Substring(0, ProperityString.Length - 1) + "e";
                     }
 
-                    string PageName = String.Format("list_{0}{1}{2}{3}.html",
-                        PageParameter.CategoryID, PageParameter.PageIndex <= 1 ? "" : "_" + PageParameter.PageIndex.ToString(),
-                        PageParameter.OrderValue == 0 ? "" : "-o"+PageParameter.OrderValue.ToString()/*order*/,
-                        PageParameter.Properities == null ? "" : "-"+ProperityString/*properity*/);
+                    string PageName = String.Format("list_{0}{1}{2}{3}{4}{5}.html",
+                        PageParameter.CategoryID,
+                        PageParameter.PageIndex <= 1 ? "" : "_" + PageParameter.PageIndex.ToString(),
+                        PageParameter.BrandID == 0 ? "" : "_" + PageParameter.BrandID.ToString(),
+                        PageParameter.PriceRange == null ? "" : "_r" + PageParameter.PriceRange[0].ToString("00") + "~" + PageParameter.PriceRange[1].ToString("00"),
+                        PageParameter.OrderValue == 0 ? "" : "-o" + PageParameter.OrderValue.ToString()/*order*/,
+                        PageParameter.Properities == null ? "" : "-" + ProperityString/*properity*/);
 
                     return config.RootPath + RelativePath + PageName;
                 }

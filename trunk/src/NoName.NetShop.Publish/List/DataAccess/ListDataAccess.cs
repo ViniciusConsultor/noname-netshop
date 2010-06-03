@@ -50,8 +50,8 @@ namespace NoName.NetShop.Publish.List.DataAccess
                 }
             if (BrandID != 0)
                 where += " and pdproduct.brandid=" + BrandID;
-            if (PriceRange!=null && PriceRange.Length == 2)
-                where += String.Format(" and pdproduct.merchantprice >= {0} and pdproduct.merchantprice <= {1}", PriceRange[0], PriceRange[1]);
+            if (PriceRange != null && PriceRange.Length == 2)
+                where += String.Format(" and pdproduct.merchantprice >= {0} and pdproduct.merchantprice <= {1}", PriceRange[0], PriceRange[1] + 0.99M);
 
             string CategoryPath = Convert.ToString(GetCategoryInfo(CategoryID)["catepath"]);
             where += String.Format(" and pdproduct.catepath like '{0}%'", CategoryPath);
@@ -88,7 +88,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
             if (BrandID != 0)
                 where += " and pdproduct.brandid=" + BrandID;
             if (PriceRange != null && PriceRange.Length == 2)
-                where += String.Format(" and pdproduct.merchantprice >= {0} and pdproduct.merchantprice <= {1}", PriceRange[0], PriceRange[1]);
+                where += String.Format(" and pdproduct.merchantprice >= {0} and pdproduct.merchantprice <= {1}", PriceRange[0], PriceRange[1] + 0.99M);
 
 
             pageinfo.FieldNames = "[ProductId],[ProductName],[ProductCode],[CatePath],[CateId],[TradePrice],[MerchantPrice],[ReducePrice],[Stock],[SmallImage],[MediumImage],[LargeImage],[Keywords],[Brief],[PageView],[InsertTime],[ChangeTime],[Status],[SortValue],[Score]";

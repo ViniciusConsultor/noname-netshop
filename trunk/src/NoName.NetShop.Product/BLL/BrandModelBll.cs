@@ -41,6 +41,11 @@ namespace NoName.NetShop.Product.BLL
             return dal.Exists(BrandName);
         }
 
+        public bool RawExists(string BrandName, out BrandModel model)
+        {
+            return dal.RawExists(BrandName,out model);
+        }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
