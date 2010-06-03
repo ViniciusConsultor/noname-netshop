@@ -71,6 +71,31 @@ namespace NoName.NetShop.BackFlat.Category
             {
                 strErr += "分类搜索价格区间不能为空！\\n";
             }
+            if (this.txtSearchPriceRange.Text.Trim() != "")
+            {
+                string validateString = txtSearchPriceRange.Text.Trim().Replace("，", ",").Replace("～", "~");
+
+                if (validateString.Contains(","))
+                {
+                    foreach (string s in validateString.Split(','))
+                    {
+                        int r1 = 0, r2 = 0;
+                        if (!s.Contains("~") || !int.TryParse(s.Split('~')[0], out r1) || !int.TryParse(s.Split('~')[1], out r2))
+                        {
+                            strErr += "价格区间填写有误！\\n";
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    int r1 = 0, r2 = 0;
+                    if (validateString.Contains("~") && int.TryParse(validateString.Split('~')[0], out r1) && int.TryParse(validateString.Split('~')[1], out r2))
+                    {
+                        strErr += "价格区间填写有误！\\n";
+                    }
+                }
+            }
 
             if (strErr != "")
             {
@@ -84,7 +109,7 @@ namespace NoName.NetShop.BackFlat.Category
             model.Status = int.Parse(drpStatus.SelectedValue);
             //model.PriceRange = txtPriceRange.Text;
             model.IsHide = chkIsHide.Checked;
-            model.SearchPriceRange = txtSearchPriceRange.Text;
+            model.SearchPriceRange = txtSearchPriceRange.Text.Trim().EndsWith(",") ? txtSearchPriceRange.Text.Trim().Substring(0, txtSearchPriceRange.Text.Trim().Length - 1) : txtSearchPriceRange.Text.Trim();
 
             bll.Update(model);
 

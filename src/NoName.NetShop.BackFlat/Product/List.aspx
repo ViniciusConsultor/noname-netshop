@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="NoName.NetShop.BackFlat.Product.List" %>
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
-
 <%@ Register src="../Controls/CategorySelect.ascx" tagname="CategorySelect" tagprefix="uc1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -75,6 +74,12 @@
                     result = true;
                 else
                     errorMessage = '请至少输入起始或者结束日期\n';
+            }
+            if ($('#<%= CheckBox9.ClientID %>').attr('checked')) {
+                if ($('#<%= TextBoxSearch_Brand.ClientID %>').val() != '')
+                    result = true;
+                else
+                    errorMessage = '请输入品牌名称';
             }
             
             
@@ -152,6 +157,8 @@
                         <asp:TextBox ID="TextBoxSearch_EndTime" runat="server"></asp:TextBox>
                     </td>
                     <td>
+                        <asp:CheckBox ID="CheckBox9" runat="server" Text="按品牌" />
+                        <asp:TextBox runat="server" ID="TextBoxSearch_Brand"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
