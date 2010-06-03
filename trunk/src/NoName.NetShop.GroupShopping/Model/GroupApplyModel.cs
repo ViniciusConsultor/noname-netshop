@@ -76,4 +76,11 @@ namespace NoName.NetShop.GroupShopping.Model
 		}
 		#endregion Model
     }
+
+    public enum GroupProductApplyStatus
+    {
+        申请中=1,
+        已批准=2,
+        已驳回=3
+    }
 }

@@ -17,6 +17,7 @@ namespace NoName.NetShop.GroupShopping.Model
 		private string _productcode;
 		private decimal _groupprice;
 		private decimal _prepaidprice;
+        private decimal _marketprice;
 		private string _smallimage;
 		private string _mediumimage;
 		private string _largeimage;
@@ -26,6 +27,8 @@ namespace NoName.NetShop.GroupShopping.Model
 		private DateTime _changetime;
 		private int _status;
 		private int _producttype;
+        private int _succedline;
+        private bool _isrecommend;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -50,6 +53,11 @@ namespace NoName.NetShop.GroupShopping.Model
 			set{ _productcode=value;}
 			get{return _productcode;}
 		}
+        public decimal MarketPrice
+        {
+            set { _marketprice = value; }
+            get { return _marketprice; }
+        }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -139,7 +147,33 @@ namespace NoName.NetShop.GroupShopping.Model
 			get{return _producttype;}
 		}
 
+        public int SuccedLine
+        {
+            set { _succedline = value; }
+            get { return _succedline; }
+        }
+
+        public bool IsRecommend
+        {
+            get { return _isrecommend; }
+            set { _isrecommend = value; }
+        }
+
 		#endregion Model
 
 	}
+
+    public enum GroupShoppingProductType
+    {
+        普通商品 = 1,
+        解决方案 = 2
+    }
+
+    public enum GroupShoppingProductStatus
+    {
+        冻结=1,
+        正在团购 = 2,
+        团购成功 = 3,
+        团购结束 = 4
+    }
 }
