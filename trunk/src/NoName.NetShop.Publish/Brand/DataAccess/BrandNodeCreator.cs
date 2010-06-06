@@ -7,6 +7,7 @@ using System.Xml;
 using System.Data;
 using NoName.Utility;
 using NoName.NetShop.Product.Facade;
+using NoName.NetShop.Common;
 
 namespace NoName.NetShop.Publish.Brand.DataAccess
 {
@@ -62,7 +63,7 @@ namespace NoName.NetShop.Publish.Brand.DataAccess
                 XmlUtility.AddNewNode(BrandInfoNode, "categoryid", Convert.ToString(Parameter.CategoryID));
                 XmlUtility.AddNewNode(BrandInfoNode, "ordertype", Convert.ToString(Parameter.OrderType));
                 XmlUtility.AddNewNode(BrandInfoNode, "brandname", Convert.ToString(dt.Rows[0]["brandname"]));
-                XmlUtility.AddNewNode(BrandInfoNode, "brandlogo", Convert.ToString(dt.Rows[0]["brandlogo"]));
+                XmlUtility.AddNewNode(BrandInfoNode, "brandlogo", CommonImageUpload.GetCommonImageFullUrl(Convert.ToString(dt.Rows[0]["brandlogo"])));
                 XmlUtility.AddNewNode(BrandInfoNode, "brief", Convert.ToString(dt.Rows[0]["brief"]));
             }
 
