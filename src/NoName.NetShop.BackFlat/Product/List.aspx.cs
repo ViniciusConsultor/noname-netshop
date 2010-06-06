@@ -46,7 +46,7 @@ namespace NoName.NetShop.BackFlat.Product
                 BindData(InitialPageIndex);
                 BindDropDownData();
             }
-            Response.Write(Session["product-SearchCondition"]==null?"":Session["product-SearchCondition"].ToString());
+            //Response.Write(Session["product-SearchCondition"]==null?"":Session["product-SearchCondition"].ToString());
         }
 
         //大类>>小类，商品点击量|购买量    批量操作上下架
