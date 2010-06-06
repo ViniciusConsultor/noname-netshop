@@ -96,11 +96,11 @@ namespace NoName.NetShop.Publish.List
             if (ListFile.Exists && ListFile.LastWriteTime.AddMinutes(config.CacheTime) > DateTime.Now)
                 IsValidate = true;
 
-            CommonConfig common = CommonConfig.Instance();
+            //CommonConfig common = CommonConfig.Instance();
 
-            IsValidate = ListFile.Exists;
+            //IsValidate = ListFile.Exists;
 
-            IsValidate = IsValidate && (common.IsStandardHeaderChanged(new FileInfo(config.HeaderFile), config.PageValidateTempXml) && common.IsStandardFooterChanged(new FileInfo(config.FooterFile), config.PageValidateTempXml));
+            //IsValidate = IsValidate && (common.IsStandardHeaderChanged(new FileInfo(config.HeaderFile), config.PageValidateTempXml) && common.IsStandardFooterChanged(new FileInfo(config.FooterFile), config.PageValidateTempXml));
 
             return IsValidate;
         }
