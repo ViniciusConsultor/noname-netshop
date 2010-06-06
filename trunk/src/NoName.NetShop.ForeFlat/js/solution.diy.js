@@ -191,6 +191,7 @@ function initialize() {
                 showBrandInfo(currentFatherCategoryID, currentCategoryID);
                 showSearchedProduct(currentCategoryID, currentFatherCategoryID, 0, '', 1);
             });
+
             showBrandInfo(currentCategoryID, 0);
             showSearchedProduct(0, currentCategoryID, 0, '', 1);
             /*set the primary values end*/
