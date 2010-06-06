@@ -51,7 +51,7 @@ namespace NoName.NetShop.BackFlat.Controls
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<script type='text/javascript'>\n");
-            sb.AppendFormat("var preset=[{0}];\n alert(preset); debugger; InitRegions();\n", regionpath.TrimEnd('/').Replace('/', ','));
+            sb.AppendFormat("var preset=[{0}];\n  InitRegions();\n", regionpath.TrimEnd('/').Replace('/', ','));
             sb.Append("</script>");
             Page.ClientScript.RegisterStartupScript(this.GetType(), "myInitRegionInfo", sb.ToString());
         }

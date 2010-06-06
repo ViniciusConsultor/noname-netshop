@@ -96,7 +96,8 @@ namespace NoName.NetShop.BackFlat.News.Category
             if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
             {
                 int SelectedID = Convert.ToInt32(TreeView1.SelectedValue);
-                bll.Delete(SelectedID); 
+                bll.Delete(SelectedID);
+                PopulateNodes(TreeView1.Nodes, 0);
             }
         }
 
