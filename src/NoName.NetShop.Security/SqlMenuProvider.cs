@@ -317,6 +317,29 @@ namespace NoName.Security
         }
 
         /// <summary>
+        /// 更该管理员拥有的授权
+        /// </summary>
+        /// <param name="rolename"></param>
+        /// <param name="menus">
+        ///  'all' ：授权所有菜单（类型为3）给角色
+        ///  为空：取消角色所有授权
+        /// '1,2,3'： 授权所提供的菜单给角色，菜单类型授权类型为3
+        /// </param>
+        /// <returns></returns>
+        public override int ChangeMenusOfAdmin(string userName, string menus)
+        {
+            string spname = "maAdminMenu_GrantMenusToUser";
+            Database db = DatabaseFactory.CreateDatabase(_connectionStringName);
+            DbCommand comm = db.GetStoredProcCommand(spname);
+            db.AddParameter(comm, "@ReturnValue", DbType.Int32, ParameterDirection.ReturnValue,
+                String.Empty, DataRowVersion.Default, null);
+            db.AddInParameter(comm, "@ApplicationName", DbType.String, _applicationName);
+            db.AddInParameter(comm, "@UserName", DbType.String, userName);
+            db.AddInParameter(comm, "@Menus", DbType.String, menus);
+            db.ExecuteNonQuery(comm);
+            return (int)db.GetParameterValue(comm, "@ReturnValue");
+        }
+        /// <summary>
         /// 获得所有的菜单项:用于管理和维护
         /// </summary>
         /// <returns></returns>
@@ -381,8 +404,42 @@ namespace NoName.Security
                 catch { }
             }
             return menus;
+        }
+
+        /// <summary>
+        /// 获得某个管理员可以分配的菜单
+        /// </summary>
+        /// <param name="adminID"></param>
+        /// <returns></returns>
+        public override string[] GetMenusOfAdmin(string adminID)
+        {
+            string spname = "maAdminMenu_GetMenusOfUser";
+            Database db = DatabaseFactory.CreateDatabase(_connectionStringName);
+            DbCommand comm = db.GetStoredProcCommand(spname);
+            db.AddParameter(comm, "@ReturnValue", DbType.Int32, ParameterDirection.ReturnValue,
+              String.Empty, DataRowVersion.Default, null);
+            db.AddInParameter(comm, "@ApplicationName", DbType.String, _applicationName);
+            db.AddInParameter(comm, "@UserID", DbType.String, adminID);
+            db.AddOutParameter(comm, "@Menus", DbType.String, 2000);
+            db.ExecuteNonQuery(comm);
+            string[] menus = null;
+            int result = (int)db.GetParameterValue(comm, "@ReturnValue");
+            if (result == 0)
+            {
+                try
+                {
+                    string menustr = (string)db.GetParameterValue(comm, "@Menus");
+                    if (!String.IsNullOrEmpty(menustr))
+                    {
+                        menus = menustr.Split(',');
+                    }
+                }
+                catch { }
+            }
+            return menus;
 
         }
+
         /// <summary>
         /// 获得菜单授权验证数据
         /// </summary>
@@ -509,5 +566,51 @@ namespace NoName.Security
             }
         }
 
+        /// <summary>
+        /// 获得用户可管理的Roles
+        /// </summary>
+        /// <param name="amindID"></param>
+        /// <returns></returns>
+        public override string[] GetRolesOfAdmin(string amindID)
+        {
+            string spname = "maAdminRole_GetRoleOfUser";
+            Database db = DatabaseFactory.CreateDatabase(_connectionStringName);
+            DbCommand comm = db.GetStoredProcCommand(spname);
+            db.AddParameter(comm, "@ReturnValue", DbType.Int32, ParameterDirection.ReturnValue,
+              String.Empty, DataRowVersion.Default, null);
+            db.AddInParameter(comm, "@ApplicationName", DbType.String, _applicationName);
+            db.AddInParameter(comm, "@Username", DbType.String, amindID);
+            db.AddOutParameter(comm, "@Roles", DbType.String, 2000);
+            db.ExecuteNonQuery(comm);
+            string[] roles = null;
+            int result = (int)db.GetParameterValue(comm, "@ReturnValue");
+            if (result == 0)
+            {
+                try
+                {
+                    string rolestr = (string)db.GetParameterValue(comm, "@Roles");
+                    if (!String.IsNullOrEmpty(rolestr))
+                    {
+                        roles = rolestr.Split(',');
+                    }
+                }
+                catch { }
+            }
+            return roles;
+        }
+
+        public override int ChangeRolesOfAdmin(string username, string roles)
+        {
+            string spname = "maAdminRole_GrantRolesToUser";
+            Database db = DatabaseFactory.CreateDatabase(_connectionStringName);
+            DbCommand comm = db.GetStoredProcCommand(spname);
+            db.AddParameter(comm, "@ReturnValue", DbType.Int32, ParameterDirection.ReturnValue,
+                String.Empty, DataRowVersion.Default, null);
+            db.AddInParameter(comm, "@ApplicationName", DbType.String, _applicationName);
+            db.AddInParameter(comm, "@UserName", DbType.String, username);
+            db.AddInParameter(comm, "@Roles", DbType.String, roles);
+            db.ExecuteNonQuery(comm);
+            return (int)db.GetParameterValue(comm, "@ReturnValue");
+        }
     }
 }

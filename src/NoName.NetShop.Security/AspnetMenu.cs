@@ -84,6 +84,21 @@ namespace NoName.Security
         }
 
         /// <summary>
+        /// 更该管理员的拥有的菜单
+        /// </summary>
+        /// <param name="rolename"></param>
+        /// <param name="menus">
+        ///  'all' ：授权所有菜单（类型为3）给角色
+        ///  为空：取消角色所有授权
+        /// '1,2,3'： 授权所提供的菜单给角色，菜单类型授权类型为3
+        /// </param>
+        /// <returns></returns>
+        public static int ChangeMenusOfAdmin(string username, string menus)
+        {
+            return _provider.ChangeMenusOfAdmin(username, menus);
+        }
+
+        /// <summary>
         /// 获得所有的菜单项:用于管理和维护
         /// </summary>
         /// <returns></returns>
@@ -127,6 +142,24 @@ namespace NoName.Security
         public static string[] GetMenusOfRole(string rolename)
         {
             return _provider.GetMenusOfRole(rolename);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string[] GetMenusOfAdmin(string userID)
+        {
+            return _provider.GetMenusOfAdmin(userID);
+        }
+
+        public static string[] GetRolesOfAdmin(string userID)
+        {
+            return _provider.GetRolesOfAdmin(userID);
+        }
+
+        public static int ChangeRolesOfAdmin(string userID, string roles)
+        {
+            return _provider.ChangeRolesOfAdmin(userID, roles);
         }
 
         /// <summary>
