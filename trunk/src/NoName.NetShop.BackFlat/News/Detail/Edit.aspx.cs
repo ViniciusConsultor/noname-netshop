@@ -117,7 +117,8 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 }
                 else
                 {
-                    MessageBox.Show(this, "图片上传失败！");
+                    MessageBox.Show(this, "图片上传失败，请检查格式及大小是否正确。");
+                    return;
                 }
             }
             if (!String.IsNullOrEmpty(FileUpload_Video.FileName))
@@ -130,7 +131,8 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 }
                 else
                 {
-                    MessageBox.Show(this, "视频上传失败！");
+                    MessageBox.Show(this, "视频上传失败，请检查格式及大小是否正确。");
+                    return;
                 }
             }
 
