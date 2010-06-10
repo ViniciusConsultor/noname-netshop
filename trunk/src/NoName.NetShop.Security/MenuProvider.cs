@@ -59,6 +59,18 @@ namespace NoName.Security
         /// <returns></returns>
         public abstract int ChangeMenusOfRole(string rolename, string menus);
 
+       /// <summary>
+        /// 更该某个管理员的授权
+        /// </summary>
+        /// <param name="rolename"></param>
+        /// <param name="menus">
+        ///  'all' ：授权所有菜单（类型为3）给角色
+        ///  为空：取消角色所有授权
+        /// '1,2,3'： 授权所提供的菜单给角色，菜单类型授权类型为3
+        /// </param>
+        /// <returns></returns>
+        public abstract int ChangeMenusOfAdmin(string username, string menus);
+
 
         /// <summary>
         /// 获得所有的菜单项:用于管理和维护
@@ -99,6 +111,28 @@ namespace NoName.Security
         /// </summary>
         /// <returns></returns>
         public abstract DataTable GetMenusForSitemap();
+
+        /// <summary>
+        /// 获得某个管理员可以分配的菜单
+        /// </summary>
+        /// <param name="adminID"></param>
+        /// <returns></returns>
+        public abstract string[] GetMenusOfAdmin(string adminID);
+
+        /// <summary>
+        /// 获得用户管理的角色
+        /// </summary>
+        /// <param name="amindID"></param>
+        /// <returns></returns>
+        public abstract string[] GetRolesOfAdmin(string amindID);
+
+        /// <summary>
+        /// 更改用户管理的角色
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="menus"></param>
+        /// <returns></returns>
+        public abstract int ChangeRolesOfAdmin(string username, string roles);
 
     }
 }
