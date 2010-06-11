@@ -35,25 +35,35 @@
                         <asp:Repeater runat="server" ID="Repeater_HotAuctioning">
                             <ItemTemplate>
                                 <li>
-                                    <a href="#">
-                                        <img src="pictures/productPic.gif" />
+                                    <a href='Auction.aspx?pid=<%# Eval("auctionid") %>'>
+                                        <img src='<%# NoName.NetShop.MagicWorld.Facade.MagicWorldImageRule.GetMainImageUrl(Eval("mediumimage").ToString())  %>' />
                                     </a>
                                     <div class="infoContainer">
                                         <ul class="info">
                                             <li>
-                                                <span class="name"><a href="#">留声机_新开价</a></span>
+                                                <span class="name">
+                                                    <a href='Auction.aspx?pid=<%# Eval("auctionid") %>'>
+                                                        <%# Eval("productname") %>
+                                                    </a>
+                                                </span>
                                             </li>
                                             <li>
                                                 <span class="field">当前价格:</span>
-                                                <span class="important">68元</span>
+                                                <span class="important">
+                                                    <%# Convert.ToDecimal(Eval("curprice")).ToString("0.00") %>元
+                                                </span>
                                             </li>
                                             <li>
                                                 <span class="field">结束时间:</span>
-                                                <span class="important">09-09-06</span>
+                                                <span class="important">
+                                                    <%# Convert.ToDateTime(Eval("endtime")).ToString("yyyy-MM-dd") %>
+                                                </span>
                                             </li>
                                         </ul>
                                     </div>
-                                    <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
+                                    <span class="description">
+                                        <%# Eval("brief") %>
+                                    </span>
                                 </li>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -103,34 +113,36 @@
                     	    <asp:Repeater runat="server" ID="Repeater_NewAuction">
                     	        <ItemTemplate>
                         	        <li>
-                            	        <a href="#">
-                                	        <img src="pictures/productPic.gif" />
+                            	        <a href='Auction.aspx?pid=<%# Eval("auctionid") %>'>
+                                	        <img src='<%# NoName.NetShop.MagicWorld.Facade.MagicWorldImageRule.GetMainImageUrl(Eval("mediumimage").ToString())  %>' />
                                         </a>
                                         <div class="infoContainer">
                                 	        <ul class="info">
                                                 <li>
                                                     <span class="field">商品名称:</span>
-                                                    <span class="name"><a href="#">留声机_新开价</a></span>
+                                                    <span class="name"><a href='Auction.aspx?pid=<%# Eval("auctionid") %>'><%# Eval("productname") %></a></span>
                                                 </li>
                                                 <li>
                                                     <span class="field">起始价格:</span>
-                                                    <span>1元</span>
+                                                    <span><%# Convert.ToDecimal(Eval("startprice")).ToString("0.00") %>元</span>
                                                     <span class="field">当前价格:</span>
-                                                    <span>68元</span>
+                                                    <span><%# Convert.ToDecimal(Eval("curprice")).ToString("0.00") %>元</span>
                                                 </li>
                                                 <li>
                                                     <span class="field">起始时间:</span>
-                                                    <span>2009年6月9日</span>
+                                                    <span><%# Convert.ToDateTime(Eval("endtime")).ToString("yyyy年MM月dd日")%></span>
                                                     <span class="field">结束时间:</span>
-                                                    <span>2009年9月6日</span>
+                                                    <span><%# Convert.ToDateTime(Eval("starttime")).ToString("yyyy年MM月dd日")%></span>
                                                 </li>
                                                 <li>
                                                     <span class="field">竞拍人数:</span>
-                                                    <span>8人</span>
+                                                    <span>
+                                                        <%# GetAuctionCount(Convert.ToInt32(Eval("auctionid"))).ToString() %>人
+                                                    </span>
                                                 </li>
                                                 <li>
                                         	        <span class="field">商品说明:</span>
-                                                    <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
+                                                    <span class="description"><%# Eval("brief") %></span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -157,34 +169,36 @@
                     	    <asp:Repeater runat="server" ID="Repeater_Auctioning">
                     	        <ItemTemplate>
                         	        <li>
-                            	        <a href="#">
-                                	        <img src="pictures/productPic.gif" />
+                            	        <a href='Auction.aspx?pid=<%# Eval("auctionid") %>'>
+                                	        <img src='<%# NoName.NetShop.MagicWorld.Facade.MagicWorldImageRule.GetMainImageUrl(Eval("mediumimage").ToString())  %>' />
                                         </a>
                                         <div class="infoContainer">
                                 	        <ul class="info">
                                                 <li>
                                                     <span class="field">商品名称:</span>
-                                                    <span class="name"><a href="#">留声机_新开价</a></span>
+                                                    <span class="name"><a href='Auction.aspx?pid=<%# Eval("auctionid") %>'><%# Eval("productname") %></a></span>
                                                 </li>
                                                 <li>
                                                     <span class="field">起始价格:</span>
-                                                    <span>1元</span>
+                                                    <span><%# Convert.ToDecimal(Eval("startprice")).ToString("0.00") %>元</span>
                                                     <span class="field">当前价格:</span>
-                                                    <span>68元</span>
+                                                    <span><%# Convert.ToDecimal(Eval("curprice")).ToString("0.00") %>元</span>
                                                 </li>
                                                 <li>
                                                     <span class="field">起始时间:</span>
-                                                    <span>2009年6月9日</span>
+                                                    <span><%# Convert.ToDateTime(Eval("endtime")).ToString("yyyy年MM月dd日")%></span>
                                                     <span class="field">结束时间:</span>
-                                                    <span>2009年9月6日</span>
+                                                    <span><%# Convert.ToDateTime(Eval("starttime")).ToString("yyyy年MM月dd日")%></span>
                                                 </li>
                                                 <li>
                                                     <span class="field">竞拍人数:</span>
-                                                    <span>8人</span>
+                                                    <span>
+                                                        <%# GetAuctionCount(Convert.ToInt32(Eval("auctionid"))).ToString() %>人
+                                                    </span>
                                                 </li>
                                                 <li>
                                         	        <span class="field">商品说明:</span>
-                                                    <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
+                                                    <span class="description"><%# Eval("brief") %></span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -211,34 +225,36 @@
                     	    <asp:Repeater runat="server" ID="Repeater_Auctioned">
                     	        <ItemTemplate>
                         	        <li>
-                            	        <a href="#">
-                                	        <img src="pictures/productPic.gif" />
+                            	        <a href='Auction.aspx?pid=<%# Eval("auctionid") %>'>
+                                	        <img src='<%# NoName.NetShop.MagicWorld.Facade.MagicWorldImageRule.GetMainImageUrl(Eval("mediumimage").ToString())  %>' />
                                         </a>
                                         <div class="infoContainer">
                                 	        <ul class="info">
                                                 <li>
                                                     <span class="field">商品名称:</span>
-                                                    <span class="name"><a href="#">留声机_新开价</a></span>
+                                                    <span class="name"><a href='Auction.aspx?pid=<%# Eval("auctionid") %>'><%# Eval("productname") %></a></span>
                                                 </li>
                                                 <li>
                                                     <span class="field">起始价格:</span>
-                                                    <span>1元</span>
+                                                    <span><%# Convert.ToDecimal(Eval("startprice")).ToString("0.00") %>元</span>
                                                     <span class="field">当前价格:</span>
-                                                    <span>68元</span>
+                                                    <span><%# Convert.ToDecimal(Eval("curprice")).ToString("0.00") %>元</span>
                                                 </li>
                                                 <li>
                                                     <span class="field">起始时间:</span>
-                                                    <span>2009年6月9日</span>
+                                                    <span><%# Convert.ToDateTime(Eval("endtime")).ToString("yyyy年MM月dd日")%></span>
                                                     <span class="field">结束时间:</span>
-                                                    <span>2009年9月6日</span>
+                                                    <span><%# Convert.ToDateTime(Eval("starttime")).ToString("yyyy年MM月dd日")%></span>
                                                 </li>
                                                 <li>
                                                     <span class="field">竞拍人数:</span>
-                                                    <span>8人</span>
+                                                    <span>
+                                                        <%# GetAuctionCount(Convert.ToInt32(Eval("auctionid"))).ToString() %>人
+                                                    </span>
                                                 </li>
                                                 <li>
                                         	        <span class="field">商品说明:</span>
-                                                    <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
+                                                    <span class="description"><%# Eval("brief") %></span>
                                                 </li>
                                             </ul>
                                         </div>

@@ -37,13 +37,13 @@ namespace NoName.NetShop.ForeFlat.Magic
             int RecordCount = 0;
             if (CategoryID == 0)
             {
-                dt = bll.GetList(PageIndex, AspNetPager.PageSize, " and starttime>getdate() and status="+(int)AuctionProductStatus.审核通过, out RecordCount);
+                dt = bll.GetList(PageIndex, AspNetPager.PageSize, " and starttime>getdate() and status="+(int)AuctionProductStatus.审核通过," auctionid desc", out RecordCount);
             }
             else
             {
                 MagicCategoryModel cate = new MagicCategoryBll().GetModel(CategoryID);
                 if (cate != null)
-                    dt = bll.GetList(PageIndex, AspNetPager.PageSize, " and starttime>getdate() and catepath+'/' like '" + cate.CategoryPath + "/%' and status=" + (int)AuctionProductStatus.审核通过, out RecordCount);
+                    dt = bll.GetList(PageIndex, AspNetPager.PageSize, " and starttime>getdate() and catepath+'/' like '" + cate.CategoryPath + "/%' and status=" + (int)AuctionProductStatus.审核通过," auctionid desc", out RecordCount);
                 else Response.End();
             }
 
