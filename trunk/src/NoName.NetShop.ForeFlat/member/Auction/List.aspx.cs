@@ -29,7 +29,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
         private void BindData(int PageIndex)
         {
             int RecordCount = 0;
-            Repeater_AuctionList.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, " and userid = '" + GetUserID() + "'", out RecordCount);
+            Repeater_AuctionList.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, " and userid = '" + GetUserID() + "'"," auctionid desc", out RecordCount);
             Repeater_AuctionList.DataBind();
 
             AspNetPager.RecordCount = RecordCount;
