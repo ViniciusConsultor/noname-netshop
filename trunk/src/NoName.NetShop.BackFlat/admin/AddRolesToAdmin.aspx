@@ -24,9 +24,9 @@
         <table style="width: 90%">
             <tr>
                 <td>
-        <asp:DropDownList ID="ddlAdmins" runat="server" Width="165px" 
-                        OnSelectedIndexChanged="ddlUsers_SelectedIndexChanged" AutoPostBack="True">
+        <asp:DropDownList ID="ddlAdmins" runat="server" Width="165px">
         </asp:DropDownList>
+        <asp:Button runat="server" ID="btnChange" Text="切换用户" onclick="btnChange_Click" />
                     <br />
                 </td>
             </tr>
@@ -45,7 +45,7 @@
                                 OnClick="btnSaveUsersToRole_Click" />
                         </ContentTemplate>
                         <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="ddlRoles" EventName="SelectedIndexChanged" />
+                            <asp:AsyncPostBackTrigger ControlID="btnChange" EventName="Click" />
                         </Triggers>
                     </asp:UpdatePanel>
                     &nbsp; &nbsp;<br />
