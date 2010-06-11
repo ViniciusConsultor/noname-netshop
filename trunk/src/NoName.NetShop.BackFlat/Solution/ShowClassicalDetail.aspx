@@ -41,14 +41,14 @@
 	<td height="25" width="*" align="left">
 		<asp:TextBox id="txtRemark" runat="server" Width="200px"></asp:TextBox>
 	</td></tr>
-	<tr>
+	<tr style="display:none">
 	<td height="25" width="30%" align="right">
 		位置信息
 	：</td>
 	<td height="25" width="*" align="left">
 		<asp:TextBox id="txtPosition" runat="server" Width="200px"></asp:TextBox>
 	</td></tr>
-	<tr>	
+	<tr style="display:none">	
 	<td height="25" width="30%" align="right">
 		示例图片
 	：</td>

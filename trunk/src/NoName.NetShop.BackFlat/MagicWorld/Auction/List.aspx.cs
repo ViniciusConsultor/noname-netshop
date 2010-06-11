@@ -31,7 +31,7 @@ namespace NoName.NetShop.BackFlat.MagicWorld.Auction
             string ForeFlatRootUrl = System.Configuration.ConfigurationManager.AppSettings["foreFlatRootUrl"];
             ForeFlatRootUrl = ForeFlatRootUrl.EndsWith("/") ? ForeFlatRootUrl : ForeFlatRootUrl + "/";
 
-            DataTable dt = bll.GetList(PageIndex,AspNetPager.PageSize, String.Empty, out RecordCount);
+            DataTable dt = bll.GetList(PageIndex,AspNetPager.PageSize, String.Empty," auctionid desc", out RecordCount);
 
             dt.Columns.Add("foreurl");
             foreach (DataRow row in dt.Rows)
