@@ -32,48 +32,31 @@
                 </ul>
                 <div class="content">
                     <ul class="itemList5">
-                        <li>
-                            <a href="#">
-                                <img src="pictures/productPic.gif" />
-                            </a>
-                            <div class="infoContainer">
-                                <ul class="info">
-                                    <li>
-                                        <span class="name"><a href="#">留声机_新开价</a></span>
-                                    </li>
-                                    <li>
-                                        <span class="field">当前价格:</span>
-                                        <span class="important">68元</span>
-                                    </li>
-                                    <li>
-                                        <span class="field">结束时间:</span>
-                                        <span class="important">09-09-06</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="pictures/productPic.gif" />
-                            </a>
-                            <div class="infoContainer">
-                                <ul class="info">
-                                    <li>
-                                        <span class="name"><a href="#">留声机_新开价</a></span>
-                                    </li>
-                                    <li>
-                                        <span class="field">当前价格:</span>
-                                        <span class="important">68元</span>
-                                    </li>
-                                    <li>
-                                        <span class="field">结束时间:</span>
-                                        <span class="important">09-09-06</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
-                        </li>
+                        <asp:Repeater runat="server" ID="Repeater_HotAuctioning">
+                            <ItemTemplate>
+                                <li>
+                                    <a href="#">
+                                        <img src="pictures/productPic.gif" />
+                                    </a>
+                                    <div class="infoContainer">
+                                        <ul class="info">
+                                            <li>
+                                                <span class="name"><a href="#">留声机_新开价</a></span>
+                                            </li>
+                                            <li>
+                                                <span class="field">当前价格:</span>
+                                                <span class="important">68元</span>
+                                            </li>
+                                            <li>
+                                                <span class="field">结束时间:</span>
+                                                <span class="important">09-09-06</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                 </div>
                 <ul class="bottom">
@@ -88,7 +71,7 @@
                     <li><span>拍卖规则</span></li>
                     <li class="right"></li>
                 </ul>
-              <div class="content">
+               <div class="content">
                     <p class="noSpacing">
                     一、新款 14 英寸 Gateway TC 系列笔记本首先。
                     </p>
@@ -117,39 +100,43 @@
                     </ul>
                     <div class="content">
                     	<ul class="itemList4">
-                        	<li>
-                            	<a href="#">
-                                	<img src="pictures/productPic.gif" />
-                                </a>
-                                <div class="infoContainer">
-                                	<ul class="info">
-                                        <li>
-                                            <span class="field">商品名称:</span>
-                                            <span class="name"><a href="#">留声机_新开价</a></span>
-                                        </li>
-                                        <li>
-                                            <span class="field">起始价格:</span>
-                                            <span>1元</span>
-                                            <span class="field">当前价格:</span>
-                                            <span>68元</span>
-                                        </li>
-                                        <li>
-                                            <span class="field">起始时间:</span>
-                                            <span>2009年6月9日</span>
-                                            <span class="field">结束时间:</span>
-                                            <span>2009年9月6日</span>
-                                        </li>
-                                        <li>
-                                            <span class="field">竞拍人数:</span>
-                                            <span>8人</span>
-                                        </li>
-                                        <li>
-                                        	<span class="field">商品说明:</span>
-                                            <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                    	    <asp:Repeater runat="server" ID="Repeater_NewAuction">
+                    	        <ItemTemplate>
+                        	        <li>
+                            	        <a href="#">
+                                	        <img src="pictures/productPic.gif" />
+                                        </a>
+                                        <div class="infoContainer">
+                                	        <ul class="info">
+                                                <li>
+                                                    <span class="field">商品名称:</span>
+                                                    <span class="name"><a href="#">留声机_新开价</a></span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">起始价格:</span>
+                                                    <span>1元</span>
+                                                    <span class="field">当前价格:</span>
+                                                    <span>68元</span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">起始时间:</span>
+                                                    <span>2009年6月9日</span>
+                                                    <span class="field">结束时间:</span>
+                                                    <span>2009年9月6日</span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">竞拍人数:</span>
+                                                    <span>8人</span>
+                                                </li>
+                                                <li>
+                                        	        <span class="field">商品说明:</span>
+                                                    <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                    	        </ItemTemplate>
+                    	    </asp:Repeater>
                         </ul>
                     </div>
                     <ul class="bottom">
@@ -167,39 +154,43 @@
                     </ul>
                     <div class="content">
                     	<ul class="itemList4">
-                        	<li>
-                            	<a href="#">
-                                	<img src="pictures/productPic.gif" />
-                                </a>
-                                <div class="infoContainer">
-                                	<ul class="info">
-                                        <li>
-                                            <span class="field">商品名称:</span>
-                                            <span class="name"><a href="#">留声机_新开价</a></span>
-                                        </li>
-                                        <li>
-                                            <span class="field">起始价格:</span>
-                                            <span>1元</span>
-                                            <span class="field">当前价格:</span>
-                                            <span>68元</span>
-                                        </li>
-                                        <li>
-                                            <span class="field">起始时间:</span>
-                                            <span>2009年6月9日</span>
-                                            <span class="field">结束时间:</span>
-                                            <span>2009年9月6日</span>
-                                        </li>
-                                        <li>
-                                            <span class="field">竞拍人数:</span>
-                                            <span>8人</span>
-                                        </li>
-                                        <li>
-                                        	<span class="field">商品说明:</span>
-                                            <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                    	    <asp:Repeater runat="server" ID="Repeater_Auctioning">
+                    	        <ItemTemplate>
+                        	        <li>
+                            	        <a href="#">
+                                	        <img src="pictures/productPic.gif" />
+                                        </a>
+                                        <div class="infoContainer">
+                                	        <ul class="info">
+                                                <li>
+                                                    <span class="field">商品名称:</span>
+                                                    <span class="name"><a href="#">留声机_新开价</a></span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">起始价格:</span>
+                                                    <span>1元</span>
+                                                    <span class="field">当前价格:</span>
+                                                    <span>68元</span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">起始时间:</span>
+                                                    <span>2009年6月9日</span>
+                                                    <span class="field">结束时间:</span>
+                                                    <span>2009年9月6日</span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">竞拍人数:</span>
+                                                    <span>8人</span>
+                                                </li>
+                                                <li>
+                                        	        <span class="field">商品说明:</span>
+                                                    <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                    	        </ItemTemplate>
+                    	    </asp:Repeater>
                         </ul>
                     </div>
                     <ul class="bottom">
@@ -217,39 +208,43 @@
                     </ul>
                     <div class="content">
                     	<ul class="itemList4">
-                        	<li>
-                            	<a href="#">
-                                	<img src="pictures/productPic.gif" />
-                                </a>
-                                <div class="infoContainer">
-                                	<ul class="info">
-                                        <li>
-                                            <span class="field">商品名称:</span>
-                                            <span class="name"><a href="#">留声机_新开价</a></span>
-                                        </li>
-                                        <li>
-                                            <span class="field">起始价格:</span>
-                                            <span>1元</span>
-                                            <span class="field">当前价格:</span>
-                                            <span>68元</span>
-                                        </li>
-                                        <li>
-                                            <span class="field">起始时间:</span>
-                                            <span>2009年6月9日</span>
-                                            <span class="field">结束时间:</span>
-                                            <span>2009年9月6日</span>
-                                        </li>
-                                        <li>
-                                            <span class="field">竞拍人数:</span>
-                                            <span>8人</span>
-                                        </li>
-                                        <li>
-                                        	<span class="field">商品说明:</span>
-                                            <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                    	    <asp:Repeater runat="server" ID="Repeater_Auctioned">
+                    	        <ItemTemplate>
+                        	        <li>
+                            	        <a href="#">
+                                	        <img src="pictures/productPic.gif" />
+                                        </a>
+                                        <div class="infoContainer">
+                                	        <ul class="info">
+                                                <li>
+                                                    <span class="field">商品名称:</span>
+                                                    <span class="name"><a href="#">留声机_新开价</a></span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">起始价格:</span>
+                                                    <span>1元</span>
+                                                    <span class="field">当前价格:</span>
+                                                    <span>68元</span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">起始时间:</span>
+                                                    <span>2009年6月9日</span>
+                                                    <span class="field">结束时间:</span>
+                                                    <span>2009年9月6日</span>
+                                                </li>
+                                                <li>
+                                                    <span class="field">竞拍人数:</span>
+                                                    <span>8人</span>
+                                                </li>
+                                                <li>
+                                        	        <span class="field">商品说明:</span>
+                                                    <span class="description">进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA GeForce  显卡，该机型具备更多您需要和您想要的性能。</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                    	        </ItemTemplate>
+                    	    </asp:Repeater>
                         </ul>
                     </div>
                     <ul class="bottom">
