@@ -48,7 +48,7 @@
 	<td height="25" width="*" align="left">
 		<asp:CheckBox ID="chkIsActive" Text="ÊÇ·ñ¼¤»î" runat="server" Checked="False" />
 	</td></tr>
-		<tr>
+		<tr style="display:none">
 	<td height="25" width="30%" align="right">
 		³¡¾°Í¼Æ¬
 	£º</td>
