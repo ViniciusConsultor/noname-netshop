@@ -211,6 +211,20 @@ namespace NoName.NetShop.MagicWorld.DAL
             return dbr.ExecuteDataSet(Command).Tables[0];
         }
 
+        public DataTable GetHotAuctioningProduct(int TopCount)
+        {
+            string sql = @" select * from mwauctionproduct 
+                            where auctionid in
+                            (
+                                select top {0} p.auctionid from mwauctionproduct p
+                                    inner join mwauctionlog l on p.auctionid=l.auctionid
+                                where p.status={1} and p.starttime<getdate() and p.endtime>getdate()
+                                group by p.auctionid
+                                order by count(l.auctionid) desc
+                            )";
+            sql = String.Format(sql, TopCount, (int)AuctionProductStatus.审核通过);
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+        }
 
 		/// <summary>
 		/// 对象实体绑定数据
