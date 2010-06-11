@@ -419,7 +419,7 @@ namespace NoName.Security
             db.AddParameter(comm, "@ReturnValue", DbType.Int32, ParameterDirection.ReturnValue,
               String.Empty, DataRowVersion.Default, null);
             db.AddInParameter(comm, "@ApplicationName", DbType.String, _applicationName);
-            db.AddInParameter(comm, "@UserID", DbType.String, adminID);
+            db.AddInParameter(comm, "@UserName", DbType.String, adminID);
             db.AddOutParameter(comm, "@Menus", DbType.String, 2000);
             db.ExecuteNonQuery(comm);
             string[] menus = null;
