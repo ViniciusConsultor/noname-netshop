@@ -144,6 +144,13 @@ namespace NoName.NetShop.MagicWorld.DAL
             return model;
         }
 
+        public int GetAuctionCount(int AuctionID)
+        {
+            string sql = "select count(0) from mwauctionlog where auctionid="+AuctionID;
+            string res = Convert.ToString(dbr.ExecuteScalar(CommandType.Text,sql));
+            return res == "" ? 0 : Convert.ToInt32(res);
+        }
+
 
 		/// <summary>
 		/// 对象实体绑定数据

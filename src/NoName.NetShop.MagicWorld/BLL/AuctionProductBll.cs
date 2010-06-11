@@ -84,6 +84,12 @@ namespace NoName.NetShop.MagicWorld.BLL
             return dal.GetRelatedProductList(CategoryID);
         }
 
+
+        public DataTable GetHotAuctioningProduct(int TopCount)
+        {
+            return dal.GetHotAuctioningProduct(TopCount);
+        }
+
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
@@ -154,12 +160,12 @@ namespace NoName.NetShop.MagicWorld.BLL
 		//}
 
 
-        public DataTable GetList(int PageIndex, int PageSize, string Condition, out int RecordCount)
+        public DataTable GetList(int PageIndex, int PageSize, string Condition, string Order, out int RecordCount)
         {
             SearchPageInfo info = new SearchPageInfo();
 
             info.FieldNames = "*";
-            info.OrderType = " auctionid desc";
+            info.OrderType = Order;
             info.PageIndex = PageIndex;
             info.PageSize = PageSize;
             info.PriKeyName = "auctionid";

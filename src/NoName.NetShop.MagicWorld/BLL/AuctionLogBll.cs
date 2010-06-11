@@ -104,6 +104,12 @@ namespace NoName.NetShop.MagicWorld.BLL
             return dal.GetLastAuction(AuctionID);
         }
 
+
+        public int GetAuctionCount(int AuctionID)
+        {
+            return dal.GetAuctionCount(AuctionID);
+        }
+
 		#endregion  成员方法
     }
 }
