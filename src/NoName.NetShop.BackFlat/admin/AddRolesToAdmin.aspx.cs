@@ -26,12 +26,19 @@ namespace NoName.NetShop.BackFlat.admin
         {
             string userID = ddlAdmins.SelectedValue;
 
-            string[] roles = AspnetMenu.GetMenusOfAdmin(userID);
-            foreach (string role in roles)
+            string[] roles = AspnetMenu.GetRolesOfAdmin(userID);
+            foreach (ListItem item in chkRolesList.Items)
             {
-                ListItem item = chkRolesList.Items.FindByValue(role);
-                if (item != null)
-                    item.Selected = true;
+                item.Selected = false;
+            }
+            if (roles != null)
+            {
+                foreach (string role in roles)
+                {
+                    ListItem item = chkRolesList.Items.FindByValue(role);
+                    if (item != null)
+                        item.Selected = true;
+                }
             }
         }
 
@@ -64,6 +71,12 @@ namespace NoName.NetShop.BackFlat.admin
         {
             this.chkRolesList.DataSource = Roles.GetAllRoles();
             this.chkRolesList.DataBind();
+        }
+
+        protected void btnChange_Click(object sender, EventArgs e)
+        {
+            SetRolesState();
+
         }
 
     }
