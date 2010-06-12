@@ -51,5 +51,11 @@ namespace NoName.NetShop.GroupShopping.BLL
         {
             return dal.GetList(PageIndex, PageSize, Condition, out RecordCount);
         }
+
+
+        public void UpdateStatus(int ApplyID, int Status) 
+        {
+            dal.UpdateStatus(ApplyID,Status);
+        }
     }
 }
