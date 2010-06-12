@@ -6,12 +6,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView runat="server" ID="GridView1">
-            
+            <b><asp:Literal runat="server" ID="Literal_ProductName" /></b>
+            的申请列表
+        </div>
+        <div>
+            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
+                <Columns>
+                    <asp:BoundField HeaderText="ID" DataField="GroupApplyID" />
+                    <asp:BoundField HeaderText="用户" DataField="UserID" />
+                    <asp:BoundField HeaderText="申请留言" DataField="ApplyBrief" />
+                    <asp:TemplateField HeaderText="申请时间">
+                        <ItemTemplate>
+                            <%# Convert.ToDateTime(Eval("ApplyTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="确认时间">
+                        <ItemTemplate>
+                            <%# Convert.ToDateTime(Eval("ConfirmTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton Visible='<%# Convert.ToInt32(Eval("ApplyStatus"))==1?true:(Convert.ToInt32(Eval("ApplyStatus"))==2?true:false) %>' runat="server" ID="Button_Refuse" Text="驳回" CommandArgument='<%# Eval("GroupApplyID") %>' CommandName="r" />
+                            <asp:LinkButton Visible='<%# Convert.ToInt32(Eval("ApplyStatus"))==1?true:(Convert.ToInt32(Eval("ApplyStatus"))==2?false:true) %>' runat="server" ID="Button_Accept" Text="通过" CommandArgument='<%# Eval("GroupApplyID") %>' CommandName="a" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
             </asp:GridView>
         </div>
         

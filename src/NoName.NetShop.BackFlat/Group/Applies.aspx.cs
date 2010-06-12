@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.GroupShopping.BLL;
 using NoName.Utility;
+using NoName.NetShop.GroupShopping.Model;
 
 namespace NoName.NetShop.BackFlat.Group
 {
@@ -30,6 +31,10 @@ namespace NoName.NetShop.BackFlat.Group
 
         private void BindData(int PageIndex)
         {
+            GroupProductModel model = new GroupProductBll().GetModel(ProductID);
+
+            Literal_ProductName.Text = model.ProductName;
+
             int RecordCount = 0;
             GridView1.DataSource = bll.GetList(PageIndex, AspNetPager.PageSize, " and groupproductid = " + ProductID, out RecordCount);
             GridView1.DataBind();
@@ -41,6 +46,23 @@ namespace NoName.NetShop.BackFlat.Group
         {
             AspNetPager.CurrentPageIndex = e.NewPageIndex;
             BindData(e.NewPageIndex);
+        }
+
+        protected void GridView1_RowCommand(object sender,GridViewCommandEventArgs e)
+        {
+            if(e.CommandName.ToLower()=="a")
+            {
+                int ApplyID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ApplyID, (int)GroupProductApplyStatus.已批准);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
+
+            if (e.CommandName.ToLower() == "r")
+            {
+                int ApplyID = Convert.ToInt32(e.CommandArgument);
+                bll.UpdateStatus(ApplyID, (int)GroupProductApplyStatus.已驳回);
+                BindData(AspNetPager.CurrentPageIndex);
+            }
         }
     }
 }
