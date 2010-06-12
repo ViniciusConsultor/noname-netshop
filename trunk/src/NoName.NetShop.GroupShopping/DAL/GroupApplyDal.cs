@@ -121,6 +121,18 @@ namespace NoName.NetShop.GroupShopping.DAL
             return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];
         }
 
+        public void UpdateStatus(int ApplyID, int Status)
+        {
+            string sql = "update gsApply set applystatus=@status where GroupApplyID = @applyid";
+
+            DbCommand Command = dbw.GetSqlStringCommand(sql);
+
+            dbw.AddInParameter(Command, "@applyid", DbType.Int32, ApplyID);
+            dbw.AddInParameter(Command, "@status", DbType.Int32, Status);
+
+            dbw.ExecuteNonQuery(Command);
+        }
+
         private GroupApplyModel GetModel(DataRow row)
         {
             GroupApplyModel model = new GroupApplyModel();
