@@ -265,7 +265,7 @@ namespace NoName.NetShop.BackFlat.Order
             if (order != null && order.OrderStatus == OrderStatus.备货中)
             {
                 obll.ChangeOrderStatus(order.OrderId, OrderStatus.已发货);
-                lbll.Add(order.OrderId, txtActionRemark.Text.Trim(), OrderStatus.备货中.ToString(),
+                lbll.Add(order.OrderId, txtActionRemark.Text.Trim(), OrderStatus.已发货.ToString(),
                     Context.User.Identity.Name);
                 ShowOrderInfo(lblOrderId.Text);
             }
