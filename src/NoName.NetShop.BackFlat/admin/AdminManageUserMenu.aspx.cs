@@ -20,14 +20,15 @@ namespace NoName.NetShop.BackFlat.admin
 {
     public partial class AdminManageUserMenu : System.Web.UI.Page
     {
+        private string[] UserRoles;
         protected void Page_Load(object sender, EventArgs e)
         {
+            UserRoles = Roles.GetRolesForUser(Context.User.Identity.Name);
             if (!IsPostBack)
             {
                 BindRoleList();
                 BindUserMenu();
             }
-
         }
 
         #region 针对角色的操作
@@ -99,27 +100,32 @@ namespace NoName.NetShop.BackFlat.admin
 
         private void BindUserMenu()
         {
-            DataTable table = AspnetMenu.GetMenusForSitemap();
+           DataTable table = AspnetMenu.GetMenusForSitemap();
             string filter = "fatherid=0";
             DataRow[] rows = table.Select(filter);
 
             foreach (DataRow row in rows)
             {
-                TreeNode tnode = new TreeNode();
-                tnode.Text = row["Title"].ToString();
-                tnode.ToolTip = row["Description"].ToString();
-                tnode.NavigateUrl = row["Url"].ToString();
-                tnode.Value = row["MenuId"].ToString();
+                if (IsMatch(UserRoles, row["Roles"].ToString()))
+                {
+                    TreeNode tnode = new TreeNode();
+                    tnode.Text = row["Title"].ToString();
+                    tnode.ToolTip = row["Description"].ToString();
+                    tnode.NavigateUrl = row["Url"].ToString();
+                    tnode.Value = row["MenuId"].ToString();
 
-                int authtype = Convert.ToInt16(row["AuthType"]);
+                    int authtype = Convert.ToInt16(row["AuthType"]);
 
-                //tnode.Checked = (authtype == 1 || authtype == 2);
+                    //tnode.Checked = (authtype == 1 || authtype == 2);
 
-                tnode.ShowCheckBox = (authtype == 3);
+                    tnode.ShowCheckBox = (authtype == 3);
 
-                BindTreeNode(tnode, table);
-                tvMenus.Nodes.Add(tnode);
+                    BindTreeNode(tnode, table);
+                    tvMenus.Nodes.Add(tnode);
+                }
             }
+
+
         }
 
         private void BindTreeNode(TreeNode tnode, DataTable table)
@@ -128,19 +134,22 @@ namespace NoName.NetShop.BackFlat.admin
             DataRow[] rows = table.Select(filter);
             foreach (DataRow row in rows)
             {
-                TreeNode tsnode = new TreeNode();
-                tsnode.Text = row["Title"].ToString();
-                tsnode.ToolTip = row["Description"].ToString();
-                tsnode.NavigateUrl = row["Url"].ToString();
-                tsnode.Value = row["MenuId"].ToString();
+                if (IsMatch(UserRoles, row["Roles"].ToString()))
+                {
+                    TreeNode tsnode = new TreeNode();
+                    tsnode.Text = row["Title"].ToString();
+                    tsnode.ToolTip = row["Description"].ToString();
+                    tsnode.NavigateUrl = row["Url"].ToString();
+                    tsnode.Value = row["MenuId"].ToString();
 
-                int authtype = Convert.ToInt16(row["AuthType"]);
+                    int authtype = Convert.ToInt16(row["AuthType"]);
 
-                //tnode.Checked = (authtype == 1 || authtype == 2);
+                    //tnode.Checked = (authtype == 1 || authtype == 2);
 
-                tsnode.ShowCheckBox = (authtype == 3);
-                BindTreeNode(tsnode, table);
-                tnode.ChildNodes.Add(tsnode);
+                    tsnode.ShowCheckBox = (authtype == 3);
+                    BindTreeNode(tsnode, table);
+                    tnode.ChildNodes.Add(tsnode);
+                }
             }
         }
 
@@ -244,6 +253,54 @@ namespace NoName.NetShop.BackFlat.admin
             AspnetMenu.ResetCache();
         }
 
+        #region 从sitemapProvider获取当前用户角色的菜单
+
+        /// <summary>
+        /// 验证用户授权：
+        /// 验证规则：
+        /// （1）没有被记录的url允许任何人访问；
+        /// （2）url上的授权为null或者""时，拒绝任何用户访问；
+        /// （3）url上的授权角色为问号 (?) ，表示该url可被任何用户访问；
+        /// （4）url上的授权角色为问号 (*) ，表示该url可被任何通过授权验证的用户访问；
+        /// （5）url上的授权为角色列表时，验证用户是不是同时属于该角色
+        /// </summary>
+        /// <param name="userRoles"></param>
+        /// <param name="menuRoles"></param>
+        /// <returns></returns>
+        public bool IsMatch(string[] userRoles, string menuRole)
+        {
+            List<string> menuRoles = new List<string>(menuRole.Split(','));
+            bool result = false;
+
+            // 菜单上没有任何授权
+            if (menuRoles == null || menuRoles.Count == 0)
+                return false;
+
+            // 菜单授权给匿名用户
+            if (menuRoles.Contains("?"))
+                return true;
+
+            // 菜单授权给登录的用户
+            if (menuRoles.Contains("*") && Context.User.Identity.IsAuthenticated)
+                return true;
+
+            // 用户没有任何角色，同时不满足上述条件
+            if (userRoles == null)
+                return false;
+            // 检查用户角色和菜单角色的匹配
+            foreach (string role in userRoles)
+            {
+                if (menuRoles.Contains(role))
+                {
+                    result = true;
+                    break;
+                }
+            }
+            return result;
+        }
+
+
+        #endregion
 
     }
 }
