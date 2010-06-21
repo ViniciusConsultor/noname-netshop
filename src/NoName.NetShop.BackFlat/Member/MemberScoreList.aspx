@@ -47,8 +47,12 @@
     <asp:ListItem Text="宝鼎会员" Value="5"></asp:ListItem>
     </asp:DropDownList>
     &nbsp;<asp:Button ID="doSearch" runat="server" Text="查找" onclick="doSearch_Click" />
-    <br /><asp:TextBox ID="txtScore" runat="server" Text=""></asp:TextBox>
-    &nbsp;<asp:Button ID="btnAddScore" runat="server" Text="给选中的用户赠送积分" 
+    <br />
+    <asp:TextBox ID="txtScore" runat="server" Text=""></asp:TextBox>
+    <asp:RequiredFieldValidator runat="server" Text="请填入积分" ControlToValidate="txtScore" Display="Dynamic" ErrorMessage="积分不能为空" ValidationGroup="addscore"></asp:RequiredFieldValidator>
+    <asp:RegularExpressionValidator runat="server" ControlToValidate="txtScore" Display="Dynamic" ErrorMessage="必须为数字" ValidationGroup="addscore"
+     SetFocusOnError="true" ValidationExpression="^\d{1,6}$"></asp:RegularExpressionValidator>
+    &nbsp;<asp:Button ID="btnAddScore" runat="server" Text="给选中的用户赠送积分" ValidationGroup="addscore"
             onclick="btnAddScore_Click" />
      &nbsp;<br />
         <input type="button" id="btnCheck" value="选择所有" />
