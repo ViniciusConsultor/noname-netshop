@@ -7,10 +7,10 @@
     <title></title>
     <style type="text/css">
     #list{width:100%;}
-    #list li{width:100px;height:20px;float:left;margin:2px;}
+    #list li{width:200px;height:20px;float:left;margin:2px;}
     
     #select{width:100%;}
-    #select li{width:100px;height:20px;float:left;background:#eee;border:1px solid #ccc;margin:2px;}
+    #select li{width:200px;height:20px;float:left;background:#eee;border:1px solid #ccc;margin:2px;}
     </style>
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -41,9 +41,11 @@
                     <li><input type="checkbox" brandid='<%# Eval("brandid") %>' /><span><%# Eval("BrandName") %></span></li>                    
                 </ItemTemplate>
             </asp:Repeater>
+            <div style="clear:both;"></div>
         </div>
+        <hr />
         <div id="select"></div>
-        <asp:Button runat="server" ID="Button_Submit" OnClick="Button_Submit_Click" Text="提交" />
+            <asp:Button runat="server" ID="Button_Submit" OnClick="Button_Submit_Click" Text="提交" />
     </form>
 </body>
 </html>

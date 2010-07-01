@@ -8,6 +8,7 @@ using NoName.NetShop.Product.BLL;
 using System.Data;
 using NoName.Utility;
 using System.Configuration;
+using System.Collections;
 
 namespace NoName.NetShop.BackFlat.Brand.Relation
 {
@@ -94,6 +95,33 @@ namespace NoName.NetShop.BackFlat.Brand.Relation
                 MessageBox.Show(this, "请选择分类");
             }
         }
+
+        protected void Button_DeleteBrand_Click(object sender, EventArgs e)
+        {
+
+            if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
+            {
+                int CategoryID = Convert.ToInt32(TreeView1.SelectedValue);
+                ArrayList BrandIDList = new ArrayList();
+
+                foreach (string k in Request.Form.Keys)
+                {
+                    if (k.StartsWith("deletecheck-") && Request.Form[k].ToLower()=="on")
+                    {
+                        //BrandIDList.Add(Convert.ToInt32(k.Replace("deletecheck-", "")));
+                        DeleteRelation(CategoryID, Convert.ToInt32(k.Replace("deletecheck-", "")));
+                        //Response.Write(Convert.ToInt32(k.Replace("deletecheck-", "")) + "<br/>");
+                    }
+                }
+                
+                BindData(CategoryID);
+            }
+            else
+            {
+                MessageBox.Show(this, "请选择分类");
+            }
+        }
+
 
         protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
         {

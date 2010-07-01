@@ -11,6 +11,10 @@
         .iframe{width:500px;margin-left:10px;}
         .iframe iframe{width:500px;}
         .control a{display:block;padding:2px 5px;height:18px;line-height:18px;border:1px solid #eee;float:left;margin:2px;}
+        
+        .brand-list{width:500px;}
+        .brand-list li{float:left;width:120px;}
+        .control-list{}
     </style>
 </head>
 <body>
@@ -23,19 +27,28 @@
                 </asp:TreeView>        
             </div>
             <div class="left iframe">
-                <p><b>品牌列表</b></p>
-                <p class="control"><asp:LinkButton runat="server" ID="Button_AddBrand" OnClick="Button_AddBrand_Click" Text="添加关联品牌" /></p>
-                <asp:Label runat="server" ID="Label_Informer"></asp:Label>
+                <div class="control-list">
+                    <p><b>品牌列表</b></p><br />
+                    <p class="control"><asp:LinkButton runat="server" ID="Button_AddBrand" OnClick="Button_AddBrand_Click" Text="添加关联品牌" /></p>
+                    <p class="control"><asp:LinkButton runat="server" ID="Button_DeleteBrand" OnClick="Button_DeleteBrand_Click" Text="批量删除品牌" /></p>
+                    <asp:Label runat="server" ID="Label_Informer"></asp:Label>
+                    <div style="clear:both;"></div>
+                </div>
                 
-                <asp:Repeater runat="server" ID="Repeater_BrandList" OnItemCommand="Repeater_BrandList_ItemCommand">
-                    <ItemTemplate>
-                        <li>
-                            <asp:HyperLink runat="server" ID="Link_BrandPage" NavigateUrl='<%# Eval("brandurl") %>' Text='<%# Eval("BrandName") %>' Target="_blank" />
-                            <asp:ImageButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("Brandid") %>' CommandName="d" ImageUrl="/images/window-close.png" OnClientClick="return confirm('确定删除?')" />
-                        </li>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </div>    
+                <div class="brand-list">
+                    <asp:Repeater runat="server" ID="Repeater_BrandList" OnItemCommand="Repeater_BrandList_ItemCommand">
+                        <ItemTemplate>
+                            <li>
+                                <input type="checkbox" name="deletecheck-<%# Eval("Brandid") %>" />
+                                <asp:HyperLink runat="server" ID="Link_BrandPage" NavigateUrl='<%# Eval("brandurl") %>' Text='<%# Eval("BrandName") %>' Target="_blank" />
+                                <asp:ImageButton runat="server" ID="Button_Delete" CommandArgument='<%# Eval("Brandid") %>' CommandName="d" ImageUrl="/images/window-close.png" OnClientClick="return confirm('确定删除?')" />
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            <div style="clear:both;"></div> 
         </div>
     </form>
 </body>
