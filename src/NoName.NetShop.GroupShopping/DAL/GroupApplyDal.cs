@@ -133,6 +133,12 @@ namespace NoName.NetShop.GroupShopping.DAL
             dbw.ExecuteNonQuery(Command);
         }
 
+        public int GetApplyCount(int ProductID)
+        {
+            string sql = "select count(0) from gsapply where groupproductid=" + ProductID;
+            return Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sql));
+        }
+
         private GroupApplyModel GetModel(DataRow row)
         {
             GroupApplyModel model = new GroupApplyModel();

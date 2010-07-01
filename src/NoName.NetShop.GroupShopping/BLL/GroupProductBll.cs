@@ -62,5 +62,10 @@ namespace NoName.NetShop.GroupShopping.BLL
             return dal.GetIList();
         }
 
+        public DataTable GetTopList(string Condition, string OrderType, int TopCount)
+        {
+            return dal.GetTopList(Condition, OrderType, TopCount);
+        }
+
     }
 }
