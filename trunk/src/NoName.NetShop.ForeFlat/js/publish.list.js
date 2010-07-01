@@ -217,7 +217,7 @@
         /(.+)(\/list[-_]+\d+)([-_]+\d+)?([-_]+b\d+)?([-_]+r\d+~\d+)?([-_]+o\d+)?([-_]+v.+e)?(.+)/g.test(url);
 
         var brandString = '';
-        if (brandID != 0) {
+        if (brandID != -1) {
             brandString = '-b' + brandID;
         }
 

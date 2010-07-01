@@ -13,7 +13,7 @@
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="cpMain">    
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/Channel/solution/">解决方案</a> &gt;&gt; <a href="#">经典套装</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/Channel/solution/">解决方案</a> &gt;&gt; <a href="/solution/home.aspx">经典套装</a> &gt;&gt; <a href="#"><asp:Literal runat="server" ID="Literal_ScenceName" /></a>
         <div class="solutionSubNav">
             <div class="solutionButtonTab">
                 <a class="button_blue" href="Demand.aspx">按需制定</a>
@@ -27,7 +27,7 @@
     <!--MainBody Begin-->
     <div class="solutionCustomize_mainbody clearfix newline">
     	<div class="leftColumn">
-        	<span class="columnTitle">套装配置单</span>
+        	<span class="columnTitle"><asp:Literal runat="server" ID="Literal_ScenceName1" />套装配置单</span>
             <div class="table1" id="suit-config-list-wrapper">
             </div>
             <div class="buttons">

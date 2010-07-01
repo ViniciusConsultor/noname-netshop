@@ -48,6 +48,9 @@ namespace NoName.NetShop.ForeFlat.Solution
         {
             List<SolutionCategoryModel> Categories =  new SolutionCategoryBll().GetModelList("senceid = "+ScenceID);
 
+            Literal_ScenceName.Text = new ScenceBll().GetModel(ScenceID).ScenceName;
+            Literal_ScenceName1.Text = Literal_ScenceName.Text;
+
             //Repeater_ConfigCategory.DataSource = Categories;
             //Repeater_ConfigCategory.DataBind();
             //Repeater_Category.DataSource = Categories;
