@@ -61,12 +61,23 @@ namespace NoName.NetShop.Publish.List.DataAccess
             XmlUtility.AddNewNode(CategoryInfoNode, "isendclass", (!(dal.GetCategorySonList(Parameter.CategoryID).Rows.Count > 0)).ToString());
             XmlNode SearchPriceRangeNode = XmlUtility.AddNewNode(CategoryInfoNode,"priceranges", null);
 
-            foreach (string r in Convert.ToString(row["SearchPriceRange"]).Split(','))
-                XmlUtility.AddNewNode(SearchPriceRangeNode, "range", r);
+            try
+            {
+                XmlDocument tempDoc = new XmlDocument();
+                tempDoc.LoadXml("<?xml version=\"1.0\" encoding=\"utf-8\" ?>" + row["PriceRange"]);
+                XmlNodeList RangeNodes = tempDoc.SelectNodes("/PriceRange/Ranges/Range");
+                foreach (XmlNode n in RangeNodes)
+                {
+                    XmlNode rNode = XmlUtility.AddNewNode(SearchPriceRangeNode, "range", null); //n.Attributes["minprice"] + "~" + n.Attributes["maxprice"]);
+                    XmlUtility.SetAtrributeValue(rNode, "min", n.Attributes["minprice"].Value);
+                    XmlUtility.SetAtrributeValue(rNode, "max", Convert.ToInt32(n.Attributes["maxprice"].Value) == -1 ? "0" : n.Attributes["maxprice"].Value);
+                    XmlUtility.SetAtrributeValue(rNode, "str", n.Attributes["minprice"].Value + "~" + (Convert.ToInt32(n.Attributes["maxprice"].Value) == -1 ? "0" : n.Attributes["maxprice"].Value));
+                }
+            }
+            catch(Exception ex){}
 
             return CategoryInfoNode;
         }
-
 
         public XmlNode GetCategoryPathList()
         {
