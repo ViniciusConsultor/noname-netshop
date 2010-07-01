@@ -57,5 +57,11 @@ namespace NoName.NetShop.GroupShopping.BLL
         {
             dal.UpdateStatus(ApplyID,Status);
         }
+
+
+        public int GetApplyCount(int ProductID)
+        {
+            return dal.GetApplyCount(ProductID);
+        }
     }
 }

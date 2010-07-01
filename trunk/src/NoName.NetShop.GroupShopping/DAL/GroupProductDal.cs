@@ -138,20 +138,31 @@ namespace NoName.NetShop.GroupShopping.DAL
 
         public void SetRecommend(int ProductID, bool IsRecommend)
         {
-            DbCommand Command = dbw.GetSqlStringCommand("update [gsproduct] set [isrecommend] = @isrecommend");
+            DbCommand Command = dbw.GetSqlStringCommand("update [gsproduct] set [isrecommend] = @isrecommend,[changetime]=@changetime where [productid]=@productid");
 
             dbw.AddInParameter(Command, "@isrecommend", DbType.Boolean, IsRecommend);
+            dbw.AddInParameter(Command, "@changetime", DbType.DateTime, DateTime.Now);
+            dbw.AddInParameter(Command, "@productid", DbType.Int32, ProductID);
 
             dbw.ExecuteNonQuery(Command);
         }
 
         public void Freeze(int ProductID,int Status)
         {
-            DbCommand Command = dbw.GetSqlStringCommand("update [gsproduct] set [status] = @status");
+            DbCommand Command = dbw.GetSqlStringCommand("update [gsproduct] set [status] = @status,[changetime]=@changetime where [productid]=@productid");
 
             dbw.AddInParameter(Command, "@status", DbType.Int16, Status);
+            dbw.AddInParameter(Command, "@changetime", DbType.DateTime, DateTime.Now);
+            dbw.AddInParameter(Command, "@productid", DbType.Int32, ProductID);
 
             dbw.ExecuteNonQuery(Command);
+        }
+
+        public DataTable GetTopList(string Condition,string OrderType, int TopCount)
+        {
+            string sql = "select top {0} * from gsproduct where 1=1 {1} {2}";
+            sql = String.Format(sql, TopCount, Condition, OrderType);
+            return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
         private GroupProductModel GetModel(DataRow row)
