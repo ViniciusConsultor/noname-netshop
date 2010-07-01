@@ -25,7 +25,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
 
         public DataRow GetCategoryInfo(int CategoryID)
         {
-            string sql = "select c1.cateid,c1.catename,c1.catepath,c1.searchpricerange,c2.catepath as fatherpath from pdcategory c1 left join pdcategory c2 on c1.parentid=c2.cateid where c1.cateid={0}";
+            string sql = "select c1.cateid,c1.catename,c1.catepath,c1.searchpricerange,c1.pricerange,c2.catepath as fatherpath from pdcategory c1 left join pdcategory c2 on c1.parentid=c2.cateid where c1.cateid={0}";
             sql = String.Format(sql, CategoryID);
 
             DataRow row = null;
@@ -88,7 +88,16 @@ namespace NoName.NetShop.Publish.List.DataAccess
             if (BrandID != 0)
                 where += " and pdproduct.brandid=" + BrandID;
             if (PriceRange != null && PriceRange.Length == 2)
-                where += String.Format(" and pdproduct.merchantprice >= {0} and pdproduct.merchantprice <= {1}", PriceRange[0], PriceRange[1] + 0.99M);
+            {
+                if (PriceRange[1] == 0)
+                {
+                    where += String.Format(" and pdproduct.merchantprice >= {0} ", PriceRange[0]);
+                }
+                else
+                {
+                    where += String.Format(" and pdproduct.merchantprice >= {0} and pdproduct.merchantprice <= {1}", PriceRange[0], PriceRange[1] + 0.99M);
+                }
+            }
 
 
             pageinfo.FieldNames = "[ProductId],[ProductName],[ProductCode],[CatePath],[CateId],[TradePrice],[MerchantPrice],[ReducePrice],[Stock],[SmallImage],[MediumImage],[LargeImage],[Keywords],[Brief],[PageView],[InsertTime],[ChangeTime],[Status],[SortValue],[Score]";
@@ -218,6 +227,7 @@ namespace NoName.NetShop.Publish.List.DataAccess
                     OrderString = " pageview desc";
                     break;
                 default:
+                    OrderString = " productid desc";
                     break;
             }
             return OrderString;
