@@ -30,9 +30,14 @@
                               
                     <asp:BoundField DataField="UserId" HeaderText="提问人" />
                     <asp:TemplateField HeaderText="问题类型">
-                    <ItemTemplate>
-                    <asp:Literal ID="litContentType" runat="server"></asp:Literal>
-                    </ItemTemplate>
+                        <ItemTemplate>
+                            <asp:Literal ID="litContentType" runat="server"></asp:Literal>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="提问对象标题">
+                        <ItemTemplate>
+                            <%# GetQuestionTargetTitle(Convert.ToInt32(Eval("contenttype")),Convert.ToInt32(Eval("Contentid"))) %>
+                        </ItemTemplate>
                     </asp:TemplateField>
                    <asp:BoundField DataField="Title" HeaderText="标题" />
                    

@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using NoName.NetShop.Common;
+using NoName.NetShop.Product.Model;
+using NoName.NetShop.News.Model;
 
 namespace NoName.NetShop.BackFlat.qa
 {
@@ -103,6 +105,31 @@ namespace NoName.NetShop.BackFlat.qa
                 }
             }
         }
+
+        public string GetQuestionTargetTitle(int QuestionType,int TargetID)
+        {
+            /*
+                <asp:ListItem Text="商品提问" Value="1"></asp:ListItem>
+                <asp:ListItem Text="资讯提问" Value="2"></asp:ListItem>
+                <asp:ListItem Text="投诉" Value="3"></asp:ListItem>
+                <asp:ListItem Text="维修申请" Value="4"></asp:ListItem>
+             * */
+
+
+            switch (QuestionType)
+            {
+                case 1:
+                    ProductModel p = new NoName.NetShop.Product.BLL.ProductModelBll().GetModel(TargetID);
+                    return p==null?String.Empty:p.ProductName;
+                case 2:
+                    NewsModel n = new NoName.NetShop.News.BLL.NewsModelBll().GetModel(TargetID);
+                    return n == null ? String.Empty : n.Title;
+                default:
+                    return String.Empty;
+            }
+
+        }
+
 
 
     }

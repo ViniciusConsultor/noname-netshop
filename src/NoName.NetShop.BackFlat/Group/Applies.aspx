@@ -13,9 +13,10 @@
         <div>
             <b><asp:Literal runat="server" ID="Literal_ProductName" /></b>
             的申请列表
+            <a href="List.aspx">返回</a>
         </div>
         <div>
-            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
+            <asp:GridView CssClass="GridView" runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
                 <Columns>
                     <asp:BoundField HeaderText="ID" DataField="GroupApplyID" />
                     <asp:BoundField HeaderText="用户" DataField="UserID" />

@@ -6,11 +6,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
+        <asp:GridView CssClass="GridView" runat="server" ID="GridView1" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="productid" />
                 <asp:BoundField HeaderText="名称" DataField="productname" />

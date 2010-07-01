@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using NoName.NetShop.News.BLL;
+using NoName.NetShop.News.Model;
 
 namespace NoName.NetShop.BackFlat.Controls
 {
@@ -17,43 +18,44 @@ namespace NoName.NetShop.BackFlat.Controls
         }
 
 
-        public int GetSelectedCategoryInfo(out bool IsEnd)
+        public NewsCategoryModel GetSelectedRegionInfo(out bool IsEndClass)
         {
             string regionPath = String.Empty;
-            string category1 = Request.Form["category1"];
-            string category2 = Request.Form["category2"];
-            string category3 = Request.Form["category3"];
+            string country = Request.Form["category0"];
+            string province = Request.Form["category1"];
+            string city = Request.Form["category2"];
+            string county = Request.Form["category3"];
 
-            int curCategoryId = 0;
-            if(category1.Contains(",")) category1 = category1.Split(',')[1];
+            int curRegionId = 0;
 
-            if (curCategoryId == 0 && !String.IsNullOrEmpty(category3))
-                int.TryParse(category3.Split('-')[0], out curCategoryId);
-            if (curCategoryId == 0 && !String.IsNullOrEmpty(category2))
-                int.TryParse(category2.Split('-')[0], out curCategoryId);
-            if (curCategoryId == 0 && !String.IsNullOrEmpty(category1))
-                int.TryParse(category1.Split('-')[0], out curCategoryId);
+            if (curRegionId == 0 && !String.IsNullOrEmpty(county))
+                int.TryParse(county, out curRegionId);
+            if (curRegionId == 0 && !String.IsNullOrEmpty(city))
+                int.TryParse(city, out curRegionId);
+            if (curRegionId == 0 && !String.IsNullOrEmpty(province))
+                int.TryParse(province, out curRegionId);
+            if (curRegionId == 0 && !String.IsNullOrEmpty(country))
+                int.TryParse(country, out curRegionId);
 
-            NewsCategoryModelBll bll = new NewsCategoryModelBll();
-
-            IsEnd = false;
-            if (curCategoryId > 0)
+            NewsCategoryModel result = null;
+            IsEndClass = false;
+            if (curRegionId > 0)
             {
-                IsEnd = !bll.HasChild(curCategoryId);
-                return curCategoryId;
+                result = new NewsCategoryModelBll().GetModel(curRegionId);
+                IsEndClass = !new NewsCategoryModelBll().HasChild(result.CateID);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>
         /// 用逗号分隔的regionid
         /// </summary>
         /// <param name="regionpath"></param>
-        public void PresetCategoryInfo(string categoryPath)
+        public void PresetRegionInfo(string regionpath)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<script type='text/javascript'>\n");
-            sb.AppendFormat("var preset=[{0}];\nInitRegions();\n", categoryPath.TrimEnd('/').Replace('/', ','));
+            sb.AppendFormat("var preset=[{0}];\n  InitRegions();\n", regionpath.TrimEnd('/').Replace('/', ','));
             sb.Append("</script>");
             Page.ClientScript.RegisterStartupScript(this.GetType(), "myInitRegionInfo", sb.ToString());
         }
