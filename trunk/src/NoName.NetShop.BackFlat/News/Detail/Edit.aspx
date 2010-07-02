@@ -41,12 +41,12 @@
         if ($('#<%=TextBox_Tags.ClientID %>').val() == '') {
             result = false;
             inform($('#<%=TextBox_Tags.ClientID %>'), '请输入新闻标签');
-        }       
-        
-        
+        }
+
+
         return result;
     }
-    
+
     function inform(o, message) {
         o.parent().children('span[type=inform]').html(message);
         o.focus();
