@@ -25,12 +25,18 @@ namespace NoName.NetShop.BackFlat.News.Detail
             get { if (ViewState["NewsID"] != null) return Convert.ToInt32(ViewState["NewsID"]); else return -1; }
             set { ViewState["NewsID"] = value; }
         }
+        private int CurrentPageIndex
+        {
+            get { if (ViewState["CurrentPageIndex"] != null) return Convert.ToInt32(ViewState["CurrentPageIndex"]); else return 1; }
+            set { ViewState["CurrentPageIndex"] = value; }
+        }
         private NewsModelBll bll = new NewsModelBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (!String.IsNullOrEmpty(Request.QueryString["pageid"])) CurrentPageIndex = Convert.ToInt32(Request.QueryString["pageid"]);
                 NewsID = Convert.ToInt32(Request.QueryString["id"]);
                 BindData();
             }
@@ -48,7 +54,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
                 TextBox_NewsFrom.Text = model.From;
                 TextBox_ProductID.Text = model.ProductId=="0"?"":model.ProductId;
 
-                NewsCategorySelect1.PresetCategoryInfo(new NewsCategoryModelBll().GetPath(model.CategoryID));
+                NewsCategorySelect1.PresetRegionInfo(new NewsCategoryModelBll().GetPath(model.CategoryID));
 
                 TextBox_Tags.Text = model.Tags;
                 TextBox_Brief.Text = model.Brief;
@@ -64,9 +70,9 @@ namespace NoName.NetShop.BackFlat.News.Detail
         protected void Button_Submit_Click(object sender, EventArgs e)
         {
             NewsModel model = bll.GetModel(NewsID);
+            bool IsEndClass;
 
-
-            int SelectedParentCategoryID = Convert.ToInt32(((HtmlInputHidden)NewsCategorySelect1.FindControl("selectedCategory")).Value);
+            int SelectedParentCategoryID = NewsCategorySelect1.GetSelectedRegionInfo(out IsEndClass).CateID;
 
             string strErr = String.Empty;
             if (TextBox_Title.Text == String.Empty)
@@ -85,7 +91,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
             {
                 strErr += "新闻标签不能为空！\\n";
             }
-            if (new NewsCategoryModelBll().GetList(SelectedParentCategoryID).Rows.Count > 0)
+            if (!IsEndClass)
             {
                 strErr += "新闻不能添加在非末级分类下！\\n";
             }
@@ -138,7 +144,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
 
             bll.Update(model);
             PageControler.Publish(6, true);
-            Response.Redirect("List.aspx");
+            Response.Redirect("List.aspx?page=" + CurrentPageIndex);
         }
     }
 }
