@@ -32,7 +32,7 @@ namespace NoName.NetShop.ForeFlat.Group
             Repeater_Grouping.DataSource = bll.GetTopList(" and status = " + (int)GroupShoppingProductStatus.正在团购, "", 6);
             Repeater_Grouping.DataBind();
 
-            Repeater_Ending.DataSource = bll.GetTopList(" and succedline - " + new GroupApplyBll().GetApplyCount() + " < 5", "", 6);
+            Repeater_Ending.DataSource = bll.GetTopList(" and (succedline - [dbo].[GetGroupProductApplyCount](productid)) < 5", "", 6);
             Repeater_Ending.DataBind();
         }
     }
