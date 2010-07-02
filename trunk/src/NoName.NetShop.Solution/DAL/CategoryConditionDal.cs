@@ -115,28 +115,59 @@ namespace NoName.NetShop.Solution.DAL
         {
             string sql = "select * from slcategorycondition where senceid={0} and cateid={1}";
             sql = String.Format(sql, ScenceID, CategoryID);
+            string SubCategoryCondition = String.Empty;
 
             DataTable dt = dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
 
-            if (dt.Rows.Count > 0)
+            foreach (DataRow row in dt.Rows)
             {
-                DataRow row = dt.Rows[0];
                 string RuleName = row["RuleName"].ToString();
                 string RuleValue = row["RuleValue"].ToString();
 
                 if (RuleName.Contains("cateid"))
                 {
-                    string sql2 = "select * from pdcategory where cateid " + RuleValue;
-                    return dbr.ExecuteDataSet(CommandType.Text, sql2).Tables[0];
+                    SubCategoryCondition = RuleValue;
                 }
-                else
-                {
-                    return null;
-                }
+            }
+
+            if (SubCategoryCondition == String.Empty)
+            {
+                return null;
             }
             else
             {
+                string sql2 = "select * from pdcategory where cateid " + SubCategoryCondition;
+                return dbr.ExecuteDataSet(CommandType.Text, sql2).Tables[0]; 
+            }
+        }
+
+        public DataTable GetConditionBrandList(int ScenceID, int CategoryID)
+        {
+            string sql = "select * from slcategorycondition where senceid={0} and cateid={1}";
+            sql = String.Format(sql, ScenceID, CategoryID);
+            string BrandCondition = String.Empty;
+
+            DataTable dt = dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string RuleName = row["RuleName"].ToString();
+                string RuleValue = row["RuleValue"].ToString();
+
+                if (RuleName.Contains("brandid"))
+                {
+                    BrandCondition = RuleValue;
+                }
+            }
+
+            if (BrandCondition == String.Empty)
+            {
                 return null;
+            }
+            else
+            {
+                string sql2 = "select * from pdbrand where brandid " + BrandCondition;
+                return dbr.ExecuteDataSet(CommandType.Text, sql2).Tables[0];
             }
         }
 
