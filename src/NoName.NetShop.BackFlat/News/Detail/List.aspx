@@ -1,15 +1,39 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="NoName.NetShop.BackFlat.News.Detail.List" %>
 <%@ Register Assembly="NoName.Utility" Namespace="NoName.Utility" TagPrefix="cc1" %>
 
+<%@ Register src="../../Controls/NewsCategorySelect.ascx" tagname="NewsCategorySelect" tagprefix="uc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>无标题页</title>
     <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+        InitRegions();
+            
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
+    <div>
+        <table width="500">
+            <tr>
+                <td><asp:CheckBox runat="server" ID="CheckBox_NewsID" Text="按新闻ID" /></td>
+                <td><asp:TextBox runat="server" ID="TextBox_NewsID" /></td>
+                <td><asp:CheckBox runat="server" ID="CheckBox_NewsName" Text="按新闻标题" /></td>
+                <td><asp:TextBox runat="server" ID="TextBox_NewsName" /></td>
+            </tr>
+            <tr>
+                <td><asp:CheckBox runat="server" ID="CheckBox_Category" Text="按所属分类" /></td>
+                <td colspan="3"><uc1:NewsCategorySelect ID="NewsCategorySelect1" runat="server" /></td>
+            </tr>
+        </table>
+        <asp:Button runat="server" ID="Button_Search" Text="搜索" OnClick="Button_Search_Click" />
+    </div>
     <div>
         <asp:GridView runat="server" ID="GridView1" CssClass="GridView" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
             <Columns>
@@ -35,7 +59,7 @@
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:LinkButton runat="server" ID="LinkButton_Delete" CommandArgument='<%# Eval("newsid") %>' CommandName="d" Text="删除" />
-                        <asp:HyperLink runat="server" ID="HyperLink_Edit" NavigateUrl='<%# "Edit.aspx?id="+Eval("newsid") %>' Text="编辑" />
+                        <asp:HyperLink runat="server" ID="HyperLink_Edit" NavigateUrl='<%# "Edit.aspx?id="+Eval("newsid")+"&pageid="+ InitialPageIndex %>' Text="编辑" />
                     </ItemTemplate>                    
                 </asp:TemplateField>
             </Columns>

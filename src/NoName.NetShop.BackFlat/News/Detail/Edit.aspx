@@ -12,16 +12,14 @@
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
     <script type="text/javascript">
-    var categoryInfo = [{ "name": "category1", "title": "", "required": "true" },
-    { "name": "category2", "title": "", "required": "true" },
-    { "name": "category3", "title": "", "required": "false"}];
 
-    $(function() {
-        CKEDITOR.replace('<%= TextBox_Content.ClientID %>', {
-            height: '400px',
-            width: '700px'
+        $(function() {
+            InitRegions();
+            CKEDITOR.replace('<%= TextBox_Content.ClientID %>', {
+                height: '400px',
+                width: '700px'
+            });
         });
-    });
     
     function validate() {
         $('table td span[type=inform]').html('');

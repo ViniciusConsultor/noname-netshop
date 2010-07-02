@@ -32,7 +32,7 @@ namespace NoName.NetShop.BackFlat.News.Detail
         protected void Button_Submit_Click(object sender, EventArgs e) 
         {
             bool isEndCate = false;
-            int SelectedParentCategoryID = NewsCategorySelect1.GetSelectedCategoryInfo(out isEndCate);
+            int SelectedParentCategoryID = NewsCategorySelect1.GetSelectedRegionInfo(out isEndCate).CateID;
 
             string strErr = String.Empty;
             if (TextBox_Title.Text == String.Empty)
