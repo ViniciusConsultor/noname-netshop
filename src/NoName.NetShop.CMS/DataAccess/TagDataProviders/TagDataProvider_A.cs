@@ -22,7 +22,7 @@ namespace NoName.NetShop.CMS.DataAccess.TagDataProviders
 
             NewsCategoryModelBll bll = new NewsCategoryModelBll();
 
-            DataTable dt = bll.GetList(0);
+            DataTable dt = bll.GetList(22);
 
             foreach (DataRow row in dt.Rows)
             {
