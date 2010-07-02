@@ -97,7 +97,7 @@ namespace NoName.NetShop.BackFlat.News.Category
             {
                 int SelectedID = Convert.ToInt32(TreeView1.SelectedValue);
                 bll.Delete(SelectedID);
-                PopulateNodes(TreeView1.Nodes, 0);
+                Response.Redirect(Request.RawUrl);
             }
         }
 
