@@ -87,6 +87,11 @@ namespace NoName.NetShop.Solution.BLL
         {
             return dal.GetConditionSubCategory(ScenceID, CategoryID);
         }
+
+        public DataTable GetConditionBrandList(int ScenceID, int CategoryID)
+        {
+            return dal.GetConditionBrandList(ScenceID, CategoryID);
+        }
 		#endregion  成员方法
 	}
 }
