@@ -41,7 +41,7 @@ namespace NoName.NetShop.ForeFlat.Handler
                     return;
                 case "brand":
                     int BrandCategoryID = Convert.ToInt32(req["cid"]);
-                    string BrandJson = GetBrandJson(BrandCategoryID);
+                    string BrandJson = GetBrandJson(ScenceID,BrandCategoryID);
                     context.Response.Write(BrandJson);
                     return;
                 case "product":
@@ -101,7 +101,7 @@ namespace NoName.NetShop.ForeFlat.Handler
             return result.ToString();
         }
 
-        private string GetBrandJson(int CategoryID)
+        private string GetBrandJson(int ScenceID, int CategoryID)
         {
             StringBuilder result = new StringBuilder();
             StringWriter sw = new StringWriter(result);
@@ -109,7 +109,8 @@ namespace NoName.NetShop.ForeFlat.Handler
 
             writer.Formatting = Formatting.Indented;
 
-            DataTable dt = new BrandCategoryRelationBll().GetCategoryBrandList(CategoryID);
+            DataTable dt = new CategoryConditionBll().GetConditionBrandList(ScenceID, CategoryID);
+            //new BrandCategoryRelationBll().GetCategoryBrandList(CategoryID);
 
             writer.WriteStartArray();
 

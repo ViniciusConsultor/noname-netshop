@@ -19,12 +19,7 @@
                     <li class="right"></li>
                 </ul>
                 <div class="content">
-					<p class="noSpacing">
-                    	1. 进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器，配备可选英特尔 迅驰 2 处理器技术和 NVIDIA® GeForce  显卡，该机型具备更多您需要和您想要的性能。
-                    </p>
-                    <p class="noSpacing">
-                    	2. 进入时尚前沿中的高清之世界。新款 14 英寸 Gateway  TC 系列笔记本首先追求美观，然后增添性能，最后确保成品轻便。我们的 TC 系列便携式计算机采用红酒色或深黑色外观设计，使用 Linux 操作系统并配置最高使用 Linux 操作系统并配置最高英特尔  酷睿 2 双核处理器的性能。
-                    </p>
+                    <asp:Literal runat"server" ID="Literal_Rule" />
                 </div>
                 <ul class="bottom">
                    <li class="left"></li>
@@ -51,9 +46,9 @@
                             <asp:Repeater runat="server" ID="Repeater_Recommend">
                                 <ItemTemplate>
                                     <li>
-                                        <a href="#" class="rank"><span class="rankIndex R1"></span></a>
-                                        <a href="#" class="name">[明基] MP512 </a>
-                                        <a href="#" class="price">￥9998</a>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>" class="rank"><span class="rankIndex R1"></span></a>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>" class="name"><%# Eval("productname") %> </a>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>" class="price">￥<%# Eval("groupprice") %></a>
                                     </li>
                                 </ItemTemplate>
                             </asp:Repeater>

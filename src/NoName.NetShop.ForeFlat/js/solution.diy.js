@@ -205,7 +205,7 @@ function showBrandInfo(fatherCategoryID, categoryID) {
     $.ajax({
         url: '/handler/solutionhandler.ashx',
         type: 'post',
-        data: 'action=brand&cid=' + (parseInt(categoryID) == 0 ? fatherCategoryID : categoryID),
+        data: 'action=brand&cid=' + (parseInt(categoryID) == 0 ? fatherCategoryID : categoryID) + '&sid=' + $.query.get('scenceid'),
         cache: false,
         dataType: 'json',
         async: false,
