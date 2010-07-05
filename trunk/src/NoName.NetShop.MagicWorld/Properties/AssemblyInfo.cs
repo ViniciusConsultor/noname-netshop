@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("NoName.NetShop.MagicWorld")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("sina")]
+[assembly: AssemblyCompany("NoName")]
 [assembly: AssemblyProduct("NoName.NetShop.MagicWorld")]
-[assembly: AssemblyCopyright("Copyright © sina 2009")]
+[assembly: AssemblyCopyright("Copyright © NoName 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

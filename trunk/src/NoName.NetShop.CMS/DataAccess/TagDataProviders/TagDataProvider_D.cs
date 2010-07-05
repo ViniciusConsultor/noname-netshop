@@ -31,21 +31,22 @@ namespace NoName.NetShop.CMS.DataAccess.TagDataProviders
             XmlNode NewsCategoryNode1 = XmlUtility.AddNewNode(CategoryNodel1, "category", null);
             XmlNode NewsListNode1 = XmlUtility.AddNewNode(CategoryNodel1, "newslist", null);
 
-
-            XmlUtility.AddNewNode(NewsCategoryNode1, "categoryid", Category1Model.CateID.ToString());
-            XmlUtility.AddNewNode(NewsCategoryNode1, "categoryname", Category1Model.CateName);
-
-
-            foreach (DataRow row in dt1.Rows)
+            if (Category1Model != null)
             {
-                XmlNode NewsNode = XmlUtility.AddNewNode(NewsListNode1, "news", null);
+                XmlUtility.AddNewNode(NewsCategoryNode1, "categoryid", Category1Model.CateID.ToString());
+                XmlUtility.AddNewNode(NewsCategoryNode1, "categoryname", Category1Model.CateName);
 
-                XmlUtility.AddNewNode(NewsNode, "newsid", row["newsid"].ToString());
-                XmlUtility.AddNewNode(NewsNode, "title", row["title"].ToString().Length > 15 ? row["title"].ToString().Substring(0, 14) + "..." : row["title"].ToString());
-                XmlUtility.AddNewNode(NewsNode, "image", NewsImageRule.GetImageUrl(row["imageurl"].ToString()));
-                XmlUtility.AddNewNode(NewsNode, "video", NewsVideoRule.GetVideoUrl(row["videourl"].ToString()));
+
+                foreach (DataRow row in dt1.Rows)
+                {
+                    XmlNode NewsNode = XmlUtility.AddNewNode(NewsListNode1, "news", null);
+
+                    XmlUtility.AddNewNode(NewsNode, "newsid", row["newsid"].ToString());
+                    XmlUtility.AddNewNode(NewsNode, "title", row["title"].ToString().Length > 15 ? row["title"].ToString().Substring(0, 14) + "..." : row["title"].ToString());
+                    XmlUtility.AddNewNode(NewsNode, "image", NewsImageRule.GetImageUrl(row["imageurl"].ToString()));
+                    XmlUtility.AddNewNode(NewsNode, "video", NewsVideoRule.GetVideoUrl(row["videourl"].ToString()));
+                }
             }
-
 
 
 
@@ -58,17 +59,20 @@ namespace NoName.NetShop.CMS.DataAccess.TagDataProviders
             XmlNode NewsCategoryNode2 = XmlUtility.AddNewNode(CategoryNode2, "category", null);
             XmlNode NewsListNode2 = XmlUtility.AddNewNode(CategoryNode2, "newslist", null);
 
-            XmlUtility.AddNewNode(NewsCategoryNode2, "categoryid", CategoryModel2.CateID.ToString());
-            XmlUtility.AddNewNode(NewsCategoryNode2, "categoryname", CategoryModel2.CateName);
-
-            foreach (DataRow row in dt2.Rows)
+            if (CategoryModel2 != null)
             {
-                XmlNode NewsNode = XmlUtility.AddNewNode(NewsListNode2, "news", null);
+                XmlUtility.AddNewNode(NewsCategoryNode2, "categoryid", CategoryModel2.CateID.ToString());
+                XmlUtility.AddNewNode(NewsCategoryNode2, "categoryname", CategoryModel2.CateName);
 
-                XmlUtility.AddNewNode(NewsNode, "newsid", row["newsid"].ToString());
-                XmlUtility.AddNewNode(NewsNode, "title", row["title"].ToString().Length > 17 ? row["title"].ToString().Substring(0, 16) + "..." : row["title"].ToString());
-                XmlUtility.AddNewNode(NewsNode, "image", NewsImageRule.GetImageUrl(row["imageurl"].ToString()));
-                XmlUtility.AddNewNode(NewsNode, "video", NewsVideoRule.GetVideoUrl(row["videourl"].ToString()));
+                foreach (DataRow row in dt2.Rows)
+                {
+                    XmlNode NewsNode = XmlUtility.AddNewNode(NewsListNode2, "news", null);
+
+                    XmlUtility.AddNewNode(NewsNode, "newsid", row["newsid"].ToString());
+                    XmlUtility.AddNewNode(NewsNode, "title", row["title"].ToString().Length > 17 ? row["title"].ToString().Substring(0, 16) + "..." : row["title"].ToString());
+                    XmlUtility.AddNewNode(NewsNode, "image", NewsImageRule.GetImageUrl(row["imageurl"].ToString()));
+                    XmlUtility.AddNewNode(NewsNode, "video", NewsVideoRule.GetVideoUrl(row["videourl"].ToString()));
+                }
             }
 
             return xdoc;
