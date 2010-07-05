@@ -9,6 +9,7 @@ using NoName.NetShop.CMS.Controler;
 using System.Data;
 using NoName.NetShop.CMS.Config;
 using System.Configuration;
+using NoName.Utility;
 
 namespace NoName.NetShop.BackFlat.CMS.Page.ChannelPage
 {
@@ -42,6 +43,12 @@ namespace NoName.NetShop.BackFlat.CMS.Page.ChannelPage
                 PageControler.Delete(PageID);
                 BindData(AspNetPager.CurrentPageIndex);
             }
+        }
+
+        protected void AspNetPager_PageChanged(object src, PageChangedEventArgs e)
+        {
+            AspNetPager.CurrentPageIndex = e.NewPageIndex;
+            BindData(AspNetPager.CurrentPageIndex);
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

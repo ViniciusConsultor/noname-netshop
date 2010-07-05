@@ -40,7 +40,7 @@
             </asp:GridView>                
         </div>
         <div>
-            <cc1:AspNetPager ID="AspNetPager" runat="server" PageSize="12"
+            <cc1:AspNetPager ID="AspNetPager" runat="server" PageSize="12" OnPageChanged="AspNetPager_PageChanged"
                 UrlPageIndexName="" ImagePath="/" FirstPageText='首页'
                 LastPageText='末页' NextPageText='下一页' AlwaysShow="true"
                 PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"

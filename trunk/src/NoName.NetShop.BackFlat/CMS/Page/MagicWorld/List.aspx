@@ -41,7 +41,7 @@
         </div>
         <div>
             <cc1:AspNetPager ID="AspNetPager" runat="server" PageSize="12"
-                UrlPageIndexName="" ImagePath="/" FirstPageText='首页'
+                UrlPageIndexName="" ImagePath="/" FirstPageText='首页'  OnPageChanged="AspNetPager_PageChanged"
                 LastPageText='末页' NextPageText='下一页' AlwaysShow="true"
                 PrevPageText='上一页' ShowBoxThreshold="16" NumericButtonCount="8"
                 ShowPrevNext="True" SubmitButtonClass="buttom" 
