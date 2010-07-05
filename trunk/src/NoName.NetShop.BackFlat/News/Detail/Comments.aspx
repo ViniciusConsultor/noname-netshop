@@ -5,8 +5,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="/css/themes/base/ui.all.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery.timers.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('a[cmtcontent]').click(function() {
+                $.ui.dialog.defaults.bgiframe = true;
+
+                var msg = $(this).next().html();
+                $("#dialog").find("p").html(msg);
+                $("#dialog").dialog({ 
+                    autoOpen: false ,
+                    width:500,
+                    height:300
+               
+                }).dialog("open");
+            });
+        });
+    </script>
 </head>
 <body>
+    <div id="dialog" title="评论内容" style="display:none">
+	    <p style="font-size:12px;">
+	    </p>
+    </div>
     <form id="form1" runat="server">
     <div>
         <asp:GridView runat="server" ID="GridView1" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
@@ -14,7 +38,12 @@
                 <asp:BoundField HeaderText="评论ID" DataField="commentid" />
                 <asp:BoundField HeaderText="被评论新闻" DataField="title" />
                 <asp:BoundField HeaderText="用户名" DataField="userid" />
-                <asp:BoundField HeaderText="内容" DataField="content" />
+                <asp:TemplateField HeaderText="">
+                    <ItemTemplate>
+                        <a href="javascript:void(0);" cmtcontent="true">查看内容</a>
+                        <div style="display:none"><%# Eval("content")%></div>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="">
                     <ItemTemplate>
                         <asp:LinkButton runat="server" ID="Button_Delete" Text="删除" CommandArgument='<%# Eval("commentid") %>' CommandName='d' />

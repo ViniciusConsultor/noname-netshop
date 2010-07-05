@@ -10,14 +10,16 @@
     <script src="/js/validate.js" type="text/javascript"></script>
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
+    <script src="/ckfinder/ckfinder.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(function() {
             InitRegions();
-            CKEDITOR.replace('<%= TextBox_Content.ClientID %>', {
+            var editor = CKEDITOR.replace('<%= TextBox_Content.ClientID %>', {
                 height: '400px',
                 width: '700px'
             });
+            CKFinder.SetupCKEditor(editor, '/ckfinder/'); 
         });
     
     function validate() {
