@@ -6,12 +6,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NoName.NetShop.GroupShopping.Model;
 using NoName.NetShop.GroupShopping.BLL;
+using NoName.NetShop.CMS.Config;
+using System.Configuration;
+using System.IO;
 
 namespace NoName.NetShop.ForeFlat.Group
 {
     public partial class List : System.Web.UI.Page
     {
         private GroupShopping.BLL.GroupProductBll bll = new NoName.NetShop.GroupShopping.BLL.GroupProductBll();
+        private PublicContentElement config = ((PublicContentSection)ConfigurationManager.GetSection("publicContent")).PublicPages["groupRule"];
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,6 +38,13 @@ namespace NoName.NetShop.ForeFlat.Group
 
             Repeater_Ending.DataSource = bll.GetTopList(" and (succedline - [dbo].[GetGroupProductApplyCount](productid)) < 5", "", 6);
             Repeater_Ending.DataBind();
+
+            Literal_Rule.Text = GetRuleString();
+        }
+
+        private string GetRuleString()
+        {
+            return new StreamReader(config.FileName).ReadToEnd();
         }
     }
 }

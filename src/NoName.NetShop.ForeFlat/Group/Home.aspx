@@ -19,7 +19,7 @@
                     <li class="right"></li>
                 </ul>
                 <div class="content">
-                    <asp:Literal runat"server" ID="Literal_Rule" />
+                    <asp:Literal runat="server" ID="Literal_Rule" />
                 </div>
                 <ul class="bottom">
                    <li class="left"></li>
@@ -61,31 +61,6 @@
                 </ul>
             </div>
             
-             <div class="box2 newline">
-                <ul class="title">
-                    <li class="left"></li>
-                    <li><span>网友问答</span></li>
-                    <li class="right"></li>
-                    <li class="more"></li>
-                </ul>
-                <div class="content">
-                    <ul class="itemList7">
-                        <asp:Repeater runat="server" ID="Repeater_QA">
-                            <ItemTemplate>
-                    	        <li>
-                        	        <span>天空的百余：个人用户可以发起团购吗？</span>
-                                    <span>管理员：可以。但是需要缴纳一定数额的保证金。</span>
-                                </li>
-                            </ItemTemplate>
-                        </asp:Repeater>
-                    </ul>
-                </div>
-                <ul class="bottom">
-                   <li class="left"></li>
-                   <li class="right"></li>
-                </ul>
-            </div>
-            
         </div>
         <div class="midColumn">
             <div class="midColumnContainer">
@@ -101,10 +76,12 @@
                             <asp:Repeater runat="server" ID="Repeater_NewGroup">
                                 <ItemTemplate>
                                     <li>
-                                        <a href="#"><img src="Pictures/productPic.gif" /></a>
-                                        <a href="#">
-                                            <span class="price">鼎城报价：￥188.00</span>
-                                            <span class="name">伊莱克斯（Electrolux）</span>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>">
+                                            <img src="<%# NoName.NetShop.GroupShopping.Facade.GroupShoppingImageRule.GetImageUrl(Eval("mediumimage").ToString()) %>" />
+                                        </a>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>">
+                                            <span class="price">鼎城报价：￥<%# Eval("groupprice") %></span>
+                                            <span class="name"><%# Eval("productname") %></span>
                                         </a>
                                     </li>                                
                                 </ItemTemplate>

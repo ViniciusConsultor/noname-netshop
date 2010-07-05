@@ -2,8 +2,8 @@
 
 /*Brands Home Begin*/
 .brandsHome_mainbody{ clear:both}
-.brandsHome_mainbody .rightColumn{ float:right; width:220px; _margin-left:-3px;}
-.brandsHome_mainbody .mainColumn{ float:none; margin-right:224px; _margin-right:221px;}
+.brandsHome_mainbody .leftColumn{ float:left; width:220px; _margin-right:-3px;}
+.brandsHome_mainbody .mainColumn{ float:none; margin-left:224px; _margin-left:221px;}
 .brandsHome_mainbody .mainColumn .mainColumnContainer{ overflow:hidden; _height:0; _overflow:visible}
 
 .brandsHome_mainbody

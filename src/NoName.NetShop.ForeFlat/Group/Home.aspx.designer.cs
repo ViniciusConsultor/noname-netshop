@@ -14,6 +14,15 @@ namespace NoName.NetShop.ForeFlat.Group {
     public partial class List {
         
         /// <summary>
+        /// Literal_Rule 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_Rule;
+        
+        /// <summary>
         /// Repeater_Recommend 控件。
         /// </summary>
         /// <remarks>
@@ -21,15 +30,6 @@ namespace NoName.NetShop.ForeFlat.Group {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater Repeater_Recommend;
-        
-        /// <summary>
-        /// Repeater_QA 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater_QA;
         
         /// <summary>
         /// Repeater_NewGroup 控件。
