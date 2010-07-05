@@ -111,6 +111,8 @@ namespace NoName.NetShop.GroupShopping.Facade
         public static string GetImageUrl(string ImageShortUrl)
         {
             return config.UrlRoot + ImageShortUrl;
+
+            
         }
 
     }
