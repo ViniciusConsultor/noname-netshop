@@ -31,11 +31,11 @@
 		LicenseKey = "";
 
 		// The base URL used to reach files in CKFinder through the browser.
-		BaseUrl = "/ckfinder/userfiles/";
+		BaseUrl = "http://localhost:14312/Upload/ckfinder/";
 
 		// The phisical directory in the server where the file will end up. If
 		// blank, CKFinder attempts to resolve BaseUrl.
-		BaseDir = "";
+		BaseDir = @"E:\works\project\NetShop\src\NoName.NetShop.ForeFlat\Upload\ckfinder\";
 
 		// Thumbnail settings.
 		// "Url" is used to reach the thumbnails with the browser, while "Dir"

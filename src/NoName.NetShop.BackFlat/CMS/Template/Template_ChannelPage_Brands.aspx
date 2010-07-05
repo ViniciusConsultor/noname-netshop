@@ -25,9 +25,9 @@
             
             <!--MainBody Begin-->
             <div class="brandsHome_mainbody clearfix newline">
-                <div class="rightColumn">
+                <div class="leftColumn">
                     <dd:CMSTag ID="cmsTag4" Description="右1最佳品牌店" TagID="1" runat="server" />
-                    <dd:CMSTag ID="cmsTag5" Description="右2资讯排行榜" TagID="1" runat="server" />
+                    <dd:CMSTag ID="cmsTag5" Description="右2品牌列表" TagID="1" runat="server" />
                 </div>
                 <div class="mainColumn">
         	        <div class="mainColumnContainer">

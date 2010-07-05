@@ -10,6 +10,7 @@ using NoName.NetShop.CMS.DataAccess;
 using System.Data;
 using NoName.NetShop.CMS.Model;
 using NoName.NetShop.CMS.Controler;
+using NoName.Utility;
 
 namespace NoName.NetShop.BackFlat.CMS.Page.SalesPage
 {
@@ -43,6 +44,12 @@ namespace NoName.NetShop.BackFlat.CMS.Page.SalesPage
                 PageControler.Delete(PageID);
                 BindData(AspNetPager.CurrentPageIndex);
             }
+        }
+
+        protected void AspNetPager_PageChanged(object src, PageChangedEventArgs e)
+        {
+            AspNetPager.CurrentPageIndex = e.NewPageIndex;
+            BindData(AspNetPager.CurrentPageIndex);
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
