@@ -443,8 +443,9 @@ ul.tip2 li.middle span{ display:block; height:21px; background:#CCC; font-weight
 ul.productFilter{ padding:0; margin:0;}
 ul.productFilter li{ list-style-type:none; clear:both; padding:5px; border-bottom:1px dashed #B4CFEC; zoom:1 }
 ul.productFilter li:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
-ul.productFilter li span{ font-weight:bold; width:100px; display:block; float:left; text-align:right}
-ul.productFilter li a{ color:#005AA0; margin-left:5px; padding:2px 5px; display:block; float:left}
+ul.productFilter li span{ font-weight:bold; width:100px; _margin-right:-3px; display:block; float:left; text-align:right}
+ul.productFilter li div{ float:none; margin-left:100px; _margin-left:97px;}
+ul.productFilter li a{ color:#005AA0; margin-left:5px; padding:2px 5px; display:block; float:left; white-space:nowrap}
 ul.productFilter li a.on{ background:#4598d2; color:#FFF; cursor:default; display:block; float:left}
 
 

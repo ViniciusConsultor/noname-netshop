@@ -255,12 +255,14 @@
       <span>
         品牌：
       </span>
+      <div>
       <a style="cursor:pointer" brand="-1">全部</a>
       <xsl:for-each select="/listpage/brandlist/brand">
         <a style="cursor:pointer" brand="{brandid}">
           <xsl:value-of select="brandname"/>
         </a>
       </xsl:for-each>
+      </div>
     </li>
   </xsl:template>
   <xsl:template name="PriceRange">
@@ -268,6 +270,7 @@
       <span>
         价格区间：
       </span>
+      <div>
       <a style="cursor:pointer" range="-1">全部</a>
       <xsl:for-each select="/listpage/categoryinfo/priceranges/range">
         <a style="cursor:pointer" range="{@str}">
@@ -280,6 +283,7 @@
           </xsl:choose>
         </a>
       </xsl:for-each>
+      </div>
     </li>
   </xsl:template>
   <xsl:template match="/listpage/properitylist/prop">
@@ -287,12 +291,14 @@
       <span>
         <xsl:value-of select="propname"/>：
       </span>
+      <div>
       <a style="cursor:pointer" propid="{propid}" propvid="-1">全部</a>
       <xsl:for-each select="values/value">
         <a style="cursor:pointer" propvid="{valueid}">
           <xsl:value-of select="value"/>
         </a>
       </xsl:for-each>
+      </div>
     </li>
   </xsl:template>
   <!-- properity filter start -->
