@@ -12,6 +12,7 @@
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script src="/js/validate.js" type="text/javascript"></script>
     <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
+    <script src="/ckfinder/ckfinder.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function() {
             $('#product-multi-image-upload-add').click(function(){
@@ -31,13 +32,14 @@
                         ['TextColor', 'BGColor', 'Maximize']
                     ],
             */
-            CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
+            var desEditor = CKEDITOR.replace('<%= TextBox_Description.ClientID %>', {
                 height: '400px',
                 width: '700px',
                 ignoreEmptyParagraph :true,
                 forcePasteAsPlainText :false,
                 enterMode : CKEDITOR.ENTER_BR
             });
+            CKFinder.SetupCKEditor(desEditor, '/ckfinder/'); 
             CKEDITOR.replace('<%= TextBox_Specification.ClientID %>', {
                 height: '200px',
                 width: '700px',
@@ -233,7 +235,7 @@
             </tr>
             <tr>
                 <td>重量<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtWeight" runat="server" Width="100"></asp:TextBox>g<span type="inform" class="red"></span></td>
+                <td><asp:TextBox id="txtWeight" runat="server" Width="100"></asp:TextBox>kg<span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>状态<span class="red">*</span>：</td>
