@@ -251,7 +251,7 @@
             </tr>
             <tr>
                 <td>评测资讯：</td>
-                <td><asp:TextBox id="txtNewsID" runat="server" Width="400"></asp:TextBox></td>
+                <td><asp:TextBox id="txtNewsID" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span></td>
             </tr>
             <tr>
                 <td>简介<span class="red">*</span>：</td>

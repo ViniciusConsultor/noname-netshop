@@ -94,7 +94,7 @@ namespace NoName.NetShop.BackFlat.Product
             AspNetPager.RecordCount = RecordCount;
             AspNetPager.CurrentPageIndex = PageIndex;
 
-            InitializeSerchCondition();
+            //InitializeSerchCondition();
         }
 
         private void BindDropDownData()
@@ -380,97 +380,97 @@ namespace NoName.NetShop.BackFlat.Product
             return condition;
         }
 
-        private void InitializeSerchCondition()
-        {
-            if (SearchCondition.Contains("catepath like"))
-            {
-                CheckBox1.Checked = true;
-                Match m = Regex.Match(SearchCondition, @"and catepath like '(?<catepath>.+)%'");
-                if (m.Success)
-                    CategorySelect1.PresetRegionInfo(m.Groups["catepath"].ToString());
-            }
+        //private void InitializeSerchCondition()
+        //{
+        //    if (SearchCondition.Contains("catepath like"))
+        //    {
+        //        CheckBox1.Checked = true;
+        //        Match m = Regex.Match(SearchCondition, @"and catepath like '(?<catepath>.+)%'");
+        //        if (m.Success)
+        //            CategorySelect1.PresetRegionInfo(m.Groups["catepath"].ToString());
+        //    }
 
-            if (SearchCondition.Contains("productid="))
-            {
-                CheckBox2.Checked = true;
-                Match m = Regex.Match(SearchCondition, @"and productid=(?<pid>\d+)");
-                if (m.Success)
-                    TextBox1.Text = m.Groups["pid"].ToString();
-            }
+        //    if (SearchCondition.Contains("productid="))
+        //    {
+        //        CheckBox2.Checked = true;
+        //        Match m = Regex.Match(SearchCondition, @"and productid=(?<pid>\d+)");
+        //        if (m.Success)
+        //            TextBox1.Text = m.Groups["pid"].ToString();
+        //    }
 
-            if (SearchCondition.Contains("status="))
-            {
-                CheckBox3.Checked = true;
-                Match m = Regex.Match(SearchCondition,@"and status='(?<status>\d+)'");
-                if (m.Success)
-                    drpStatus.SelectedValue = m.Groups["status"].ToString();
-            }
+        //    if (SearchCondition.Contains("status="))
+        //    {
+        //        CheckBox3.Checked = true;
+        //        Match m = Regex.Match(SearchCondition,@"and status='(?<status>\d+)'");
+        //        if (m.Success)
+        //            drpStatus.SelectedValue = m.Groups["status"].ToString();
+        //    }
 
-            if (SearchCondition.Contains("productname like"))
-            {
-                CheckBox4.Checked = true;
-                Match m = Regex.Match(SearchCondition, @"and productname like '%(?<pname>.+)%'");
-                if (m.Success)
-                    TextBox2.Text = m.Groups["pname"].ToString();
-            }
+        //    if (SearchCondition.Contains("productname like"))
+        //    {
+        //        CheckBox4.Checked = true;
+        //        Match m = Regex.Match(SearchCondition, @"and productname like '%(?<pname>.+)%'");
+        //        if (m.Success)
+        //            TextBox2.Text = m.Groups["pname"].ToString();
+        //    }
 
-            if (SearchCondition.Contains("InsertTime"))
-            {
-                CheckBox5.Checked = true;
-                Match m = Regex.Match(SearchCondition, @"and InsertTime >= '(?<st>.+)' and InsertTime <= '(?<et>.+)'");
-                if (m.Success)
-                {
-                    TextBox3.Text = Convert.ToDateTime(m.Groups["st"]).ToString("yyyy-MM-dd");
-                    TextBox4.Text = Convert.ToDateTime(m.Groups["et"]).ToString("yyyy-MM-dd");
-                }
-            }
+        //    if (SearchCondition.Contains("InsertTime"))
+        //    {
+        //        CheckBox5.Checked = true;
+        //        Match m = Regex.Match(SearchCondition, @"and InsertTime >= '(?<st>.+)' and InsertTime <= '(?<et>.+)'");
+        //        if (m.Success)
+        //        {
+        //            TextBox3.Text = Convert.ToDateTime(m.Groups["st"]).ToString("yyyy-MM-dd");
+        //            TextBox4.Text = Convert.ToDateTime(m.Groups["et"]).ToString("yyyy-MM-dd");
+        //        }
+        //    }
 
-            if (SearchCondition.Contains("score between"))
-            {                
-                CheckBox6.Checked = true;
-                Match m = Regex.Match(SearchCondition, @"and score between (?<ss>.+) and (?<se>.+)");
-                if (m.Success)
-                {
-                    TextBoxSearch_ScoreStart.Text = m.Groups["ss"].ToString();
-                    TextBoxSearch_ScoreEnd.Text = m.Groups["se"].ToString();
-                }
-            }
+        //    if (SearchCondition.Contains("score between"))
+        //    {                
+        //        CheckBox6.Checked = true;
+        //        Match m = Regex.Match(SearchCondition, @"and score between (?<ss>.+) and (?<se>.+)");
+        //        if (m.Success)
+        //        {
+        //            TextBoxSearch_ScoreStart.Text = m.Groups["ss"].ToString();
+        //            TextBoxSearch_ScoreEnd.Text = m.Groups["se"].ToString();
+        //        }
+        //    }
 
-            if (SearchCondition.Contains("stock"))
-            {
-                CheckBox7.Checked = true;
-                Match m = Regex.Match(SearchCondition, @"stock(?<stock>=|\>)(\d+)");
-                if (m.Success)
-                {
-                    DropDownList_Stock.SelectedValue = m.Groups["stock"].ToString() == "=" ? "0" : "1";
-                }
-            }
+        //    if (SearchCondition.Contains("stock"))
+        //    {
+        //        CheckBox7.Checked = true;
+        //        Match m = Regex.Match(SearchCondition, @"stock(?<stock>=|\>)(\d+)");
+        //        if (m.Success)
+        //        {
+        //            DropDownList_Stock.SelectedValue = m.Groups["stock"].ToString() == "=" ? "0" : "1";
+        //        }
+        //    }
 
-            if (SearchCondition.Contains("changetime"))
-            {
-                CheckBox8.Checked = true;
-                DateTime start = Convert.ToDateTime(TextBoxSearch_StartTime.Text);
-                DateTime end = Convert.ToDateTime(TextBoxSearch_EndTime.Text);
-                SearchCondition += String.Format(" and changetime >= '{0}' and changetime <= '{1}'", start, end);
+        //    if (SearchCondition.Contains("changetime"))
+        //    {
+        //        CheckBox8.Checked = true;
+        //        DateTime start = Convert.ToDateTime(TextBoxSearch_StartTime.Text);
+        //        DateTime end = Convert.ToDateTime(TextBoxSearch_EndTime.Text);
+        //        SearchCondition += String.Format(" and changetime >= '{0}' and changetime <= '{1}'", start, end);
 
-                Match m = Regex.Match(SearchCondition, @"changetime >= '(?<cs>\.+)' and changetime <= '(?<ce>\.+)'");
-                if (m.Success)
-                {
-                    TextBoxSearch_StartTime.Text=Convert.ToDateTime(m.Groups["cs"]).ToString("yyyy-MM-dd");
-                    TextBoxSearch_EndTime.Text = Convert.ToDateTime(m.Groups["ce"]).ToString("yyyy-MM-dd");
-                }
-            }
+        //        Match m = Regex.Match(SearchCondition, @"changetime >= '(?<cs>\.+)' and changetime <= '(?<ce>\.+)'");
+        //        if (m.Success)
+        //        {
+        //            TextBoxSearch_StartTime.Text=Convert.ToDateTime(m.Groups["cs"]).ToString("yyyy-MM-dd");
+        //            TextBoxSearch_EndTime.Text = Convert.ToDateTime(m.Groups["ce"]).ToString("yyyy-MM-dd");
+        //        }
+        //    }
 
-            if (SearchCondition.Contains("brandid"))
-            {
-                CheckBox9.Checked = true; 
-                Match m = Regex.Match(SearchCondition, @"and brandid = (?<bid>\d+)");
-                if (m.Success)
-                {
-                    BrandModel b = new BrandModelBll().GetModel(Convert.ToInt32(m.Groups["bid"]));
-                    TextBoxSearch_Brand.Text = b.BrandName;
-                }
-            }
-        }
+        //    if (SearchCondition.Contains("brandid"))
+        //    {
+        //        CheckBox9.Checked = true; 
+        //        Match m = Regex.Match(SearchCondition, @"and brandid = (?<bid>\d+)");
+        //        if (m.Success)
+        //        {
+        //            BrandModel b = new BrandModelBll().GetModel(Convert.ToInt32(m.Groups["bid"]));
+        //            TextBoxSearch_Brand.Text = b.BrandName;
+        //        }
+        //    }
+        //}
     }
 }
