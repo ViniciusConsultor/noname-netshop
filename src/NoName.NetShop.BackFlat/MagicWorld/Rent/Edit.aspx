@@ -46,10 +46,6 @@
                 result = false;
                 inform($('#<%=TextBox_MaxRentDays.ClientID %>'), '请输入正确的最长租赁时间');
             }
-            if ($('#<%=FileUpload_MainImage.ClientID %>').val() == '') {
-                result = false;
-                inform($('#<%=FileUpload_MainImage.ClientID %>'), '请选择产品图片');
-            }
             return result;
         }
         function inform(o, message) {

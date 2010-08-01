@@ -18,7 +18,7 @@
 	    <tr>
 	        <td>品牌LOGO：</td>
 	        <td>
-                <asp:FileUpload ID="fulBrandLogo" runat="server" />
+                <asp:FileUpload ID="fulBrandLogo" runat="server" /> logo长宽比保持120:45 (最小长度120px)
 	        </td>
 	    </tr>
 	    <tr>

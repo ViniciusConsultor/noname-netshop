@@ -8,6 +8,7 @@ using NoName.NetShop.Common;
 using System.Data;
 using NoName.NetShop.IMMessage;
 using System.Web.Security;
+using NoName.Utility;
 
 namespace NoName.NetShop.BackFlat.message
 {
@@ -57,6 +58,55 @@ namespace NoName.NetShop.BackFlat.message
         protected void pageNav_PageChanged(object src, NoName.Utility.PageChangedEventArgs e)
         {
             SearPageInfo.PageIndex = e.NewPageIndex;
+            BindList();
+        }
+
+        protected void Button_Search_Click(object sender, EventArgs e)
+        {
+            SearPageInfo.StrWhere = " 1=1 ";
+            if (Check_Sender.Checked)
+            {
+                if (TextBox_Sender.Text != String.Empty)
+                {
+                    SearPageInfo.StrWhere += " and senderid like '%" + TextBox_Sender.Text + "%'";
+                }
+                else
+                {
+                    MessageBox.Show(this, "请输入发送用户ID");
+                    return;
+                }
+            }
+
+            if (Check_Type.Checked)
+            {
+                SearPageInfo.StrWhere += " and msgType = "+DropDown_Type.SelectedValue;
+            }
+
+            if (Check_Date.Checked)
+            {
+                DateTime StartDate,EndDate;
+                string Condition = String.Empty;
+                if (TextBox_StartDate.Text != String.Empty && DateTime.TryParse(TextBox_StartDate.Text, out StartDate))
+                {
+                    Condition += " and inserttime >= '" + StartDate.ToString("yyyy-MM-dd") + "' ";
+                }
+
+                if (TextBox_EndDate.Text != String.Empty && DateTime.TryParse(TextBox_EndDate.Text, out EndDate))
+                {
+                    Condition += " and inserttime <= '" + EndDate.ToString("yyyy-MM-dd") + "' ";
+                }
+
+                if (!String.IsNullOrEmpty(Condition))
+                {
+                    SearPageInfo.StrWhere += Condition;
+                }
+                else
+                {
+                    MessageBox.Show(this, "请输入正确的起至日期");
+                    return;
+                }
+            }
+
             BindList();
         }
 
