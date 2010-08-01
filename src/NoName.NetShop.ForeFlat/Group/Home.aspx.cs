@@ -44,7 +44,22 @@ namespace NoName.NetShop.ForeFlat.Group
 
         private string GetRuleString()
         {
-            return new StreamReader(config.FileName).ReadToEnd();
+            string RuleString = String.Empty;
+            string Key = "GROUP-RULE-CONTENT-STRING";
+
+            if (HttpRuntime.Cache[Key] != null)
+            {
+                RuleString = HttpRuntime.Cache[Key].ToString();
+            }
+            else
+            {
+                StreamReader sr = new StreamReader(config.FileName);
+                RuleString = sr.ReadToEnd();
+                HttpRuntime.Cache.Insert(Key, RuleString, null, DateTime.Now.AddSeconds(5), TimeSpan.Zero);
+                sr.Close();
+            }
+
+            return RuleString;
         }
     }
 }

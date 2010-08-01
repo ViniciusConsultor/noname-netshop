@@ -56,7 +56,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             if (!String.IsNullOrEmpty(Request.QueryString["categoryid"])) CategoryID = Convert.ToInt32(Request.QueryString["categoryid"]);
 
             TextBox_Category.Text = new MagicCategoryBll().GetModel(CategoryID).CategoryName;
-            TextBox_ProductName.Text = model.ProductName;
+            TextBox_ProductName.Text = StringUtility.RemoveHtmlTags(model.ProductName);
             TextBox_StartPrice.Text=model.StartPrice.ToString("0.00");
             TextBox_AddPrices.Text = model.AddPrices;
             TextBox_StartTime.Text = model.StartTime.ToString("yyyy-MM-dd");
@@ -89,7 +89,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
             if (String.IsNullOrEmpty(TextBox_PostCode.Text) || !PageValidate.IsNumber(TextBox_PostCode.Text)) { ErrorMessage += "邮政编码不能为空\\n"; }
             if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "地址不能为空\\n"; }
             RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
-            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City))
             {
                 ErrorMessage += "所在地选择不完整\\n";
             }

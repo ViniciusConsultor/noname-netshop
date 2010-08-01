@@ -89,7 +89,7 @@ namespace NoName.NetShop.ForeFlat.member.Demand
             if (MagicWorldImageRule.SaveProductMainImage(DemandID, FileUpload_ProductImage.PostedFile, out ProductImages))
             {
                 model.DemandID = DemandID;
-                model.DemandName = TextBox_ProductName.Text;
+                model.DemandName = StringUtility.RemoveHtmlTags(TextBox_ProductName.Text);
                 model.Address = TextBox_Address.Text;
                 model.Brief = TextBox_Brief.Text ;
                 model.CategoryID = CategoryID;

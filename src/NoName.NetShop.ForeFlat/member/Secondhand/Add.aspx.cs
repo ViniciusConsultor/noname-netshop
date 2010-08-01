@@ -92,7 +92,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
                 MagicCategoryModel cate = new MagicCategoryBll().GetModel(CategoryID);
 
                 model.SecondhandProductID = SecondhandProductID;
-                model.SecondhandProductName = TextBox_ProductName.Text;
+                model.SecondhandProductName = StringUtility.RemoveHtmlTags(TextBox_ProductName.Text);
                 model.CateID = CategoryID;
                 model.CatePath = cate.CategoryPath;
                 model.Price = Convert.ToDecimal(TextBox_Price.Text);

@@ -89,7 +89,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
             if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "请输入您的地址\\n"; }
 
             RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
-            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) )
             {
                 ErrorMessage += "所在地选择不完整\\n";
             }
@@ -120,7 +120,7 @@ namespace NoName.NetShop.ForeFlat.member.Secondhand
                 }
             }
 
-            model.SecondhandProductName = TextBox_ProductName.Text;
+            model.SecondhandProductName = StringUtility.RemoveHtmlTags(TextBox_ProductName.Text);
             model.CateID = CategoryID;
             model.CatePath = cate.CategoryPath;
             model.Price = Convert.ToDecimal(TextBox_Price.Text);
