@@ -90,6 +90,8 @@ namespace NoName.NetShop.ForeFlat.member.Auction
                 return;
             }
 
+           
+
             int AuctionID = CommDataHelper.GetNewSerialNum(AppType.MagicWorld);
 
             string[] ProductImages;
@@ -99,7 +101,7 @@ namespace NoName.NetShop.ForeFlat.member.Auction
                 MagicCategoryModel cate = new MagicCategoryBll().GetModel(CategoryID);
 
                 model.AuctionID = AuctionID;
-                model.ProductName = TextBox_ProductName.Text;
+                model.ProductName = StringUtility.RemoveHtmlTags(TextBox_ProductName.Text);
                 model.CategoryID = CategoryID;
                 model.CategoryPath = cate.CategoryPath;
                 model.SmallImage = ProductImages[0];

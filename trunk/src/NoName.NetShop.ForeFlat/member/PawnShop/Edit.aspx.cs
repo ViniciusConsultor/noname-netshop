@@ -83,7 +83,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
             if (String.IsNullOrEmpty(TextBox_PostCode.Text) || !PageValidate.IsNumber(TextBox_PostCode.Text)) { ErrorMessage += "邮政编码不能为空\\n"; }
             if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "地址不能为空\\n"; }
             RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
-            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) )
             {
                 ErrorMessage += "所在地选择不完整\\n";
             }
@@ -113,7 +113,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
 
             MagicCategoryModel cate = new MagicCategoryBll().GetModel(CategoryID);
 
-            model.PawnProductName = TextBox_ProductName.Text;
+            model.PawnProductName = StringUtility.RemoveHtmlTags(TextBox_ProductName.Text);
             model.CateID = CategoryID;
             model.CatePath = cate.CategoryPath;
             model.PawnPrice = Convert.ToDecimal(TextBox_Price.Text);

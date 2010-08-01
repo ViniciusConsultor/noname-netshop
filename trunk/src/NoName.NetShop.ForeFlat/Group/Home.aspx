@@ -8,8 +8,7 @@
 <asp:Content runat="server" ID="ContentBody" ContentPlaceHolderID="cpMain">
 
     <!--MainBody Begin-->
-    <div class="banner newline">
-    </div>
+    <div class="banner newline"> </div>
     <div class="magicGroupPurchaseHome_mainbody newline clearfix">
         <div class="leftColumn">
             <div class="box2">
@@ -106,12 +105,14 @@
                             <asp:Repeater runat="server" ID="Repeater_Grouping">
                                 <ItemTemplate>
                                     <li>
-                                        <a href="#"><img src="Pictures/productPic.gif" /></a>
-                                        <a href="#">
-                                            <span class="price">鼎城报价：￥188.00</span>
-                                            <span class="name">伊莱克斯（Electrolux）</span>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>">
+                                            <img src="<%# NoName.NetShop.GroupShopping.Facade.GroupShoppingImageRule.GetImageUrl(Eval("mediumimage").ToString()) %>" />
                                         </a>
-                                    </li>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>">
+                                            <span class="price">鼎城报价：￥<%# Eval("groupprice") %></span>
+                                            <span class="name"><%# Eval("productname") %></span>
+                                        </a>
+                                    </li>                                
                                 </ItemTemplate>
                             </asp:Repeater>
                         </ul>
@@ -134,12 +135,14 @@
                             <asp:Repeater runat="server" ID="Repeater_Ending">
                                 <ItemTemplate>
                                     <li>
-                                        <a href="#"><img src="Pictures/productPic.gif" /></a>
-                                        <a href="#">
-                                            <span class="price">鼎城报价：￥188.00</span>
-                                            <span class="name">伊莱克斯（Electrolux）</span>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>">
+                                            <img src="<%# NoName.NetShop.GroupShopping.Facade.GroupShoppingImageRule.GetImageUrl(Eval("mediumimage").ToString()) %>" />
                                         </a>
-                                    </li>
+                                        <a href="/group/product.aspx?productid=<%# Eval("productid") %>">
+                                            <span class="price">鼎城报价：￥<%# Eval("groupprice") %></span>
+                                            <span class="name"><%# Eval("productname") %></span>
+                                        </a>
+                                    </li>                                
                                 </ItemTemplate>
                             </asp:Repeater>
                         </ul>

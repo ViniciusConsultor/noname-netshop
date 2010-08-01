@@ -32,8 +32,8 @@
 
 ul.logoList1{ margin:0; padding:15px 0 0 49px; zoom:1}
 ul.logoList1:after{content:"."; display:block; height:0; clear:both; visibility:hidden}
-ul.logoList1 li{ list-style-type:none; width:190px; display:block; float:left; padding:0 33px 15px 0}
-ul.logoList1 li img{ padding:2px; border:1px solid #CCC; width:180px; height:45px;}
+ul.logoList1 li{ list-style-type:none; width:130px; display:block; float:left; padding:0 33px 15px 0}
+ul.logoList1 li img{ padding:2px; border:1px solid #CCC; width:120px; height:45px;}
 
 ul.logoList2{ margin:0; padding:0; zoom:1}
 ul.logoList2:after{content:"."; display:block; height:0; clear:both; visibility:hidden}

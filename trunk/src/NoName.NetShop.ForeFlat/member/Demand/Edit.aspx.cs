@@ -91,7 +91,7 @@ namespace NoName.NetShop.ForeFlat.member.Demand
             if (String.IsNullOrEmpty(TextBox_Address.Text)) { ErrorMessage += "请输入您的地址\\n"; }
 
             RegionInfo regionInfo = ucRegion.GetSelectedRegionInfo();
-            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City) || String.IsNullOrEmpty(regionInfo.County))
+            if (String.IsNullOrEmpty(regionInfo.Province) || String.IsNullOrEmpty(regionInfo.City))
             {
                 ErrorMessage += "所在地选择不完整\\n";
             }
@@ -122,7 +122,7 @@ namespace NoName.NetShop.ForeFlat.member.Demand
 
             MagicCategoryModel cate = new MagicCategoryBll().GetModel(CategoryID);
 
-            model.DemandName = TextBox_ProductName.Text;
+            model.DemandName = StringUtility.RemoveHtmlTags(TextBox_ProductName.Text);
             model.Address = TextBox_Address.Text;
             model.Brief = TextBox_Brief.Text;
             model.CategoryID = CategoryID;

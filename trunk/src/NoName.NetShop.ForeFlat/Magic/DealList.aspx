@@ -11,11 +11,11 @@
     
     <!--Position Begin-->
     <div class="currentPosition">
-    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/magic">魔力世界</a> &gt;&gt; <a href="/Magic/DealHome.aspx">二手交易</a> &gt;&gt; <a href="#">所有交易</a>
+    	您现在的位置: <a href="/">首页</a> &gt;&gt; <a href="/channel/magic">魔力世界</a> &gt;&gt; <a href="/Magic/DealList.aspx">二手交易</a> &gt;&gt; <a href="#">所有交易</a>
         <div class="magicSubNav">
             <div class="magicButtonTab">
                 <a class="button_blue" href="/Magic/RentHome.aspx">视听租赁</a>
-                <a class="button_blue2" href="/Magic/DealHome.aspx">二手交易</a>
+                <a class="button_blue2" href="/Magic/DealList.aspx">二手交易</a>
                 <a class="button_blue" href="/Magic/PawnShop.aspx">视听当铺</a>
                 <a class="button_blue" href="/Magic/AuctionHome.aspx">视听拍卖</a>
             </div>

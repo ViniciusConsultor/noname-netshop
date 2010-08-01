@@ -42,8 +42,9 @@
     for (var i = 0; i < initialTable.Count; i++) {
         var prop = initialTable.Keys()[i];
         var propValue = initialTable.GetValue(prop);
-        $('.properity[propid=' + prop + ']').children('a[propvid]').each(function(i, o) { $(o).removeAttr('class'); });
-        $('.properity[propid=' + prop + ']').children('a[propvid=' + propValue + ']').attr('class', 'on');
+//        alert(prop+':'+propValue+';');
+        $('.properity[propid=' + prop + ']').find('a[propvid]').each(function(i, o) { $(o).removeAttr('class'); });
+        $('.properity[propid=' + prop + ']').find('a[propvid=' + propValue + ']').attr('class', 'on');
     }
 
     //page

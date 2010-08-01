@@ -37,49 +37,56 @@ namespace NoName.NetShop.ForeFlat.Magic
             PawnProductModel model = bll.GetModel(PawnProductID);
             MemberInfo user = MemberInfo.GetFullInfo(model.UserID);
 
-            Image_Medium.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage);
-            Image_Small.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.SmallImage); 
-
-            Literal_ProductName.Text = model.PawnProductName;
-            Literal_Price.Text = model.SellingPrice.ToString("0.00");
-            Literal_UserID.Text = model.UserID;
-            Literal_Brief.Text = model.Brief;
-
-            Literal_UserID2.Text = user.UserId;
-            string UserPhone = String.Empty,Address = String.Empty;
-            switch (user.UserType)
+            if (model.Status != (int)PawnProductStatus.冻结)
             {
-                case MemberType.Personal:
-                    PersonMemberInfo puser = (PersonMemberInfo)user;
-                    UserPhone = puser.Mobile == String.Empty? puser.Telephone : puser.Mobile;
-                    Address = String.Empty;
-                    break;
-                case MemberType.Famly:
-                    FamlyMemberInfo fuser = (FamlyMemberInfo)user;
-                    UserPhone = fuser.Mobile == String.Empty? fuser.Telephone : fuser.Mobile;
-                    Address = fuser.Address;
-                    break;
-                case MemberType.Company:
-                    CompanyMemberInfo cuser = (CompanyMemberInfo)user;
-                    UserPhone = cuser.Mobile == String.Empty? cuser.Telephone : cuser.Mobile;
-                    Address = cuser.Address;
-                    break;
-                case MemberType.School:
-                    SchoolMemberInfo suser = (SchoolMemberInfo)user;
-                    UserPhone = suser.Mobile == String.Empty? suser.Telephone : suser.Mobile;
-                    Address = suser.Address;
-                    break;
-                default:
-                    UserPhone = String.Empty;
-                    Address = String.Empty;
-                    break;
+                Image_Medium.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.MediumImage);
+                Image_Small.ImageUrl = MagicWorldImageRule.GetMainImageUrl(model.SmallImage);
+
+                Literal_ProductName.Text = model.PawnProductName;
+                Literal_Price.Text = model.SellingPrice.ToString("0.00");
+                Literal_UserID.Text = model.UserID;
+                Literal_Brief.Text = model.Brief;
+
+                Literal_UserID2.Text = user.UserId;
+                string UserPhone = String.Empty, Address = String.Empty;
+                switch (user.UserType)
+                {
+                    case MemberType.Personal:
+                        PersonMemberInfo puser = (PersonMemberInfo)user;
+                        UserPhone = puser.Mobile == String.Empty ? puser.Telephone : puser.Mobile;
+                        Address = String.Empty;
+                        break;
+                    case MemberType.Famly:
+                        FamlyMemberInfo fuser = (FamlyMemberInfo)user;
+                        UserPhone = fuser.Mobile == String.Empty ? fuser.Telephone : fuser.Mobile;
+                        Address = fuser.Address;
+                        break;
+                    case MemberType.Company:
+                        CompanyMemberInfo cuser = (CompanyMemberInfo)user;
+                        UserPhone = cuser.Mobile == String.Empty ? cuser.Telephone : cuser.Mobile;
+                        Address = cuser.Address;
+                        break;
+                    case MemberType.School:
+                        SchoolMemberInfo suser = (SchoolMemberInfo)user;
+                        UserPhone = suser.Mobile == String.Empty ? suser.Telephone : suser.Mobile;
+                        Address = suser.Address;
+                        break;
+                    default:
+                        UserPhone = String.Empty;
+                        Address = String.Empty;
+                        break;
+                }
+
+                Literal_Phone.Text = UserPhone;
+                Literal_Address.Text = Address;
+
+                Repeater_Comment.DataSource = CmtBll.GetList(AppType.MagicWorld, PawnProductID);
+                Repeater_Comment.DataBind();
             }
-
-            Literal_Phone.Text = UserPhone;
-            Literal_Address.Text = Address;
-
-            Repeater_Comment.DataSource = CmtBll.GetList(AppType.MagicWorld, PawnProductID);
-            Repeater_Comment.DataBind();
+            else
+            {
+                Response.End();
+            }
         }
     }
 }

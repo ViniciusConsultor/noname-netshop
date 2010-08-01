@@ -86,7 +86,7 @@ namespace NoName.NetShop.ForeFlat.member.PawnShop
                 MagicCategoryModel cate = new MagicCategoryBll().GetModel(CategoryID);
 
                 model.PawnProductID = PawnProductID;
-                model.PawnProductName = TextBox_ProductName.Text;
+                model.PawnProductName = StringUtility.RemoveHtmlTags(TextBox_ProductName.Text);
                 model.CateID = CategoryID;
                 model.CatePath = cate.CategoryPath;
                 model.PawnPrice = Convert.ToDecimal(TextBox_Price.Text);

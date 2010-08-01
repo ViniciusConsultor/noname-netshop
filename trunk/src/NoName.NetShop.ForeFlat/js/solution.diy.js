@@ -193,7 +193,7 @@ function initialize() {
             });
 
             showBrandInfo(currentCategoryID, 0);
-            showSearchedProduct(0, currentCategoryID, 0, '', 1);
+            showSearchedProduct(currentCategoryID,0, 0, '', 1);
             /*set the primary values end*/
         }
     });
