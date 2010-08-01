@@ -20,7 +20,6 @@ namespace NoName.NetShop.BackFlat.News.Category
     {
         private NewsCategoryModelBll bll = new NewsCategoryModelBll();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -67,8 +66,7 @@ namespace NoName.NetShop.BackFlat.News.Category
         {
             DataTable dt = bll.GetList(0);
         }
-
-
+        
         protected void Button_Submit_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(TreeView1.SelectedValue))
