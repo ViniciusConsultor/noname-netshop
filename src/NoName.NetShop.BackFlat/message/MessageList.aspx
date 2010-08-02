@@ -71,7 +71,11 @@
                     <asp:BoundField DataField="SenderId"  HeaderText="发件人"/>
                     <asp:BoundField DataField="TMsgType" HeaderText="消息类型" />
                     <asp:BoundField DataField="TUserType" HeaderText="用户类型" />
-                    <asp:HyperLinkField Text="查看"   DataNavigateUrlFormatString="ShowMessage.aspx?msgId={0}" HeaderText="查看" DataNavigateUrlFields="msgId" />
+                    <asp:TemplateField HeaderText="查看">
+                        <ItemTemplate>
+                            <asp:HyperLink runat="server" ID="Link_Show" Text="查看" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:CommandField DeleteText="删除" ShowDeleteButton="true"  HeaderText="删除" />
                 </Columns>
                 <EmptyDataTemplate>没有找到相关记录</EmptyDataTemplate>

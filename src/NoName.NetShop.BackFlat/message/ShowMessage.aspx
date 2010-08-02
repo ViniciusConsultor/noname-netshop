@@ -5,6 +5,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+
+    <script src="../js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#btnReturn').click(function() {
+                window.location = 'messagelist.aspx?page=' + $(this).attr('page');
+            });
+        });
+    </script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -35,7 +45,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <input type="button" onclick="javascript:window.close();" value="关闭" />
+                <input type="button" id="btnReturn" page="<%= Request.QueryString["page"] %>" value="返回" />
             </td>
         </tr>
     </table> 
