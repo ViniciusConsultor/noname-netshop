@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SendMessage.aspx.cs" Inherits="NoName.NetShop.BackFlat.message.SendMessage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SendMessage.aspx.cs" ValidateRequest="false" Inherits="NoName.NetShop.BackFlat.message.SendMessage" %>
 <%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     Namespace="System.Web.UI" TagPrefix="asp" %>
 
@@ -8,23 +8,37 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" type="text/css" media="screen" href="../css/datePicker.css" />
-<script type="text/javascript" src="../js/jquery-1.3.2.js"></script>
-<script type="text/javascript" src="../js/date.js"></script>
-<script type="text/javascript" src="../js/jquery.datePicker.js"></script>    
- <script type="text/javascript" charset="utf-8">
-     function initDateBox() {
-         var now = new Date();
-         var enddate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-         $('.date-pick').datePicker({ startDate: enddate, createButton: false, clickInput: true });
-     }
-</script> 
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css"/>
+    
+    <script type="text/javascript" src="/js/jquery-1.3.2.js"></script>
+    <script type="text/javascript" src="/js/date.js"></script>
+    <script type="text/javascript" src="/js/jquery.datePicker.js"></script>   
+    <script type="text/javascript" src="/Controls/ckEditor/ckeditor.js"></script>
+
+
+ 
+     <script type="text/javascript" charset="utf-8">
+         $(function() {
+             CKEDITOR.replace('<%= txtContent.ClientID %>', {
+                 ignoreEmptyParagraph: true,
+                 forcePasteAsPlainText: false,
+                 enterMode: CKEDITOR.ENTER_BR
+             });
+         });
+     
+         function initDateBox() {
+             var now = new Date();
+             var enddate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+             $('.date-pick').datePicker({ startDate: enddate, createButton: false, clickInput: true });
+         }
+    </script> 
 
     <script type="text/javascript">
         function load() {
             initDateBox();
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initDateBox);
-        }
-        
+        }        
    </script>
 
 </head>

@@ -34,29 +34,51 @@ namespace NoName.NetShop.BackFlat.message
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
             }
+            set
+            {
+                ViewState["SearchPageInfo"] = value;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (!String.IsNullOrEmpty(Request.QueryString["page"]))
+                {
+                    SearPageInfo.PageIndex = Convert.ToInt32(Request.QueryString["page"]);
+                }
                 BindList();
+
+                if (!String.IsNullOrEmpty(Request.QueryString["page"]))
+                {
+                    pageNav.CurrentPageIndex = Convert.ToInt32(Request.QueryString["page"]);
+                }
             }
         }
 
         private void BindList()
         {
+            Response.Write(SearPageInfo.PageIndex);
             DataSet ds = NoName.NetShop.Common.CommDataHelper.GetDataFromMultiTablesByPage(SearPageInfo);
             gvList.DataSource = ds.Tables[0];
             gvList.DataBind();
+
             pageNav.CurrentPageIndex = SearPageInfo.PageIndex;
             pageNav.PageSize = SearPageInfo.PageSize;
             pageNav.RecordCount = SearPageInfo.TotalItem;
 
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)//(GridViewRow row in gvList.Rows)
+            {
+                GridViewRow grow = gvList.Rows[i];
+                DataRow row = ds.Tables[0].Rows[i];
+
+                ((HyperLink)grow.FindControl("Link_Show")).NavigateUrl = "ShowMessage.aspx?msgId=" + row["msgid"] + "&page=" + pageNav.CurrentPageIndex;
+            }
         }
 
         protected void pageNav_PageChanged(object src, NoName.Utility.PageChangedEventArgs e)
-        {
+        {            
             SearPageInfo.PageIndex = e.NewPageIndex;
             BindList();
         }

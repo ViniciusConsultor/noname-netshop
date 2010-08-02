@@ -8,6 +8,8 @@ using NoName.NetShop.Common;
 using System.Data;
 using NoName.NetShop.IMMessage;
 using System.Web.Security;
+using NoName.Utility;
+using System.Text.RegularExpressions;
 
 namespace NoName.NetShop.BackFlat.message
 {
@@ -30,7 +32,7 @@ namespace NoName.NetShop.BackFlat.message
                     spage.OrderType = "1";
                     spage.StrWhere = "usertype=1 and ((msgtype=1 and userId='alluser' and (expiretime is null or expireTime>getdate()))"
                         + " or (msgtype=0 and userId='" + Context.User.Identity.Name + "')"
-                        + " or (msgtype=2 and userId in ('" + String.Join("','", Roles.GetRolesForUser()) + "') and (expiretime is null or expireTime>getdate())))";
+                        + " or (msgtype=2 and userId in ('" + String.Join("','", Roles.GetRolesForUser()) + "') and (expiretime is null or expireTime>getdate()))) /*originalend*/ ";
                 }
                 return ViewState["SearchPageInfo"] as SearchPageInfo;
             }
@@ -87,6 +89,62 @@ namespace NoName.NetShop.BackFlat.message
             SearPageInfo.PageIndex = 1;
             BindList();
 
+        }
+
+
+        protected void Button_Search_Click(object sender, EventArgs e)
+        {
+            string SearchCondition = String.Empty;
+
+            if (Check_Sender.Checked)
+            {
+                if (TextBox_Sender.Text != String.Empty)
+                {
+                    SearchCondition += " and senderid like '%" + TextBox_Sender.Text + "%'";
+                }
+                else
+                {
+                    MessageBox.Show(this, "请输入发送用户ID");
+                    return;
+                }
+            }
+
+            if (Check_Type.Checked)
+            {
+                SearchCondition += " and msgType = " + DropDown_Type.SelectedValue;
+            }
+
+            if (Check_Date.Checked)
+            {
+                DateTime StartDate, EndDate;
+                string Condition = String.Empty;
+                if (TextBox_StartDate.Text != String.Empty && DateTime.TryParse(TextBox_StartDate.Text, out StartDate))
+                {
+                    Condition += " and inserttime >= '" + StartDate.ToString("yyyy-MM-dd") + "' ";
+                }
+
+                if (TextBox_EndDate.Text != String.Empty && DateTime.TryParse(TextBox_EndDate.Text, out EndDate))
+                {
+                    Condition += " and inserttime <= '" + EndDate.ToString("yyyy-MM-dd") + "' ";
+                }
+
+                if (!String.IsNullOrEmpty(Condition))
+                {
+                    SearchCondition += Condition;
+                }
+                else
+                {
+                    MessageBox.Show(this, "请输入正确的起至日期");
+                    return;
+                }
+            }
+
+            //Response.Write("<p style=\"color:gray\">" + SearPageInfo.StrWhere + "</p>");
+            //Response.Write("<p style=\"color:red\">" + Regex.Split(SearPageInfo.StrWhere, "originalend")[0] + "</p>");
+            //Response.Write("<p style=\"color:blue\">" + SearchCondition + "</p>");
+            SearPageInfo.StrWhere = Regex.Split(SearPageInfo.StrWhere, "originalend")[0].Replace("*", "").Replace("/", "") + "/*originalend*/" + SearchCondition;
+            //Response.Write(SearPageInfo.StrWhere);
+            BindList();
         }
     }
 }
