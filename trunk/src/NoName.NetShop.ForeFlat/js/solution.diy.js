@@ -192,8 +192,8 @@ function initialize() {
                 showSearchedProduct(currentCategoryID, currentFatherCategoryID, 0, '', 1);
             });
 
-            showBrandInfo(currentCategoryID, 0);
-            showSearchedProduct(currentCategoryID,0, 0, '', 1);
+                showBrandInfo(currentCategoryID, 0);
+                showSearchedProduct(0, currentCategoryID, 0, '', 1);
             /*set the primary values end*/
         }
     });
@@ -414,20 +414,62 @@ function turnPage(data, pageIndex, fatherCategoryID) {
 
     var paginateHtml = '共' + recordCount + '条' + pageCount + '页';
 
-    if (pageIndex == 1) paginateHtml += '<a class="prev" href="#"></a>';
-    else paginateHtml += '<a class="prev" href="#" page="' + (pageIndex - 1) + '"></a>';
+    if (pageIndex == 1) paginateHtml += '<a class="prev" href="javascript:void(0);"></a>';
+    else paginateHtml += '<a class="prev" href="javascript:void(0);" page="' + (pageIndex - 1) + '"></a>';
     paginateHtml += '<div class="pageNum">';
 
-    for (var i = 1; i <= pageCount; i++) {
-        if (pageIndex == i)
-            paginateHtml += '<a class="on" href="#">' + i + '</a>';
-        else
-            paginateHtml += '<a page="' + i + '" href="#">' + i + '</a>';
+    var maxPaginageCount = 8;
+    if (pageCount <= maxPaginageCount) {
+        for (var i = 1; i <= pageCount; i++) {
+            if (pageIndex == i)
+                paginateHtml += '<a class="on" href="javascript:void(0);">' + i + '</a>';
+            else
+                paginateHtml += '<a page="' + i + '" href="javascript:void(0);">' + i + '</a>';
+        }
     }
+    else {
+        if (pageIndex < maxPaginageCount) {
+            for (var i = 1; i <= maxPaginageCount; i++) {
+                if (pageIndex == i)
+                    paginateHtml += '<a class="on" href="javascript:void(0);">' + i + '</a>';
+                else
+                    paginateHtml += '<a page="' + i + '" href="javascript:void(0);">' + i + '</a>';
+            }
+            paginateHtml += '<a href="javascript:void(0);">...</a>';
+            paginateHtml += '<a page="' + pageCount + '" href="javascript:void(0);">' + pageCount + '</a>';
+        }
+        else if (pageIndex >= maxPaginageCount && pageIndex <= pageCount - maxPaginageCount) {
+            paginateHtml += '<a page="1" href="javascript:void(0);">1</a>';
+            paginateHtml += '<a href="javascript:void(0);">...</a>';
+
+            for (var i = pageIndex - (maxPaginageCount / 2); i <= pageIndex + (maxPaginageCount / 2); i++) {
+                if (pageIndex == i)
+                    paginateHtml += '<a class="on" href="javascript:void(0);">' + i + '</a>';
+                else
+                    paginateHtml += '<a page="' + i + '" href="javascript:void(0);">' + i + '</a>';
+            }
+
+            paginateHtml += '<a href="javascript:void(0);">...</a>';
+            paginateHtml += '<a page="' + pageCount + '" href="javascript:void(0);">' + pageCount + '</a>';
+        }
+        else {
+            paginateHtml += '<a page="1" href="javascript:void(0);">1</a>';
+            paginateHtml += '<a href="javascript:void(0);">...</a>';
+
+            for (var i = pageCount - maxPaginageCount; i <= pageCount; i++) {
+                if (pageIndex == i)
+                    paginateHtml += '<a class="on" href="javascript:void(0);">' + i + '</a>';
+                else
+                    paginateHtml += '<a page="' + i + '" href="javascript:void(0);">' + i + '</a>';
+            }
+        }
+    }
+    
+    
 
     paginateHtml += '</div>';
-    if (pageIndex == pageCount) paginateHtml += '<a class="next" href="#"></a>';
-    else paginateHtml += '<a class="next" href="#" page="' + (pageIndex + 1) + '"></a>';
+    if (pageIndex == pageCount) paginateHtml += '<a class="next" href="javascript:void(0);"></a>';
+    else paginateHtml += '<a class="next" href="javascript:void(0);" page="' + (pageIndex + 1) + '"></a>';
 
 
     html += '<tr class="bottom">' +
