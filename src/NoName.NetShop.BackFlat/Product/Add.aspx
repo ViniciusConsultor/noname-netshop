@@ -206,7 +206,7 @@
             </tr>
             <tr>
                 <td>积分：<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtScore" runat="server" Width="200" Text="0"></asp:TextBox><span type="inform" class="red"></span></td>
+                <td><asp:TextBox id="txtScore" runat="server" Width="200" Text="0"></asp:TextBox><span type="inform" class="red"></span><span>请输入正整数</span></td>
             </tr>
             <tr>
                 <td>库存：</td>
@@ -243,15 +243,15 @@
             </tr>
             <tr>
                 <td>关键字<span class="red">*</span>：</td>
-                <td><asp:TextBox id="txtKeywords" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span></td>
+                <td><asp:TextBox id="txtKeywords" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span><span>关键字之间以英文逗号隔开</span></td>
             </tr>
             <tr>
                 <td>关联商品：</td>
-                <td><asp:TextBox id="txtRelateProduct" runat="server" Width="400"></asp:TextBox>(以英文逗号隔开)</td>
+                <td><asp:TextBox id="txtRelateProduct" runat="server" Width="400"></asp:TextBox><span>产品ID,以英文逗号隔开</span></td>
             </tr>
             <tr>
                 <td>评测资讯：</td>
-                <td><asp:TextBox id="txtNewsID" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span></td>
+                <td><asp:TextBox id="txtNewsID" runat="server" Width="400"></asp:TextBox><span type="inform" class="red"></span><span>请输入资讯ID,正整数</span></td>
             </tr>
             <tr>
                 <td>简介<span class="red">*</span>：</td>
@@ -287,7 +287,7 @@
             </tr>
             <tr>
                 <td>商品图片：<span class="red">*</span>：</td>
-                <td><asp:FileUpload runat="server" ID="fulImage" EnableViewState="true" /><span type="inform" class="red"></span></td>
+                <td><asp:FileUpload runat="server" ID="fulImage" EnableViewState="true" /><span type="inform" class="red"></span><span>建议最小尺寸:1035px*780px</span></td>
             </tr>
             <tr>
                 <td>检索属性：</td>
