@@ -165,6 +165,25 @@ namespace NoName.NetShop.GroupShopping.DAL
             return dbr.ExecuteDataSet(CommandType.Text, sql).Tables[0];
         }
 
+        public DataTable GetUserGroupList(int PageIndex,int PageSize,string UserID,out int RecordCount)
+        {
+            int PageLowerBound = 0, PageUpperBount = 0;
+            PageLowerBound = (PageIndex - 1) * PageSize;
+            PageUpperBount = PageLowerBound + PageSize;
+
+            string sqlCount = "select count(0) from gsapply where userid='" + UserID + "'";
+            string sqlData = @" select * from
+                                (select row_number() over (order by groupapplyid desc) as id,* from gsproduct p 
+                                    inner join gsapply a on a.groupproductid=p.productid
+                                    where a.userid='"+UserID+@"')
+                                as sp
+                                where id > " + PageLowerBound + " and id<= " + PageUpperBount + " order by id";
+            
+            RecordCount = Convert.ToInt32(dbr.ExecuteScalar(CommandType.Text, sqlCount));
+
+            return dbr.ExecuteDataSet(CommandType.Text, sqlData).Tables[0];                                 
+        }
+
         private GroupProductModel GetModel(DataRow row)
         {
             GroupProductModel model = new GroupProductModel();

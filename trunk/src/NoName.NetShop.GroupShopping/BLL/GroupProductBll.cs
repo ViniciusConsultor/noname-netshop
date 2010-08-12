@@ -67,5 +67,10 @@ namespace NoName.NetShop.GroupShopping.BLL
             return dal.GetTopList(Condition, OrderType, TopCount);
         }
 
+        public DataTable GetUserGroupList(int PageIndex, int PageSize, string UserID, out int RecordCount)
+        {
+            return dal.GetUserGroupList(PageIndex, PageSize, UserID, out RecordCount);
+        }
+
     }
 }
